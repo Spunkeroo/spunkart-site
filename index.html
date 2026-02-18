@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpunkArt — Digital Art & Ordinals on Bitcoin</title>
+  <meta name="description" content="SpunkArt — digital art, Bitcoin ordinals, and the Spunk.Bet network. Art meets crypto.">
+  <meta property="og:title" content="SpunkArt — Digital Art & Ordinals on Bitcoin">
+  <meta property="og:description" content="Digital art, Bitcoin ordinals, and the Spunk.Bet network.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spunkart.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@SpunkArt13">
+  <meta name="twitter:title" content="SpunkArt — Digital Art & Ordinals on Bitcoin">
+  <link rel="canonical" href="https://spunkart.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #999;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #e8e8e8;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      font-weight: 300;
+      color: #777;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: #333;
+      margin: 2rem auto;
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 3rem;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item .art {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .gallery-item:hover .art {
+      transform: scale(1.05);
+      filter: brightness(1.15);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.6);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay span {
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .gallery-item img.art {
+      object-fit: cover;
+    }
+
+    /* About */
+    .about-content {
+      max-width: 640px;
+    }
+
+    .about-content p {
+      font-weight: 300;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Contact */
+    .contact-content {
+      max-width: 480px;
+    }
+
+    .contact-content p {
+      font-weight: 300;
+      color: #aaa;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e8e8e8;
+      border: 1px solid #333;
+      padding: 0.75rem 2rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .contact-link:hover {
+      background: #1a1a1a;
+      border-color: #555;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .socials a {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #e8e8e8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer p {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #444;
+      letter-spacing: 0.1em;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+      }
+
+      .nav-links a {
+        font-size: 0.7rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">SPUNKART</div>
+    <ul class="nav-links">
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>SPUNKART</h1>
+    <div class="hero-line"></div>
+    <p>Art &mdash; Unfiltered</p>
+  </div>
+
+  <section id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img class="art" src="art/the-damned-432.png" alt="The Damned #432">
+        <div class="overlay"><span>The Damned #432</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/dreamer-24.png" alt="Dreamer #24">
+        <div class="overlay"><span>Dreamer #24</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/crazy-aliens-53.png" alt="Crazy Aliens #53">
+        <div class="overlay"><span>Crazy Aliens #53</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/bitcoin-faces-1.webp" alt="Bitcoin Faces #1">
+        <div class="overlay"><span>Bitcoin Faces #1</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/the-freak-show-1.webp" alt="The Freak Show #1">
+        <div class="overlay"><span>The Freak Show #1</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/the-forgotten.webp" alt="The Forgotten">
+        <div class="overlay"><span>The Forgotten</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/dreamer-11.png" alt="Dreamer #11">
+        <div class="overlay"><span>Dreamer #11</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/crazy-aliens-35.png" alt="Crazy Aliens #35">
+        <div class="overlay"><span>Crazy Aliens #35</span></div>
+      </div>
+      <div class="gallery-item">
+        <img class="art" src="art/the-damned-151.png" alt="The Damned #151">
+        <div class="overlay"><span>The Damned #151</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About</h2>
+    <div class="about-content">
+      <p>Spunkart is a visual artist exploring the boundaries between chaos and composition. Working across digital and traditional media, each piece is an excavation — pulling raw form from noise.</p>
+      <p>Based nowhere in particular. Creating always.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-content">
+      <p>Open to commissions, collaborations, and interesting conversations.</p>
+      <a href="mailto:hello@spunkart.com" class="contact-link">Get in Touch</a>
+      <div class="socials">
+        <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+        <a href="https://magiceden.us/ordinals/marketplace/spunkart" target="_blank" rel="noopener noreferrer">Magic Eden</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 SPUNKART. All rights reserved.</p>
+    <div style="margin-top:0.8rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Spunk.Bet Casino</a>
+      <a href="https://stimulant.wiki" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Wiki</a>
+      <a href="https://stimulant.doctor" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Doctor</a>
+      <a href="https://stimulant.shop" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Shop</a>
+    </div>
+  </footer>
+  <script>
+    // Referral tracking
+    (function(){
+      var p = new URLSearchParams(location.search);
+      var ref = p.get('ref') || p.get('r');
+      if (ref && /^[a-zA-Z0-9]{3,64}$/.test(ref)) {
+        if (!localStorage.getItem('sa_ref')) localStorage.setItem('sa_ref', ref);
+        if (typeof gtag === 'function') gtag('event', 'referral_visit', { referral_code: ref, source: 'spunkart' });
+        history.replaceState({}, '', location.pathname);
+      }
+    })();
+  </script>
+</body>
+</html>
