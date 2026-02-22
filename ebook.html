@@ -75,26 +75,14 @@ h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-cl
 /* Final CTA */
 .final-cta{text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto}
 .final-cta h2{font-size:2rem;margin-bottom:0.5rem}
-.crypto-methods{display:flex;justify-content:center;gap:1.5rem;margin:1.5rem 0;font-size:0.85rem;color:#888}
-
 /* Nav */
 .nav{display:flex;justify-content:center;gap:1.5rem;padding:0.8rem 2rem;border-bottom:1px solid #1a1a1a;font-size:0.85rem;flex-wrap:wrap}
 .nav a{color:#888;font-weight:600;transition:color 0.2s}
 .nav a:hover{color:#ff5f1f}
 
-/* Checkout Modal */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:10000;align-items:center;justify-content:center}
-.modal-overlay.active{display:flex}
-.modal{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;max-width:440px;width:90%;position:relative}
-.modal h3{font-size:1.3rem;margin-bottom:0.3rem;text-align:center}
-.modal .modal-sub{color:#888;font-size:0.85rem;text-align:center;margin-bottom:1.5rem}
-.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer}
-.modal-close:hover{color:#fff}
-.wallet-row{display:flex;align-items:center;gap:0.7rem;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:10px;padding:0.7rem 1rem;margin-bottom:0.6rem;font-size:0.78rem;word-break:break-all}
-.wallet-row .chain{font-weight:700;min-width:36px;color:#ff5f1f}
-.wallet-row .addr{flex:1;color:#ccc;user-select:all}
-.wallet-row button{background:#222;border:1px solid #333;color:#aaa;padding:0.3rem 0.7rem;border-radius:6px;cursor:pointer;font-size:0.7rem;white-space:nowrap}
-.wallet-row button:hover{background:#333;color:#fff}
+/* Ebook Buy Button */
+.ebook-btn{display:inline-block;padding:1.2rem 3rem;background:#ff5f1f;color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all 0.2s}
+.ebook-btn:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 8px 30px rgba(255,95,31,0.3)}
 
 /* Footer */
 .footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem;max-width:700px;margin:0 auto}
@@ -132,7 +120,7 @@ h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-cl
   <div class="price-note">Includes full ebook + all source code + AI prompts</div>
   <br>
   <div class="cta-group">
-    <a href="#" onclick="openCheckout();return false" class="cta cta-primary">Buy the Ebook →</a>
+    <button class="ebook-btn" onclick="buyEbook()">Buy the Ebook — $14.99</button>
     <a href="#preview" class="cta cta-secondary">Read Free Preview</a>
   </div>
 </section>
@@ -264,14 +252,8 @@ for domain, name, color in DOMAINS:
   <p style="color:#888;margin-bottom:1.5rem">120+ websites. 7 days. 1 person. Your turn.</p>
 
   <div class="price-tag" style="font-size:2rem;color:#ff5f1f">$14.99</div>
-  <div class="crypto-methods">
-    <span>₿ Bitcoin</span>
-    <span>Ξ Ethereum</span>
-    <span>◎ Solana</span>
-    <span>💳 Card</span>
-  </div>
 
-  <a href="#" onclick="openCheckout();return false" class="cta cta-primary" style="font-size:1.1rem;padding:1.2rem 3rem">Buy Now — $14.99 →</a>
+  <button class="ebook-btn" onclick="buyEbook()">Buy the Ebook — $14.99</button>
   <p style="color:#666;font-size:0.8rem;margin-top:1rem">Instant delivery · Full source code · 50 AI prompts · 30-day guarantee</p>
 </section>
 
@@ -321,31 +303,6 @@ for domain, name, color in DOMAINS:
   <div>© 2026 SpunkArt. All rights reserved.</div>
 </footer>
 
-<!-- Checkout Modal -->
-<div class="modal-overlay" id="checkoutModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeCheckout()">&times;</button>
-    <h3>Checkout — $14.99</h3>
-    <p class="modal-sub">Send exact amount to any wallet below, then email your TX hash to get the ebook.</p>
-    <div class="wallet-row">
-      <span class="chain">BTC</span>
-      <span class="addr" id="btcAddr">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</span>
-      <button onclick="copyAddr('btcAddr')">Copy</button>
-    </div>
-    <div class="wallet-row">
-      <span class="chain">ETH</span>
-      <span class="addr" id="ethAddr">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</span>
-      <button onclick="copyAddr('ethAddr')">Copy</button>
-    </div>
-    <div class="wallet-row">
-      <span class="chain">SOL</span>
-      <span class="addr" id="solAddr">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</span>
-      <button onclick="copyAddr('solAddr')">Copy</button>
-    </div>
-    <p style="text-align:center;color:#888;font-size:0.78rem;margin-top:1rem">After payment, email <a href="mailto:spunkart13@gmail.com" style="color:#ff5f1f">spunkart13@gmail.com</a> with your TX hash for instant delivery.</p>
-    <p style="text-align:center;color:#555;font-size:0.7rem;margin-top:0.5rem">30-day money-back guarantee</p>
-  </div>
-</div>
 
 <!-- Content Protection -->
 <script>
@@ -372,16 +329,16 @@ document.addEventListener('selectstart', function(e) {
 <meta http-equiv="X-Frame-Options" content="DENY">
 
 <script>
-/* Checkout Modal */
-function openCheckout(){document.getElementById('checkoutModal').classList.add('active')}
-function closeCheckout(){document.getElementById('checkoutModal').classList.remove('active')}
-document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
-function copyAddr(id){
-  var t=document.getElementById(id).textContent;
-  navigator.clipboard.writeText(t).then(function(){
-    var btn=document.getElementById(id).nextElementSibling;
-    btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy'},2000);
-  });
+/* Stripe Checkout */
+function buyEbook() {
+  var stripeLink = ''; // Stripe payment link will go here
+  if (!stripeLink) {
+    alert('Payment is being set up. DM @SpunkArt13 on X or email hello@spunkart.com to purchase.');
+    return;
+  }
+  var ref = localStorage.getItem('spunkart_ref') || localStorage.getItem('sa_ref') || '';
+  var url = stripeLink + (ref ? '?client_reference_id=' + encodeURIComponent(ref) : '');
+  window.open(url, '_blank');
 }
 
 /* Email Capture */

@@ -133,12 +133,6 @@ a{color:inherit;text-decoration:none}
 .modal-product{color:#ff5f1f;font-weight:800;font-size:1.5rem;margin-bottom:1.5rem}
 .modal-section{margin-bottom:1.5rem}
 .modal-section h3{font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:0.8rem}
-.wallet-row{display:flex;align-items:center;gap:0.5rem;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:0.6rem 0.8rem;margin-bottom:0.5rem;font-size:0.75rem}
-.wallet-label{color:#ff5f1f;font-weight:700;min-width:35px}
-.wallet-addr{flex:1;color:#aaa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace}
-.wallet-copy{background:#222;border:none;color:#fff;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.7rem;cursor:pointer;white-space:nowrap}
-.wallet-copy:hover{background:#ff5f1f}
-.wallet-copy.copied{background:#10b981}
 .modal-input{width:100%;padding:0.7rem;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;margin-bottom:0.5rem;outline:none}
 .modal-input:focus{border-color:#ff5f1f}
 .modal-btn{width:100%;padding:0.8rem;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.2s}
@@ -1006,8 +1000,8 @@ a{color:inherit;text-decoration:none}
       <div class="faq-a">Yes, 30-day money-back guarantee. If it doesn't work for you, full refund, no questions asked.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">How do I pay with crypto? <span>+</span></div>
-      <div class="faq-a">Click any buy button and choose crypto. Send BTC, ETH, or SOL to the wallet shown. Enter your email and transaction ID. We deliver within 1 hour.</div>
+      <div class="faq-q">What payment methods do you accept? <span>+</span></div>
+      <div class="faq-a">We accept all major credit/debit cards via Stripe. Crypto payment options coming soon.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">Can I resell these tools? <span>+</span></div>
@@ -1068,7 +1062,7 @@ a{color:inherit;text-decoration:none}
       <div style="color:#10b981;font-weight:700;margin-bottom:0.5rem">Buy from SpunkArt</div>
       <div style="color:#888;line-height:1.8">
         <div>&#10003; 0% platform fees</div>
-        <div>&#10003; Pay with crypto (BTC/ETH/SOL)</div>
+        <div>&#10003; Secure card checkout via Stripe</div>
         <div>&#10003; Instant delivery</div>
         <div>&#10003; 25% cash commission on referrals</div>
         <div>&#10003; Direct support from the builder</div>
@@ -1080,7 +1074,7 @@ a{color:inherit;text-decoration:none}
       <div style="color:#ef4444;font-weight:700;margin-bottom:0.5rem">Buy from Marketplaces</div>
       <div style="color:#888;line-height:1.8">
         <div>&#10007; 10-30% platform fees</div>
-        <div>&#10007; Card only (no crypto)</div>
+        <div>&#10007; Higher processing fees</div>
         <div>&#10007; Delayed delivery</div>
         <div>&#10007; No referral commissions</div>
         <div>&#10007; Generic support tickets</div>
@@ -1095,7 +1089,7 @@ a{color:inherit;text-decoration:none}
 <section style="text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto">
   <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Ready to Ship?</h2>
   <p style="color:#888;margin-bottom:1rem">Join developers building on the edge with SpunkArt tools.</p>
-  <p style="color:#666;font-size:0.85rem;margin-bottom:1.5rem">BTC · ETH · SOL · Card accepted · Instant delivery</p>
+  <p style="color:#666;font-size:0.85rem;margin-bottom:1.5rem">All major cards accepted · Powered by Stripe · Instant delivery</p>
   <a href="#bundles" style="display:inline-block;padding:1rem 3rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s">Get Started — From $4.99</a>
 </section>
 
@@ -1148,37 +1142,11 @@ a{color:inherit;text-decoration:none}
         <input type="email" class="modal-input" id="buyerEmail" placeholder="you@example.com" required>
       </div>
 
-      <!-- Crypto Payment -->
+      <!-- Stripe Payment -->
       <div class="modal-section">
-        <h3>Pay with Crypto</h3>
-        <div class="wallet-row">
-          <span class="wallet-label">BTC</span>
-          <span class="wallet-addr" id="btcAddr">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</span>
-          <button class="wallet-copy" onclick="copyWallet('btcAddr',this)">Copy</button>
-        </div>
-        <div class="wallet-row">
-          <span class="wallet-label">ETH</span>
-          <span class="wallet-addr" id="ethAddr">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</span>
-          <button class="wallet-copy" onclick="copyWallet('ethAddr',this)">Copy</button>
-        </div>
-        <div class="wallet-row">
-          <span class="wallet-label">SOL</span>
-          <span class="wallet-addr" id="solAddr">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</span>
-          <button class="wallet-copy" onclick="copyWallet('solAddr',this)">Copy</button>
-        </div>
-        <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Send the exact amount shown above. Include your email in the memo/note if possible.</p>
-        <input type="text" class="modal-input" id="txId" maxlength="128" placeholder="Paste your transaction ID after sending">
-        <button class="modal-btn" onclick="confirmCrypto()">I've Sent Payment</button>
-      </div>
-
-      <div class="modal-divider">or</div>
-
-      <!-- Card / DM -->
-      <div class="modal-section">
-        <h3>Pay with Card</h3>
-        <button class="modal-btn alt" onclick="window.open('https://twitter.com/messages/compose?recipient_id=SpunkArt13&text=I want to buy: '+encodeURIComponent(currentProduct.name)+' — '+currentProduct.price,'_blank')">DM @SpunkArt13 to Pay by Card</button>
-        <button class="modal-btn alt" onclick="window.location.href='mailto:hello@spunkart.com?subject=Purchase: '+encodeURIComponent(currentProduct.name)+'&body=I want to buy: '+encodeURIComponent(currentProduct.name)+' ('+currentProduct.price+')%0A%0AMy email: '+encodeURIComponent(document.getElementById('buyerEmail').value)">Email to Pay by Card</button>
-        <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Stripe/card checkout coming soon. DM or email for instant manual processing.</p>
+        <h3>Pay Now</h3>
+        <button class="modal-btn" id="stripePayBtn" onclick="payWithStripe()">Pay with Card — Secure Checkout</button>
+        <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Powered by Stripe. 256-bit encryption. We never see your card details.</p>
       </div>
     </div>
 
@@ -1271,7 +1239,6 @@ function buy(productId) {
   document.getElementById('checkoutSuccess').style.display = 'none';
   document.getElementById('couponMsg').textContent = '';
   document.getElementById('couponInput').value = '';
-  document.getElementById('txId').value = '';
   document.getElementById('checkoutModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 
@@ -1330,70 +1297,62 @@ function applyCoupon() {
 }
 
 // ========================
-// COPY WALLET
+// STRIPE PAYMENT LINKS
 // ========================
-function copyWallet(id, btn) {
-  var addr = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(addr).then(function() {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
+var STRIPE_LINKS = {
+  starter: '', // paste Stripe link here
+  pro: '', // paste Stripe link here
+  empire: '', // paste Stripe link here
+  lifetime: '', // paste Stripe link here
+  ebook: '', // paste Stripe link here
+  botblock: '', // paste Stripe link here (single tool)
+  uptime: '', // paste Stripe link here
+  analytics: '', // paste Stripe link here
+  links: '', // paste Stripe link here
+  abtest: '', // paste Stripe link here
+  images: '', // paste Stripe link here
+  redirect: '', // paste Stripe link here
+  email: '', // paste Stripe link here
+  discord: '', // paste Stripe link here
+  ssl: '', // paste Stripe link here
+  apimon: '', // paste Stripe link here
+  logs: '', // paste Stripe link here
+  cache: '', // paste Stripe link here
+  spotify: '', // paste Stripe link here
+  openclaw: '', // paste Stripe link here
+  checkout: '', // paste Stripe link here
+  license: '', // paste Stripe link here
+  backup: '', // paste Stripe link here
+};
 
-// ========================
-// CONFIRM CRYPTO PAYMENT
-// ========================
-function confirmCrypto() {
+function payWithStripe() {
   var email = document.getElementById('buyerEmail').value.trim();
-  var txId = document.getElementById('txId').value.trim();
-
-  if (!email) {
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     document.getElementById('buyerEmail').style.borderColor = '#ef4444';
     document.getElementById('buyerEmail').focus();
     return;
   }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    document.getElementById('buyerEmail').style.borderColor = '#ef4444';
-    document.getElementById('buyerEmail').focus();
+  // Find the current product key
+  var productKey = '';
+  for (var key in PRODUCTS) {
+    if (PRODUCTS[key] === currentProduct) { productKey = key; break; }
+  }
+  var link = STRIPE_LINKS[productKey];
+  if (!link) {
+    alert('Payment links are being set up. Please DM @SpunkArt13 on X or email hello@spunkart.com to complete your purchase.');
     return;
   }
+  // Add email as prefill and referral as client_reference_id
+  var ref = localStorage.getItem('spunkart_ref') || '';
+  var url = link + '?prefilled_email=' + encodeURIComponent(email);
+  if (ref) url += '&client_reference_id=' + encodeURIComponent(ref);
+  window.open(url, '_blank');
 
-  // Generate order ref
-  var arr = new Uint8Array(6);
-  crypto.getRandomValues(arr);
-  var ref = 'SA-' + Array.from(arr).map(function(b){return b.toString(16).padStart(2,'0')}).join('').toUpperCase();
-
-  // Save order to localStorage
-  var orders = JSON.parse(localStorage.getItem('spunkart_orders') || '[]');
-  orders.push({
-    ref: ref,
-    product: currentProduct.name,
-    amount: currentProduct.price,
-    email: email,
-    txId: txId,
-    affiliate: localStorage.getItem('spunkart_ref') || '',
-    coupon: document.getElementById('couponInput').value.trim(),
-    timestamp: new Date().toISOString()
-  });
-  localStorage.setItem('spunkart_orders', JSON.stringify(orders));
-
-  // Save email to list
-  saveEmail(email);
-
-  // Show success
-  document.getElementById('orderRef').textContent = ref;
-  document.getElementById('checkoutForm').style.display = 'none';
-  document.getElementById('checkoutSuccess').style.display = 'block';
-
-  // Track purchase in GA4
   if (typeof gtag === 'function') {
-    gtag('event', 'purchase', {
-      transaction_id: ref,
+    gtag('event', 'begin_checkout', {
       currency: 'USD',
       value: currentProduct.amount,
-      payment_type: txId ? 'crypto' : 'pending',
+      payment_type: 'stripe',
       items: [{ item_name: currentProduct.name, price: currentProduct.amount }]
     });
   }
@@ -1462,7 +1421,7 @@ document.addEventListener('copy', function(e) {
 <div style="max-width:700px;margin:2rem auto;padding:0 2rem 2rem;font-size:0.65rem;color:#333;line-height:1.6">
   <p><strong>Terms of Use:</strong> All digital products are sold "as-is" under a personal/commercial use license. By purchasing, you agree that: (1) Products are delivered digitally and all sales are final after download, except within the 30-day money-back guarantee period; (2) You receive a license to use, modify, and deploy the code for your own projects or client work; (3) Reseller license holders may rebrand and resell under their own brand per the reseller agreement; (4) SpunkArt is not responsible for any damages, data loss, or issues arising from deployment or modification of purchased tools; (5) No warranty is provided beyond the product functioning as described at the time of purchase; (6) Purchased tools run on YOUR infrastructure (Cloudflare account) — we do not host or maintain them after purchase; (7) Support is provided on a best-effort basis via X (@SpunkArt13) or email (hello@spunkart.com). By completing a purchase you acknowledge and accept these terms.</p>
   <p style="margin-top:0.5rem"><strong>Affiliate Program:</strong> Affiliates earn 25% commission on referred sales. Commissions are tracked via referral links (?ref=CODE) and paid monthly via crypto (BTC/ETH/SOL) or PayPal. Minimum payout: $25. Cookie duration: 90 days. SpunkArt reserves the right to modify commission rates with 30 days notice. Fraudulent or self-referral activity will result in account termination.</p>
-  <p style="margin-top:0.5rem"><strong>Privacy:</strong> We collect email addresses for product delivery and newsletter (with consent). We do not sell or share personal data. Analytics are collected via Google Analytics (GA4). Crypto wallet addresses are used solely for payment processing.</p>
+  <p style="margin-top:0.5rem"><strong>Privacy:</strong> We collect email addresses for product delivery and newsletter (with consent). We do not sell or share personal data. Analytics are collected via Google Analytics (GA4). Payments are processed securely via Stripe — we never store your card details.</p>
   <p style="margin-top:0.5rem">&copy; 2026 SpunkArt. All rights reserved. Operated by SpunkArt (@SpunkArt13). Contact: hello@spunkart.com</p>
 </div>
 
