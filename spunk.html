@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpunkArt — 50+ Digital Tools & Free Generators | Special Offer</title>
+<meta name="description" content="Get 10% off your first purchase. 23 free tools, 18 premium Cloudflare Workers, ebooks, and more. One-time payment, own forever.">
+<meta property="og:title" content="SpunkArt — 50+ Digital Tools & Free Generators | Special Offer">
+<meta property="og:description" content="Get 10% off your first purchase. 23 free tools, 18 premium Cloudflare Workers, ebooks, and more. One-time payment, own forever.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/spunk">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="SpunkArt — 50+ Digital Tools & Free Generators | Special Offer">
+<meta name="twitter:description" content="Get 10% off your first purchase. 23 free tools, 18 premium Cloudflare Workers, ebooks, and more. One-time payment, own forever.">
+<link rel="canonical" href="https://spunkart.com/spunk">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+html{scroll-behavior:smooth}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;letter-spacing:0.05em}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem;align-items:center}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-links .resell-link{color:#10b981;font-weight:700}
+.nav-links .resell-link:hover{color:#0d9668}
+
+/* Welcome bar */
+.welcome-bar{background:linear-gradient(90deg,#ff5f1f,#f59e0b);text-align:center;padding:0.6rem 1rem;font-size:0.85rem;font-weight:700;color:#000}
+.welcome-bar span{background:#000;color:#ff5f1f;padding:0.15rem 0.6rem;border-radius:4px;font-family:monospace;font-size:0.9rem;margin:0 0.3rem}
+
+/* Hero */
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:800px;margin:0 auto}
+.hero h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;line-height:1.1}
+.hero .subtitle{color:#aaa;font-size:1.2rem;max-width:600px;margin:0 auto 1.2rem}
+.hero .invite-msg{display:inline-block;background:#ff5f1f12;border:1px solid #ff5f1f33;border-radius:12px;padding:0.8rem 1.5rem;font-size:0.95rem;color:#ff5f1f;font-weight:600;margin-bottom:2rem}
+.hero .invite-msg code{background:#ff5f1f;color:#fff;padding:0.15rem 0.5rem;border-radius:4px;font-weight:800;font-size:0.95rem}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:0.9rem 2.5rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s;border:none;cursor:pointer}
+.btn-primary:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 8px 30px rgba(255,95,31,0.3)}
+.btn-secondary{display:inline-block;padding:0.9rem 2.5rem;background:transparent;color:#fff;border:2px solid #333;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s}
+.btn-secondary:hover{border-color:#ff5f1f;color:#ff5f1f}
+
+/* Section titles */
+.section-title{text-align:center;padding:4rem 2rem 2rem}
+.section-title h2{font-size:2rem;font-weight:800;margin-bottom:0.4rem}
+.section-title p{color:#666;font-size:0.95rem;max-width:500px;margin:0 auto}
+
+/* What You Get cards */
+.features{max-width:1000px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feature-card{background:linear-gradient(145deg,#111,#0d0d0d);border:1px solid #222;border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:all 0.3s}
+.feature-card:hover{border-color:#ff5f1f44;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.feature-icon{font-size:2.5rem;margin-bottom:1rem}
+.feature-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0.5rem}
+.feature-card p{color:#888;font-size:0.85rem;line-height:1.6}
+.feature-tag{display:inline-block;margin-top:0.8rem;padding:0.25rem 0.8rem;border-radius:6px;font-size:0.75rem;font-weight:700}
+.tag-free{background:#10b98118;border:1px solid #10b98133;color:#10b981}
+.tag-pro{background:#ff5f1f18;border:1px solid #ff5f1f33;color:#ff5f1f}
+.tag-lifetime{background:#a855f718;border:1px solid #a855f733;color:#a855f7}
+
+/* Bundles */
+.bundles{max-width:1000px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.bundle{background:linear-gradient(145deg,#111,#0d0d0d);border:1px solid #222;border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden}
+.bundle:hover{border-color:#ff5f1f44;transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,95,31,0.1)}
+.bundle-highlight{border:2px solid #ff5f1f}
+.bundle-highlight::before{content:"BEST VALUE";position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);background:#ff5f1f;color:#fff;font-size:0.65rem;font-weight:800;padding:0.2rem 1rem;border-radius:20px;letter-spacing:1px;white-space:nowrap}
+.bundle-name{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.5rem}
+.bundle-price{font-size:2.8rem;font-weight:800;color:#fff;line-height:1}
+.bundle-price small{font-size:1rem;color:#666}
+.bundle-desc{color:#666;font-size:0.8rem;margin:0.5rem 0 1rem}
+.bundle-items{text-align:left;font-size:0.8rem;color:#aaa;margin-bottom:1.5rem}
+.bundle-items div{padding:0.25rem 0;padding-left:1.2rem;position:relative}
+.bundle-items div::before{content:"\2713";color:#10b981;position:absolute;left:0;font-weight:700}
+.bundle-btn{display:block;padding:0.8rem;background:#ff5f1f;color:#fff;border-radius:10px;font-weight:700;font-size:0.9rem;transition:all 0.2s;cursor:pointer;border:none;width:100%;text-align:center}
+.bundle-btn:hover{background:#e5541b;transform:scale(1.02)}
+
+/* Free Tools Grid */
+.free-grid{max-width:1100px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.free-item{background:linear-gradient(145deg,#0d1f0d,#0d0d0d);border:1px solid #10b98122;border-radius:14px;padding:1.2rem;text-align:center;transition:all 0.3s}
+.free-item:hover{border-color:#10b981;transform:translateY(-2px)}
+.free-item-icon{font-size:1.8rem;margin-bottom:0.4rem}
+.free-item-name{font-weight:700;font-size:0.9rem;margin-bottom:0.3rem}
+.free-item-desc{color:#888;font-size:0.75rem;margin-bottom:0.8rem;line-height:1.4}
+.free-item-btn{display:inline-block;padding:0.4rem 1.2rem;background:#10b981;color:#fff;border-radius:8px;font-weight:600;font-size:0.8rem;transition:all 0.2s}
+.free-item-btn:hover{background:#0d9668;transform:scale(1.03)}
+
+/* Earn section */
+.earn-section{max-width:800px;margin:0 auto;padding:0 2rem}
+.earn-card{background:linear-gradient(145deg,#0a1f12,#0d0d0d);border:2px solid #10b981;border-radius:20px;padding:3rem;text-align:center;position:relative;overflow:hidden}
+.earn-card::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,#10b98108 0%,transparent 60%);pointer-events:none}
+.earn-card h2{font-size:2rem;font-weight:800;color:#10b981;margin-bottom:0.5rem}
+.earn-card p{color:#aaa;font-size:1rem;margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.earn-example{display:inline-block;background:#10b98115;border:1px solid #10b98133;border-radius:12px;padding:1rem 2rem;margin-bottom:1.5rem}
+.earn-example .calc{font-size:1.5rem;font-weight:800;color:#fff}
+.earn-example .calc span{color:#10b981}
+.earn-example .label{font-size:0.8rem;color:#888;margin-top:0.3rem}
+.earn-btn{display:inline-block;padding:0.9rem 2.5rem;background:#10b981;color:#fff;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s}
+.earn-btn:hover{background:#0d9668;transform:scale(1.03);box-shadow:0 8px 30px rgba(16,185,129,0.3)}
+
+/* Newsletter */
+.newsletter{max-width:600px;margin:0 auto;padding:4rem 2rem;text-align:center}
+.newsletter h2{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
+.newsletter iframe{width:100%;border:none;border-radius:12px;background:#111}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.8rem}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:0.8rem;flex-wrap:wrap}
+.footer-links a{color:#888;transition:color 0.2s}
+.footer-links a:hover{color:#ff5f1f}
+.footer .copy{color:#555;font-size:0.7rem}
+
+/* Divider */
+.divider{max-width:200px;margin:3rem auto;border:0;border-top:1px solid #1a1a1a}
+
+/* Responsive */
+@media(max-width:768px){
+  .nav{padding:0.7rem 1rem}
+  .nav-links{gap:1rem;font-size:0.8rem}
+  .hero{padding:3rem 1.5rem 2rem}
+  .hero h1{font-size:2rem}
+  .hero .subtitle{font-size:1rem}
+  .hero .invite-msg{font-size:0.85rem;padding:0.6rem 1rem}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .features{grid-template-columns:1fr;gap:1rem;padding:0 1.5rem}
+  .bundles{grid-template-columns:1fr;gap:1rem;padding:0 1.5rem}
+  .free-grid{grid-template-columns:repeat(2,1fr);gap:0.8rem;padding:0 1rem}
+  .earn-card{padding:2rem 1.5rem}
+  .earn-card h2{font-size:1.5rem}
+  .section-title{padding:3rem 1.5rem 1.5rem}
+  .section-title h2{font-size:1.5rem}
+  .footer-links{gap:1rem}
+}
+@media(max-width:480px){
+  .free-grid{grid-template-columns:1fr}
+  .nav-links{gap:0.8rem;font-size:0.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Welcome bar -->
+<div class="welcome-bar">
+  You were referred by a friend! Use code <span>SPUNK</span> for 10% off your first purchase
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" class="resell-link">Resell $$</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Welcome to SpunkArt</h1>
+  <p class="subtitle">50+ Digital Tools. Free generators. Premium bundles from $4.99.</p>
+  <div class="invite-msg">
+    You were invited by a friend &mdash; enjoy 10% off your first purchase with code <code>SPUNK</code>
+  </div>
+  <div class="hero-ctas">
+    <a href="/store" class="btn-primary">Browse the Store</a>
+    <a href="/store#free-tools" class="btn-secondary">Try Free Tools</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- What You Get -->
+<div class="section-title">
+  <h2>What You Get</h2>
+  <p>Everything you need to build, ship, and scale</p>
+</div>
+
+<div class="features">
+  <div class="feature-card">
+    <div class="feature-icon">&#9889;</div>
+    <h3>23 Free Tools</h3>
+    <p>Password gen, PDF tools, QR codes, JSON formatter, budget tracker + 18 more. No signup. Use now.</p>
+    <span class="feature-tag tag-free">Free forever</span>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">&#9881;</div>
+    <h3>18 Premium Workers</h3>
+    <p>Cloudflare edge tools. Bot blocker, uptime monitor, analytics, A/B testing. $4.99 each or $19.99 for all.</p>
+    <span class="feature-tag tag-pro">From $4.99</span>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">&#9878;</div>
+    <h3>Lifetime Access</h3>
+    <p>Every tool. Every future tool. Forever. $99.99 one-time. New tool shipping every day for the next 50 days.</p>
+    <span class="feature-tag tag-lifetime">$99.99 once</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Featured Bundles -->
+<div class="section-title">
+  <h2>Featured Bundles</h2>
+  <p>One-time payment. Own forever. No subscriptions.</p>
+</div>
+
+<div class="bundles">
+  <div class="bundle">
+    <div class="bundle-name">Pro</div>
+    <div class="bundle-price">$19<small>.99</small></div>
+    <div class="bundle-desc">All 18 Cloudflare Workers</div>
+    <div class="bundle-items">
+      <div>All 18 Workers + source code</div>
+      <div>Wrangler configs included</div>
+      <div>1 year of updates</div>
+      <div>Priority support</div>
+      <div>Earn 25% per referral</div>
+    </div>
+    <a href="/store#bundles" class="bundle-btn">Get Pro &mdash; $19.99</a>
+  </div>
+  <div class="bundle bundle-highlight">
+    <div class="bundle-name">Empire</div>
+    <div class="bundle-price">$49<small>.99</small></div>
+    <div class="bundle-desc">Everything + ebook &mdash; save $6,000+/yr</div>
+    <div class="bundle-items">
+      <div>All 18 Workers</div>
+      <div>AI Website Empire Ebook</div>
+      <div>50 AI Prompt Pack</div>
+      <div>Firebase Templates</div>
+      <div>Lifetime updates</div>
+      <div>1-on-1 setup help</div>
+      <div>Earn 30% per referral</div>
+    </div>
+    <a href="/store#bundles" class="bundle-btn">Get Empire &mdash; $49.99</a>
+  </div>
+  <div class="bundle">
+    <div class="bundle-name">Lifetime</div>
+    <div class="bundle-price">$99<small>.99</small></div>
+    <div class="bundle-desc">Every tool forever &mdash; 50 new tools coming</div>
+    <div class="bundle-items">
+      <div>All 18 Workers + every future tool</div>
+      <div>Ebook + AI Prompts + Templates</div>
+      <div>Lifetime updates forever</div>
+      <div>Early access to new tools</div>
+      <div>Priority support forever</div>
+      <div>1-on-1 strategy call</div>
+      <div>Earn 35% per referral + bonuses</div>
+    </div>
+    <a href="/store#bundles" class="bundle-btn">Get Lifetime &mdash; $99.99</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Free Tools Grid -->
+<div class="section-title" id="free-tools">
+  <h2>23 Free Tools &mdash; No Signup</h2>
+  <p>100% browser-based. No data leaves your device. Just use them.</p>
+</div>
+
+<div class="free-grid">
+  <div class="free-item">
+    <div class="free-item-icon">&#128272;</div>
+    <div class="free-item-name">Password Generator</div>
+    <div class="free-item-desc">Secure passwords. Custom length, character sets, strength meter.</div>
+    <a href="/password-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128196;</div>
+    <div class="free-item-name">PDF Tools</div>
+    <div class="free-item-desc">Merge, split, compress PDFs. Convert images to PDF.</div>
+    <a href="/pdf-tools" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128176;</div>
+    <div class="free-item-name">Budget Tracker</div>
+    <div class="free-item-desc">Track income & expenses. Charts, categories, CSV export.</div>
+    <a href="/budget-tracker" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128373;</div>
+    <div class="free-item-name">Scam Checker</div>
+    <div class="free-item-desc">Paste any URL. Get instant safety score and risk analysis.</div>
+    <a href="https://scam.ink/scam-checker" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#127991;</div>
+    <div class="free-item-name">Meta Tag Generator</div>
+    <div class="free-item-desc">Perfect SEO meta tags, OG, and Twitter Cards with validation.</div>
+    <a href="/meta-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#127912;</div>
+    <div class="free-item-name">Color Palette</div>
+    <div class="free-item-desc">Generate harmonious 5-color palettes with export.</div>
+    <a href="/color-palette" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128241;</div>
+    <div class="free-item-name">QR Code Generator</div>
+    <div class="free-item-desc">Custom QR codes with brand colors. Download as PNG.</div>
+    <a href="/qr-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128737;</div>
+    <div class="free-item-name">Headers Checker</div>
+    <div class="free-item-desc">Check HTTP security headers. A-F grade with fix tips.</div>
+    <a href="/headers-checker" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128203;</div>
+    <div class="free-item-name">JSON Formatter</div>
+    <div class="free-item-desc">Paste messy JSON. Get formatted with syntax highlighting.</div>
+    <a href="/json-formatter" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#129302;</div>
+    <div class="free-item-name">Robots.txt Generator</div>
+    <div class="free-item-desc">Generate robots.txt with toggles for 16 bots.</div>
+    <a href="/robots-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#9997;</div>
+    <div class="free-item-name">Social Bio Generator</div>
+    <div class="free-item-desc">Bios for X, LinkedIn, Instagram, TikTok, GitHub.</div>
+    <a href="/social-bio" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#127752;</div>
+    <div class="free-item-name">CSS Gradient Generator</div>
+    <div class="free-item-desc">Linear, radial, conic gradients. Presets. Copy CSS.</div>
+    <a href="/css-gradient" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128444;</div>
+    <div class="free-item-name">Favicon Generator</div>
+    <div class="free-item-desc">Upload image, get all favicon sizes. ICO, PNG, Apple Touch.</div>
+    <a href="/favicon-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#9998;</div>
+    <div class="free-item-name">Markdown Editor</div>
+    <div class="free-item-desc">Live preview. Toolbar, HTML export, autosave.</div>
+    <a href="/markdown-editor" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128221;</div>
+    <div class="free-item-name">Invoice Generator</div>
+    <div class="free-item-desc">Create professional invoices. PDF export. No signup.</div>
+    <a href="/invoice-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128506;</div>
+    <div class="free-item-name">Sitemap Generator</div>
+    <div class="free-item-desc">Generate XML sitemaps for any website. Download ready.</div>
+    <a href="/sitemap-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#9993;</div>
+    <div class="free-item-name">Email Signature</div>
+    <div class="free-item-desc">Create HTML email signatures. Copy-paste into any client.</div>
+    <a href="/email-signature" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128161;</div>
+    <div class="free-item-name">Business Name Gen</div>
+    <div class="free-item-desc">Generate creative business names. Check domain availability.</div>
+    <a href="/business-name" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128274;</div>
+    <div class="free-item-name">Privacy Policy Gen</div>
+    <div class="free-item-desc">Generate GDPR-compliant privacy policies. Copy or download.</div>
+    <a href="/privacy-policy-generator" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128247;</div>
+    <div class="free-item-name">Image Compressor</div>
+    <div class="free-item-desc">Compress images in-browser. No upload. Adjust quality.</div>
+    <a href="/image-compressor" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128200;</div>
+    <div class="free-item-name">Uptime Checker</div>
+    <div class="free-item-desc">Check if any website is up or down. Response time report.</div>
+    <a href="/uptime-monitor" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128172;</div>
+    <div class="free-item-name">Landing Page Copy</div>
+    <div class="free-item-desc">Generate compelling landing page copy and headlines.</div>
+    <a href="/landing-page-copy" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+  <div class="free-item">
+    <div class="free-item-icon">&#128214;</div>
+    <div class="free-item-name">Ebook Landing Page</div>
+    <div class="free-item-desc">Preview our ebook. Learn how 120+ sites were built in 7 days.</div>
+    <a href="/ebook" class="free-item-btn">Use Free &rarr;</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Referral Earn Section -->
+<section style="padding:2rem 0 0">
+  <div class="earn-section">
+    <div class="earn-card">
+      <h2>Share &amp; Earn 25% Cash</h2>
+      <p>Get your own referral link and earn 25% commission on every sale. Paid monthly in crypto or PayPal. No minimums.</p>
+      <div class="earn-example">
+        <div class="calc">Refer 10 Lifetime sales = <span>$250 cash</span></div>
+        <div class="label">25% of $99.99 &times; 10 sales = $249.97 in your pocket</div>
+      </div>
+      <br>
+      <a href="/affiliates" class="earn-btn">Join the Affiliate Program &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Newsletter -->
+<section class="newsletter">
+  <h2>Stay in the Loop</h2>
+  <p>New tools, free resources, and exclusive deals. No spam. Unsubscribe anytime.</p>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" height="120" style="margin:0 auto;display:block;max-width:480px" title="Newsletter signup"></iframe>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="/store">Store</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/affiliates">Affiliates</a>
+    <a href="/blog">Blog</a>
+    <a href="https://twitter.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a>
+  </div>
+  <div class="copy">&copy; 2026 SpunkArt. All rights reserved.</div>
+</footer>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-GVNL11PEGP');
+</script>
+
+<!-- Referral tracking -->
+<script>
+(function(){
+  // Capture referral code from ?ref= param or default to "spunk"
+  var params=new URLSearchParams(window.location.search);
+  var ref=params.get('ref');
+  if(ref){
+    ref=ref.replace(/[^a-zA-Z0-9_-]/g,'').substring(0,50);
+  }
+  if(!ref)ref='spunk';
+
+  // Store in localStorage (persistent across sessions)
+  localStorage.setItem('spunkart_ref',ref);
+
+  // Also set as cookie for 90 days (server-readable)
+  var d=new Date();
+  d.setTime(d.getTime()+(90*24*60*60*1000));
+  document.cookie='spunkart_ref='+ref+';expires='+d.toUTCString()+';path=/;SameSite=Lax';
+
+  // Track referral landing event in GA4
+  if(typeof gtag==='function'){
+    gtag('event','referral_landing',{
+      'referral_code':ref,
+      'landing_page':'spunk',
+      'event_category':'referral',
+      'event_label':ref
+    });
+  }
+
+  // Update welcome bar with referrer name if custom ref
+  if(ref!=='spunk'){
+    var bar=document.querySelector('.welcome-bar');
+    if(bar){
+      bar.innerHTML='You were referred by <strong>'+ref+'</strong>! Use code <span>SPUNK</span> for 10% off your first purchase';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

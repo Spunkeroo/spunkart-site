@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://subscribe-forms.beehiiv.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src https://subscribe-forms.beehiiv.com; object-src 'none'; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://subscribe-forms.beehiiv.com https://www.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-src https://subscribe-forms.beehiiv.com; object-src 'none'; base-uri 'self'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpunkArt — Digital Art & Ordinals on Bitcoin</title>
-  <meta name="description" content="SpunkArt — digital art, Bitcoin ordinals, and the Spunk.Bet network. Art meets crypto.">
-  <meta property="og:title" content="SpunkArt — Digital Art & Ordinals on Bitcoin">
-  <meta property="og:description" content="Digital art, Bitcoin ordinals, and the Spunk.Bet network.">
+  <title>SpunkArt — Digital Tools, Cloudflare Workers &amp; Free Generators</title>
+  <meta name="description" content="50+ digital tools from $4.99. Free generators, Cloudflare Workers, and the AI Website Empire ebook. One-time payment, own forever. Built by one developer running 120+ sites.">
+  <meta property="og:title" content="SpunkArt — Digital Tools, Cloudflare Workers & Free Generators">
+  <meta property="og:description" content="50+ digital tools from $4.99. Free generators, Cloudflare Workers, and the AI Website Empire ebook. One-time payment, own forever.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://spunkart.com">
+  <meta property="og:site_name" content="SpunkArt">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@SpunkArt13">
-  <meta name="twitter:title" content="SpunkArt — Digital Art & Ordinals on Bitcoin">
+  <meta name="twitter:title" content="SpunkArt — Digital Tools, Cloudflare Workers & Free Generators">
+  <meta name="twitter:description" content="50+ digital tools from $4.99. Free generators, Cloudflare Workers, and the AI Website Empire ebook. Own forever.">
   <link rel="canonical" href="https://spunkart.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -32,11 +34,12 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #0a0a0a;
       color: #e8e8e8;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a {
@@ -44,7 +47,7 @@
       text-decoration: none;
     }
 
-    /* Nav */
+    /* ======== NAV ======== */
     nav {
       position: fixed;
       top: 0;
@@ -54,39 +57,63 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 2.5rem;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem 2.5rem;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
+    .logo a {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ff5f1f;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
       font-size: 0.8rem;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #999;
-      transition: color 0.3s;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #888;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: #e8e8e8;
+      color: #fff;
     }
 
-    /* Hero */
+    .nav-links .nav-resell {
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .nav-links .nav-resell:hover {
+      color: #34d399;
+    }
+
+    .nav-links .nav-twitter {
+      color: #aaa;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #e8e8e8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    /* ======== HERO ======== */
     .hero {
       display: flex;
       flex-direction: column;
@@ -94,47 +121,558 @@
       align-items: center;
       min-height: 100vh;
       text-align: center;
-      padding: 2rem;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(255, 95, 31, 0.08);
+      border: 1px solid rgba(255, 95, 31, 0.2);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #ff5f1f;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      background: #ff5f1f;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 300;
-      letter-spacing: 0.2em;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
       margin-bottom: 1rem;
     }
 
-    .hero p {
-      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-      font-weight: 300;
-      color: #777;
-      letter-spacing: 0.1em;
+    .hero h1 span {
+      background: linear-gradient(135deg, #ff5f1f, #ff9f43, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero-line {
-      width: 60px;
-      height: 1px;
-      background: #333;
-      margin: 2rem auto;
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 400;
+      color: #888;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
     }
 
-    /* Sections */
-    section {
-      padding: 6rem 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #555;
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
       margin-bottom: 3rem;
     }
 
-    /* Gallery */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: #ff5f1f;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #e5541b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 95, 31, 0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: #e8e8e8;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid #333;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: #555;
+      background: #1a1a1a;
+      transform: translateY(-2px);
+    }
+
+    /* ======== STATS BAR ======== */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+      background: #0d0d0d;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ff5f1f;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #666;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* ======== SECTION HEADERS ======== */
+    .section-header {
+      text-align: center;
+      padding: 5rem 2rem 2.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header p {
+      color: #777;
+      font-size: 1rem;
+    }
+
+    /* ======== FEATURED PRODUCTS ======== */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .featured-card {
+      background: linear-gradient(145deg, #111, #0d0d0d);
+      border: 1px solid #222;
+      border-radius: 18px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-card:hover {
+      border-color: rgba(255, 95, 31, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255, 95, 31, 0.08);
+    }
+
+    .featured-card.card-best::before {
+      content: "BEST VALUE";
+      position: absolute;
+      top: 14px;
+      right: -28px;
+      background: #ff5f1f;
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 800;
+      padding: 0.25rem 2rem;
+      transform: rotate(45deg);
+      letter-spacing: 1px;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-name {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-price small {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .card-desc {
+      color: #888;
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .card-btn {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      background: #ff5f1f;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .card-btn:hover {
+      background: #e5541b;
+      transform: scale(1.02);
+    }
+
+    /* ======== FREE TOOLS GRID ======== */
+    .free-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .free-tool {
+      background: linear-gradient(145deg, #0d1a0d, #0d0d0d);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .free-tool:hover {
+      border-color: #10b981;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.08);
+    }
+
+    .free-tool-icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .free-tool-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .free-tool-desc {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .free-tool-btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      transition: all 0.2s;
+    }
+
+    .free-tool-btn:hover {
+      background: #10b981;
+      color: #fff;
+      border-color: #10b981;
+    }
+
+    /* ======== WHY SPUNKART ======== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .why-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .why-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-text {
+      color: #888;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* ======== RESELLER CTA BANNER ======== */
+    .reseller-banner {
+      background: linear-gradient(135deg, #064e3b, #065f46, #047857);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reseller-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.02) 20px,
+        rgba(255,255,255,0.02) 40px
+      );
+    }
+
+    .reseller-banner h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .reseller-banner p {
+      color: #a7f3d0;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .reseller-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: #fff;
+      color: #065f46;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .reseller-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ======== SHARE & EARN ======== */
+    .share-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .share-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .share-section p {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .share-link-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: #111;
+      border: 2px solid #ff5f1f;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .share-link-url {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ff5f1f;
+      letter-spacing: 0.02em;
+    }
+
+    .share-copy-btn {
+      padding: 0.5rem 1rem;
+      background: #ff5f1f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .share-copy-btn:hover {
+      background: #e5541b;
+    }
+
+    .share-earn-note {
+      font-size: 0.85rem;
+      color: #10b981;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* ======== NETWORK SHOWCASE ======== */
+    .network-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .network-section h2 {
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .network-section > p {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .network-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .network-link {
+      padding: 0.4rem 0.9rem;
+      background: #111;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #888;
+      transition: all 0.2s;
+    }
+
+    .network-link:hover {
+      border-color: #ff5f1f;
+      color: #ff5f1f;
+    }
+
+    .network-note {
+      color: #555;
+      font-size: 0.75rem;
+      margin-top: 1.2rem;
+    }
+
+    /* ======== NEWSLETTER ======== */
+    .newsletter-section {
+      text-align: center;
+      padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-section p {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ======== THE ART (gallery) ======== */
+    .art-section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .art-section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .art-section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .art-section-header p {
+      color: #777;
+      font-size: 0.88rem;
+    }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -145,12 +683,14 @@
       position: relative;
       aspect-ratio: 1;
       overflow: hidden;
+      border-radius: 10px;
       cursor: pointer;
     }
 
     .gallery-item .art {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       transition: transform 0.6s ease, filter 0.6s ease;
     }
 
@@ -165,7 +705,7 @@
       background: rgba(10, 10, 10, 0.6);
       display: flex;
       align-items: flex-end;
-      padding: 1.25rem;
+      padding: 1rem;
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -176,237 +716,496 @@
 
     .overlay span {
       font-size: 0.8rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-    }
-
-    .gallery-item img.art {
-      object-fit: cover;
-    }
-
-    /* About */
-    .about-content {
-      max-width: 640px;
-    }
-
-    .about-content p {
-      font-weight: 300;
-      color: #aaa;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    /* Contact */
-    .contact-content {
-      max-width: 480px;
-    }
-
-    .contact-content p {
-      font-weight: 300;
-      color: #aaa;
-      margin-bottom: 2rem;
-      line-height: 1.8;
-    }
-
-    .contact-link {
-      display: inline-block;
-      font-size: 0.8rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #e8e8e8;
-      border: 1px solid #333;
-      padding: 0.75rem 2rem;
-      transition: background 0.3s, border-color 0.3s;
+      letter-spacing: 0.05em;
     }
 
-    .contact-link:hover {
-      background: #1a1a1a;
-      border-color: #555;
-    }
-
-    .socials {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .socials a {
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #666;
-      transition: color 0.3s;
-    }
-
-    .socials a:hover {
-      color: #e8e8e8;
-    }
-
-    /* Footer */
+    /* ======== FOOTER ======== */
     footer {
       text-align: center;
-      padding: 3rem 2.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    footer p {
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #888;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-affiliates {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-affiliates a {
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .footer-affiliates a:hover {
+      opacity: 0.8;
+    }
+
+    footer .copyright {
       font-size: 0.7rem;
-      font-weight: 300;
       color: #444;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em;
     }
 
-    /* Mobile */
+    /* ======== MOBILE RESPONSIVE ======== */
     @media (max-width: 768px) {
       nav {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.25rem;
       }
 
       .nav-links {
-        gap: 1.25rem;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.97);
+        padding: 1rem 1.25rem;
+        gap: 0;
+        border-bottom: 1px solid #1a1a1a;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        list-style: none;
       }
 
       .nav-links a {
-        font-size: 0.7rem;
+        display: block;
+        padding: 0.7rem 0;
+        font-size: 0.9rem;
       }
 
-      section {
-        padding: 4rem 1.5rem;
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 7rem 1.5rem 3rem;
+      }
+
+      .stats-bar {
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+      }
+
+      .stat-num {
+        font-size: 1.3rem;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem 3rem;
+      }
+
+      .free-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1.5rem 3rem;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1.5rem 3rem;
       }
 
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+
+      .share-link-box {
+        flex-direction: column;
         gap: 0.75rem;
+        padding: 1rem;
+      }
+
+      .share-link-url {
+        font-size: 1rem;
+      }
+
+      .network-section {
+        padding: 3rem 1.5rem;
       }
     }
 
     @media (max-width: 480px) {
-      .logo {
-        font-size: 1rem;
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      .nav-links {
+      .hero-sub {
+        font-size: 0.95rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stats-bar {
         gap: 1rem;
       }
 
-      .gallery-grid {
+      .stat-num {
+        font-size: 1.1rem;
+      }
+
+      .stat-label {
+        font-size: 0.65rem;
+      }
+
+      .free-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-grid {
+        padding: 0 1rem 2rem;
+      }
+
+      .card-price {
+        font-size: 2.2rem;
       }
     }
   </style>
+
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
-<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+  <!-- Clarity -->
+  <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
 </head>
 <body>
 
+  <!-- ======== NAV ======== -->
   <nav>
-    <div class="logo">SPUNKART</div>
+    <div class="logo"><a href="/">SPUNKART.COM</a></div>
+    <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
     <ul class="nav-links">
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="/store">Store</a></li>
+      <li><a href="/store#free-tools">Free Tools</a></li>
+      <li><a href="/ebook">Ebook</a></li>
+      <li><a href="/reseller" class="nav-resell">Resell $$</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer" class="nav-twitter">@SpunkArt13</a></li>
     </ul>
   </nav>
 
-  <div class="hero">
-    <h1>SPUNKART</h1>
-    <div class="hero-line"></div>
-    <p>Art &mdash; Unfiltered</p>
+  <!-- ======== HERO ======== -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      50+ tools live now
+    </div>
+    <h1><span>SPUNKART</span> &mdash;<br>Digital Tools That Ship</h1>
+    <p class="hero-sub">50+ tools. 120+ sites built. One developer. From $4.99.</p>
+    <div class="hero-ctas">
+      <a href="/store" class="btn-primary">Browse Store &rarr;</a>
+      <a href="/store#free-tools" class="btn-secondary">Try Free Tools</a>
+    </div>
+  </section>
+
+  <!-- ======== STATS BAR ======== -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Tools</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">Sites Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Networks</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">25%</div>
+      <div class="stat-label">Referral Cash</div>
+    </div>
   </div>
 
-  <section id="gallery">
-    <h2 class="section-title">Gallery</h2>
+  <!-- ======== FEATURED PRODUCTS ======== -->
+  <div class="section-header">
+    <h2>Featured Products</h2>
+    <p>The fastest way to ship tools, sites, and businesses.</p>
+  </div>
+
+  <div class="featured-grid">
+    <!-- Lifetime Pass -->
+    <div class="featured-card card-best">
+      <div class="card-icon">&#9889;</div>
+      <div class="card-name">Lifetime Pass</div>
+      <div class="card-price">$99<small>.99</small></div>
+      <p class="card-desc">Every tool. Every future tool. Forever.</p>
+      <a href="/store" class="card-btn">Get Lifetime Access</a>
+    </div>
+
+    <!-- Pro Bundle -->
+    <div class="featured-card">
+      <div class="card-icon">&#128640;</div>
+      <div class="card-name">Pro Bundle</div>
+      <div class="card-price">$19<small>.99</small></div>
+      <p class="card-desc">All 18 Cloudflare Workers. Deploy in 60 seconds.</p>
+      <a href="/store" class="card-btn">Buy Pro Bundle</a>
+    </div>
+
+    <!-- Ebook -->
+    <div class="featured-card">
+      <div class="card-icon">&#128214;</div>
+      <div class="card-name">Ebook</div>
+      <div class="card-price">$14<small>.99</small></div>
+      <p class="card-desc">AI Website Empire Blueprint. The exact playbook behind 120+ sites.</p>
+      <a href="/store" class="card-btn">Get the Ebook</a>
+    </div>
+  </div>
+
+  <!-- ======== FREE TOOLS ======== -->
+  <div class="section-header" id="free-tools">
+    <h2>Free Tools &mdash; No Account Needed</h2>
+    <p>Use them right now. No signup, no paywall, no catch.</p>
+  </div>
+
+  <div class="free-grid">
+    <a href="/password-generator" class="free-tool">
+      <div class="free-tool-icon">&#128272;</div>
+      <div class="free-tool-name">Password Generator</div>
+      <p class="free-tool-desc">Secure passwords and passphrases in one click.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+
+    <a href="/pdf-tools" class="free-tool">
+      <div class="free-tool-icon">&#128196;</div>
+      <div class="free-tool-name">PDF Tools</div>
+      <p class="free-tool-desc">Merge, split, compress PDFs. All client-side.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+
+    <a href="/budget-tracker" class="free-tool">
+      <div class="free-tool-icon">&#128176;</div>
+      <div class="free-tool-name">Budget Tracker</div>
+      <p class="free-tool-desc">Track income and expenses locally in your browser.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+
+    <a href="/qr-generator" class="free-tool">
+      <div class="free-tool-icon">&#9641;</div>
+      <div class="free-tool-name">QR Generator</div>
+      <p class="free-tool-desc">Create QR codes for links, text, wifi, and more.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+
+    <a href="/json-formatter" class="free-tool">
+      <div class="free-tool-icon">&#123;&#125;</div>
+      <div class="free-tool-name">JSON Formatter</div>
+      <p class="free-tool-desc">Format, validate, and minify JSON instantly.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+
+    <a href="/color-palette" class="free-tool">
+      <div class="free-tool-icon">&#127912;</div>
+      <div class="free-tool-name">Color Palette</div>
+      <p class="free-tool-desc">Generate beautiful color palettes for any project.</p>
+      <span class="free-tool-btn">Use Free</span>
+    </a>
+  </div>
+
+  <!-- ======== WHY SPUNKART ======== -->
+  <div class="section-header">
+    <h2>Why SpunkArt?</h2>
+    <p>Tools built by someone who actually uses them every day.</p>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">&#128274;</div>
+      <div class="why-title">Own Forever</div>
+      <p class="why-text">One-time payment. No subscriptions, no recurring fees. Buy once, use forever. Your tools, your servers.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">&#9889;</div>
+      <div class="why-title">Deploy in 60s</div>
+      <p class="why-text">Every Cloudflare Worker deploys with one command. No DevOps, no servers to manage. Copy, paste, live.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">&#128181;</div>
+      <div class="why-title">Earn 25% Cash</div>
+      <p class="why-text">Share your link. Earn 25% on every sale, forever. No caps, no minimum payout. Real money, real referrals.</p>
+    </div>
+  </div>
+
+  <!-- ======== RESELLER CTA BANNER ======== -->
+  <div class="reseller-banner">
+    <h2>Resell Our Tools. Keep 100% Profit.</h2>
+    <p>White-label 18 Cloudflare Workers under your brand. One-time license. Your pricing, your customers.</p>
+    <a href="/reseller" class="reseller-btn">Start Reselling &rarr;</a>
+  </div>
+
+  <!-- ======== SHARE & EARN ======== -->
+  <section class="share-section">
+    <h2>Share &amp; Earn</h2>
+    <p>Drop your referral link anywhere. Earn 25% on every sale &mdash; forever. No signup required to start sharing.</p>
+    <div class="share-link-box">
+      <span class="share-link-url">spunkart.com/spunk</span>
+      <button class="share-copy-btn" onclick="copyRefLink(this)">Copy Link</button>
+    </div>
+    <p class="share-earn-note">You earn 25% on every sale from this link</p>
+  </section>
+
+  <!-- ======== NETWORK SHOWCASE ======== -->
+  <section class="network-section">
+    <h2>The Network</h2>
+    <p>These tools power a real network of 120+ live sites. Visit any of them.</p>
+    <div class="network-grid">
+      <a href="https://predict.autos" class="network-link" target="_blank" rel="noopener noreferrer">predict.autos</a>
+      <a href="https://predict.garden" class="network-link" target="_blank" rel="noopener noreferrer">predict.garden</a>
+      <a href="https://predict.beauty" class="network-link" target="_blank" rel="noopener noreferrer">predict.beauty</a>
+      <a href="https://predict.codes" class="network-link" target="_blank" rel="noopener noreferrer">predict.codes</a>
+      <a href="https://predict.horse" class="network-link" target="_blank" rel="noopener noreferrer">predict.horse</a>
+      <a href="https://predict.pics" class="network-link" target="_blank" rel="noopener noreferrer">predict.pics</a>
+      <a href="https://predict.mom" class="network-link" target="_blank" rel="noopener noreferrer">predict.mom</a>
+      <a href="https://predict.gay" class="network-link" target="_blank" rel="noopener noreferrer">predict.gay</a>
+      <a href="https://predict.surf" class="network-link" target="_blank" rel="noopener noreferrer">predict.surf</a>
+      <a href="https://predict.hair" class="network-link" target="_blank" rel="noopener noreferrer">predict.hair</a>
+      <a href="https://predict.skin" class="network-link" target="_blank" rel="noopener noreferrer">predict.skin</a>
+      <a href="https://spunk.bet" class="network-link" target="_blank" rel="noopener noreferrer">spunk.bet</a>
+      <a href="https://aliens.coupons" class="network-link" target="_blank" rel="noopener noreferrer">aliens.coupons</a>
+      <a href="https://monkey.coupons" class="network-link" target="_blank" rel="noopener noreferrer">monkey.coupons</a>
+      <a href="https://scam.ink" class="network-link" target="_blank" rel="noopener noreferrer">scam.ink</a>
+      <a href="https://claw.pizza" class="network-link" target="_blank" rel="noopener noreferrer">claw.pizza</a>
+      <a href="https://stimulant.work" class="network-link" target="_blank" rel="noopener noreferrer">stimulant.work</a>
+      <a href="https://aibot.beer" class="network-link" target="_blank" rel="noopener noreferrer">aibot.beer</a>
+    </div>
+    <p class="network-note">...and 100+ more across 7 networks</p>
+  </section>
+
+  <!-- ======== NEWSLETTER ======== -->
+  <section class="newsletter-section">
+    <h2>Stay in the Loop</h2>
+    <p>New tools, ebook updates, and network news. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </section>
+
+  <!-- ======== THE ART ======== -->
+  <section class="art-section" id="art">
+    <div class="art-section-header">
+      <h2>The Art</h2>
+      <p>SpunkArt started as art. It still is. Digital originals and Bitcoin ordinals.</p>
+    </div>
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img class="art" src="art/the-damned-432.png" alt="The Damned #432">
+        <img class="art" src="art/the-damned-432.png" alt="The Damned #432" loading="lazy" width="400" height="400">
         <div class="overlay"><span>The Damned #432</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/dreamer-24.png" alt="Dreamer #24">
+        <img class="art" src="art/dreamer-24.png" alt="Dreamer #24" loading="lazy" width="400" height="400">
         <div class="overlay"><span>Dreamer #24</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/crazy-aliens-53.png" alt="Crazy Aliens #53">
+        <img class="art" src="art/crazy-aliens-53.png" alt="Crazy Aliens #53" loading="lazy" width="400" height="400">
         <div class="overlay"><span>Crazy Aliens #53</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/bitcoin-faces-1.webp" alt="Bitcoin Faces #1">
+        <img class="art" src="art/bitcoin-faces-1.webp" alt="Bitcoin Faces #1" loading="lazy" width="400" height="400">
         <div class="overlay"><span>Bitcoin Faces #1</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/the-freak-show-1.webp" alt="The Freak Show #1">
+        <img class="art" src="art/the-freak-show-1.webp" alt="The Freak Show #1" loading="lazy" width="400" height="400">
         <div class="overlay"><span>The Freak Show #1</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/the-forgotten.webp" alt="The Forgotten">
+        <img class="art" src="art/the-forgotten.webp" alt="The Forgotten" loading="lazy" width="400" height="400">
         <div class="overlay"><span>The Forgotten</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/dreamer-11.png" alt="Dreamer #11">
+        <img class="art" src="art/dreamer-11.png" alt="Dreamer #11" loading="lazy" width="400" height="400">
         <div class="overlay"><span>Dreamer #11</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/crazy-aliens-35.png" alt="Crazy Aliens #35">
+        <img class="art" src="art/crazy-aliens-35.png" alt="Crazy Aliens #35" loading="lazy" width="400" height="400">
         <div class="overlay"><span>Crazy Aliens #35</span></div>
       </div>
       <div class="gallery-item">
-        <img class="art" src="art/the-damned-151.png" alt="The Damned #151">
+        <img class="art" src="art/the-damned-151.png" alt="The Damned #151" loading="lazy" width="400" height="400">
         <div class="overlay"><span>The Damned #151</span></div>
       </div>
     </div>
-  </section>
-
-  <section id="about">
-    <h2 class="section-title">About</h2>
-    <div class="about-content">
-      <p>Spunkart is a visual artist exploring the boundaries between chaos and composition. Working across digital and traditional media, each piece is an excavation — pulling raw form from noise.</p>
-      <p>Based nowhere in particular. Creating always.</p>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <a href="https://magiceden.us/ordinals/marketplace/spunkart" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:#ff5f1f;font-weight:600;">View Collection on Magic Eden &rarr;</a>
     </div>
   </section>
 
-  <section id="newsletter" style="text-align:center;">
-    <h2 class="section-title">Newsletter</h2>
-    <p style="font-weight:300;color:#777;margin-bottom:1.5rem;font-size:0.9rem;">Art drops, crypto updates, and project news. No spam.</p>
-    <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact-content">
-      <p>Open to commissions, collaborations, and interesting conversations.</p>
-      <a href="mailto:hello@spunkart.com" class="contact-link">Get in Touch</a>
-      <div class="socials">
-        <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
-        <a href="https://magiceden.us/ordinals/marketplace/spunkart" target="_blank" rel="noopener noreferrer">Magic Eden</a>
-      </div>
-    </div>
-  </section>
-
+  <!-- ======== FOOTER ======== -->
   <footer>
-    <p>&copy; 2026 SPUNKART. All rights reserved.</p>
-    <div style="margin-top:0.8rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
-      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Spunk.Bet Casino</a>
-      <a href="https://stimulant.wiki" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Wiki</a>
-      <a href="https://stimulant.doctor" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Doctor</a>
-      <a href="https://stimulant.shop" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Stimulant Shop</a>
-      <a href="https://predict.pics" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Predict Network</a>
-      <a href="https://scam.video" target="_blank" rel="noopener noreferrer" style="color:#888;font-size:0.75rem;text-decoration:none;">Scam.Video</a>
-      <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" style="color:#0052ff;font-size:0.75rem;text-decoration:none;font-weight:600;">Buy Crypto</a>
-      <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" style="color:#ff5500;font-size:0.75rem;text-decoration:none;font-weight:600;">Secure Your Crypto</a>
-      <a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" style="color:#00d084;font-size:0.75rem;text-decoration:none;font-weight:600;">Trade on Kalshi</a>
-    <a href="https://customgpt.ai/?fpr=spunk" target="_blank" rel="noopener sponsored" style="color:#06b6d4;font-weight:600;">CustomGPT</a>
-      <a href="https://everyx.io/register?ref=AYHl4YqvjcaX" target="_blank" rel="noopener sponsored" style="color:#a855f7;font-size:0.75rem;text-decoration:none;font-weight:600;">EveryX Markets</a>
-      <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;font-size:0.75rem;text-decoration:none;font-weight:600;">Winna.com</a>
-      <a href="https://stake.us/?c=L2a8nG6c" target="_blank" rel="noopener sponsored" style="color:#00c74d;font-size:0.75rem;text-decoration:none;font-weight:600;">Stake.us</a>
+    <div class="footer-links">
+      <a href="/store">Store</a>
+      <a href="/reseller">Reseller</a>
+      <a href="/blog">Blog</a>
+      <a href="/ebook">Ebook</a>
+      <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+      <a href="/affiliates">Affiliates</a>
     </div>
+    <div class="footer-affiliates">
+      <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" style="color:#0052ff;">Buy Crypto</a>
+      <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" style="color:#ff5500;">Secure Crypto</a>
+      <a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" style="color:#00d084;">Trade Kalshi</a>
+      <a href="https://customgpt.ai/?fpr=spunk" target="_blank" rel="noopener sponsored" style="color:#06b6d4;">CustomGPT</a>
+      <a href="https://everyx.io/register?ref=AYHl4YqvjcaX" target="_blank" rel="noopener sponsored" style="color:#a855f7;">EveryX</a>
+      <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;">Winna.com</a>
+      <a href="https://stake.us/?c=L2a8nG6c" target="_blank" rel="noopener sponsored" style="color:#00c74d;">Stake.us</a>
+    </div>
+    <p class="copyright">&copy; 2026 SPUNKART. All rights reserved.</p>
   </footer>
+
+  <!-- ======== SCRIPTS ======== -->
   <script>
+    // Copy referral link
+    function copyRefLink(btn) {
+      navigator.clipboard.writeText('https://spunkart.com/spunk').then(function() {
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy Link'; }, 2000);
+      });
+    }
+
     // Referral tracking
     (function(){
       var p = new URLSearchParams(location.search);
@@ -417,6 +1216,13 @@
         history.replaceState({}, '', location.pathname);
       }
     })();
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>

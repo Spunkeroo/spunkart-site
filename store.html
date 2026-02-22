@@ -12,6 +12,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@SpunkArt13">
 <link rel="canonical" href="https://spunkart.com/store">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -230,10 +232,8 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<div class="announce">72-HOUR FLASH SALE: 50% off all bundles (LAUNCH50) + earn 25% cash on every referral you send us</div>
-<div class="countdown-bar">
-  Sale ends in: <span class="time" id="saleTimer">71:59:59</span> · <span style="color:#10b981">Only <span id="stockCount">47</span> licenses left at this price</span>
-</div>
+<div class="announce">New tools shipping daily. Get Lifetime Access and never miss one.</div>
+<div class="countdown-bar">Limited time pricing</div>
 
 <nav class="nav">
   <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
@@ -614,7 +614,7 @@ a{color:inherit;text-decoration:none}
 <!-- Free Tools -->
 <section id="free-tools">
   <div class="section-title">
-    <h2>15 Free Tools — No Signup Required</h2>
+    <h2>23 Free Tools — No Signup Required</h2>
     <p>100% browser-based. No data leaves your device. No accounts. Just use them.</p>
   </div>
 
@@ -702,6 +702,54 @@ a{color:inherit;text-decoration:none}
       <div class="free-tool-name">Markdown Editor</div>
       <div class="free-tool-desc">Live preview markdown editor. Toolbar, export to HTML, autosave. Split-pane layout.</div>
       <a href="/markdown-editor" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">🧾</div>
+      <div class="free-tool-name">Invoice Generator</div>
+      <div class="free-tool-desc">Create professional invoices in seconds. Add line items, tax, notes. Export to PDF.</div>
+      <a href="/invoice-generator" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">🗺️</div>
+      <div class="free-tool-name">Sitemap Generator</div>
+      <div class="free-tool-desc">Generate XML sitemaps for any site. Crawl pages, set priorities, download ready-to-upload files.</div>
+      <a href="/sitemap-generator" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">✉️</div>
+      <div class="free-tool-name">Email Signature Generator</div>
+      <div class="free-tool-desc">Design HTML email signatures with logo, links, and social icons. Copy-paste into any email client.</div>
+      <a href="/email-signature" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">💡</div>
+      <div class="free-tool-name">Business Name Generator</div>
+      <div class="free-tool-desc">Generate creative business names instantly. Check domain availability. Save your favorites.</div>
+      <a href="/business-name" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">📜</div>
+      <div class="free-tool-name">Privacy Policy Generator</div>
+      <div class="free-tool-desc">Generate a GDPR/CCPA-compliant privacy policy for your site. Customize and download as HTML.</div>
+      <a href="/privacy-policy-generator" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">🗜️</div>
+      <div class="free-tool-name">Image Compressor</div>
+      <div class="free-tool-desc">Compress images in your browser. Adjust quality, resize, convert formats. No uploads needed.</div>
+      <a href="/image-compressor" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">📝</div>
+      <div class="free-tool-name">Landing Page Copy Generator</div>
+      <div class="free-tool-desc">Generate high-converting landing page copy. Headlines, CTAs, features sections. Ready to use.</div>
+      <a href="/landing-page-copy" class="free-tool-btn">Use Free</a>
+    </div>
+    <div class="free-tool">
+      <div class="free-tool-icon">📊</div>
+      <div class="free-tool-name">Uptime Monitor</div>
+      <div class="free-tool-desc">Monitor your websites from the browser. Check status, response times, and uptime history.</div>
+      <a href="/uptime-monitor" class="free-tool-btn">Use Free</a>
     </div>
   </div>
 </section>
@@ -1119,7 +1167,7 @@ a{color:inherit;text-decoration:none}
           <button class="wallet-copy" onclick="copyWallet('solAddr',this)">Copy</button>
         </div>
         <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Send the exact amount shown above. Include your email in the memo/note if possible.</p>
-        <input type="text" class="modal-input" id="txId" placeholder="Paste your transaction ID after sending">
+        <input type="text" class="modal-input" id="txId" maxlength="128" placeholder="Paste your transaction ID after sending">
         <button class="modal-btn" onclick="confirmCrypto()">I've Sent Payment</button>
       </div>
 
@@ -1129,7 +1177,7 @@ a{color:inherit;text-decoration:none}
       <div class="modal-section">
         <h3>Pay with Card</h3>
         <button class="modal-btn alt" onclick="window.open('https://twitter.com/messages/compose?recipient_id=SpunkArt13&text=I want to buy: '+encodeURIComponent(currentProduct.name)+' — '+currentProduct.price,'_blank')">DM @SpunkArt13 to Pay by Card</button>
-        <button class="modal-btn alt" onclick="window.location.href='mailto:hello@spunkart.com?subject=Purchase: '+encodeURIComponent(currentProduct.name)+'&body=I want to buy: '+encodeURIComponent(currentProduct.name)+' ('+currentProduct.price+')%0A%0AMy email: '+document.getElementById('buyerEmail').value">Email to Pay by Card</button>
+        <button class="modal-btn alt" onclick="window.location.href='mailto:hello@spunkart.com?subject=Purchase: '+encodeURIComponent(currentProduct.name)+'&body=I want to buy: '+encodeURIComponent(currentProduct.name)+' ('+currentProduct.price+')%0A%0AMy email: '+encodeURIComponent(document.getElementById('buyerEmail').value)">Email to Pay by Card</button>
         <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Stripe/card checkout coming soon. DM or email for instant manual processing.</p>
       </div>
     </div>
@@ -1186,6 +1234,8 @@ var COUPONS = {
   FIRST10: { type: 'percent', value: 10, label: '10% off' },
   TWITTER: { type: 'fixed', value: 2, label: '$2 off' },
   NEWSLETTER: { type: 'percent', value: 10, label: '10% off (newsletter)' },
+  SPUNK15: { type: 'percent', value: 15, label: '15% off (referral)' },
+  SPUNK: { type: 'percent', value: 10, label: '10% off (spunk link)' },
 };
 
 var currentProduct = null;
@@ -1197,7 +1247,7 @@ var currentDiscount = null;
 (function() {
   var params = new URLSearchParams(window.location.search);
   var ref = params.get('ref');
-  if (ref) {
+  if (ref && /^[a-zA-Z0-9_-]{1,64}$/.test(ref)) {
     localStorage.setItem('spunkart_ref', ref);
     localStorage.setItem('spunkart_ref_time', Date.now());
     document.getElementById('affiliateBar').style.display = 'block';
@@ -1304,8 +1354,16 @@ function confirmCrypto() {
     return;
   }
 
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('buyerEmail').style.borderColor = '#ef4444';
+    document.getElementById('buyerEmail').focus();
+    return;
+  }
+
   // Generate order ref
-  var ref = 'SA-' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).substr(2, 4).toUpperCase();
+  var arr = new Uint8Array(6);
+  crypto.getRandomValues(arr);
+  var ref = 'SA-' + Array.from(arr).map(function(b){return b.toString(16).padStart(2,'0')}).join('').toUpperCase();
 
   // Save order to localStorage
   var orders = JSON.parse(localStorage.getItem('spunkart_orders') || '[]');
@@ -1376,35 +1434,6 @@ function saveEmail(email) {
 window.viewEmails = function() { console.table(JSON.parse(localStorage.getItem('spunkart_emails') || '[]')); };
 window.viewOrders = function() { console.table(JSON.parse(localStorage.getItem('spunkart_orders') || '[]')); };
 
-// ========================
-// SALE COUNTDOWN TIMER
-// ========================
-(function() {
-  var end = localStorage.getItem('spunkart_sale_end');
-  if (!end) {
-    end = Date.now() + 72 * 60 * 60 * 1000;
-    localStorage.setItem('spunkart_sale_end', end);
-  }
-  function tick() {
-    var left = Math.max(0, end - Date.now());
-    var h = Math.floor(left / 3600000);
-    var m = Math.floor((left % 3600000) / 60000);
-    var s = Math.floor((left % 60000) / 1000);
-    var el = document.getElementById('saleTimer');
-    if (el) el.textContent = h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-    if (left <= 0 && el) el.textContent = 'EXTENDED — Last chance!';
-  }
-  tick();
-  setInterval(tick, 1000);
-  // Fake scarcity counter
-  var stock = document.getElementById('stockCount');
-  if (stock) {
-    setInterval(function() {
-      var n = parseInt(stock.textContent);
-      if (n > 12 && Math.random() < 0.3) stock.textContent = n - 1;
-    }, 45000);
-  }
-})();
 </script>
 
 <!-- Content Protection -->
@@ -1428,10 +1457,6 @@ document.addEventListener('copy', function(e) {
   document.body.appendChild(w);
 })();
 </script>
-
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
 
 <!-- Legal -->
 <div style="max-width:700px;margin:2rem auto;padding:0 2rem 2rem;font-size:0.65rem;color:#333;line-height:1.6">

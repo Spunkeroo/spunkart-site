@@ -7,7 +7,16 @@
 <meta name="description" content="Free budget tracker. Track income, expenses, and savings goals. Works offline, data stays on your device.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
 .app{max-width:700px;margin:0 auto;padding:1.5rem}
 h1{font-size:1.8rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.8rem}
@@ -58,6 +67,15 @@ h1{font-size:1.8rem;text-align:center;margin-bottom:0.3rem;background:linear-gra
 </style>
 </head>
 <body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
 <div class="app">
   <h1>💰 Budget Tracker</h1>
   <div class="sub">100% private — data stays on your device</div>
@@ -111,12 +129,13 @@ h1{font-size:1.8rem;text-align:center;margin-bottom:0.3rem;background:linear-gra
     <div id="txList"></div>
   </div>
 
-  <div class="footer">
-    Free tool by <a href="https://spunkart.com">SpunkArt</a> &middot;
-    <a href="https://spunkart.com/store">More Tools</a> &middot;
-    <a href="https://spunkart.com/reseller" style="color:#10b981;font-weight:700">Resell Our Tools $$</a>
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
   </div>
 </div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
 
 <script>
 const ICONS = {salary:'💼',freelance:'💻',food:'🍕',transport:'🚗',housing:'🏠',utilities:'⚡',entertainment:'🎮',shopping:'🛍️',health:'💊',subscriptions:'📱',other:'📌'};
@@ -226,52 +245,5 @@ function clearAll() {
 render();
 </script>
 
-<!-- Sticky Bottom Banner + Email Capture -->
-<style>
-.sticky-banner{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#10b981,#3b82f6);padding:0.7rem 1rem;display:flex;justify-content:center;align-items:center;gap:1rem;z-index:9999;font-size:0.9rem;font-weight:600}
-.sticky-banner a{color:#fff;text-decoration:underline;font-weight:700}
-.sticky-banner .close-banner{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;margin-left:0.5rem;opacity:0.8}
-.sticky-banner .close-banner:hover{opacity:1}
-.email-popup{display:none;position:fixed;bottom:60px;right:20px;background:#111;border:2px solid #10b981;border-radius:14px;padding:1.5rem;z-index:9998;width:320px;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
-.email-popup h4{font-size:1rem;margin-bottom:0.3rem;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.email-popup p{color:#888;font-size:0.8rem;margin-bottom:0.8rem}
-.email-popup form{display:flex;gap:0.4rem}
-.email-popup input[type="email"]{flex:1;padding:0.5rem;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#fff;font-size:0.8rem}
-.email-popup button[type="submit"]{padding:0.5rem 1rem;background:#10b981;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.8rem;cursor:pointer}
-.email-popup .close-popup{position:absolute;top:8px;right:10px;background:none;border:none;color:#666;cursor:pointer;font-size:1rem}
-.email-popup .close-popup:hover{color:#fff}
-.email-popup .success-msg{color:#10b981;font-size:0.85rem;font-weight:600;text-align:center;padding:0.5rem 0}
-</style>
-
-<div class="sticky-banner" id="stickyBanner">
-  Like this free tool? Get 18 more at <a href="https://spunkart.com/store">spunkart.com/store</a>
-  <button class="close-banner" onclick="document.getElementById('stickyBanner').style.display='none'">&times;</button>
-</div>
-
-<div class="email-popup" id="emailPopup">
-  <button class="close-popup" onclick="document.getElementById('emailPopup').style.display='none'">&times;</button>
-  <h4>Get 10% Off</h4>
-  <p>Premium tools, delivered instantly. Enter your email for a discount code.</p>
-  <form onsubmit="handleEmailSubmit(event)">
-    <input type="email" id="promoEmail" placeholder="you@email.com" required>
-    <button type="submit">Get Code</button>
-  </form>
-</div>
-
-<script>
-setTimeout(function(){
-  if(!sessionStorage.getItem('emailPopupClosed')){
-    document.getElementById('emailPopup').style.display='block';
-  }
-},30000);
-function handleEmailSubmit(e){
-  e.preventDefault();
-  var email=document.getElementById('promoEmail').value;
-  var popup=document.getElementById('emailPopup');
-  popup.innerHTML='<div class="success-msg">Check your inbox for your 10% off code!</div>';
-  sessionStorage.setItem('emailPopupClosed','1');
-  setTimeout(function(){popup.style.display='none'},3000);
-}
-</script>
 </body>
 </html>

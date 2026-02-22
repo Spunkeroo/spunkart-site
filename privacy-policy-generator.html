@@ -25,10 +25,10 @@ a:hover{text-decoration:underline;}
 
 /* Nav */
 nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
-.nav-links{display:flex;gap:20px;font-size:0.9rem;}
-.nav-links a{color:#aaa;transition:color .2s;}
-.nav-links a:hover{color:#ff5f1f;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
 
 /* Watermark */
 .watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
@@ -145,8 +145,8 @@ footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px
 <body>
 
 <nav>
-  <a href="/" class="nav-brand">SPUNKART.COM</a>
-  <div class="nav-links">
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
     <a href="/store">Store</a>
     <a href="/store#free-tools">Free Tools</a>
     <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
