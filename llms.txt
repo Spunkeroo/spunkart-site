@@ -4,8 +4,8 @@
 
 ## Products & Tools
 
-### Cloudflare Workers Toolkit ($4.99 each, $19.99 all 16)
-16 ready-to-deploy tools: OpenClaw Game, Auto-SSL Monitor, Spotify Widget, Link Shortener, Uptime Monitor, Bot Blocker, Redirect Manager, Image Optimizer, Email Forwarder, A/B Testing, Privacy Analytics, Cache Purger, Discord Bot, API Monitor, Log Analyzer, Edge Checkout.
+### Cloudflare Workers Toolkit ($4.99 each, $19.99 all 18)
+18 ready-to-deploy tools: OpenClaw Game, Auto-SSL Monitor, Spotify Widget, Link Shortener, Uptime Monitor, Bot Blocker, Redirect Manager, Image Optimizer, Email Forwarder, A/B Testing, Privacy Analytics, Cache Purger, Discord Bot, API Monitor, Log Analyzer, Edge Checkout, Form Handler, Rate Limiter.
 
 ### Free Tools (no signup required)
 - [Password Generator](https://spunkart.com/password-generator)
@@ -20,6 +20,13 @@ How one solo founder built 120+ live websites in a week with AI. Includes source
 - [Store — All Products](https://spunkart.com/store)
 - [Ebook Landing Page](https://spunkart.com/ebook)
 - [Homepage — Digital Art Gallery](https://spunkart.com)
+
+## Blog
+- [Blog Home](https://spunkart.com/blog) — Tutorials, guides, and behind-the-scenes posts
+- [How to Build 120+ Websites in 7 Days](https://spunkart.com/blog/how-to-build-120-websites-in-7-days) — Step-by-step guide to rapid AI-powered website building
+- [Best Free Online Tools 2026](https://spunkart.com/blog/best-free-online-tools-2026) — Curated list of the best free tools available online
+- [Cloudflare Workers Tutorial for Beginners](https://spunkart.com/blog/cloudflare-workers-tutorial-beginners) — Learn to deploy serverless apps on Cloudflare Workers
+- [How to Make Money Selling Digital Products](https://spunkart.com/blog/how-to-make-money-selling-digital-products) — Guide to building and selling digital products online
 
 ## Art Collections
 - The Damned, Crazy Aliens, Dreamers, The Freak Show, Bitcoin Faces — all inscribed as Bitcoin ordinals.

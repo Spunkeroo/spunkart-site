@@ -48,7 +48,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
 .tier-features{text-align:left;font-size:0.75rem;color:#aaa;margin-bottom:1.5rem}
 .tier-features div{padding:0.25rem 0}
 .tier-features div::before{content:"✓ ";color:#10b981}
-.tier-btn{display:block;padding:0.7rem;background:#10b981;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.tier-btn{display:block;width:100%;padding:0.7rem;background:#10b981;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s}
 .tier-btn:hover{background:#0d9668;transform:scale(1.02)}
 
 .how{display:grid;gap:1rem;margin-bottom:3rem}
@@ -68,11 +68,49 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
 .faq-item.open .faq-a{display:block}
 
 .final-cta{text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto}
-.cta-btn{display:inline-block;padding:1rem 3rem;background:#10b981;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s}
+.cta-btn{display:inline-block;padding:1rem 3rem;background:#10b981;color:#fff;border:none;border-radius:50px;font-weight:700;font-size:1.1rem;cursor:pointer;transition:all 0.2s}
 .cta-btn:hover{background:#0d9668;transform:scale(1.03);box-shadow:0 8px 30px rgba(16,185,129,0.3)}
 
 .footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
 .footer a{color:#10b981}
+
+.email-capture{text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto}
+.email-capture h2{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+.email-capture p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
+.email-form{display:flex;gap:0.5rem;max-width:420px;margin:0 auto}
+.email-form input{flex:1;padding:0.75rem 1rem;background:#111;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none}
+.email-form input:focus{border-color:#10b981}
+.email-form button{padding:0.75rem 1.5rem;background:#10b981;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.email-form button:hover{background:#0d9668}
+.email-success{color:#10b981;font-size:0.85rem;margin-top:0.8rem;display:none}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);z-index:1000;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{display:flex}
+.modal{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#666;font-size:1.5rem;cursor:pointer;line-height:1}
+.modal-close:hover{color:#fff}
+.modal h2{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem}
+.modal .modal-price{font-size:1.8rem;font-weight:800;color:#10b981;margin-bottom:1.5rem}
+.modal h3{font-size:0.85rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.8rem}
+.wallet-row{display:flex;align-items:center;gap:0.5rem;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:0.6rem 0.8rem;margin-bottom:0.5rem;font-size:0.75rem}
+.wallet-row .wallet-label{color:#10b981;font-weight:700;min-width:32px}
+.wallet-row .wallet-addr{flex:1;color:#aaa;word-break:break-all;font-family:'SF Mono',Monaco,monospace}
+.wallet-row .copy-btn{background:#222;border:1px solid #333;color:#888;padding:0.3rem 0.6rem;border-radius:6px;font-size:0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.wallet-row .copy-btn:hover{background:#333;color:#fff}
+.modal-input{width:100%;padding:0.7rem 1rem;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.85rem;margin-bottom:0.8rem;outline:none}
+.modal-input:focus{border-color:#10b981}
+.modal-input::placeholder{color:#555}
+.modal-label{display:block;font-size:0.8rem;color:#888;margin-bottom:0.4rem}
+.modal-confirm{width:100%;padding:0.8rem;background:#10b981;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.2s;margin-top:0.5rem}
+.modal-confirm:hover{background:#0d9668;transform:scale(1.01)}
+.modal-confirm:disabled{background:#333;color:#666;cursor:not-allowed;transform:none}
+.modal-alt{text-align:center;color:#555;font-size:0.75rem;margin-top:1rem;line-height:1.6}
+.modal-alt a{color:#10b981}
+.modal-divider{border:none;border-top:1px solid #1a1a1a;margin:1.2rem 0}
+.modal-success{display:none;text-align:center;padding:2rem 0}
+.modal-success .success-icon{font-size:3rem;margin-bottom:1rem}
+.modal-success h2{color:#10b981;margin-bottom:0.5rem}
+.modal-success p{color:#888;font-size:0.85rem}
 
 @media(max-width:600px){
   h1{font-size:1.8rem}
@@ -89,6 +127,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
     <a href="/store">Store</a>
     <a href="/ebook">Ebook</a>
     <a href="/reseller">Reseller</a>
+    <a href="/blog">Blog</a>
     <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
   </div>
 </nav>
@@ -154,7 +193,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
         <div>Sell unlimited copies</div>
         <div>6 months of updates</div>
       </div>
-      <a href="/store" class="tier-btn">Get Starter License</a>
+      <button onclick="buy('reseller_starter')" class="tier-btn">Get Starter License</button>
     </div>
     <div class="tier tier-pop">
       <div class="tier-name">Pro Reseller</div>
@@ -170,7 +209,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
         <div>Priority support</div>
         <div>New tools added monthly</div>
       </div>
-      <a href="/store" class="tier-btn">Get Pro License</a>
+      <button onclick="buy('reseller_pro')" class="tier-btn">Get Pro License</button>
     </div>
     <div class="tier">
       <div class="tier-name">Agency</div>
@@ -186,7 +225,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
         <div>1-on-1 setup call</div>
         <div>Featured on our network</div>
       </div>
-      <a href="/store" class="tier-btn">Get Agency License</a>
+      <button onclick="buy('reseller_agency')" class="tier-btn">Get Agency License</button>
     </div>
   </div>
 </section>
@@ -275,8 +314,18 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
   <h2>Start Reselling Today</h2>
   <p style="color:#888;margin-bottom:0.5rem">One purchase. Unlimited sales. 100% profit.</p>
   <p style="color:#666;font-size:0.85rem;margin-bottom:2rem">Most resellers break even within 20 sales. The rest is pure profit.</p>
-  <a href="/store" class="cta-btn">Get Your Reseller License →</a>
+  <button onclick="buy('reseller_pro')" class="cta-btn">Get Your Reseller License →</button>
   <p style="color:#555;font-size:0.75rem;margin-top:1rem">BTC / ETH / SOL / Card accepted</p>
+</section>
+
+<section class="email-capture" id="email-capture">
+  <h2>Get the Reseller Toolkit Preview</h2>
+  <p>Enter your email and we'll send you a free preview of the reseller toolkit — including sample code, pricing templates, and launch checklists.</p>
+  <div class="email-form">
+    <input type="email" id="capture-email" placeholder="you@example.com" required>
+    <button onclick="captureEmail()">Send Preview</button>
+  </div>
+  <div class="email-success" id="email-success">You're in! Check your inbox soon.</div>
 </section>
 
 <footer class="footer">
@@ -284,11 +333,63 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
     <a href="https://spunkart.com">SpunkArt</a> ·
     <a href="/store">Store</a> ·
     <a href="/ebook">Ebook</a> ·
+    <a href="/blog">Blog</a> ·
     <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> ·
     <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a>
   </div>
   <div>© 2026 SpunkArt. All rights reserved.</div>
 </footer>
+
+<div class="modal-overlay" id="checkout-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+
+    <div id="modal-form">
+      <h2 id="modal-product">Product Name</h2>
+      <div class="modal-price" id="modal-price">$0</div>
+
+      <h3>Pay with Crypto</h3>
+      <div class="wallet-row">
+        <span class="wallet-label">BTC</span>
+        <span class="wallet-addr" id="wallet-btc">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</span>
+        <button class="copy-btn" onclick="copyWallet('wallet-btc',this)">Copy</button>
+      </div>
+      <div class="wallet-row">
+        <span class="wallet-label">ETH</span>
+        <span class="wallet-addr" id="wallet-eth">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</span>
+        <button class="copy-btn" onclick="copyWallet('wallet-eth',this)">Copy</button>
+      </div>
+      <div class="wallet-row">
+        <span class="wallet-label">SOL</span>
+        <span class="wallet-addr" id="wallet-sol">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</span>
+        <button class="copy-btn" onclick="copyWallet('wallet-sol',this)">Copy</button>
+      </div>
+
+      <hr class="modal-divider">
+
+      <label class="modal-label" for="checkout-email">Email for delivery *</label>
+      <input class="modal-input" type="email" id="checkout-email" placeholder="you@example.com" required>
+
+      <label class="modal-label" for="checkout-txid">Transaction ID / Hash *</label>
+      <input class="modal-input" type="text" id="checkout-txid" placeholder="Paste your transaction hash here">
+
+      <button class="modal-confirm" id="modal-confirm" onclick="confirmPayment()" disabled>Confirm Payment</button>
+
+      <div class="modal-alt">
+        <hr class="modal-divider">
+        Prefer a different method?<br>
+        DM <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a> or email <a href="mailto:spunkart13@gmail.com">spunkart13@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="modal-success" id="modal-success">
+      <div class="success-icon">&#10003;</div>
+      <h2>Payment Submitted!</h2>
+      <p>We'll verify your transaction and deliver your reseller package to the email you provided. Usually within 1-2 hours.</p>
+      <p style="margin-top:1rem;color:#555;font-size:0.8rem">Questions? DM <a href="https://twitter.com/SpunkArt13" target="_blank" style="color:#10b981">@SpunkArt13</a></p>
+    </div>
+  </div>
+</div>
 
 <!-- Content Protection -->
 <script>
@@ -299,6 +400,118 @@ document.addEventListener('contextmenu', function(e) { if (e.target.closest('.ti
   w.textContent = 'SPUNKART.COM';
   document.body.appendChild(w);
 })();
+</script>
+
+<script>
+/* Products */
+const PRODUCTS = {
+  reseller_starter: { name: 'Starter Reseller License', price: '$99' },
+  reseller_pro: { name: 'Pro Reseller License', price: '$199' },
+  reseller_agency: { name: 'Agency Reseller License', price: '$499' }
+};
+
+let currentProduct = null;
+
+/* Affiliate tracking */
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get('ref');
+  if (ref) {
+    localStorage.setItem('spunkart_ref', ref);
+  }
+})();
+
+/* Buy / Modal */
+function buy(productId) {
+  const product = PRODUCTS[productId];
+  if (!product) return;
+  currentProduct = productId;
+  document.getElementById('modal-product').textContent = product.name;
+  document.getElementById('modal-price').textContent = product.price;
+  document.getElementById('modal-form').style.display = 'block';
+  document.getElementById('modal-success').style.display = 'none';
+  document.getElementById('checkout-email').value = '';
+  document.getElementById('checkout-txid').value = '';
+  document.getElementById('modal-confirm').disabled = true;
+  document.getElementById('checkout-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('checkout-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* Enable confirm button when both fields filled */
+document.addEventListener('input', function(e) {
+  if (e.target.id === 'checkout-email' || e.target.id === 'checkout-txid') {
+    const email = document.getElementById('checkout-email').value.trim();
+    const txid = document.getElementById('checkout-txid').value.trim();
+    document.getElementById('modal-confirm').disabled = !(email && txid && email.includes('@'));
+  }
+});
+
+/* Copy wallet address */
+function copyWallet(id, btn) {
+  const addr = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(addr).then(function() {
+    btn.textContent = 'Copied!';
+    btn.style.color = '#10b981';
+    setTimeout(function() { btn.textContent = 'Copy'; btn.style.color = ''; }, 2000);
+  });
+}
+
+/* Confirm payment */
+function confirmPayment() {
+  const email = document.getElementById('checkout-email').value.trim();
+  const txid = document.getElementById('checkout-txid').value.trim();
+  if (!email || !txid) return;
+
+  const ref = localStorage.getItem('spunkart_ref') || '';
+  const order = {
+    product: currentProduct,
+    email: email,
+    txid: txid,
+    ref: ref,
+    ts: new Date().toISOString()
+  };
+
+  /* Store order in localStorage */
+  const orders = JSON.parse(localStorage.getItem('spunkart_orders') || '[]');
+  orders.push(order);
+  localStorage.setItem('spunkart_orders', JSON.stringify(orders));
+
+  /* Also store email */
+  const emails = JSON.parse(localStorage.getItem('spunkart_emails') || '[]');
+  if (!emails.includes(email)) {
+    emails.push(email);
+    localStorage.setItem('spunkart_emails', JSON.stringify(emails));
+  }
+
+  /* Show success */
+  document.getElementById('modal-form').style.display = 'none';
+  document.getElementById('modal-success').style.display = 'block';
+}
+
+/* Email capture */
+function captureEmail() {
+  const input = document.getElementById('capture-email');
+  const email = input.value.trim();
+  if (!email || !email.includes('@')) { input.focus(); return; }
+
+  const emails = JSON.parse(localStorage.getItem('spunkart_emails') || '[]');
+  if (!emails.includes(email)) {
+    emails.push(email);
+    localStorage.setItem('spunkart_emails', JSON.stringify(emails));
+  }
+
+  input.value = '';
+  document.getElementById('email-success').style.display = 'block';
+  setTimeout(function() { document.getElementById('email-success').style.display = 'none'; }, 5000);
+}
+
+/* Close modal on Escape */
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 </script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>

@@ -77,6 +77,25 @@ h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-cl
 .final-cta h2{font-size:2rem;margin-bottom:0.5rem}
 .crypto-methods{display:flex;justify-content:center;gap:1.5rem;margin:1.5rem 0;font-size:0.85rem;color:#888}
 
+/* Nav */
+.nav{display:flex;justify-content:center;gap:1.5rem;padding:0.8rem 2rem;border-bottom:1px solid #1a1a1a;font-size:0.85rem;flex-wrap:wrap}
+.nav a{color:#888;font-weight:600;transition:color 0.2s}
+.nav a:hover{color:#ff5f1f}
+
+/* Checkout Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:10000;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;max-width:440px;width:90%;position:relative}
+.modal h3{font-size:1.3rem;margin-bottom:0.3rem;text-align:center}
+.modal .modal-sub{color:#888;font-size:0.85rem;text-align:center;margin-bottom:1.5rem}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer}
+.modal-close:hover{color:#fff}
+.wallet-row{display:flex;align-items:center;gap:0.7rem;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:10px;padding:0.7rem 1rem;margin-bottom:0.6rem;font-size:0.78rem;word-break:break-all}
+.wallet-row .chain{font-weight:700;min-width:36px;color:#ff5f1f}
+.wallet-row .addr{flex:1;color:#ccc;user-select:all}
+.wallet-row button{background:#222;border:1px solid #333;color:#aaa;padding:0.3rem 0.7rem;border-radius:6px;cursor:pointer;font-size:0.7rem;white-space:nowrap}
+.wallet-row button:hover{background:#333;color:#fff}
+
 /* Footer */
 .footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem;max-width:700px;margin:0 auto}
 
@@ -88,6 +107,14 @@ h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-cl
 </style>
 </head>
 <body>
+
+<nav class="nav">
+  <a href="/store">Store</a>
+  <a href="/ebook">Ebook</a>
+  <a href="/reseller">Reseller</a>
+  <a href="/blog">Blog</a>
+  <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+</nav>
 
 <section class="hero">
   <div class="badge">NEW EBOOK — 2026</div>
@@ -105,7 +132,7 @@ h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-cl
   <div class="price-note">Includes full ebook + all source code + AI prompts</div>
   <br>
   <div class="cta-group">
-    <a href="/store" class="cta cta-primary">Buy the Ebook →</a>
+    <a href="#" onclick="openCheckout();return false" class="cta cta-primary">Buy the Ebook →</a>
     <a href="#preview" class="cta cta-secondary">Read Free Preview</a>
   </div>
 </section>
@@ -244,19 +271,57 @@ for domain, name, color in DOMAINS:
     <span>💳 Card</span>
   </div>
 
-  <a href="/store" class="cta cta-primary" style="font-size:1.1rem;padding:1.2rem 3rem">Buy Now — $14.99 →</a>
+  <a href="#" onclick="openCheckout();return false" class="cta cta-primary" style="font-size:1.1rem;padding:1.2rem 3rem">Buy Now — $14.99 →</a>
   <p style="color:#666;font-size:0.8rem;margin-top:1rem">Instant delivery · Full source code · 50 AI prompts · 30-day guarantee</p>
+</section>
+
+<section style="text-align:center;padding:2rem;max-width:500px;margin:0 auto">
+  <h2 style="font-size:1.3rem;margin-bottom:0.5rem">Free Chapter + 10% Off</h2>
+  <p style="color:#888;font-size:0.85rem;margin-bottom:1rem">Enter your email to get Chapter 2 free + a 10% discount code.</p>
+  <form onsubmit="return captureEmail(event)" style="display:flex;gap:0.5rem;max-width:400px;margin:0 auto">
+    <input type="email" id="emailInput" placeholder="you@example.com" required style="flex:1;padding:0.7rem;background:#111;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none">
+    <button type="submit" style="padding:0.7rem 1.5rem;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.85rem;white-space:nowrap">Get Free Chapter</button>
+  </form>
+  <div id="emailSuccess" style="display:none;color:#10b981;font-weight:700;margin-top:1rem">Check your inbox! Use code FIRST10 for 10% off.</div>
+  <p style="font-size:0.7rem;color:#555;margin-top:0.5rem">No spam. Unsubscribe anytime.</p>
 </section>
 
 <footer class="footer">
   <div style="margin-bottom:0.8rem">
     <a href="https://spunkart.com">SpunkArt</a> ·
     <a href="/store" style="color:#ff5f1f">Store</a> ·
+    <a href="/blog" style="color:#888">Blog</a> ·
     <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> ·
     <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a>
   </div>
   <div>© 2026 SpunkArt. All rights reserved.</div>
 </footer>
+
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCheckout()">&times;</button>
+    <h3>Checkout — $14.99</h3>
+    <p class="modal-sub">Send exact amount to any wallet below, then email your TX hash to get the ebook.</p>
+    <div class="wallet-row">
+      <span class="chain">BTC</span>
+      <span class="addr" id="btcAddr">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</span>
+      <button onclick="copyAddr('btcAddr')">Copy</button>
+    </div>
+    <div class="wallet-row">
+      <span class="chain">ETH</span>
+      <span class="addr" id="ethAddr">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</span>
+      <button onclick="copyAddr('ethAddr')">Copy</button>
+    </div>
+    <div class="wallet-row">
+      <span class="chain">SOL</span>
+      <span class="addr" id="solAddr">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</span>
+      <button onclick="copyAddr('solAddr')">Copy</button>
+    </div>
+    <p style="text-align:center;color:#888;font-size:0.78rem;margin-top:1rem">After payment, email <a href="mailto:spunkart13@gmail.com" style="color:#ff5f1f">spunkart13@gmail.com</a> with your TX hash for instant delivery.</p>
+    <p style="text-align:center;color:#555;font-size:0.7rem;margin-top:0.5rem">30-day money-back guarantee</p>
+  </div>
+</div>
 
 <!-- Content Protection -->
 <script>
@@ -281,6 +346,45 @@ document.addEventListener('selectstart', function(e) {
 </script>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
+
+<script>
+/* Checkout Modal */
+function openCheckout(){document.getElementById('checkoutModal').classList.add('active')}
+function closeCheckout(){document.getElementById('checkoutModal').classList.remove('active')}
+document.getElementById('checkoutModal').addEventListener('click',function(e){if(e.target===this)closeCheckout()});
+function copyAddr(id){
+  var t=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(t).then(function(){
+    var btn=document.getElementById(id).nextElementSibling;
+    btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy'},2000);
+  });
+}
+
+/* Email Capture */
+function captureEmail(e){
+  e.preventDefault();
+  var email=document.getElementById('emailInput').value;
+  var ref=localStorage.getItem('ref')||'';
+  // Store locally
+  var leads=JSON.parse(localStorage.getItem('ebook_leads')||'[]');
+  leads.push({email:email,ref:ref,ts:Date.now()});
+  localStorage.setItem('ebook_leads',JSON.stringify(leads));
+  // Show success
+  document.getElementById('emailInput').style.display='none';
+  e.target.querySelector('button[type="submit"]').style.display='none';
+  document.getElementById('emailSuccess').style.display='block';
+  // Track in GA
+  if(typeof gtag==='function')gtag('event','email_capture',{page:'ebook',ref:ref});
+  return false;
+}
+
+/* Affiliate Tracking */
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var ref=params.get('ref');
+  if(ref)localStorage.setItem('ref',ref);
+})();
+</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>

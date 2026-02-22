@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How I Built 120+ Websites in 7 Days Using AI — SpunkArt Blog</title>
+<meta name="description" content="How one developer built and launched 120+ live websites in 7 days using AI, a generator pattern, and a free hosting stack. The full breakdown.">
+<meta property="og:title" content="How I Built 120+ Websites in 7 Days Using AI">
+<meta property="og:description" content="The exact generator pattern, free hosting stack, and AI workflow behind launching 120+ websites in one week.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spunkart.com/blog/how-to-build-120-websites-in-7-days">
+<meta property="article:published_time" content="2026-02-22">
+<meta property="article:author" content="SpunkArt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="How I Built 120+ Websites in 7 Days Using AI">
+<meta name="twitter:description" content="The exact generator pattern, free hosting stack, and AI workflow behind launching 120+ websites in one week.">
+<link rel="canonical" href="https://spunkart.com/blog/how-to-build-120-websites-in-7-days">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How I Built 120+ Websites in 7 Days Using AI",
+  "description": "How one developer built and launched 120+ live websites in 7 days using AI, a generator pattern, and a free hosting stack.",
+  "author": {
+    "@type": "Person",
+    "name": "SpunkArt",
+    "url": "https://x.com/SpunkArt13"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SpunkArt",
+    "url": "https://spunkart.com"
+  },
+  "datePublished": "2026-02-22",
+  "dateModified": "2026-02-22",
+  "mainEntityOfPage": "https://spunkart.com/blog/how-to-build-120-websites-in-7-days",
+  "url": "https://spunkart.com/blog/how-to-build-120-websites-in-7-days"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-brand:hover{text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff;text-decoration:none}
+
+article{max-width:720px;margin:0 auto;padding:3rem 2rem 4rem}
+.breadcrumb{font-size:0.8rem;color:#555;margin-bottom:2rem}
+.breadcrumb a{color:#888}
+.tag{display:inline-block;background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f;font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
+article h1{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;background:linear-gradient(135deg,#ff5f1f,#ff9f43);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.article-meta{font-size:0.8rem;color:#555;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid #1a1a1a}
+.article-meta a{color:#ff5f1f}
+article h2{font-size:1.4rem;font-weight:700;margin:2.5rem 0 1rem;color:#e8e8e8}
+article h3{font-size:1.1rem;font-weight:600;margin:2rem 0 0.8rem;color:#ccc}
+article p{color:#aaa;font-size:1rem;margin-bottom:1.5rem;line-height:1.8}
+article ul,article ol{color:#aaa;margin:0 0 1.5rem 1.5rem;line-height:1.8}
+article li{margin-bottom:0.5rem}
+article code{background:#1a1a1a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.9rem;color:#ff9f43}
+article pre{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.5rem}
+article pre code{background:none;padding:0;font-size:0.85rem;color:#ccc}
+article blockquote{border-left:3px solid #ff5f1f;padding:1rem 1.5rem;margin:1.5rem 0;background:#0d0d0d;border-radius:0 8px 8px 0}
+article blockquote p{color:#999;margin-bottom:0;font-style:italic}
+
+.cta-box{background:linear-gradient(135deg,#111,#0d0d0d);border:1px solid #ff5f1f33;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta-box h3{color:#ff5f1f;margin-bottom:0.5rem;font-size:1.2rem}
+.cta-box p{color:#888;font-size:0.9rem;margin-bottom:1.2rem}
+.cta-btn{display:inline-block;background:#ff5f1f;color:#fff;font-weight:700;padding:0.7rem 2rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s}
+.cta-btn:hover{opacity:0.85;text-decoration:none}
+
+.email-section{max-width:500px;margin:3rem auto;padding:2rem;text-align:center}
+.email-section h2{font-size:1.3rem;font-weight:700;margin-bottom:0.5rem;color:#e8e8e8}
+.email-section p{color:#888;font-size:0.85rem;margin-bottom:1.2rem}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1a1a1a;margin-top:2rem}
+footer p{font-size:0.7rem;color:#444;letter-spacing:0.1em}
+.footer-links{margin-top:0.8rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{color:#888;font-size:0.75rem;transition:color 0.2s}
+.footer-links a:hover{color:#fff;text-decoration:none}
+.footer-links a.sponsored{font-weight:600}
+
+.watermark{position:fixed;bottom:1rem;right:1rem;font-size:0.6rem;color:#1a1a1a;letter-spacing:2px;font-weight:700;z-index:50;pointer-events:none}
+
+@media(max-width:600px){
+  article h1{font-size:1.7rem}
+  article{padding:2rem 1rem 3rem}
+  .nav{padding:0.8rem 1rem}
+  .nav-links{gap:1rem;font-size:0.75rem}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">SPUNKART</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog" style="color:#ff5f1f">Blog</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+  </div>
+</nav>
+
+<article>
+  <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog">Blog</a> &rarr; 120+ Websites in 7 Days</div>
+  <span class="tag">Case Study</span>
+  <h1>How I Built 120+ Websites in 7 Days Using AI</h1>
+  <div class="article-meta">
+    By <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">SpunkArt (@SpunkArt13)</a> &middot; February 22, 2026 &middot; 5 min read
+  </div>
+
+  <p>Most developers spend a week building one website. I spent a week building over 120. No team, no budget, no venture capital. Just one developer, an AI coding assistant, and a system designed to scale from the start.</p>
+
+  <p>This is the story of how it happened, what the system looks like under the hood, and why it changes the economics of building on the web.</p>
+
+  <h2>The Problem: One Website at a Time Doesn't Scale</h2>
+
+  <p>If you're a solo developer or small team, the traditional approach to web projects is painfully slow. Design, build, test, deploy, repeat. Each site takes days or weeks. You end up maintaining a graveyard of half-finished projects because the overhead of each new launch is enormous.</p>
+
+  <p>I needed a different approach. I wanted to launch niche tools, prediction markets, content sites, and utility pages across dozens of domains — all maintained by one person. The only way to do that was to stop building websites one at a time and start <strong>generating</strong> them.</p>
+
+  <h2>The Generator Pattern</h2>
+
+  <p>The core idea is simple: write a Python script that takes a configuration file and outputs a complete, deployable website. One script, infinite sites.</p>
+
+  <p>Here's how the architecture works:</p>
+
+  <ul>
+    <li><strong>Template system</strong> — A set of base HTML/CSS/JS templates with placeholder variables for branding, domain, colors, content, and features</li>
+    <li><strong>Config files</strong> — Each site gets a small JSON or YAML config defining its domain, theme, API keys, and content overrides</li>
+    <li><strong>Generator script</strong> — A Python script that reads the config, injects values into templates, and outputs a complete static site ready for deployment</li>
+    <li><strong>Batch deployment</strong> — A shell script that pushes every generated site to its GitHub repo, which auto-deploys via GitHub Pages or Cloudflare Pages</li>
+  </ul>
+
+  <p>The result: changing the generator once updates every site. Adding a new site means writing a 20-line config file and running one command.</p>
+
+  <h2>The Free Hosting Stack</h2>
+
+  <p>Cost was a constraint — specifically, I wanted zero ongoing costs. Here's the stack that makes 120+ live sites free to host:</p>
+
+  <ul>
+    <li><strong>GitHub Pages</strong> — Free static hosting with custom domains. No server to manage. Unlimited repositories on a free GitHub account.</li>
+    <li><strong>Cloudflare</strong> — Free DNS, free SSL, free CDN. Every site gets HTTPS and global edge caching at no cost.</li>
+    <li><strong>Cloudflare Workers</strong> — 100,000 free requests per day on the free tier. Enough to run serverless APIs, redirects, and dynamic logic.</li>
+    <li><strong>Firebase (free tier)</strong> — Real-time database for sites that need dynamic data. The Spark plan handles moderate traffic easily.</li>
+  </ul>
+
+  <p>Total monthly hosting cost for 120+ websites: <strong>$0</strong>.</p>
+
+  <h2>Where AI Comes In</h2>
+
+  <p>AI didn't replace the thinking — it replaced the typing. Here's where it made the biggest difference:</p>
+
+  <ul>
+    <li><strong>Generating content</strong> — Site copy, meta descriptions, FAQ sections, and structured data for each niche, generated from prompts and reviewed by a human</li>
+    <li><strong>Debugging at speed</strong> — When you're deploying 120 sites, bugs multiply. AI-assisted debugging cut fix time from hours to minutes</li>
+    <li><strong>Template iteration</strong> — Rapidly prototyping different layouts, then having AI refactor the best version into a clean, reusable template</li>
+    <li><strong>Bulk operations</strong> — Generating sitemaps, robots.txt files, Open Graph tags, and structured data across every site in one pass</li>
+  </ul>
+
+  <p>The key insight: AI is not a replacement for architecture decisions. You still need to design the system. But once the system exists, AI makes populating it with content and fixing edge cases extraordinarily fast.</p>
+
+  <h2>What I Launched</h2>
+
+  <p>The 120+ sites span several categories:</p>
+
+  <ul>
+    <li><strong>16 prediction market sites</strong> — The Predict Network (predict.pics, predict.horse, predict.surf, and 13 more)</li>
+    <li><strong>Free online tools</strong> — Password generators, PDF converters, budget trackers, scam checkers</li>
+    <li><strong>Content and niche sites</strong> — Covering crypto, health, gaming, and more</li>
+    <li><strong>18 Cloudflare Workers</strong> — Serverless edge tools sold in the <a href="/store">SpunkArt Store</a></li>
+  </ul>
+
+  <h2>The Numbers</h2>
+
+  <p>After one week of building:</p>
+
+  <ul>
+    <li><strong>120+ live websites</strong> deployed and indexed</li>
+    <li><strong>$0 hosting costs</strong> per month</li>
+    <li><strong>1 developer</strong> managing everything</li>
+    <li><strong>~15 minutes</strong> to launch a new site from config to live</li>
+    <li><strong>18 digital products</strong> ready to sell</li>
+  </ul>
+
+  <h2>Want the Full Playbook?</h2>
+
+  <p>This blog post covers the overview. The complete system — every script, every config template, every deployment workflow, and the AI prompts that made it work — is documented in the full ebook.</p>
+
+  <div class="cta-box">
+    <h3>Get the Full Ebook</h3>
+    <p>"How I Built 120+ Websites in 7 Days" — the complete guide with source code, templates, and step-by-step instructions.</p>
+    <a href="/ebook" class="cta-btn">Get the Ebook</a>
+  </div>
+
+  <p>If you're a developer who wants to build more, faster, with less overhead — this is the system. And if you want to sell the tools that come out of it, check out the <a href="/reseller">reseller program</a> where you can white-label all 18 Cloudflare Workers and sell them under your own brand.</p>
+
+  <h2>Start Building</h2>
+
+  <p>The barrier to building on the web has never been lower. Free hosting, AI-assisted development, and generator patterns mean a solo developer can now do what used to require a team. The question isn't whether you can build 120 websites — it's what you'll build with them.</p>
+
+  <p>Browse the <a href="/store">SpunkArt Store</a> to see what came out of this system. Follow <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a> for real-time updates as the network grows.</p>
+</article>
+
+<div class="email-section">
+  <h2>Get More Posts Like This</h2>
+  <p>Tutorials, tool launches, and behind-the-scenes breakdowns. No spam.</p>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;display:block;"></iframe>
+</div>
+
+<footer>
+  <p>&copy; 2026 SPUNKART. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog">Blog</a>
+    <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">Spunk.Bet</a>
+    <a href="https://predict.pics" target="_blank" rel="noopener noreferrer">Predict Network</a>
+    <a href="https://scam.video" target="_blank" rel="noopener noreferrer">Scam.Video</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+    <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#0052ff">Buy Crypto</a>
+    <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5500">Ledger</a>
+    <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5f1f">Winna.com</a>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+</body>
+</html>

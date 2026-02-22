@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog — SpunkArt | Web Dev, AI Tools & Digital Products</title>
+<meta name="description" content="SpunkArt blog — tutorials, guides, and insights on building websites with AI, free online tools, Cloudflare Workers, and selling digital products.">
+<meta property="og:title" content="SpunkArt Blog — Web Dev, AI & Digital Products">
+<meta property="og:description" content="Tutorials, guides, and insights on building websites with AI, free tools, and digital products.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/blog">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<link rel="canonical" href="https://spunkart.com/blog">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+
+.hero{text-align:center;padding:4rem 2rem 2rem;max-width:800px;margin:0 auto}
+.hero h1{font-size:2.8rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1.1}
+.hero p{color:#888;font-size:1.1rem;max-width:600px;margin:0 auto}
+
+.posts{max-width:900px;margin:3rem auto;padding:0 2rem;display:grid;gap:1.5rem}
+.post-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:2rem;transition:all 0.3s;cursor:pointer}
+.post-card:hover{border-color:#ff5f1f44;transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,95,31,0.08)}
+.post-card .tag{display:inline-block;background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f;font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.8rem}
+.post-card h2{font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;line-height:1.3}
+.post-card h2 a{color:#e8e8e8;transition:color 0.2s}
+.post-card h2 a:hover{color:#ff5f1f}
+.post-card .excerpt{color:#888;font-size:0.9rem;margin-bottom:1rem;line-height:1.7}
+.post-card .meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#555}
+.post-card .read-more{color:#ff5f1f;font-weight:600;font-size:0.8rem;transition:opacity 0.2s}
+.post-card .read-more:hover{opacity:0.8}
+
+.email-section{max-width:600px;margin:4rem auto;padding:2rem;text-align:center}
+.email-section h2{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
+.email-section p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1a1a1a;margin-top:2rem}
+footer p{font-size:0.7rem;color:#444;letter-spacing:0.1em}
+.footer-links{margin-top:0.8rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{color:#888;font-size:0.75rem;transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-links a.sponsored{font-weight:600}
+
+.watermark{position:fixed;bottom:1rem;right:1rem;font-size:0.6rem;color:#1a1a1a;letter-spacing:2px;font-weight:700;z-index:50;pointer-events:none}
+
+@media(max-width:600px){
+  .hero h1{font-size:2rem}
+  .nav{padding:0.8rem 1rem}
+  .nav-links{gap:1rem;font-size:0.75rem}
+  .posts{padding:0 1rem}
+  .post-card{padding:1.5rem}
+  .post-card h2{font-size:1.2rem}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">SPUNKART</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog" style="color:#ff5f1f">Blog</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>The SpunkArt Blog</h1>
+  <p>Tutorials, behind-the-scenes breakdowns, and actionable guides on building with AI, shipping fast, and selling digital products.</p>
+</div>
+
+<div class="posts">
+
+  <div class="post-card" onclick="location.href='/blog/how-to-build-120-websites-in-7-days'">
+    <span class="tag">Case Study</span>
+    <h2><a href="/blog/how-to-build-120-websites-in-7-days">How I Built 120+ Websites in 7 Days Using AI</a></h2>
+    <p class="excerpt">The exact generator pattern, free hosting stack, and AI workflow I used to launch over 120 live websites in a single week. No team. No budget. Just one developer and a system that scales.</p>
+    <div class="meta">
+      <span>SpunkArt &middot; Feb 22, 2026</span>
+      <a href="/blog/how-to-build-120-websites-in-7-days" class="read-more">Read &rarr;</a>
+    </div>
+  </div>
+
+  <div class="post-card" onclick="location.href='/blog/best-free-online-tools-2026'">
+    <span class="tag">Tools</span>
+    <h2><a href="/blog/best-free-online-tools-2026">Best Free Online Tools in 2026 — No Signup Required</a></h2>
+    <p class="excerpt">Password generators, PDF converters, budget trackers, scam checkers, and more. All free, all instant, no accounts needed. Here are the best tools you can use right now.</p>
+    <div class="meta">
+      <span>SpunkArt &middot; Feb 22, 2026</span>
+      <a href="/blog/best-free-online-tools-2026" class="read-more">Read &rarr;</a>
+    </div>
+  </div>
+
+  <div class="post-card" onclick="location.href='/blog/cloudflare-workers-tutorial-beginners'">
+    <span class="tag">Tutorial</span>
+    <h2><a href="/blog/cloudflare-workers-tutorial-beginners">Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool</a></h2>
+    <p class="excerpt">Learn what Cloudflare Workers are, why edge computing matters, and deploy your first serverless tool in under 10 minutes. Step-by-step guide with real code examples.</p>
+    <div class="meta">
+      <span>SpunkArt &middot; Feb 22, 2026</span>
+      <a href="/blog/cloudflare-workers-tutorial-beginners" class="read-more">Read &rarr;</a>
+    </div>
+  </div>
+
+  <div class="post-card" onclick="location.href='/blog/how-to-make-money-selling-digital-products'">
+    <span class="tag">Business</span>
+    <h2><a href="/blog/how-to-make-money-selling-digital-products">How to Make Money Selling Digital Products in 2026</a></h2>
+    <p class="excerpt">Why digital products are the best business model for solo founders, how to get started with near-zero overhead, and how SpunkArt's reseller program lets you sell from day one.</p>
+    <div class="meta">
+      <span>SpunkArt &middot; Feb 22, 2026</span>
+      <a href="/blog/how-to-make-money-selling-digital-products" class="read-more">Read &rarr;</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="email-section">
+  <h2>Get New Posts in Your Inbox</h2>
+  <p>Tutorials, tool launches, and behind-the-scenes content. No spam. Unsubscribe anytime.</p>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;display:block;"></iframe>
+</div>
+
+<footer>
+  <p>&copy; 2026 SPUNKART. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">Spunk.Bet</a>
+    <a href="https://stimulant.wiki" target="_blank" rel="noopener noreferrer">Stimulant Wiki</a>
+    <a href="https://stimulant.doctor" target="_blank" rel="noopener noreferrer">Stimulant Doctor</a>
+    <a href="https://stimulant.shop" target="_blank" rel="noopener noreferrer">Stimulant Shop</a>
+    <a href="https://predict.pics" target="_blank" rel="noopener noreferrer">Predict Network</a>
+    <a href="https://scam.video" target="_blank" rel="noopener noreferrer">Scam.Video</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+    <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#0052ff">Buy Crypto</a>
+    <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5500">Secure Your Crypto</a>
+    <a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#00d084">Trade on Kalshi</a>
+    <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5f1f">Winna.com</a>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+</body>
+</html>

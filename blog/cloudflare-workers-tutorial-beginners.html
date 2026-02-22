@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool — SpunkArt Blog</title>
+<meta name="description" content="Learn what Cloudflare Workers are and deploy your first serverless edge tool in under 10 minutes. Step-by-step beginner tutorial with real code examples.">
+<meta property="og:title" content="Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool">
+<meta property="og:description" content="Deploy your first Cloudflare Worker in under 10 minutes. Step-by-step beginner guide with code examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://spunkart.com/blog/cloudflare-workers-tutorial-beginners">
+<meta property="article:published_time" content="2026-02-22">
+<meta property="article:author" content="SpunkArt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool">
+<meta name="twitter:description" content="Deploy your first Cloudflare Worker in under 10 minutes. Step-by-step beginner guide with code examples.">
+<link rel="canonical" href="https://spunkart.com/blog/cloudflare-workers-tutorial-beginners">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool",
+  "description": "Learn what Cloudflare Workers are and deploy your first serverless edge tool in under 10 minutes.",
+  "author": {
+    "@type": "Person",
+    "name": "SpunkArt",
+    "url": "https://x.com/SpunkArt13"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SpunkArt",
+    "url": "https://spunkart.com"
+  },
+  "datePublished": "2026-02-22",
+  "dateModified": "2026-02-22",
+  "mainEntityOfPage": "https://spunkart.com/blog/cloudflare-workers-tutorial-beginners",
+  "url": "https://spunkart.com/blog/cloudflare-workers-tutorial-beginners"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-brand:hover{text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff;text-decoration:none}
+
+article{max-width:720px;margin:0 auto;padding:3rem 2rem 4rem}
+.breadcrumb{font-size:0.8rem;color:#555;margin-bottom:2rem}
+.breadcrumb a{color:#888}
+.tag{display:inline-block;background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f;font-size:0.7rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
+article h1{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:1rem;background:linear-gradient(135deg,#ff5f1f,#ff9f43);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.article-meta{font-size:0.8rem;color:#555;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid #1a1a1a}
+.article-meta a{color:#ff5f1f}
+article h2{font-size:1.4rem;font-weight:700;margin:2.5rem 0 1rem;color:#e8e8e8}
+article h3{font-size:1.1rem;font-weight:600;margin:2rem 0 0.8rem;color:#ccc}
+article p{color:#aaa;font-size:1rem;margin-bottom:1.5rem;line-height:1.8}
+article ul,article ol{color:#aaa;margin:0 0 1.5rem 1.5rem;line-height:1.8}
+article li{margin-bottom:0.5rem}
+article code{background:#1a1a1a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.9rem;color:#ff9f43}
+article pre{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:1.2rem;overflow-x:auto;margin-bottom:1.5rem}
+article pre code{background:none;padding:0;font-size:0.85rem;color:#ccc;line-height:1.6}
+
+.step{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem}
+.step-num{display:inline-block;background:#ff5f1f;color:#fff;font-weight:800;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:0.8rem;margin-right:0.8rem}
+.step h3{display:inline;color:#e8e8e8;font-size:1.05rem;vertical-align:middle;margin:0}
+.step p{margin-top:0.8rem;font-size:0.9rem}
+
+.cta-box{background:linear-gradient(135deg,#111,#0d0d0d);border:1px solid #ff5f1f33;border-radius:12px;padding:2rem;text-align:center;margin:2.5rem 0}
+.cta-box h3{color:#ff5f1f;margin-bottom:0.5rem;font-size:1.2rem}
+.cta-box p{color:#888;font-size:0.9rem;margin-bottom:1.2rem}
+.cta-btn{display:inline-block;background:#ff5f1f;color:#fff;font-weight:700;padding:0.7rem 2rem;border-radius:8px;font-size:0.9rem;transition:opacity 0.2s}
+.cta-btn:hover{opacity:0.85;text-decoration:none}
+
+.email-section{max-width:500px;margin:3rem auto;padding:2rem;text-align:center}
+.email-section h2{font-size:1.3rem;font-weight:700;margin-bottom:0.5rem;color:#e8e8e8}
+.email-section p{color:#888;font-size:0.85rem;margin-bottom:1.2rem}
+
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid #1a1a1a;margin-top:2rem}
+footer p{font-size:0.7rem;color:#444;letter-spacing:0.1em}
+.footer-links{margin-top:0.8rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{color:#888;font-size:0.75rem;transition:color 0.2s}
+.footer-links a:hover{color:#fff;text-decoration:none}
+.footer-links a.sponsored{font-weight:600}
+
+.watermark{position:fixed;bottom:1rem;right:1rem;font-size:0.6rem;color:#1a1a1a;letter-spacing:2px;font-weight:700;z-index:50;pointer-events:none}
+
+@media(max-width:600px){
+  article h1{font-size:1.6rem}
+  article{padding:2rem 1rem 3rem}
+  .nav{padding:0.8rem 1rem}
+  .nav-links{gap:1rem;font-size:0.75rem}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">SPUNKART</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog" style="color:#ff5f1f">Blog</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+  </div>
+</nav>
+
+<article>
+  <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/blog">Blog</a> &rarr; Cloudflare Workers Tutorial</div>
+  <span class="tag">Tutorial</span>
+  <h1>Cloudflare Workers Tutorial for Beginners: Deploy Your First Edge Tool</h1>
+  <div class="article-meta">
+    By <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">SpunkArt (@SpunkArt13)</a> &middot; February 22, 2026 &middot; 5 min read
+  </div>
+
+  <p>Cloudflare Workers let you run JavaScript at the edge — on Cloudflare's global network of 300+ data centers — without managing a single server. They're fast, they scale automatically, and the free tier gives you 100,000 requests per day. If you've never used them before, this tutorial will get you from zero to deployed in under 10 minutes.</p>
+
+  <h2>What Are Cloudflare Workers?</h2>
+
+  <p>Workers are serverless functions that execute on Cloudflare's edge network. When someone makes a request to your Worker, it runs in the data center closest to the user — not in a centralized region like traditional cloud functions. This means lower latency and faster response times for users everywhere in the world.</p>
+
+  <p>Think of Workers as lightweight API endpoints. They can:</p>
+
+  <ul>
+    <li>Return HTML pages, JSON responses, or redirect URLs</li>
+    <li>Transform requests and responses on the fly</li>
+    <li>Connect to databases, external APIs, and storage</li>
+    <li>Run scheduled tasks with Cron Triggers</li>
+    <li>Handle authentication, rate limiting, and caching logic</li>
+  </ul>
+
+  <p>Unlike traditional servers, you don't pay for idle time. You pay per request (and the first 100,000 per day are free). There's no cold start problem like AWS Lambda — Workers spin up in under 5 milliseconds.</p>
+
+  <h2>Prerequisites</h2>
+
+  <p>You'll need three things:</p>
+
+  <ol>
+    <li><strong>A free Cloudflare account</strong> — Sign up at <code>cloudflare.com</code></li>
+    <li><strong>Node.js installed</strong> — Version 16 or later</li>
+    <li><strong>A terminal</strong> — Any command line will work</li>
+  </ol>
+
+  <h2>Step-by-Step: Deploy Your First Worker</h2>
+
+  <div class="step">
+    <span class="step-num">1</span>
+    <h3>Install Wrangler (the Cloudflare CLI)</h3>
+    <p>Wrangler is the official CLI for building and deploying Workers.</p>
+  </div>
+
+  <pre><code>npm install -g wrangler</code></pre>
+
+  <p>Once installed, authenticate with your Cloudflare account:</p>
+
+  <pre><code>wrangler login</code></pre>
+
+  <p>This opens your browser. Click "Allow" to connect Wrangler to your account.</p>
+
+  <div class="step">
+    <span class="step-num">2</span>
+    <h3>Create a New Worker Project</h3>
+    <p>Generate a fresh project scaffold:</p>
+  </div>
+
+  <pre><code>wrangler init my-first-worker
+cd my-first-worker</code></pre>
+
+  <p>Select "Hello World" when prompted for a template. This creates a minimal Worker with one file: <code>src/index.js</code>.</p>
+
+  <div class="step">
+    <span class="step-num">3</span>
+    <h3>Write Your Worker Logic</h3>
+    <p>Open <code>src/index.js</code> and replace the contents with a simple JSON API:</p>
+  </div>
+
+  <pre><code>export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    // Simple routing
+    if (url.pathname === "/api/hello") {
+      return new Response(
+        JSON.stringify({
+          message: "Hello from the edge!",
+          timestamp: new Date().toISOString(),
+          location: request.cf?.colo || "unknown"
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          }
+        }
+      );
+    }
+
+    // Default response
+    return new Response("My First Cloudflare Worker", {
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+};</code></pre>
+
+  <p>This Worker responds to <code>/api/hello</code> with a JSON payload that includes the Cloudflare data center code serving the request. Every other path returns a plain text greeting.</p>
+
+  <div class="step">
+    <span class="step-num">4</span>
+    <h3>Test Locally</h3>
+    <p>Run the Worker on your machine before deploying:</p>
+  </div>
+
+  <pre><code>wrangler dev</code></pre>
+
+  <p>Open <code>http://localhost:8787/api/hello</code> in your browser. You should see the JSON response. Make changes to the code and they'll hot-reload instantly.</p>
+
+  <div class="step">
+    <span class="step-num">5</span>
+    <h3>Deploy to Production</h3>
+    <p>When you're ready, deploy with one command:</p>
+  </div>
+
+  <pre><code>wrangler deploy</code></pre>
+
+  <p>Wrangler outputs your live URL, something like <code>my-first-worker.your-subdomain.workers.dev</code>. Your Worker is now running on Cloudflare's global network. Every request hits the nearest edge node automatically.</p>
+
+  <h2>What to Build Next</h2>
+
+  <p>Now that you've deployed your first Worker, here are practical projects to try next:</p>
+
+  <ul>
+    <li><strong>URL shortener</strong> — Store short URLs in Workers KV (Cloudflare's key-value store) and redirect on the edge</li>
+    <li><strong>Password generator API</strong> — Generate cryptographically secure passwords server-side and return them as JSON</li>
+    <li><strong>Image optimizer</strong> — Accept image uploads, resize/compress using Workers, return optimized versions</li>
+    <li><strong>Rate limiter</strong> — Protect any API with token bucket rate limiting at the edge</li>
+    <li><strong>Webhook relay</strong> — Accept webhooks from one service and transform/forward them to another</li>
+  </ul>
+
+  <p>Each of these projects is already built, tested, and ready to deploy in the <a href="/store">SpunkArt Store</a>. The collection includes 18 Cloudflare Workers covering the most common use cases.</p>
+
+  <div class="cta-box">
+    <h3>Skip the Tutorial — Deploy 18 Workers Today</h3>
+    <p>SpunkArt's complete collection includes password generators, URL shorteners, PDF tools, rate limiters, and more. Production-ready code, one-click deploy, full documentation.</p>
+    <a href="/store" class="cta-btn">Browse All 18 Workers</a>
+  </div>
+
+  <h2>Key Concepts to Learn</h2>
+
+  <p>As you build more Workers, these concepts will become important:</p>
+
+  <ul>
+    <li><strong>Workers KV</strong> — A global key-value store for persistent data. Free tier includes 100,000 reads/day.</li>
+    <li><strong>Durable Objects</strong> — For stateful applications that need coordination (chat rooms, game servers, counters).</li>
+    <li><strong>R2 Storage</strong> — S3-compatible object storage with zero egress fees. Ideal for file uploads.</li>
+    <li><strong>Cron Triggers</strong> — Schedule Workers to run on a recurring basis without external schedulers.</li>
+  </ul>
+
+  <p>Cloudflare's free tier is generous enough to run serious production tools. SpunkArt runs its entire <a href="/store">18-tool suite</a> and multiple sites on Workers, with zero infrastructure costs.</p>
+
+  <h2>Further Reading</h2>
+
+  <p>If you want to understand the broader strategy of building an entire business on top of free hosting and edge computing, read the full case study: <a href="/blog/how-to-build-120-websites-in-7-days">How I Built 120+ Websites in 7 Days Using AI</a>.</p>
+
+  <p>For the complete playbook with source code and deployment scripts, grab the <a href="/ebook">SpunkArt Ebook</a>. And follow <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a> for new tutorials and tool launches.</p>
+</article>
+
+<div class="email-section">
+  <h2>Get More Tutorials</h2>
+  <p>Step-by-step guides on Workers, edge computing, and building with AI. No spam.</p>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;display:block;"></iframe>
+</div>
+
+<footer>
+  <p>&copy; 2026 SPUNKART. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog">Blog</a>
+    <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">Spunk.Bet</a>
+    <a href="https://predict.pics" target="_blank" rel="noopener noreferrer">Predict Network</a>
+    <a href="https://scam.video" target="_blank" rel="noopener noreferrer">Scam.Video</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+    <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#0052ff">Buy Crypto</a>
+    <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5500">Ledger</a>
+    <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" class="sponsored" style="color:#ff5f1f">Winna.com</a>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+</body>
+</html>
