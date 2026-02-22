@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Tag Generator - Free SEO Meta Tags Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate perfect meta tags for your website. Create title, description, Open Graph, Twitter Card, and canonical tags with character count validation. Free SEO tool.">
+<meta property="og:title" content="Meta Tag Generator - Free SEO Meta Tags Tool">
+<meta property="og:description" content="Generate perfect meta tags for your website. Create title, description, Open Graph, Twitter Card, and canonical tags instantly.">
+<meta property="og:image" content="https://spunkart.com/assets/og-meta-generator.png">
+<meta property="og:url" content="https://spunkart.com/meta-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meta Tag Generator - Free SEO Meta Tags Tool">
+<meta name="twitter:description" content="Generate perfect meta tags for your website instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/meta-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* Nav */
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}
+nav .links a:hover{color:#ff5f1f;}
+
+/* Main */
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:32px;font-size:1rem;}
+
+/* Form */
+.form-group{margin-bottom:20px;}
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],input[type="url"],textarea{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;transition:border-color 0.2s;}
+input:focus,textarea:focus{border-color:#ff5f1f;}
+textarea{resize:vertical;min-height:80px;}
+.char-count{font-size:0.75rem;margin-top:4px;color:#666;}
+.char-count.warn{color:#ff5f1f;}
+.char-count.danger{color:#e74c3c;}
+.char-count.good{color:#2ecc71;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;margin-left:8px;}
+.btn-secondary:hover{background:#333;}
+.btn-small{padding:6px 14px;font-size:0.8rem;border-radius:6px;}
+
+/* Output */
+.output-section{margin-top:32px;display:none;}
+.output-block{background:#151515;border:1px solid #333;border-radius:10px;padding:16px;margin-bottom:16px;position:relative;}
+.output-block h3{font-size:0.85rem;color:#ff5f1f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.output-block pre{background:#0d0d0d;padding:12px;border-radius:6px;overflow-x:auto;font-size:0.85rem;color:#ccc;white-space:pre-wrap;word-break:break-all;}
+.copy-btn{position:absolute;top:12px;right:12px;background:#333;color:#ccc;border:none;padding:5px 12px;border-radius:5px;font-size:0.75rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#2ecc71;color:#fff;}
+
+/* Preview */
+.preview-card{background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:24px;}
+.preview-card .p-title{font-size:1.1rem;color:#1a0dab;margin-bottom:4px;}
+.preview-card .p-url{font-size:0.85rem;color:#006621;margin-bottom:4px;}
+.preview-card .p-desc{font-size:0.9rem;color:#999;}
+
+/* Cross-sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}
+.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+/* Watermark */
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+/* Email popup */
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;margin-bottom:12px;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+/* Footer */
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  nav{padding:10px 16px;}
+  .form-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SPUNKART.COM</div>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Meta Tag Generator</h1>
+  <p class="subtitle">Generate perfect SEO meta tags for any page. Copy-paste ready HTML with character count validation.</p>
+
+  <div class="form-group">
+    <label>Page Title</label>
+    <input type="text" id="pageTitle" placeholder="My Awesome Page - Brand Name" maxlength="200">
+    <div class="char-count" id="titleCount">0 / 60 characters (recommended)</div>
+  </div>
+
+  <div class="form-group">
+    <label>Page Description</label>
+    <textarea id="pageDesc" placeholder="A concise description of what this page is about. Include your main keywords naturally." maxlength="500"></textarea>
+    <div class="char-count" id="descCount">0 / 160 characters (recommended)</div>
+  </div>
+
+  <div class="form-group">
+    <label>Page URL (Canonical)</label>
+    <input type="url" id="pageUrl" placeholder="https://example.com/my-page">
+  </div>
+
+  <div class="form-group">
+    <label>OG Image URL (optional)</label>
+    <input type="url" id="ogImage" placeholder="https://example.com/images/og-image.jpg">
+  </div>
+
+  <div class="form-group">
+    <label>Site Name (optional)</label>
+    <input type="text" id="siteName" placeholder="My Website">
+  </div>
+
+  <div class="form-group">
+    <label>Twitter Handle (optional)</label>
+    <input type="text" id="twitterHandle" placeholder="@username">
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <button onclick="generateMeta()">Generate Meta Tags</button>
+    <button class="btn-secondary" onclick="clearForm()">Clear</button>
+  </div>
+
+  <div class="output-section" id="outputSection">
+    <h2 style="margin-bottom:16px;color:#fff;">Generated Meta Tags</h2>
+
+    <div class="preview-card">
+      <div class="p-title" id="prevTitle">Page Title</div>
+      <div class="p-url" id="prevUrl">https://example.com</div>
+      <div class="p-desc" id="prevDesc">Page description appears here in search results...</div>
+    </div>
+
+    <div class="output-block" id="blockAll">
+      <h3>All Meta Tags (Copy All)</h3>
+      <button class="copy-btn" onclick="copyBlock('codeAll',this)">Copy</button>
+      <pre id="codeAll"></pre>
+    </div>
+
+    <div class="output-block">
+      <h3>Basic Meta Tags</h3>
+      <button class="copy-btn" onclick="copyBlock('codeBasic',this)">Copy</button>
+      <pre id="codeBasic"></pre>
+    </div>
+
+    <div class="output-block">
+      <h3>Open Graph Tags</h3>
+      <button class="copy-btn" onclick="copyBlock('codeOG',this)">Copy</button>
+      <pre id="codeOG"></pre>
+    </div>
+
+    <div class="output-block">
+      <h3>Twitter Card Tags</h3>
+      <button class="copy-btn" onclick="copyBlock('codeTwitter',this)">Copy</button>
+      <pre id="codeTwitter"></pre>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Need Custom Web Design?</h3>
+    <p>Professional design assets, templates, and creative tools from SPUNKART.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free SEO Tips</h2>
+    <p>Join 5,000+ creators getting weekly tips on SEO, design, and growing online.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; All rights reserved.</footer>
+
+<script>
+const titleInput=document.getElementById('pageTitle');
+const descInput=document.getElementById('pageDesc');
+const titleCount=document.getElementById('titleCount');
+const descCount=document.getElementById('descCount');
+
+titleInput.addEventListener('input',()=>{
+  const len=titleInput.value.length;
+  titleCount.textContent=`${len} / 60 characters (recommended)`;
+  titleCount.className='char-count '+(len===0?'':len<=60?'good':len<=70?'warn':'danger');
+});
+descInput.addEventListener('input',()=>{
+  const len=descInput.value.length;
+  descCount.textContent=`${len} / 160 characters (recommended)`;
+  descCount.className='char-count '+(len===0?'':len<=160?'good':len<=200?'warn':'danger');
+});
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function generateMeta(){
+  const title=titleInput.value.trim();
+  const desc=descInput.value.trim();
+  const url=document.getElementById('pageUrl').value.trim();
+  const img=document.getElementById('ogImage').value.trim();
+  const site=document.getElementById('siteName').value.trim();
+  const tw=document.getElementById('twitterHandle').value.trim();
+  if(!title){alert('Please enter a page title.');return;}
+
+  let basic=`<title>${esc(title)}</title>\n<meta name="description" content="${esc(desc)}">`;
+  if(url) basic+=`\n<link rel="canonical" href="${esc(url)}">`;
+
+  let og=`<meta property="og:title" content="${esc(title)}">\n<meta property="og:description" content="${esc(desc)}">\n<meta property="og:type" content="website">`;
+  if(url) og+=`\n<meta property="og:url" content="${esc(url)}">`;
+  if(img) og+=`\n<meta property="og:image" content="${esc(img)}">`;
+  if(site) og+=`\n<meta property="og:site_name" content="${esc(site)}">`;
+
+  let twitter=`<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="${esc(title)}">\n<meta name="twitter:description" content="${esc(desc)}">`;
+  if(img) twitter+=`\n<meta name="twitter:image" content="${esc(img)}">`;
+  if(tw) twitter+=`\n<meta name="twitter:site" content="${esc(tw)}">`;
+
+  const all=`<!-- Basic Meta Tags -->\n${basic}\n\n<!-- Open Graph -->\n${og}\n\n<!-- Twitter Card -->\n${twitter}`;
+
+  document.getElementById('codeAll').textContent=all;
+  document.getElementById('codeBasic').textContent=basic;
+  document.getElementById('codeOG').textContent=og;
+  document.getElementById('codeTwitter').textContent=twitter;
+
+  document.getElementById('prevTitle').textContent=title;
+  document.getElementById('prevUrl').textContent=url||'https://example.com';
+  document.getElementById('prevDesc').textContent=desc||'No description provided.';
+
+  document.getElementById('outputSection').style.display='block';
+  document.getElementById('outputSection').scrollIntoView({behavior:'smooth'});
+
+  gtag('event','generate_meta',{event_category:'tool_use'});
+}
+
+function copyBlock(id,btn){
+  const text=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+  gtag('event','copy_meta',{event_category:'tool_use',event_label:id});
+}
+
+function clearForm(){
+  ['pageTitle','pageDesc','pageUrl','ogImage','siteName','twitterHandle'].forEach(id=>document.getElementById(id).value='');
+  titleCount.textContent='0 / 60 characters (recommended)';titleCount.className='char-count';
+  descCount.textContent='0 / 160 characters (recommended)';descCount.className='char-count';
+  document.getElementById('outputSection').style.display='none';
+}
+
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  const email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){
+    gtag('event','email_signup',{event_category:'conversion',event_label:email});
+    alert('Thanks for subscribing!');closeEmail();
+  }else{alert('Please enter a valid email.');}
+}
+
+if(!localStorage.getItem('emailDismissed')){
+  setTimeout(()=>{document.getElementById('emailOverlay').classList.add('show');},30000);
+}
+</script>
+</body>
+</html>

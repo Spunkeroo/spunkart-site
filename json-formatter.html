@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter & Validator - Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Format, validate, and minify JSON instantly. Pretty-print with syntax highlighting, tree view, error detection with line numbers. Free JSON tool for developers.">
+<meta property="og:title" content="JSON Formatter & Validator - Free Online Tool">
+<meta property="og:description" content="Format, validate, and minify JSON instantly. Pretty-print with syntax highlighting and tree view.">
+<meta property="og:image" content="https://spunkart.com/assets/og-json-formatter.png">
+<meta property="og:url" content="https://spunkart.com/json-formatter.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSON Formatter & Validator">
+<meta name="twitter:description" content="Format, validate, and minify JSON instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/json-formatter.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+.btn-small{padding:7px 16px;font-size:0.8rem;}
+
+.status-bar{display:flex;gap:16px;margin-bottom:16px;font-size:0.85rem;flex-wrap:wrap;}
+.status-item{color:#888;}
+.status-item.valid{color:#2ecc71;}
+.status-item.invalid{color:#e74c3c;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:400px;}
+.panel{display:flex;flex-direction:column;}
+.panel-header{background:#1a1a1a;border:1px solid #333;border-bottom:none;border-radius:10px 10px 0 0;padding:10px 16px;font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;}
+textarea{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;border-radius:0 0 10px 10px;tab-size:2;line-height:1.5;}
+textarea:focus{border-color:#ff5f1f;}
+
+.output-panel{flex:1;background:#111;border:1px solid #333;border-radius:0 0 10px 10px;overflow:auto;position:relative;}
+
+/* Syntax highlighting */
+.formatted{padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-all;line-height:1.5;}
+.json-key{color:#ff5f1f;}
+.json-string{color:#2ecc71;}
+.json-number{color:#3498db;}
+.json-boolean{color:#e67e22;}
+.json-null{color:#e74c3c;}
+.json-bracket{color:#888;}
+.json-line{display:block;}
+.json-line:hover{background:rgba(255,95,31,0.05);}
+
+/* Tree view */
+.tree-view{padding:16px;font-family:'SF Mono',Monaco,monospace;font-size:0.85rem;}
+.tree-node{margin-left:20px;}
+.tree-toggle{cursor:pointer;user-select:none;color:#ff5f1f;margin-right:4px;}
+.tree-toggle:hover{color:#fff;}
+.tree-key{color:#ff5f1f;font-weight:600;}
+.tree-val-string{color:#2ecc71;}
+.tree-val-number{color:#3498db;}
+.tree-val-boolean{color:#e67e22;}
+.tree-val-null{color:#e74c3c;}
+.tree-collapsed{display:none;}
+.tree-bracket{color:#888;}
+.tree-line{padding:2px 0;line-height:1.6;}
+
+.error-display{background:rgba(231,76,60,0.1);border:1px solid #e74c3c;border-radius:10px;padding:16px;margin-bottom:16px;display:none;font-size:0.9rem;}
+.error-display strong{color:#e74c3c;}
+
+.copy-btn{background:#333;color:#ccc;border:none;padding:4px 12px;border-radius:5px;font-size:0.7rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#2ecc71;color:#fff;}
+
+.view-toggle{display:flex;gap:0;margin-left:auto;}
+.view-toggle button{border-radius:0;padding:4px 12px;font-size:0.75rem;background:#222;color:#888;border:1px solid #333;}
+.view-toggle button:first-child{border-radius:5px 0 0 5px;}
+.view-toggle button:last-child{border-radius:0 5px 5px 0;border-left:none;}
+.view-toggle button.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:768px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .editor-wrap{grid-template-columns:1fr;min-height:auto;}
+  textarea{min-height:200px;}
+  .output-panel{min-height:200px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">SPUNKART.COM</div>
+  <div class="links"><a href="/store">Store</a><a href="/tools">Free Tools</a><a href="/blog">Blog</a></div>
+</nav>
+<main>
+  <h1>JSON Formatter & Validator</h1>
+  <p class="subtitle">Paste JSON to format, validate, and explore. Syntax highlighting, tree view, and minify support.</p>
+
+  <div class="toolbar">
+    <button onclick="formatJSON()">Format</button>
+    <button class="btn-secondary" onclick="minifyJSON()">Minify</button>
+    <button class="btn-secondary" onclick="copyOutput()">Copy Output</button>
+    <button class="btn-secondary" onclick="clearAll()">Clear</button>
+    <button class="btn-secondary" onclick="loadSample()">Load Sample</button>
+  </div>
+
+  <div class="error-display" id="errorDisplay">
+    <strong>JSON Error:</strong> <span id="errorMsg"></span>
+  </div>
+
+  <div class="status-bar" id="statusBar">
+    <span class="status-item" id="statusValid">Paste JSON to validate</span>
+    <span class="status-item" id="statusSize">Size: 0 bytes</span>
+    <span class="status-item" id="statusLines">Lines: 0</span>
+    <span class="status-item" id="statusDepth">Depth: 0</span>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header">
+        Input
+        <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('jsonInput').value)">Copy</button>
+      </div>
+      <textarea id="jsonInput" placeholder='Paste your JSON here...
+
+Example:
+{"name": "value", "count": 42}' spellcheck="false"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        Output
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div class="view-toggle">
+            <button class="active" id="btnFormatted" onclick="setView('formatted')">Formatted</button>
+            <button id="btnTree" onclick="setView('tree')">Tree</button>
+          </div>
+          <button class="copy-btn" id="outputCopyBtn" onclick="copyOutput()">Copy</button>
+        </div>
+      </div>
+      <div class="output-panel" id="outputPanel">
+        <div class="formatted" id="formattedView" style="color:#555;">Output will appear here...</div>
+        <div class="tree-view" id="treeView" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Developer Tools & Resources</h3>
+    <p>Premium dev tools, design assets, and creative resources from SPUNKART.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Dev Tools Weekly</h2>
+    <p>Join developers getting new tools, tips, and resources every week.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; All rights reserved.</footer>
+
+<script>
+let currentView='formatted';
+let parsedJSON=null;
+let formattedStr='';
+
+const input=document.getElementById('jsonInput');
+
+input.addEventListener('input',debounce(()=>{
+  if(input.value.trim())formatJSON();
+  else{
+    clearOutput();
+    updateStatus(null);
+  }
+},300));
+
+// Tab key support in textarea
+input.addEventListener('keydown',e=>{
+  if(e.key==='Tab'){
+    e.preventDefault();
+    const start=input.selectionStart;
+    const end=input.selectionEnd;
+    input.value=input.value.substring(0,start)+'  '+input.value.substring(end);
+    input.selectionStart=input.selectionEnd=start+2;
+  }
+});
+
+function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};}
+
+function formatJSON(){
+  const raw=input.value.trim();
+  if(!raw){clearOutput();return;}
+
+  try{
+    parsedJSON=JSON.parse(raw);
+    formattedStr=JSON.stringify(parsedJSON,null,2);
+
+    document.getElementById('errorDisplay').style.display='none';
+    renderFormatted(formattedStr);
+    renderTree(parsedJSON);
+    updateStatus(parsedJSON,formattedStr);
+
+    gtag('event','format_json',{event_category:'tool_use'});
+  }catch(err){
+    parsedJSON=null;
+    formattedStr='';
+    showError(err);
+    updateStatus(null);
+  }
+}
+
+function minifyJSON(){
+  const raw=input.value.trim();
+  if(!raw)return;
+  try{
+    const obj=JSON.parse(raw);
+    const minified=JSON.stringify(obj);
+    input.value=minified;
+    formattedStr=minified;
+    renderFormatted(minified);
+    renderTree(obj);
+    updateStatus(obj,minified);
+    document.getElementById('errorDisplay').style.display='none';
+    gtag('event','minify_json',{event_category:'tool_use'});
+  }catch(err){showError(err);}
+}
+
+function showError(err){
+  const msg=err.message;
+  document.getElementById('errorMsg').textContent=msg;
+  document.getElementById('errorDisplay').style.display='block';
+  document.getElementById('formattedView').innerHTML=`<span style="color:#e74c3c;">Invalid JSON</span>`;
+  document.getElementById('treeView').innerHTML='';
+  document.getElementById('statusValid').textContent='Invalid JSON';
+  document.getElementById('statusValid').className='status-item invalid';
+}
+
+function renderFormatted(str){
+  const highlighted=syntaxHighlight(str);
+  document.getElementById('formattedView').innerHTML=highlighted;
+}
+
+function syntaxHighlight(json){
+  json=json.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?|[{}\[\],])/g,match=>{
+    let cls='json-number';
+    if(/^"/.test(match)){
+      if(/:$/.test(match)){cls='json-key';}
+      else{cls='json-string';}
+    }else if(/true|false/.test(match)){cls='json-boolean';}
+    else if(/null/.test(match)){cls='json-null';}
+    else if(/[{}\[\]]/.test(match)){cls='json-bracket';}
+    return `<span class="${cls}">${match}</span>`;
+  });
+}
+
+function renderTree(obj){
+  document.getElementById('treeView').innerHTML=buildTree(obj,'root',0);
+}
+
+function buildTree(obj,key,depth){
+  const id='tn_'+Math.random().toString(36).substr(2,8);
+
+  if(obj===null)return `<div class="tree-line"><span class="tree-val-null">null</span></div>`;
+  if(typeof obj==='string')return `<div class="tree-line"><span class="tree-val-string">"${escHtml(obj)}"</span></div>`;
+  if(typeof obj==='number')return `<div class="tree-line"><span class="tree-val-number">${obj}</span></div>`;
+  if(typeof obj==='boolean')return `<div class="tree-line"><span class="tree-val-boolean">${obj}</span></div>`;
+
+  const isArray=Array.isArray(obj);
+  const entries=isArray?obj.map((v,i)=>[i,v]):Object.entries(obj);
+  const bracket=isArray?['[',']']:['{','}'];
+  const count=entries.length;
+
+  let html=`<div class="tree-line">`;
+  html+=`<span class="tree-toggle" onclick="toggleTree('${id}')">&#9660;</span>`;
+  html+=`<span class="tree-bracket">${bracket[0]}</span>`;
+  html+=`<span style="color:#555;font-size:0.75rem;"> ${count} ${count===1?'item':'items'}</span>`;
+  html+=`</div>`;
+  html+=`<div class="tree-node" id="${id}">`;
+
+  for(const [k,v] of entries){
+    const keyLabel=isArray?`<span style="color:#555;">${k}:</span>`:`<span class="tree-key">"${escHtml(String(k))}"</span><span style="color:#888;">: </span>`;
+
+    if(v===null){
+      html+=`<div class="tree-line">${keyLabel}<span class="tree-val-null">null</span></div>`;
+    }else if(typeof v==='object'){
+      html+=`<div class="tree-line">${keyLabel}</div>`;
+      html+=`<div style="margin-left:20px;">${buildTree(v,k,depth+1)}</div>`;
+    }else if(typeof v==='string'){
+      html+=`<div class="tree-line">${keyLabel}<span class="tree-val-string">"${escHtml(v)}"</span></div>`;
+    }else if(typeof v==='number'){
+      html+=`<div class="tree-line">${keyLabel}<span class="tree-val-number">${v}</span></div>`;
+    }else if(typeof v==='boolean'){
+      html+=`<div class="tree-line">${keyLabel}<span class="tree-val-boolean">${v}</span></div>`;
+    }
+  }
+
+  html+=`</div>`;
+  html+=`<div class="tree-line"><span class="tree-bracket">${bracket[1]}</span></div>`;
+  return html;
+}
+
+function toggleTree(id){
+  const el=document.getElementById(id);
+  const isHidden=el.style.display==='none';
+  el.style.display=isHidden?'block':'none';
+  // Update arrow
+  const toggle=el.previousElementSibling.querySelector('.tree-toggle')||el.parentElement.querySelector('.tree-toggle');
+  if(toggle)toggle.innerHTML=isHidden?'&#9660;':'&#9654;';
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function updateStatus(obj,str){
+  const raw=input.value;
+  document.getElementById('statusSize').textContent=`Size: ${new Blob([raw]).size} bytes`;
+  document.getElementById('statusLines').textContent=`Lines: ${raw.split('\n').length}`;
+
+  if(obj!==null&&obj!==undefined){
+    document.getElementById('statusValid').textContent='Valid JSON';
+    document.getElementById('statusValid').className='status-item valid';
+    document.getElementById('statusDepth').textContent=`Depth: ${getDepth(obj)}`;
+  }else{
+    document.getElementById('statusValid').textContent='Invalid JSON';
+    document.getElementById('statusValid').className='status-item invalid';
+    document.getElementById('statusDepth').textContent='Depth: -';
+  }
+}
+
+function getDepth(obj){
+  if(typeof obj!=='object'||obj===null)return 0;
+  const vals=Array.isArray(obj)?obj:Object.values(obj);
+  if(vals.length===0)return 1;
+  return 1+Math.max(...vals.map(v=>getDepth(v)));
+}
+
+function setView(view){
+  currentView=view;
+  document.getElementById('btnFormatted').classList.toggle('active',view==='formatted');
+  document.getElementById('btnTree').classList.toggle('active',view==='tree');
+  document.getElementById('formattedView').style.display=view==='formatted'?'block':'none';
+  document.getElementById('treeView').style.display=view==='tree'?'block':'none';
+}
+
+function copyOutput(){
+  if(formattedStr){
+    navigator.clipboard.writeText(formattedStr).then(()=>{
+      const btn=document.getElementById('outputCopyBtn');
+      btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+    });
+    gtag('event','copy_json',{event_category:'tool_use'});
+  }
+}
+
+function clearAll(){
+  input.value='';
+  formattedStr='';
+  parsedJSON=null;
+  clearOutput();
+  updateStatus(null);
+  document.getElementById('errorDisplay').style.display='none';
+}
+
+function clearOutput(){
+  document.getElementById('formattedView').innerHTML='<span style="color:#555;">Output will appear here...</span>';
+  document.getElementById('treeView').innerHTML='';
+}
+
+function loadSample(){
+  input.value=JSON.stringify({
+    "name":"SPUNKART",
+    "version":"2.0",
+    "description":"Creative tools and design resources",
+    "features":["JSON Formatter","Color Palettes","QR Generator","Meta Tags","Security Headers"],
+    "pricing":{"free_tools":true,"premium":{"monthly":9.99,"annual":99}},
+    "stats":{"users":15000,"tools_count":50,"uptime":99.9},
+    "links":{"website":"https://spunkart.com","store":"https://spunkart.com/store"},
+    "active":true,
+    "beta_features":null
+  },null,2);
+  formatJSON();
+}
+
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  const email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){gtag('event','email_signup',{event_category:'conversion'});alert('Thanks for subscribing!');closeEmail();}
+  else{alert('Please enter a valid email.');}
+}
+if(!localStorage.getItem('emailDismissed')){setTimeout(()=>{document.getElementById('emailOverlay').classList.add('show');},30000);}
+</script>
+</body>
+</html>

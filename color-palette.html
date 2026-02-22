@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator - Free Design Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate beautiful 5-color palettes instantly. Filter by mood, copy hex codes, and export as CSS variables. Free color palette tool for designers.">
+<meta property="og:title" content="Color Palette Generator - Free Design Tool">
+<meta property="og:description" content="Generate beautiful 5-color palettes instantly. Filter by mood, copy hex codes, export as CSS variables.">
+<meta property="og:image" content="https://spunkart.com/assets/og-color-palette.png">
+<meta property="og:url" content="https://spunkart.com/color-palette.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color Palette Generator - Free Design Tool">
+<meta name="twitter:description" content="Generate beautiful color palettes instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/color-palette.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-mood{background:#222;color:#ccc;padding:8px 18px;font-size:0.85rem;border-radius:20px;}
+.btn-mood:hover,.btn-mood.active{background:#ff5f1f;color:#fff;}
+.spacebar-hint{color:#555;font-size:0.8rem;margin-left:8px;}
+
+.palette-display{display:flex;border-radius:16px;overflow:hidden;margin-bottom:24px;min-height:320px;}
+.swatch{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 8px;cursor:pointer;transition:flex 0.3s;position:relative;}
+.swatch:hover{flex:1.3;}
+.swatch .hex{background:rgba(0,0,0,0.5);color:#fff;padding:4px 10px;border-radius:6px;font-size:0.85rem;font-weight:700;letter-spacing:0.5px;margin-bottom:8px;backdrop-filter:blur(4px);}
+.swatch .copied-toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#2ecc71;padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.9rem;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.swatch .copied-toast.show{opacity:1;}
+.swatch .rgb-label{font-size:0.7rem;color:rgba(255,255,255,0.7);background:rgba(0,0,0,0.4);padding:2px 8px;border-radius:4px;backdrop-filter:blur(4px);}
+
+.export-section{margin-top:8px;}
+.export-block{background:#151515;border:1px solid #333;border-radius:10px;padding:16px;position:relative;margin-bottom:16px;}
+.export-block h3{font-size:0.85rem;color:#ff5f1f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.export-block pre{background:#0d0d0d;padding:12px;border-radius:6px;font-size:0.85rem;color:#ccc;white-space:pre-wrap;overflow-x:auto;}
+.copy-btn{position:absolute;top:12px;right:12px;background:#333;color:#ccc;border:none;padding:5px 12px;border-radius:5px;font-size:0.75rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#2ecc71;color:#fff;}
+
+.history{margin-top:32px;}
+.history h3{color:#fff;margin-bottom:12px;}
+.history-row{display:flex;border-radius:8px;overflow:hidden;height:40px;margin-bottom:8px;cursor:pointer;transition:transform 0.2s;}
+.history-row:hover{transform:scaleY(1.15);}
+.history-row div{flex:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .palette-display{min-height:240px;flex-direction:column;min-height:500px;}
+  .swatch{flex:1 !important;flex-direction:row;justify-content:center;gap:8px;padding:8px;}
+  .swatch:hover{flex:1.2 !important;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">SPUNKART.COM</div>
+  <div class="links"><a href="/store">Store</a><a href="/tools">Free Tools</a><a href="/blog">Blog</a></div>
+</nav>
+<main>
+  <h1>Color Palette Generator</h1>
+  <p class="subtitle">Generate beautiful 5-color palettes. Click any swatch to copy its hex code.</p>
+
+  <div class="controls">
+    <button onclick="generate()">Generate Palette</button>
+    <span class="spacebar-hint">or press Spacebar</span>
+  </div>
+  <div class="controls">
+    <button class="btn-mood active" data-mood="any" onclick="setMood('any',this)">Any</button>
+    <button class="btn-mood" data-mood="warm" onclick="setMood('warm',this)">Warm</button>
+    <button class="btn-mood" data-mood="cool" onclick="setMood('cool',this)">Cool</button>
+    <button class="btn-mood" data-mood="pastel" onclick="setMood('pastel',this)">Pastel</button>
+    <button class="btn-mood" data-mood="dark" onclick="setMood('dark',this)">Dark</button>
+    <button class="btn-mood" data-mood="neon" onclick="setMood('neon',this)">Neon</button>
+  </div>
+
+  <div class="palette-display" id="paletteDisplay"></div>
+
+  <div class="export-section">
+    <div class="export-block">
+      <h3>CSS Variables</h3>
+      <button class="copy-btn" onclick="copyEl('cssExport',this)">Copy</button>
+      <pre id="cssExport"></pre>
+    </div>
+    <div class="export-block">
+      <h3>Array (Hex Codes)</h3>
+      <button class="copy-btn" onclick="copyEl('arrayExport',this)">Copy</button>
+      <pre id="arrayExport"></pre>
+    </div>
+  </div>
+
+  <div class="history" id="historySection" style="display:none;">
+    <h3>Recent Palettes <span style="font-size:0.75rem;color:#666;">(click to restore)</span></h3>
+    <div id="historyList"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Love Colors? Check Our Design Store</h3>
+    <p>Premium color palettes, design assets, and creative tools from SPUNKART.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Weekly Color Inspiration</h2>
+    <p>Join designers getting curated palettes and design tips every week.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; All rights reserved.</footer>
+
+<script>
+let currentMood='any';
+let palette=[];
+let history=[];
+
+const moods={
+  any:()=>randomHSL(0,360,30,90,30,90),
+  warm:()=>randomHSL(0,60,50,90,40,80),
+  cool:()=>randomHSL(180,270,40,80,35,75),
+  pastel:()=>randomHSL(0,360,40,70,75,95),
+  dark:()=>randomHSL(0,360,30,70,10,35),
+  neon:()=>randomHSL(0,360,90,100,50,65),
+};
+
+function randomHSL(hMin,hMax,sMin,sMax,lMin,lMax){
+  const h=Math.floor(Math.random()*(hMax-hMin)+hMin);
+  const s=Math.floor(Math.random()*(sMax-sMin)+sMin);
+  const l=Math.floor(Math.random()*(lMax-lMin)+lMin);
+  return hslToHex(h,s,l);
+}
+
+function hslToHex(h,s,l){
+  s/=100;l/=100;
+  const a=s*Math.min(l,1-l);
+  const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0');};
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function luminance(hex){
+  const r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
+  return 0.299*r+0.587*g+0.114*b;
+}
+
+function setMood(mood,btn){
+  currentMood=mood;
+  document.querySelectorAll('.btn-mood').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  generate();
+}
+
+function generate(){
+  palette=[];
+  const gen=moods[currentMood];
+  // generate harmonious palette with spread hues
+  const baseHue=Math.floor(Math.random()*360);
+  for(let i=0;i<5;i++){
+    palette.push(gen());
+  }
+  render();
+  history.unshift([...palette]);
+  if(history.length>10)history.pop();
+  renderHistory();
+  gtag('event','generate_palette',{event_category:'tool_use',event_label:currentMood});
+}
+
+function render(){
+  const display=document.getElementById('paletteDisplay');
+  display.innerHTML=palette.map((hex,i)=>{
+    const textColor=luminance(hex)>0.5?'#000':'#fff';
+    return `<div class="swatch" style="background:${hex};color:${textColor}" onclick="copySwatch(${i},this)">
+      <div class="copied-toast" id="toast${i}">Copied!</div>
+      <div class="hex">${hex.toUpperCase()}</div>
+      <div class="rgb-label">${hexToRgb(hex)}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('cssExport').textContent=`:root {\n${palette.map((h,i)=>`  --color-${i+1}: ${h.toUpperCase()};`).join('\n')}\n}`;
+  document.getElementById('arrayExport').textContent=`[${palette.map(h=>`"${h.toUpperCase()}"`).join(', ')}]`;
+}
+
+function copySwatch(i,el){
+  const hex=palette[i].toUpperCase();
+  navigator.clipboard.writeText(hex);
+  const toast=document.getElementById('toast'+i);
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),1200);
+  gtag('event','copy_color',{event_category:'tool_use',event_label:hex});
+}
+
+function renderHistory(){
+  const section=document.getElementById('historySection');
+  const list=document.getElementById('historyList');
+  if(history.length<2){section.style.display='none';return;}
+  section.style.display='block';
+  list.innerHTML=history.slice(1).map((pal,idx)=>`<div class="history-row" onclick="restorePalette(${idx+1})">${pal.map(c=>`<div style="background:${c}"></div>`).join('')}</div>`).join('');
+}
+
+function restorePalette(idx){
+  palette=[...history[idx]];
+  render();
+}
+
+function copyEl(id,btn){
+  navigator.clipboard.writeText(document.getElementById(id).textContent).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'&&e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();generate();}
+});
+
+generate();
+
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  const email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){gtag('event','email_signup',{event_category:'conversion'});alert('Thanks for subscribing!');closeEmail();}
+  else{alert('Please enter a valid email.');}
+}
+if(!localStorage.getItem('emailDismissed')){setTimeout(()=>{document.getElementById('emailOverlay').classList.add('show');},30000);}
+</script>
+</body>
+</html>

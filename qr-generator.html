@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator - Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate QR codes instantly for any URL or text. Customize size and colors, download as PNG. Free, fast, no signup required.">
+<meta property="og:title" content="QR Code Generator - Free Online Tool">
+<meta property="og:description" content="Generate QR codes instantly for any URL or text. Customize colors and size. Download as PNG.">
+<meta property="og:image" content="https://spunkart.com/assets/og-qr-generator.png">
+<meta property="og:url" content="https://spunkart.com/qr-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QR Code Generator - Free Online Tool">
+<meta name="twitter:description" content="Generate QR codes instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/qr-generator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:32px;font-size:1rem;}
+
+.form-group{margin-bottom:20px;}
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],input[type="url"],textarea,select{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;transition:border-color 0.2s;}
+input:focus,textarea:focus,select:focus{border-color:#ff5f1f;}
+textarea{resize:vertical;min-height:100px;}
+select{cursor:pointer;}
+input[type="color"]{width:60px;height:40px;border:1px solid #333;border-radius:8px;background:#151515;cursor:pointer;padding:2px;}
+
+.form-row{display:flex;gap:16px;flex-wrap:wrap;}
+.form-row .form-group{flex:1;min-width:120px;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.qr-output{text-align:center;margin-top:32px;display:none;}
+.qr-output canvas,.qr-output img{border-radius:12px;background:#fff;padding:16px;max-width:100%;}
+.qr-canvas-wrap{display:inline-block;background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;}
+.qr-canvas-wrap canvas{display:block;}
+
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .form-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">SPUNKART.COM</div>
+  <div class="links"><a href="/store">Store</a><a href="/tools">Free Tools</a><a href="/blog">Blog</a></div>
+</nav>
+<main>
+  <h1>QR Code Generator</h1>
+  <p class="subtitle">Generate QR codes for any URL or text. Customize colors and size. Download as PNG.</p>
+
+  <div class="form-group">
+    <label>Content (URL or Text)</label>
+    <textarea id="qrContent" placeholder="https://example.com or any text..."></textarea>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Size (px)</label>
+      <select id="qrSize">
+        <option value="200">200 x 200</option>
+        <option value="300" selected>300 x 300</option>
+        <option value="400">400 x 400</option>
+        <option value="500">500 x 500</option>
+        <option value="600">600 x 600</option>
+        <option value="800">800 x 800</option>
+        <option value="1000">1000 x 1000</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Error Correction</label>
+      <select id="qrEC">
+        <option value="L">Low (7%)</option>
+        <option value="M" selected>Medium (15%)</option>
+        <option value="Q">Quartile (25%)</option>
+        <option value="H">High (30%)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Foreground Color</label>
+      <input type="color" id="qrFg" value="#000000">
+    </div>
+    <div class="form-group">
+      <label>Background Color</label>
+      <input type="color" id="qrBg" value="#ffffff">
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <button onclick="generateQR()">Generate QR Code</button>
+    <button class="btn-secondary" onclick="clearQR()">Clear</button>
+  </div>
+
+  <div class="qr-output" id="qrOutput">
+    <div class="qr-canvas-wrap" id="qrWrap">
+      <canvas id="qrCanvas"></canvas>
+    </div>
+    <div class="btn-row">
+      <button onclick="downloadQR()">Download PNG</button>
+      <button class="btn-secondary" onclick="copyQR()">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Need Custom Branded QR Codes?</h3>
+    <p>Professional design services and branding tools from SPUNKART.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Marketing Tools</h2>
+    <p>Join creators getting weekly free tools, templates, and marketing tips.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; All rights reserved.</footer>
+
+<script>
+function generateQR(){
+  const content=document.getElementById('qrContent').value.trim();
+  if(!content){alert('Please enter a URL or text.');return;}
+
+  const size=parseInt(document.getElementById('qrSize').value);
+  const ecMap={L:1,M:0,Q:3,H:2};
+  const ecLevel=ecMap[document.getElementById('qrEC').value];
+  const fg=document.getElementById('qrFg').value;
+  const bg=document.getElementById('qrBg').value;
+
+  const qr=qrcode(0,['L','M','Q','H'][ecLevel]);
+  qr.addData(content);
+  qr.make();
+
+  const canvas=document.getElementById('qrCanvas');
+  const ctx=canvas.getContext('2d');
+  const moduleCount=qr.getModuleCount();
+  const cellSize=size/moduleCount;
+
+  canvas.width=size;
+  canvas.height=size;
+
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,size,size);
+
+  for(let row=0;row<moduleCount;row++){
+    for(let col=0;col<moduleCount;col++){
+      if(qr.isDark(row,col)){
+        ctx.fillStyle=fg;
+        ctx.fillRect(col*cellSize,row*cellSize,cellSize+0.5,cellSize+0.5);
+      }
+    }
+  }
+
+  document.getElementById('qrWrap').style.background=bg;
+  document.getElementById('qrOutput').style.display='block';
+  document.getElementById('qrOutput').scrollIntoView({behavior:'smooth'});
+
+  gtag('event','generate_qr',{event_category:'tool_use'});
+}
+
+function downloadQR(){
+  const canvas=document.getElementById('qrCanvas');
+  const link=document.createElement('a');
+  link.download='qrcode-spunkart.png';
+  link.href=canvas.toDataURL('image/png');
+  link.click();
+  gtag('event','download_qr',{event_category:'tool_use'});
+}
+
+function copyQR(){
+  const canvas=document.getElementById('qrCanvas');
+  canvas.toBlob(blob=>{
+    navigator.clipboard.write([new ClipboardItem({'image/png':blob})]).then(()=>{
+      alert('QR code copied to clipboard!');
+    }).catch(()=>{
+      alert('Copy not supported in this browser. Use the download button instead.');
+    });
+  });
+}
+
+function clearQR(){
+  document.getElementById('qrContent').value='';
+  document.getElementById('qrOutput').style.display='none';
+}
+
+// Allow Enter key to generate
+document.getElementById('qrContent').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();generateQR();}
+});
+
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  const email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){gtag('event','email_signup',{event_category:'conversion'});alert('Thanks for subscribing!');closeEmail();}
+  else{alert('Please enter a valid email.');}
+}
+if(!localStorage.getItem('emailDismissed')){setTimeout(()=>{document.getElementById('emailOverlay').classList.add('show');},30000);}
+</script>
+</body>
+</html>

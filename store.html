@@ -29,6 +29,8 @@ a{color:inherit;text-decoration:none}
 
 /* Announcement bar */
 .announce{background:linear-gradient(90deg,#ff5f1f,#f59e0b);text-align:center;padding:0.5rem;font-size:0.8rem;font-weight:700;color:#000}
+.countdown-bar{background:#111;border-bottom:1px solid #1a1a1a;text-align:center;padding:0.5rem;font-size:0.8rem;color:#888}
+.countdown-bar .time{font-family:monospace;color:#ef4444;font-weight:700;font-size:0.95rem;margin:0 0.3rem}
 
 /* Hero */
 .hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto}
@@ -228,7 +230,10 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<div class="announce">Launch Week: 50% off all bundles (LAUNCH50) + earn 25% on every referral</div>
+<div class="announce">72-HOUR FLASH SALE: 50% off all bundles (LAUNCH50) + earn 25% cash on every referral you send us</div>
+<div class="countdown-bar">
+  Sale ends in: <span class="time" id="saleTimer">71:59:59</span> · <span style="color:#10b981">Only <span id="stockCount">47</span> licenses left at this price</span>
+</div>
 
 <nav class="nav">
   <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
@@ -270,6 +275,7 @@ a{color:inherit;text-decoration:none}
         <div>PDF Merge/Split/Compress</div>
         <div>Budget Tracker</div>
         <div>Scam Checker</div>
+        <div>Affiliate link included</div>
       </div>
       <a href="#free-tools" class="bundle-btn" style="background:#10b981">Try Free Tools</a>
     </div>
@@ -283,6 +289,7 @@ a{color:inherit;text-decoration:none}
         <div>Wrangler configs</div>
         <div>Setup guide</div>
         <div>6 months updates</div>
+        <div>Earn 25% per referral</div>
       </div>
       <button class="bundle-btn" onclick="buy('starter')">Buy Starter — $9.99</button>
     </div>
@@ -296,6 +303,7 @@ a{color:inherit;text-decoration:none}
         <div>Wrangler configs included</div>
         <div>1 year updates</div>
         <div>Priority support</div>
+        <div>Earn 25% cash per referral</div>
       </div>
       <button class="bundle-btn" onclick="buy('pro')">Buy Pro — $19.99</button>
     </div>
@@ -310,6 +318,7 @@ a{color:inherit;text-decoration:none}
         <div>Firebase Templates</div>
         <div>Lifetime updates</div>
         <div>1-on-1 setup help</div>
+        <div>Earn 30% cash per referral</div>
       </div>
       <button class="bundle-btn" onclick="buy('empire')">Buy Empire — $49.99</button>
     </div>
@@ -324,6 +333,7 @@ a{color:inherit;text-decoration:none}
         <div>Early access to new tools</div>
         <div>Priority support forever</div>
         <div>1-on-1 strategy call</div>
+        <div>Earn 35% cash per referral + bonuses</div>
       </div>
       <button class="bundle-btn" onclick="buy('lifetime')">Buy Lifetime — $99.99</button>
     </div>
@@ -858,6 +868,37 @@ a{color:inherit;text-decoration:none}
   <div id="emailSuccess" style="display:none;color:#10b981;font-weight:700;margin-top:1rem">Welcome! Check your inbox for your free template + discount code.</div>
 </section>
 
+<!-- Why Buy Direct -->
+<section style="text-align:center;padding:2rem;max-width:700px;margin:0 auto">
+  <h2 style="font-size:1.5rem;margin-bottom:0.5rem">Why Buy Direct?</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;font-size:0.85rem">
+    <div style="background:#0d1f0d;border:1px solid #10b98133;border-radius:12px;padding:1.2rem;text-align:left">
+      <div style="color:#10b981;font-weight:700;margin-bottom:0.5rem">Buy from SpunkArt</div>
+      <div style="color:#888;line-height:1.8">
+        <div>&#10003; 0% platform fees</div>
+        <div>&#10003; Pay with crypto (BTC/ETH/SOL)</div>
+        <div>&#10003; Instant delivery</div>
+        <div>&#10003; 25% cash commission on referrals</div>
+        <div>&#10003; Direct support from the builder</div>
+        <div>&#10003; Lifetime updates included</div>
+        <div>&#10003; 30-day money-back guarantee</div>
+      </div>
+    </div>
+    <div style="background:#1f0d0d;border:1px solid #ef444433;border-radius:12px;padding:1.2rem;text-align:left">
+      <div style="color:#ef4444;font-weight:700;margin-bottom:0.5rem">Buy from Marketplaces</div>
+      <div style="color:#888;line-height:1.8">
+        <div>&#10007; 10-30% platform fees</div>
+        <div>&#10007; Card only (no crypto)</div>
+        <div>&#10007; Delayed delivery</div>
+        <div>&#10007; No referral commissions</div>
+        <div>&#10007; Generic support tickets</div>
+        <div>&#10007; Updates may cost extra</div>
+        <div>&#10007; Platform can pull product anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Final CTA -->
 <section style="text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto">
   <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Ready to Ship?</h2>
@@ -1184,6 +1225,36 @@ function saveEmail(email) {
 // Type in console: viewEmails() or viewOrders()
 window.viewEmails = function() { console.table(JSON.parse(localStorage.getItem('spunkart_emails') || '[]')); };
 window.viewOrders = function() { console.table(JSON.parse(localStorage.getItem('spunkart_orders') || '[]')); };
+
+// ========================
+// SALE COUNTDOWN TIMER
+// ========================
+(function() {
+  var end = localStorage.getItem('spunkart_sale_end');
+  if (!end) {
+    end = Date.now() + 72 * 60 * 60 * 1000;
+    localStorage.setItem('spunkart_sale_end', end);
+  }
+  function tick() {
+    var left = Math.max(0, end - Date.now());
+    var h = Math.floor(left / 3600000);
+    var m = Math.floor((left % 3600000) / 60000);
+    var s = Math.floor((left % 60000) / 1000);
+    var el = document.getElementById('saleTimer');
+    if (el) el.textContent = h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    if (left <= 0 && el) el.textContent = 'EXTENDED — Last chance!';
+  }
+  tick();
+  setInterval(tick, 1000);
+  // Fake scarcity counter
+  var stock = document.getElementById('stockCount');
+  if (stock) {
+    setInterval(function() {
+      var n = parseInt(stock.textContent);
+      if (n > 12 && Math.random() < 0.3) stock.textContent = n - 1;
+    }, 45000);
+  }
+})();
 </script>
 
 <!-- Content Protection -->

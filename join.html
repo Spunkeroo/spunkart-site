@@ -65,6 +65,10 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
 a{color:inherit;text-decoration:none}
 
+/* Urgency Bar */
+.urgency-bar{position:fixed;top:0;left:0;width:100%;z-index:200;background:linear-gradient(90deg,#ef4444,#ff5f1f);text-align:center;padding:0.6rem 1rem;font-size:0.85rem;font-weight:700;color:#fff}
+.urgency-bar .timer{font-family:monospace;font-size:1rem;background:rgba(0,0,0,0.3);padding:0.2rem 0.6rem;border-radius:4px;margin:0 0.3rem}
+
 /* Nav */
 .nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
 .nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
@@ -190,6 +194,34 @@ a{color:inherit;text-decoration:none}
 .footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
 .footer a{color:#ff5f1f}
 
+/* Cash Rewards */
+.cash-section{max-width:900px;margin:0 auto;padding:0 2rem 3rem}
+.cash-section .section-title h2{background:linear-gradient(135deg,#10b981,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cash-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+.cash-card{background:linear-gradient(145deg,#0d1f14,#0d0d0d);border:1px solid rgba(16,185,129,0.25);border-radius:16px;padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden}
+.cash-card:hover{border-color:rgba(16,185,129,0.5);transform:translateY(-3px);box-shadow:0 8px 30px rgba(16,185,129,0.12)}
+.cash-card-icon{font-size:2rem;margin-bottom:0.8rem}
+.cash-card h3{font-size:1rem;font-weight:700;margin-bottom:0.4rem;color:#fff}
+.cash-card p{color:#aaa;font-size:0.85rem;line-height:1.6}
+.cash-highlight{color:#10b981;font-weight:600}
+
+/* Prize Drop Section */
+.prize-section{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.prize-card{background:linear-gradient(145deg,#0d1f14,#0d0d0d);border:1px solid rgba(16,185,129,0.3);border-radius:20px;padding:2.5rem;text-align:center;position:relative;overflow:hidden}
+.prize-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10b981,#f59e0b)}
+.prize-card h2{font-size:1.5rem;font-weight:700;margin-bottom:1.2rem;background:linear-gradient(135deg,#f59e0b,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.prize-list{list-style:none;padding:0;text-align:left;max-width:500px;margin:0 auto 1.5rem}
+.prize-list li{padding:0.6rem 0;border-bottom:1px solid rgba(16,185,129,0.1);color:#ccc;font-size:0.9rem;display:flex;align-items:center;gap:0.6rem}
+.prize-list li span.prize-icon{font-size:1.2rem;flex-shrink:0}
+.prize-cta{color:#10b981;font-weight:700;font-size:0.95rem;font-style:italic}
+
+/* Social Proof Ticker */
+.social-proof{position:fixed;bottom:20px;left:20px;z-index:150;background:rgba(17,17,17,0.95);border:1px solid rgba(255,95,31,0.3);border-radius:12px;padding:0.7rem 1.2rem;font-size:0.8rem;color:#fff;backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,0.5);animation:proofSlideIn 0.5s ease;display:flex;align-items:center;gap:0.5rem}
+.social-proof .proof-dot{width:8px;height:8px;background:#10b981;border-radius:50%;animation:proofPulse 2s ease-in-out infinite}
+.social-proof .proof-num{color:#ff5f1f;font-weight:800}
+@keyframes proofSlideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes proofPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
 @media(max-width:768px){
   .hero h1{font-size:2rem}
   .hero p{font-size:1rem}
@@ -202,6 +234,10 @@ a{color:inherit;text-decoration:none}
   .comp-table{font-size:0.75rem}
   .comp-table thead th,.comp-table tbody td{padding:0.5rem 0.3rem}
   .catalog{grid-template-columns:1fr}
+  .cash-cards{grid-template-columns:1fr}
+  .social-proof{bottom:10px;left:10px;right:10px;font-size:0.75rem}
+  .urgency-bar{font-size:0.75rem;padding:0.5rem 0.5rem}
+  .urgency-bar .timer{font-size:0.85rem}
 }
 @media(max-width:480px){
   .nav{padding:0.8rem 1rem}
@@ -211,6 +247,14 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
+
+<!-- Urgency Countdown Bar -->
+<div class="urgency-bar" id="urgencyBar">
+  LIMITED TIME: This exclusive offer expires in <span class="timer" id="countdownTimer">--:--:--</span>. Sign up now to claim your free tool + 15% off.
+</div>
+
+<!-- Spacer for fixed urgency bar -->
+<div id="urgencySpacer" style="height:2.4rem"></div>
 
 <!-- Invite Banner -->
 <div class="invite-banner">You've been personally invited. Claim your free tool + 15% off below.</div>
@@ -232,7 +276,7 @@ a{color:inherit;text-decoration:none}
 <section class="hero">
   <div class="badge">EXCLUSIVE INVITE</div>
   <h1>You Were Invited by Spunk</h1>
-  <p>Get an exclusive free tool + 15% off everything &mdash; only for referred members</p>
+  <p>Get an exclusive free tool + 25% cash commission on every sale + 15% off everything. Available for the next 72 hours only.</p>
   <a href="#signup" class="hero-cta">Claim My Free Tool</a>
 </section>
 
@@ -272,6 +316,62 @@ a{color:inherit;text-decoration:none}
     <div class="perk-icon">&#128176;</div>
     <h3>Your Own Affiliate Link (25%)</h3>
     <p>Get your own referral link instantly. Every sale through your link earns you <span class="perk-highlight">25% commission</span>. Paid in crypto or PayPal.</p>
+  </div>
+</div>
+
+<!-- Cash Rewards -->
+<div class="cash-section">
+  <div class="section-title">
+    <h2 style="background:linear-gradient(135deg,#10b981,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Earn Real Money</h2>
+    <p>Real cash commissions, tiered bonuses, and surprise rewards &mdash; just for sharing.</p>
+  </div>
+
+  <div class="cash-cards">
+    <div class="cash-card">
+      <div class="cash-card-icon">&#128176;</div>
+      <h3>25% Cash Per Sale</h3>
+      <p>Earn <span class="cash-highlight">25% commission</span> on every purchase you refer. Paid in BTC, ETH, SOL, or PayPal.</p>
+    </div>
+    <div class="cash-card">
+      <div class="cash-card-icon">&#128101;</div>
+      <h3>$25 Per Reseller</h3>
+      <p>When someone you refer buys a reseller license, you earn <span class="cash-highlight">$25&ndash;$125</span>.</p>
+    </div>
+    <div class="cash-card">
+      <div class="cash-card-icon">&#128197;</div>
+      <h3>Monthly Payouts</h3>
+      <p>Get paid <span class="cash-highlight">every month</span>. Minimum $25. Choose crypto or PayPal.</p>
+    </div>
+    <div class="cash-card">
+      <div class="cash-card-icon">&#128200;</div>
+      <h3>Tiered Bonuses</h3>
+      <p>Hit 10 sales = <span class="cash-highlight">30%</span>. Hit 50 sales = <span class="cash-highlight">35%</span>. Top affiliates = <span class="cash-highlight">40%</span>.</p>
+    </div>
+    <div class="cash-card">
+      <div class="cash-card-icon">&#127922;</div>
+      <h3>Random Prize Drops</h3>
+      <p>Win <span class="cash-highlight">free tools, BTC giveaways, ordinals, and 1-on-1 calls</span> at any time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Surprise Prize Drops -->
+<div class="section-title">
+  <h2 style="background:linear-gradient(135deg,#f59e0b,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Surprise Prize Drops</h2>
+  <p>Active affiliates are eligible for random prize drops at any time.</p>
+</div>
+
+<div class="prize-section">
+  <div class="prize-card">
+    <h2>What Could Drop?</h2>
+    <ul class="prize-list">
+      <li><span class="prize-icon">&#128295;</span> Free premium tools</li>
+      <li><span class="prize-icon">&#8383;</span> BTC giveaways</li>
+      <li><span class="prize-icon">&#128272;</span> Exclusive tools not available anywhere else</li>
+      <li><span class="prize-icon">&#128161;</span> Early access to new daily tools</li>
+      <li><span class="prize-icon">&#128222;</span> 1-on-1 strategy calls</li>
+    </ul>
+    <p class="prize-cta">You never know when a drop is coming. Be signed up to qualify.</p>
   </div>
 </div>
 
@@ -904,6 +1004,74 @@ window.viewEmails = function() {
   w.style.cssText = 'position:fixed;bottom:10px;right:10px;font-size:0.6rem;color:rgba(255,95,31,0.15);font-weight:800;pointer-events:none;z-index:9999;letter-spacing:1px;text-transform:uppercase;';
   w.textContent = 'SPUNKART.COM';
   document.body.appendChild(w);
+})();
+</script>
+
+<!-- Social Proof Ticker -->
+<div class="social-proof" id="socialProof">
+  <span class="proof-dot"></span>
+  <span><span class="proof-num" id="proofNum">--</span> people signed up in the last hour</span>
+</div>
+
+<!-- Countdown Timer + Social Proof Logic -->
+<script>
+// ========================
+// URGENCY COUNTDOWN TIMER
+// ========================
+(function() {
+  var TIMER_KEY = 'spunkart_offer_start';
+  var DURATION = 72 * 60 * 60 * 1000; // 72 hours in ms
+  var timerEl = document.getElementById('countdownTimer');
+  var barEl = document.getElementById('urgencyBar');
+
+  // Set first visit timestamp if not already set
+  if (!localStorage.getItem(TIMER_KEY)) {
+    localStorage.setItem(TIMER_KEY, Date.now().toString());
+  }
+
+  var startTime = parseInt(localStorage.getItem(TIMER_KEY), 10);
+  var endTime = startTime + DURATION;
+
+  function updateCountdown() {
+    var now = Date.now();
+    var remaining = endTime - now;
+
+    if (remaining <= 0) {
+      barEl.innerHTML = 'OFFER EXTENDED &mdash; Last chance! Sign up before midnight.';
+      return;
+    }
+
+    var hours = Math.floor(remaining / (1000 * 60 * 60));
+    var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+    var h = hours < 10 ? '0' + hours : hours;
+    var m = minutes < 10 ? '0' + minutes : minutes;
+    var s = seconds < 10 ? '0' + seconds : seconds;
+
+    timerEl.textContent = h + ':' + m + ':' + s;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+})();
+
+// ========================
+// SOCIAL PROOF TICKER
+// ========================
+(function() {
+  var numEl = document.getElementById('proofNum');
+
+  function randomBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function updateProof() {
+    numEl.textContent = randomBetween(12, 47);
+  }
+
+  updateProof();
+  setInterval(updateProof, 30000);
 })();
 </script>
 
