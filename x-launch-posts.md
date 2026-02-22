@@ -1531,4 +1531,219 @@ I built this because I kept seeing people in this sub asking "is this legit?" �
 
 ---
 
+## 13. OPENCLAW CROSS-PROMOTION POSTS
+
+> **Context:** OpenClaw's most-installed skills reveal their audience is obsessed with X/Twitter growth (161 installs on Xcellent), marketing automation (109 installs on Larry's Marketing Experiments), and free productivity tools. These posts target that audience directly.
+>
+> **Strategy:** Tag @OpenClaw in every post. Their audience already uses agent-based tools — SpunkArt's free tools are a natural complement. Cross-pollinate communities.
+
+### OpenClaw Post 1 — X Growth Audience
+
+If you use @OpenClaw's Xcellent skill for X growth, you'll love our free Social Bio Generator. Generate 10 bios for every platform in seconds.
+
+spunkart.com/social-bio
+
+#freetools
+
+---
+
+### OpenClaw Post 2 — Marketing Audience
+
+Running @OpenClaw's Marketing Experiments? Our free Landing Page Copy Generator creates headlines, CTAs, and feature copy instantly. Perfect for your landing pages.
+
+spunkart.com/landing-page-copy
+
+---
+
+### OpenClaw Post 3 — Web Scraper / Dev Audience
+
+Love @OpenClaw's Web Scraper? Check out our full suite of 23 free web tools — JSON formatter, meta tags, sitemaps, robots.txt, and more. All browser-based.
+
+spunkart.com/spunk
+
+---
+
+### OpenClaw Post 4 — Business Builder Audience
+
+If you're using @OpenClaw to build your business, these free tools will save you hours:
+
+Invoice Generator, Business Name Generator, Privacy Policy Generator, Email Signature Generator — all at spunkart.com/spunk
+
+---
+
+### OpenClaw Post 5 — Automation / Premium Pitch
+
+@OpenClaw skills are incredible for automation. We built 18 Cloudflare Workers that do the same for websites — uptime monitoring, bot blocking, A/B testing, analytics. $4.99 each.
+
+spunkart.com/store
+
+---
+
+## 14. AUDIENCE-SPECIFIC POST BATCHES (Based on OpenClaw Install Data)
+
+> **Data source:** OpenClaw skill install counts as of February 2026.
+>
+> **Key insight:** The most-installed skills are about MARKETING, GROWTH, and CONTENT — not dev tools. This confirms SpunkArt's audience is creators, hustlers, and entrepreneurs, not engineers.
+>
+> **Audience breakdown:**
+> - X/Twitter growers: 161 installs (Xcellent) — biggest segment by far
+> - Content creators/marketers: 109 installs (Larry's Marketing Experiments)
+> - Side hustlers/entrepreneurs: 15-9 installs (Video Downloader, Web Scraper)
+> - Privacy/security conscious: 13+ installs (AdBlock DNS, VPN)
+> - Productivity nerds: 6-7 installs (Calendar, Cron, Email)
+> - Crypto/finance people: 6 installs (Stock Lookup, Crypto Prices)
+
+### For X/Twitter Growers (biggest audience — 161 installs)
+
+#### X Grower Post 1 — Bio Hook
+
+Your X bio is the first thing people see. Our free generator creates 10 versions for you. Pick the best.
+
+spunkart.com/social-bio
+
+#freetools #personalbranding
+
+---
+
+#### X Grower Post 2 — Personal Brand Stack
+
+Building a personal brand? You need:
+
+- A bio (free)
+- A QR code for your link (free)
+- A landing page (free)
+- An email signature (free)
+
+All at spunkart.com/spunk
+
+---
+
+#### X Grower Post 3 — Creator Thread
+
+Thread: The 5 free tools every X creator needs
+
+1/ Social Bio Generator — stop agonizing over your bio. Get 10 AI-written options in seconds. spunkart.com/social-bio
+
+2/ QR Code Generator — put a QR code in your content, stories, or link-in-bio. Free, no watermark. spunkart.com/qr-generator
+
+3/ Color Palette Generator — pick your brand colors in one click. Complementary, triadic, split — all generated instantly. spunkart.com/color-palette
+
+4/ Landing Page Copy Generator — need copy for your link-in-bio landing page? Headlines, CTAs, feature descriptions. Done. spunkart.com/landing-page-copy
+
+5/ Image Compressor — your content loads faster when your images aren't 4MB. Compress in-browser. Nothing uploaded. spunkart.com/image-compressor
+
+All free. No signup. No email. spunkart.com/spunk
+
+---
+
+#### X Grower Post 4 — Stop Paying
+
+Stop paying for tools. Free password gen, free QR codes, free invoices, free bio generator. 23 tools, zero signup.
+
+spunkart.com/spunk
+
+#freetools
+
+---
+
+#### X Grower Post 5 — The Realization
+
+If you're growing on X, you're probably paying for 5+ tools.
+
+I made all of them free.
+
+spunkart.com/spunk
+
+---
+
+### For Entrepreneurs / Side Hustlers (109+ installs)
+
+#### Entrepreneur Post 1 — Startup Checklist
+
+Starting a business? Here's what you need (all free):
+
+- Business name generator
+- Privacy policy
+- Invoice generator
+- Email signature
+- Meta tags for your site
+
+spunkart.com/spunk
+
+#entrepreneur #startup #freetools
+
+---
+
+#### Entrepreneur Post 2 — The Honest Pitch
+
+I charge $0 for tools that competitors charge $50+/mo for. Why? Because I make money on the premium tier. The free tools are genuinely free.
+
+spunkart.com/spunk
+
+---
+
+#### Entrepreneur Post 3 — Spend Smart
+
+The smartest business move: Use free tools, spend your money on marketing. Here are 23 free ones.
+
+spunkart.com/spunk
+
+#smallbusiness #freetools
+
+---
+
+#### Entrepreneur Post 4 — Dollar Math
+
+Every dollar you save on tools is a dollar you can spend on ads. Save $200/yr with our free toolkit.
+
+spunkart.com/spunk
+
+---
+
+#### Entrepreneur Post 5 — Reseller Pitch
+
+Want to SELL tools instead of buying them? Our reseller program lets you rebrand 18 premium tools and keep 100% profit. From $99.
+
+spunkart.com/reseller
+
+#sidehustle #passiveincome
+
+---
+
+### For Privacy / Security People (13+ installs)
+
+#### Security Post 1 — Security Toolkit
+
+Worried about online security? Free tools:
+
+- Password Generator (crypto-random)
+- Scam Checker (instant URL safety)
+- HTTP Headers Checker (site security audit)
+
+All at spunkart.com/spunk
+
+#cybersecurity #onlinesafety #freetools
+
+---
+
+#### Security Post 2 — Password Deep Dive
+
+Our password generator uses crypto.getRandomValues() — the same randomness source banks use. Free. No signup. No data sent anywhere.
+
+spunkart.com/password-generator
+
+#cybersecurity #freetools
+
+---
+
+#### Security Post 3 — Scam Check CTA
+
+Is that website legit? Paste any URL into our free Scam Checker. Instant safety score.
+
+scam.ink/scam-checker
+
+#scamalert #onlinesafety
+
+---
+
 *All content is copy-paste ready for X. Most tweets fit within 280 characters individually — verify before posting and trim if needed. Thread tweets can be longer when posted as thread replies. Image dimensions: 1200x675 for all post images.*
