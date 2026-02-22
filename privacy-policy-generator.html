@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy Generator - GDPR &amp; CCPA Compliant | SPUNKART.COM</title>
+<meta name="description" content="Generate a complete, legally compliant privacy policy for your website or app. Covers GDPR, CCPA, COPPA, and PIPEDA. Step-by-step wizard, multiple output formats.">
+<meta property="og:title" content="Privacy Policy Generator - GDPR & CCPA Compliant | SPUNKART.COM">
+<meta property="og:description" content="Generate a complete privacy policy in minutes. GDPR, CCPA, COPPA, PIPEDA compliant. Free step-by-step wizard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/privacy-policy-generator">
+<meta property="og:image" content="https://spunkart.com/og-privacy-policy-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate a complete, legally compliant privacy policy for your website or app.">
+<link rel="canonical" href="https://spunkart.com/privacy-policy-generator">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* Nav */
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+
+/* Watermark */
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+/* Main */
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#ff5f1f22;border:1px solid #ff5f1f44;color:#ff5f1f;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+/* Progress bar */
+.progress-wrap{margin-bottom:30px;}
+.progress-bar-outer{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;height:12px;overflow:hidden;margin-bottom:8px;}
+.progress-bar-inner{height:100%;background:linear-gradient(90deg,#ff5f1f,#ff8c42);border-radius:10px;transition:width .4s ease;}
+.progress-text{font-size:0.8rem;color:#666;text-align:right;}
+
+/* Section / Card */
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Step */
+.step{display:none;}
+.step.active{display:block;}
+.step-question{font-size:1.15rem;font-weight:600;margin-bottom:6px;}
+.step-hint{font-size:0.85rem;color:#666;margin-bottom:20px;}
+
+/* Inputs */
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input[type="text"],.input-group input[type="email"],.input-group input[type="url"],.input-group textarea{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:80px;}
+
+/* Checkbox groups */
+.checkbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.checkbox-item{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .2s;user-select:none;}
+.checkbox-item:hover{border-color:#ff5f1f55;}
+.checkbox-item.checked{border-color:#ff5f1f;background:#ff5f1f11;}
+.checkbox-item input[type="checkbox"]{accent-color:#ff5f1f;width:16px;height:16px;cursor:pointer;}
+.checkbox-item span{font-size:0.9rem;}
+
+/* Radio groups */
+.radio-group{display:flex;gap:12px;flex-wrap:wrap;}
+.radio-item{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 20px;cursor:pointer;transition:all .2s;user-select:none;min-width:100px;justify-content:center;}
+.radio-item:hover{border-color:#ff5f1f55;}
+.radio-item.checked{border-color:#ff5f1f;background:#ff5f1f11;}
+.radio-item input[type="radio"]{accent-color:#ff5f1f;width:16px;height:16px;cursor:pointer;}
+.radio-item span{font-size:0.95rem;font-weight:500;}
+
+/* Sub-question */
+.sub-question{margin-top:16px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;display:none;}
+.sub-question.show{display:block;}
+.sub-question .sub-label{font-size:0.9rem;color:#aaa;margin-bottom:12px;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+.copied{background:#22aa44 !important;color:#fff !important;}
+
+/* Output section */
+.output-section{display:none;}
+
+/* Tab selector */
+.tab-bar{display:flex;gap:0;margin-bottom:0;border-bottom:2px solid #222;}
+.tab-btn{padding:10px 20px;background:transparent;border:none;color:#888;font-size:0.9rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.tab-btn.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+.tab-btn:hover{color:#ccc;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* Output area */
+.output-area{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:0 0 8px 8px;padding:20px;font-family:'Courier New',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-word;color:#ccc;min-height:200px;max-height:500px;overflow-y:auto;line-height:1.6;}
+.output-area-html{font-family:inherit;font-size:0.9rem;}
+
+/* Cross-sell banner */
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+/* Email popup */
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input[type="email"]:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+.email-popup .subscribe-btn{width:100%;padding:12px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;}
+.email-popup .subscribe-btn:hover{background:#e5500a;}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .checkbox-grid{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+  .radio-group{flex-direction:column;}
+  .tab-btn{padding:8px 12px;font-size:0.8rem;}
+  main{padding:20px 16px 60px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Privacy Policy <span>Generator</span></h1>
+  <p class="subtitle">Generate a complete, legally compliant privacy policy for your website or app. GDPR, CCPA, COPPA &amp; PIPEDA ready.</p>
+  <div class="pricing-badge">Premium Tool &mdash; $6.99</div>
+
+  <!-- Progress Bar -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-bar-outer">
+      <div class="progress-bar-inner" id="progressBar" style="width:10%"></div>
+    </div>
+    <p class="progress-text" id="progressText">Step 1 of 10</p>
+  </div>
+
+  <!-- Wizard -->
+  <div class="section" id="wizardSection">
+
+    <!-- Step 1: Website/App Name -->
+    <div class="step active" data-step="1">
+      <p class="step-question">What is the name of your website or app?</p>
+      <p class="step-hint">This will appear throughout your privacy policy.</p>
+      <div class="input-group">
+        <input type="text" id="siteName" placeholder="e.g. My Awesome App" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 2: Website URL -->
+    <div class="step" data-step="2">
+      <p class="step-question">What is your website URL?</p>
+      <p class="step-hint">The primary URL where your privacy policy will be hosted.</p>
+      <div class="input-group">
+        <input type="url" id="siteUrl" placeholder="https://example.com" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 3: Company/Owner Name -->
+    <div class="step" data-step="3">
+      <p class="step-question">What is your company or owner name?</p>
+      <p class="step-hint">The legal entity or individual responsible for data processing.</p>
+      <div class="input-group">
+        <input type="text" id="companyName" placeholder="e.g. Acme Inc. or John Doe" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 4: Contact Email -->
+    <div class="step" data-step="4">
+      <p class="step-question">What is your contact email for privacy inquiries?</p>
+      <p class="step-hint">Users will use this email to reach you about their data.</p>
+      <div class="input-group">
+        <input type="email" id="contactEmail" placeholder="privacy@example.com" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 5: Data Collected -->
+    <div class="step" data-step="5">
+      <p class="step-question">What personal data do you collect?</p>
+      <p class="step-hint">Select all types of data your website or app collects from users.</p>
+      <div class="checkbox-grid" id="dataCheckboxes">
+        <label class="checkbox-item"><input type="checkbox" value="Name"><span>Name</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Email"><span>Email</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Phone"><span>Phone</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Address"><span>Address</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Payment Info"><span>Payment Info</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="IP Address"><span>IP Address</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Cookies"><span>Cookies</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Usage Data"><span>Usage Data</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Location"><span>Location</span></label>
+      </div>
+    </div>
+
+    <!-- Step 6: Cookies -->
+    <div class="step" data-step="6">
+      <p class="step-question">Do you use cookies?</p>
+      <p class="step-hint">Cookies are small files stored on a user's device to track activity or preferences.</p>
+      <div class="radio-group" id="cookiesRadio">
+        <label class="radio-item"><input type="radio" name="cookies" value="yes"><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="cookies" value="no"><span>No</span></label>
+      </div>
+      <div class="sub-question" id="cookiesSub">
+        <p class="sub-label">What types of cookies do you use?</p>
+        <div class="checkbox-grid" id="cookieTypes">
+          <label class="checkbox-item"><input type="checkbox" value="Essential"><span>Essential</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Functional"><span>Functional</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Analytics"><span>Analytics</span></label>
+          <label class="checkbox-item"><input type="checkbox" value="Marketing"><span>Marketing</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 7: Analytics -->
+    <div class="step" data-step="7">
+      <p class="step-question">Do you use analytics tools?</p>
+      <p class="step-hint">Select all analytics platforms integrated into your website or app.</p>
+      <div class="checkbox-grid" id="analyticsCheckboxes">
+        <label class="checkbox-item"><input type="checkbox" value="Google Analytics"><span>Google Analytics</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Facebook Pixel"><span>Facebook Pixel</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Plausible"><span>Plausible</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="Mixpanel"><span>Mixpanel</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="None"><span>None</span></label>
+      </div>
+    </div>
+
+    <!-- Step 8: Third Parties -->
+    <div class="step" data-step="8">
+      <p class="step-question">Do you share data with third parties?</p>
+      <p class="step-hint">This includes payment processors, advertising networks, hosting providers, etc.</p>
+      <div class="radio-group" id="thirdPartyRadio">
+        <label class="radio-item"><input type="radio" name="thirdParty" value="yes"><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="thirdParty" value="no"><span>No</span></label>
+      </div>
+      <div class="sub-question" id="thirdPartySub">
+        <p class="sub-label">Who do you share data with? (List the parties)</p>
+        <div class="input-group">
+          <textarea id="thirdPartyList" placeholder="e.g. Stripe for payment processing, Google for analytics, AWS for hosting"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 9: Minors -->
+    <div class="step" data-step="9">
+      <p class="step-question">Do minors under 13 use your service?</p>
+      <p class="step-hint">This determines whether COPPA provisions need to be included.</p>
+      <div class="radio-group" id="minorsRadio">
+        <label class="radio-item"><input type="radio" name="minors" value="yes"><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="minors" value="no"><span>No</span></label>
+      </div>
+    </div>
+
+    <!-- Step 10: Regulations -->
+    <div class="step" data-step="10">
+      <p class="step-question">Which regulations should your policy cover?</p>
+      <p class="step-hint">Select all privacy regulations applicable to your audience and business location.</p>
+      <div class="checkbox-grid" id="regulationCheckboxes">
+        <label class="checkbox-item"><input type="checkbox" value="GDPR"><span>GDPR</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="CCPA"><span>CCPA</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="COPPA"><span>COPPA</span></label>
+        <label class="checkbox-item"><input type="checkbox" value="PIPEDA"><span>PIPEDA</span></label>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="prevBtn" onclick="prevStep()" disabled>Back</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+      <button class="btn btn-primary" id="generateBtn" onclick="generatePolicy()" style="display:none;">Generate Privacy Policy</button>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div class="output-section" id="outputSection">
+    <div class="section" style="padding:0;overflow:hidden;">
+      <div style="padding:20px 24px 0;">
+        <h2 style="margin-bottom:4px;">Your Privacy Policy</h2>
+        <p style="font-size:0.85rem;color:#666;margin-bottom:16px;">Generated on <span id="generatedDate"></span></p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('html')">HTML</button>
+        <button class="tab-btn" onclick="switchTab('markdown')">Markdown</button>
+        <button class="tab-btn" onclick="switchTab('plaintext')">Plain Text</button>
+      </div>
+      <div class="tab-content active" id="tab-html">
+        <div class="output-area output-area-html" id="output-html"></div>
+      </div>
+      <div class="tab-content" id="tab-markdown">
+        <div class="output-area" id="output-markdown"></div>
+      </div>
+      <div class="tab-content" id="tab-plaintext">
+        <div class="output-area" id="output-plaintext"></div>
+      </div>
+      <div class="btn-row" style="padding:16px 24px 20px;">
+        <button class="btn btn-secondary" id="copyBtn" onclick="copyPolicy()">Copy to Clipboard</button>
+        <button class="btn btn-secondary" onclick="downloadPolicy()">Download</button>
+        <button class="btn btn-secondary" onclick="startOver()">Start Over</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Privacy Tips</h2>
+    <p>Join 5,000+ creators getting weekly tips on compliance, privacy, and growing online.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button class="subscribe-btn" onclick="submitEmail()">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentStep = 1;
+const totalSteps = 10;
+
+// Checkbox item toggle styling
+document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
+    // "None" analytics exclusivity
+    if (cb.closest('#analyticsCheckboxes') && cb.value === 'None' && cb.checked) {
+      cb.closest('#analyticsCheckboxes').querySelectorAll('input[type="checkbox"]').forEach(other => {
+        if (other !== cb) { other.checked = false; other.closest('.checkbox-item').classList.remove('checked'); }
+      });
+    } else if (cb.closest('#analyticsCheckboxes') && cb.value !== 'None' && cb.checked) {
+      const none = cb.closest('#analyticsCheckboxes').querySelector('input[value="None"]');
+      if (none) { none.checked = false; none.closest('.checkbox-item').classList.remove('checked'); }
+    }
+  });
+});
+
+// Radio item toggle styling + sub-questions
+document.querySelectorAll('.radio-item input[type="radio"]').forEach(rb => {
+  rb.addEventListener('change', () => {
+    rb.closest('.radio-group').querySelectorAll('.radio-item').forEach(ri => ri.classList.remove('checked'));
+    rb.closest('.radio-item').classList.add('checked');
+    // Cookies sub
+    if (rb.name === 'cookies') {
+      document.getElementById('cookiesSub').classList.toggle('show', rb.value === 'yes');
+    }
+    // Third party sub
+    if (rb.name === 'thirdParty') {
+      document.getElementById('thirdPartySub').classList.toggle('show', rb.value === 'yes');
+    }
+  });
+});
+
+function updateProgress() {
+  const pct = (currentStep / totalSteps) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = 'Step ' + currentStep + ' of ' + totalSteps;
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector('[data-step="' + n + '"]').classList.add('active');
+  document.getElementById('prevBtn').disabled = n === 1;
+  document.getElementById('nextBtn').style.display = n === totalSteps ? 'none' : '';
+  document.getElementById('generateBtn').style.display = n === totalSteps ? '' : 'none';
+  updateProgress();
+}
+
+function nextStep() {
+  if (currentStep < totalSteps) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+function getVal(id) { return document.getElementById(id).value.trim(); }
+
+function getChecked(containerId) {
+  const items = [];
+  document.querySelectorAll('#' + containerId + ' input[type="checkbox"]:checked').forEach(cb => items.push(cb.value));
+  return items;
+}
+
+function getRadio(name) {
+  const sel = document.querySelector('input[name="' + name + '"]:checked');
+  return sel ? sel.value : '';
+}
+
+function todayFormatted() {
+  const d = new Date();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function generatePolicy() {
+  const siteName = getVal('siteName') || 'Our Website';
+  const siteUrl = getVal('siteUrl') || 'https://example.com';
+  const companyName = getVal('companyName') || 'Company Name';
+  const contactEmail = getVal('contactEmail') || 'privacy@example.com';
+  const dataCollected = getChecked('dataCheckboxes');
+  const usesCookies = getRadio('cookies') === 'yes';
+  const cookieTypesList = getChecked('cookieTypes');
+  const analytics = getChecked('analyticsCheckboxes');
+  const sharesData = getRadio('thirdParty') === 'yes';
+  const thirdParties = getVal('thirdPartyList');
+  const minors = getRadio('minors') === 'yes';
+  const regulations = getChecked('regulationCheckboxes');
+  const lastUpdated = todayFormatted();
+  const hasGDPR = regulations.includes('GDPR');
+  const hasCCPA = regulations.includes('CCPA');
+  const hasCOPPA = regulations.includes('COPPA');
+  const hasPIPEDA = regulations.includes('PIPEDA');
+  const hasAnalytics = analytics.length > 0 && !analytics.includes('None');
+
+  // === Build Plain Text ===
+  let txt = '';
+  txt += 'PRIVACY POLICY\n';
+  txt += '==============\n\n';
+  txt += 'Last Updated: ' + lastUpdated + '\n\n';
+
+  // Introduction
+  txt += '1. INTRODUCTION\n\n';
+  txt += companyName + ' ("we", "us", or "our") operates ' + siteName + ' (the "Service"), accessible at ' + siteUrl + '. ';
+  txt += 'This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Service. ';
+  txt += 'Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Service.\n\n';
+
+  // Data Collection
+  txt += '2. INFORMATION WE COLLECT\n\n';
+  if (dataCollected.length > 0) {
+    txt += 'We may collect the following types of personal information:\n\n';
+    dataCollected.forEach(d => { txt += '  - ' + d + '\n'; });
+    txt += '\n';
+    txt += 'We collect this information when you voluntarily provide it to us, or automatically as you navigate the Service.\n\n';
+  } else {
+    txt += 'We do not intentionally collect personal information from users of our Service.\n\n';
+  }
+
+  // Cookies
+  if (usesCookies) {
+    txt += '3. COOKIES AND TRACKING TECHNOLOGIES\n\n';
+    txt += 'We use cookies and similar tracking technologies to track activity on our Service and hold certain information. ';
+    txt += 'Cookies are files with a small amount of data which may include an anonymous unique identifier.\n\n';
+    if (cookieTypesList.length > 0) {
+      txt += 'Types of cookies we use:\n\n';
+      cookieTypesList.forEach(c => {
+        if (c === 'Essential') txt += '  - Essential Cookies: Required for the Service to function properly. These cannot be disabled.\n';
+        if (c === 'Functional') txt += '  - Functional Cookies: Enable personalized features such as remembering your preferences.\n';
+        if (c === 'Analytics') txt += '  - Analytics Cookies: Help us understand how visitors interact with the Service by collecting and reporting information anonymously.\n';
+        if (c === 'Marketing') txt += '  - Marketing Cookies: Used to track visitors across websites to display relevant advertisements.\n';
+      });
+      txt += '\n';
+    }
+    txt += 'You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.\n\n';
+  }
+
+  // Analytics
+  let sectionNum = usesCookies ? 4 : 3;
+  if (hasAnalytics) {
+    txt += sectionNum + '. ANALYTICS\n\n';
+    txt += 'We use the following third-party analytics services to monitor and analyze the use of our Service:\n\n';
+    analytics.forEach(a => {
+      if (a === 'Google Analytics') txt += '  - Google Analytics: A web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. For more information on the privacy practices of Google, please visit the Google Privacy & Terms page: https://policies.google.com/privacy\n\n';
+      if (a === 'Facebook Pixel') txt += '  - Facebook Pixel: An analytics tool from Meta Platforms that allows us to measure the effectiveness of our advertising. For more information, please visit Meta\'s Data Policy: https://www.facebook.com/policy.php\n\n';
+      if (a === 'Plausible') txt += '  - Plausible Analytics: A lightweight, open-source, privacy-friendly analytics tool. Plausible does not use cookies and is fully compliant with GDPR, CCPA, and PECR. For more information: https://plausible.io/data-policy\n\n';
+      if (a === 'Mixpanel') txt += '  - Mixpanel: A business analytics service that tracks user interactions with web and mobile applications. For more information: https://mixpanel.com/legal/privacy-policy/\n\n';
+    });
+    sectionNum++;
+  }
+
+  // How We Use Information
+  txt += sectionNum + '. HOW WE USE YOUR INFORMATION\n\n';
+  txt += 'We may use the information we collect from you for the following purposes:\n\n';
+  txt += '  - To provide, operate, and maintain our Service\n';
+  txt += '  - To improve, personalize, and expand our Service\n';
+  txt += '  - To understand and analyze how you use our Service\n';
+  txt += '  - To communicate with you, including for customer service and support\n';
+  txt += '  - To process transactions and send related information\n';
+  txt += '  - To find and prevent fraud\n';
+  txt += '  - To comply with legal obligations\n\n';
+  sectionNum++;
+
+  // Third Parties
+  txt += sectionNum + '. SHARING OF INFORMATION\n\n';
+  if (sharesData) {
+    txt += 'We may share your personal information with the following third parties:\n\n';
+    if (thirdParties) {
+      thirdParties.split(',').forEach(tp => {
+        const t = tp.trim();
+        if (t) txt += '  - ' + t + '\n';
+      });
+    } else {
+      txt += '  - Selected service providers and business partners\n';
+    }
+    txt += '\nWe require all third parties to respect the security of your personal data and to treat it in accordance with the law. ';
+    txt += 'We do not allow our third-party service providers to use your personal data for their own purposes and only permit them to process your personal data for specified purposes and in accordance with our instructions.\n\n';
+  } else {
+    txt += 'We do not sell, trade, or otherwise transfer your personal information to third parties. ';
+    txt += 'This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential.\n\n';
+  }
+  sectionNum++;
+
+  // Data Retention
+  txt += sectionNum + '. DATA RETENTION\n\n';
+  txt += 'We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. ';
+  txt += 'We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.\n\n';
+  sectionNum++;
+
+  // Data Security
+  txt += sectionNum + '. DATA SECURITY\n\n';
+  txt += 'The security of your personal information is important to us. We use commercially reasonable administrative, technical, and physical security measures to protect your personal information. ';
+  txt += 'However, no method of transmission over the Internet or method of electronic storage is 100% secure, and we cannot guarantee its absolute security.\n\n';
+  sectionNum++;
+
+  // GDPR Section
+  if (hasGDPR) {
+    txt += sectionNum + '. YOUR RIGHTS UNDER GDPR (GENERAL DATA PROTECTION REGULATION)\n\n';
+    txt += 'If you are a resident of the European Economic Area (EEA), you have certain data protection rights. ' + companyName + ' aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your personal data.\n\n';
+    txt += 'You have the following rights:\n\n';
+    txt += '  - The right to access: You have the right to request copies of your personal data.\n';
+    txt += '  - The right to rectification: You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.\n';
+    txt += '  - The right to erasure: You have the right to request that we erase your personal data, under certain conditions.\n';
+    txt += '  - The right to restrict processing: You have the right to request that we restrict the processing of your personal data, under certain conditions.\n';
+    txt += '  - The right to data portability: You have the right to request that we transfer the data we have collected to another organization, or directly to you, under certain conditions.\n';
+    txt += '  - The right to object: You have the right to object to our processing of your personal data, under certain conditions.\n';
+    txt += '  - The right to withdraw consent: You have the right to withdraw your consent at any time where we relied on your consent to process your personal information.\n\n';
+    txt += 'To exercise any of these rights, please contact us at ' + contactEmail + '. We will respond to your request within 30 days.\n\n';
+    txt += 'Legal Basis for Processing (GDPR): We process your personal data under the following legal bases:\n\n';
+    txt += '  - Your consent\n';
+    txt += '  - Performance of a contract\n';
+    txt += '  - Compliance with a legal obligation\n';
+    txt += '  - Protection of vital interests\n';
+    txt += '  - Legitimate interests pursued by us or a third party\n\n';
+    sectionNum++;
+  }
+
+  // CCPA Section
+  if (hasCCPA) {
+    txt += sectionNum + '. YOUR RIGHTS UNDER CCPA (CALIFORNIA CONSUMER PRIVACY ACT)\n\n';
+    txt += 'If you are a California resident, you have specific rights regarding your personal information under the California Consumer Privacy Act (CCPA).\n\n';
+    txt += 'You have the following rights:\n\n';
+    txt += '  - The right to know: You can request that we disclose what personal information we collect, use, and disclose about you.\n';
+    txt += '  - The right to delete: You can request deletion of your personal information, subject to certain exceptions.\n';
+    txt += '  - The right to opt-out: You can opt-out of the sale of your personal information. We do not sell personal information.\n';
+    txt += '  - The right to non-discrimination: We will not discriminate against you for exercising any of your CCPA rights.\n\n';
+    txt += 'To exercise your rights under the CCPA, please contact us at ' + contactEmail + '. We will respond to your request within 45 days.\n\n';
+    txt += 'Categories of Personal Information Collected: In the preceding twelve (12) months, we have collected the following categories of personal information:\n\n';
+    if (dataCollected.length > 0) {
+      dataCollected.forEach(d => { txt += '  - ' + d + '\n'; });
+    } else {
+      txt += '  - None\n';
+    }
+    txt += '\n';
+    sectionNum++;
+  }
+
+  // COPPA Section
+  if (hasCOPPA) {
+    txt += sectionNum + '. CHILDREN\'S PRIVACY (COPPA COMPLIANCE)\n\n';
+    if (minors) {
+      txt += 'Our Service may be used by children under the age of 13. We are committed to complying with the Children\'s Online Privacy Protection Act (COPPA).\n\n';
+      txt += 'We obtain verifiable parental consent before collecting any personal information from children under 13. ';
+      txt += 'Parents can review, delete, and refuse to allow further collection of their child\'s personal information by contacting us at ' + contactEmail + '.\n\n';
+      txt += 'We do not condition a child\'s participation in an activity on the child disclosing more personal information than is reasonably necessary for that activity.\n\n';
+    } else {
+      txt += 'Our Service is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. ';
+      txt += 'If we discover that a child under 13 has provided us with personal information, we will delete such information from our servers immediately.\n\n';
+      txt += 'If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us at ' + contactEmail + ' so that we can take the necessary actions.\n\n';
+    }
+    sectionNum++;
+  }
+
+  // PIPEDA Section
+  if (hasPIPEDA) {
+    txt += sectionNum + '. YOUR RIGHTS UNDER PIPEDA (PERSONAL INFORMATION PROTECTION AND ELECTRONIC DOCUMENTS ACT)\n\n';
+    txt += 'If you are a Canadian resident, you have rights under the Personal Information Protection and Electronic Documents Act (PIPEDA).\n\n';
+    txt += 'Under PIPEDA, you have the right to:\n\n';
+    txt += '  - Access your personal information held by us\n';
+    txt += '  - Challenge the accuracy and completeness of your personal information and have it amended as appropriate\n';
+    txt += '  - Withdraw consent for the collection, use, or disclosure of your personal information, subject to legal or contractual restrictions\n\n';
+    txt += 'We adhere to the ten fair information principles outlined in PIPEDA:\n\n';
+    txt += '  1. Accountability\n';
+    txt += '  2. Identifying Purposes\n';
+    txt += '  3. Consent\n';
+    txt += '  4. Limiting Collection\n';
+    txt += '  5. Limiting Use, Disclosure, and Retention\n';
+    txt += '  6. Accuracy\n';
+    txt += '  7. Safeguards\n';
+    txt += '  8. Openness\n';
+    txt += '  9. Individual Access\n';
+    txt += '  10. Challenging Compliance\n\n';
+    txt += 'To exercise your rights under PIPEDA, please contact us at ' + contactEmail + '.\n\n';
+    sectionNum++;
+  }
+
+  // Changes
+  txt += sectionNum + '. CHANGES TO THIS PRIVACY POLICY\n\n';
+  txt += 'We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy.\n\n';
+  txt += 'You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.\n\n';
+  sectionNum++;
+
+  // Contact
+  txt += sectionNum + '. CONTACT US\n\n';
+  txt += 'If you have any questions about this Privacy Policy, please contact us:\n\n';
+  txt += '  - By email: ' + contactEmail + '\n';
+  txt += '  - By visiting this page on our website: ' + siteUrl + '\n\n';
+  txt += '---\nGenerated by SPUNKART.COM Privacy Policy Generator\n';
+
+  // === Build Markdown ===
+  let md = '';
+  md += '# Privacy Policy\n\n';
+  md += '**Last Updated:** ' + lastUpdated + '\n\n';
+
+  md += '## 1. Introduction\n\n';
+  md += companyName + ' ("we", "us", or "our") operates **' + siteName + '** (the "Service"), accessible at [' + siteUrl + '](' + siteUrl + '). ';
+  md += 'This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Service. ';
+  md += 'Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Service.\n\n';
+
+  md += '## 2. Information We Collect\n\n';
+  if (dataCollected.length > 0) {
+    md += 'We may collect the following types of personal information:\n\n';
+    dataCollected.forEach(d => { md += '- ' + d + '\n'; });
+    md += '\nWe collect this information when you voluntarily provide it to us, or automatically as you navigate the Service.\n\n';
+  } else {
+    md += 'We do not intentionally collect personal information from users of our Service.\n\n';
+  }
+
+  let mdSection = 3;
+  if (usesCookies) {
+    md += '## ' + mdSection + '. Cookies and Tracking Technologies\n\n';
+    md += 'We use cookies and similar tracking technologies to track activity on our Service and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier.\n\n';
+    if (cookieTypesList.length > 0) {
+      md += '**Types of cookies we use:**\n\n';
+      cookieTypesList.forEach(c => {
+        if (c === 'Essential') md += '- **Essential Cookies:** Required for the Service to function properly. These cannot be disabled.\n';
+        if (c === 'Functional') md += '- **Functional Cookies:** Enable personalized features such as remembering your preferences.\n';
+        if (c === 'Analytics') md += '- **Analytics Cookies:** Help us understand how visitors interact with the Service by collecting and reporting information anonymously.\n';
+        if (c === 'Marketing') md += '- **Marketing Cookies:** Used to track visitors across websites to display relevant advertisements.\n';
+      });
+      md += '\n';
+    }
+    md += 'You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.\n\n';
+    mdSection++;
+  }
+
+  if (hasAnalytics) {
+    md += '## ' + mdSection + '. Analytics\n\n';
+    md += 'We use the following third-party analytics services to monitor and analyze the use of our Service:\n\n';
+    analytics.forEach(a => {
+      if (a === 'Google Analytics') md += '- **Google Analytics:** A web analytics service offered by Google that tracks and reports website traffic. [Google Privacy & Terms](https://policies.google.com/privacy)\n';
+      if (a === 'Facebook Pixel') md += '- **Facebook Pixel:** An analytics tool from Meta Platforms that measures advertising effectiveness. [Meta Data Policy](https://www.facebook.com/policy.php)\n';
+      if (a === 'Plausible') md += '- **Plausible Analytics:** A lightweight, privacy-friendly analytics tool. No cookies, fully GDPR compliant. [Plausible Data Policy](https://plausible.io/data-policy)\n';
+      if (a === 'Mixpanel') md += '- **Mixpanel:** Tracks user interactions with web and mobile applications. [Mixpanel Privacy Policy](https://mixpanel.com/legal/privacy-policy/)\n';
+    });
+    md += '\n';
+    mdSection++;
+  }
+
+  md += '## ' + mdSection + '. How We Use Your Information\n\n';
+  md += 'We may use the information we collect from you for the following purposes:\n\n';
+  md += '- To provide, operate, and maintain our Service\n';
+  md += '- To improve, personalize, and expand our Service\n';
+  md += '- To understand and analyze how you use our Service\n';
+  md += '- To communicate with you, including for customer service and support\n';
+  md += '- To process transactions and send related information\n';
+  md += '- To find and prevent fraud\n';
+  md += '- To comply with legal obligations\n\n';
+  mdSection++;
+
+  md += '## ' + mdSection + '. Sharing of Information\n\n';
+  if (sharesData) {
+    md += 'We may share your personal information with the following third parties:\n\n';
+    if (thirdParties) {
+      thirdParties.split(',').forEach(tp => {
+        const t = tp.trim();
+        if (t) md += '- ' + t + '\n';
+      });
+    } else {
+      md += '- Selected service providers and business partners\n';
+    }
+    md += '\nWe require all third parties to respect the security of your personal data and to treat it in accordance with the law.\n\n';
+  } else {
+    md += 'We do not sell, trade, or otherwise transfer your personal information to third parties. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential.\n\n';
+  }
+  mdSection++;
+
+  md += '## ' + mdSection + '. Data Retention\n\n';
+  md += 'We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.\n\n';
+  mdSection++;
+
+  md += '## ' + mdSection + '. Data Security\n\n';
+  md += 'The security of your personal information is important to us. We use commercially reasonable administrative, technical, and physical security measures to protect your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure, and we cannot guarantee its absolute security.\n\n';
+  mdSection++;
+
+  if (hasGDPR) {
+    md += '## ' + mdSection + '. Your Rights Under GDPR\n\n';
+    md += 'If you are a resident of the European Economic Area (EEA), you have certain data protection rights:\n\n';
+    md += '- **Right to access** — Request copies of your personal data\n';
+    md += '- **Right to rectification** — Request correction of inaccurate or incomplete information\n';
+    md += '- **Right to erasure** — Request deletion of your personal data\n';
+    md += '- **Right to restrict processing** — Request restriction of processing your personal data\n';
+    md += '- **Right to data portability** — Request transfer of your data to another organization\n';
+    md += '- **Right to object** — Object to our processing of your personal data\n';
+    md += '- **Right to withdraw consent** — Withdraw consent at any time\n\n';
+    md += 'To exercise any of these rights, please contact us at ' + contactEmail + '. We will respond within 30 days.\n\n';
+    md += '**Legal Basis for Processing:** Consent, performance of a contract, legal obligation, vital interests, or legitimate interests.\n\n';
+    mdSection++;
+  }
+
+  if (hasCCPA) {
+    md += '## ' + mdSection + '. Your Rights Under CCPA\n\n';
+    md += 'If you are a California resident, you have specific rights under the CCPA:\n\n';
+    md += '- **Right to know** — Request disclosure of personal information we collect, use, and disclose\n';
+    md += '- **Right to delete** — Request deletion of your personal information\n';
+    md += '- **Right to opt-out** — Opt-out of the sale of your personal information (we do not sell personal information)\n';
+    md += '- **Right to non-discrimination** — We will not discriminate against you for exercising your rights\n\n';
+    md += 'To exercise your rights, please contact us at ' + contactEmail + '. We will respond within 45 days.\n\n';
+    mdSection++;
+  }
+
+  if (hasCOPPA) {
+    md += '## ' + mdSection + '. Children\'s Privacy (COPPA)\n\n';
+    if (minors) {
+      md += 'Our Service may be used by children under the age of 13. We comply with the Children\'s Online Privacy Protection Act (COPPA). We obtain verifiable parental consent before collecting personal information from children under 13. Parents can review, delete, and refuse further collection of their child\'s information by contacting us at ' + contactEmail + '.\n\n';
+    } else {
+      md += 'Our Service is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with personal information, we will delete it immediately. Contact us at ' + contactEmail + ' if you believe a child has provided us with personal information.\n\n';
+    }
+    mdSection++;
+  }
+
+  if (hasPIPEDA) {
+    md += '## ' + mdSection + '. Your Rights Under PIPEDA\n\n';
+    md += 'If you are a Canadian resident, you have rights under PIPEDA:\n\n';
+    md += '- Access your personal information held by us\n';
+    md += '- Challenge accuracy and completeness of your information\n';
+    md += '- Withdraw consent for collection, use, or disclosure of your information\n\n';
+    md += 'We adhere to the ten fair information principles: Accountability, Identifying Purposes, Consent, Limiting Collection, Limiting Use/Disclosure/Retention, Accuracy, Safeguards, Openness, Individual Access, and Challenging Compliance.\n\n';
+    md += 'Contact us at ' + contactEmail + ' to exercise your rights.\n\n';
+    mdSection++;
+  }
+
+  md += '## ' + mdSection + '. Changes to This Privacy Policy\n\n';
+  md += 'We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.\n\n';
+  mdSection++;
+
+  md += '## ' + mdSection + '. Contact Us\n\n';
+  md += 'If you have any questions about this Privacy Policy, please contact us:\n\n';
+  md += '- **Email:** ' + contactEmail + '\n';
+  md += '- **Website:** [' + siteUrl + '](' + siteUrl + ')\n\n';
+  md += '---\n*Generated by [SPUNKART.COM Privacy Policy Generator](https://spunkart.com/privacy-policy-generator)*\n';
+
+  // === Build HTML ===
+  let html = '';
+  html += '&lt;!DOCTYPE html&gt;\n';
+  html += '&lt;html lang="en"&gt;\n';
+  html += '&lt;head&gt;\n';
+  html += '  &lt;meta charset="UTF-8"&gt;\n';
+  html += '  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;\n';
+  html += '  &lt;title&gt;Privacy Policy - ' + escHtml(siteName) + '&lt;/title&gt;\n';
+  html += '&lt;/head&gt;\n';
+  html += '&lt;body&gt;\n';
+  html += '  &lt;h1&gt;Privacy Policy&lt;/h1&gt;\n';
+  html += '  &lt;p&gt;&lt;strong&gt;Last Updated:&lt;/strong&gt; ' + lastUpdated + '&lt;/p&gt;\n\n';
+
+  html += '  &lt;h2&gt;1. Introduction&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;' + escHtml(companyName) + ' ("we", "us", or "our") operates &lt;strong&gt;' + escHtml(siteName) + '&lt;/strong&gt; (the "Service"), accessible at &lt;a href="' + escHtml(siteUrl) + '"&gt;' + escHtml(siteUrl) + '&lt;/a&gt;. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Service. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the Service.&lt;/p&gt;\n\n';
+
+  html += '  &lt;h2&gt;2. Information We Collect&lt;/h2&gt;\n';
+  if (dataCollected.length > 0) {
+    html += '  &lt;p&gt;We may collect the following types of personal information:&lt;/p&gt;\n';
+    html += '  &lt;ul&gt;\n';
+    dataCollected.forEach(d => { html += '    &lt;li&gt;' + escHtml(d) + '&lt;/li&gt;\n'; });
+    html += '  &lt;/ul&gt;\n';
+    html += '  &lt;p&gt;We collect this information when you voluntarily provide it to us, or automatically as you navigate the Service.&lt;/p&gt;\n\n';
+  } else {
+    html += '  &lt;p&gt;We do not intentionally collect personal information from users of our Service.&lt;/p&gt;\n\n';
+  }
+
+  let htmlSection = 3;
+  if (usesCookies) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Cookies and Tracking Technologies&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;We use cookies and similar tracking technologies to track activity on our Service and hold certain information.&lt;/p&gt;\n';
+    if (cookieTypesList.length > 0) {
+      html += '  &lt;p&gt;&lt;strong&gt;Types of cookies we use:&lt;/strong&gt;&lt;/p&gt;\n';
+      html += '  &lt;ul&gt;\n';
+      cookieTypesList.forEach(c => {
+        if (c === 'Essential') html += '    &lt;li&gt;&lt;strong&gt;Essential Cookies:&lt;/strong&gt; Required for the Service to function properly.&lt;/li&gt;\n';
+        if (c === 'Functional') html += '    &lt;li&gt;&lt;strong&gt;Functional Cookies:&lt;/strong&gt; Enable personalized features and preferences.&lt;/li&gt;\n';
+        if (c === 'Analytics') html += '    &lt;li&gt;&lt;strong&gt;Analytics Cookies:&lt;/strong&gt; Help us understand how visitors interact with the Service.&lt;/li&gt;\n';
+        if (c === 'Marketing') html += '    &lt;li&gt;&lt;strong&gt;Marketing Cookies:&lt;/strong&gt; Used to track visitors across websites to display relevant ads.&lt;/li&gt;\n';
+      });
+      html += '  &lt;/ul&gt;\n';
+    }
+    html += '  &lt;p&gt;You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.&lt;/p&gt;\n\n';
+    htmlSection++;
+  }
+
+  if (hasAnalytics) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Analytics&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;We use the following third-party analytics services:&lt;/p&gt;\n';
+    html += '  &lt;ul&gt;\n';
+    analytics.forEach(a => {
+      if (a === 'Google Analytics') html += '    &lt;li&gt;&lt;strong&gt;Google Analytics&lt;/strong&gt; — &lt;a href="https://policies.google.com/privacy"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;\n';
+      if (a === 'Facebook Pixel') html += '    &lt;li&gt;&lt;strong&gt;Facebook Pixel&lt;/strong&gt; — &lt;a href="https://www.facebook.com/policy.php"&gt;Data Policy&lt;/a&gt;&lt;/li&gt;\n';
+      if (a === 'Plausible') html += '    &lt;li&gt;&lt;strong&gt;Plausible Analytics&lt;/strong&gt; — &lt;a href="https://plausible.io/data-policy"&gt;Data Policy&lt;/a&gt;&lt;/li&gt;\n';
+      if (a === 'Mixpanel') html += '    &lt;li&gt;&lt;strong&gt;Mixpanel&lt;/strong&gt; — &lt;a href="https://mixpanel.com/legal/privacy-policy/"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;\n';
+    });
+    html += '  &lt;/ul&gt;\n\n';
+    htmlSection++;
+  }
+
+  html += '  &lt;h2&gt;' + htmlSection + '. How We Use Your Information&lt;/h2&gt;\n';
+  html += '  &lt;ul&gt;\n';
+  html += '    &lt;li&gt;To provide, operate, and maintain our Service&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To improve, personalize, and expand our Service&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To understand and analyze how you use our Service&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To communicate with you&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To process transactions&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To find and prevent fraud&lt;/li&gt;\n';
+  html += '    &lt;li&gt;To comply with legal obligations&lt;/li&gt;\n';
+  html += '  &lt;/ul&gt;\n\n';
+  htmlSection++;
+
+  html += '  &lt;h2&gt;' + htmlSection + '. Sharing of Information&lt;/h2&gt;\n';
+  if (sharesData) {
+    html += '  &lt;p&gt;We may share your personal information with the following third parties:&lt;/p&gt;\n';
+    html += '  &lt;ul&gt;\n';
+    if (thirdParties) {
+      thirdParties.split(',').forEach(tp => {
+        const t = tp.trim();
+        if (t) html += '    &lt;li&gt;' + escHtml(t) + '&lt;/li&gt;\n';
+      });
+    } else {
+      html += '    &lt;li&gt;Selected service providers and business partners&lt;/li&gt;\n';
+    }
+    html += '  &lt;/ul&gt;\n';
+    html += '  &lt;p&gt;We require all third parties to respect the security of your personal data and treat it in accordance with the law.&lt;/p&gt;\n\n';
+  } else {
+    html += '  &lt;p&gt;We do not sell, trade, or otherwise transfer your personal information to third parties.&lt;/p&gt;\n\n';
+  }
+  htmlSection++;
+
+  html += '  &lt;h2&gt;' + htmlSection + '. Data Retention&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;We will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy.&lt;/p&gt;\n\n';
+  htmlSection++;
+
+  html += '  &lt;h2&gt;' + htmlSection + '. Data Security&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;We use commercially reasonable security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.&lt;/p&gt;\n\n';
+  htmlSection++;
+
+  if (hasGDPR) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Your Rights Under GDPR&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;If you are a resident of the EEA, you have the following rights:&lt;/p&gt;\n';
+    html += '  &lt;ul&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to access&lt;/strong&gt; — Request copies of your personal data&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to rectification&lt;/strong&gt; — Request correction of inaccurate data&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to erasure&lt;/strong&gt; — Request deletion of your personal data&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to restrict processing&lt;/strong&gt; — Request restriction of processing&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to data portability&lt;/strong&gt; — Request transfer of your data&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to object&lt;/strong&gt; — Object to processing of your data&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to withdraw consent&lt;/strong&gt; — Withdraw consent at any time&lt;/li&gt;\n';
+    html += '  &lt;/ul&gt;\n';
+    html += '  &lt;p&gt;Contact us at &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt; to exercise your rights. We will respond within 30 days.&lt;/p&gt;\n\n';
+    htmlSection++;
+  }
+
+  if (hasCCPA) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Your Rights Under CCPA&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;If you are a California resident:&lt;/p&gt;\n';
+    html += '  &lt;ul&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to know&lt;/strong&gt; — Request disclosure of collected personal information&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to delete&lt;/strong&gt; — Request deletion of your personal information&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to opt-out&lt;/strong&gt; — Opt-out of sale of personal information&lt;/li&gt;\n';
+    html += '    &lt;li&gt;&lt;strong&gt;Right to non-discrimination&lt;/strong&gt; — No discrimination for exercising rights&lt;/li&gt;\n';
+    html += '  &lt;/ul&gt;\n';
+    html += '  &lt;p&gt;Contact us at &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt;. We will respond within 45 days.&lt;/p&gt;\n\n';
+    htmlSection++;
+  }
+
+  if (hasCOPPA) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Children\'s Privacy (COPPA)&lt;/h2&gt;\n';
+    if (minors) {
+      html += '  &lt;p&gt;Our Service may be used by children under 13. We comply with COPPA and obtain verifiable parental consent before collecting personal information from children under 13. Parents can review, delete, and refuse further collection by contacting us at &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt;.&lt;/p&gt;\n\n';
+    } else {
+      html += '  &lt;p&gt;Our Service is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we discover such data has been collected, we will delete it immediately. Contact us at &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt;.&lt;/p&gt;\n\n';
+    }
+    htmlSection++;
+  }
+
+  if (hasPIPEDA) {
+    html += '  &lt;h2&gt;' + htmlSection + '. Your Rights Under PIPEDA&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;Canadian residents have rights under PIPEDA including access to personal information, the ability to challenge its accuracy, and the ability to withdraw consent.&lt;/p&gt;\n';
+    html += '  &lt;p&gt;Contact us at &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt; to exercise your rights.&lt;/p&gt;\n\n';
+    htmlSection++;
+  }
+
+  html += '  &lt;h2&gt;' + htmlSection + '. Changes to This Privacy Policy&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.&lt;/p&gt;\n\n';
+  htmlSection++;
+
+  html += '  &lt;h2&gt;' + htmlSection + '. Contact Us&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;If you have any questions about this Privacy Policy, please contact us:&lt;/p&gt;\n';
+  html += '  &lt;ul&gt;\n';
+  html += '    &lt;li&gt;Email: &lt;a href="mailto:' + escHtml(contactEmail) + '"&gt;' + escHtml(contactEmail) + '&lt;/a&gt;&lt;/li&gt;\n';
+  html += '    &lt;li&gt;Website: &lt;a href="' + escHtml(siteUrl) + '"&gt;' + escHtml(siteUrl) + '&lt;/a&gt;&lt;/li&gt;\n';
+  html += '  &lt;/ul&gt;\n\n';
+
+  html += '  &lt;!-- Generated by SPUNKART.COM Privacy Policy Generator --&gt;\n';
+  html += '&lt;/body&gt;\n';
+  html += '&lt;/html&gt;';
+
+  // Display
+  document.getElementById('generatedDate').textContent = lastUpdated;
+  document.getElementById('output-html').textContent = html;
+  document.getElementById('output-markdown').textContent = md;
+  document.getElementById('output-plaintext').textContent = txt;
+
+  document.getElementById('wizardSection').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('outputSection').style.display = 'block';
+  document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+
+  gtag('event', 'generate_policy', { event_category: 'tool_use' });
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let activeTab = 'html';
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector('.tab-btn[onclick*="' + tab + '"]').classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function getActiveOutput() {
+  return document.getElementById('output-' + activeTab).textContent;
+}
+
+function getFileExt() {
+  if (activeTab === 'html') return 'html';
+  if (activeTab === 'markdown') return 'md';
+  return 'txt';
+}
+
+function getFileName() {
+  return 'privacy-policy.' + getFileExt();
+}
+
+function getMimeType() {
+  if (activeTab === 'html') return 'text/html';
+  if (activeTab === 'markdown') return 'text/markdown';
+  return 'text/plain';
+}
+
+function copyPolicy() {
+  const text = getActiveOutput();
+  if (!text) return;
+  // For HTML tab, unescape the entities so the user gets actual HTML
+  let copyText = text;
+  if (activeTab === 'html') {
+    copyText = unescHtml(text);
+  }
+  navigator.clipboard.writeText(copyText).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy to Clipboard'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_policy', { event_category: 'tool_use', event_label: activeTab });
+  });
+}
+
+function unescHtml(s) {
+  return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"');
+}
+
+function downloadPolicy() {
+  let text = getActiveOutput();
+  if (!text) return;
+  if (activeTab === 'html') {
+    text = unescHtml(text);
+  }
+  const blob = new Blob([text], { type: getMimeType() });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = getFileName();
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event', 'download_policy', { event_category: 'tool_use', event_label: activeTab });
+}
+
+function startOver() {
+  currentStep = 1;
+  document.getElementById('wizardSection').style.display = '';
+  document.getElementById('progressWrap').style.display = '';
+  document.getElementById('outputSection').style.display = 'none';
+  showStep(1);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Email popup
+function closeEmail() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('emailDismissed', '1');
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value;
+  if (email && email.includes('@')) {
+    gtag('event', 'email_signup', { event_category: 'conversion', event_label: email });
+    alert('Thanks for subscribing!');
+    closeEmail();
+  } else {
+    alert('Please enter a valid email.');
+  }
+}
+
+if (!localStorage.getItem('emailDismissed')) {
+  setTimeout(() => { document.getElementById('emailOverlay').classList.add('show'); }, 30000);
+}
+</script>
+</body>
+</html>

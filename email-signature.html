@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Signature Generator - Professional HTML Email Signatures | SPUNKART.COM</title>
+<meta name="description" content="Create professional HTML email signatures instantly. 3 templates: Minimal, Corporate, Creative. Table-based, email-safe HTML. Copy as rich text for Gmail and Outlook. $2.99.">
+<meta property="og:title" content="Email Signature Generator - Professional HTML Email Signatures | SPUNKART.COM">
+<meta property="og:description" content="Create professional HTML email signatures instantly. 3 templates, live preview, copy as rich text. Works in Gmail and Outlook.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/email-signature">
+<meta property="og:image" content="https://spunkart.com/og-email-signature.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Email Signature Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Create professional HTML email signatures instantly. 3 templates, live preview, copy to clipboard.">
+<link rel="canonical" href="https://spunkart.com/email-signature">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+
+.pricing-badge{display:inline-block;background:#ff5f1f22;border:1px solid #ff5f1f44;color:#ff5f1f;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Template selector */
+.template-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.template-tab{padding:10px 22px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer;font-size:0.9rem;color:#888;transition:all .2s;font-weight:600;}
+.template-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.template-tab:hover:not(.active){background:#222;color:#ccc;}
+.template-desc{font-size:0.8rem;color:#555;margin-top:4px;}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.input-group{margin-bottom:0;}
+.input-group.full{grid-column:1/-1;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus{border-color:#ff5f1f;}
+
+/* Color picker group */
+.color-group{display:flex;align-items:center;gap:12px;}
+.color-group input[type="color"]{width:44px;height:44px;border:2px solid #2a2a2a;border-radius:8px;cursor:pointer;background:#1a1a1a;padding:2px;}
+.color-group input[type="color"]::-webkit-color-swatch-wrapper{padding:2px;}
+.color-group input[type="color"]::-webkit-color-swatch{border:none;border-radius:4px;}
+.color-hex{font-family:'Courier New',monospace;font-size:0.9rem;color:#aaa;}
+
+/* Preview */
+.preview-container{background:#fff;border-radius:10px;padding:30px;min-height:120px;overflow:auto;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-success{background:#22aa44;color:#fff;}
+.btn-success:hover{background:#1a8835;}
+
+/* HTML output */
+.html-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-top:16px;max-height:300px;overflow:auto;font-family:'Courier New',monospace;font-size:0.8rem;color:#aaa;white-space:pre-wrap;word-break:break-all;display:none;}
+
+/* Toast */
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#22aa44;color:#fff;padding:12px 28px;border-radius:8px;font-weight:700;font-size:0.95rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:100;}
+.toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+/* Email overlay */
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input[type="email"]:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+.email-popup .close-popup:hover{color:#fff;}
+.email-popup .subscribe-btn{width:100%;padding:12px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:background .2s;}
+.email-popup .subscribe-btn:hover{background:#e5500a;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .form-grid{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+  .template-tabs{gap:6px;}
+  .template-tab{padding:8px 14px;font-size:0.8rem;}
+  .preview-container{padding:16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Email Signature <span>Generator</span></h1>
+  <p class="subtitle">Create professional HTML email signatures that work in Gmail, Outlook, and Apple Mail.</p>
+  <div class="pricing-badge">$2.99 &mdash; or get 50+ tools with Lifetime Pass for $99.99</div>
+
+  <!-- Template Selector -->
+  <div class="section">
+    <h2>Choose Template</h2>
+    <div class="template-tabs" id="templateTabs">
+      <div class="template-tab active" data-template="minimal" onclick="setTemplate('minimal',this)">Minimal</div>
+      <div class="template-tab" data-template="corporate" onclick="setTemplate('corporate',this)">Corporate</div>
+      <div class="template-tab" data-template="creative" onclick="setTemplate('creative',this)">Creative</div>
+    </div>
+    <p class="template-desc" id="templateDesc">Clean and simple. Name, title, contact info. No clutter.</p>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="section">
+    <h2>Your Details</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Full Name *</label>
+        <input type="text" id="fullName" placeholder="Jane Doe" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>Job Title</label>
+        <input type="text" id="jobTitle" placeholder="Senior Designer" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>Company</label>
+        <input type="text" id="company" placeholder="Acme Corp" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>Phone</label>
+        <input type="tel" id="phone" placeholder="+1 (555) 123-4567" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>Email *</label>
+        <input type="email" id="email" placeholder="jane@acme.com" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>Website URL</label>
+        <input type="url" id="website" placeholder="https://acme.com" oninput="updatePreview()">
+      </div>
+      <div class="input-group full">
+        <label>Photo URL</label>
+        <input type="url" id="photoUrl" placeholder="https://example.com/photo.jpg" oninput="updatePreview()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Links -->
+  <div class="section">
+    <h2>Social Links</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Twitter / X</label>
+        <input type="url" id="twitter" placeholder="https://x.com/janedoe" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>LinkedIn</label>
+        <input type="url" id="linkedin" placeholder="https://linkedin.com/in/janedoe" oninput="updatePreview()">
+      </div>
+      <div class="input-group">
+        <label>GitHub</label>
+        <input type="url" id="github" placeholder="https://github.com/janedoe" oninput="updatePreview()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Color -->
+  <div class="section">
+    <h2>Brand Color</h2>
+    <div class="color-group">
+      <input type="color" id="brandColor" value="#ff5f1f" oninput="updateColorHex();updatePreview();">
+      <span class="color-hex" id="colorHex">#ff5f1f</span>
+      <span style="color:#555;font-size:0.85rem;margin-left:8px;">Used for accents, links, and dividers</span>
+    </div>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="section">
+    <h2>Live Preview</h2>
+    <div class="preview-container" id="previewContainer">
+      <p style="color:#999;text-align:center;padding:20px 0;">Fill in your details above to see a live preview.</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyRichText()">Copy to Clipboard (Rich Text)</button>
+      <button class="btn btn-secondary" onclick="copyHTML()">Copy HTML Code</button>
+      <button class="btn btn-secondary" onclick="toggleHTMLOutput()">View HTML Source</button>
+    </div>
+    <div class="html-output" id="htmlOutput"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="toast" id="toast">Copied!</div>
+
+<!-- Email popup overlay -->
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Tool Updates</h2>
+    <p>Join creators and professionals getting new tools, templates, and tips every week.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button class="subscribe-btn" onclick="submitEmail()">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+let currentTemplate = 'minimal';
+
+const templateDescriptions = {
+  minimal: 'Clean and simple. Name, title, contact info. No clutter.',
+  corporate: 'Professional layout with photo, company branding, and full contact details.',
+  creative: 'Bold design with colored sidebar, large photo, and social icons.'
+};
+
+function setTemplate(template, btn) {
+  currentTemplate = template;
+  document.querySelectorAll('.template-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('templateDesc').textContent = templateDescriptions[template];
+  updatePreview();
+}
+
+function updateColorHex() {
+  document.getElementById('colorHex').textContent = document.getElementById('brandColor').value;
+}
+
+function getFormData() {
+  return {
+    fullName: document.getElementById('fullName').value.trim(),
+    jobTitle: document.getElementById('jobTitle').value.trim(),
+    company: document.getElementById('company').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    website: document.getElementById('website').value.trim(),
+    photoUrl: document.getElementById('photoUrl').value.trim(),
+    twitter: document.getElementById('twitter').value.trim(),
+    linkedin: document.getElementById('linkedin').value.trim(),
+    github: document.getElementById('github').value.trim(),
+    brandColor: document.getElementById('brandColor').value
+  };
+}
+
+function esc(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function generateSignatureHTML(d) {
+  if (!d.fullName && !d.email) {
+    return '<p style="color:#999;text-align:center;padding:20px 0;">Fill in your details above to see a live preview.</p>';
+  }
+
+  const c = d.brandColor;
+  const name = esc(d.fullName || 'Your Name');
+  const title = d.jobTitle ? esc(d.jobTitle) : '';
+  const company = d.company ? esc(d.company) : '';
+  const emailLink = d.email ? '<a href="mailto:' + esc(d.email) + '" style="color:' + c + ';text-decoration:none;">' + esc(d.email) + '</a>' : '';
+  const phoneText = d.phone ? esc(d.phone) : '';
+  const websiteLink = d.website ? '<a href="' + esc(d.website) + '" style="color:' + c + ';text-decoration:none;">' + esc(d.website.replace(/^https?:\/\//, '')) + '</a>' : '';
+
+  // Social links as text links (email-safe)
+  let socialHTML = '';
+  const socials = [];
+  if (d.twitter) socials.push('<a href="' + esc(d.twitter) + '" style="color:' + c + ';text-decoration:none;font-size:12px;font-family:Arial,sans-serif;">Twitter</a>');
+  if (d.linkedin) socials.push('<a href="' + esc(d.linkedin) + '" style="color:' + c + ';text-decoration:none;font-size:12px;font-family:Arial,sans-serif;">LinkedIn</a>');
+  if (d.github) socials.push('<a href="' + esc(d.github) + '" style="color:' + c + ';text-decoration:none;font-size:12px;font-family:Arial,sans-serif;">GitHub</a>');
+  if (socials.length > 0) {
+    socialHTML = socials.join('&nbsp;&nbsp;|&nbsp;&nbsp;');
+  }
+
+  // Photo cell
+  const photoCell = d.photoUrl ?
+    '<td style="vertical-align:top;padding-right:16px;"><img src="' + esc(d.photoUrl) + '" width="80" height="80" style="border-radius:50%;display:block;width:80px;height:80px;object-fit:cover;" alt="' + esc(d.fullName || '') + '"></td>' : '';
+
+  const photoRectCell = d.photoUrl ?
+    '<td style="vertical-align:top;padding-right:18px;"><img src="' + esc(d.photoUrl) + '" width="90" height="90" style="border-radius:8px;display:block;width:90px;height:90px;object-fit:cover;" alt="' + esc(d.fullName || '') + '"></td>' : '';
+
+  const photoBigCell = d.photoUrl ?
+    '<td style="vertical-align:top;padding-right:0;"><img src="' + esc(d.photoUrl) + '" width="100" height="100" style="border-radius:50%;display:block;width:100px;height:100px;object-fit:cover;border:3px solid ' + c + ';" alt="' + esc(d.fullName || '') + '"></td>' : '';
+
+  if (currentTemplate === 'minimal') {
+    // Minimal: clean horizontal layout
+    let contactParts = [];
+    if (phoneText) contactParts.push(phoneText);
+    if (emailLink) contactParts.push(emailLink);
+    if (websiteLink) contactParts.push(websiteLink);
+    const contactLine = contactParts.join('&nbsp;&nbsp;|&nbsp;&nbsp;');
+
+    let titleLine = '';
+    if (title && company) titleLine = title + ' at ' + company;
+    else if (title) titleLine = title;
+    else if (company) titleLine = company;
+
+    return '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;line-height:1.5;">' +
+      '<tr>' +
+        photoCell +
+        '<td style="vertical-align:top;">' +
+          '<table cellpadding="0" cellspacing="0" border="0">' +
+            '<tr><td style="font-size:18px;font-weight:bold;color:#111111;font-family:Arial,Helvetica,sans-serif;padding-bottom:2px;">' + name + '</td></tr>' +
+            (titleLine ? '<tr><td style="font-size:13px;color:#666666;font-family:Arial,Helvetica,sans-serif;padding-bottom:8px;">' + esc(titleLine) + '</td></tr>' : '') +
+            '<tr><td style="border-top:2px solid ' + c + ';padding-top:8px;font-size:12px;color:#666666;font-family:Arial,Helvetica,sans-serif;">' + contactLine + '</td></tr>' +
+            (socialHTML ? '<tr><td style="padding-top:6px;">' + socialHTML + '</td></tr>' : '') +
+          '</table>' +
+        '</td>' +
+      '</tr>' +
+    '</table>';
+  }
+
+  if (currentTemplate === 'corporate') {
+    // Corporate: structured with separator, all info neatly laid out
+    let infoRows = '';
+    if (title) infoRows += '<tr><td style="font-size:14px;color:#444444;font-family:Arial,Helvetica,sans-serif;padding-bottom:2px;font-weight:600;">' + esc(title) + '</td></tr>';
+    if (company) infoRows += '<tr><td style="font-size:13px;color:' + c + ';font-family:Arial,Helvetica,sans-serif;padding-bottom:10px;font-weight:600;">' + esc(company) + '</td></tr>';
+
+    let contactRows = '';
+    if (phoneText) contactRows += '<tr><td style="font-size:12px;color:#666666;font-family:Arial,Helvetica,sans-serif;padding-bottom:3px;"><span style="color:#999999;font-weight:600;">P:</span>&nbsp;&nbsp;' + phoneText + '</td></tr>';
+    if (emailLink) contactRows += '<tr><td style="font-size:12px;color:#666666;font-family:Arial,Helvetica,sans-serif;padding-bottom:3px;"><span style="color:#999999;font-weight:600;">E:</span>&nbsp;&nbsp;' + emailLink + '</td></tr>';
+    if (websiteLink) contactRows += '<tr><td style="font-size:12px;color:#666666;font-family:Arial,Helvetica,sans-serif;padding-bottom:3px;"><span style="color:#999999;font-weight:600;">W:</span>&nbsp;&nbsp;' + websiteLink + '</td></tr>';
+
+    return '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;line-height:1.4;">' +
+      '<tr>' +
+        photoRectCell +
+        '<td style="vertical-align:top;border-left:3px solid ' + c + ';padding-left:16px;">' +
+          '<table cellpadding="0" cellspacing="0" border="0">' +
+            '<tr><td style="font-size:20px;font-weight:bold;color:#111111;font-family:Arial,Helvetica,sans-serif;padding-bottom:3px;">' + name + '</td></tr>' +
+            infoRows +
+            contactRows +
+            (socialHTML ? '<tr><td style="padding-top:8px;border-top:1px solid #e0e0e0;margin-top:6px;">' + socialHTML + '</td></tr>' : '') +
+          '</table>' +
+        '</td>' +
+      '</tr>' +
+    '</table>';
+  }
+
+  if (currentTemplate === 'creative') {
+    // Creative: bold with colored banner area and bigger presence
+    let titleCompany = '';
+    if (title && company) titleCompany = title + ' &bull; ' + company;
+    else if (title) titleCompany = title;
+    else if (company) titleCompany = company;
+
+    let contactItems = [];
+    if (phoneText) contactItems.push(phoneText);
+    if (emailLink) contactItems.push(emailLink);
+    if (websiteLink) contactItems.push(websiteLink);
+
+    return '<table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333333;line-height:1.5;max-width:500px;">' +
+      '<tr>' +
+        '<td style="background:' + c + ';padding:16px 20px;border-radius:8px 8px 0 0;">' +
+          '<table cellpadding="0" cellspacing="0" border="0" width="100%">' +
+            '<tr>' +
+              (d.photoUrl ? '<td style="vertical-align:middle;width:70px;"><img src="' + esc(d.photoUrl) + '" width="60" height="60" style="border-radius:50%;display:block;width:60px;height:60px;object-fit:cover;border:2px solid rgba(255,255,255,0.5);" alt="' + esc(d.fullName || '') + '"></td>' : '') +
+              '<td style="vertical-align:middle;padding-left:' + (d.photoUrl ? '14' : '0') + 'px;">' +
+                '<table cellpadding="0" cellspacing="0" border="0">' +
+                  '<tr><td style="font-size:22px;font-weight:bold;color:#ffffff;font-family:Arial,Helvetica,sans-serif;">' + name + '</td></tr>' +
+                  (titleCompany ? '<tr><td style="font-size:13px;color:rgba(255,255,255,0.85);font-family:Arial,Helvetica,sans-serif;padding-top:2px;">' + titleCompany + '</td></tr>' : '') +
+                '</table>' +
+              '</td>' +
+            '</tr>' +
+          '</table>' +
+        '</td>' +
+      '</tr>' +
+      '<tr>' +
+        '<td style="background:#f8f8f8;padding:14px 20px;border-radius:0 0 8px 8px;border:1px solid #e8e8e8;border-top:none;">' +
+          '<table cellpadding="0" cellspacing="0" border="0">' +
+            (contactItems.length > 0 ? '<tr><td style="font-size:12px;color:#555555;font-family:Arial,Helvetica,sans-serif;padding-bottom:' + (socialHTML ? '8' : '0') + 'px;">' + contactItems.join('&nbsp;&nbsp;&bull;&nbsp;&nbsp;') + '</td></tr>' : '') +
+            (socialHTML ? '<tr><td style="padding-top:6px;border-top:1px solid #e0e0e0;">' + socialHTML + '</td></tr>' : '') +
+          '</table>' +
+        '</td>' +
+      '</tr>' +
+    '</table>';
+  }
+
+  return '';
+}
+
+function updatePreview() {
+  const d = getFormData();
+  const html = generateSignatureHTML(d);
+  document.getElementById('previewContainer').innerHTML = html;
+}
+
+function getCleanHTML() {
+  const d = getFormData();
+  return generateSignatureHTML(d);
+}
+
+function copyRichText() {
+  const html = getCleanHTML();
+  if (!html || html.includes('Fill in your details')) {
+    showToast('Please fill in at least your name or email first.');
+    return;
+  }
+  const blob = new Blob([html], { type: 'text/html' });
+  const plainBlob = new Blob([document.getElementById('previewContainer').innerText], { type: 'text/plain' });
+  navigator.clipboard.write([
+    new ClipboardItem({
+      'text/html': blob,
+      'text/plain': plainBlob
+    })
+  ]).then(() => {
+    showToast('Copied as rich text! Paste into Gmail or Outlook.');
+    gtag('event', 'copy_signature', { event_category: 'tool_use', method: 'rich_text', template: currentTemplate });
+  }).catch(() => {
+    // Fallback: copy as HTML code
+    navigator.clipboard.writeText(html).then(() => {
+      showToast('Copied HTML code to clipboard.');
+      gtag('event', 'copy_signature', { event_category: 'tool_use', method: 'html_fallback', template: currentTemplate });
+    });
+  });
+}
+
+function copyHTML() {
+  const html = getCleanHTML();
+  if (!html || html.includes('Fill in your details')) {
+    showToast('Please fill in at least your name or email first.');
+    return;
+  }
+  navigator.clipboard.writeText(html).then(() => {
+    showToast('HTML code copied to clipboard!');
+    gtag('event', 'copy_signature', { event_category: 'tool_use', method: 'html_code', template: currentTemplate });
+  });
+}
+
+function toggleHTMLOutput() {
+  const output = document.getElementById('htmlOutput');
+  if (output.style.display === 'block') {
+    output.style.display = 'none';
+    return;
+  }
+  const html = getCleanHTML();
+  // Format the HTML nicely for display
+  output.textContent = html;
+  output.style.display = 'block';
+  gtag('event', 'generate_signature', { event_category: 'tool_use', template: currentTemplate });
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// Email popup
+function closeEmail() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('emailDismissed', '1');
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value;
+  if (email && email.includes('@')) {
+    gtag('event', 'email_signup', { event_category: 'conversion' });
+    const popup = document.getElementById('emailOverlay').querySelector('.email-popup');
+    popup.innerHTML = '<p style="color:#22aa44;font-size:1rem;font-weight:600;padding:30px 0;">Thanks for subscribing! Check your inbox.</p>';
+    setTimeout(() => closeEmail(), 3000);
+  } else {
+    alert('Please enter a valid email.');
+  }
+}
+
+if (!localStorage.getItem('emailDismissed')) {
+  setTimeout(() => {
+    document.getElementById('emailOverlay').classList.add('show');
+  }, 30000);
+}
+
+// Initialize preview
+updatePreview();
+</script>
+</body>
+</html>

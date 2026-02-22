@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Name Generator - AI-Powered Brand Name Ideas | SPUNKART.COM</title>
+<meta name="description" content="Generate 50 unique business name ideas instantly. Template-powered brand name generator with prefix/suffix combos, portmanteaus, and keyword blends. Free tool by SPUNKART.COM.">
+<meta property="og:title" content="Business Name Generator - AI-Powered Brand Name Ideas | SPUNKART.COM">
+<meta property="og:description" content="Generate 50 unique business names instantly. Prefix/suffix combos, portmanteaus, keyword blends. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/business-name">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Business Name Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate 50 unique business name ideas instantly. Free brand naming tool.">
+<link rel="canonical" href="https://spunkart.com/business-name">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}
+nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#999;margin-bottom:28px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group select:focus{border-color:#ff5f1f;}
+.input-group select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.input-group select option{background:#1a1a1a;color:#e8e8e8;}
+
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;width:100%;}
+.btn-primary:hover{background:#e5520a;}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;}
+.toolbar select,.toolbar input{padding:8px 12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.85rem;outline:none;}
+.toolbar select:focus,.toolbar input:focus{border-color:#ff5f1f;}
+.toolbar input{flex:1;min-width:150px;}
+.toolbar select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
+.count-badge{font-size:0.8rem;color:#666;margin-left:auto;}
+
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.name-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s;}
+.name-card:hover{border-color:#ff5f1f44;}
+.name-card .name{font-size:1.05rem;font-weight:600;color:#fff;word-break:break-word;}
+.name-card .tag{font-size:0.7rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;}
+.name-card .actions{display:flex;gap:6px;}
+.name-card .actions button{flex:1;padding:6px 10px;background:#222;border:1px solid #333;border-radius:6px;color:#ccc;cursor:pointer;font-size:0.75rem;transition:all .2s;white-space:nowrap;}
+.name-card .actions button:hover{background:#333;color:#fff;}
+.name-card .actions button.copied{background:#22aa44;border-color:#22aa44;color:#fff;}
+
+.regen-wrap{margin-top:16px;text-align:center;}
+.btn-regen{background:#222;color:#ccc;border:1px solid #333;padding:12px 32px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-regen:hover{background:#333;color:#ff5f1f;border-color:#ff5f1f;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:6px;font-size:0.9rem;}
+.cross-sell .price{color:#ff5f1f;font-size:1.3rem;font-weight:700;margin-bottom:4px;}
+.cross-sell .price-note{color:#666;font-size:0.85rem;margin-bottom:16px;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;transition:background .2s;}
+.cross-sell a.cta:hover{background:#e5520a;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+.email-popup .close-popup:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .results-grid{grid-template-columns:1fr 1fr;}
+  .toolbar{flex-direction:column;}
+}
+@media(max-width:400px){
+  .results-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Business Name <span>Generator</span></h1>
+  <p class="subtitle">Generate 50 unique brand name ideas instantly. Prefix/suffix combos, portmanteaus, and keyword power blends.</p>
+
+  <div class="section">
+    <h2>Describe Your Business</h2>
+    <div class="input-group">
+      <label>Industry / Niche</label>
+      <input type="text" id="industry" placeholder="e.g. Fitness, SaaS, Coffee, Real Estate, Fashion">
+    </div>
+    <div class="input-group">
+      <label>Keywords (comma-separated)</label>
+      <input type="text" id="keywords" placeholder="e.g. cloud, fast, green, smart, home">
+    </div>
+    <div class="input-group">
+      <label>Style</label>
+      <select id="style">
+        <option value="modern">Modern</option>
+        <option value="classic">Classic</option>
+        <option value="playful">Playful</option>
+        <option value="technical">Technical</option>
+        <option value="minimal">Minimal</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="generateNames()">Generate 50 Names</button>
+  </div>
+
+  <div id="resultsSection" style="display:none;">
+    <div class="section">
+      <h2>Your Brand Name Ideas</h2>
+      <div class="toolbar">
+        <input type="text" id="filterInput" placeholder="Filter names..." oninput="applyFilter()">
+        <select id="sortSelect" onchange="applySort()">
+          <option value="default">Sort: Default</option>
+          <option value="alpha">Sort: A-Z</option>
+          <option value="alpha-desc">Sort: Z-A</option>
+          <option value="short">Sort: Shortest</option>
+          <option value="long">Sort: Longest</option>
+        </select>
+        <span class="count-badge" id="countBadge">50 names</span>
+      </div>
+      <div class="results-grid" id="resultsGrid"></div>
+      <div class="regen-wrap">
+        <button class="btn-regen" onclick="generateNames()">Regenerate 50 Names</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get 10% Off Premium Tools</h2>
+    <p>Join our list for a discount code, new tool launches, and business tips.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;padding:12px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;">Get My Code</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+/* ===== DATA: 200+ prefixes, 200+ suffixes, 100+ power words ===== */
+
+const prefixes = [
+  'Snap','Cloud','Zen','Flux','Nova','Bolt','Apex','Vibe','Core','Pixel',
+  'Hyper','Blaze','Swift','Orbit','Pulse','Forge','Spark','Wave','Drift','Prime',
+  'Bright','True','Edge','Echo','Neon','Solar','Iron','Titan','Peak','Vista',
+  'Sage','Lux','Mint','Rune','Aero','Alto','Crest','Bay','Glow','Hive',
+  'Rise','Keen','Fuse','Zeal','Rapid','Flow','Omni','Base','Nest','Sync',
+  'Arc','Beam','Cove','Dash','Ember','Flint','Gem','Haven','Isle','Jade',
+  'Kite','Loom','Muse','Noir','Opal','Pine','Quest','Reed','Silk','Tide',
+  'Volt','Wren','Zinc','Amber','Brio','Cedar','Dune','Fern','Gale','Hawk',
+  'Ivy','Jazz','Kelp','Lark','Maple','North','Oak','Plum','Quartz','River',
+  'Stone','Terra','Uno','Vale','Wisp','Yew','Agile','Blue','Coral','Delta',
+  'Elite','Frost','Grand','Hero','Ignite','Jet','King','Luna','Metro','Noble',
+  'Onyx','Pax','Radiant','Star','Ultra','Vivid','Wild','Xeno','Zen','Alpha',
+  'Beta','Gamma','Cyber','Data','Eco','Fin','Go','Hub','Ion','Joy',
+  'Kin','Link','Max','Net','Owl','Pro','Rex','Sky','Top','Uni',
+  'Vox','Web','Next','Yes','Zoom','Aura','Bloom','Crisp','Dawn','Flair',
+  'Grace','Halo','Indie','Jubilee','Karma','Lyric','Meadow','Nimble','Origin','Prism',
+  'Quill','Ripple','Serene','Thrive','Urban','Velvet','Whisper','Astro','Brave','Charm',
+  'Dream','Ever','Fresh','Golden','Honest','Inspire','Jovial','Keen','Lucid','Mighty',
+  'Neat','Open','Pure','Quick','Rare','Simple','Tempo','Unity','Vast','Warm',
+  'Xceed','Yield','Zenith','Craft','Shield','Signal','Vector','Matrix','Vertex','Helix'
+];
+
+const suffixes = [
+  'ify','ly','hub','lab','stack','base','flow','wave','nest','spot',
+  'mint','cast','path','link','zone','dock','grid','shift','spark','works',
+  'point','mark','line','craft','forge','pulse','bridge','gate','port','vault',
+  'scape','field','edge','sphere','bloom','core','hive','leap','mind','rise',
+  'side','stem','stone','tribe','verse','well','wise','yard','able','ance',
+  'ary','ation','ble','ment','ness','ous','ive','ful','ium','ory',
+  'ist','ics','ware','tech','soft','net','cloud','data','sync','media',
+  'io','co','ly','fy','er','or','al','ia','ix','os',
+  'up','go','me','it','on','ai','eo','app','dev','ops',
+  'bit','box','bot','kit','pod','tap','tip','top','way','bay',
+  'key','ace','run','jet','fox','bee','owl','elk','ram','fin',
+  'gem','arc','ray','dew','sky','sun','sea','oak','elm','ash',
+  'ivy','fir','bay','cay','tor','fen','lea','moor','glen','dale',
+  'berg','holm','stead','ton','bury','ford','wood','land','vale','haven',
+  'crest','ridge','cliff','peak','brook','lake','spring','grove','heath','marsh',
+  'den','hut','lodge','manor','tower','hall','court','plaza','avenue','lane',
+  'trail','loop','circle','square','park','view','hill','glen','pass','reach',
+  'space','labs','house','studio','forge','works','place','site','crew','team',
+  'group','pros','max','plus','prime','select','direct','express','rapid','swift',
+  'first','next','ultra','super','mega','pro','elite','alpha','beta','omega'
+];
+
+const powerWords = [
+  'brilliant','ultimate','proven','epic','dynamic','trusted','premium','essential','innovative','powerful',
+  'reliable','strategic','creative','efficient','bold','smart','rapid','secure','agile','advanced',
+  'seamless','elite','infinite','stellar','supreme','vital','robust','pioneer','prime','global',
+  'instant','cutting-edge','next-gen','visionary','disruptive','scalable','sustainable','authentic','legendary','superior',
+  'exclusive','remarkable','unstoppable','transformative','revolutionary','fearless','limitless','magnetic','radiant','invincible',
+  'amplified','accelerated','optimized','elevated','refined','curated','bespoke','artisan','signature','flagship',
+  'breakthrough','trailblazing','groundbreaking','state-of-the-art','world-class','best-in-class','top-tier','high-impact','results-driven','data-powered',
+  'cloud-native','future-proof','mission-critical','battle-tested','enterprise-grade','pixel-perfect','laser-focused','human-centered','purpose-built','community-driven',
+  'crystal','thunder','phoenix','summit','horizon','catalyst','pinnacle','zenith','vanguard','frontier',
+  'momentum','velocity','clarity','harmony','synergy','precision','mastery','excellence','dominion','genesis',
+  'legacy','triumph','valor','aspire','elevate'
+];
+
+/* ===== STYLE-SPECIFIC WORD POOLS ===== */
+const styleModifiers = {
+  modern: {
+    prefixBoost: ['Snap','Flux','Nova','Bolt','Pulse','Sync','Neon','Hyper','Cyber','Data','Cloud','Pixel','Aero','Ion','Vox','Net','Web','AI','Dash','Go'],
+    suffixBoost: ['ify','ly','io','co','ai','hub','lab','stack','cloud','sync','app','dev','ops','tech','soft','ware','bit','bot','up','go'],
+    blendStyle: 'tech'
+  },
+  classic: {
+    prefixBoost: ['Grand','Noble','Royal','Crown','Sterling','Heritage','Premier','Capital','Empire','Legacy','Crest','Regent','Windsor','Manor','Summit','Atlas','Beacon','Concord','Dominion','Evergreen'],
+    suffixBoost: ['ton','bury','ford','wood','land','haven','stead','holm','berg','manor','hall','court','field','stone','bridge','gate','well','worth','grove','dale'],
+    blendStyle: 'formal'
+  },
+  playful: {
+    prefixBoost: ['Snap','Pop','Fizz','Buzz','Wink','Jolly','Zippy','Funky','Quirk','Boop','Giggly','Peppy','Bubbly','Doodle','Sparkle','Wiggle','Wobble','Twirl','Skippy','Jazzy'],
+    suffixBoost: ['ly','ify','oo','ee','ie','ster','ling','let','kins','puff','berry','bean','cake','nugget','muffin','pickle','sprout','bunch','whirl','bounce'],
+    blendStyle: 'fun'
+  },
+  technical: {
+    prefixBoost: ['Quantum','Vector','Matrix','Helix','Cipher','Logic','Binary','Neural','Syntax','Stack','Kernel','Proto','Schema','Algo','Parse','Graph','Node','Redis','Proxy','Cache'],
+    suffixBoost: ['tech','ware','soft','sys','ops','dev','net','data','base','code','lab','hub','stack','grid','core','api','sdk','cli','bit','byte'],
+    blendStyle: 'sci'
+  },
+  minimal: {
+    prefixBoost: ['Kin','Ora','Nua','Elo','Ava','Ari','Iko','Umi','Eno','Oku','Lune','Mira','Koto','Sola','Vela','Hana','Zuri','Nomi','Kaya','Remi'],
+    suffixBoost: ['co','io','ly','ia','os','al','er','or','on','ix','me','it','go','up','do','la','ra','na','ka','sa'],
+    blendStyle: 'clean'
+  }
+};
+
+/* ===== NAME GENERATION ENGINE ===== */
+let generatedNames = [];
+let filteredNames = [];
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); }
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function generatePrefixSuffix(style, kws) {
+  const mod = styleModifiers[style];
+  const pool = [...prefixes, ...mod.prefixBoost, ...mod.prefixBoost];
+  const sufPool = [...suffixes, ...mod.suffixBoost, ...mod.suffixBoost];
+  const p = pick(pool);
+  const s = pick(sufPool);
+  // Avoid double vowels at junction
+  let name = p + s;
+  return capitalize(name);
+}
+
+function generateKeywordPower(style, kws) {
+  const kw = kws.length > 0 ? capitalize(pick(kws)) : capitalize(pick(prefixes));
+  const pw = pick(powerWords).split('-').map(capitalize).join('');
+  if (Math.random() > 0.5) {
+    return kw + ' ' + pw;
+  }
+  return pw + ' ' + kw;
+}
+
+function generatePortmanteau(style, kws) {
+  const mod = styleModifiers[style];
+  let w1 = kws.length > 0 ? pick(kws) : pick(prefixes).toLowerCase();
+  let w2 = pick([...prefixes, ...mod.prefixBoost]).toLowerCase();
+  // Take first half of w1 and second half of w2
+  const cut1 = Math.max(2, Math.ceil(w1.length * 0.6));
+  const cut2 = Math.max(1, Math.floor(w2.length * 0.4));
+  const blend = w1.slice(0, cut1) + w2.slice(cut2);
+  return capitalize(blend);
+}
+
+function generateKeywordSuffix(style, kws) {
+  const mod = styleModifiers[style];
+  const kw = kws.length > 0 ? pick(kws) : pick(prefixes).toLowerCase();
+  const s = pick([...mod.suffixBoost, ...suffixes.slice(0, 50)]);
+  return capitalize(kw) + s;
+}
+
+function generateDoubleWord(style, kws) {
+  const mod = styleModifiers[style];
+  const pool = [...prefixes, ...mod.prefixBoost];
+  const w1 = pick(pool);
+  const w2 = pick(pool);
+  if (w1 === w2) return generateDoubleWord(style, kws);
+  return w1 + w2;
+}
+
+function generateIndustryCombo(style, kws, industry) {
+  if (!industry) return generatePrefixSuffix(style, kws);
+  const mod = styleModifiers[style];
+  const s = pick([...mod.suffixBoost, ...suffixes.slice(0, 40)]);
+  const indWord = industry.split(/\s+/)[0];
+  if (Math.random() > 0.5) {
+    return capitalize(indWord) + capitalize(s);
+  }
+  const p = pick([...mod.prefixBoost, ...prefixes.slice(0, 40)]);
+  return p + capitalize(indWord);
+}
+
+function generateNames() {
+  const industry = document.getElementById('industry').value.trim();
+  const keywordsRaw = document.getElementById('keywords').value.trim();
+  const style = document.getElementById('style').value;
+  const kws = keywordsRaw ? keywordsRaw.split(',').map(k => k.trim()).filter(Boolean) : [];
+
+  const nameSet = new Set();
+  const nameData = [];
+  const generators = [
+    { fn: generatePrefixSuffix, type: 'Prefix + Suffix' },
+    { fn: generatePortmanteau, type: 'Portmanteau' },
+    { fn: generateKeywordPower, type: 'Keyword + Power' },
+    { fn: generateKeywordSuffix, type: 'Keyword Blend' },
+    { fn: generateDoubleWord, type: 'Compound' },
+    { fn: (s, k) => generateIndustryCombo(s, k, industry), type: 'Industry Mix' },
+  ];
+
+  let attempts = 0;
+  while (nameData.length < 50 && attempts < 500) {
+    attempts++;
+    const gen = pick(generators);
+    let name = gen.fn(style, kws);
+    // Clean up: remove spaces for compound names if style is minimal
+    if (style === 'minimal' && gen.type !== 'Keyword + Power') {
+      name = name.replace(/\s+/g, '');
+    }
+    // Enforce reasonable length
+    if (name.length < 3 || name.length > 24) continue;
+    const key = name.toLowerCase().replace(/\s+/g, '');
+    if (!nameSet.has(key)) {
+      nameSet.add(key);
+      nameData.push({ name, type: gen.type });
+    }
+  }
+
+  generatedNames = nameData;
+  filteredNames = [...generatedNames];
+  document.getElementById('filterInput').value = '';
+  document.getElementById('sortSelect').value = 'default';
+  renderResults();
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  gtag('event', 'generate_names', { event_category: 'tool_use', style: style, industry: industry || 'none', keyword_count: kws.length });
+}
+
+function applyFilter() {
+  const query = document.getElementById('filterInput').value.trim().toLowerCase();
+  filteredNames = generatedNames.filter(n => n.name.toLowerCase().includes(query));
+  applySort(true);
+}
+
+function applySort(skipFilter) {
+  if (!skipFilter) {
+    const query = document.getElementById('filterInput').value.trim().toLowerCase();
+    filteredNames = generatedNames.filter(n => n.name.toLowerCase().includes(query));
+  }
+  const sort = document.getElementById('sortSelect').value;
+  switch (sort) {
+    case 'alpha':
+      filteredNames.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'alpha-desc':
+      filteredNames.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case 'short':
+      filteredNames.sort((a, b) => a.name.length - b.name.length);
+      break;
+    case 'long':
+      filteredNames.sort((a, b) => b.name.length - a.name.length);
+      break;
+  }
+  renderResults();
+}
+
+function renderResults() {
+  const grid = document.getElementById('resultsGrid');
+  const badge = document.getElementById('countBadge');
+  badge.textContent = filteredNames.length + ' name' + (filteredNames.length !== 1 ? 's' : '');
+
+  grid.innerHTML = filteredNames.map((item, i) => `
+    <div class="name-card">
+      <div class="tag">${item.type}</div>
+      <div class="name">${item.name}</div>
+      <div class="actions">
+        <button onclick="copyName(this, '${item.name.replace(/'/g, "\\'")}')">Copy</button>
+        <button onclick="checkDomain('${item.name.replace(/'/g, "\\'").replace(/\s+/g, '')}')">.com check</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function copyName(btn, name) {
+  navigator.clipboard.writeText(name).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_name', { event_category: 'tool_use', event_label: name });
+  });
+}
+
+function checkDomain(name) {
+  const clean = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  window.open('https://www.whois.com/whois/' + clean + '.com', '_blank');
+}
+
+/* ===== EMAIL POPUP ===== */
+function closeEmail() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('emailDismissed', '1');
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value;
+  if (email && email.includes('@')) {
+    gtag('event', 'email_signup', { event_category: 'conversion' });
+    const popup = document.getElementById('emailOverlay').querySelector('.email-popup');
+    popup.innerHTML = '<p style="color:#22aa44;font-size:1.1rem;font-weight:700;padding:20px;">Check your inbox for your 10% off code!</p>';
+    setTimeout(() => closeEmail(), 3000);
+  } else {
+    alert('Please enter a valid email.');
+  }
+}
+
+if (!localStorage.getItem('emailDismissed')) {
+  setTimeout(() => { document.getElementById('emailOverlay').classList.add('show'); }, 30000);
+}
+</script>
+</body>
+</html>

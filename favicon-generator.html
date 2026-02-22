@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favicon Generator - Create All Favicon Sizes Free | SPUNKART.COM</title>
+<meta name="description" content="Generate favicons in all sizes from any image. Get 16x16, 32x32, 48x48, Apple Touch, Android, and PWA icons. Download individually or as ZIP. Free, instant, no signup.">
+<meta property="og:title" content="Favicon Generator - Create All Favicon Sizes Free">
+<meta property="og:description" content="Upload any image and generate favicons for all platforms. Download as PNG or ZIP with HTML snippets and manifest.json.">
+<meta property="og:image" content="https://spunkart.com/assets/og-favicon-generator.png">
+<meta property="og:url" content="https://spunkart.com/favicon-generator">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Favicon Generator - Create All Favicon Sizes Free">
+<meta name="twitter:description" content="Generate favicons in all sizes. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/favicon-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:32px;font-size:1rem;}
+
+.drop-zone{border:2px dashed #333;border-radius:12px;padding:48px 24px;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s;margin-bottom:24px;position:relative;}
+.drop-zone:hover,.drop-zone.dragover{border-color:#ff5f1f;background:rgba(255,95,31,0.04);}
+.drop-zone-icon{font-size:3rem;margin-bottom:12px;color:#444;}
+.drop-zone-text{color:#999;font-size:0.95rem;margin-bottom:8px;}
+.drop-zone-hint{color:#555;font-size:0.8rem;}
+.drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+.source-preview{display:none;text-align:center;margin-bottom:32px;padding:20px;background:#111;border:1px solid #222;border-radius:12px;}
+.source-preview img{max-width:200px;max-height:200px;border-radius:8px;border:1px solid #333;}
+.source-preview p{color:#999;font-size:0.85rem;margin-top:8px;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+.btn-small{padding:8px 16px;font-size:0.85rem;}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+.btn-row-left{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+
+.output-section{display:none;margin-top:32px;}
+.output-section h2{font-size:1.3rem;color:#fff;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #222;}
+
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-bottom:32px;}
+.preview-card{background:#111;border:1px solid #222;border-radius:10px;padding:16px;text-align:center;transition:border-color 0.2s;}
+.preview-card:hover{border-color:#333;}
+.preview-card .preview-img{display:flex;align-items:center;justify-content:center;min-height:80px;margin-bottom:10px;}
+.preview-card .preview-img img{image-rendering:pixelated;border:1px solid #333;border-radius:4px;background:#fff;}
+.preview-card .preview-label{font-size:0.85rem;color:#ff5f1f;font-weight:600;margin-bottom:2px;}
+.preview-card .preview-size{font-size:0.75rem;color:#666;margin-bottom:10px;}
+.preview-card button{width:100%;padding:8px 12px;font-size:0.8rem;}
+
+.code-block{background:#111;border:1px solid #222;border-radius:10px;padding:16px;position:relative;margin-bottom:16px;overflow-x:auto;}
+.code-block pre{color:#ccc;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.82rem;white-space:pre-wrap;word-wrap:break-word;line-height:1.7;}
+.code-block .copy-btn{position:absolute;top:10px;right:10px;background:#222;color:#ccc;border:1px solid #333;padding:5px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;transition:background 0.2s;}
+.code-block .copy-btn:hover{background:#333;color:#fff;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .preview-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));}
+  .drop-zone{padding:32px 16px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Favicon Generator</h1>
+  <p class="subtitle">Upload any image and generate favicons for every platform. Download all sizes as PNG or ZIP with ready-to-use HTML and manifest.json.</p>
+
+  <div class="drop-zone" id="dropZone">
+    <input type="file" id="fileInput" accept="image/*">
+    <div class="drop-zone-icon">&#128444;</div>
+    <div class="drop-zone-text">Drag &amp; drop an image here, or click to browse</div>
+    <div class="drop-zone-hint">PNG, JPG, SVG, WebP &mdash; any size</div>
+  </div>
+
+  <div class="source-preview" id="sourcePreview">
+    <img id="sourceImg" alt="Source image preview">
+    <p id="sourceInfo"></p>
+    <div class="btn-row" style="margin-top:12px;">
+      <button onclick="generateFavicons()">Generate Favicons</button>
+      <button class="btn-secondary" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <div class="output-section" id="outputSection">
+    <h2>Preview &amp; Download</h2>
+    <div class="btn-row-left">
+      <button onclick="downloadAllZip()">Download All as ZIP</button>
+    </div>
+    <div class="preview-grid" id="previewGrid"></div>
+
+    <h2>HTML Snippet</h2>
+    <p style="color:#999;font-size:0.9rem;margin-bottom:12px;">Add this to your &lt;head&gt; tag to include all favicon sizes.</p>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copySnippet('htmlSnippet',this)">Copy</button>
+      <pre id="htmlSnippet"></pre>
+    </div>
+
+    <h2>manifest.json</h2>
+    <p style="color:#999;font-size:0.9rem;margin-bottom:12px;">Use this for PWA / Android home screen icons.</p>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copySnippet('manifestSnippet',this)">Copy</button>
+      <pre id="manifestSnippet"></pre>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Marketing Tools</h2>
+    <p>Join creators getting weekly free tools, templates, and marketing tips.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+const SIZES=[
+  {w:16,h:16,label:'16x16',desc:'Classic favicon'},
+  {w:32,h:32,label:'32x32',desc:'Standard favicon'},
+  {w:48,h:48,label:'48x48',desc:'Windows site icon'},
+  {w:180,h:180,label:'180x180',desc:'Apple Touch Icon'},
+  {w:192,h:192,label:'192x192',desc:'Android / Chrome'},
+  {w:512,h:512,label:'512x512',desc:'PWA / Splash'}
+];
+
+let sourceImage=null;
+const generatedBlobs={};
+
+// Drag & drop
+const dropZone=document.getElementById('dropZone');
+const fileInput=document.getElementById('fileInput');
+
+dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('dragover');});
+dropZone.addEventListener('dragleave',()=>{dropZone.classList.remove('dragover');});
+dropZone.addEventListener('drop',e=>{
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change',e=>{if(e.target.files.length)handleFile(e.target.files[0]);});
+
+function handleFile(file){
+  if(!file.type.startsWith('image/')){alert('Please upload an image file.');return;}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      sourceImage=img;
+      document.getElementById('sourceImg').src=e.target.result;
+      document.getElementById('sourceInfo').textContent=file.name+' \u2014 '+img.naturalWidth+' x '+img.naturalHeight+'px';
+      document.getElementById('sourcePreview').style.display='block';
+      dropZone.style.display='none';
+      document.getElementById('outputSection').style.display='none';
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function generateFavicons(){
+  if(!sourceImage){alert('Please upload an image first.');return;}
+  const grid=document.getElementById('previewGrid');
+  grid.innerHTML='';
+  Object.keys(generatedBlobs).forEach(k=>delete generatedBlobs[k]);
+
+  SIZES.forEach(s=>{
+    const canvas=document.createElement('canvas');
+    canvas.width=s.w;canvas.height=s.h;
+    const ctx=canvas.getContext('2d');
+    ctx.imageSmoothingEnabled=true;
+    ctx.imageSmoothingQuality='high';
+    ctx.drawImage(sourceImage,0,0,s.w,s.h);
+
+    const dataURL=canvas.toDataURL('image/png');
+
+    // Store blob for ZIP
+    canvas.toBlob(blob=>{generatedBlobs['favicon-'+s.w+'x'+s.h+'.png']=blob;},'image/png');
+
+    // Preview card
+    const card=document.createElement('div');
+    card.className='preview-card';
+
+    const displaySize=Math.min(s.w,64);
+    card.innerHTML=
+      '<div class="preview-img"><img src="'+dataURL+'" width="'+displaySize+'" height="'+displaySize+'" alt="'+s.label+' favicon"></div>'+
+      '<div class="preview-label">'+s.label+'</div>'+
+      '<div class="preview-size">'+s.desc+'</div>'+
+      '<button class="btn-small" onclick="downloadSingle(\''+dataURL+'\',\'favicon-'+s.w+'x'+s.h+'.png\')">Download PNG</button>';
+    grid.appendChild(card);
+  });
+
+  // HTML snippet
+  const html=[
+    '<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">',
+    '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
+    '<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">',
+    '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
+    '<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">',
+    '<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">',
+    '<link rel="manifest" href="/manifest.json">'
+  ].join('\n');
+  document.getElementById('htmlSnippet').textContent=html;
+
+  // Manifest
+  const manifest=JSON.stringify({
+    name:"My App",
+    short_name:"App",
+    icons:[
+      {src:"/android-chrome-192x192.png",sizes:"192x192",type:"image/png"},
+      {src:"/android-chrome-512x512.png",sizes:"512x512",type:"image/png"}
+    ],
+    theme_color:"#ffffff",
+    background_color:"#ffffff",
+    display:"standalone"
+  },null,2);
+  document.getElementById('manifestSnippet').textContent=manifest;
+
+  document.getElementById('outputSection').style.display='block';
+  document.getElementById('outputSection').scrollIntoView({behavior:'smooth'});
+
+  gtag('event','generate_favicon',{event_category:'tool_use'});
+}
+
+function downloadSingle(dataURL,filename){
+  const a=document.createElement('a');
+  a.href=dataURL;
+  a.download=filename;
+  a.click();
+  gtag('event','download_favicon',{event_category:'tool_use',event_label:filename});
+}
+
+function downloadAllZip(){
+  if(typeof JSZip==='undefined'){alert('ZIP library is still loading. Please try again.');return;}
+  const zip=new JSZip();
+  const keys=Object.keys(generatedBlobs);
+  if(!keys.length){alert('Please generate favicons first.');return;}
+
+  keys.forEach(name=>{zip.file(name,generatedBlobs[name]);});
+
+  // Add manifest.json
+  const manifestText=document.getElementById('manifestSnippet').textContent;
+  zip.file('manifest.json',manifestText);
+
+  // Add HTML snippet as readme
+  const htmlText=document.getElementById('htmlSnippet').textContent;
+  zip.file('favicon-html-snippet.txt',htmlText);
+
+  zip.generateAsync({type:'blob'}).then(blob=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='favicons-spunkart.zip';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    gtag('event','download_favicon',{event_category:'tool_use',event_label:'zip_all'});
+  });
+}
+
+function copySnippet(id,btn){
+  const text=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const orig=btn.textContent;
+    btn.textContent='Copied!';
+    setTimeout(()=>{btn.textContent=orig;},1500);
+  }).catch(()=>{
+    // Fallback
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    const orig=btn.textContent;
+    btn.textContent='Copied!';
+    setTimeout(()=>{btn.textContent=orig;},1500);
+  });
+}
+
+function clearAll(){
+  sourceImage=null;
+  Object.keys(generatedBlobs).forEach(k=>delete generatedBlobs[k]);
+  document.getElementById('sourcePreview').style.display='none';
+  document.getElementById('outputSection').style.display='none';
+  dropZone.style.display='';
+  fileInput.value='';
+}
+
+// Email popup
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  const email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){gtag('event','email_signup',{event_category:'conversion'});alert('Thanks for subscribing!');closeEmail();}
+  else{alert('Please enter a valid email.');}
+}
+if(!localStorage.getItem('emailDismissed')){setTimeout(()=>{document.getElementById('emailOverlay').classList.add('show');},30000);}
+</script>
+</body>
+</html>
