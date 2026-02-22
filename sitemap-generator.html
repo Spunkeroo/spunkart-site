@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap XML Generator - Free SEO Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate a valid sitemap.xml file for your website. Add URLs, set priority, change frequency, and last modified dates. Download ready-to-use sitemap. Free online tool.">
+<meta property="og:title" content="Sitemap XML Generator - Free SEO Tool | SPUNKART.COM">
+<meta property="og:description" content="Generate a valid sitemap.xml instantly. Set priorities, change frequencies, and last modified dates. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/sitemap-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-sitemap-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sitemap XML Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate a valid sitemap.xml instantly. Free SEO tool.">
+<link rel="canonical" href="https://spunkart.com/sitemap-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group textarea,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:120px;font-family:'Courier New',monospace;font-size:0.9rem;}
+
+/* URL entries */
+.url-entries{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;max-height:500px;overflow-y:auto;padding-right:4px;}
+.url-entry{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:14px;}
+.url-entry-top{display:flex;gap:8px;align-items:center;margin-bottom:10px;}
+.url-entry-top input{flex:1;padding:8px 12px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.9rem;outline:none;}
+.url-entry-top input:focus{border-color:#ff5f1f;}
+.url-entry-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.url-entry-bottom select,.url-entry-bottom input{padding:8px 10px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.8rem;outline:none;}
+.url-entry-bottom select:focus,.url-entry-bottom input:focus{border-color:#ff5f1f;}
+.url-entry-bottom label{font-size:0.7rem;color:#555;display:block;margin-bottom:3px;}
+.btn-remove-url{background:#2a1515;border:1px solid #4a2020;color:#ff4444;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;white-space:nowrap;}
+.btn-remove-url:hover{background:#3a1515;}
+
+/* Quick add */
+.quick-add{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:16px;margin-bottom:16px;}
+.quick-add label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;}
+.quick-add textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;font-family:'Courier New',monospace;min-height:100px;resize:vertical;}
+.quick-add textarea:focus{border-color:#ff5f1f;}
+.quick-add p{font-size:0.75rem;color:#555;margin-top:4px;}
+
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+.btn-small{padding:8px 14px;background:#222;border:1px solid #333;color:#e8e8e8;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:all .2s;}
+.btn-small:hover{background:#333;}
+
+/* Default settings */
+.defaults-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+/* Output */
+.xml-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.8rem;color:#8f8;white-space:pre-wrap;word-break:break-all;line-height:1.5;max-height:500px;overflow-y:auto;}
+
+/* Validation */
+.validation{padding:12px 16px;border-radius:8px;font-size:0.9rem;margin-bottom:16px;display:none;}
+.validation.valid{background:#0a2a0a;border:1px solid #22aa44;color:#44cc66;}
+.validation.invalid{background:#2a0a0a;border:1px solid #aa2222;color:#ff4444;}
+
+/* Stats */
+.stats{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px 18px;text-align:center;}
+.stat .stat-val{font-size:1.3rem;font-weight:700;color:#ff5f1f;}
+.stat .stat-label{font-size:0.75rem;color:#666;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .url-entry-bottom{grid-template-columns:1fr;}
+  .defaults-grid{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+  .stats{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Sitemap <span>Generator</span></h1>
+  <p class="subtitle">Generate a valid sitemap.xml for your website. Set priorities, frequencies, and last modified dates.</p>
+
+  <!-- Default Settings -->
+  <div class="section">
+    <h2>Default Settings (applied to new URLs)</h2>
+    <div class="defaults-grid">
+      <div class="input-group" style="margin-bottom:0;">
+        <label>Default Priority</label>
+        <select id="defaultPriority">
+          <option value="1.0">1.0 (Highest)</option>
+          <option value="0.9">0.9</option>
+          <option value="0.8" selected>0.8</option>
+          <option value="0.7">0.7</option>
+          <option value="0.6">0.6</option>
+          <option value="0.5">0.5 (Normal)</option>
+          <option value="0.4">0.4</option>
+          <option value="0.3">0.3</option>
+          <option value="0.2">0.2</option>
+          <option value="0.1">0.1 (Lowest)</option>
+        </select>
+      </div>
+      <div class="input-group" style="margin-bottom:0;">
+        <label>Default Change Frequency</label>
+        <select id="defaultFreq">
+          <option value="always">Always</option>
+          <option value="hourly">Hourly</option>
+          <option value="daily">Daily</option>
+          <option value="weekly" selected>Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+          <option value="never">Never</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Add -->
+  <div class="section">
+    <h2>Quick Add URLs</h2>
+    <div class="quick-add">
+      <label>Paste URLs (one per line)</label>
+      <textarea id="bulkUrls" placeholder="https://example.com/
+https://example.com/about
+https://example.com/blog
+https://example.com/contact"></textarea>
+      <p>URLs will be added with default priority and frequency settings.</p>
+    </div>
+    <button class="btn btn-secondary" onclick="bulkAdd()">Add All URLs</button>
+  </div>
+
+  <!-- Individual URL Entries -->
+  <div class="section">
+    <h2>URL Entries</h2>
+    <div class="url-entries" id="urlEntries">
+      <!-- Entries will be added here -->
+    </div>
+    <div class="btn-row">
+      <button class="btn-small" onclick="addUrlEntry()">+ Add Single URL</button>
+      <button class="btn-small" onclick="clearAll()" style="background:#2a1515;border-color:#4a2020;color:#ff4444;">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Generate -->
+  <div class="btn-row" style="margin-bottom:20px;">
+    <button class="btn btn-primary" onclick="generateSitemap()">Generate Sitemap XML</button>
+  </div>
+
+  <!-- Output -->
+  <div class="section" id="outputSection" style="display:none;">
+    <h2>Generated Sitemap</h2>
+
+    <div class="validation" id="validation"></div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="xml-output" id="xmlOutput"></div>
+
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-primary" id="copyBtn" onclick="copyXML()">Copy XML</button>
+      <button class="btn btn-secondary" onclick="downloadXML()">Download sitemap.xml</button>
+      <button class="btn btn-secondary" onclick="validateSitemap()">Validate</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Boost Your SEO</h3>
+    <p>Explore our full collection of free SEO tools and premium digital products.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM. All rights reserved.</footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const today = new Date().toISOString().split('T')[0];
+
+function getDefaults() {
+  return {
+    priority: document.getElementById('defaultPriority').value,
+    freq: document.getElementById('defaultFreq').value,
+  };
+}
+
+function createUrlEntry(url = '', priority = null, freq = null, lastmod = '') {
+  const d = getDefaults();
+  const container = document.getElementById('urlEntries');
+  const div = document.createElement('div');
+  div.className = 'url-entry';
+
+  const priorities = ['1.0','0.9','0.8','0.7','0.6','0.5','0.4','0.3','0.2','0.1'];
+  const freqs = ['always','hourly','daily','weekly','monthly','yearly','never'];
+  const p = priority || d.priority;
+  const f = freq || d.freq;
+
+  div.innerHTML = `
+    <div class="url-entry-top">
+      <input type="url" class="url-input" value="${url}" placeholder="https://example.com/page">
+      <button class="btn-remove-url" onclick="this.closest('.url-entry').remove()">Remove</button>
+    </div>
+    <div class="url-entry-bottom">
+      <div>
+        <label>Priority</label>
+        <select class="url-priority">
+          ${priorities.map(v => `<option value="${v}" ${v===p?'selected':''}>${v}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label>Change Frequency</label>
+        <select class="url-freq">
+          ${freqs.map(v => `<option value="${v}" ${v===f?'selected':''}>${v.charAt(0).toUpperCase()+v.slice(1)}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label>Last Modified</label>
+        <input type="date" class="url-lastmod" value="${lastmod || today}">
+      </div>
+    </div>
+  `;
+  container.appendChild(div);
+  return div;
+}
+
+function addUrlEntry() {
+  const entry = createUrlEntry();
+  entry.querySelector('.url-input').focus();
+}
+
+function bulkAdd() {
+  const text = document.getElementById('bulkUrls').value.trim();
+  if (!text) return;
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+  let added = 0;
+  lines.forEach(url => {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      createUrlEntry(url);
+      added++;
+    } else if (url.includes('.')) {
+      createUrlEntry('https://' + url);
+      added++;
+    }
+  });
+  document.getElementById('bulkUrls').value = '';
+  if (added > 0) {
+    gtag('event', 'bulk_add_urls', { event_category: 'tool_use', count: added });
+  }
+}
+
+function clearAll() {
+  document.getElementById('urlEntries').innerHTML = '';
+}
+
+function escapeXml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+}
+
+function generateSitemap() {
+  const entries = document.querySelectorAll('.url-entry');
+  if (entries.length === 0) {
+    alert('Please add at least one URL.');
+    return;
+  }
+
+  const urls = [];
+  let hasErrors = false;
+
+  entries.forEach(entry => {
+    const url = entry.querySelector('.url-input').value.trim();
+    const priority = entry.querySelector('.url-priority').value;
+    const freq = entry.querySelector('.url-freq').value;
+    const lastmod = entry.querySelector('.url-lastmod').value;
+
+    if (url) {
+      try {
+        new URL(url); // validate
+        urls.push({ url, priority, freq, lastmod });
+      } catch {
+        hasErrors = true;
+      }
+    }
+  });
+
+  if (urls.length === 0) {
+    alert('No valid URLs found. Make sure URLs start with https:// or http://');
+    return;
+  }
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<!-- Sitemap generated by SPUNKART.COM -->\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+  urls.forEach(u => {
+    xml += '  <url>\n';
+    xml += `    <loc>${escapeXml(u.url)}</loc>\n`;
+    if (u.lastmod) xml += `    <lastmod>${u.lastmod}</lastmod>\n`;
+    xml += `    <changefreq>${u.freq}</changefreq>\n`;
+    xml += `    <priority>${u.priority}</priority>\n`;
+    xml += '  </url>\n';
+  });
+
+  xml += '</urlset>';
+
+  document.getElementById('xmlOutput').textContent = xml;
+  document.getElementById('outputSection').style.display = 'block';
+
+  // Stats
+  const statsDiv = document.getElementById('stats');
+  statsDiv.innerHTML = `
+    <div class="stat"><div class="stat-val">${urls.length}</div><div class="stat-label">URLs</div></div>
+    <div class="stat"><div class="stat-val">${new Blob([xml]).size}</div><div class="stat-label">Bytes</div></div>
+    <div class="stat"><div class="stat-val">${hasErrors ? 'Warnings' : 'Clean'}</div><div class="stat-label">Status</div></div>
+  `;
+
+  // Auto validate
+  validateSitemap();
+  document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+  gtag('event', 'generate_sitemap', { event_category: 'tool_use', url_count: urls.length });
+}
+
+function validateSitemap() {
+  const xml = document.getElementById('xmlOutput').textContent;
+  const validationDiv = document.getElementById('validation');
+
+  if (!xml) {
+    validationDiv.style.display = 'none';
+    return;
+  }
+
+  const issues = [];
+
+  // Check XML declaration
+  if (!xml.startsWith('<?xml')) issues.push('Missing XML declaration');
+
+  // Check urlset
+  if (!xml.includes('<urlset')) issues.push('Missing <urlset> element');
+  if (!xml.includes('</urlset>')) issues.push('Missing closing </urlset>');
+
+  // Check namespace
+  if (!xml.includes('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')) {
+    issues.push('Missing or incorrect namespace');
+  }
+
+  // Check for at least one URL
+  if (!xml.includes('<url>')) issues.push('No <url> entries found');
+
+  // Check each loc has a valid URL pattern
+  const locMatches = xml.match(/<loc>(.*?)<\/loc>/g);
+  if (locMatches) {
+    locMatches.forEach(loc => {
+      const url = loc.replace(/<\/?loc>/g, '');
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        issues.push(`Invalid URL: ${url}`);
+      }
+    });
+  }
+
+  // Size check (50MB limit per Google)
+  const size = new Blob([xml]).size;
+  if (size > 50 * 1024 * 1024) issues.push('Sitemap exceeds 50MB limit');
+
+  // URL count check (50,000 limit)
+  const urlCount = (xml.match(/<url>/g) || []).length;
+  if (urlCount > 50000) issues.push('Sitemap exceeds 50,000 URL limit');
+
+  // Try XML parse
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xml, 'text/xml');
+    const parseError = doc.querySelector('parsererror');
+    if (parseError) issues.push('XML parse error: malformed XML');
+  } catch (e) {
+    issues.push('XML parse error');
+  }
+
+  validationDiv.style.display = 'block';
+  if (issues.length === 0) {
+    validationDiv.className = 'validation valid';
+    validationDiv.innerHTML = 'Valid sitemap.xml -- ' + urlCount + ' URLs, ' + (size / 1024).toFixed(1) + ' KB. Ready to upload to your site root.';
+  } else {
+    validationDiv.className = 'validation invalid';
+    validationDiv.innerHTML = 'Issues found:<br>' + issues.map(i => '- ' + i).join('<br>');
+  }
+}
+
+function copyXML() {
+  const text = document.getElementById('xmlOutput').textContent;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy XML'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_sitemap', { event_category: 'tool_use' });
+  });
+}
+
+function downloadXML() {
+  const text = document.getElementById('xmlOutput').textContent;
+  if (!text) return;
+  const blob = new Blob([text], { type: 'application/xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'sitemap.xml';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event', 'download_sitemap', { event_category: 'tool_use' });
+}
+
+// Add a starter entry
+createUrlEntry('https://example.com/', '1.0', 'daily');
+createUrlEntry('https://example.com/about', '0.8', 'monthly');
+</script>
+</body>
+</html>

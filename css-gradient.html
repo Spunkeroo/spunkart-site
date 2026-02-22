@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Gradient Generator - Free Tool | SPUNKART.COM</title>
+<meta name="description" content="Create beautiful CSS gradients with a visual editor. Pick colors, set direction, see live preview, and copy the CSS code. Includes 10 popular preset gradients. Free online tool.">
+<meta property="og:title" content="CSS Gradient Generator - Free Tool | SPUNKART.COM">
+<meta property="og:description" content="Create beautiful CSS gradients visually. Pick colors, copy CSS code. Free, no signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/css-gradient.html">
+<meta property="og:image" content="https://spunkart.com/og-css-gradient.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CSS Gradient Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Create beautiful CSS gradients visually. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/css-gradient.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+/* Live preview */
+.preview-box{width:100%;height:280px;border-radius:14px;border:1px solid #222;margin-bottom:24px;transition:background .3s;position:relative;overflow:hidden;}
+.preview-box .preview-label{position:absolute;bottom:12px;right:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:1px;}
+.fullscreen-toggle{position:absolute;top:12px;right:16px;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;transition:all .2s;}
+.fullscreen-toggle:hover{background:rgba(255,95,31,0.3);}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Controls layout */
+.controls-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.input-group{margin-bottom:0;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.input-group input:focus,.input-group select:focus{border-color:#ff5f1f;}
+.input-group input[type="range"]{-webkit-appearance:none;height:6px;background:#2a2a2a;border-radius:3px;padding:0;border:none;cursor:pointer;}
+.input-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#ff5f1f;cursor:pointer;}
+
+/* Color stops */
+.color-stops{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.color-stop{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;}
+.color-stop label{font-size:0.8rem;color:#666;min-width:50px;}
+.color-stop input[type="color"]{width:44px;height:34px;border:none;background:none;cursor:pointer;border-radius:4px;}
+.color-stop input[type="range"]{flex:1;-webkit-appearance:none;height:6px;background:#2a2a2a;border-radius:3px;cursor:pointer;}
+.color-stop input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#ff5f1f;cursor:pointer;}
+.color-stop .pos-val{font-size:0.8rem;color:#888;min-width:30px;text-align:right;}
+.btn-remove-stop{background:#2a1515;border:1px solid #4a2020;color:#ff4444;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:0.8rem;}
+.btn-remove-stop:hover{background:#3a1515;}
+
+/* CSS Output */
+.css-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;color:#8f8;white-space:pre-wrap;word-break:break-all;line-height:1.5;position:relative;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+
+/* Presets gallery */
+.presets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;}
+.preset{height:80px;border-radius:10px;cursor:pointer;border:2px solid transparent;transition:all .2s;position:relative;overflow:hidden;}
+.preset:hover{border-color:#ff5f1f;transform:scale(1.03);}
+.preset .preset-name{position:absolute;bottom:0;left:0;right:0;padding:4px 8px;background:rgba(0,0,0,0.6);font-size:0.7rem;color:#fff;text-align:center;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+/* Fullscreen mode */
+body.fullscreen-mode .preview-box{position:fixed;inset:0;z-index:1000;height:100vh;border-radius:0;border:none;margin:0;}
+body.fullscreen-mode .fullscreen-toggle{z-index:1001;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .controls-grid{grid-template-columns:1fr;}
+  .presets-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));}
+  .preview-box{height:200px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>CSS Gradient <span>Generator</span></h1>
+  <p class="subtitle">Create beautiful gradients visually. Pick colors, adjust angles, copy the CSS.</p>
+
+  <!-- Live Preview -->
+  <div class="preview-box" id="previewBox">
+    <button class="fullscreen-toggle" onclick="toggleFullscreen()">Fullscreen</button>
+    <span class="preview-label">LIVE PREVIEW</span>
+  </div>
+
+  <!-- Controls -->
+  <div class="section">
+    <h2>Gradient Settings</h2>
+    <div class="controls-grid">
+      <div class="input-group">
+        <label>Type</label>
+        <select id="gradType" onchange="updateGradient()">
+          <option value="linear">Linear</option>
+          <option value="radial">Radial</option>
+          <option value="conic">Conic</option>
+        </select>
+      </div>
+      <div class="input-group" id="angleGroup">
+        <label>Angle: <span id="angleVal">135</span>deg</label>
+        <input type="range" id="angle" min="0" max="360" value="135" oninput="document.getElementById('angleVal').textContent=this.value;updateGradient()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Stops -->
+  <div class="section">
+    <h2>Color Stops</h2>
+    <div class="color-stops" id="colorStops">
+      <div class="color-stop" data-index="0">
+        <label>Color 1</label>
+        <input type="color" value="#ff5f1f" oninput="updateGradient()">
+        <input type="range" min="0" max="100" value="0" oninput="this.parentElement.querySelector('.pos-val').textContent=this.value+'%';updateGradient()">
+        <span class="pos-val">0%</span>
+        <button class="btn-remove-stop" onclick="removeStop(this)" style="visibility:hidden;">X</button>
+      </div>
+      <div class="color-stop" data-index="1">
+        <label>Color 2</label>
+        <input type="color" value="#8b5cf6" oninput="updateGradient()">
+        <input type="range" min="0" max="100" value="100" oninput="this.parentElement.querySelector('.pos-val').textContent=this.value+'%';updateGradient()">
+        <span class="pos-val">100%</span>
+        <button class="btn-remove-stop" onclick="removeStop(this)" style="visibility:hidden;">X</button>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="addStop()" id="addStopBtn">+ Add Color Stop</button>
+      <button class="btn btn-secondary" onclick="randomize()">Randomize</button>
+    </div>
+  </div>
+
+  <!-- CSS Output -->
+  <div class="section">
+    <h2>CSS Code</h2>
+    <div class="css-output" id="cssOutput"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-primary" id="copyBtn" onclick="copyCSS()">Copy CSS</button>
+    </div>
+  </div>
+
+  <!-- Presets -->
+  <div class="section">
+    <h2>Popular Presets</h2>
+    <div class="presets-grid" id="presetsGrid"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Need Design Assets?</h3>
+    <p>Check out our premium templates, color palettes, and design tools.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM. All rights reserved.</footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const presets = [
+  { name: 'Sunset', colors: ['#f97316','#ec4899'], angle: 135 },
+  { name: 'Ocean', colors: ['#06b6d4','#3b82f6'], angle: 135 },
+  { name: 'Forest', colors: ['#22c55e','#064e3b'], angle: 180 },
+  { name: 'Neon', colors: ['#a855f7','#06b6d4','#22c55e'], angle: 90 },
+  { name: 'Fire', colors: ['#ef4444','#f97316','#eab308'], angle: 90 },
+  { name: 'Midnight', colors: ['#1e1b4b','#312e81','#4338ca'], angle: 180 },
+  { name: 'Rose Gold', colors: ['#f43f5e','#fb923c','#fbbf24'], angle: 135 },
+  { name: 'Aurora', colors: ['#4ade80','#2dd4bf','#818cf8'], angle: 135 },
+  { name: 'Lavender', colors: ['#c084fc','#f9a8d4'], angle: 135 },
+  { name: 'Charcoal', colors: ['#1f2937','#374151','#6b7280'], angle: 180 },
+];
+
+// Render presets
+const presetsGrid = document.getElementById('presetsGrid');
+presets.forEach((preset, i) => {
+  const div = document.createElement('div');
+  div.className = 'preset';
+  const grad = `linear-gradient(${preset.angle}deg, ${preset.colors.join(', ')})`;
+  div.style.background = grad;
+  div.innerHTML = `<span class="preset-name">${preset.name}</span>`;
+  div.addEventListener('click', () => loadPreset(i));
+  presetsGrid.appendChild(div);
+});
+
+function loadPreset(index) {
+  const p = presets[index];
+  document.getElementById('gradType').value = 'linear';
+  document.getElementById('angle').value = p.angle;
+  document.getElementById('angleVal').textContent = p.angle;
+
+  const container = document.getElementById('colorStops');
+  container.innerHTML = '';
+  p.colors.forEach((color, i) => {
+    const pos = Math.round((i / (p.colors.length - 1)) * 100);
+    addStopWithValues(color, pos);
+  });
+  updateRemoveButtons();
+  updateGradient();
+  gtag('event', 'load_preset', { event_category: 'tool_use', preset: p.name });
+}
+
+function addStopWithValues(color, position) {
+  const container = document.getElementById('colorStops');
+  const count = container.children.length;
+  if (count >= 4) return;
+
+  const div = document.createElement('div');
+  div.className = 'color-stop';
+  div.dataset.index = count;
+  div.innerHTML = `
+    <label>Color ${count + 1}</label>
+    <input type="color" value="${color}" oninput="updateGradient()">
+    <input type="range" min="0" max="100" value="${position}" oninput="this.parentElement.querySelector('.pos-val').textContent=this.value+'%';updateGradient()">
+    <span class="pos-val">${position}%</span>
+    <button class="btn-remove-stop" onclick="removeStop(this)">X</button>
+  `;
+  container.appendChild(div);
+}
+
+function addStop() {
+  const container = document.getElementById('colorStops');
+  if (container.children.length >= 4) return;
+  const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+  addStopWithValues(randomColor, 50);
+  updateRemoveButtons();
+  updateGradient();
+}
+
+function removeStop(btn) {
+  const container = document.getElementById('colorStops');
+  if (container.children.length <= 2) return;
+  btn.closest('.color-stop').remove();
+  // Re-index labels
+  const stops = container.querySelectorAll('.color-stop');
+  stops.forEach((s, i) => {
+    s.dataset.index = i;
+    s.querySelector('label').textContent = `Color ${i + 1}`;
+  });
+  updateRemoveButtons();
+  updateGradient();
+}
+
+function updateRemoveButtons() {
+  const stops = document.querySelectorAll('#colorStops .color-stop');
+  const canRemove = stops.length > 2;
+  stops.forEach(s => {
+    s.querySelector('.btn-remove-stop').style.visibility = canRemove ? 'visible' : 'hidden';
+  });
+  document.getElementById('addStopBtn').style.display = stops.length >= 4 ? 'none' : 'inline-block';
+}
+
+function getGradientCSS() {
+  const type = document.getElementById('gradType').value;
+  const angle = document.getElementById('angle').value;
+  const stops = document.querySelectorAll('#colorStops .color-stop');
+
+  const colorStops = [];
+  stops.forEach(s => {
+    const color = s.querySelector('input[type="color"]').value;
+    const pos = s.querySelector('input[type="range"]').value;
+    colorStops.push(`${color} ${pos}%`);
+  });
+
+  const stopsStr = colorStops.join(', ');
+
+  if (type === 'linear') {
+    return `linear-gradient(${angle}deg, ${stopsStr})`;
+  } else if (type === 'radial') {
+    return `radial-gradient(circle, ${stopsStr})`;
+  } else {
+    return `conic-gradient(from ${angle}deg, ${stopsStr})`;
+  }
+}
+
+function updateGradient() {
+  const css = getGradientCSS();
+  document.getElementById('previewBox').style.background = css;
+  document.getElementById('cssOutput').textContent = `background: ${css};`;
+
+  // Show/hide angle for radial
+  const type = document.getElementById('gradType').value;
+  document.getElementById('angleGroup').style.display = type === 'radial' ? 'none' : 'block';
+}
+
+function copyCSS() {
+  const text = document.getElementById('cssOutput').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy CSS'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_gradient', { event_category: 'tool_use' });
+  });
+}
+
+function randomize() {
+  const stops = document.querySelectorAll('#colorStops .color-stop');
+  stops.forEach(s => {
+    const color = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+    s.querySelector('input[type="color"]').value = color;
+  });
+  document.getElementById('angle').value = Math.floor(Math.random() * 360);
+  document.getElementById('angleVal').textContent = document.getElementById('angle').value;
+  updateGradient();
+  gtag('event', 'randomize_gradient', { event_category: 'tool_use' });
+}
+
+function toggleFullscreen() {
+  document.body.classList.toggle('fullscreen-mode');
+  const btn = document.querySelector('.fullscreen-toggle');
+  btn.textContent = document.body.classList.contains('fullscreen-mode') ? 'Exit Fullscreen' : 'Fullscreen';
+}
+
+// Init
+updateRemoveButtons();
+updateGradient();
+</script>
+</body>
+</html>

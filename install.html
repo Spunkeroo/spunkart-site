@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install Guide — Deploy Any SpunkArt Tool in 3 Steps</title>
+<meta name="description" content="Visual step-by-step install guide for all 18 SpunkArt Cloudflare Workers. Copy. Deploy. Done. No experience needed. Free Cloudflare account is all you need.">
+<meta property="og:title" content="Install Guide — Deploy Any SpunkArt Tool in 3 Steps">
+<meta property="og:description" content="Visual install guide for all 18 Cloudflare Workers. Copy, deploy, done. Zero experience required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/install">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Install Guide — Deploy Any SpunkArt Tool in 3 Steps">
+<meta name="twitter:description" content="Visual install guide for all 18 Cloudflare Workers. Copy, deploy, done. Zero experience required.">
+<link rel="canonical" href="https://spunkart.com/install">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.7}
+a{color:#ff5f1f;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-brand:hover{text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s;text-decoration:none}
+.nav-links a:hover{color:#fff;text-decoration:none}
+.nav-links a.active{color:#ff5f1f}
+
+/* Hero */
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:800px;margin:0 auto}
+.hero h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1.1}
+.hero p{color:#888;font-size:1.15rem;max-width:600px;margin:0 auto 2.5rem}
+
+/* Step Circles - Hero */
+.hero-steps{display:flex;justify-content:center;align-items:center;gap:0;margin:0 auto;max-width:600px}
+.hero-step{display:flex;flex-direction:column;align-items:center;gap:0.6rem;flex:1}
+.hero-step-num{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#fff;position:relative}
+.hero-step-num.s1{background:linear-gradient(135deg,#ff5f1f,#e5541b);box-shadow:0 0 40px rgba(255,95,31,0.3)}
+.hero-step-num.s2{background:linear-gradient(135deg,#f59e0b,#d97706);box-shadow:0 0 40px rgba(245,158,11,0.3)}
+.hero-step-num.s3{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 0 40px rgba(16,185,129,0.3)}
+.hero-step-label{font-size:0.85rem;font-weight:700;color:#ccc}
+.hero-step-sub{font-size:0.75rem;color:#666}
+.step-connector{width:60px;height:2px;background:linear-gradient(90deg,#333,#555,#333);margin-bottom:2.5rem;flex-shrink:0}
+
+/* Sections */
+.section{max-width:900px;margin:0 auto;padding:3rem 2rem}
+.section-header{text-align:center;margin-bottom:2.5rem}
+.section-header h2{font-size:2rem;font-weight:800;margin-bottom:0.5rem}
+.section-header p{color:#888;font-size:0.95rem;max-width:600px;margin:0 auto}
+.section-badge{display:inline-block;padding:0.25rem 0.8rem;border-radius:20px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
+.badge-orange{background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f}
+.badge-green{background:#10b98115;border:1px solid #10b98133;color:#10b981}
+.badge-yellow{background:#f59e0b15;border:1px solid #f59e0b33;color:#f59e0b}
+.badge-blue{background:#3b82f615;border:1px solid #3b82f633;color:#3b82f6}
+.badge-red{background:#ef444415;border:1px solid #ef444433;color:#ef4444}
+
+/* Step Cards */
+.step-cards{display:flex;flex-direction:column;gap:1.5rem}
+.step-card{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2rem;display:flex;gap:1.5rem;align-items:flex-start;transition:all 0.3s}
+.step-card:hover{border-color:#333;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.step-num{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;flex-shrink:0}
+.step-num.n1{background:linear-gradient(135deg,#ff5f1f,#e5541b)}
+.step-num.n2{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.step-num.n3{background:linear-gradient(135deg,#10b981,#059669)}
+.step-content{flex:1;min-width:0}
+.step-content h3{font-size:1.15rem;font-weight:700;margin-bottom:0.4rem}
+.step-content p{color:#888;font-size:0.9rem;margin-bottom:0.8rem}
+.step-content .step-action{color:#aaa;font-size:0.85rem;margin-bottom:0.5rem}
+.step-url{display:inline-block;padding:0.3rem 0.8rem;background:#ff5f1f12;border:1px solid #ff5f1f33;border-radius:6px;font-size:0.85rem;color:#ff5f1f;font-weight:600;margin:0.3rem 0}
+.step-button-hint{display:inline-block;padding:0.3rem 0.8rem;background:#10b98112;border:1px solid #10b98133;border-radius:6px;font-size:0.8rem;color:#10b981;font-weight:600;margin:0.3rem 0}
+
+/* Code Blocks */
+.code-block{position:relative;background:#0a0a0a;border:1px solid #222;border-radius:10px;padding:1rem 1.2rem;margin:0.8rem 0;font-family:'SF Mono',Monaco,Consolas,'Courier New',monospace;font-size:0.85rem;color:#e8e8e8;overflow-x:auto}
+.code-block code{color:#ff5f1f;font-weight:600}
+.code-block .comment{color:#555}
+.code-copy{position:absolute;top:0.6rem;right:0.6rem;background:#222;border:none;color:#888;padding:0.3rem 0.7rem;border-radius:6px;font-size:0.7rem;cursor:pointer;transition:all 0.2s}
+.code-copy:hover{background:#ff5f1f;color:#fff}
+.code-copy.copied{background:#10b981;color:#fff}
+
+/* What You'll See */
+.what-youll-see{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:1rem 1.2rem;margin:0.8rem 0}
+.what-youll-see-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:#666;margin-bottom:0.5rem;font-weight:600}
+.what-youll-see p{color:#888;font-size:0.85rem;margin:0}
+.terminal-output{font-family:'SF Mono',Monaco,Consolas,'Courier New',monospace;font-size:0.8rem;color:#10b981;line-height:1.8}
+.terminal-output .dim{color:#555}
+.terminal-output .bright{color:#fff}
+.terminal-output .success{color:#10b981}
+.terminal-output .url{color:#3b82f6}
+
+/* Accordion - Tool Notes */
+.accordion{display:flex;flex-direction:column;gap:0.5rem}
+.accordion-item{background:#111;border:1px solid #1a1a1a;border-radius:12px;overflow:hidden;transition:all 0.3s}
+.accordion-item:hover{border-color:#333}
+.accordion-item.open{border-color:#ff5f1f33}
+.accordion-header{padding:1rem 1.2rem;cursor:pointer;display:flex;align-items:center;gap:0.8rem;user-select:none}
+.accordion-icon{font-size:1.3rem;flex-shrink:0}
+.accordion-title{flex:1;font-weight:600;font-size:0.95rem}
+.accordion-arrow{color:#555;font-size:1.2rem;transition:transform 0.3s}
+.accordion-item.open .accordion-arrow{transform:rotate(45deg);color:#ff5f1f}
+.accordion-body{display:none;padding:0 1.2rem 1rem;color:#888;font-size:0.85rem;line-height:1.7}
+.accordion-item.open .accordion-body{display:block}
+.accordion-body .code-block{margin:0.5rem 0}
+.accordion-body ul{list-style:none;margin:0.5rem 0}
+.accordion-body ul li{padding:0.2rem 0}
+.accordion-body ul li::before{content:"\2713 ";color:#10b981;font-weight:700}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:1.2rem 0}
+.faq-item:first-child{border-top:1px solid #1a1a1a}
+.faq-q{font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:0.95rem}
+.faq-q:hover{color:#ff5f1f}
+.faq-q span{color:#555;font-size:1.2rem;transition:transform 0.3s;flex-shrink:0}
+.faq-a{color:#888;font-size:0.85rem;margin-top:0.8rem;display:none;line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q span{transform:rotate(45deg);color:#ff5f1f}
+.faq-a code{background:#1a1a1a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.8rem;color:#ff5f1f}
+
+/* Support Section */
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.support-card{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;text-align:center;transition:all 0.3s}
+.support-card:hover{border-color:#333;transform:translateY(-2px)}
+.support-card-icon{font-size:2rem;margin-bottom:0.8rem}
+.support-card h3{font-size:1rem;margin-bottom:0.4rem}
+.support-card p{color:#888;font-size:0.85rem;margin-bottom:1rem}
+.support-card a.btn{display:inline-block;padding:0.5rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.85rem;transition:all 0.2s;text-decoration:none}
+.btn-orange{background:#ff5f1f;color:#fff}
+.btn-orange:hover{background:#e5541b;text-decoration:none}
+.btn-outline{border:1px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+
+/* CTA Banner */
+.cta-banner{background:linear-gradient(145deg,#1a0a00,#111);border:1px solid #ff5f1f33;border-radius:20px;padding:3rem 2rem;text-align:center;max-width:700px;margin:0 auto}
+.cta-banner h2{font-size:1.8rem;font-weight:800;margin-bottom:0.5rem}
+.cta-banner p{color:#888;font-size:0.95rem;margin-bottom:1.5rem}
+.cta-banner .cta-btn{display:inline-block;padding:0.9rem 2.5rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s;text-decoration:none}
+.cta-banner .cta-btn:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 8px 30px rgba(255,95,31,0.3);text-decoration:none}
+.cta-banner .cta-sub{font-size:0.8rem;color:#666;margin-top:0.8rem}
+
+/* Email Capture */
+.email-section{max-width:600px;margin:0 auto;padding:2rem;text-align:center}
+.email-section h2{font-size:1.5rem;margin-bottom:0.5rem}
+.email-section p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
+.email-form{display:flex;gap:0.5rem;max-width:450px;margin:0 auto}
+.email-input{flex:1;padding:0.8rem 1rem;background:#111;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none}
+.email-input:focus{border-color:#ff5f1f}
+.email-submit{padding:0.8rem 1.5rem;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem;white-space:nowrap}
+.email-submit:hover{background:#e5541b}
+.email-note{font-size:0.7rem;color:#555;margin-top:0.5rem}
+
+/* Divider */
+.divider{width:60px;height:3px;background:linear-gradient(90deg,#ff5f1f,#f59e0b);border-radius:2px;margin:0 auto 2rem}
+
+/* Quick Deploy Card */
+.deploy-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:1.5rem 0}
+.deploy-card{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;text-align:center;position:relative}
+.deploy-card-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:#ff5f1f;color:#fff;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.deploy-card h4{font-size:0.9rem;margin-bottom:0.3rem;margin-top:0.5rem}
+.deploy-card p{color:#666;font-size:0.8rem}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
+.footer a{color:#ff5f1f;text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* Prereq Bar */
+.prereq-bar{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:1.5rem 0}
+.prereq{display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.8rem;background:#111;border:1px solid #1a1a1a;border-radius:8px;font-size:0.8rem;color:#888}
+.prereq-dot{width:6px;height:6px;border-radius:50%;background:#10b981}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .hero-steps{gap:0}
+  .hero-step-num{width:60px;height:60px;font-size:1.5rem}
+  .step-connector{width:30px}
+  .step-card{flex-direction:column;gap:1rem}
+  .deploy-flow{grid-template-columns:1fr}
+  .support-grid{grid-template-columns:1fr}
+  .email-form{flex-direction:column}
+  .nav-links{gap:0.8rem;font-size:0.75rem}
+  .prereq-bar{flex-direction:column;align-items:center}
+}
+
+@media(max-width:480px){
+  .hero-steps{flex-direction:column;gap:0.5rem}
+  .step-connector{width:2px;height:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/install" class="active">Install Guide</a>
+    <a href="/blog">Blog</a>
+    <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+  </div>
+</nav>
+
+<!-- ===================== -->
+<!-- HERO                  -->
+<!-- ===================== -->
+<section class="hero">
+  <h1>Install Any Tool in 3 Steps</h1>
+  <p>Copy. Deploy. Done. No experience needed. Every SpunkArt tool deploys the exact same way.</p>
+
+  <div class="hero-steps">
+    <div class="hero-step">
+      <div class="hero-step-num s1">1</div>
+      <div class="hero-step-label">Copy</div>
+      <div class="hero-step-sub">Save the file</div>
+    </div>
+    <div class="step-connector"></div>
+    <div class="hero-step">
+      <div class="hero-step-num s2">2</div>
+      <div class="hero-step-label">Deploy</div>
+      <div class="hero-step-sub">Run one command</div>
+    </div>
+    <div class="step-connector"></div>
+    <div class="hero-step">
+      <div class="hero-step-num s3">3</div>
+      <div class="hero-step-label">Done</div>
+      <div class="hero-step-sub">Live on the edge</div>
+    </div>
+  </div>
+
+  <div class="prereq-bar">
+    <div class="prereq"><span class="prereq-dot"></span> Free Cloudflare account</div>
+    <div class="prereq"><span class="prereq-dot"></span> Node.js installed</div>
+    <div class="prereq"><span class="prereq-dot"></span> 5 minutes of your time</div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- ONE-TIME SETUP        -->
+<!-- ===================== -->
+<section class="section" id="setup">
+  <div class="section-header">
+    <span class="section-badge badge-orange">One-Time Setup</span>
+    <h2>Universal Setup (Do This Once)</h2>
+    <p>These 3 steps only need to happen once. After this, deploying any tool takes 30 seconds.</p>
+  </div>
+
+  <div class="step-cards">
+
+    <!-- Step 1: Cloudflare Account -->
+    <div class="step-card">
+      <div class="step-num n1">1</div>
+      <div class="step-content">
+        <h3>Create a Free Cloudflare Account</h3>
+        <p>Cloudflare Workers run your code on 300+ data centers worldwide. The free plan includes 100,000 requests per day -- more than enough for most tools.</p>
+        <div class="step-action">Go to:</div>
+        <a href="https://dash.cloudflare.com/sign-up" target="_blank" class="step-url">dash.cloudflare.com/sign-up</a>
+        <div style="margin-top:0.8rem">
+          <div class="step-button-hint">Click "Sign Up" &rarr; Enter email &rarr; Set password &rarr; Verify email</div>
+        </div>
+        <div class="what-youll-see">
+          <div class="what-youll-see-label">What you'll see</div>
+          <p>A Cloudflare dashboard with your account. You don't need to add a domain -- Workers work on their own subdomain (yourname.workers.dev) automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Install Wrangler -->
+    <div class="step-card">
+      <div class="step-num n2">2</div>
+      <div class="step-content">
+        <h3>Install Wrangler CLI</h3>
+        <p>Wrangler is Cloudflare's command-line tool. It deploys your Workers with one command. You need Node.js installed first.</p>
+
+        <div class="step-action">If you don't have Node.js yet:</div>
+        <a href="https://nodejs.org" target="_blank" class="step-url">nodejs.org</a>
+        <span style="color:#666;font-size:0.8rem;margin-left:0.5rem">Download the LTS version, install, done.</span>
+
+        <div class="step-action" style="margin-top:1rem">Then install Wrangler:</div>
+        <div class="code-block">
+          <code>npm install -g wrangler</code>
+          <button class="code-copy" onclick="copyCode(this,'npm install -g wrangler')">Copy</button>
+        </div>
+
+        <div class="what-youll-see">
+          <div class="what-youll-see-label">What you'll see</div>
+          <div class="terminal-output">
+            <span class="dim">$</span> <span class="bright">npm install -g wrangler</span><br>
+            <span class="dim">added 56 packages in 12s</span><br>
+            <span class="success">+ wrangler@3.x.x</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Login -->
+    <div class="step-card">
+      <div class="step-num n3">3</div>
+      <div class="step-content">
+        <h3>Login to Cloudflare</h3>
+        <p>This connects your terminal to your Cloudflare account. You only need to do this once.</p>
+
+        <div class="code-block">
+          <code>wrangler login</code>
+          <button class="code-copy" onclick="copyCode(this,'wrangler login')">Copy</button>
+        </div>
+
+        <div class="what-youll-see">
+          <div class="what-youll-see-label">What you'll see</div>
+          <div class="terminal-output">
+            <span class="dim">$</span> <span class="bright">wrangler login</span><br>
+            <span class="dim">Attempting to login via OAuth...</span><br>
+            <span class="url">Opening a link in your default browser: https://dash.cloudflare.com/oauth2/...</span><br>
+            <span class="success">Successfully logged in.</span>
+          </div>
+          <p style="margin-top:0.5rem;font-size:0.8rem">Your browser opens automatically. Click <strong style="color:#10b981">"Allow"</strong> on the Cloudflare page. Done.</p>
+        </div>
+
+        <div style="margin-top:1rem;padding:0.8rem;background:#10b98110;border:1px solid #10b98133;border-radius:8px;font-size:0.85rem;color:#10b981">
+          Setup complete. You're ready to deploy any SpunkArt tool.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- QUICK DEPLOY          -->
+<!-- ===================== -->
+<section class="section" id="deploy">
+  <div class="section-header">
+    <span class="section-badge badge-green">Every Tool</span>
+    <h2>Deploy Any Tool (30 Seconds)</h2>
+    <p>Every SpunkArt tool follows the exact same 3-step pattern. Once you've done the setup above, this is all you need.</p>
+  </div>
+
+  <div class="deploy-flow">
+    <div class="deploy-card">
+      <div class="deploy-card-num">1</div>
+      <h4>Save the File</h4>
+      <p>Save the .js file you received to a new folder</p>
+    </div>
+    <div class="deploy-card">
+      <div class="deploy-card-num">2</div>
+      <h4>Add Config</h4>
+      <p>Copy the included wrangler.toml file to the same folder</p>
+    </div>
+    <div class="deploy-card">
+      <div class="deploy-card-num">3</div>
+      <h4>Deploy</h4>
+      <p>Run <code style="color:#ff5f1f">wrangler deploy</code> and you're live</p>
+    </div>
+  </div>
+
+  <div class="step-cards">
+
+    <!-- Deploy Step 1 -->
+    <div class="step-card">
+      <div class="step-num n1">1</div>
+      <div class="step-content">
+        <h3>Save the File</h3>
+        <p>Create a folder for the tool and save the .js file you received into it.</p>
+        <div class="code-block">
+          <span class="comment"># Example: deploying Bot Blocker</span><br>
+          <code>mkdir bot-blocker</code><br>
+          <code>cd bot-blocker</code><br>
+          <span class="comment"># Save bot-blocker.js here (from your purchase email)</span>
+          <button class="code-copy" onclick="copyCode(this,'mkdir bot-blocker && cd bot-blocker')">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deploy Step 2 -->
+    <div class="step-card">
+      <div class="step-num n2">2</div>
+      <div class="step-content">
+        <h3>Create wrangler.toml</h3>
+        <p>Every tool comes with a wrangler.toml config file. Save it in the same folder as the .js file. Here's what a typical one looks like:</p>
+        <div class="code-block">
+          <span class="comment"># wrangler.toml (included with every tool)</span><br>
+          <code>name</code> = <span style="color:#10b981">"bot-blocker"</span><br>
+          <code>main</code> = <span style="color:#10b981">"bot-blocker.js"</span><br>
+          <code>compatibility_date</code> = <span style="color:#10b981">"2024-01-01"</span>
+          <button class="code-copy" onclick="copyCode(this,'name = &quot;bot-blocker&quot;\nmain = &quot;bot-blocker.js&quot;\ncompatibility_date = &quot;2024-01-01&quot;')">Copy</button>
+        </div>
+        <div class="what-youll-see">
+          <div class="what-youll-see-label">Your folder should look like</div>
+          <div class="terminal-output">
+            <span class="dim">bot-blocker/</span><br>
+            <span class="dim">&nbsp;&nbsp;</span><span class="bright">bot-blocker.js</span> <span class="dim">&nbsp;&nbsp;&larr; the tool (from your purchase)</span><br>
+            <span class="dim">&nbsp;&nbsp;</span><span class="bright">wrangler.toml</span> <span class="dim">&nbsp;&nbsp;&larr; the config (included)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deploy Step 3 -->
+    <div class="step-card">
+      <div class="step-num n3">3</div>
+      <div class="step-content">
+        <h3>Deploy</h3>
+        <p>One command. Your tool is live worldwide in under 10 seconds.</p>
+        <div class="code-block">
+          <code>wrangler deploy</code>
+          <button class="code-copy" onclick="copyCode(this,'wrangler deploy')">Copy</button>
+        </div>
+
+        <div class="what-youll-see">
+          <div class="what-youll-see-label">What you'll see</div>
+          <div class="terminal-output">
+            <span class="dim">$</span> <span class="bright">wrangler deploy</span><br>
+            <span class="dim">Uploaded bot-blocker (1.24 sec)</span><br>
+            <span class="dim">Published bot-blocker (0.34 sec)</span><br>
+            <span class="success">&nbsp;&nbsp;https://bot-blocker.youraccount.workers.dev</span><br>
+            <span class="dim">Current Deployment ID: abc123...</span>
+          </div>
+          <p style="margin-top:0.5rem;font-size:0.8rem">That URL is your tool, live on Cloudflare's global network. Click it to verify it works.</p>
+        </div>
+
+        <div style="margin-top:1rem;padding:0.8rem;background:#10b98110;border:1px solid #10b98133;border-radius:8px;font-size:0.85rem;color:#10b981;font-weight:600">
+          That's it. Your tool is live at yourname.workers.dev. Want a custom domain? Add a route in your Cloudflare dashboard.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- TOOL-SPECIFIC NOTES   -->
+<!-- ===================== -->
+<section class="section" id="tools">
+  <div class="section-header">
+    <span class="section-badge badge-yellow">Tool-Specific</span>
+    <h2>Extra Config by Tool</h2>
+    <p>Most tools deploy with zero extra configuration. Some need a quick additional step. Click your tool below.</p>
+  </div>
+
+  <div class="accordion">
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🛡️</span>
+        <span class="accordion-title">Bot Blocker Pro</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Edit the <code>CONFIG</code> section at the top of the file to customize your blocked user-agents, rate limits, and honeypot paths.</p>
+        <div class="code-block">
+          <span class="comment">// Inside bot-blocker.js — edit these values:</span><br>
+          <code>const BLOCKED_AGENTS</code> = [<span style="color:#10b981">"AhrefsBot"</span>, <span style="color:#10b981">"SemrushBot"</span>, <span style="color:#10b981">"MJ12bot"</span>];<br>
+          <code>const RATE_LIMIT</code> = <span style="color:#f59e0b">100</span>; <span class="comment">// requests per minute</span>
+        </div>
+        <ul>
+          <li>Works with zero config out of the box</li>
+          <li>Customize the blocked list for your needs</li>
+          <li>Dashboard accessible at /admin</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">📊</span>
+        <span class="accordion-title">Uptime Monitor</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Add your site URLs to the <code>SITES</code> array in the config section. The monitor checks each site on a schedule using Cron Triggers.</p>
+        <div class="code-block">
+          <span class="comment">// Inside uptime-monitor.js:</span><br>
+          <code>const SITES</code> = [<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"https://yoursite.com"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"https://api.yoursite.com/health"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"https://store.yoursite.com"</span><br>
+          ];
+        </div>
+        <p>Add this to your <code>wrangler.toml</code> for scheduled checks:</p>
+        <div class="code-block">
+          <code>[triggers]</code><br>
+          <code>crons</code> = [<span style="color:#10b981">"*/5 * * * *"</span>] <span class="comment"># every 5 minutes</span>
+        </div>
+        <ul>
+          <li>Requires a KV namespace for storing history (see wrangler.toml included)</li>
+          <li>Public status page at your worker URL</li>
+          <li>Add webhook URLs for Slack/Discord alerts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">📈</span>
+        <span class="accordion-title">Privacy Analytics</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>After deploying, add the tracking script to any HTML page you want to track:</p>
+        <div class="code-block">
+          <code>&lt;script src="https://analytics.youraccount.workers.dev/track.js"&gt;&lt;/script&gt;</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'&lt;script src=&quot;https://analytics.youraccount.workers.dev/track.js&quot;&gt;&lt;/script&gt;')">Copy</button>
+        </div>
+        <ul>
+          <li>Replace the URL with your actual worker URL</li>
+          <li>No cookies, fully GDPR compliant</li>
+          <li>Dashboard at your worker URL /dashboard</li>
+          <li>Tracks pages, visitors, referrers, countries</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🔗</span>
+        <span class="accordion-title">Link Shortener</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Requires a KV namespace for storing links. Run this <strong>before</strong> deploying:</p>
+        <div class="code-block">
+          <code>wrangler kv:namespace create LINKS</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'wrangler kv:namespace create LINKS')">Copy</button>
+        </div>
+        <p>Then add the KV binding to your <code>wrangler.toml</code> (use the ID from the output):</p>
+        <div class="code-block">
+          <code>[[kv_namespaces]]</code><br>
+          <code>binding</code> = <span style="color:#10b981">"LINKS"</span><br>
+          <code>id</code> = <span style="color:#10b981">"paste-the-id-from-above"</span>
+        </div>
+        <ul>
+          <li>Admin dashboard at /admin for creating short links</li>
+          <li>Click analytics on every link</li>
+          <li>QR code generation built in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🧪</span>
+        <span class="accordion-title">A/B Testing Engine</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Configure your test variants in the CONFIG section. Tests use cookie-based sticky sessions so users always see the same variant.</p>
+        <div class="code-block">
+          <span class="comment">// Define your tests:</span><br>
+          <code>const TESTS</code> = {<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"homepage-headline"</span>: {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;variants: [<span style="color:#10b981">"Ship Faster"</span>, <span style="color:#10b981">"Build Better"</span>],<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;weights: [<span style="color:#f59e0b">50</span>, <span style="color:#f59e0b">50</span>]<br>
+          &nbsp;&nbsp;}<br>
+          };
+        </div>
+        <ul>
+          <li>Zero latency -- runs at the edge before your page loads</li>
+          <li>Conversion tracking dashboard included</li>
+          <li>No KV needed -- uses cookies</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🖼️</span>
+        <span class="accordion-title">Image Optimizer</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Deploy and point your image URLs through the worker. It auto-converts to WebP/AVIF based on the browser.</p>
+        <div class="code-block">
+          <span class="comment"># Resize via URL params:</span><br>
+          <code>https://images.youraccount.workers.dev/?url=</code><span style="color:#10b981">https://example.com/photo.jpg</span><code>&w=800&q=80</code>
+        </div>
+        <ul>
+          <li>Auto WebP/AVIF conversion</li>
+          <li>Resize with w (width) and h (height) params</li>
+          <li>Quality control with q param (1-100)</li>
+          <li>Cached at the edge automatically</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">↪️</span>
+        <span class="accordion-title">Redirect Manager</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Requires a KV namespace for storing redirect rules:</p>
+        <div class="code-block">
+          <code>wrangler kv:namespace create REDIRECTS</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'wrangler kv:namespace create REDIRECTS')">Copy</button>
+        </div>
+        <ul>
+          <li>Admin dashboard for managing rules</li>
+          <li>Wildcard pattern matching</li>
+          <li>Click tracking on all redirects</li>
+          <li>CSV import/export for bulk migrations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">📧</span>
+        <span class="accordion-title">Email Forwarder</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Set up your forwarding rules in the config. Map any address on your domain to your real inbox.</p>
+        <div class="code-block">
+          <code>const ROUTES</code> = {<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"hello@yourdomain.com"</span>: <span style="color:#10b981">"real@gmail.com"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"support@yourdomain.com"</span>: <span style="color:#10b981">"real@gmail.com"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"*@yourdomain.com"</span>: <span style="color:#10b981">"catchall@gmail.com"</span><br>
+          };
+        </div>
+        <ul>
+          <li>Requires your domain to be on Cloudflare (for Email Routing)</li>
+          <li>Catch-all support with wildcard</li>
+          <li>Spam filtering built in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🤖</span>
+        <span class="accordion-title">Discord Bot</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>You need a Discord Application. Create one at:</p>
+        <a href="https://discord.com/developers/applications" target="_blank" class="step-url" onclick="event.stopPropagation()">discord.com/developers/applications</a>
+        <p style="margin-top:0.5rem">Add your bot token and application ID to the config section:</p>
+        <div class="code-block">
+          <code>const DISCORD_TOKEN</code> = <span style="color:#10b981">"your-bot-token"</span>;<br>
+          <code>const APP_ID</code> = <span style="color:#10b981">"your-app-id"</span>;
+        </div>
+        <ul>
+          <li>Slash commands -- no message content intent needed</li>
+          <li>Register commands by visiting /register endpoint once</li>
+          <li>Fully serverless -- no hosting costs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🔒</span>
+        <span class="accordion-title">Auto-SSL Monitor</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Add the domains you want to monitor in the config:</p>
+        <div class="code-block">
+          <code>const DOMAINS</code> = [<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"yourdomain.com"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"api.yourdomain.com"</span>,<br>
+          &nbsp;&nbsp;<span style="color:#10b981">"store.yourdomain.com"</span><br>
+          ];
+        </div>
+        <p>Add a cron trigger to check daily:</p>
+        <div class="code-block">
+          <code>[triggers]</code><br>
+          <code>crons</code> = [<span style="color:#10b981">"0 9 * * *"</span>] <span class="comment"># every day at 9 AM</span>
+        </div>
+        <ul>
+          <li>Alerts via webhook (Slack, Discord, email)</li>
+          <li>Warns 30, 14, and 7 days before expiry</li>
+          <li>Dashboard shows all cert statuses</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🔍</span>
+        <span class="accordion-title">API Monitor</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Add your API endpoints with custom headers and expected responses:</p>
+        <div class="code-block">
+          <code>const ENDPOINTS</code> = [{<br>
+          &nbsp;&nbsp;url: <span style="color:#10b981">"https://api.yoursite.com/health"</span>,<br>
+          &nbsp;&nbsp;method: <span style="color:#10b981">"GET"</span>,<br>
+          &nbsp;&nbsp;headers: { <span style="color:#10b981">"Authorization"</span>: <span style="color:#10b981">"Bearer token"</span> },<br>
+          &nbsp;&nbsp;expectStatus: <span style="color:#f59e0b">200</span><br>
+          }];
+        </div>
+        <ul>
+          <li>Cron-based scheduled checks</li>
+          <li>Webhook alerts on failure</li>
+          <li>Response time tracking</li>
+          <li>Dashboard with history charts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">📋</span>
+        <span class="accordion-title">Log Analyzer</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Requires a KV namespace for storing logs:</p>
+        <div class="code-block">
+          <code>wrangler kv:namespace create LOGS</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'wrangler kv:namespace create LOGS')">Copy</button>
+        </div>
+        <ul>
+          <li>Send logs via POST to your worker URL</li>
+          <li>Full-text search from the dashboard</li>
+          <li>Filter by log level (info, warn, error)</li>
+          <li>Configurable retention period</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🗑️</span>
+        <span class="accordion-title">Cache Purger</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Add your Cloudflare API token and Zone ID in the config:</p>
+        <div class="code-block">
+          <code>const CF_API_TOKEN</code> = <span style="color:#10b981">"your-api-token"</span>;<br>
+          <code>const CF_ZONE_ID</code> = <span style="color:#10b981">"your-zone-id"</span>;
+        </div>
+        <ul>
+          <li>Find your Zone ID in the Cloudflare dashboard (right sidebar)</li>
+          <li>Create an API token at dash.cloudflare.com/profile/api-tokens</li>
+          <li>One-click purge by URL, tag, or everything</li>
+          <li>Cache status checker included</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🎵</span>
+        <span class="accordion-title">Spotify Connect Widget</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>You need a Spotify Developer App. Create one at:</p>
+        <a href="https://developer.spotify.com/dashboard" target="_blank" class="step-url" onclick="event.stopPropagation()">developer.spotify.com/dashboard</a>
+        <p style="margin-top:0.5rem">Add your Spotify credentials in the config:</p>
+        <div class="code-block">
+          <code>const SPOTIFY_CLIENT_ID</code> = <span style="color:#10b981">"your-client-id"</span>;<br>
+          <code>const SPOTIFY_CLIENT_SECRET</code> = <span style="color:#10b981">"your-client-secret"</span>;<br>
+          <code>const SPOTIFY_REFRESH_TOKEN</code> = <span style="color:#10b981">"your-refresh-token"</span>;
+        </div>
+        <ul>
+          <li>Follow the one-time auth flow at /auth endpoint</li>
+          <li>Embed on any page with an iframe or script tag</li>
+          <li>Auto-refreshes current track</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🦀</span>
+        <span class="accordion-title">OpenClaw Game</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Deploy and it works immediately. Customize prizes and appearance in the config:</p>
+        <div class="code-block">
+          <code>const PRIZES</code> = [<br>
+          &nbsp;&nbsp;{ name: <span style="color:#10b981">"Gold Coin"</span>, chance: <span style="color:#f59e0b">0.05</span> },<br>
+          &nbsp;&nbsp;{ name: <span style="color:#10b981">"Silver Star"</span>, chance: <span style="color:#f59e0b">0.15</span> },<br>
+          &nbsp;&nbsp;{ name: <span style="color:#10b981">"Bronze Medal"</span>, chance: <span style="color:#f59e0b">0.30</span> }<br>
+          ];
+        </div>
+        <ul>
+          <li>No extra config needed -- works out of the box</li>
+          <li>Provably fair with verifiable randomness</li>
+          <li>Mobile responsive</li>
+          <li>Built-in play analytics</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">💳</span>
+        <span class="accordion-title">Edge Checkout</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Add your payment wallet addresses and product catalog:</p>
+        <div class="code-block">
+          <code>const WALLETS</code> = {<br>
+          &nbsp;&nbsp;BTC: <span style="color:#10b981">"your-btc-address"</span>,<br>
+          &nbsp;&nbsp;ETH: <span style="color:#10b981">"your-eth-address"</span>,<br>
+          &nbsp;&nbsp;SOL: <span style="color:#10b981">"your-sol-address"</span><br>
+          };
+        </div>
+        <p>Requires a KV namespace for orders:</p>
+        <div class="code-block">
+          <code>wrangler kv:namespace create ORDERS</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'wrangler kv:namespace create ORDERS')">Copy</button>
+        </div>
+        <ul>
+          <li>Crypto + card payment support</li>
+          <li>Product catalog with coupons</li>
+          <li>Order tracking and download delivery</li>
+          <li>Zero platform fees</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">🔑</span>
+        <span class="accordion-title">License Server</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Requires a KV namespace for storing license keys:</p>
+        <div class="code-block">
+          <code>wrangler kv:namespace create LICENSES</code>
+          <button class="code-copy" onclick="event.stopPropagation();copyCode(this,'wrangler kv:namespace create LICENSES')">Copy</button>
+        </div>
+        <p>Set your admin password in the config:</p>
+        <div class="code-block">
+          <code>const ADMIN_KEY</code> = <span style="color:#10b981">"your-secret-admin-key"</span>;
+        </div>
+        <ul>
+          <li>Generate, validate, and revoke keys via API</li>
+          <li>Domain binding and activation limits</li>
+          <li>Admin dashboard at /admin</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-header">
+        <span class="accordion-icon">💾</span>
+        <span class="accordion-title">Database Backup</span>
+        <span class="accordion-arrow">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Configure your backup sources and schedule:</p>
+        <div class="code-block">
+          <code>const BACKUP_SOURCES</code> = [<br>
+          &nbsp;&nbsp;{ type: <span style="color:#10b981">"kv"</span>, namespace: <span style="color:#10b981">"MY_KV"</span> },<br>
+          &nbsp;&nbsp;{ type: <span style="color:#10b981">"d1"</span>, database: <span style="color:#10b981">"my-database"</span> }<br>
+          ];
+        </div>
+        <p>Add a cron trigger in wrangler.toml:</p>
+        <div class="code-block">
+          <code>[triggers]</code><br>
+          <code>crons</code> = [<span style="color:#10b981">"0 3 * * *"</span>] <span class="comment"># daily at 3 AM</span>
+        </div>
+        <ul>
+          <li>Requires an R2 bucket for storing backups (free tier available)</li>
+          <li>One-click restore from the dashboard</li>
+          <li>Webhook notifications on backup completion</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- TROUBLESHOOTING FAQ   -->
+<!-- ===================== -->
+<section class="section" id="troubleshooting">
+  <div class="section-header">
+    <span class="section-badge badge-red">Troubleshooting</span>
+    <h2>Common Issues & Fixes</h2>
+    <p>Something not working? Check below first -- these cover 95% of all issues.</p>
+  </div>
+
+  <div class="faq">
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">"wrangler: command not found" <span>+</span></div>
+      <div class="faq-a">
+        <p>Wrangler isn't installed yet, or Node.js isn't installed. Fix it in two steps:</p>
+        <p>1. Install Node.js from <a href="https://nodejs.org" target="_blank">nodejs.org</a> (download LTS, run the installer)</p>
+        <p>2. Then install Wrangler: <code>npm install -g wrangler</code></p>
+        <p>Restart your terminal after installing Node.js.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">"not logged in" or "authentication error" <span>+</span></div>
+      <div class="faq-a">
+        <p>Run <code>wrangler login</code> in your terminal. Your browser will open. Click "Allow" on the Cloudflare page. That's it.</p>
+        <p>If you're behind a corporate firewall, try <code>wrangler login --browser=false</code> and manually open the URL it shows.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">"KV namespace not found" or "binding not found" <span>+</span></div>
+      <div class="faq-a">
+        <p>Some tools (Link Shortener, Log Analyzer, etc.) need a KV namespace. Create it first:</p>
+        <p><code>wrangler kv:namespace create YOUR_NAMESPACE_NAME</code></p>
+        <p>Then add the binding to your <code>wrangler.toml</code> using the ID from the output. See the tool-specific section above for the exact namespace name needed.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">"deploy failed" or "script too large" <span>+</span></div>
+      <div class="faq-a">
+        <p>Check your Cloudflare account type. The free tier supports Workers up to 1MB. All SpunkArt tools fit within this limit.</p>
+        <p>If you see "script too large," make sure you're deploying only the single .js file, not a node_modules folder. Your folder should have just 2 files: the .js and wrangler.toml.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">"npm: command not found" <span>+</span></div>
+      <div class="faq-a">
+        <p>Node.js is not installed. Download it from <a href="https://nodejs.org" target="_blank">nodejs.org</a> -- pick the LTS (Long Term Support) version. npm comes bundled with Node.js automatically.</p>
+        <p>After installing, close and reopen your terminal, then try again.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">How do I use a custom domain? <span>+</span></div>
+      <div class="faq-a">
+        <p>By default, your tool lives at <code>tool-name.youraccount.workers.dev</code>. To use your own domain:</p>
+        <p>1. Add your domain to Cloudflare (free plan works)</p>
+        <p>2. In the Cloudflare dashboard, go to Workers & Pages > your worker > Settings > Triggers</p>
+        <p>3. Add a Custom Domain or Route (e.g., <code>monitor.yourdomain.com/*</code>)</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">How do I update a tool? <span>+</span></div>
+      <div class="faq-a">
+        <p>When you receive an updated .js file, just replace the old file and run <code>wrangler deploy</code> again. Same command, same folder. Your config changes in the file will be preserved if you keep your customized CONFIG section.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I deploy multiple tools from one Cloudflare account? <span>+</span></div>
+      <div class="faq-a">
+        <p>Yes. Each tool deploys as a separate Worker. Free Cloudflare accounts support up to 30 Workers. Deploy all 18 SpunkArt tools on a single free account with room to spare.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Is the free Cloudflare tier really enough? <span>+</span></div>
+      <div class="faq-a">
+        <p>Yes. The free tier includes 100,000 Worker requests per day. That's roughly 3 million requests per month. Unless you're running a massive site, free is more than enough.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- SUPPORT               -->
+<!-- ===================== -->
+<section class="section" id="support">
+  <div class="section-header">
+    <span class="section-badge badge-blue">Help</span>
+    <h2>Need Help?</h2>
+    <p>We're here for you. Most issues are resolved within an hour.</p>
+  </div>
+
+  <div class="support-grid">
+    <div class="support-card">
+      <div class="support-card-icon">💬</div>
+      <h3>DM on X</h3>
+      <p>Fastest response. DM us anytime -- we usually reply within minutes.</p>
+      <a href="https://twitter.com/messages/compose?recipient_id=SpunkArt13" target="_blank" class="btn btn-orange">DM @SpunkArt13</a>
+    </div>
+    <div class="support-card">
+      <div class="support-card-icon">📧</div>
+      <h3>Email</h3>
+      <p>For detailed questions, screenshots, or long-form help requests.</p>
+      <a href="mailto:hello@spunkart.com" class="btn btn-outline">hello@spunkart.com</a>
+    </div>
+    <div class="support-card">
+      <div class="support-card-icon">⚡</div>
+      <h3>Priority Support</h3>
+      <p>Pro and Empire customers get priority responses and 1-on-1 setup help.</p>
+      <a href="/store#bundles" class="btn btn-outline">View Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- CROSS-SELL CTA        -->
+<!-- ===================== -->
+<section class="section">
+  <div class="cta-banner">
+    <h2>Don't Have Our Tools Yet?</h2>
+    <p>18 Cloudflare Workers. One payment. Own forever. Deploy in 60 seconds.<br>From $4.99 per tool or $19.99 for all 18.</p>
+    <a href="/store" class="cta-btn">Browse the Store</a>
+    <div class="cta-sub">BTC, ETH, SOL, and card accepted. Instant delivery.</div>
+  </div>
+</section>
+
+<!-- ===================== -->
+<!-- EMAIL CAPTURE         -->
+<!-- ===================== -->
+<section class="email-section" id="newsletter">
+  <h2>Get Free Tools + Deploy Tips</h2>
+  <p>Join the SpunkArt newsletter. Get a free Cloudflare Worker template + 10% off your first purchase.</p>
+  <form class="email-form" onsubmit="return captureEmail(event)">
+    <input type="email" class="email-input" id="emailInput" placeholder="you@example.com" required>
+    <button type="submit" class="email-submit">Subscribe Free</button>
+  </form>
+  <div class="email-note">No spam. Unsubscribe anytime. We send tool updates, tutorials, and deals.</div>
+  <div id="emailSuccess" style="display:none;color:#10b981;font-weight:700;margin-top:1rem">Welcome! Check your inbox for your free template + discount code.</div>
+</section>
+
+<!-- ===================== -->
+<!-- FOOTER                -->
+<!-- ===================== -->
+<footer class="footer">
+  <div style="margin-bottom:1rem">
+    <a href="https://spunkart.com">SpunkArt</a> &middot;
+    <a href="/store">Store</a> &middot;
+    <a href="/ebook">Ebook</a> &middot;
+    <a href="/install">Install Guide</a> &middot;
+    <a href="/reseller">Reseller</a> &middot;
+    <a href="/blog">Blog</a> &middot;
+    <a href="https://spunk.bet">Spunk.Bet</a> &middot;
+    <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+  </div>
+  <div>&copy; 2026 SpunkArt. All rights reserved. <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a></div>
+</footer>
+
+<!-- ===================== -->
+<!-- SCRIPTS               -->
+<!-- ===================== -->
+<script>
+// Copy code to clipboard
+function copyCode(btn, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// Accordion toggle
+function toggleAccordion(item) {
+  // Close others
+  var siblings = item.parentElement.querySelectorAll('.accordion-item.open');
+  siblings.forEach(function(s) {
+    if (s !== item) s.classList.remove('open');
+  });
+  item.classList.toggle('open');
+}
+
+// Email capture
+function captureEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value.trim();
+  if (!email) return false;
+
+  var emails = JSON.parse(localStorage.getItem('spunkart_emails') || '[]');
+  if (emails.indexOf(email) === -1) {
+    emails.push(email);
+    localStorage.setItem('spunkart_emails', JSON.stringify(emails));
+  }
+
+  document.getElementById('emailInput').style.display = 'none';
+  document.querySelector('.email-submit').style.display = 'none';
+  document.getElementById('emailSuccess').style.display = 'block';
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'newsletter_signup', { email_domain: email.split('@')[1], source: 'install_guide' });
+  }
+  return false;
+}
+</script>
+
+<!-- SPUNKART.COM Watermark -->
+<script>
+(function() {
+  var w = document.createElement('div');
+  w.style.cssText = 'position:fixed;bottom:10px;right:10px;font-size:0.6rem;color:rgba(255,95,31,0.15);font-weight:800;pointer-events:none;z-index:9999;letter-spacing:1px;text-transform:uppercase;';
+  w.textContent = 'SPUNKART.COM';
+  document.body.appendChild(w);
+})();
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Generator - Free Preview | SPUNKART.COM</title>
+<meta name="description" content="Generate professional invoices instantly. Enter business details, add line items, calculate totals with tax. Free preview with watermark. Full version $4.99.">
+<meta property="og:title" content="Invoice Generator - Free Preview | SPUNKART.COM">
+<meta property="og:description" content="Generate professional invoices instantly. Free preview, full version $4.99. No signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/invoice-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-invoice-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Invoice Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate professional invoices instantly. Free preview available.">
+<link rel="canonical" href="https://spunkart.com/invoice-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+
+.pricing-badge{display:inline-block;background:#ff5f1f22;border:1px solid #ff5f1f44;color:#ff5f1f;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.input-group{margin-bottom:0;}
+.input-group.full{grid-column:1/-1;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group textarea,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:60px;}
+
+/* Line items table */
+.items-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.items-table th{text-align:left;padding:8px 10px;font-size:0.8rem;color:#666;border-bottom:1px solid #2a2a2a;font-weight:600;}
+.items-table td{padding:6px 4px;}
+.items-table input{width:100%;padding:8px 10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.9rem;outline:none;}
+.items-table input:focus{border-color:#ff5f1f;}
+.items-table .col-desc{width:40%;}
+.items-table .col-qty{width:12%;}
+.items-table .col-price{width:18%;}
+.items-table .col-total{width:18%;text-align:right;padding-right:10px;color:#ff5f1f;font-weight:600;font-size:0.9rem;}
+.items-table .col-action{width:12%;text-align:center;}
+
+.btn-small{padding:6px 12px;background:#222;border:1px solid #333;color:#e8e8e8;border-radius:6px;cursor:pointer;font-size:0.8rem;transition:all .2s;}
+.btn-small:hover{background:#333;}
+.btn-remove{background:#2a1515;border-color:#4a2020;color:#ff4444;font-size:0.8rem;padding:6px 10px;}
+.btn-remove:hover{background:#3a1515;}
+
+/* Totals */
+.totals{display:flex;flex-direction:column;align-items:flex-end;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #2a2a2a;}
+.totals-row{display:flex;gap:20px;font-size:0.95rem;}
+.totals-row .label{color:#888;min-width:100px;text-align:right;}
+.totals-row .value{min-width:100px;text-align:right;font-weight:600;}
+.totals-row.grand .label,.totals-row.grand .value{color:#ff5f1f;font-size:1.1rem;}
+
+.btn-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+
+/* Invoice preview */
+.invoice-preview{background:#fff;color:#222;border-radius:10px;padding:40px;position:relative;overflow:hidden;}
+.invoice-preview .inv-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-size:4rem;font-weight:900;color:rgba(255,95,31,0.08);letter-spacing:8px;pointer-events:none;white-space:nowrap;z-index:1;}
+.invoice-preview .inv-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;flex-wrap:wrap;gap:20px;}
+.invoice-preview .inv-title{font-size:2rem;font-weight:800;color:#ff5f1f;letter-spacing:2px;}
+.invoice-preview .inv-meta{text-align:right;font-size:0.9rem;color:#666;}
+.invoice-preview .inv-meta strong{color:#222;display:block;}
+.invoice-preview .inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-bottom:30px;}
+.invoice-preview .inv-party h3{font-size:0.8rem;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.invoice-preview .inv-party p{font-size:0.95rem;color:#333;}
+.invoice-preview .inv-party .company-name{font-weight:700;font-size:1.05rem;color:#111;}
+.invoice-preview table{width:100%;border-collapse:collapse;margin-bottom:24px;}
+.invoice-preview table th{background:#f5f5f5;padding:10px 12px;text-align:left;font-size:0.8rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;border-bottom:2px solid #ddd;}
+.invoice-preview table td{padding:10px 12px;border-bottom:1px solid #eee;font-size:0.9rem;color:#333;}
+.invoice-preview table td:last-child,.invoice-preview table th:last-child{text-align:right;}
+.invoice-preview .inv-totals{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.invoice-preview .inv-totals .row{display:flex;gap:20px;font-size:0.95rem;}
+.invoice-preview .inv-totals .row .lbl{color:#888;min-width:120px;text-align:right;}
+.invoice-preview .inv-totals .row .val{min-width:100px;text-align:right;font-weight:600;color:#333;}
+.invoice-preview .inv-totals .row.grand{border-top:2px solid #ff5f1f;padding-top:8px;margin-top:4px;}
+.invoice-preview .inv-totals .row.grand .lbl,.invoice-preview .inv-totals .row.grand .val{color:#ff5f1f;font-size:1.1rem;font-weight:800;}
+.invoice-preview .inv-notes{margin-top:30px;padding-top:16px;border-top:1px solid #eee;font-size:0.85rem;color:#888;}
+.invoice-preview .inv-footer{margin-top:20px;text-align:center;font-size:0.75rem;color:#ccc;}
+
+/* Upsell bar */
+.upsell-bar{background:#ff5f1f11;border:1px solid #ff5f1f33;border-radius:10px;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;flex-wrap:wrap;}
+.upsell-bar p{font-size:0.9rem;color:#ccc;}
+.upsell-bar p strong{color:#ff5f1f;}
+.upsell-bar a{padding:10px 24px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;font-size:0.9rem;transition:background .2s;white-space:nowrap;}
+.upsell-bar a:hover{background:#e5500a;text-decoration:none;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+/* Print styles */
+@media print{
+  body{background:#fff !important;}
+  nav,.watermark,.section:not(.preview-section),.subtitle,.pricing-badge,.upsell-bar,.cross-sell,footer,h1,.btn-row{display:none !important;}
+  main{max-width:100%;padding:0;}
+  .invoice-preview{border-radius:0;padding:20px;box-shadow:none;}
+}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .form-grid{grid-template-columns:1fr;}
+  .invoice-preview{padding:20px;}
+  .invoice-preview .inv-parties{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+  .upsell-bar{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Invoice <span>Generator</span></h1>
+  <p class="subtitle">Create professional invoices in seconds. Preview free, download the full clean version.</p>
+  <div class="pricing-badge">Free Preview with Watermark | Full Version $4.99 in Store</div>
+
+  <!-- Business Info -->
+  <div class="section">
+    <h2>Your Business</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Business Name</label>
+        <input type="text" id="bizName" placeholder="Acme Corp" value="Acme Corp">
+      </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="bizEmail" placeholder="billing@acme.com">
+      </div>
+      <div class="input-group full">
+        <label>Address</label>
+        <input type="text" id="bizAddress" placeholder="123 Main St, City, State, ZIP">
+      </div>
+    </div>
+  </div>
+
+  <!-- Client Info -->
+  <div class="section">
+    <h2>Bill To</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Client Name</label>
+        <input type="text" id="clientName" placeholder="Client Company LLC">
+      </div>
+      <div class="input-group">
+        <label>Client Email</label>
+        <input type="email" id="clientEmail" placeholder="client@example.com">
+      </div>
+      <div class="input-group full">
+        <label>Client Address</label>
+        <input type="text" id="clientAddress" placeholder="456 Oak Ave, City, State, ZIP">
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice Details -->
+  <div class="section">
+    <h2>Invoice Details</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Invoice Number</label>
+        <input type="text" id="invoiceNum" value="INV-001">
+      </div>
+      <div class="input-group">
+        <label>Invoice Date</label>
+        <input type="date" id="invoiceDate">
+      </div>
+      <div class="input-group">
+        <label>Due Date</label>
+        <input type="date" id="dueDate">
+      </div>
+      <div class="input-group">
+        <label>Currency</label>
+        <select id="currency">
+          <option value="$">USD ($)</option>
+          <option value="&euro;">EUR</option>
+          <option value="&pound;">GBP</option>
+          <option value="&yen;">JPY</option>
+          <option value="C$">CAD</option>
+          <option value="A$">AUD</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Line Items -->
+  <div class="section">
+    <h2>Line Items</h2>
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th class="col-desc">Description</th>
+          <th class="col-qty">Qty</th>
+          <th class="col-price">Unit Price</th>
+          <th class="col-total">Total</th>
+          <th class="col-action"></th>
+        </tr>
+      </thead>
+      <tbody id="itemsBody">
+        <tr>
+          <td><input type="text" class="item-desc" placeholder="Web Design" value="Web Design"></td>
+          <td><input type="number" class="item-qty" min="0" step="1" value="1" oninput="calcTotals()"></td>
+          <td><input type="number" class="item-price" min="0" step="0.01" value="500" oninput="calcTotals()"></td>
+          <td class="col-total item-total">$500.00</td>
+          <td class="col-action"><button class="btn-remove" onclick="removeItem(this)">X</button></td>
+        </tr>
+        <tr>
+          <td><input type="text" class="item-desc" placeholder="SEO Setup" value="SEO Setup"></td>
+          <td><input type="number" class="item-qty" min="0" step="1" value="1" oninput="calcTotals()"></td>
+          <td><input type="number" class="item-price" min="0" step="0.01" value="250" oninput="calcTotals()"></td>
+          <td class="col-total item-total">$250.00</td>
+          <td class="col-action"><button class="btn-remove" onclick="removeItem(this)">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn-small" onclick="addItem()">+ Add Line Item</button>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+      <div class="input-group">
+        <label>Tax Rate (%)</label>
+        <input type="number" id="taxRate" min="0" max="100" step="0.1" value="0" oninput="calcTotals()">
+      </div>
+      <div class="input-group">
+        <label>Discount ($)</label>
+        <input type="number" id="discount" min="0" step="0.01" value="0" oninput="calcTotals()">
+      </div>
+    </div>
+
+    <div class="totals" id="totalsDisplay">
+      <div class="totals-row"><span class="label">Subtotal:</span><span class="value" id="subtotal">$750.00</span></div>
+      <div class="totals-row"><span class="label">Discount:</span><span class="value" id="discountDisplay">-$0.00</span></div>
+      <div class="totals-row"><span class="label">Tax (0%):</span><span class="value" id="taxDisplay">$0.00</span></div>
+      <div class="totals-row grand"><span class="label">Total Due:</span><span class="value" id="grandTotal">$750.00</span></div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="section">
+    <h2>Notes</h2>
+    <div class="input-group" style="margin-bottom:0;">
+      <textarea id="notes" placeholder="Payment terms, bank details, thank you message...">Thank you for your business! Payment is due within 30 days.</textarea>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="btn-row" style="margin-bottom:20px;">
+    <button class="btn btn-primary" onclick="generatePreview()">Generate Invoice Preview</button>
+    <button class="btn btn-secondary" onclick="printInvoice()">Print / Save PDF</button>
+  </div>
+
+  <!-- Invoice Preview -->
+  <div class="section preview-section" id="previewSection" style="display:none;">
+    <h2>Invoice Preview <span style="color:#888;font-weight:400;font-size:0.85rem;">(Free version includes watermark)</span></h2>
+    <div class="invoice-preview" id="invoicePreview"></div>
+    <div class="upsell-bar">
+      <p>Want a <strong>clean invoice without the watermark</strong>? Get the full version for just $4.99.</p>
+      <a href="https://spunkart.com/store">Get Full Version - $4.99</a>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Business Tools</h3>
+    <p>Explore our full collection of premium templates, generators, and digital products.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM. All rights reserved.</footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+// Set today's date
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('invoiceDate').value = today;
+const due = new Date(); due.setDate(due.getDate() + 30);
+document.getElementById('dueDate').value = due.toISOString().split('T')[0];
+
+function getCurrency() {
+  return document.getElementById('currency').value;
+}
+
+function fmt(n) {
+  return getCurrency() + n.toFixed(2);
+}
+
+function addItem() {
+  const tbody = document.getElementById('itemsBody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input type="text" class="item-desc" placeholder="Description"></td>
+    <td><input type="number" class="item-qty" min="0" step="1" value="1" oninput="calcTotals()"></td>
+    <td><input type="number" class="item-price" min="0" step="0.01" value="0" oninput="calcTotals()"></td>
+    <td class="col-total item-total">${fmt(0)}</td>
+    <td class="col-action"><button class="btn-remove" onclick="removeItem(this)">X</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function removeItem(btn) {
+  const rows = document.querySelectorAll('#itemsBody tr');
+  if (rows.length <= 1) return;
+  btn.closest('tr').remove();
+  calcTotals();
+}
+
+function calcTotals() {
+  const rows = document.querySelectorAll('#itemsBody tr');
+  let subtotal = 0;
+  rows.forEach(row => {
+    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+    const price = parseFloat(row.querySelector('.item-price').value) || 0;
+    const total = qty * price;
+    row.querySelector('.item-total').textContent = fmt(total);
+    subtotal += total;
+  });
+
+  const discount = parseFloat(document.getElementById('discount').value) || 0;
+  const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+  const afterDiscount = subtotal - discount;
+  const tax = afterDiscount * (taxRate / 100);
+  const grand = afterDiscount + tax;
+
+  document.getElementById('subtotal').textContent = fmt(subtotal);
+  document.getElementById('discountDisplay').textContent = '-' + fmt(discount);
+  document.getElementById('taxDisplay').textContent = fmt(tax);
+  document.querySelector('#totalsDisplay .totals-row:nth-child(3) .label').textContent = `Tax (${taxRate}%):`;
+  document.getElementById('grandTotal').textContent = fmt(grand);
+}
+
+function getInvoiceData() {
+  const rows = document.querySelectorAll('#itemsBody tr');
+  const items = [];
+  let subtotal = 0;
+  rows.forEach(row => {
+    const desc = row.querySelector('.item-desc').value || 'Item';
+    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+    const price = parseFloat(row.querySelector('.item-price').value) || 0;
+    const total = qty * price;
+    items.push({ desc, qty, price, total });
+    subtotal += total;
+  });
+  const discount = parseFloat(document.getElementById('discount').value) || 0;
+  const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+  const afterDiscount = subtotal - discount;
+  const tax = afterDiscount * (taxRate / 100);
+  const grand = afterDiscount + tax;
+
+  return {
+    bizName: document.getElementById('bizName').value || 'Your Business',
+    bizEmail: document.getElementById('bizEmail').value,
+    bizAddress: document.getElementById('bizAddress').value,
+    clientName: document.getElementById('clientName').value || 'Client',
+    clientEmail: document.getElementById('clientEmail').value,
+    clientAddress: document.getElementById('clientAddress').value,
+    invoiceNum: document.getElementById('invoiceNum').value || 'INV-001',
+    invoiceDate: document.getElementById('invoiceDate').value,
+    dueDate: document.getElementById('dueDate').value,
+    notes: document.getElementById('notes').value,
+    items, subtotal, discount, taxRate, tax, grand
+  };
+}
+
+function generatePreview() {
+  const d = getInvoiceData();
+  const c = getCurrency();
+
+  let itemsHTML = '';
+  d.items.forEach(item => {
+    itemsHTML += `<tr><td>${item.desc}</td><td>${item.qty}</td><td>${c}${item.price.toFixed(2)}</td><td>${c}${item.total.toFixed(2)}</td></tr>`;
+  });
+
+  const html = `
+    <div class="inv-watermark">SPUNKART.COM FREE PREVIEW</div>
+    <div class="inv-header">
+      <div>
+        <div class="inv-title">INVOICE</div>
+        <div style="font-size:0.85rem;color:#888;margin-top:4px;">Generated by SPUNKART.COM</div>
+      </div>
+      <div class="inv-meta">
+        <strong>${d.invoiceNum}</strong>
+        Date: ${d.invoiceDate}<br>
+        Due: ${d.dueDate}
+      </div>
+    </div>
+    <div class="inv-parties">
+      <div class="inv-party">
+        <h3>From</h3>
+        <p class="company-name">${d.bizName}</p>
+        <p>${d.bizEmail ? d.bizEmail + '<br>' : ''}${d.bizAddress || ''}</p>
+      </div>
+      <div class="inv-party">
+        <h3>Bill To</h3>
+        <p class="company-name">${d.clientName}</p>
+        <p>${d.clientEmail ? d.clientEmail + '<br>' : ''}${d.clientAddress || ''}</p>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Description</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead>
+      <tbody>${itemsHTML}</tbody>
+    </table>
+    <div class="inv-totals">
+      <div class="row"><span class="lbl">Subtotal</span><span class="val">${c}${d.subtotal.toFixed(2)}</span></div>
+      ${d.discount > 0 ? `<div class="row"><span class="lbl">Discount</span><span class="val">-${c}${d.discount.toFixed(2)}</span></div>` : ''}
+      ${d.taxRate > 0 ? `<div class="row"><span class="lbl">Tax (${d.taxRate}%)</span><span class="val">${c}${d.tax.toFixed(2)}</span></div>` : ''}
+      <div class="row grand"><span class="lbl">Total Due</span><span class="val">${c}${d.grand.toFixed(2)}</span></div>
+    </div>
+    ${d.notes ? `<div class="inv-notes"><strong>Notes:</strong> ${d.notes}</div>` : ''}
+    <div class="inv-footer">Invoice generated with SPUNKART.COM Invoice Generator</div>
+  `;
+
+  document.getElementById('invoicePreview').innerHTML = html;
+  document.getElementById('previewSection').style.display = 'block';
+  document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
+  gtag('event', 'generate_invoice', { event_category: 'tool_use' });
+}
+
+function printInvoice() {
+  generatePreview();
+  setTimeout(() => window.print(), 300);
+  gtag('event', 'print_invoice', { event_category: 'tool_use' });
+}
+
+calcTotals();
+</script>
+</body>
+</html>

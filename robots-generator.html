@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robots.txt Generator - Free SEO Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate a custom robots.txt file for your website. Control which bots can crawl your site, set crawl delays, add sitemaps, and block specific paths. Free online tool.">
+<meta property="og:title" content="Robots.txt Generator - Free SEO Tool | SPUNKART.COM">
+<meta property="og:description" content="Generate a custom robots.txt file instantly. Control Googlebot, Bingbot, GPTBot, ClaudeBot and more. Free, no signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/robots-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-robots-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Robots.txt Generator - Free SEO Tool | SPUNKART.COM">
+<meta name="twitter:description" content="Generate a custom robots.txt file instantly. Control which bots crawl your site.">
+<link rel="canonical" href="https://spunkart.com/robots-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* Nav */
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+
+/* Watermark */
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+/* Main */
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+/* Sections */
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Bot toggles */
+.bot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;}
+.bot-item{display:flex;align-items:center;justify-content:space-between;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;}
+.bot-info{display:flex;flex-direction:column;}
+.bot-name{font-weight:600;font-size:0.95rem;}
+.bot-desc{font-size:0.75rem;color:#666;}
+
+/* Toggle switch */
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0;cursor:pointer;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle .slider{position:absolute;inset:0;background:#333;border-radius:24px;transition:.3s;}
+.toggle .slider:before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#666;border-radius:50%;transition:.3s;}
+.toggle input:checked+.slider{background:#ff5f1f;}
+.toggle input:checked+.slider:before{transform:translateX(20px);background:#fff;}
+
+/* Inputs */
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.input-group input:focus,.input-group select:focus{border-color:#ff5f1f;}
+
+/* Disallow paths */
+.paths-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.path-row{display:flex;gap:8px;}
+.path-row input{flex:1;}
+.btn-small{padding:8px 14px;background:#222;border:1px solid #333;color:#e8e8e8;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:all .2s;}
+.btn-small:hover{background:#333;}
+.btn-remove{background:#2a1515;border-color:#4a2020;color:#ff4444;}
+.btn-remove:hover{background:#3a1515;}
+
+/* Preview */
+.preview-area{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-all;color:#8f8;min-height:120px;max-height:400px;overflow-y:auto;line-height:1.5;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.copied{background:#22aa44 !important;color:#fff !important;}
+
+/* Cross-sell banner */
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+/* Footer */
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .bot-grid{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Robots.txt <span>Generator</span></h1>
+  <p class="subtitle">Control which bots can crawl your website. Generate a valid robots.txt file in seconds.</p>
+
+  <!-- Bot Toggles -->
+  <div class="section">
+    <h2>Bot Access Control</h2>
+    <p style="color:#666;font-size:0.85rem;margin-bottom:16px;">Toggle ON to allow a bot, OFF to block it.</p>
+    <div class="bot-grid" id="botGrid"></div>
+  </div>
+
+  <!-- Global Settings -->
+  <div class="section">
+    <h2>Global Settings</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="input-group">
+        <label>Crawl Delay (seconds)</label>
+        <input type="number" id="crawlDelay" min="0" max="120" value="0" placeholder="0 = no delay">
+      </div>
+      <div class="input-group">
+        <label>Sitemap URL</label>
+        <input type="url" id="sitemapUrl" placeholder="https://example.com/sitemap.xml">
+      </div>
+    </div>
+  </div>
+
+  <!-- Disallow Paths -->
+  <div class="section">
+    <h2>Disallow Paths</h2>
+    <p style="color:#666;font-size:0.85rem;margin-bottom:16px;">Specify paths that bots should not crawl.</p>
+    <div class="paths-list" id="pathsList">
+      <div class="path-row">
+        <input type="text" placeholder="/admin/" value="/admin/">
+        <button class="btn-small btn-remove" onclick="removePath(this)">Remove</button>
+      </div>
+      <div class="path-row">
+        <input type="text" placeholder="/private/" value="/private/">
+        <button class="btn-small btn-remove" onclick="removePath(this)">Remove</button>
+      </div>
+    </div>
+    <button class="btn-small" onclick="addPath()">+ Add Path</button>
+  </div>
+
+  <!-- Allow Paths -->
+  <div class="section">
+    <h2>Allow Paths (Override Disallow)</h2>
+    <p style="color:#666;font-size:0.85rem;margin-bottom:16px;">Specify paths that should be explicitly allowed even within disallowed directories.</p>
+    <div class="paths-list" id="allowPathsList">
+      <div class="path-row">
+        <input type="text" placeholder="/admin/public/">
+        <button class="btn-small btn-remove" onclick="removeAllowPath(this)">Remove</button>
+      </div>
+    </div>
+    <button class="btn-small" onclick="addAllowPath()">+ Add Allow Path</button>
+  </div>
+
+  <!-- Preview -->
+  <div class="section">
+    <h2>Preview</h2>
+    <div class="preview-area" id="preview">Click "Generate" to see your robots.txt</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generate()">Generate robots.txt</button>
+      <button class="btn btn-secondary" id="copyBtn" onclick="copyOutput()">Copy to Clipboard</button>
+      <button class="btn btn-secondary" onclick="downloadFile()">Download File</button>
+    </div>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Need More SEO Tools?</h3>
+    <p>Check out our full collection of free tools and premium digital products.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM. All rights reserved.</footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const bots = [
+  { name: 'Googlebot', agent: 'Googlebot', desc: 'Google Search', default: true },
+  { name: 'Bingbot', agent: 'Bingbot', desc: 'Microsoft Bing', default: true },
+  { name: 'DuckDuckBot', agent: 'DuckDuckBot', desc: 'DuckDuckGo', default: true },
+  { name: 'Slurp', agent: 'Slurp', desc: 'Yahoo Search', default: true },
+  { name: 'Yandex', agent: 'Yandex', desc: 'Yandex Search', default: true },
+  { name: 'Baiduspider', agent: 'Baiduspider', desc: 'Baidu Search', default: true },
+  { name: 'GPTBot', agent: 'GPTBot', desc: 'OpenAI / ChatGPT', default: false },
+  { name: 'ClaudeBot', agent: 'ClaudeBot', desc: 'Anthropic / Claude', default: false },
+  { name: 'ChatGPT-User', agent: 'ChatGPT-User', desc: 'ChatGPT Browse', default: false },
+  { name: 'Google-Extended', agent: 'Google-Extended', desc: 'Google AI Training', default: false },
+  { name: 'CCBot', agent: 'CCBot', desc: 'Common Crawl / AI', default: false },
+  { name: 'Applebot', agent: 'Applebot', desc: 'Apple / Siri', default: true },
+  { name: 'Twitterbot', agent: 'Twitterbot', desc: 'X / Twitter Preview', default: true },
+  { name: 'facebookexternalhit', agent: 'facebookexternalhit', desc: 'Facebook Preview', default: true },
+  { name: 'AhrefsBot', agent: 'AhrefsBot', desc: 'Ahrefs SEO', default: false },
+  { name: 'SemrushBot', agent: 'SemrushBot', desc: 'Semrush SEO', default: false },
+];
+
+const grid = document.getElementById('botGrid');
+bots.forEach((bot, i) => {
+  const el = document.createElement('div');
+  el.className = 'bot-item';
+  el.innerHTML = `
+    <div class="bot-info">
+      <span class="bot-name">${bot.name}</span>
+      <span class="bot-desc">${bot.desc}</span>
+    </div>
+    <label class="toggle">
+      <input type="checkbox" data-agent="${bot.agent}" ${bot.default ? 'checked' : ''}>
+      <span class="slider"></span>
+    </label>
+  `;
+  grid.appendChild(el);
+});
+
+function addPath() {
+  const list = document.getElementById('pathsList');
+  const row = document.createElement('div');
+  row.className = 'path-row';
+  row.innerHTML = '<input type="text" placeholder="/path/"><button class="btn-small btn-remove" onclick="removePath(this)">Remove</button>';
+  list.appendChild(row);
+  row.querySelector('input').focus();
+}
+
+function removePath(btn) { btn.parentElement.remove(); }
+
+function addAllowPath() {
+  const list = document.getElementById('allowPathsList');
+  const row = document.createElement('div');
+  row.className = 'path-row';
+  row.innerHTML = '<input type="text" placeholder="/path/"><button class="btn-small btn-remove" onclick="removeAllowPath(this)">Remove</button>';
+  list.appendChild(row);
+  row.querySelector('input').focus();
+}
+
+function removeAllowPath(btn) { btn.parentElement.remove(); }
+
+function generate() {
+  const toggles = document.querySelectorAll('#botGrid input[type="checkbox"]');
+  const allowed = [];
+  const blocked = [];
+  toggles.forEach(t => {
+    if (t.checked) allowed.push(t.dataset.agent);
+    else blocked.push(t.dataset.agent);
+  });
+
+  const crawlDelay = parseInt(document.getElementById('crawlDelay').value) || 0;
+  const sitemapUrl = document.getElementById('sitemapUrl').value.trim();
+
+  const disallowPaths = [];
+  document.querySelectorAll('#pathsList .path-row input').forEach(input => {
+    const v = input.value.trim();
+    if (v) disallowPaths.push(v);
+  });
+
+  const allowPaths = [];
+  document.querySelectorAll('#allowPathsList .path-row input').forEach(input => {
+    const v = input.value.trim();
+    if (v) allowPaths.push(v);
+  });
+
+  let output = '# robots.txt generated by SPUNKART.COM\n';
+  output += '# https://spunkart.com/robots-generator.html\n\n';
+
+  // Blocked bots
+  if (blocked.length > 0) {
+    blocked.forEach(agent => {
+      output += `User-agent: ${agent}\nDisallow: /\n\n`;
+    });
+  }
+
+  // Allowed bots (use wildcard for simplicity if all custom bots are handled)
+  output += 'User-agent: *\n';
+
+  disallowPaths.forEach(p => {
+    output += `Disallow: ${p}\n`;
+  });
+
+  allowPaths.forEach(p => {
+    if (p) output += `Allow: ${p}\n`;
+  });
+
+  if (crawlDelay > 0) {
+    output += `Crawl-delay: ${crawlDelay}\n`;
+  }
+
+  if (sitemapUrl) {
+    output += `\nSitemap: ${sitemapUrl}`;
+  }
+
+  document.getElementById('preview').textContent = output;
+  gtag('event', 'generate_robots', { event_category: 'tool_use' });
+}
+
+function copyOutput() {
+  const text = document.getElementById('preview').textContent;
+  if (!text || text.includes('Click "Generate"')) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy to Clipboard'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_robots', { event_category: 'tool_use' });
+  });
+}
+
+function downloadFile() {
+  const text = document.getElementById('preview').textContent;
+  if (!text || text.includes('Click "Generate"')) return;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'robots.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event', 'download_robots', { event_category: 'tool_use' });
+}
+
+// Auto-generate on load
+generate();
+</script>
+</body>
+</html>

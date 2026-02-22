@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Bio Generator - Free Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate creative social media bios for X/Twitter, LinkedIn, Instagram, TikTok, and GitHub. Enter your keywords, get 5 unique bio variations instantly. Free, no signup.">
+<meta property="og:title" content="Social Media Bio Generator - Free Tool | SPUNKART.COM">
+<meta property="og:description" content="Generate creative social media bios instantly. 5 unique variations for every platform. Free, no signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/social-bio.html">
+<meta property="og:image" content="https://spunkart.com/og-social-bio.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Social Media Bio Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate creative social media bios instantly for any platform.">
+<link rel="canonical" href="https://spunkart.com/social-bio.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Platform selector */
+.platform-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.platform-tab{padding:8px 18px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer;font-size:0.9rem;color:#888;transition:all .2s;}
+.platform-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.platform-tab:hover:not(.active){background:#222;color:#ccc;}
+
+.char-limit{font-size:0.8rem;color:#666;margin-top:4px;}
+.char-limit span{color:#ff5f1f;font-weight:600;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group textarea{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:80px;}
+
+.tone-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.tone-tag{padding:6px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;cursor:pointer;font-size:0.8rem;color:#888;transition:all .2s;}
+.tone-tag.active{background:#ff5f1f33;color:#ff5f1f;border-color:#ff5f1f66;}
+.tone-tag:hover:not(.active){background:#222;}
+
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;width:100%;}
+.btn-primary:hover{background:#e5500a;}
+
+/* Results */
+.results{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+.bio-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:16px;position:relative;}
+.bio-card .bio-number{position:absolute;top:12px;left:14px;font-size:0.75rem;color:#444;font-weight:700;}
+.bio-text{font-size:0.95rem;line-height:1.5;margin-bottom:10px;padding-top:8px;}
+.bio-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.char-count{font-size:0.8rem;color:#666;}
+.char-count.over{color:#ff4444;}
+.bio-copy{padding:6px 16px;background:#222;border:1px solid #333;border-radius:6px;color:#e8e8e8;cursor:pointer;font-size:0.8rem;transition:all .2s;}
+.bio-copy:hover{background:#333;}
+.bio-copy.copied{background:#22aa44;border-color:#22aa44;color:#fff;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .platform-tabs{gap:6px;}
+  .platform-tab{padding:6px 12px;font-size:0.8rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/tools">Free Tools</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Social Media <span>Bio Generator</span></h1>
+  <p class="subtitle">Generate 5 creative bio variations for any platform. No AI API needed -- powered by smart templates.</p>
+
+  <div class="section">
+    <h2>Choose Platform</h2>
+    <div class="platform-tabs" id="platformTabs">
+      <div class="platform-tab active" data-platform="twitter">X / Twitter</div>
+      <div class="platform-tab" data-platform="linkedin">LinkedIn</div>
+      <div class="platform-tab" data-platform="instagram">Instagram</div>
+      <div class="platform-tab" data-platform="tiktok">TikTok</div>
+      <div class="platform-tab" data-platform="github">GitHub</div>
+    </div>
+    <div class="char-limit">Character limit: <span id="charLimitDisplay">160</span></div>
+  </div>
+
+  <div class="section">
+    <h2>About You</h2>
+    <div class="input-group">
+      <label>Your Role / Title</label>
+      <input type="text" id="role" placeholder="e.g. Designer, Developer, Marketer, Founder">
+    </div>
+    <div class="input-group">
+      <label>Industry / Niche</label>
+      <input type="text" id="industry" placeholder="e.g. Tech, Fashion, Crypto, Health, Art">
+    </div>
+    <div class="input-group">
+      <label>Keywords & Interests (comma separated)</label>
+      <input type="text" id="keywords" placeholder="e.g. AI, startups, design, coffee, gaming">
+    </div>
+    <div class="input-group">
+      <label>Your Name or Brand (optional)</label>
+      <input type="text" id="brandName" placeholder="e.g. Jane Doe, AcmeCo">
+    </div>
+    <div class="input-group">
+      <label>Tone</label>
+      <div class="tone-tags" id="toneTags">
+        <div class="tone-tag active" data-tone="professional">Professional</div>
+        <div class="tone-tag" data-tone="casual">Casual</div>
+        <div class="tone-tag" data-tone="witty">Witty</div>
+        <div class="tone-tag" data-tone="bold">Bold</div>
+        <div class="tone-tag" data-tone="minimal">Minimal</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="generateBios()">Generate 5 Bios</button>
+  </div>
+
+  <div id="resultsSection" style="display:none;">
+    <div class="section">
+      <h2>Your Bio Variations</h2>
+      <div class="results" id="results"></div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Build Your Brand Further</h3>
+    <p>Explore our premium branding templates and digital products.</p>
+    <a href="https://spunkart.com/store">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM. All rights reserved.</footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const platformLimits = { twitter: 160, linkedin: 220, instagram: 150, tiktok: 80, github: 160 };
+let currentPlatform = 'twitter';
+let currentTone = 'professional';
+
+// Platform tabs
+document.querySelectorAll('.platform-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.platform-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentPlatform = tab.dataset.platform;
+    document.getElementById('charLimitDisplay').textContent = platformLimits[currentPlatform];
+  });
+});
+
+// Tone tags
+document.querySelectorAll('.tone-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    document.querySelectorAll('.tone-tag').forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+    currentTone = tag.dataset.tone;
+  });
+});
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function generateBios() {
+  const role = document.getElementById('role').value.trim() || 'Creative';
+  const industry = document.getElementById('industry').value.trim() || 'Tech';
+  const keywordsRaw = document.getElementById('keywords').value.trim();
+  const brandName = document.getElementById('brandName').value.trim();
+  const keywords = keywordsRaw ? keywordsRaw.split(',').map(k => k.trim()).filter(Boolean) : ['innovation', 'growth'];
+  const limit = platformLimits[currentPlatform];
+
+  const kw1 = () => pick(keywords);
+  const kw2 = () => { const s = shuffle(keywords); return s.slice(0, Math.min(2, s.length)).join(' & '); };
+  const kw3 = () => { const s = shuffle(keywords); return s.slice(0, Math.min(3, s.length)).join(', '); };
+  const name = brandName || '';
+  const namePrefix = name ? name + ' | ' : '';
+  const nameSuffix = name ? ' | ' + name : '';
+
+  const connectors = ['Obsessed with', 'Passionate about', 'Building with', 'Exploring', 'Focused on', 'All about'];
+  const actions = ['Building', 'Creating', 'Designing', 'Shipping', 'Growing', 'Crafting'];
+  const vibes = ['by day, dreamer by night', 'on a mission', 'and loving it', 'with purpose', 'one step at a time'];
+
+  const templates = {
+    professional: [
+      () => `${namePrefix}${role} in ${industry}. ${pick(connectors)} ${kw2()}. Let's connect.`,
+      () => `${role} | ${industry} | ${pick(actions)} at the intersection of ${kw2()}.${nameSuffix}`,
+      () => `${pick(actions)} the future of ${industry}. ${role} focused on ${kw3()}.${nameSuffix}`,
+      () => `${namePrefix}${role} helping ${industry} teams leverage ${kw1()} for real results.`,
+      () => `${industry} ${role.toLowerCase()} | ${pick(connectors)} ${kw1()} | ${pick(actions)} what's next.${nameSuffix}`,
+      () => `${namePrefix}${role}. ${kw3()}. Making ${industry} better, one project at a time.`,
+      () => `Experienced ${role.toLowerCase()} in ${industry}. Specializing in ${kw2()}.${nameSuffix}`,
+    ],
+    casual: [
+      () => `${namePrefix}Just a ${role.toLowerCase()} who loves ${kw1()} and good vibes.`,
+      () => `${role} ${pick(vibes)}. Into ${kw2()}. DMs open.${nameSuffix}`,
+      () => `${kw1()} nerd. ${industry} enthusiast. Probably ${pick(actions).toLowerCase()} something right now.${nameSuffix}`,
+      () => `${namePrefix}${role} by trade, ${kw1()} lover by choice. Living the ${industry} life.`,
+      () => `${pick(actions)} stuff in ${industry}. Fueled by ${kw1()} and caffeine.${nameSuffix}`,
+      () => `${namePrefix}Your friendly neighborhood ${role.toLowerCase()}. Big on ${kw2()}.`,
+      () => `${industry} ${role.toLowerCase()} | ${kw1()} fan | ${pick(vibes)}.${nameSuffix}`,
+    ],
+    witty: [
+      () => `${namePrefix}${role} who Googles things professionally. ${industry} + ${kw1()}.`,
+      () => `I put the "${kw1()}" in ${industry}. ${role} ${pick(vibes)}.${nameSuffix}`,
+      () => `${namePrefix}50% ${role.toLowerCase()}, 50% ${kw1()} enthusiast, 100% winging it.`,
+      () => `${role} in ${industry}. My ${kw1()} game is stronger than my coffee.${nameSuffix}`,
+      () => `${namePrefix}Professional ${role.toLowerCase()}. Amateur ${kw1()} influencer. Send help.`,
+      () => `${pick(actions)} ${industry} things nobody asked for. ${kw1()} is my personality.${nameSuffix}`,
+      () => `${namePrefix}${role} by day. ${kw1()} geek by night. ${industry} is just the excuse.`,
+    ],
+    bold: [
+      () => `${namePrefix}${role}. ${pick(actions)} the future of ${industry}. No permission needed.`,
+      () => `Disrupting ${industry} with ${kw1()}. ${role}. Unapologetic.${nameSuffix}`,
+      () => `${namePrefix}${role} who won't settle. ${kw2()} is just the beginning.`,
+      () => `${industry} ${role.toLowerCase()}. ${pick(actions)} what others won't. ${kw1()} first.${nameSuffix}`,
+      () => `${namePrefix}Not here to fit in. ${role} redefining ${industry} through ${kw1()}.`,
+      () => `${pick(actions)} empires in ${industry}. ${role}. ${kw1()} = the edge.${nameSuffix}`,
+      () => `${namePrefix}${role}. ${industry}. ${kw1()}. Results speak louder.`,
+    ],
+    minimal: [
+      () => `${role}. ${industry}. ${kw1()}.${nameSuffix}`,
+      () => `${namePrefix}${pick(actions)} in ${industry}.`,
+      () => `${role} | ${kw1()}${nameSuffix}`,
+      () => `${namePrefix}${industry}. ${kw2()}.`,
+      () => `${pick(actions)} ${kw1()}.${nameSuffix}`,
+      () => `${namePrefix}${role} / ${industry} / ${kw1()}`,
+      () => `${kw1()} + ${industry}.${nameSuffix}`,
+    ],
+  };
+
+  const pool = templates[currentTone] || templates.professional;
+  const bios = [];
+  const used = new Set();
+
+  while (bios.length < 5) {
+    const fn = pick(pool);
+    const bio = fn();
+    if (!used.has(bio)) {
+      used.add(bio);
+      bios.push(bio);
+    }
+    if (used.size >= pool.length * 3) break; // safety valve
+  }
+
+  const resultsDiv = document.getElementById('results');
+  resultsDiv.innerHTML = '';
+  document.getElementById('resultsSection').style.display = 'block';
+
+  bios.forEach((bio, i) => {
+    const isOver = bio.length > limit;
+    const card = document.createElement('div');
+    card.className = 'bio-card';
+    card.innerHTML = `
+      <div class="bio-number">#${i + 1}</div>
+      <div class="bio-text">${bio}</div>
+      <div class="bio-meta">
+        <span class="char-count ${isOver ? 'over' : ''}">${bio.length} / ${limit} chars${isOver ? ' (over limit)' : ''}</span>
+        <button class="bio-copy" onclick="copyBio(this, '${bio.replace(/'/g, "\\'")}')">Copy</button>
+      </div>
+    `;
+    resultsDiv.appendChild(card);
+  });
+
+  gtag('event', 'generate_bios', { event_category: 'tool_use', platform: currentPlatform, tone: currentTone });
+}
+
+function copyBio(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_bio', { event_category: 'tool_use' });
+  });
+}
+</script>
+</body>
+</html>
