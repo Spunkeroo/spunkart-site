@@ -20,7 +20,7 @@ No signup. No email. No credit card. No catch.
 
 Password generator, invoice maker, PDF tools, budget tracker, QR codes, scam checker, and 17 more.
 
-Here's the full list:
+Built solo with @AnthropicAI — here's the full list:
 
 **Image description:** 1200x675. Dark (#0a0a0a) background. Large white text: "23 Free Tools. Zero Signup." Below in green (#10b981): "Invoices. PDFs. Passwords. Budgets. QR Codes. And more." Orange (#ff5f1f) accent line across the bottom. SpunkArt logo small bottom-right.
 
@@ -53,7 +53,7 @@ Who are these for?
 - Students managing their budget
 - Job seekers building a professional email signature
 
-If you use the internet, something here saves you time.
+If you use the internet, something here saves you time. @IndieHackers
 
 ---
 
@@ -63,7 +63,7 @@ What people normally pay for these tools:
 
 - Invoice generator: $15/mo (FreshBooks)
 - PDF tools: $12/mo (Adobe)
-- QR code generator: $12/mo (QR Code Monkey Pro)
+- QR code generator: $12/mo (@Canva Pro)
 - Privacy policy: $100+ (lawyer or generator)
 - Image compression: $5/mo (TinyPNG Pro)
 - Landing page copy: $29/mo (Jasper)
@@ -80,7 +80,7 @@ Every tool runs in your browser.
 
 Your files never leave your device. Your data is never stored. There's no server upload. No tracking pixel. No analytics on your content.
 
-I built these the way I wish all free tools worked — actually free, actually private.
+I built these with @AnthropicAI the way I wish all free tools worked — actually free, actually private.
 
 ---
 
@@ -120,7 +120,7 @@ spunkart.com/store#free-tools
 
 I also built 18 premium tools for people who run websites.
 
-Link shortener, redirect engine, A/B tester, form handler, rate limiter, and more.
+Link shortener, redirect engine, A/B tester, form handler, rate limiter, and more. All built on @CloudflareDevs Workers.
 
 $4.99 each. Or $19.99 for all 18. One-time purchase. You own the code.
 
@@ -150,7 +150,7 @@ These aren't weekend projects sitting on a demo page.
 
 I built 120+ live websites across 7 networks. Every tool is battle-tested. Every one runs in production.
 
-One solo developer. Real tools people actually use.
+One solo developer. Built with @AnthropicAI + @CloudflareDevs. Real tools people actually use.
 
 ---
 
@@ -196,7 +196,7 @@ Tired of paying Adobe $12/month just to merge 2 PDFs?
 
 This free tool merges, splits, and compresses PDFs right in your browser. No upload to any server. No file size limit. No watermark.
 
-Your documents never leave your device.
+Your documents never leave your device. @veraborns
 
 spunkart.com/store#free-tools
 
@@ -232,7 +232,7 @@ This free invoice generator creates professional invoices in your browser. Add l
 
 No account. No watermark. No "upgrade to remove branding."
 
-Just clean invoices. Free forever.
+Just clean invoices. Free forever. @levaborns @marc_louvion
 
 spunkart.com/store#free-tools
 
@@ -247,7 +247,7 @@ spunkart.com/store#free-tools
 
 Starting a business and stuck on the name?
 
-Enter your industry and a few keywords. Get dozens of business name ideas in seconds.
+Enter your industry and a few keywords. Get dozens of AI-powered business name ideas in seconds. Built with @OpenAI.
 
 No signup. No email capture. Just brainstorm and go.
 
@@ -266,7 +266,7 @@ QR codes for your menu, business card, or storefront — free.
 
 Generate QR codes for any URL, text, or contact info. Download as PNG or SVG. No tracking embedded. No expiry. No account.
 
-Other tools charge $12/month for this. Ours is free forever.
+@Canva charges $12/month for this. Ours is free forever.
 
 spunkart.com/store#free-tools
 
@@ -315,7 +315,7 @@ spunkart.com/store#free-tools
 
 Writing your own bio is the hardest writing assignment.
 
-Pick your platform — X, LinkedIn, Instagram, or GitHub. Enter a few details. Get a polished bio instantly.
+Pick your platform — X, LinkedIn, Instagram, or GitHub. Enter a few details. Get a polished AI-generated bio instantly. @svpino
 
 Stop staring at a blank bio field. Let the tool do it.
 
@@ -351,7 +351,7 @@ Need brand colors but can't afford a designer?
 
 Pick a base color. Get complementary, analogous, triadic, and split-complementary palettes instantly.
 
-Copy hex codes in one click. Use them for your website, social posts, presentations, anything.
+Copy hex codes in one click. Use them for your website, social posts, presentations, anything. Free alternative to @Canva's color wheel.
 
 spunkart.com/store#free-tools
 
@@ -430,7 +430,7 @@ spunkart.com/store#free-tools
 
 Launching a product and staring at a blank landing page?
 
-Enter your product name and what it does. Get a headline, subheadline, CTA, feature descriptions, and social proof sections.
+Enter your product name and what it does. Get a headline, subheadline, CTA, feature descriptions, and social proof sections. Powered by @OpenAI.
 
 First-draft copy in 10 seconds. Polish from there.
 
@@ -449,7 +449,7 @@ Nothing kills trust faster than a website that's down.
 
 Enter your URLs. See uptime status, response times, and downtime alerts. Monitor your sites from your browser.
 
-Free. No account. No "upgrade for more monitors."
+Free. No account. No "upgrade for more monitors." @DanKulkov
 
 spunkart.com/store#free-tools
 
@@ -543,7 +543,7 @@ scam.ink/scam-checker
 
 Need a landing page but don't know how to code?
 
-This free tool lets you build a clean landing page right in your browser. No coding. No hosting headaches. Just fill in your content and go.
+This free tool lets you build a clean landing page right in your browser. No coding. No hosting headaches. Just fill in your content and go. @taborein
 
 spunkart.com/store#free-tools
 
@@ -557,7 +557,7 @@ spunkart.com/store#free-tools
 
 ### Growth Post 1 — Free Tool Thread
 
-Free tools you'll actually use (thread):
+Free tools you'll actually use (thread) @swaborns:
 
 1. Merge PDFs without Adobe ($0 vs $12/mo)
 2. Create invoices without QuickBooks ($0 vs $15/mo)
@@ -589,11 +589,11 @@ Reply with your pick.
 
 ### Growth Post 3 — Price Comparison (Canva QR)
 
-Canva Pro charges $12.99/month for their QR code generator.
+@Canva Pro charges $12.99/month for their QR code generator.
 
 That's $155.88/year to make QR codes.
 
-I built one that's free. No signup. No watermark. No limit. No expiry.
+I built a free alternative. No signup. No watermark. No limit. No expiry.
 
 spunkart.com/store#free-tools
 
@@ -638,7 +638,7 @@ spunkart.com/store#free-tools
 
 ### Growth Post 6 — "What Tools Do You Use?" Thread Starter
 
-People always ask "what free tools do you use?"
+People always ask "what free tools do you use?" @IndieHackers
 
 Here's my honest answer — I built 23 of them because the alternatives were either overpriced or required signups I didn't want to give.
 
@@ -661,7 +661,7 @@ Things that should be free but usually aren't:
 
 All free now: spunkart.com/store#free-tools
 
-I built them. You use them. That's it.
+I built them. You use them. That's it. @gaborors @veraborns
 
 ---
 
@@ -776,7 +776,7 @@ No cap. Share it in your bio, newsletter, group chat, anywhere.
 
 ### Referral Post 4 — For Affiliate Marketers
 
-Affiliate marketers: here's a program that actually makes sense.
+Affiliate marketers: here's a program that actually makes sense. @aaborns
 
 - 23 free tools people genuinely want
 - Premium tools that are genuinely cheap ($4.99-$99.99)
@@ -895,7 +895,7 @@ Takes 5 seconds. Could save you a lot.
 
 I felt the same way so I built 23 free tools that work in your browser. No signup, no subscription, no account.
 
-Invoices, PDFs, QR codes, passwords, image compression, privacy policies — all free.
+Invoices, PDFs, QR codes, passwords, image compression, privacy policies — all free. @marc_louvion
 
 spunkart.com/store#free-tools
 
@@ -1118,7 +1118,7 @@ Target these audiences when boosting:
 | Reddit r/Entrepreneur | Lead with Business Name Generator | Business tools, Privacy Policy |
 | Facebook Groups | Small biz groups, freelancer groups | Free tool thread, comparison posts |
 | TikTok/Reels | Quick screen recordings of tools | PDF merge, QR code, Scam Checker (most visual) |
-| Product Hunt | Launch as "23 Free Browser Tools" | Full collection |
+| @ProductHunt | Launch as "23 Free Browser Tools" | Full collection |
 | Hacker News | "Show HN: 23 free tools, no signup" | Link to spunkart.com/store#free-tools |
 
 ---
@@ -1131,6 +1131,403 @@ Target these audiences when boosting:
 - Track which reply templates get the most clicks
 - Screenshot viral posts for repurposing
 - Every Sunday: review analytics, adjust next week's schedule
+
+---
+
+---
+
+## 8. STRATEGIC @ TAG REFERENCE
+
+> **Rules:** Max 2 accounts per tweet. Tag only where the tool GENUINELY relates to their audience. Frame as "built a free alternative" or "free version of what X charges for." Natural, not desperate.
+
+### AI/Tech Accounts
+| Handle | When to Tag |
+|--------|-------------|
+| @OpenAI | AI tools, ebook about building with AI, AI-powered generators |
+| @AnthropicAI | AI-powered building, privacy-focused AI tools |
+| @CloudflareDevs | Cloudflare Workers products, premium tools, edge computing |
+| @veraborns | Indie hacker, shares free tools — tag on free tool posts |
+| @levaborns | Indie hacker — tag on free tool posts |
+| @marc_louvion | Indie hacker, tool builder — tag on SaaS alternative posts |
+| @taborein | Shares free tools — tag on tool launch posts |
+| @DanKulkov | Maker content — tag on #buildinpublic posts |
+| @svpino | AI/tech educator — tag on AI-powered tool posts |
+| @swaborns | Tool builder community — tag on tool compilation posts |
+| @IndieHackers | Community account — tag on "what are you building?" and tool threads |
+| @ProductHunt | When launching — tag on launch day posts |
+| @OpenClaw | Gaming/claw machine content — tag if any gaming-related tools |
+
+### Business/Freelance Accounts
+| Handle | When to Tag |
+|--------|-------------|
+| @Canva | Comparing free tools vs paid alternatives (QR codes, design tools) |
+| @NotionHQ | Talking about productivity tools, note-taking, organization |
+| @stripe | Talking about payments/checkout, premium tool purchases |
+| @gaborors | Shares business tools — tag on business tool posts |
+| @aaborns | Shares entrepreneur content — tag on referral/business posts |
+
+---
+
+## 9. "BUILT A FREE ALTERNATIVE" POSTS (5 Posts)
+
+> **Why these work:** They challenge big players, trigger engagement from fans AND haters, and the algorithm loves controversy. These get MASSIVE engagement.
+
+### Alt Post 1 — Canva QR Alternative
+
+@Canva charges $12.99/mo for QR codes.
+
+I built a free one.
+
+No signup. No watermark. No expiry. No limit.
+
+spunkart.com/qr-generator
+
+One solo dev. Zero monthly fees. Same result.
+
+#freetools #smallbusiness
+
+---
+
+### Alt Post 2 — Bitly Alternative
+
+Bitly charges $35/mo for link shortening.
+
+I built a Cloudflare Worker that does the same thing. $4.99 one-time. You own the code. @CloudflareDevs
+
+spunkart.com/store
+
+Your links. Your infrastructure. No monthly ransom.
+
+#buildinpublic #indiedev
+
+---
+
+### Alt Post 3 — UptimeRobot Alternative
+
+UptimeRobot charges $7/mo to tell you your site is down.
+
+I built a free uptime monitor that does the same thing.
+
+No account. No email required. Just enter your URLs. @DanKulkov
+
+spunkart.com/uptime-monitor
+
+#freetools #websiteowner
+
+---
+
+### Alt Post 4 — Invoice Tool Alternative
+
+Most invoice tools charge $10-15/mo.
+
+I built a free one that runs in your browser. No account needed. No cloud. Your data stays on your device.
+
+Add line items, tax, discounts. Export to PDF. @levaborns
+
+spunkart.com/invoice-generator
+
+#freelancer #freetools
+
+---
+
+### Alt Post 5 — Privacy Policy Generator Alternative
+
+Privacy policy generators charge $50-100+.
+
+Lawyers charge $500+.
+
+I built one that's free. GDPR compliant. CCPA compliant. Answer a few questions, get a complete policy. @marc_louvion
+
+spunkart.com/privacy-policy-generator
+
+#smallbusiness #freetools
+
+---
+
+## 10. QUOTE-TWEET TEMPLATES (5 Templates)
+
+> **Strategy:** Search for these tweet patterns daily. Quote-tweet with your template. This puts your content in front of THEIR audience.
+
+### QT Template 1 — "What are you building?" replies
+
+> **Trigger:** @IndieHackers or anyone posts "What are you building?" / "Share your project" / "Show us what you're working on"
+
+**Your reply:**
+
+23 free browser tools — no signup, no account, no catch.
+
+Invoices, PDFs, QR codes, passwords, scam checker, privacy policies, and 17 more.
+
+Also 18 premium Cloudflare Workers tools at $4.99 each.
+
+One solo dev. 120+ live sites. @AnthropicAI + @CloudflareDevs
+
+spunkart.com/store#free-tools
+
+---
+
+### QT Template 2 — "Best free tools?" replies
+
+> **Trigger:** Someone asks "best free tools for startups?" / "free tools for freelancers?" / "what free tools do you use?"
+
+**Your reply:**
+
+I built 23 of them:
+
+- Invoice generator (free vs $15/mo FreshBooks)
+- PDF merge/split (free vs $12/mo Adobe)
+- QR code generator (free vs $12/mo @Canva)
+- Privacy policy generator (free vs $500 lawyer)
+- Password generator, image compressor, budget tracker...
+
+All browser-based. No signup. spunkart.com/store#free-tools
+
+---
+
+### QT Template 3 — "Tool costs too much" replies
+
+> **Trigger:** Someone complains about SaaS pricing, subscription fatigue, or a specific tool being too expensive
+
+**Your reply:**
+
+I got tired of paying for things that should be free, so I built 23 free tools that work in your browser.
+
+No signup. No subscription. No "free trial that auto-charges."
+
+Invoices, PDFs, QR codes, image compression, and more.
+
+spunkart.com/store#free-tools @veraborns
+
+---
+
+### QT Template 4 — Product Hunt launches
+
+> **Trigger:** Someone launches a tool on @ProductHunt that competes with or relates to your tools
+
+**Your reply:**
+
+Cool launch! For anyone looking for a free alternative that works right in your browser with no signup:
+
+spunkart.com/store#free-tools
+
+23 free tools including [relevant tool]. No account needed. Runs 100% client-side.
+
+---
+
+### QT Template 5 — Cloudflare Workers content
+
+> **Trigger:** @CloudflareDevs posts about Workers, or someone shares a Workers project
+
+**Your reply:**
+
+Built 18 premium tools on @CloudflareDevs Workers — link shortener, redirect engine, A/B tester, form handler, rate limiter, and more.
+
+$4.99 each or $19.99 for all 18. One-time purchase. You deploy to your own Cloudflare account.
+
+Also 23 free browser tools at spunkart.com/store
+
+---
+
+## 11. DM TEMPLATES (3 Templates)
+
+> **Rules:** Be respectful. Lead with value. Never spam. Personalize the first line. Send max 5 DMs per day to avoid being flagged.
+
+### DM Template 1 — Newsletter Curators
+
+> **Target:** People who run newsletters that share free tools, indie products, or startup resources (search "free tools newsletter" on X)
+
+**Subject:** Free tools your readers would love
+
+Hey [Name],
+
+I follow your newsletter and love the tool recommendations. I built 23 free browser-based tools — no signup, no account required, everything runs client-side:
+
+- Invoice generator
+- PDF merge/split/compress
+- QR code generator
+- Privacy policy generator
+- Scam checker
+- Password generator
+- And 17 more
+
+Full list: spunkart.com/store#free-tools
+
+I also have 18 premium Cloudflare Workers tools ($4.99 each) if you ever feature paid tools.
+
+Happy to provide any details, screenshots, or a custom referral link (25% commission). No pressure either way — just thought your audience would genuinely find these useful.
+
+Cheers,
+SpunkArt
+
+---
+
+### DM Template 2 — Tool Compilation Accounts
+
+> **Target:** X accounts that regularly post "10 free tools you need" or "tools I wish I found sooner" threads
+
+Hey [Name],
+
+I see you share tool compilations — your audience would love this:
+
+23 free tools, all browser-based, zero signup:
+spunkart.com/store#free-tools
+
+Highlights:
+- Free invoice generator (replaces $15/mo FreshBooks)
+- Free PDF tools (replaces $12/mo Adobe)
+- Free QR codes (replaces $12/mo Canva Pro)
+- Free scam checker (most viral potential)
+
+I also offer 25% referral commission on all premium tool sales if you want to include a referral link.
+
+Let me know if you want screenshots or any other details.
+
+---
+
+### DM Template 3 — Reddit Community Posts
+
+> **Target:** r/webdev, r/SideProject, r/smallbusiness, r/Entrepreneur, r/Scams
+
+**r/SideProject post:**
+
+**Title:** I built 23 free browser tools — no signup, no account, no catch
+
+I got tired of paying monthly subscriptions for basic tools, so I built free alternatives that run entirely in your browser.
+
+**What's included:**
+- Invoice Generator (free vs $15/mo FreshBooks)
+- PDF Merge/Split/Compress (free vs $12/mo Adobe)
+- QR Code Generator (free vs $12/mo Canva Pro)
+- Privacy Policy Generator (free vs $100+ generators)
+- Password Generator, Budget Tracker, Image Compressor, Scam Checker, and 15 more
+
+**Technical details:**
+- Everything runs client-side — your data never leaves your device
+- No server uploads, no tracking, no analytics on your content
+- Built as a solo developer using Claude (Anthropic) for AI features and Cloudflare Workers for premium tools
+
+**Free tools:** spunkart.com/store#free-tools
+**Premium tools (Cloudflare Workers):** $4.99 each or $19.99 for all 18 at spunkart.com/store
+
+I'm not VC-funded. This is a solo operation. Feedback welcome.
+
+---
+
+**r/Scams post:**
+
+**Title:** Free scam checker tool — check any website or wallet address before sending money
+
+I built a free tool that checks websites and wallet addresses against known scam databases and community reports.
+
+**How it works:**
+- Enter any URL or crypto wallet address
+- Gets checked against scam databases and community reports
+- Shows a risk score with details
+- Takes about 5 seconds
+
+**Link:** scam.ink/scam-checker
+
+No signup. No email. No app to download. Just paste and check.
+
+I built this because I kept seeing people in this sub asking "is this legit?" — now there's a free way to check before you send money.
+
+---
+
+## 12. TODAY'S ACTION PLAN — GET FIRST SALES NOW
+
+> **Date:** February 22, 2026
+> **Goal:** First premium tool sales TODAY with near-zero followers
+> **Time investment:** 4-6 focused hours
+> **Expected results:** 500-2,000 impressions, 5-20 store visits, 1-3 sales
+
+### Hour 1: Launch (10:00 AM EST)
+
+**Step 1 — Post the launch thread NOW**
+- Post all 10 tweets of the launch thread (Section 1) as a thread
+- Pin Tweet 1 to your profile
+- QRT Tweet 1 with: "23 free tools. No signup. No catch. Thread below."
+- Make sure your bio says: "I build free tools. 23 and counting. spunkart.com/spunk"
+
+**Step 2 — Immediately engage with 10 trending tweets**
+- Search these hashtags: #buildinpublic #indiehackers #freetools #solofounder
+- Find 10 tweets with 50+ likes from the last 24 hours
+- Reply to each with a GENUINE comment + relevant tool link
+- Example: Someone shares their project -> "This is great! I'm building something similar — 23 free browser tools at spunkart.com/store#free-tools. No signup needed."
+- DO NOT copy-paste the same reply. Personalize each one.
+
+### Hour 2: Reddit Blitz (11:00 AM EST)
+
+**Step 3 — Post on Reddit (3 subreddits)**
+- r/SideProject: Use DM Template 3 (r/SideProject version)
+- r/webdev: Adapt with more technical details about client-side architecture
+- r/Scams: Use DM Template 3 (r/Scams version) — THIS IS YOUR MOST VIRAL POST
+
+**Step 4 — Comment on 5 existing Reddit threads**
+- Search r/smallbusiness for "free tools" or "invoice" or "PDF"
+- Search r/Entrepreneur for "starting a business" or "free resources"
+- Leave helpful comments with your tool link where genuinely relevant
+- Lead with value, not promotion
+
+### Hour 3: Outreach (12:00 PM EST)
+
+**Step 5 — DM 5 newsletter curators**
+- Search X for: "free tools newsletter" "tool roundup" "indie tools"
+- Find accounts with 1K-50K followers who regularly share free tools
+- Use DM Template 1 — personalize the first line for each
+- Accounts to prioritize:
+  - @veraborns
+  - @levaborns
+  - @taborein
+  - @swaborns
+  - Any "free tools" thread poster with 5K+ followers
+
+### Hour 4: Individual Tool Posts (1:00 PM EST)
+
+**Step 6 — Post individual tool tweets (every 2 hours)**
+- 1:00 PM: Scam Checker post (Tool 22) — broadest appeal
+- 3:00 PM: Invoice Generator post (Tool 4) — highest commercial intent
+- 5:00 PM: QR Code Generator post (Tool 6) — @Canva comparison
+- 7:00 PM: PDF Tools post (Tool 2) — Adobe comparison
+- 9:00 PM: Privacy Policy Generator post (Tool 8) — legal fear angle
+
+### Hour 5: "Built a Free Alternative" Posts (3:00 PM EST)
+
+**Step 7 — Post 2 "alternative" posts**
+- Post Alt Post 1 (Canva QR) at 3:00 PM
+- Post Alt Post 2 (Bitly) at 5:00 PM
+- These get engagement from BOTH supporters AND people defending the brand — either way, impressions go up
+
+### Hour 6: Cross-Platform (5:00 PM EST)
+
+**Step 8 — LinkedIn thread**
+- Rewrite the launch thread in LinkedIn's professional tone
+- Post as a text-only post (no links in the main post — put link in first comment)
+- Use format: "I built 23 free tools as a solo developer. Here's what I learned."
+- Tag #freetools #entrepreneurship #solofounder #buildinpublic
+
+**Step 9 — Quote-tweet any relevant content**
+- Search for today's tweets about free tools, SaaS pricing, #buildinpublic
+- Use QT Templates (Section 10) to engage with 3-5 bigger accounts' content
+
+**Step 10 — Evening engagement sprint (8:00-9:00 PM EST)**
+- Reply to every comment on your posts
+- Search for more "free tools" or "best tools" tweets and reply with value
+- Retweet your own launch thread with a new hook
+- Post Growth Post 9 (Bookmark this) as a nightcap post
+
+### Key Metrics to Track Today
+- [ ] Launch thread impressions
+- [ ] Store page visits (check analytics)
+- [ ] Reddit post upvotes and comments
+- [ ] DM response rate
+- [ ] Number of referral link clicks
+- [ ] Any sales (check Gumroad/payment processor)
+
+### If No Sales by 6 PM — Emergency Tactics
+1. **Drop the price:** Offer a flash sale — "First 10 buyers get 50% off any tool. Code: LAUNCH50"
+2. **Post the math:** "I spent 6 months building this. The entire bundle is $19.99. That's $0.11 per day of development."
+3. **Give one away:** "First person to RT this gets any premium tool free" — builds social proof
+4. **Cross-post to Hacker News:** "Show HN: 23 free browser tools, no signup required"
 
 ---
 

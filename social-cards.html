@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpunkArt Social Cards — Screenshot Ready</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ff5f1f;
+  }
+
+  .page-instructions {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .card-wrapper {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-label {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Base Card ── */
+  .card {
+    width: 1200px;
+    height: 675px;
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* accent stripe */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff5f1f, #10b981);
+    z-index: 2;
+  }
+
+  /* subtle radial overlay */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(255,95,31,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .card > * { position: relative; z-index: 3; }
+
+  /* ── Top-left brand ── */
+  .card .brand {
+    position: absolute;
+    top: 28px; left: 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ff5f1f;
+    letter-spacing: 0.08em;
+    z-index: 3;
+  }
+
+  /* ── Center content ── */
+  .card .emoji {
+    font-size: 3rem;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+  }
+
+  .card .tool-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    line-height: 1.2;
+    max-width: 900px;
+    margin-bottom: 0.55rem;
+  }
+
+  .card .tool-desc {
+    font-size: 1.1rem;
+    color: #888;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.4;
+  }
+
+  /* ── Bottom-left price / free label ── */
+  .card .bottom-left {
+    position: absolute;
+    bottom: 28px; left: 40px;
+    font-size: 1rem;
+    font-weight: 700;
+    z-index: 3;
+  }
+
+  .card .bottom-left.free { color: #10b981; }
+  .card .bottom-left.paid { color: #ff5f1f; }
+
+  /* ── Bottom-right URL ── */
+  .card .bottom-right {
+    position: absolute;
+    bottom: 28px; right: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ff5f1f;
+    z-index: 3;
+  }
+
+  /* ── Product card overrides ── */
+  .card.product .tool-name { font-size: 2.6rem; }
+  .card.product .tool-desc { font-size: 1.15rem; color: #aaa; }
+
+  .card.product-orange::after {
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,95,31,0.09) 0%, transparent 70%);
+  }
+  .card.product-gold::after {
+    background: radial-gradient(ellipse at 50% 50%, rgba(255,193,7,0.09) 0%, transparent 70%);
+  }
+  .card.product-green::after {
+    background: radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.09) 0%, transparent 70%);
+  }
+
+  /* ── Hero card ── */
+  .card.hero {
+    background: linear-gradient(135deg, #1a0800 0%, #0a0a0a 40%, #0a0a0a 60%, #001a0e 100%);
+    border-color: #2a1a0a;
+  }
+
+  .card.hero::before {
+    height: 4px;
+    background: linear-gradient(90deg, #ff5f1f, #ff8c00, #10b981);
+  }
+
+  .card.hero::after {
+    background: radial-gradient(ellipse at 50% 45%, rgba(255,95,31,0.12) 0%, transparent 65%);
+  }
+
+  .card.hero .tool-name {
+    font-size: 3.2rem;
+    background: linear-gradient(90deg, #ff5f1f, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card.hero .tool-desc {
+    font-size: 1.35rem;
+    color: #ccc;
+  }
+
+  .card.hero .bottom-left {
+    font-size: 1.05rem;
+    color: #10b981;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Social Cards &mdash; Screenshot Each One (1200&times;675)</h1>
+<p class="page-instructions">Right-click &rarr; Save Image or Screenshot each card at 100% zoom. Each card is exactly 1200&times;675px, ready for X/Twitter posts.</p>
+
+<script>
+const freeTools = [
+  { num: 1,  emoji: "\u{1F510}", name: "Password Generator",        desc: "Generate strong, secure passwords instantly" },
+  { num: 2,  emoji: "\u{1F4C4}", name: "PDF Tools",                 desc: "Merge, split & compress PDFs in your browser" },
+  { num: 3,  emoji: "\u{1F4B0}", name: "Budget Tracker",            desc: "Track income & expenses privately" },
+  { num: 4,  emoji: "\u{1F3F7}\uFE0F", name: "Meta Tag Generator",  desc: "Perfect SEO meta tags in seconds" },
+  { num: 5,  emoji: "\u{1F3A8}", name: "Color Palette",             desc: "Generate harmonious color palettes" },
+  { num: 6,  emoji: "\u{1F4F1}", name: "QR Code Generator",         desc: "Custom QR codes with your brand colors" },
+  { num: 7,  emoji: "\u{1F6E1}\uFE0F", name: "Headers Checker",     desc: "Check any site\u2019s security headers" },
+  { num: 8,  emoji: "\u{1F4CB}", name: "JSON Formatter",            desc: "Format & validate JSON instantly" },
+  { num: 9,  emoji: "\u{1F916}", name: "Robots.txt Generator",      desc: "Generate robots.txt with toggles" },
+  { num: 10, emoji: "\u270D\uFE0F",  name: "Social Bio Generator",  desc: "10 bios for every platform" },
+  { num: 11, emoji: "\u{1F9FE}", name: "Invoice Generator",         desc: "Professional invoices, download as PDF" },
+  { num: 12, emoji: "\u{1F308}", name: "CSS Gradient Generator",    desc: "Design gradients visually, copy CSS" },
+  { num: 13, emoji: "\u{1F5FA}\uFE0F", name: "Sitemap Generator",   desc: "XML sitemaps ready to upload" },
+  { num: 14, emoji: "\u2709\uFE0F",  name: "Email Signature Generator", desc: "Professional signatures for Gmail & Outlook" },
+  { num: 15, emoji: "\u{1F5BC}\uFE0F", name: "Favicon Generator",   desc: "All favicon sizes from one image" },
+  { num: 16, emoji: "\u{1F4BC}", name: "Business Name Generator",   desc: "50 creative name ideas per search" },
+  { num: 17, emoji: "\u270F\uFE0F",  name: "Markdown Editor",       desc: "Live preview with syntax highlighting" },
+  { num: 18, emoji: "\u{1F4DC}", name: "Privacy Policy Generator",  desc: "GDPR & CCPA compliant policies" },
+  { num: 19, emoji: "\u{1F5DC}\uFE0F", name: "Image Compressor",    desc: "Compress images without losing quality" },
+  { num: 20, emoji: "\u{1F4DD}", name: "Landing Page Copy",         desc: "Headlines, CTAs & copy instantly" },
+  { num: 21, emoji: "\u{1F4CA}", name: "Uptime Monitor",            desc: "Check any website\u2019s uptime now" },
+  { num: 22, emoji: "\u{1F575}\uFE0F", name: "Scam Checker",        desc: "Instant URL safety scores" }
+];
+
+const products = [
+  { num: 23, emoji: "\u{1F680}", name: "Pro Bundle",          price: "$19.99",       desc: "All 18 Cloudflare Workers. One payment. Own forever.", style: "product-orange" },
+  { num: 24, emoji: "\u{1F451}", name: "Lifetime Access",     price: "$99.99",       desc: "Every tool. Every future tool. Forever.",              style: "product-gold" },
+  { num: 25, emoji: "\u{1F4D6}", name: "AI Website Empire Ebook", price: "$14.99",   desc: "How I built 120+ sites in 7 days",                    style: "product-orange" },
+  { num: 26, emoji: "\u{1F4B0}", name: "Reseller Program",    price: "From $99",     desc: "Rebrand our tools. Sell unlimited. Keep 100%.",        style: "product-green" },
+  { num: 27, emoji: "\u{1F91D}", name: "Earn 25% Cash",       price: "Affiliate",    desc: "Share spunkart.com/spunk. Get paid on every sale.",    style: "product-green" }
+];
+
+function createCard(html) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'card-wrapper';
+  wrapper.innerHTML = html;
+  document.body.appendChild(wrapper);
+}
+
+// ── Free tool cards ──
+freeTools.forEach(t => {
+  createCard(`
+    <div class="card-label">Card #${t.num} &mdash; ${t.name}</div>
+    <div class="card">
+      <div class="brand">SPUNKART.COM</div>
+      <div class="emoji">${t.emoji}</div>
+      <div class="tool-name">${t.name}</div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="bottom-left free">FREE &mdash; No Signup Required</div>
+      <div class="bottom-right">spunkart.com/spunk</div>
+    </div>
+  `);
+});
+
+// ── Product cards ──
+products.forEach(t => {
+  createCard(`
+    <div class="card-label">Card #${t.num} &mdash; ${t.name}</div>
+    <div class="card product ${t.style}">
+      <div class="brand">SPUNKART.COM</div>
+      <div class="emoji">${t.emoji}</div>
+      <div class="tool-name">${t.name}</div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="bottom-left paid">${t.price}</div>
+      <div class="bottom-right">spunkart.com/spunk</div>
+    </div>
+  `);
+});
+
+// ── Hero card ──
+createCard(`
+  <div class="card-label">Card #28 &mdash; Hero / Launch Thread</div>
+  <div class="card hero">
+    <div class="brand">SPUNKART.COM</div>
+    <div class="emoji">\u{1F680}</div>
+    <div class="tool-name">50+ Free Digital Tools</div>
+    <div class="tool-desc">23 free. No signup. No catch.</div>
+    <div class="bottom-left">Launch &mdash; spunkart.com/spunk</div>
+    <div class="bottom-right">spunkart.com/spunk</div>
+  </div>
+`);
+</script>
+
+</body>
+</html>
