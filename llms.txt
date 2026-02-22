@@ -1,38 +1,43 @@
-# SpunkArt — Digital Art & Ordinals on Bitcoin
+# SpunkArt — Digital Art, Tools & Products
 
-> SpunkArt is a digital art studio creating Bitcoin ordinal inscriptions and NFT collections. Home of the Spunk.Bet network. Follow @SpunkArt13.
+> SpunkArt builds affordable edge computing tools, free utilities, and digital products. Also a digital art studio creating Bitcoin ordinal inscriptions. Built 120+ websites in under 7 days using AI. Follow @SpunkArt13.
 
+## Products & Tools
 
-SpunkArt creates digital art collections inscribed as Bitcoin ordinals. Collections include The Damned, Crazy Aliens, Dreamers, The Freak Show, and Bitcoin Faces. All art is permanently stored on the Bitcoin blockchain. SpunkArt also operates the Spunk.Bet free crypto casino, the Predict Network (18 prediction market sites), the Stimulant Network (wiki, doctor, shop), and scam exposure sites.
+### Cloudflare Workers Toolkit ($4.99 each, $19.99 all 16)
+16 ready-to-deploy tools: OpenClaw Game, Auto-SSL Monitor, Spotify Widget, Link Shortener, Uptime Monitor, Bot Blocker, Redirect Manager, Image Optimizer, Email Forwarder, A/B Testing, Privacy Analytics, Cache Purger, Discord Bot, API Monitor, Log Analyzer, Edge Checkout.
 
+### Free Tools (no signup required)
+- [Password Generator](https://spunkart.com/password-generator)
+- [PDF Tools — Merge, Split, Compress](https://spunkart.com/pdf-tools)
+- [Budget Tracker](https://spunkart.com/budget-tracker)
+- [Scam Checker](https://scam.ink/scam-checker)
+
+### Ebook: "Zero to 120+ Websites in 7 Days" ($14.99)
+How one solo founder built 120+ live websites in a week with AI. Includes source code, 50 AI prompts, action plan.
 
 ## Pages
+- [Store — All Products](https://spunkart.com/store)
+- [Ebook Landing Page](https://spunkart.com/ebook)
+- [Homepage — Digital Art Gallery](https://spunkart.com)
 
-- [Homepage — SpunkArt Digital Art Gallery](https://spunkart.com)
-- [Gallery — Browse Collections](https://spunkart.com/#gallery)
-- [About — The Artist](https://spunkart.com/#about)
-- [Contact — Commissions & Collaborations](https://spunkart.com/#contact)
+## Art Collections
+- The Damned, Crazy Aliens, Dreamers, The Freak Show, Bitcoin Faces — all inscribed as Bitcoin ordinals.
 
+## Network (120+ live sites)
+- [Predict Network](https://predict.autos) — 18 prediction market sites
+- [Stimulant Network](https://stimulant.work) — 14 wellness/productivity sites
+- [Alien Network](https://aliens.coupons) — 22 alien-themed sites
+- [AiBot Network](https://aibot.beer) — 12 AI tool sites
+- [Monkey Network](https://monkey.coupons) — 11 community sites
+- [Scam Network](https://scam.ink) — 7 scam awareness sites
+- [Claw/Plush Network](https://claw.pizza) — 17 game sites
+- [Spunk.Bet — Free Crypto Casino](https://spunk.bet)
+
+## Contact
+- Twitter/X: [@SpunkArt13](https://x.com/SpunkArt13)
+- Email: hello@spunkart.com
+- [SpunkArt on Magic Eden](https://magiceden.us/ordinals/marketplace/spunkart)
 
 ## Keywords
-
-Bitcoin ordinals, digital art, NFT art, Bitcoin inscriptions, SpunkArt, crypto art, ordinal collections
-
-
-## Collections
-
-- **The Damned**: Dark surreal portraits inscribed on Bitcoin
-- **Crazy Aliens**: Vibrant alien character art
-- **Dreamers**: Ethereal dream-state illustrations
-- **The Freak Show**: Bold circus-themed digital art
-- **Bitcoin Faces**: Portrait series on Bitcoin ordinals
-
-
-## Related Sites
-
-- [Spunk.Bet — Free Crypto Casino](https://spunk.bet)
-- [Stimulant Wiki — Nootropic Encyclopedia](https://stimulant.wiki)
-- [Stimulant Doctor — ADHD & Focus Guide](https://stimulant.doctor)
-- [Stimulant Shop — Buy Nootropics](https://stimulant.shop)
-- [SpunkArt on Magic Eden](https://magiceden.us/ordinals/marketplace/spunkart)
-- [@SpunkArt13 on X](https://x.com/SpunkArt13)
+Bitcoin ordinals, digital art, Cloudflare Workers, edge tools, developer tools, digital products, AI website builder, passive income

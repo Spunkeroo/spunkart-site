@@ -258,6 +258,30 @@ for domain, name, color in DOMAINS:
   <div>© 2026 SpunkArt. All rights reserved.</div>
 </footer>
 
+<!-- Content Protection -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  if (e.target.closest('.preview, pre, code')) e.preventDefault();
+});
+document.addEventListener('copy', function(e) {
+  if (document.activeElement.closest('.preview, pre, code')) {
+    e.preventDefault();
+    e.clipboardData.setData('text/plain', 'Full source code included with purchase — spunkart.com/store');
+  }
+});
+document.addEventListener('selectstart', function(e) {
+  if (e.target.closest('pre, code')) e.preventDefault();
+});
+(function() {
+  const w = document.createElement('div');
+  w.style.cssText = 'position:fixed;bottom:10px;right:10px;font-size:0.6rem;color:rgba(255,95,31,0.12);font-weight:800;pointer-events:none;z-index:9999;letter-spacing:1px;text-transform:uppercase;';
+  w.textContent = 'SPUNKART.COM';
+  document.body.appendChild(w);
+})();
+</script>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
 </body>
