@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptime Monitor - Check Any Website's Status Free | SPUNKART.COM</title>
+<meta name="description" content="Monitor any website's uptime instantly. Check response time, status codes, SSL, and headers. Free uptime checker tool by SPUNKART.COM">
+<meta property="og:title" content="Uptime Monitor - Free Website Status Checker | SPUNKART.COM">
+<meta property="og:description" content="Check any website's uptime, response time, and status instantly. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/uptime-monitor">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Uptime Monitor | SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/uptime-monitor">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;text-decoration:none;}
+.logo:hover{text-decoration:none;}
+.links{display:flex;gap:20px;font-size:0.9rem;}
+.links a{color:#ccc;}
+.links a:hover{color:#ff5f1f;text-decoration:none;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:32px;font-size:1rem;}
+
+.input-row{display:flex;gap:8px;margin-bottom:24px;}
+input[type="url"]{flex:1;background:#151515;border:1px solid #333;color:#e8e8e8;padding:14px 16px;border-radius:8px;font-size:1rem;outline:none;transition:border-color 0.2s;}
+input[type="url"]:focus{border-color:#ff5f1f;}
+button{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;white-space:nowrap;}
+button:hover{background:#e5520f;}
+button:disabled{background:#333;color:#666;cursor:not-allowed;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.results{display:none;margin-top:8px;}
+.status-banner{padding:16px 20px;border-radius:12px;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.status-banner.up{background:#10b98115;border:1px solid #10b98133;}
+.status-banner.down{background:#ef444415;border:1px solid #ef444433;}
+.status-banner.unknown{background:#f59e0b15;border:1px solid #f59e0b33;}
+.status-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.status-dot.up{background:#10b981;box-shadow:0 0 8px #10b981;}
+.status-dot.down{background:#ef4444;box-shadow:0 0 8px #ef4444;}
+.status-dot.unknown{background:#f59e0b;box-shadow:0 0 8px #f59e0b;}
+.status-text{font-size:1.1rem;font-weight:700;}
+.status-text.up{color:#10b981;}
+.status-text.down{color:#ef4444;}
+.status-text.unknown{color:#f59e0b;}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
+.metric{background:#151515;border:1px solid #222;border-radius:10px;padding:16px;text-align:center;}
+.metric-value{font-size:1.5rem;font-weight:800;color:#fff;}
+.metric-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px;}
+.metric-value.good{color:#10b981;}
+.metric-value.warn{color:#f59e0b;}
+.metric-value.bad{color:#ef4444;}
+
+.details-section{background:#151515;border:1px solid #222;border-radius:10px;padding:20px;margin-bottom:16px;}
+.details-section h3{font-size:0.85rem;color:#ff5f1f;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;}
+.detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.85rem;}
+.detail-row:last-child{border-bottom:none;}
+.detail-key{color:#888;}
+.detail-val{color:#e8e8e8;font-weight:600;text-align:right;max-width:60%;word-break:break-all;}
+
+.history-section{margin-top:24px;}
+.history-section h3{font-size:0.85rem;color:#ff5f1f;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;}
+.history-item{background:#151515;border:1px solid #222;border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;}
+.history-status{display:flex;align-items:center;gap:8px;}
+.history-dot{width:8px;height:8px;border-radius:50%;}
+
+.monitor-list{margin-top:32px;}
+.monitor-list h2{font-size:1.2rem;margin-bottom:12px;color:#fff;}
+.add-monitor{display:flex;gap:8px;margin-bottom:16px;}
+.add-monitor input{flex:1;background:#151515;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-size:0.9rem;outline:none;}
+.add-monitor input:focus{border-color:#ff5f1f;}
+.add-monitor button{padding:10px 20px;font-size:0.9rem;}
+.saved-monitor{background:#151515;border:1px solid #222;border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.saved-monitor .url{color:#ccc;font-size:0.85rem;cursor:pointer;}
+.saved-monitor .url:hover{color:#ff5f1f;}
+.saved-monitor .remove{background:none;border:none;color:#666;cursor:pointer;font-size:1rem;padding:4px 8px;}
+.saved-monitor .remove:hover{color:#ef4444;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}
+.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;margin-bottom:12px;background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+footer a{text-decoration:none;}
+
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 0.6s linear infinite;margin-right:8px;vertical-align:middle;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .input-row{flex-direction:column;}
+  .metrics{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Uptime Monitor</h1>
+  <p class="subtitle">Check any website's status, response time, and health instantly. Save sites to monitor from your browser.</p>
+
+  <div class="input-row">
+    <input type="url" id="urlInput" placeholder="https://example.com" value="">
+    <button id="checkBtn" onclick="checkSite()">Check Status</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="status-banner" id="statusBanner">
+      <div class="status-dot" id="statusDot"></div>
+      <div>
+        <div class="status-text" id="statusText">Checking...</div>
+        <div style="font-size:0.8rem;color:#888;" id="statusUrl"></div>
+      </div>
+    </div>
+
+    <div class="metrics" id="metricsGrid">
+      <div class="metric">
+        <div class="metric-value" id="metricStatus">—</div>
+        <div class="metric-label">Status Code</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="metricTime">—</div>
+        <div class="metric-label">Response Time</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="metricSSL">—</div>
+        <div class="metric-label">SSL/HTTPS</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value" id="metricSize">—</div>
+        <div class="metric-label">Page Size</div>
+      </div>
+    </div>
+
+    <div class="details-section" id="detailsSection">
+      <h3>Response Details</h3>
+      <div id="detailRows"></div>
+    </div>
+
+    <div class="details-section" id="headersSection" style="display:none">
+      <h3>Security Headers</h3>
+      <div id="headerRows"></div>
+    </div>
+  </div>
+
+  <div class="history-section" id="historySection" style="display:none">
+    <h3>Check History</h3>
+    <div id="historyList"></div>
+  </div>
+
+  <div class="monitor-list">
+    <h2>Saved Monitors</h2>
+    <p style="font-size:0.85rem;color:#888;margin-bottom:12px;">Save URLs to quickly check them anytime. Stored in your browser.</p>
+    <div class="add-monitor">
+      <input type="url" id="addUrl" placeholder="https://example.com">
+      <button onclick="addMonitor()">+ Add</button>
+    </div>
+    <div id="monitorList"></div>
+    <div id="noMonitors" style="color:#555;font-size:0.85rem;text-align:center;padding:20px;">No saved monitors yet. Add a URL above to start tracking.</div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Dev Tools Weekly</h2>
+    <p>Join developers getting new tools, tips, and monitoring alerts every week.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;">Subscribe Free</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+var checkHistory = JSON.parse(localStorage.getItem('sa_uptime_history') || '[]');
+var monitors = JSON.parse(localStorage.getItem('sa_monitors') || '[]');
+
+renderMonitors();
+renderHistory();
+
+function normalizeUrl(url) {
+  url = url.trim();
+  if (!url.match(/^https?:\/\//i)) url = 'https://' + url;
+  return url;
+}
+
+async function checkSite() {
+  var url = normalizeUrl(document.getElementById('urlInput').value);
+  if (!url || url === 'https://') { document.getElementById('urlInput').focus(); return; }
+
+  document.getElementById('urlInput').value = url;
+  var btn = document.getElementById('checkBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Checking...';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('statusBanner').className = 'status-banner unknown';
+  document.getElementById('statusDot').className = 'status-dot unknown';
+  document.getElementById('statusText').className = 'status-text unknown';
+  document.getElementById('statusText').textContent = 'Checking...';
+  document.getElementById('statusUrl').textContent = url;
+
+  var startTime = performance.now();
+  var result = { url: url, timestamp: new Date().toISOString() };
+
+  try {
+    var resp = await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' });
+    var elapsed = Math.round(performance.now() - startTime);
+
+    // no-cors gives opaque response, status 0
+    // Try again with cors mode for more details
+    var corsResp = null;
+    try {
+      corsResp = await fetch(url, { method: 'GET', mode: 'cors', cache: 'no-store', redirect: 'follow' });
+    } catch(e) {}
+
+    var status = corsResp ? corsResp.status : 0;
+    var isUp = true; // if fetch didn't throw, site responded
+
+    result.status = status || 'opaque';
+    result.time = elapsed;
+    result.up = isUp;
+    result.ssl = url.startsWith('https');
+
+    // Status banner
+    document.getElementById('statusBanner').className = 'status-banner up';
+    document.getElementById('statusDot').className = 'status-dot up';
+    document.getElementById('statusText').className = 'status-text up';
+    document.getElementById('statusText').textContent = 'Site is UP';
+
+    // Metrics
+    var statusEl = document.getElementById('metricStatus');
+    statusEl.textContent = status || 'OK';
+    statusEl.className = 'metric-value ' + (status >= 200 && status < 400 ? 'good' : status >= 400 ? 'bad' : 'good');
+
+    var timeEl = document.getElementById('metricTime');
+    timeEl.textContent = elapsed + 'ms';
+    timeEl.className = 'metric-value ' + (elapsed < 500 ? 'good' : elapsed < 2000 ? 'warn' : 'bad');
+
+    var sslEl = document.getElementById('metricSSL');
+    sslEl.textContent = url.startsWith('https') ? 'Secure' : 'No SSL';
+    sslEl.className = 'metric-value ' + (url.startsWith('https') ? 'good' : 'bad');
+
+    var sizeEl = document.getElementById('metricSize');
+    if (corsResp) {
+      var contentLength = corsResp.headers.get('content-length');
+      if (contentLength) {
+        var kb = (parseInt(contentLength) / 1024).toFixed(1);
+        sizeEl.textContent = kb + ' KB';
+      } else {
+        try {
+          var body = await corsResp.text();
+          sizeEl.textContent = (body.length / 1024).toFixed(1) + ' KB';
+          result.size = body.length;
+        } catch(e) { sizeEl.textContent = 'N/A'; }
+      }
+    } else {
+      sizeEl.textContent = 'N/A';
+    }
+    sizeEl.className = 'metric-value';
+
+    // Details
+    var details = [];
+    details.push({ key: 'URL', val: url });
+    details.push({ key: 'Protocol', val: url.startsWith('https') ? 'HTTPS (Secure)' : 'HTTP (Insecure)' });
+    details.push({ key: 'Status Code', val: status ? status + ' ' + getStatusText(status) : 'Opaque (CORS restricted)' });
+    details.push({ key: 'Response Time', val: elapsed + 'ms' });
+    details.push({ key: 'Checked At', val: new Date().toLocaleString() });
+
+    if (corsResp) {
+      var server = corsResp.headers.get('server');
+      if (server) details.push({ key: 'Server', val: server });
+      var powered = corsResp.headers.get('x-powered-by');
+      if (powered) details.push({ key: 'Powered By', val: powered });
+      var contentType = corsResp.headers.get('content-type');
+      if (contentType) details.push({ key: 'Content Type', val: contentType });
+    }
+
+    document.getElementById('detailRows').innerHTML = details.map(function(d) {
+      return '<div class="detail-row"><span class="detail-key">' + d.key + '</span><span class="detail-val">' + escHtml(d.val) + '</span></div>';
+    }).join('');
+
+    // Security headers check
+    if (corsResp) {
+      var secHeaders = [
+        { name: 'Strict-Transport-Security', label: 'HSTS' },
+        { name: 'Content-Security-Policy', label: 'CSP' },
+        { name: 'X-Content-Type-Options', label: 'X-Content-Type-Options' },
+        { name: 'X-Frame-Options', label: 'X-Frame-Options' },
+        { name: 'Referrer-Policy', label: 'Referrer-Policy' },
+        { name: 'Permissions-Policy', label: 'Permissions-Policy' }
+      ];
+      var headerHtml = secHeaders.map(function(h) {
+        var val = corsResp.headers.get(h.name);
+        return '<div class="detail-row"><span class="detail-key">' + h.label + '</span><span class="detail-val" style="color:' + (val ? '#10b981' : '#ef4444') + '">' + (val ? '✓ ' + escHtml(val.substring(0, 60)) : '✗ Missing') + '</span></div>';
+      }).join('');
+      document.getElementById('headerRows').innerHTML = headerHtml;
+      document.getElementById('headersSection').style.display = 'block';
+    }
+
+  } catch(e) {
+    var elapsed = Math.round(performance.now() - startTime);
+    result.status = 'error';
+    result.time = elapsed;
+    result.up = false;
+    result.error = e.message;
+
+    document.getElementById('statusBanner').className = 'status-banner down';
+    document.getElementById('statusDot').className = 'status-dot down';
+    document.getElementById('statusText').className = 'status-text down';
+    document.getElementById('statusText').textContent = 'Site is DOWN or Unreachable';
+
+    document.getElementById('metricStatus').textContent = 'Error';
+    document.getElementById('metricStatus').className = 'metric-value bad';
+    document.getElementById('metricTime').textContent = elapsed + 'ms';
+    document.getElementById('metricTime').className = 'metric-value bad';
+    document.getElementById('metricSSL').textContent = url.startsWith('https') ? 'HTTPS' : 'No SSL';
+    document.getElementById('metricSSL').className = 'metric-value ' + (url.startsWith('https') ? 'good' : 'bad');
+    document.getElementById('metricSize').textContent = 'N/A';
+
+    document.getElementById('detailRows').innerHTML =
+      '<div class="detail-row"><span class="detail-key">URL</span><span class="detail-val">' + escHtml(url) + '</span></div>' +
+      '<div class="detail-row"><span class="detail-key">Error</span><span class="detail-val" style="color:#ef4444">' + escHtml(e.message) + '</span></div>' +
+      '<div class="detail-row"><span class="detail-key">Checked At</span><span class="detail-val">' + new Date().toLocaleString() + '</span></div>';
+    document.getElementById('headersSection').style.display = 'none';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Check Status';
+
+  // Save to history
+  checkHistory.unshift(result);
+  if (checkHistory.length > 50) checkHistory = checkHistory.slice(0, 50);
+  localStorage.setItem('sa_uptime_history', JSON.stringify(checkHistory));
+  renderHistory();
+
+  gtag('event', 'check_uptime', { event_category: 'tool_use', site_url: url, status: result.up ? 'up' : 'down' });
+}
+
+function getStatusText(code) {
+  var texts = { 200: 'OK', 201: 'Created', 301: 'Moved Permanently', 302: 'Found', 304: 'Not Modified', 400: 'Bad Request', 401: 'Unauthorized', 403: 'Forbidden', 404: 'Not Found', 500: 'Internal Server Error', 502: 'Bad Gateway', 503: 'Service Unavailable' };
+  return texts[code] || '';
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderHistory() {
+  if (checkHistory.length === 0) {
+    document.getElementById('historySection').style.display = 'none';
+    return;
+  }
+  document.getElementById('historySection').style.display = 'block';
+  document.getElementById('historyList').innerHTML = checkHistory.slice(0, 10).map(function(h) {
+    var dotClass = h.up ? 'up' : 'down';
+    var time = new Date(h.timestamp).toLocaleString();
+    return '<div class="history-item"><div class="history-status"><div class="history-dot status-dot ' + dotClass + '" style="width:8px;height:8px;"></div><span style="color:#ccc;cursor:pointer;" onclick="document.getElementById(\'urlInput\').value=\'' + escHtml(h.url) + '\';checkSite()">' + escHtml(h.url) + '</span></div><div><span style="color:' + (h.up ? '#10b981' : '#ef4444') + ';font-weight:600;">' + (h.up ? h.time + 'ms' : 'DOWN') + '</span> <span style="color:#555;font-size:0.75rem;">' + time + '</span></div></div>';
+  }).join('');
+}
+
+// Monitor list
+function addMonitor() {
+  var url = normalizeUrl(document.getElementById('addUrl').value);
+  if (!url || url === 'https://') return;
+  if (monitors.indexOf(url) === -1) {
+    monitors.push(url);
+    localStorage.setItem('sa_monitors', JSON.stringify(monitors));
+  }
+  document.getElementById('addUrl').value = '';
+  renderMonitors();
+}
+
+function removeMonitor(idx) {
+  monitors.splice(idx, 1);
+  localStorage.setItem('sa_monitors', JSON.stringify(monitors));
+  renderMonitors();
+}
+
+function renderMonitors() {
+  if (monitors.length === 0) {
+    document.getElementById('monitorList').innerHTML = '';
+    document.getElementById('noMonitors').style.display = 'block';
+    return;
+  }
+  document.getElementById('noMonitors').style.display = 'none';
+  document.getElementById('monitorList').innerHTML = monitors.map(function(url, idx) {
+    return '<div class="saved-monitor"><span class="url" onclick="document.getElementById(\'urlInput\').value=\'' + escHtml(url) + '\';checkSite()">' + escHtml(url) + '</span><button class="remove" onclick="removeMonitor(' + idx + ')">&times;</button></div>';
+  }).join('');
+}
+
+// Check all monitors
+function checkAllMonitors() {
+  monitors.forEach(function(url, idx) {
+    setTimeout(function() {
+      document.getElementById('urlInput').value = url;
+      checkSite();
+    }, idx * 2000);
+  });
+}
+
+// Email popup
+function closeEmail(){document.getElementById('emailOverlay').classList.remove('show');localStorage.setItem('emailDismissed','1');}
+function submitEmail(){
+  var email=document.getElementById('emailInput').value;
+  if(email&&email.includes('@')){
+    gtag('event','email_signup',{event_category:'conversion',event_label:email});
+    var emails=JSON.parse(localStorage.getItem('spunkart_emails')||'[]');
+    if(emails.indexOf(email)===-1){emails.push(email);localStorage.setItem('spunkart_emails',JSON.stringify(emails));}
+    alert('Thanks for subscribing!');closeEmail();
+  }else{alert('Please enter a valid email.');}
+}
+if(!localStorage.getItem('emailDismissed')){
+  setTimeout(function(){document.getElementById('emailOverlay').classList.add('show');},30000);
+}
+
+// Enter key triggers check
+document.getElementById('urlInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkSite();
+});
+</script>
+</body>
+</html>

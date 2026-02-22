@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor - Compress PNG JPG WebP Free | SPUNKART.COM</title>
+<meta name="description" content="Compress PNG, JPG, and WebP images instantly in your browser. Batch upload, quality slider, before/after preview, and download as ZIP. Free image compression tool.">
+<meta property="og:title" content="Image Compressor - Compress PNG JPG WebP Free">
+<meta property="og:description" content="Compress images instantly in your browser. Batch upload, quality control, before/after previews. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/image-compressor">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image Compressor - Compress PNG JPG WebP Free">
+<meta name="twitter:description" content="Compress images instantly in your browser. Batch upload, quality control, before/after previews. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/image-compressor">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.drop-zone{border:2px dashed #444;border-radius:16px;padding:48px 24px;text-align:center;cursor:pointer;transition:border-color 0.3s,background 0.3s;margin-bottom:24px;position:relative;}
+.drop-zone:hover,.drop-zone.dragover{border-color:#ff5f1f;background:rgba(255,95,31,0.05);}
+.drop-zone-icon{font-size:3rem;margin-bottom:12px;color:#555;}
+.drop-zone-text{font-size:1.1rem;color:#999;margin-bottom:8px;}
+.drop-zone-hint{font-size:0.8rem;color:#555;}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+.controls{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:center;background:#151515;border:1px solid #222;border-radius:12px;padding:16px 20px;}
+.controls label{color:#ccc;font-size:0.9rem;font-weight:600;}
+.controls input[type="range"]{flex:1;min-width:120px;accent-color:#ff5f1f;}
+.quality-val{color:#ff5f1f;font-weight:700;font-size:1.1rem;min-width:36px;text-align:center;}
+.controls select{background:#222;color:#e8e8e8;border:1px solid #333;padding:8px 12px;border-radius:8px;font-size:0.85rem;cursor:pointer;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+button:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;color:#fff;}
+.btn-green{background:#10b981;}
+.btn-green:hover{background:#0d9668;}
+
+.summary{background:linear-gradient(135deg,#1a1a1a,#151515);border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:24px;display:none;text-align:center;}
+.summary-stats{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+.summary-stat{text-align:center;}
+.summary-stat .val{font-size:1.8rem;font-weight:800;color:#ff5f1f;}
+.summary-stat .label{font-size:0.75rem;color:#777;text-transform:uppercase;letter-spacing:0.5px;}
+.summary h3{color:#fff;margin-bottom:12px;font-size:1.1rem;}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;display:none;}
+
+.results{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+
+.result-card{background:#151515;border:1px solid #222;border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.result-card:hover{border-color:#333;}
+.result-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px;flex-wrap:wrap;}
+.result-name{font-weight:600;font-size:0.9rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;}
+.result-sizes{display:flex;align-items:center;gap:8px;font-size:0.85rem;}
+.size-original{color:#888;text-decoration:line-through;}
+.size-arrow{color:#555;}
+.size-compressed{color:#10b981;font-weight:600;}
+.size-savings{background:rgba(16,185,129,0.15);color:#10b981;padding:3px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;}
+.size-savings.negative{background:rgba(239,68,68,0.15);color:#ef4444;}
+.result-actions{display:flex;gap:8px;}
+.result-actions button{padding:6px 14px;font-size:0.8rem;border-radius:6px;}
+
+.preview-area{display:none;padding:0 16px 16px;}
+.preview-container{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.preview-box{flex:1;min-width:200px;max-width:420px;text-align:center;}
+.preview-box img{max-width:100%;max-height:280px;border-radius:8px;border:1px solid #333;background:#0a0a0a;object-fit:contain;}
+.preview-label{font-size:0.75rem;color:#777;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+
+.progress-bar{height:3px;background:#222;border-radius:3px;margin:0 16px 16px;overflow:hidden;display:none;}
+.progress-bar .fill{height:100%;background:#ff5f1f;border-radius:3px;transition:width 0.3s;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .drop-zone{padding:32px 16px;}
+  .controls{flex-direction:column;align-items:stretch;}
+  .result-header{flex-direction:column;align-items:flex-start;}
+  .result-actions{width:100%;}
+  .result-actions button{flex:1;}
+  .preview-container{flex-direction:column;}
+  .summary-stats{flex-direction:column;gap:12px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Image Compressor</h1>
+  <p class="subtitle">Compress PNG, JPG, and WebP images instantly in your browser. No uploads, no limits, 100% private.</p>
+
+  <div class="drop-zone" id="dropZone">
+    <div class="drop-zone-icon">&#128247;</div>
+    <div class="drop-zone-text">Drop images here or click to browse</div>
+    <div class="drop-zone-hint">Supports PNG, JPG, WebP &mdash; multiple files allowed</div>
+    <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp" multiple>
+  </div>
+
+  <div class="controls">
+    <label for="qualitySlider">Quality</label>
+    <input type="range" id="qualitySlider" min="1" max="100" value="80">
+    <span class="quality-val" id="qualityVal">80</span>
+    <label for="outputFormat">Format</label>
+    <select id="outputFormat">
+      <option value="auto">Same as original</option>
+      <option value="image/jpeg">JPEG</option>
+      <option value="image/png">PNG</option>
+      <option value="image/webp">WebP</option>
+    </select>
+  </div>
+
+  <div class="summary" id="summary">
+    <h3>Compression Summary</h3>
+    <div class="summary-stats">
+      <div class="summary-stat"><div class="val" id="totalFiles">0</div><div class="label">Files</div></div>
+      <div class="summary-stat"><div class="val" id="totalOriginal">0 KB</div><div class="label">Original</div></div>
+      <div class="summary-stat"><div class="val" id="totalCompressed">0 KB</div><div class="label">Compressed</div></div>
+      <div class="summary-stat"><div class="val" id="totalSavings">0%</div><div class="label">Saved</div></div>
+    </div>
+  </div>
+
+  <div class="actions" id="actionsBar">
+    <button class="btn-green" id="downloadAllBtn" onclick="downloadAllZip()">&#128230; Download All as ZIP</button>
+    <button class="btn-secondary" id="clearAllBtn" onclick="clearAll()">Clear All</button>
+  </div>
+
+  <div class="results" id="results"></div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get Free Tools Weekly</h2>
+    <p>Join 2,000+ creators. New free tools in your inbox every week.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%">Subscribe Free</button>
+  </div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const qualitySlider = document.getElementById('qualitySlider');
+const qualityVal = document.getElementById('qualityVal');
+const outputFormat = document.getElementById('outputFormat');
+const resultsEl = document.getElementById('results');
+const summaryEl = document.getElementById('summary');
+const actionsBar = document.getElementById('actionsBar');
+
+let compressedFiles = [];
+
+qualitySlider.addEventListener('input', () => {
+  qualityVal.textContent = qualitySlider.value;
+});
+
+// Drag and drop
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.match(/^image\/(png|jpeg|webp)$/));
+  if (files.length) processFiles(files);
+});
+fileInput.addEventListener('change', () => {
+  const files = Array.from(fileInput.files);
+  if (files.length) processFiles(files);
+  fileInput.value = '';
+});
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(2) + ' MB';
+}
+
+function getOutputMime(originalType) {
+  const fmt = outputFormat.value;
+  if (fmt === 'auto') return originalType;
+  return fmt;
+}
+
+function getExtension(mime) {
+  if (mime === 'image/jpeg') return '.jpg';
+  if (mime === 'image/png') return '.png';
+  if (mime === 'image/webp') return '.webp';
+  return '.jpg';
+}
+
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+
+        const quality = qualitySlider.value / 100;
+        const mime = getOutputMime(file.type);
+
+        canvas.toBlob(blob => {
+          if (!blob) { reject(new Error('Compression failed')); return; }
+          const originalUrl = e.target.result;
+          const compressedUrl = URL.createObjectURL(blob);
+          resolve({
+            name: file.name,
+            originalSize: file.size,
+            compressedSize: blob.size,
+            originalUrl,
+            compressedUrl,
+            blob,
+            mime,
+            ext: getExtension(mime)
+          });
+        }, mime, quality);
+      };
+      img.onerror = () => reject(new Error('Failed to load image'));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error('Failed to read file'));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function processFiles(files) {
+  for (const file of files) {
+    const cardId = 'card-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6);
+    // Create placeholder card
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.id = cardId;
+    card.innerHTML = `
+      <div class="result-header">
+        <span class="result-name">${escapeHtml(file.name)}</span>
+        <span style="color:#888;font-size:0.85rem;">Compressing...</span>
+      </div>
+      <div class="progress-bar" style="display:block;"><div class="fill" style="width:60%;"></div></div>
+    `;
+    resultsEl.prepend(card);
+
+    try {
+      const result = await compressImage(file);
+      compressedFiles.push(result);
+
+      const savings = ((1 - result.compressedSize / result.originalSize) * 100);
+      const savingsText = savings >= 0 ? savings.toFixed(1) + '%' : '+' + Math.abs(savings).toFixed(1) + '%';
+      const savingsClass = savings >= 0 ? '' : ' negative';
+
+      card.innerHTML = `
+        <div class="result-header">
+          <span class="result-name" title="${escapeHtml(result.name)}">${escapeHtml(result.name)}</span>
+          <div class="result-sizes">
+            <span class="size-original">${formatSize(result.originalSize)}</span>
+            <span class="size-arrow">&rarr;</span>
+            <span class="size-compressed">${formatSize(result.compressedSize)}</span>
+            <span class="size-savings${savingsClass}">${savings >= 0 ? '-' : '+'}${Math.abs(savings).toFixed(1)}%</span>
+          </div>
+          <div class="result-actions">
+            <button class="btn-secondary" onclick="togglePreview('${cardId}')">Preview</button>
+            <button onclick="downloadFile('${cardId}')">Download</button>
+          </div>
+        </div>
+        <div class="preview-area" id="preview-${cardId}">
+          <div class="preview-container">
+            <div class="preview-box">
+              <div class="preview-label">Original (${formatSize(result.originalSize)})</div>
+              <img src="${result.originalUrl}" alt="Original">
+            </div>
+            <div class="preview-box">
+              <div class="preview-label">Compressed (${formatSize(result.compressedSize)})</div>
+              <img src="${result.compressedUrl}" alt="Compressed">
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Store index reference on card
+      card.dataset.fileIndex = compressedFiles.length - 1;
+
+      gtag('event', 'compress_image', {
+        original_size: result.originalSize,
+        compressed_size: result.compressedSize,
+        savings_percent: savings.toFixed(1),
+        format: result.mime
+      });
+
+    } catch (err) {
+      card.innerHTML = `
+        <div class="result-header">
+          <span class="result-name">${escapeHtml(file.name)}</span>
+          <span style="color:#ef4444;font-size:0.85rem;">Error: ${escapeHtml(err.message)}</span>
+        </div>
+      `;
+    }
+  }
+  updateSummary();
+}
+
+function togglePreview(cardId) {
+  const preview = document.getElementById('preview-' + cardId);
+  if (!preview) return;
+  preview.style.display = preview.style.display === 'block' ? 'none' : 'block';
+}
+
+function downloadFile(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  const idx = parseInt(card.dataset.fileIndex);
+  const file = compressedFiles[idx];
+  if (!file) return;
+
+  const baseName = file.name.replace(/\.[^.]+$/, '');
+  const a = document.createElement('a');
+  a.href = file.compressedUrl;
+  a.download = baseName + '-compressed' + file.ext;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  gtag('event', 'download_compressed', { file_name: file.name, format: file.mime });
+}
+
+async function downloadAllZip() {
+  if (!compressedFiles.length) return;
+  const btn = document.getElementById('downloadAllBtn');
+  btn.disabled = true;
+  btn.textContent = 'Creating ZIP...';
+
+  try {
+    const zip = new JSZip();
+    for (const file of compressedFiles) {
+      const baseName = file.name.replace(/\.[^.]+$/, '');
+      zip.file(baseName + '-compressed' + file.ext, file.blob);
+    }
+    const content = await zip.generateAsync({ type: 'blob' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(content);
+    a.download = 'compressed-images.zip';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+
+    gtag('event', 'download_compressed', { file_name: 'compressed-images.zip', file_count: compressedFiles.length });
+  } catch (err) {
+    alert('Failed to create ZIP: ' + err.message);
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '&#128230; Download All as ZIP';
+}
+
+function clearAll() {
+  compressedFiles.forEach(f => {
+    if (f.compressedUrl) URL.revokeObjectURL(f.compressedUrl);
+  });
+  compressedFiles = [];
+  resultsEl.innerHTML = '';
+  summaryEl.style.display = 'none';
+  actionsBar.style.display = 'none';
+}
+
+function updateSummary() {
+  if (!compressedFiles.length) {
+    summaryEl.style.display = 'none';
+    actionsBar.style.display = 'none';
+    return;
+  }
+  summaryEl.style.display = 'block';
+  actionsBar.style.display = 'flex';
+
+  const totalOrig = compressedFiles.reduce((s, f) => s + f.originalSize, 0);
+  const totalComp = compressedFiles.reduce((s, f) => s + f.compressedSize, 0);
+  const pct = totalOrig > 0 ? ((1 - totalComp / totalOrig) * 100) : 0;
+
+  document.getElementById('totalFiles').textContent = compressedFiles.length;
+  document.getElementById('totalOriginal').textContent = formatSize(totalOrig);
+  document.getElementById('totalCompressed').textContent = formatSize(totalComp);
+  document.getElementById('totalSavings').textContent = pct.toFixed(1) + '%';
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+// Email popup
+setTimeout(() => {
+  if (!localStorage.getItem('emailDismissed')) {
+    document.getElementById('emailOverlay').classList.add('show');
+  }
+}, 30000);
+
+function closeEmail() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('emailDismissed', '1');
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) return;
+  gtag('event', 'email_signup', { tool: 'image-compressor' });
+  closeEmail();
+}
+
+document.getElementById('emailOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeEmail();
+});
+</script>
+</body>
+</html>

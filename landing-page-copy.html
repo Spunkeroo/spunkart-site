@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page Copy Generator - AI-Powered Sales Copy | SPUNKART.COM</title>
+<meta name="description" content="Generate high-converting landing page copy instantly. Headlines, hero paragraphs, CTAs, FAQ sections, and complete HTML — powered by AIDA, PAS, and BAB frameworks. Free, no signup.">
+<meta property="og:title" content="Landing Page Copy Generator - AI-Powered Sales Copy | SPUNKART.COM">
+<meta property="og:description" content="Generate high-converting landing page copy using AIDA, PAS, and BAB frameworks. Headlines, CTAs, full HTML output. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/landing-page-copy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Landing Page Copy Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate high-converting landing page copy instantly using proven copywriting frameworks.">
+<link rel="canonical" href="https://spunkart.com/landing-page-copy">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.logo{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.links{display:flex;gap:20px;font-size:0.9rem;}
+.links a{color:#aaa;transition:color .2s;}
+.links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input,.input-group textarea,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus,.input-group select:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:80px;}
+.input-group select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.input-group select option{background:#1a1a1a;color:#e8e8e8;}
+
+.framework-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.framework-tab{padding:8px 18px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;cursor:pointer;font-size:0.9rem;color:#888;transition:all .2s;}
+.framework-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.framework-tab:hover:not(.active){background:#222;color:#ccc;}
+.framework-desc{font-size:0.8rem;color:#666;margin-bottom:16px;}
+
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;width:100%;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+
+.btn-row{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.btn-row .btn{flex:1;min-width:140px;}
+
+/* Output sections */
+.output-section{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:20px;margin-bottom:16px;position:relative;}
+.output-section h3{font-size:0.95rem;color:#ff5f1f;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
+.output-section .copy-btn{padding:5px 14px;background:#222;border:1px solid #333;border-radius:6px;color:#e8e8e8;cursor:pointer;font-size:0.75rem;transition:all .2s;white-space:nowrap;}
+.output-section .copy-btn:hover{background:#333;}
+.output-section .copy-btn.copied{background:#22aa44;border-color:#22aa44;color:#fff;}
+.output-item{padding:10px 14px;background:#111;border:1px solid #222;border-radius:8px;margin-bottom:8px;font-size:0.9rem;line-height:1.6;}
+.output-item:last-child{margin-bottom:0;}
+.output-item strong{color:#ff5f1f;font-size:0.8rem;display:block;margin-bottom:4px;}
+.output-item ul{list-style:none;padding:0;}
+.output-item ul li{padding:3px 0;padding-left:16px;position:relative;}
+.output-item ul li::before{content:"\2713";position:absolute;left:0;color:#ff5f1f;}
+
+.html-output{background:#111;border:1px solid #222;border-radius:8px;padding:14px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.78rem;line-height:1.5;white-space:pre-wrap;word-break:break-all;max-height:400px;overflow-y:auto;color:#a8d8a8;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell .price{color:#ff5f1f;font-size:1.3rem;font-weight:700;margin-bottom:4px;}
+.cross-sell .price-note{color:#666;font-size:0.85rem;margin-bottom:16px;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;transition:background .2s;}
+.cross-sell a.cta:hover{background:#e5520a;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup input[type="email"]{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:12px;}
+.email-popup input:focus{border-color:#ff5f1f;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+.email-popup .close-popup:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .framework-tabs{gap:6px;}
+  .framework-tab{padding:6px 12px;font-size:0.8rem;}
+  .btn-row{flex-direction:column;}
+  .btn-row .btn{min-width:100%;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Landing Page <span>Copy Generator</span></h1>
+  <p class="subtitle">Generate high-converting headlines, hero copy, CTAs, FAQs, and complete landing page HTML using proven frameworks. No AI API needed.</p>
+
+  <div class="section">
+    <h2>Your Product / Service</h2>
+    <div class="input-group">
+      <label>Product or Service Name</label>
+      <input type="text" id="productName" placeholder="e.g. SprintCRM, FreshMeal Kits, CodeBoost Academy">
+    </div>
+    <div class="input-group">
+      <label>One-line Description</label>
+      <input type="text" id="description" placeholder="e.g. The fastest CRM for small sales teams">
+    </div>
+    <div class="input-group">
+      <label>Target Audience</label>
+      <input type="text" id="audience" placeholder="e.g. Freelancers, SaaS founders, busy parents, fitness coaches">
+    </div>
+    <div class="input-group">
+      <label>Key Features (comma-separated)</label>
+      <textarea id="features" placeholder="e.g. Instant setup, AI-powered analytics, Free tier, 24/7 support, Integrates with Slack"></textarea>
+    </div>
+    <div class="input-group">
+      <label>Tone</label>
+      <select id="tone">
+        <option value="bold">Bold</option>
+        <option value="professional">Professional</option>
+        <option value="playful">Playful</option>
+        <option value="minimal">Minimal</option>
+        <option value="urgent">Urgent</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Copy Framework</h2>
+    <div class="framework-tabs" id="frameworkTabs">
+      <div class="framework-tab active" data-fw="aida">AIDA</div>
+      <div class="framework-tab" data-fw="pas">PAS</div>
+      <div class="framework-tab" data-fw="bab">BAB</div>
+    </div>
+    <div class="framework-desc" id="frameworkDesc">Attention, Interest, Desire, Action -- grabs attention, builds interest, creates desire, drives action.</div>
+    <button class="btn btn-primary" onclick="generateCopy()">Generate Copy</button>
+  </div>
+
+  <div id="outputArea" style="display:none;">
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateCopy()">Regenerate</button>
+      <button class="btn btn-secondary" onclick="copyAll()">Copy All</button>
+    </div>
+
+    <!-- Headlines -->
+    <div class="output-section" id="sectionHeadlines">
+      <h3>Headlines <button class="copy-btn" onclick="copySection('sectionHeadlines', this)">Copy</button></h3>
+      <div id="headlines"></div>
+    </div>
+
+    <!-- Subheadlines -->
+    <div class="output-section" id="sectionSubheadlines">
+      <h3>Subheadlines <button class="copy-btn" onclick="copySection('sectionSubheadlines', this)">Copy</button></h3>
+      <div id="subheadlines"></div>
+    </div>
+
+    <!-- Hero Paragraph -->
+    <div class="output-section" id="sectionHero">
+      <h3>Hero Paragraph <button class="copy-btn" onclick="copySection('sectionHero', this)">Copy</button></h3>
+      <div id="heroParagraph"></div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="output-section" id="sectionFeatures">
+      <h3>Features Section <button class="copy-btn" onclick="copySection('sectionFeatures', this)">Copy</button></h3>
+      <div id="featuresOutput"></div>
+    </div>
+
+    <!-- Social Proof -->
+    <div class="output-section" id="sectionSocialProof">
+      <h3>Social Proof Template <button class="copy-btn" onclick="copySection('sectionSocialProof', this)">Copy</button></h3>
+      <div id="socialProof"></div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="output-section" id="sectionCTA">
+      <h3>CTA Button Text <button class="copy-btn" onclick="copySection('sectionCTA', this)">Copy</button></h3>
+      <div id="ctaButtons"></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="output-section" id="sectionFAQ">
+      <h3>FAQ Section <button class="copy-btn" onclick="copySection('sectionFAQ', this)">Copy</button></h3>
+      <div id="faqOutput"></div>
+    </div>
+
+    <!-- Complete HTML -->
+    <div class="output-section" id="sectionHTML">
+      <h3>Complete Landing Page HTML <button class="copy-btn" onclick="copySection('sectionHTML', this)">Copy</button></h3>
+      <div class="html-output" id="htmlOutput"></div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 50+ Tools</h3>
+    <div class="price">$9.99</div>
+    <div class="price-note">One-time purchase for this tool, or...</div>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> · <a href="/reseller" style="color:#10b981">Reseller</a> · <a href="/blog" style="color:#888">Blog</a> · <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="email-overlay" id="emailOverlay">
+  <div class="email-popup">
+    <button class="close-popup" onclick="closeEmail()">&times;</button>
+    <h2>Get 10% Off Premium Tools</h2>
+    <p>Join our list for a discount code, new tool launches, and business tips.</p>
+    <input type="email" id="emailInput" placeholder="you@email.com">
+    <button onclick="submitEmail()" style="width:100%;padding:12px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;">Get My Code</button>
+    <p style="font-size:0.75rem;color:#555;margin-top:8px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+/* ===== STATE ===== */
+let currentFramework = 'aida';
+const frameworkDescs = {
+  aida: 'Attention, Interest, Desire, Action -- grabs attention, builds interest, creates desire, drives action.',
+  pas: 'Problem, Agitation, Solution -- names the pain, twists the knife, presents the fix.',
+  bab: 'Before, After, Bridge -- paints the struggle, shows the dream, reveals how to get there.'
+};
+
+/* ===== FRAMEWORK TABS ===== */
+document.querySelectorAll('.framework-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.framework-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentFramework = tab.dataset.fw;
+    document.getElementById('frameworkDesc').textContent = frameworkDescs[currentFramework];
+  });
+});
+
+/* ===== HELPERS ===== */
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ===== COPY DATA BANKS ===== */
+const powerWords = {
+  bold: ['Dominate','Unleash','Crush','Supercharge','Skyrocket','Breakthrough','Unstoppable','Revolutionary','Game-Changing','Ultimate'],
+  professional: ['Streamline','Optimize','Elevate','Transform','Accelerate','Enhance','Empower','Maximize','Drive','Deliver'],
+  playful: ['Awesome','Amazing','Magical','Delightful','Brilliant','Supercharged','Sparkly','Wow-Worthy','Fun','Fresh'],
+  minimal: ['Simple','Clean','Clear','Focused','Essential','Pure','Refined','Smart','Quiet','Precise'],
+  urgent: ['Now','Today','Immediately','Before It\'s Gone','Last Chance','Limited','Don\'t Wait','Act Fast','Hurry','Right Now']
+};
+
+const painVerbs = {
+  bold: ['struggling with','held back by','drowning in','wasting time on','losing money to'],
+  professional: ['challenged by','spending too much time on','lacking visibility into','dealing with inefficient','managing complex'],
+  playful: ['tired of boring','done with clunky','over the hassle of','sick of ugly','ready to ditch'],
+  minimal: ['limited by','slowed by','missing','without','needing better'],
+  urgent: ['losing ground because of','falling behind due to','hemorrhaging revenue from','running out of time with','watching competitors beat you at']
+};
+
+const outcomes = {
+  bold: ['10x your results','leave competitors in the dust','become the industry leader','hit goals you never thought possible','own your market'],
+  professional: ['achieve measurable results','make data-driven decisions','scale with confidence','improve operational efficiency','deliver consistent outcomes'],
+  playful: ['actually enjoy the process','make your team smile','get stuff done without the headache','have fun while winning','turn boring into brilliant'],
+  minimal: ['get more done','work smarter','see results','move faster','stay focused'],
+  urgent: ['start seeing results today','get ahead before your competitors do','stop the bleeding now','turn things around this week','make this the turning point']
+};
+
+/* ===== GENERATE COPY ===== */
+function generateCopy() {
+  const product = document.getElementById('productName').value.trim() || 'Your Product';
+  const desc = document.getElementById('description').value.trim() || 'The best solution for your needs';
+  const audience = document.getElementById('audience').value.trim() || 'busy professionals';
+  const featuresRaw = document.getElementById('features').value.trim();
+  const tone = document.getElementById('tone').value;
+  const featuresList = featuresRaw ? featuresRaw.split(',').map(f => f.trim()).filter(Boolean) : ['Easy setup','Powerful features','Great support'];
+
+  const pw = () => pick(powerWords[tone]);
+  const pv = () => pick(painVerbs[tone]);
+  const oc = () => pick(outcomes[tone]);
+  const feat = () => pick(featuresList);
+  const feat2 = () => { const s = shuffle(featuresList); return s.slice(0,Math.min(2,s.length)).join(' and '); };
+
+  /* ----- HEADLINES ----- */
+  const headlineBank = {
+    aida: [
+      () => `${pw()} Your ${audience} With ${product}`,
+      () => `${product}: ${desc}`,
+      () => `The ${pw()} Way to ${oc()} -- Meet ${product}`,
+      () => `Attention ${audience}: ${product} Changes Everything`,
+      () => `What If You Could ${oc()}? Now You Can.`,
+      () => `${product} -- ${pw()} Results for ${audience}`,
+    ],
+    pas: [
+      () => `Tired of ${pv()} Outdated Tools? ${product} Fixes That.`,
+      () => `Stop ${pv()} Broken Workflows. Start With ${product}.`,
+      () => `${audience} Are ${pv()} the Wrong Solution. Here's the Right One.`,
+      () => `The Problem With Every Other Option? They Weren't Built for ${audience}.`,
+      () => `${product}: Because ${audience} Deserve Better Than ${pv()} Manual Processes.`,
+      () => `You're ${pv()} the Old Way. ${product} Is the New Way.`,
+    ],
+    bab: [
+      () => `From ${pv()} Everything to ${oc()} -- That's ${product}`,
+      () => `Before ${product}, You Were Stuck. After? You'll ${oc()}.`,
+      () => `Imagine: No More ${pv()} Outdated Systems. Just ${pw()} Results.`,
+      () => `${audience} Used to Struggle. Then They Found ${product}.`,
+      () => `Your Life Before ${product} vs. After -- There's No Comparison.`,
+      () => `What Changes When ${audience} Switch to ${product}? Everything.`,
+    ]
+  };
+  const headlines = [];
+  const usedH = new Set();
+  while (headlines.length < 3) {
+    const h = pick(headlineBank[currentFramework])();
+    if (!usedH.has(h)) { usedH.add(h); headlines.push(h); }
+    if (usedH.size > 20) break;
+  }
+
+  /* ----- SUBHEADLINES ----- */
+  const subBank = {
+    aida: [
+      () => `${desc}. Trusted by ${audience} everywhere. See why thousands are switching.`,
+      () => `${pw()} features like ${feat2()} make ${product} the clear choice for ${audience}.`,
+      () => `Finally, a tool built from the ground up for ${audience} who want to ${oc()}.`,
+    ],
+    pas: [
+      () => `You know the pain of ${pv()} the status quo. ${product} is the cure ${audience} have been waiting for.`,
+      () => `Every day without ${product}, ${audience} leave results on the table. It doesn't have to be that way.`,
+      () => `The frustration ends here. ${product} gives you ${feat2()} so you can ${oc()}.`,
+    ],
+    bab: [
+      () => `Before: ${pv()} everything. After: ${oc()}. The bridge? ${product}.`,
+      () => `Picture the difference: no more manual hassle, just ${feat2()} working for you around the clock.`,
+      () => `${audience} who switch to ${product} don't look back. Join them and ${oc()}.`,
+    ]
+  };
+  const subheadlines = [];
+  const usedS = new Set();
+  while (subheadlines.length < 2) {
+    const s = pick(subBank[currentFramework])();
+    if (!usedS.has(s)) { usedS.add(s); subheadlines.push(s); }
+    if (usedS.size > 15) break;
+  }
+
+  /* ----- HERO PARAGRAPH ----- */
+  const heroBank = {
+    aida: [
+      () => `${product} is ${desc.charAt(0).toLowerCase() + desc.slice(1)}. Built specifically for ${audience}, it combines ${feat2()} into one ${pw().toLowerCase()} platform. Whether you're just getting started or scaling fast, ${product} gives you the tools to ${oc()}. Join thousands of ${audience} who've already made the switch -- and never looked back.`,
+    ],
+    pas: [
+      () => `If you're ${pv()} the same problems every day, you're not alone. Most ${audience} waste hours on tools that weren't designed for them. The frustration builds. The results stall. That's exactly why we built ${product}. With ${feat2()} baked in from day one, ${product} eliminates the friction and lets you focus on what matters: ${oc().toLowerCase()}.`,
+    ],
+    bab: [
+      () => `Before ${product}, ${audience} were stuck ${pv()} outdated solutions -- spending hours on tasks that should take minutes. Now imagine a world where ${feat2()} work together seamlessly, and you can ${oc()} without the headache. ${product} is the bridge between where you are and where you want to be. ${desc}. It's that simple.`,
+    ]
+  };
+  const hero = pick(heroBank[currentFramework])();
+
+  /* ----- FEATURES BULLETS ----- */
+  const featureBullets = featuresList.map(f => {
+    const descriptions = [
+      `${f} -- designed to help ${audience} move faster and work smarter.`,
+      `${f} -- because ${audience} shouldn't have to compromise.`,
+      `${f} -- the kind of ${pw().toLowerCase()} capability you've been waiting for.`,
+      `${f} -- built with ${audience} in mind, from the ground up.`,
+    ];
+    return { name: f, desc: pick(descriptions) };
+  });
+
+  /* ----- SOCIAL PROOF TEMPLATE ----- */
+  const socialProof = `"Since switching to ${product}, we've been able to ${oc()} in record time. The ${feat()} alone saved us hours every week."
+-- [Customer Name], [Title] at [Company]
+
+"I was ${pv()} our old system for months. ${product} changed everything overnight. The ${feat()} feature is a game-changer."
+-- [Customer Name], [Title] at [Company]
+
+"If you're ${audience.includes(' ') ? audience.split(' ')[0].toLowerCase() : audience.toLowerCase()} and not using ${product}, you're leaving results on the table. Highly recommend."
+-- [Customer Name], [Title] at [Company]`;
+
+  /* ----- CTA BUTTONS ----- */
+  const ctaBank = {
+    bold: [
+      () => `Get ${product} Now`,
+      () => `Start Dominating Today`,
+      () => `Claim Your Free Trial`,
+      () => `Unlock ${product}`,
+      () => `Join the ${pw()} Movement`,
+      () => `Yes, I Want ${pw()} Results`,
+      () => `Get Started Free`,
+    ],
+    professional: [
+      () => `Start Your Free Trial`,
+      () => `Request a Demo`,
+      () => `Get Started with ${product}`,
+      () => `See ${product} in Action`,
+      () => `Try ${product} Free`,
+      () => `Schedule a Walkthrough`,
+      () => `Explore ${product}`,
+    ],
+    playful: [
+      () => `Let's Go! Try ${product} Free`,
+      () => `Heck Yes, Sign Me Up`,
+      () => `Show Me the Magic`,
+      () => `I Want In!`,
+      () => `Try It -- It's Free!`,
+      () => `Take ${product} for a Spin`,
+      () => `Count Me In`,
+    ],
+    minimal: [
+      () => `Get Started`,
+      () => `Try Free`,
+      () => `Start Now`,
+      () => `Sign Up`,
+      () => `Learn More`,
+      () => `See Plans`,
+      () => `Begin`,
+    ],
+    urgent: [
+      () => `Start Free Before It's Gone`,
+      () => `Claim Your Spot Now`,
+      () => `Don't Miss Out -- Try ${product} Today`,
+      () => `Get ${product} Before Prices Go Up`,
+      () => `Act Now -- Limited Free Trials`,
+      () => `Lock In Your Access Today`,
+      () => `Start Free Right Now`,
+    ]
+  };
+  const ctas = [];
+  const usedC = new Set();
+  while (ctas.length < 5) {
+    const c = pick(ctaBank[tone])();
+    if (!usedC.has(c)) { usedC.add(c); ctas.push(c); }
+    if (usedC.size > 20) break;
+  }
+
+  /* ----- FAQ ----- */
+  const faqs = [
+    {
+      q: `What is ${product} and who is it for?`,
+      a: `${product} is ${desc.charAt(0).toLowerCase() + desc.slice(1)}. It's designed specifically for ${audience} who want to ${oc()}. Whether you're a team of one or a growing company, ${product} scales with you.`
+    },
+    {
+      q: `How is ${product} different from other solutions?`,
+      a: `Unlike generic tools, ${product} was purpose-built for ${audience}. With features like ${feat2()}, it eliminates the friction you're used to and delivers ${pw().toLowerCase()} results from day one.`
+    },
+    {
+      q: `How quickly can I get started with ${product}?`,
+      a: `Most ${audience} are up and running in minutes, not days. ${product} features ${feat()} so you can start seeing results right away -- no complex onboarding or lengthy setup required.`
+    }
+  ];
+
+  /* ----- RENDER OUTPUT ----- */
+  document.getElementById('outputArea').style.display = 'block';
+
+  // Headlines
+  document.getElementById('headlines').innerHTML = headlines.map((h,i) =>
+    `<div class="output-item"><strong>Variation ${i+1}</strong>${escHtml(h)}</div>`
+  ).join('');
+
+  // Subheadlines
+  document.getElementById('subheadlines').innerHTML = subheadlines.map((s,i) =>
+    `<div class="output-item"><strong>Variation ${i+1}</strong>${escHtml(s)}</div>`
+  ).join('');
+
+  // Hero
+  document.getElementById('heroParagraph').innerHTML =
+    `<div class="output-item">${escHtml(hero)}</div>`;
+
+  // Features
+  document.getElementById('featuresOutput').innerHTML =
+    `<div class="output-item"><ul>${featureBullets.map(f =>
+      `<li>${escHtml(f.desc)}</li>`
+    ).join('')}</ul></div>`;
+
+  // Social proof
+  document.getElementById('socialProof').innerHTML =
+    `<div class="output-item" style="white-space:pre-line;">${escHtml(socialProof)}</div>`;
+
+  // CTAs
+  document.getElementById('ctaButtons').innerHTML = ctas.map((c,i) =>
+    `<div class="output-item"><strong>Option ${i+1}</strong>${escHtml(c)}</div>`
+  ).join('');
+
+  // FAQ
+  document.getElementById('faqOutput').innerHTML = faqs.map(f =>
+    `<div class="output-item"><strong>Q: ${escHtml(f.q)}</strong>${escHtml(f.a)}</div>`
+  ).join('');
+
+  // Complete HTML
+  const fullHTML = buildFullHTML(product, headlines[0], subheadlines[0], hero, featureBullets, socialProof, ctas[0], faqs);
+  document.getElementById('htmlOutput').textContent = fullHTML;
+
+  // Scroll to output
+  document.getElementById('outputArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  gtag('event', 'generate_copy', { event_category: 'tool_use', framework: currentFramework, tone: tone });
+}
+
+/* ===== BUILD FULL HTML ===== */
+function buildFullHTML(product, headline, subheadline, hero, features, social, cta, faqs) {
+  const featHTML = features.map(f => `        <li>${f.desc}</li>`).join('\n');
+  const faqHTML = faqs.map(f => `      <div class="faq-item">
+        <h3>${f.q}</h3>
+        <p>${f.a}</p>
+      </div>`).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${product} - ${headline}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #333; }
+    .hero { text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 16px; }
+    .hero p.sub { font-size: 1.2rem; opacity: 0.9; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hero p.body { font-size: 1rem; opacity: 0.85; max-width: 700px; margin: 0 auto 32px; }
+    .cta-btn { display: inline-block; padding: 14px 36px; background: #fff; color: #764ba2; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: transform 0.2s; }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .features { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
+    .features h2 { text-align: center; margin-bottom: 32px; font-size: 1.8rem; }
+    .features ul { list-style: none; }
+    .features li { padding: 12px 0; padding-left: 28px; position: relative; font-size: 1.05rem; }
+    .features li::before { content: "\\2713"; position: absolute; left: 0; color: #764ba2; font-weight: 700; }
+    .social-proof { background: #f8f9fa; padding: 60px 20px; text-align: center; }
+    .social-proof h2 { margin-bottom: 32px; font-size: 1.8rem; }
+    .social-proof blockquote { max-width: 600px; margin: 0 auto 24px; font-style: italic; color: #555; }
+    .faq { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
+    .faq h2 { text-align: center; margin-bottom: 32px; font-size: 1.8rem; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h3 { margin-bottom: 8px; color: #764ba2; }
+    .final-cta { text-align: center; padding: 60px 20px; background: #764ba2; color: #fff; }
+    .final-cta h2 { margin-bottom: 16px; font-size: 1.8rem; }
+    .final-cta .cta-btn { background: #fff; color: #764ba2; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>${headline}</h1>
+    <p class="sub">${subheadline}</p>
+    <p class="body">${hero}</p>
+    <a href="#" class="cta-btn">${cta}</a>
+  </section>
+
+  <section class="features">
+    <h2>Why ${product}?</h2>
+    <ul>
+${featHTML}
+    </ul>
+  </section>
+
+  <section class="social-proof">
+    <h2>What People Are Saying</h2>
+    <blockquote>"[Customer testimonial goes here. Replace with real quotes.]"<br>-- [Name], [Company]</blockquote>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+${faqHTML}
+  </section>
+
+  <section class="final-cta">
+    <h2>Ready to Get Started?</h2>
+    <a href="#" class="cta-btn">${cta}</a>
+  </section>
+</body>
+</html>`;
+}
+
+/* ===== COPY FUNCTIONS ===== */
+function getTextContent(id) {
+  const el = document.getElementById(id);
+  if (id === 'sectionHTML') {
+    return document.getElementById('htmlOutput').textContent;
+  }
+  const items = el.querySelectorAll('.output-item');
+  return Array.from(items).map(item => item.textContent.trim()).join('\n\n');
+}
+
+function copySection(id, btn) {
+  const text = getTextContent(id);
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    gtag('event', 'copy_section', { event_category: 'tool_use', section: id });
+  });
+}
+
+function copyAll() {
+  const sections = ['sectionHeadlines','sectionSubheadlines','sectionHero','sectionFeatures','sectionSocialProof','sectionCTA','sectionFAQ','sectionHTML'];
+  const labels = ['HEADLINES','SUBHEADLINES','HERO PARAGRAPH','FEATURES','SOCIAL PROOF','CTA BUTTONS','FAQ','COMPLETE HTML'];
+  let all = '';
+  sections.forEach((id, i) => {
+    all += `===== ${labels[i]} =====\n\n${getTextContent(id)}\n\n\n`;
+  });
+  navigator.clipboard.writeText(all.trim()).then(() => {
+    const btn = document.querySelector('.btn-row .btn-secondary');
+    btn.textContent = 'Copied All!';
+    setTimeout(() => { btn.textContent = 'Copy All'; }, 2000);
+    gtag('event', 'copy_section', { event_category: 'tool_use', section: 'all' });
+  });
+}
+
+/* ===== EMAIL POPUP ===== */
+function closeEmail() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('emailDismissed', '1');
+}
+
+function submitEmail() {
+  const email = document.getElementById('emailInput').value;
+  if (email && email.includes('@')) {
+    gtag('event', 'email_signup', { event_category: 'conversion' });
+    const popup = document.getElementById('emailOverlay').querySelector('.email-popup');
+    popup.innerHTML = '<p style="color:#22aa44;font-size:1.1rem;font-weight:700;padding:20px;">Check your inbox for your 10% off code!</p>';
+    setTimeout(() => closeEmail(), 3000);
+  } else {
+    alert('Please enter a valid email.');
+  }
+}
+
+if (!localStorage.getItem('emailDismissed')) {
+  setTimeout(() => { document.getElementById('emailOverlay').classList.add('show'); }, 30000);
+}
+</script>
+</body>
+</html>
