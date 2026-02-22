@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zero to 120+ Websites in 7 Days — The AI Website Empire Blueprint</title>
+<meta name="description" content="How one solo founder built 120+ live websites in under 7 days using AI. The exact system, prompts, and strategies. No coding required.">
+<meta property="og:title" content="Zero to 120+ Websites in 7 Days">
+<meta property="og:description" content="The AI Website Empire Blueprint. How 1 person built 120+ sites in a week with Claude AI.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<link rel="canonical" href="https://spunkart.com/ebook">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.7}
+a{color:#ff5f1f;text-decoration:none}
+
+/* Hero */
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:700px;margin:0 auto}
+.badge{display:inline-block;padding:0.3rem 1rem;background:#ff5f1f15;border:1px solid #ff5f1f33;border-radius:20px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1.5rem}
+h1{font-size:2.8rem;font-weight:800;line-height:1.1;margin-bottom:1rem}
+h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#888;font-size:1.1rem;max-width:550px;margin:0 auto 2rem}
+.hero-stats{display:flex;justify-content:center;gap:2.5rem;margin-bottom:2rem}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:2rem;font-weight:800;color:#ff5f1f}
+.hero-stat-label{font-size:0.75rem;color:#666}
+
+.cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta{display:inline-block;padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s}
+.cta-primary{background:#ff5f1f;color:#fff}
+.cta-primary:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 8px 30px rgba(255,95,31,0.3)}
+.cta-secondary{border:2px solid #333;color:#fff}
+.cta-secondary:hover{border-color:#ff5f1f}
+.price-tag{font-size:1.5rem;font-weight:800;margin-bottom:0.5rem}
+.price-note{font-size:0.8rem;color:#666}
+
+/* Content sections */
+.section{max-width:700px;margin:0 auto;padding:3rem 2rem}
+.section h2{font-size:1.8rem;font-weight:700;margin-bottom:1rem}
+.section h3{font-size:1.2rem;margin:1.5rem 0 0.5rem;color:#ff5f1f}
+.section p{color:#bbb;margin-bottom:1rem}
+
+/* TOC */
+.toc{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:2rem}
+.toc h3{color:#fff;margin-bottom:1rem}
+.toc-list{list-style:none;counter-reset:chapter}
+.toc-list li{counter-increment:chapter;padding:0.5rem 0;border-bottom:1px solid #1a1a1a;color:#aaa;font-size:0.9rem}
+.toc-list li::before{content:"Ch " counter(chapter) " → ";color:#ff5f1f;font-weight:600}
+
+/* Proof */
+.proof{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.8rem;margin:1.5rem 0}
+.proof-item{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:0.8rem;text-align:center;font-size:0.8rem}
+.proof-num{font-size:1.3rem;font-weight:800;color:#ff5f1f}
+.proof-label{color:#666;font-size:0.7rem}
+
+/* What's inside */
+.includes{display:grid;gap:0.8rem;margin:1.5rem 0}
+.include{display:flex;align-items:flex-start;gap:1rem;padding:1rem;background:#111;border:1px solid #1a1a1a;border-radius:10px}
+.include-icon{font-size:1.5rem;flex-shrink:0}
+.include-text h4{font-weight:700;margin-bottom:0.2rem;font-size:0.95rem}
+.include-text p{color:#888;font-size:0.8rem;margin:0}
+
+/* Preview chapters */
+.preview{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-size:0.85rem;color:#aaa}
+.preview h4{color:#ff5f1f;margin-bottom:0.8rem}
+.preview code{background:#1a1a1a;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.8rem;color:#ddd}
+.preview pre{background:#111;padding:1rem;border-radius:8px;margin:0.8rem 0;overflow-x:auto;font-size:0.75rem;color:#ccc}
+
+/* Guarantee */
+.guarantee{background:#10b98110;border:1px solid #10b98133;border-radius:16px;padding:2rem;text-align:center;margin:2rem 0}
+.guarantee h3{color:#10b981;margin-bottom:0.5rem}
+.guarantee p{color:#888;font-size:0.9rem}
+
+/* Final CTA */
+.final-cta{text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto}
+.final-cta h2{font-size:2rem;margin-bottom:0.5rem}
+.crypto-methods{display:flex;justify-content:center;gap:1.5rem;margin:1.5rem 0;font-size:0.85rem;color:#888}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem;max-width:700px;margin:0 auto}
+
+@media(max-width:600px){
+  h1{font-size:2rem}
+  .hero-stats{gap:1.5rem}
+  .cta-group{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="badge">NEW EBOOK — 2026</div>
+  <h1>Zero to <span>120+ Websites</span> in 7 Days</h1>
+  <p>The exact system one solo founder used to build a network of 120+ live, revenue-generating websites in under a week — using nothing but AI.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">120+</div><div class="hero-stat-label">Live Sites</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">7</div><div class="hero-stat-label">Days</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">Person</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$0</div><div class="hero-stat-label">Hosting Cost</div></div>
+  </div>
+
+  <div class="price-tag">$14.99</div>
+  <div class="price-note">Includes full ebook + all source code + AI prompts</div>
+  <br>
+  <div class="cta-group">
+    <a href="/store" class="cta cta-primary">Buy the Ebook →</a>
+    <a href="#preview" class="cta cta-secondary">Read Free Preview</a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>This Is Real</h2>
+  <p>These aren't mock-ups. These aren't "coming soon" pages. These are 120+ fully functional, indexed, revenue-generating websites running right now:</p>
+
+  <div class="proof">
+    <div class="proof-item"><div class="proof-num">18</div><div class="proof-label">Predict Sites</div></div>
+    <div class="proof-item"><div class="proof-num">14</div><div class="proof-label">Stimulant Sites</div></div>
+    <div class="proof-item"><div class="proof-num">22</div><div class="proof-label">Alien Sites</div></div>
+    <div class="proof-item"><div class="proof-num">12</div><div class="proof-label">AiBot Sites</div></div>
+    <div class="proof-item"><div class="proof-num">11</div><div class="proof-label">Monkey Sites</div></div>
+    <div class="proof-item"><div class="proof-num">7</div><div class="proof-label">Scam Sites</div></div>
+    <div class="proof-item"><div class="proof-num">17</div><div class="proof-label">Claw/Plush Sites</div></div>
+    <div class="proof-item"><div class="proof-num">7</div><div class="proof-label">Networks</div></div>
+  </div>
+
+  <p>Visit any of them right now: <a href="https://predict.autos">predict.autos</a>, <a href="https://aliens.coupons">aliens.coupons</a>, <a href="https://scam.ink">scam.ink</a>, <a href="https://claw.pizza">claw.pizza</a>, <a href="https://monkey.coupons">monkey.coupons</a></p>
+</section>
+
+<section class="section">
+  <h2>What's Inside</h2>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol class="toc-list">
+      <li>The Vision — why networks beat single sites</li>
+      <li>The Generator Pattern — 1 script → 20+ sites</li>
+      <li>Domain Strategy — cheap TLDs, max coverage</li>
+      <li>Real-Time Data with Firebase — 10-second heartbeats</li>
+      <li>Cross-Network SEO — 120+ sites linking to each other</li>
+      <li>Monetization Playbook — 5 revenue streams</li>
+      <li>The AI Prompts That Built Everything</li>
+      <li>Scaling to 1000+ Sites</li>
+      <li>Tools of the Trade — the exact stack</li>
+      <li>Your 7-Day Action Plan</li>
+    </ol>
+  </div>
+
+  <div class="includes">
+    <div class="include">
+      <div class="include-icon">📖</div>
+      <div class="include-text"><h4>The Full Ebook (10 chapters)</h4><p>Every strategy, every decision, every mistake — documented.</p></div>
+    </div>
+    <div class="include">
+      <div class="include-icon">💻</div>
+      <div class="include-text"><h4>Complete Source Code</h4><p>All 7 Python generators that create 120+ sites. Copy, modify, deploy.</p></div>
+    </div>
+    <div class="include">
+      <div class="include-icon">🤖</div>
+      <div class="include-text"><h4>50 AI Prompts</h4><p>The exact prompts used to build generators, content, tools, and more.</p></div>
+    </div>
+    <div class="include">
+      <div class="include-icon">📋</div>
+      <div class="include-text"><h4>7-Day Action Plan</h4><p>Step-by-step daily tasks to replicate the entire system from scratch.</p></div>
+    </div>
+    <div class="include">
+      <div class="include-icon">🔧</div>
+      <div class="include-text"><h4>16 Cloudflare Workers</h4><p>Bonus: all the edge tools we built, ready to deploy on your sites.</p></div>
+    </div>
+    <div class="include">
+      <div class="include-icon">📊</div>
+      <div class="include-text"><h4>Firebase + Analytics Templates</h4><p>Real-time database configs and analytics setup for instant deployment.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preview">
+  <h2>Free Preview</h2>
+
+  <div class="preview">
+    <h4>Chapter 2: The Generator Pattern</h4>
+    <p>The secret isn't building 120 websites one at a time. It's building ONE generator that creates 20+ sites at once.</p>
+    <p>Here's the basic structure:</p>
+    <pre>DOMAINS = [
+    ("predict.autos", "Auto Predictions", "#3b82f6"),
+    ("predict.garden", "Garden Predictions", "#10b981"),
+    # ... add as many as you want
+]
+
+def generate_site(domain, name, color):
+    html = create_complete_html(name, color)
+    os.makedirs(domain.replace(".", "-"), exist_ok=True)
+    write_all_files(domain, html)  # index, CNAME, sitemap, robots
+
+for domain, name, color in DOMAINS:
+    generate_site(domain, name, color)
+    print(f"Generated {domain}")</pre>
+    <p>One Python script. One command. 20+ complete websites with custom designs, SEO, analytics, email capture, cross-linking, and real-time data.</p>
+    <p>The full chapter includes the complete generator code with every feature...</p>
+    <p style="color:#ff5f1f;font-weight:700;margin-top:1rem">→ Get the full ebook for $14.99</p>
+  </div>
+
+  <div class="preview">
+    <h4>Chapter 7: The AI Prompts That Built Everything</h4>
+    <p><strong>Prompt 1 — The Generator:</strong></p>
+    <p>"Create a Python script that generates [niche] websites. Include: complete HTML with embedded CSS/JS, Firebase integration, Google Analytics GA4, cross-network linking footer, responsive design, SEO meta tags..."</p>
+    <p><strong>Prompt 2 — The Content:</strong></p>
+    <p>"Write blog content for [topic] that is factual, engaging, and naturally includes affiliate links to..."</p>
+    <p style="color:#ff5f1f;font-weight:700;margin-top:1rem">→ All 50 prompts included in the full ebook</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>The Math</h2>
+  <p>Here's what it costs to replicate this system:</p>
+  <div class="proof">
+    <div class="proof-item"><div class="proof-num">~$300</div><div class="proof-label">Domains (120+)</div></div>
+    <div class="proof-item"><div class="proof-num">$0/mo</div><div class="proof-label">Hosting (GitHub)</div></div>
+    <div class="proof-item"><div class="proof-num">$0/mo</div><div class="proof-label">Database (Firebase)</div></div>
+    <div class="proof-item"><div class="proof-num">$0/mo</div><div class="proof-label">CDN (Cloudflare)</div></div>
+    <div class="proof-item"><div class="proof-num">$0/mo</div><div class="proof-label">Analytics (GA4)</div></div>
+    <div class="proof-item"><div class="proof-num">$0/mo</div><div class="proof-label">Email (Beehiiv)</div></div>
+    <div class="proof-item"><div class="proof-num">$20/mo</div><div class="proof-label">AI (Claude)</div></div>
+    <div class="proof-item"><div class="proof-num">7 days</div><div class="proof-label">Your Time</div></div>
+  </div>
+  <p>Total ongoing cost: <strong>$20/month</strong> for the AI subscription. Everything else is free.</p>
+</section>
+
+<div class="guarantee">
+  <h3>30-Day Money-Back Guarantee</h3>
+  <p>If you follow the system and don't have at least 20 live websites within 30 days, full refund. No questions asked.</p>
+</div>
+
+<section class="final-cta">
+  <h2>Build Your Empire</h2>
+  <p style="color:#888;margin-bottom:1.5rem">120+ websites. 7 days. 1 person. Your turn.</p>
+
+  <div class="price-tag" style="font-size:2rem;color:#ff5f1f">$14.99</div>
+  <div class="crypto-methods">
+    <span>₿ Bitcoin</span>
+    <span>Ξ Ethereum</span>
+    <span>◎ Solana</span>
+    <span>💳 Card</span>
+  </div>
+
+  <a href="/store" class="cta cta-primary" style="font-size:1.1rem;padding:1.2rem 3rem">Buy Now — $14.99 →</a>
+  <p style="color:#666;font-size:0.8rem;margin-top:1rem">Instant delivery · Full source code · 50 AI prompts · 30-day guarantee</p>
+</section>
+
+<footer class="footer">
+  <div style="margin-bottom:0.8rem">
+    <a href="https://spunkart.com">SpunkArt</a> ·
+    <a href="/store" style="color:#ff5f1f">Store</a> ·
+    <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> ·
+    <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a>
+  </div>
+  <div>© 2026 SpunkArt. All rights reserved.</div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</body>
+</html>
