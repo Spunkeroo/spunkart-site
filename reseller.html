@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>White Label & Reseller Program — SpunkArt Tools</title>
+<meta name="description" content="Resell SpunkArt's 18 Cloudflare Workers under your own brand. White label license. Keep 100% of your sales. From $99.">
+<meta property="og:title" content="White Label Cloudflare Workers — Resell Under Your Brand">
+<meta property="og:description" content="18 edge tools you can rebrand and resell. Keep 100% of profits. One-time license fee.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<link rel="canonical" href="https://spunkart.com/reseller">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888}
+.nav-links a:hover{color:#fff}
+
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:750px;margin:0 auto}
+.badge{display:inline-block;padding:0.3rem 1rem;background:#10b98115;border:1px solid #10b98133;border-radius:20px;font-size:0.75rem;color:#10b981;font-weight:600;margin-bottom:1.5rem}
+h1{font-size:2.5rem;font-weight:800;line-height:1.1;margin-bottom:1rem}
+h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#888;font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
+
+.math{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:700px;margin:0 auto 3rem;padding:0 2rem}
+.math-card{background:#111;border:1px solid #222;border-radius:14px;padding:1.5rem;text-align:center}
+.math-num{font-size:2rem;font-weight:800;color:#10b981}
+.math-label{font-size:0.8rem;color:#666;margin-top:0.3rem}
+.math-sub{font-size:0.7rem;color:#444;margin-top:0.2rem}
+
+.section{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.section h2{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:1.5rem}
+
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-bottom:3rem}
+.tier{background:#111;border:1px solid #222;border-radius:16px;padding:1.8rem;text-align:center;position:relative;transition:all 0.3s}
+.tier:hover{border-color:#10b98144;transform:translateY(-3px)}
+.tier-pop{border-color:#10b98166}
+.tier-pop::before{content:"MOST POPULAR";position:absolute;top:12px;right:-25px;background:#10b981;color:#fff;font-size:0.55rem;font-weight:800;padding:0.2rem 2rem;transform:rotate(45deg);letter-spacing:1px}
+.tier-name{font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.5rem}
+.tier-price{font-size:2.5rem;font-weight:800;color:#fff}
+.tier-price small{font-size:0.9rem;color:#666}
+.tier-desc{color:#666;font-size:0.8rem;margin-bottom:1rem}
+.tier-features{text-align:left;font-size:0.75rem;color:#aaa;margin-bottom:1.5rem}
+.tier-features div{padding:0.25rem 0}
+.tier-features div::before{content:"✓ ";color:#10b981}
+.tier-btn{display:block;padding:0.7rem;background:#10b981;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.tier-btn:hover{background:#0d9668;transform:scale(1.02)}
+
+.how{display:grid;gap:1rem;margin-bottom:3rem}
+.step{display:flex;gap:1.2rem;align-items:flex-start;padding:1.2rem;background:#111;border:1px solid #1a1a1a;border-radius:12px}
+.step-num{width:40px;height:40px;background:#10b98122;border:2px solid #10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#10b981;flex-shrink:0}
+.step-text h3{font-size:1rem;margin-bottom:0.2rem}
+.step-text p{color:#888;font-size:0.85rem}
+
+.tools-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.8rem;margin:1.5rem 0}
+.tool-mini{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px;padding:0.8rem;font-size:0.8rem}
+.tool-mini strong{color:#10b981}
+
+.faq{margin-bottom:3rem}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:1rem 0;cursor:pointer}
+.faq-q{font-weight:700;display:flex;justify-content:space-between}
+.faq-a{color:#888;font-size:0.85rem;margin-top:0.5rem;display:none}
+.faq-item.open .faq-a{display:block}
+
+.final-cta{text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto}
+.cta-btn{display:inline-block;padding:1rem 3rem;background:#10b981;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s}
+.cta-btn:hover{background:#0d9668;transform:scale(1.03);box-shadow:0 8px 30px rgba(16,185,129,0.3)}
+
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
+.footer a{color:#10b981}
+
+@media(max-width:600px){
+  h1{font-size:1.8rem}
+  .math{grid-template-columns:1fr}
+  .tiers{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">RESELLER PROGRAM</div>
+  <h1>Rebrand. Resell. <span>Keep 100%.</span></h1>
+  <p>License our 18 Cloudflare Workers, rebrand them as your own, and sell to your customers. One-time fee. You keep every dollar after that.</p>
+</section>
+
+<div class="math">
+  <div class="math-card">
+    <div class="math-num">18</div>
+    <div class="math-label">Tools Included</div>
+    <div class="math-sub">All Cloudflare Workers</div>
+  </div>
+  <div class="math-card">
+    <div class="math-num">100%</div>
+    <div class="math-label">Your Profit</div>
+    <div class="math-sub">No royalties, no rev share</div>
+  </div>
+  <div class="math-card">
+    <div class="math-num">$0</div>
+    <div class="math-label">Recurring Fees</div>
+    <div class="math-sub">One-time license, forever</div>
+  </div>
+</div>
+
+<section class="section">
+  <h2>The Math is Simple</h2>
+  <p style="text-align:center;color:#888;margin-bottom:2rem">Buy the reseller license once. Sell each tool for $9.99+ under your brand. Profit from day one.</p>
+
+  <div class="math" style="margin-bottom:2rem">
+    <div class="math-card">
+      <div class="math-num">$199</div>
+      <div class="math-label">Your Investment</div>
+    </div>
+    <div class="math-card">
+      <div class="math-num">20 sales</div>
+      <div class="math-label">To Break Even</div>
+      <div class="math-sub">At $9.99/tool</div>
+    </div>
+    <div class="math-card">
+      <div class="math-num">$1,800+</div>
+      <div class="math-label">First 200 Sales</div>
+      <div class="math-sub">Pure profit after breakeven</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Reseller Tiers</h2>
+  <div class="tiers">
+    <div class="tier">
+      <div class="tier-name">Starter Reseller</div>
+      <div class="tier-price">$99</div>
+      <div class="tier-desc">5 tools to resell</div>
+      <div class="tier-features">
+        <div>Choose any 5 Workers</div>
+        <div>Full source code</div>
+        <div>Remove all SpunkArt branding</div>
+        <div>Add your own brand/logo</div>
+        <div>Sell unlimited copies</div>
+        <div>6 months of updates</div>
+      </div>
+      <a href="/store" class="tier-btn">Get Starter License</a>
+    </div>
+    <div class="tier tier-pop">
+      <div class="tier-name">Pro Reseller</div>
+      <div class="tier-price">$199</div>
+      <div class="tier-desc">All 18 tools</div>
+      <div class="tier-features">
+        <div>All 18 Cloudflare Workers</div>
+        <div>Full source code</div>
+        <div>Complete white-label rights</div>
+        <div>Add your branding everywhere</div>
+        <div>Sell unlimited copies forever</div>
+        <div>1 year of updates</div>
+        <div>Priority support</div>
+        <div>New tools added monthly</div>
+      </div>
+      <a href="/store" class="tier-btn">Get Pro License</a>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Agency</div>
+      <div class="tier-price">$499</div>
+      <div class="tier-desc">Everything + exclusives</div>
+      <div class="tier-features">
+        <div>All 18 Workers + future tools</div>
+        <div>White-label rights forever</div>
+        <div>Ebook resell rights</div>
+        <div>Custom tool requests (2/mo)</div>
+        <div>Your brand on our free tools</div>
+        <div>Lifetime updates</div>
+        <div>1-on-1 setup call</div>
+        <div>Featured on our network</div>
+      </div>
+      <a href="/store" class="tier-btn">Get Agency License</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What You Get</h2>
+  <div class="tools-list">
+    <div class="tool-mini"><strong>OpenClaw Game</strong> — Claw machine for any site</div>
+    <div class="tool-mini"><strong>Auto-SSL Monitor</strong> — Cert expiry alerts</div>
+    <div class="tool-mini"><strong>Spotify Widget</strong> — Now Playing embed</div>
+    <div class="tool-mini"><strong>Link Shortener</strong> — Branded short links</div>
+    <div class="tool-mini"><strong>Uptime Monitor</strong> — Site health tracker</div>
+    <div class="tool-mini"><strong>Bot Blocker</strong> — Stop scrapers/spam</div>
+    <div class="tool-mini"><strong>Redirect Manager</strong> — Bulk URL redirects</div>
+    <div class="tool-mini"><strong>Image Optimizer</strong> — Auto WebP/AVIF</div>
+    <div class="tool-mini"><strong>Email Forwarder</strong> — Domain email routing</div>
+    <div class="tool-mini"><strong>A/B Testing</strong> — Edge split testing</div>
+    <div class="tool-mini"><strong>Privacy Analytics</strong> — Cookie-free stats</div>
+    <div class="tool-mini"><strong>Cache Purger</strong> — Cache management</div>
+    <div class="tool-mini"><strong>Discord Bot</strong> — Serverless bot</div>
+    <div class="tool-mini"><strong>API Monitor</strong> — Endpoint health</div>
+    <div class="tool-mini"><strong>Log Analyzer</strong> — Search & tail logs</div>
+    <div class="tool-mini"><strong>Edge Checkout</strong> — Crypto + card payments</div>
+    <div class="tool-mini"><strong>License Server</strong> — Protect your sales</div>
+    <div class="tool-mini"><strong>Database Backup</strong> — Auto KV backups</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>How It Works</h2>
+  <div class="how">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><h3>Buy Your License</h3><p>Choose Starter ($99), Pro ($199), or Agency ($499). Instant delivery of all source code.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><h3>Rebrand Everything</h3><p>Replace SpunkArt with your brand name, colors, logo, links. It's all in simple config objects at the top of each file.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><h3>Set Your Prices</h3><p>Charge whatever you want. $9.99, $29.99, $99/month subscription — your call. We take zero cut.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><h3>Sell & Scale</h3><p>List on Gumroad, your own site, marketplaces — anywhere. Use the included License Server to protect your products.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>FAQ</h2>
+  <div class="faq">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I really sell these as my own? <span>+</span></div>
+      <div class="faq-a">Yes. The reseller license gives you full white-label rights. Remove our branding, add yours, sell under your name. We don't appear anywhere in your version.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Is there a revenue share or royalty? <span>+</span></div>
+      <div class="faq-a">No. Zero royalties, zero revenue share, zero recurring fees. One-time license purchase and you keep 100% of every sale forever.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I modify the code? <span>+</span></div>
+      <div class="faq-a">Absolutely. You get full, unminified, commented source code. Add features, change designs, integrate with your systems — it's yours to modify.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">How do I protect my resold products? <span>+</span></div>
+      <div class="faq-a">The License Server worker is included. Deploy it, generate license keys for your customers, validate on every request. Same system we use.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What about updates? <span>+</span></div>
+      <div class="faq-a">Starter: 6 months. Pro: 1 year. Agency: lifetime. We ship new tools monthly — Agency resellers get every new tool automatically.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can multiple people buy the same reseller tier? <span>+</span></div>
+      <div class="faq-a">Yes. Each reseller gets their own license. The market is big enough for everyone. We're focused on making great tools — you focus on selling them.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do you offer refunds? <span>+</span></div>
+      <div class="faq-a">14-day money-back guarantee. If you're not satisfied with the code quality, full refund. But once you start reselling, no refunds (because you've already started profiting).</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Start Reselling Today</h2>
+  <p style="color:#888;margin-bottom:0.5rem">One purchase. Unlimited sales. 100% profit.</p>
+  <p style="color:#666;font-size:0.85rem;margin-bottom:2rem">Most resellers break even within 20 sales. The rest is pure profit.</p>
+  <a href="/store" class="cta-btn">Get Your Reseller License →</a>
+  <p style="color:#555;font-size:0.75rem;margin-top:1rem">BTC / ETH / SOL / Card accepted</p>
+</section>
+
+<footer class="footer">
+  <div style="margin-bottom:0.8rem">
+    <a href="https://spunkart.com">SpunkArt</a> ·
+    <a href="/store">Store</a> ·
+    <a href="/ebook">Ebook</a> ·
+    <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> ·
+    <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a>
+  </div>
+  <div>© 2026 SpunkArt. All rights reserved.</div>
+</footer>
+
+<!-- Content Protection -->
+<script>
+document.addEventListener('contextmenu', function(e) { if (e.target.closest('.tiers, .tools-list, pre, code')) e.preventDefault(); });
+(function() {
+  const w = document.createElement('div');
+  w.style.cssText = 'position:fixed;bottom:10px;right:10px;font-size:0.6rem;color:rgba(16,185,129,0.12);font-weight:800;pointer-events:none;z-index:9999;letter-spacing:1px;text-transform:uppercase;';
+  w.textContent = 'SPUNKART.COM';
+  document.body.appendChild(w);
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</body>
+</html>
