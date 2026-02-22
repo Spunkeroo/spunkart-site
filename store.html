@@ -175,6 +175,52 @@ a{color:inherit;text-decoration:none}
   .bundles{grid-template-columns:1fr 1fr}
   .email-form{flex-direction:column}
 }
+/* Pricing Math Section */
+.math-section{max-width:1100px;margin:0 auto;padding:0 2rem 3rem}
+.math-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.math-card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem 1.5rem;text-align:center;position:relative;transition:all 0.3s}
+.math-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.math-card-highlight{border:2px solid #ff5f1f;background:linear-gradient(145deg,#1a0a00,#111)}
+.math-card-highlight::before{content:"BEST VALUE";position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);background:#ff5f1f;color:#fff;font-size:0.65rem;font-weight:800;padding:0.25rem 1rem;border-radius:20px;letter-spacing:1px;white-space:nowrap}
+.math-card-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.8rem}
+.math-card-price{font-size:3rem;font-weight:800;color:#fff;line-height:1}
+.math-card-price small{font-size:1rem;color:#666}
+.math-card-was{font-size:0.8rem;color:#ef4444;text-decoration:line-through;margin:0.3rem 0 0.8rem;min-height:1.2rem}
+.math-card-list{text-align:left;list-style:none;font-size:0.8rem;color:#aaa;margin-bottom:1.2rem}
+.math-card-list li{padding:0.3rem 0;padding-left:1.4rem;position:relative}
+.math-card-list li::before{content:"\2713";color:#10b981;position:absolute;left:0;font-weight:700}
+.math-card-note{font-size:0.8rem;color:#888;font-style:italic;margin-bottom:1rem}
+.math-card-savings{display:inline-block;background:#10b98120;border:1px solid #10b98133;color:#10b981;font-weight:700;font-size:0.85rem;padding:0.4rem 1rem;border-radius:8px;margin-bottom:1rem}
+.math-card-value{background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f;font-weight:700;font-size:0.85rem;padding:0.4rem 1rem;border-radius:8px;display:inline-block;margin-bottom:1rem}
+.math-card-btn{display:block;padding:0.7rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;border:none;cursor:pointer;transition:all 0.2s;width:100%}
+.math-card-btn:hover{background:#e5541b;transform:scale(1.02)}
+.math-competitors{background:linear-gradient(145deg,#0d0d0d,#111);border:1px solid #222;border-radius:16px;padding:2rem;overflow-x:auto}
+.math-competitors h3{font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;text-align:center;color:#fff}
+.comp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-bottom:1.5rem}
+.comp-item{text-align:center;padding:1rem;background:#0a0a0a;border-radius:12px;border:1px solid #1a1a1a}
+.comp-item-name{font-size:0.75rem;color:#888;margin-bottom:0.3rem;font-weight:600}
+.comp-item-monthly{font-size:1.2rem;font-weight:800;color:#ef4444}
+.comp-item-yearly{font-size:0.75rem;color:#666;margin-top:0.2rem}
+.comp-total{text-align:center;padding:1rem;background:#ef444415;border:1px solid #ef444433;border-radius:12px;margin-bottom:1.5rem}
+.comp-total-label{font-size:0.85rem;color:#ef4444;margin-bottom:0.3rem}
+.comp-total-amount{font-size:2rem;font-weight:800;color:#ef4444}
+.comp-total-note{font-size:0.75rem;color:#666;margin-top:0.2rem}
+.comp-vs{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:1.5rem;background:#10b98110;border:1px solid #10b98122;border-radius:12px}
+.comp-vs-them{text-align:center}
+.comp-vs-them .amount{font-size:1.5rem;font-weight:800;color:#ef4444}
+.comp-vs-them .label{font-size:0.75rem;color:#888}
+.comp-vs-arrow{font-size:1.5rem;color:#10b981;font-weight:800}
+.comp-vs-us{text-align:center}
+.comp-vs-us .amount{font-size:2rem;font-weight:800;color:#10b981}
+.comp-vs-us .label{font-size:0.75rem;color:#10b981;font-weight:600}
+.comp-vs-us .tag{font-size:0.7rem;background:#10b981;color:#fff;padding:0.15rem 0.6rem;border-radius:4px;display:inline-block;margin-top:0.3rem;font-weight:700}
+
+@media(max-width:768px){
+  .math-cards{grid-template-columns:1fr}
+  .comp-grid{grid-template-columns:repeat(2,1fr)}
+  .comp-vs{flex-direction:column;gap:1rem}
+}
+
 @media(max-width:480px){
   .bundles{grid-template-columns:1fr}
 }
@@ -645,6 +691,112 @@ a{color:inherit;text-decoration:none}
     </table>
     <p style="text-align:center;margin-top:1.5rem;color:#888;font-size:0.85rem">You save <span style="color:#10b981;font-weight:800">$6,000+/year</span> by switching to SpunkArt tools. One payment. Own forever.</p>
     <div style="text-align:center;margin-top:1rem"><a href="#bundles" style="display:inline-block;padding:0.8rem 2rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700">Save $6,000/yr — Get All 18 Tools</a></div>
+  </div>
+</section>
+
+<!-- The Math: Why Bundles Win -->
+<section>
+  <div class="section-title">
+    <h2 style="background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">The Math: Why Bundles Win</h2>
+    <p>Stop overpaying. Here's what you actually get.</p>
+  </div>
+  <div class="math-section">
+    <div class="math-cards">
+
+      <!-- Card 1: 1 Tool -->
+      <div class="math-card">
+        <div class="math-card-label">1 Tool</div>
+        <div class="math-card-price">$4<small>.99</small></div>
+        <div class="math-card-was">&nbsp;</div>
+        <ul class="math-card-list">
+          <li>1 Cloudflare Worker</li>
+          <li>Source code</li>
+          <li>6 months updates</li>
+        </ul>
+        <div class="math-card-note">Good for trying us out</div>
+        <button class="math-card-btn" onclick="buy('botblock')" style="background:#333">Buy 1 Tool — $4.99</button>
+      </div>
+
+      <!-- Card 2: All 18 Tools (highlighted) -->
+      <div class="math-card math-card-highlight">
+        <div class="math-card-label" style="color:#ff5f1f">All 18 Tools</div>
+        <div class="math-card-price">$19<small>.99</small></div>
+        <div class="math-card-was">$89.82 if bought separately</div>
+        <ul class="math-card-list">
+          <li>ALL 18 Cloudflare Workers</li>
+          <li>Source code + wrangler configs</li>
+          <li>1 year updates</li>
+          <li>Priority support</li>
+        </ul>
+        <div class="math-card-savings">Save 78% vs buying individually</div>
+        <div class="math-card-value">$89.82 value for $19.99</div>
+        <button class="math-card-btn" onclick="buy('pro')">Buy All 18 — $19.99</button>
+      </div>
+
+      <!-- Card 3: Empire + Lifetime -->
+      <div class="math-card" style="border-color:#10b98144">
+        <div class="math-card-label" style="color:#10b981">Empire + Lifetime</div>
+        <div class="math-card-price">$49<small>.99</small> <span style="font-size:0.9rem;color:#666">/ $99.99</span></div>
+        <div class="math-card-was">&nbsp;</div>
+        <ul class="math-card-list">
+          <li>All 18 Workers + every future tool</li>
+          <li>Ebook ($14.99 value)</li>
+          <li>50 AI Prompts ($29.99 value)</li>
+          <li>Firebase Templates ($19.99 value)</li>
+          <li>Lifetime updates forever</li>
+          <li>1-on-1 setup help</li>
+        </ul>
+        <div class="math-card-savings">Total value: $250+ for $49.99</div>
+        <div class="math-card-value">You save $200+</div>
+        <button class="math-card-btn" onclick="buy('empire')" style="background:#10b981">Buy Empire — $49.99</button>
+      </div>
+
+    </div>
+
+    <!-- What Others Charge Monthly -->
+    <div class="math-competitors">
+      <h3>What Others Charge <span style="color:#ef4444">Monthly</span></h3>
+      <div class="comp-grid">
+        <div class="comp-item">
+          <div class="comp-item-name">UptimeRobot Pro</div>
+          <div class="comp-item-monthly">$7/mo</div>
+          <div class="comp-item-yearly">= $84/yr</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-item-name">Plausible Analytics</div>
+          <div class="comp-item-monthly">$9/mo</div>
+          <div class="comp-item-yearly">= $108/yr</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-item-name">Bitly Business</div>
+          <div class="comp-item-monthly">$35/mo</div>
+          <div class="comp-item-yearly">= $420/yr</div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-item-name">Optimizely</div>
+          <div class="comp-item-monthly">$79/mo</div>
+          <div class="comp-item-yearly">= $948/yr</div>
+        </div>
+        <div class="comp-item" style="border-color:#ef444433;background:#ef444408">
+          <div class="comp-item-name" style="color:#ef4444">TOTAL</div>
+          <div class="comp-item-monthly">$130/mo</div>
+          <div class="comp-item-yearly">= $1,560/yr for just 4 tools</div>
+        </div>
+      </div>
+      <div class="comp-vs">
+        <div class="comp-vs-them">
+          <div class="amount">$1,560/yr</div>
+          <div class="label">4 competitor tools (monthly)</div>
+        </div>
+        <div class="comp-vs-arrow">vs</div>
+        <div class="comp-vs-us">
+          <div class="amount">$19.99</div>
+          <div class="label">ALL 18 SpunkArt tools</div>
+          <div class="tag">ONE-TIME PAYMENT</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
