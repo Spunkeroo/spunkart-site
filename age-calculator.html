@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Age Calculator — Exact Age, Birthday Countdown & Zodiac Signs</title>
+<meta name="description" content="Calculate your exact age in years, months, and days. See total days alive, next birthday countdown, day of the week born, zodiac sign, and Chinese zodiac. Free tool by SPUNKART.COM">
+<meta property="og:title" content="Age Calculator">
+<meta property="og:description" content="Calculate your exact age, total days alive, birthday countdown, zodiac sign, and more.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Age Calculator">
+<meta name="twitter:description" content="Exact age, birthday countdown, zodiac signs, and more. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/age-calculator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","description":"Calculate your exact age in years, months, and days. Birthday countdown, zodiac sign, Chinese zodiac, and more.","url":"https://spunkart.com/age-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:550px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem;text-align:center}
+.card label{display:block;font-size:0.9rem;color:#888;margin-bottom:10px}
+.date-input{background:#1a1a1a;border:2px solid #333;color:#e8e8e8;padding:16px 20px;border-radius:12px;font-size:1.3rem;font-weight:600;text-align:center;width:100%;max-width:300px;cursor:pointer;transition:border-color 0.2s}
+.date-input:focus{outline:none;border-color:#ff5f1f}
+.btn{display:inline-block;padding:14px 40px;background:#ff5f1f;color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:16px}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.results{display:none}
+.age-hero{text-align:center;padding:2rem;background:linear-gradient(135deg,#111,#1a1a1a);border:2px solid #ff5f1f;border-radius:16px;margin-bottom:1.5rem}
+.age-big{font-size:3rem;font-weight:800;color:#ff5f1f;line-height:1}
+.age-detail{font-size:1rem;color:#aaa;margin-top:8px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+.stat{background:#111;border:1px solid #222;border-radius:12px;padding:16px;text-align:center}
+.stat-value{font-size:1.3rem;font-weight:800;font-family:'Courier New',monospace;margin-bottom:4px}
+.stat-value.orange{color:#ff5f1f}
+.stat-value.green{color:#10b981}
+.stat-value.blue{color:#3b82f6}
+.stat-value.purple{color:#8b5cf6}
+.stat-value.pink{color:#ec4899}
+.stat-value.yellow{color:#f59e0b}
+.stat-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px}
+.countdown-bar{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:1.5rem}
+.countdown-bar h3{font-size:0.9rem;color:#ff5f1f;margin-bottom:12px;text-align:center}
+.countdown-nums{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.countdown-unit{text-align:center}
+.countdown-unit .num{font-size:1.8rem;font-weight:800;color:#10b981;font-family:'Courier New',monospace}
+.countdown-unit .lbl{font-size:0.7rem;color:#888;text-transform:uppercase}
+.progress-bar{height:8px;background:#222;border-radius:4px;overflow:hidden;margin-top:12px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#ff5f1f,#10b981);border-radius:4px;transition:width 0.5s}
+.fun-facts{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:1.5rem}
+.fun-facts h3{font-size:0.9rem;color:#ff5f1f;margin-bottom:12px;text-align:center}
+.fact{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.9rem}
+.fact:last-child{border-bottom:none}
+.fact-label{color:#888}
+.fact-value{color:#e8e8e8;font-weight:600}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:500px){
+  h1{font-size:1.5rem}
+  .age-big{font-size:2.2rem}
+  .stats-grid{grid-template-columns:1fr}
+  .countdown-unit .num{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Age Calculator</h1>
+  <div class="sub">Discover your exact age, birthday countdown, and zodiac signs</div>
+
+  <div class="card">
+    <label>Enter Your Birthdate</label>
+    <input type="date" class="date-input" id="birthdate" max="">
+    <br>
+    <button class="btn" onclick="calculateAge()">Calculate My Age</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="age-hero">
+      <div class="age-big" id="ageBig">—</div>
+      <div class="age-detail" id="ageDetail">—</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-value orange" id="totalDays">—</div>
+        <div class="stat-label">Total Days Alive</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value green" id="totalHours">—</div>
+        <div class="stat-label">Total Hours</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value blue" id="totalWeeks">—</div>
+        <div class="stat-label">Total Weeks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value purple" id="totalMonths">—</div>
+        <div class="stat-label">Total Months</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value pink" id="dayBorn">—</div>
+        <div class="stat-label">Day You Were Born</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value yellow" id="zodiacSign">—</div>
+        <div class="stat-label">Zodiac Sign</div>
+      </div>
+    </div>
+
+    <div class="countdown-bar">
+      <h3>Next Birthday Countdown</h3>
+      <div class="countdown-nums">
+        <div class="countdown-unit"><div class="num" id="cdDays">—</div><div class="lbl">Days</div></div>
+        <div class="countdown-unit"><div class="num" id="cdHours">—</div><div class="lbl">Hours</div></div>
+        <div class="countdown-unit"><div class="num" id="cdMins">—</div><div class="lbl">Minutes</div></div>
+        <div class="countdown-unit"><div class="num" id="cdSecs">—</div><div class="lbl">Seconds</div></div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+
+    <div class="fun-facts">
+      <h3>Fun Facts</h3>
+      <div class="fact"><span class="fact-label">Chinese Zodiac</span><span class="fact-value" id="chineseZodiac">—</span></div>
+      <div class="fact"><span class="fact-label">Birthstone</span><span class="fact-value" id="birthstone">—</span></div>
+      <div class="fact"><span class="fact-label">Generation</span><span class="fact-value" id="generation">—</span></div>
+      <div class="fact"><span class="fact-label">Next Birthday</span><span class="fact-value" id="nextBday">—</span></div>
+      <div class="fact"><span class="fact-label">Turning Age</span><span class="fact-value" id="turningAge">—</span></div>
+      <div class="fact"><span class="fact-label">Heartbeats (est.)</span><span class="fact-value" id="heartbeats">—</span></div>
+      <div class="fact"><span class="fact-label">Breaths (est.)</span><span class="fact-value" id="breaths">—</span></div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/uuid-generator.html">UUID Generator</a>
+      <a href="/timestamp-converter.html">Timestamp Converter</a>
+      <a href="/tip-calculator.html">Tip Calculator</a>
+      <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+// Set max date to today
+document.getElementById('birthdate').max = new Date().toISOString().split('T')[0];
+
+let countdownInterval = null;
+let birthDate = null;
+
+function calculateAge() {
+  const input = document.getElementById('birthdate').value;
+  if (!input) return;
+  birthDate = new Date(input + 'T00:00:00');
+  const now = new Date();
+
+  // Calculate exact age
+  let years = now.getFullYear() - birthDate.getFullYear();
+  let months = now.getMonth() - birthDate.getMonth();
+  let days = now.getDate() - birthDate.getDate();
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += prevMonth.getDate();
+  }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  document.getElementById('ageBig').textContent = years + ' Years Old';
+  document.getElementById('ageDetail').textContent = years + ' years, ' + months + ' months, ' + days + ' days';
+
+  // Stats
+  const diffMs = now - birthDate;
+  const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+  const totalWeeks = Math.floor(totalDays / 7);
+  const totalMonthsCalc = years * 12 + months;
+
+  document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+  document.getElementById('totalHours').textContent = totalHours.toLocaleString();
+  document.getElementById('totalWeeks').textContent = totalWeeks.toLocaleString();
+  document.getElementById('totalMonths').textContent = totalMonthsCalc.toLocaleString();
+
+  // Day born
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  document.getElementById('dayBorn').textContent = dayNames[birthDate.getDay()];
+
+  // Zodiac
+  document.getElementById('zodiacSign').textContent = getZodiac(birthDate.getMonth() + 1, birthDate.getDate());
+
+  // Chinese Zodiac
+  document.getElementById('chineseZodiac').textContent = getChineseZodiac(birthDate.getFullYear());
+
+  // Birthstone
+  const birthstones = ['Garnet', 'Amethyst', 'Aquamarine', 'Diamond', 'Emerald', 'Alexandrite', 'Ruby', 'Peridot', 'Sapphire', 'Opal', 'Topaz', 'Tanzanite'];
+  document.getElementById('birthstone').textContent = birthstones[birthDate.getMonth()];
+
+  // Generation
+  document.getElementById('generation').textContent = getGeneration(birthDate.getFullYear());
+
+  // Next birthday
+  let nextBday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (nextBday <= now) nextBday.setFullYear(nextBday.getFullYear() + 1);
+  document.getElementById('nextBday').textContent = nextBday.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+  document.getElementById('turningAge').textContent = nextBday.getFullYear() - birthDate.getFullYear();
+
+  // Heartbeats & breaths
+  const heartbeats = totalDays * 100000;
+  const breathsTotal = totalDays * 23040;
+  document.getElementById('heartbeats').textContent = heartbeats.toLocaleString();
+  document.getElementById('breaths').textContent = breathsTotal.toLocaleString();
+
+  document.getElementById('results').style.display = 'block';
+
+  // Start countdown
+  if (countdownInterval) clearInterval(countdownInterval);
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+  if (!birthDate) return;
+  const now = new Date();
+  let nextBday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (nextBday <= now) nextBday.setFullYear(nextBday.getFullYear() + 1);
+
+  const diff = nextBday - now;
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cdDays').textContent = d;
+  document.getElementById('cdHours').textContent = h.toString().padStart(2, '0');
+  document.getElementById('cdMins').textContent = m.toString().padStart(2, '0');
+  document.getElementById('cdSecs').textContent = s.toString().padStart(2, '0');
+
+  // Progress bar: how far through the current year since last birthday
+  let lastBday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (lastBday > now) lastBday.setFullYear(lastBday.getFullYear() - 1);
+  const yearLength = nextBday - lastBday;
+  const elapsed = now - lastBday;
+  const pct = Math.min(100, (elapsed / yearLength) * 100);
+  document.getElementById('progressFill').style.width = pct.toFixed(2) + '%';
+}
+
+function getZodiac(month, day) {
+  const signs = [
+    {name:'Capricorn', emoji:'', end:[1,19]},
+    {name:'Aquarius', emoji:'', end:[2,18]},
+    {name:'Pisces', emoji:'', end:[3,20]},
+    {name:'Aries', emoji:'', end:[4,19]},
+    {name:'Taurus', emoji:'', end:[5,20]},
+    {name:'Gemini', emoji:'', end:[6,20]},
+    {name:'Cancer', emoji:'', end:[7,22]},
+    {name:'Leo', emoji:'', end:[8,22]},
+    {name:'Virgo', emoji:'', end:[9,22]},
+    {name:'Libra', emoji:'', end:[10,22]},
+    {name:'Scorpio', emoji:'', end:[11,21]},
+    {name:'Sagittarius', emoji:'', end:[12,21]},
+    {name:'Capricorn', emoji:'', end:[12,31]},
+  ];
+  for (const s of signs) {
+    if (month < s.end[0] || (month === s.end[0] && day <= s.end[1])) {
+      return s.name;
+    }
+  }
+  return 'Capricorn';
+}
+
+function getChineseZodiac(year) {
+  const animals = ['Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig'];
+  return animals[(year - 4) % 12];
+}
+
+function getGeneration(year) {
+  if (year >= 2013) return 'Gen Alpha (2013+)';
+  if (year >= 1997) return 'Gen Z (1997-2012)';
+  if (year >= 1981) return 'Millennial (1981-1996)';
+  if (year >= 1965) return 'Gen X (1965-1980)';
+  if (year >= 1946) return 'Baby Boomer (1946-1964)';
+  if (year >= 1928) return 'Silent Generation (1928-1945)';
+  return 'Greatest Generation (before 1928)';
+}
+</script>
+</body>
+</html>

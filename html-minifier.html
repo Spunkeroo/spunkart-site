@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Minifier & Beautifier — Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Minify or beautify HTML instantly. Remove whitespace, comments, and unnecessary attributes. See size savings in real time. Free HTML tool for developers.">
+<meta property="og:title" content="HTML Minifier & Beautifier — Free Online Tool">
+<meta property="og:description" content="Minify or beautify HTML instantly. Remove whitespace, comments, and unnecessary attributes. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/html-minifier.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HTML Minifier & Beautifier">
+<meta name="twitter:description" content="Minify or beautify HTML instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/html-minifier.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Minifier & Beautifier","description":"Minify or beautify HTML instantly. Remove whitespace, comments, and unnecessary attributes.","url":"https://spunkart.com/html-minifier.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;font-size:0.85rem;}
+.stat{background:#151515;border:1px solid #333;border-radius:8px;padding:10px 16px;display:flex;flex-direction:column;align-items:center;min-width:120px;}
+.stat-label{color:#888;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.5px;}
+.stat-value{color:#fff;font-weight:700;font-size:1.1rem;margin-top:2px;}
+.stat-value.green{color:#10b981;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:400px;}
+@media(max-width:768px){.editor-wrap{grid-template-columns:1fr;min-height:auto;}}
+.panel{display:flex;flex-direction:column;}
+.panel-header{background:#1a1a1a;border:1px solid #333;border-bottom:none;border-radius:10px 10px 0 0;padding:10px 16px;font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;}
+textarea{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;border-radius:0 0 10px 10px;tab-size:2;line-height:1.5;min-height:300px;}
+textarea:focus{border-color:#ff5f1f;}
+
+.options{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+.option{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#aaa;cursor:pointer;}
+.option input[type="checkbox"]{accent-color:#ff5f1f;width:16px;height:16px;cursor:pointer;}
+
+.copy-btn{background:#333;color:#ccc;border:none;padding:5px 12px;border-radius:5px;font-size:0.75rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#10b981;color:#fff;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.newsletter{background:#151515;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#fff;margin-bottom:4px;}
+.newsletter p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+
+.tool-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:8px;font-size:0.82rem;color:#ccc;transition:border-color 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>HTML Minifier & Beautifier</h1>
+  <div class="subtitle">Minify HTML to reduce file size or beautify it for readability. 100% client-side.</div>
+
+  <div class="toolbar">
+    <button onclick="minifyHTML()">Minify</button>
+    <button class="btn-secondary" onclick="beautifyHTML()">Beautify</button>
+    <button class="btn-secondary" onclick="copyOutput()">Copy Output</button>
+    <button class="btn-secondary" onclick="clearAll()">Clear</button>
+    <button class="btn-secondary" onclick="loadSample()">Load Sample</button>
+  </div>
+
+  <div class="options">
+    <label class="option"><input type="checkbox" id="optComments" checked> Remove comments</label>
+    <label class="option"><input type="checkbox" id="optWhitespace" checked> Collapse whitespace</label>
+    <label class="option"><input type="checkbox" id="optOptionalTags" checked> Remove optional closing tags</label>
+    <label class="option"><input type="checkbox" id="optQuotes" checked> Remove unnecessary quotes</label>
+  </div>
+
+  <div class="stats" id="stats" style="display:none;">
+    <div class="stat"><span class="stat-label">Original</span><span class="stat-value" id="origSize">0 B</span></div>
+    <div class="stat"><span class="stat-label">Output</span><span class="stat-value" id="outSize">0 B</span></div>
+    <div class="stat"><span class="stat-label">Saved</span><span class="stat-value green" id="savedPct">0%</span></div>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header">Input <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('htmlInput').value)">Copy</button></div>
+      <textarea id="htmlInput" placeholder="Paste your HTML here..." spellcheck="false"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-header">Output <button class="copy-btn" id="outCopyBtn" onclick="copyOutput()">Copy</button></div>
+      <textarea id="htmlOutput" placeholder="Minified or beautified output will appear here..." spellcheck="false" readonly></textarea>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+
+  <div class="tool-links">
+    <a href="/json-formatter.html">JSON Formatter</a>
+    <a href="/json-to-csv.html">JSON to CSV</a>
+    <a href="/password-generator.html">Password Generator</a>
+    <a href="/color-palette.html">Color Palette</a>
+    <a href="/meta-generator.html">Meta Tag Generator</a>
+    <a href="/placeholder-image.html">Placeholder Images</a>
+    <a href="/screen-size.html">Screen Info</a>
+    <a href="/emoji-picker.html">Emoji Picker</a>
+    <a href="/store" style="color:#ff5f1f;font-weight:700;">Get All 40+ Tools</a>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied-toast" id="copiedToast">Copied!</div>
+
+<script>
+const input = document.getElementById('htmlInput');
+const output = document.getElementById('htmlOutput');
+
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 B';
+  if (bytes < 1024) return bytes + ' B';
+  return (bytes / 1024).toFixed(1) + ' KB';
+}
+
+function updateStats(origLen, outLen) {
+  document.getElementById('stats').style.display = 'flex';
+  document.getElementById('origSize').textContent = formatBytes(origLen);
+  document.getElementById('outSize').textContent = formatBytes(outLen);
+  const pct = origLen > 0 ? ((1 - outLen / origLen) * 100).toFixed(1) : 0;
+  document.getElementById('savedPct').textContent = (pct >= 0 ? pct : 0) + '%';
+}
+
+function minifyHTML() {
+  let html = input.value;
+  if (!html.trim()) return;
+  const origLen = new Blob([html]).size;
+
+  if (document.getElementById('optComments').checked) {
+    html = html.replace(/<!--[\s\S]*?-->/g, '');
+  }
+  if (document.getElementById('optWhitespace').checked) {
+    // Collapse whitespace between tags
+    html = html.replace(/>\s+</g, '><');
+    // Collapse multiple whitespace to single space
+    html = html.replace(/\s{2,}/g, ' ');
+    // Remove leading/trailing whitespace
+    html = html.trim();
+  }
+  if (document.getElementById('optOptionalTags').checked) {
+    // Remove optional closing tags
+    html = html.replace(/<\/(li|dt|dd|p|tr|td|th|thead|tbody|tfoot|colgroup|option|optgroup)>/gi, '');
+  }
+  if (document.getElementById('optQuotes').checked) {
+    // Remove quotes from attributes that don't need them (single-word values without special chars)
+    html = html.replace(/=["']([a-zA-Z0-9_-]+)["']/g, '=$1');
+  }
+
+  output.value = html;
+  const outLen = new Blob([html]).size;
+  updateStats(origLen, outLen);
+  gtag('event', 'minify_html', { event_category: 'tool_use' });
+}
+
+function beautifyHTML() {
+  let html = input.value;
+  if (!html.trim()) return;
+  const origLen = new Blob([html]).size;
+
+  // Simple beautifier
+  let formatted = '';
+  let indent = 0;
+  const tab = '  ';
+
+  // Remove existing excessive whitespace between tags first
+  html = html.replace(/>\s+</g, '><').trim();
+
+  // Self-closing / void tags
+  const voidTags = new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
+
+  // Split by tags
+  const tokens = html.split(/(<\/?[^>]+>)/g).filter(t => t.length > 0);
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i].trim();
+    if (!token) continue;
+
+    if (token.startsWith('</')) {
+      // Closing tag
+      indent = Math.max(0, indent - 1);
+      formatted += tab.repeat(indent) + token + '\n';
+    } else if (token.startsWith('<')) {
+      // Opening tag or self-closing
+      const tagMatch = token.match(/^<([a-zA-Z0-9]+)/);
+      const tagName = tagMatch ? tagMatch[1].toLowerCase() : '';
+      const selfClosing = token.endsWith('/>') || voidTags.has(tagName);
+
+      formatted += tab.repeat(indent) + token + '\n';
+      if (!selfClosing && !token.startsWith('<!')) {
+        indent++;
+      }
+    } else {
+      // Text content
+      if (token.trim()) {
+        formatted += tab.repeat(indent) + token.trim() + '\n';
+      }
+    }
+  }
+
+  output.value = formatted.trim();
+  const outLen = new Blob([formatted.trim()]).size;
+  updateStats(origLen, outLen);
+  gtag('event', 'beautify_html', { event_category: 'tool_use' });
+}
+
+function copyOutput() {
+  const text = output.value;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copiedToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+    const btn = document.getElementById('outCopyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+  gtag('event', 'copy_html', { event_category: 'tool_use' });
+}
+
+function clearAll() {
+  input.value = '';
+  output.value = '';
+  document.getElementById('stats').style.display = 'none';
+}
+
+function loadSample() {
+  input.value = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Page</title>
+  <!-- This is a comment that will be removed -->
+  <style>
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Hello World</h1>
+    <p>This is a sample HTML page for testing the minifier.</p>
+
+    <div class="container">
+      <p>It has multiple elements, comments, and whitespace.</p>
+      <!-- Another comment -->
+      <img src="image.jpg" alt="sample image">
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sample Site</p>
+  </footer>
+</body>
+</html>`;
+  minifyHTML();
+}
+</script>
+</body>
+</html>

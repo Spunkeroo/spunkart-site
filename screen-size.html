@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen & Device Info Tool — Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Check your screen resolution, viewport size, device pixel ratio, browser info, and more. All updating live. Free debugging tool for responsive design.">
+<meta property="og:title" content="Screen & Device Info Tool — Free Online Tool">
+<meta property="og:description" content="Check screen resolution, viewport, pixel ratio, browser info, and more. Live-updating. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/screen-size.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Screen & Device Info Tool">
+<meta name="twitter:description" content="Check your screen resolution, viewport, pixel ratio, and more. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/screen-size.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Screen & Device Info Tool","description":"Check your screen resolution, viewport size, device pixel ratio, browser info, and more. All updating live.","url":"https://spunkart.com/screen-size.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:6px 14px;font-size:0.8rem;color:#10b981;margin-bottom:24px;}
+.live-dot{width:8px;height:8px;background:#10b981;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px;}
+.info-card{background:#111;border:1px solid #333;border-radius:12px;padding:20px;transition:border-color 0.2s;}
+.info-card:hover{border-color:#ff5f1f;}
+.info-card .label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.info-card .label .icon{font-size:1rem;}
+.info-card .value{font-size:1.5rem;font-weight:700;color:#fff;word-break:break-all;}
+.info-card .value.small{font-size:0.85rem;font-weight:400;color:#ccc;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;}
+.info-card .value.green{color:#10b981;}
+.info-card .value.orange{color:#ff5f1f;}
+.info-card .value.red{color:#ef4444;}
+.info-card .extra{font-size:0.8rem;color:#666;margin-top:4px;}
+
+.breakpoint-bar{background:#111;border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:24px;}
+.breakpoint-bar h3{font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;}
+.bp-visual{display:flex;height:32px;border-radius:6px;overflow:hidden;margin-bottom:8px;}
+.bp-segment{display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:#fff;transition:all 0.3s;}
+.bp-labels{display:flex;gap:12px;flex-wrap:wrap;font-size:0.75rem;}
+.bp-label{display:flex;align-items:center;gap:4px;}
+.bp-label .dot{width:10px;height:10px;border-radius:3px;}
+
+.copy-all{display:inline-block;padding:10px 24px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;margin-bottom:24px;}
+.copy-all:hover{background:#e5520f;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.newsletter{background:#151515;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#fff;margin-bottom:4px;}
+.newsletter p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+
+.tool-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:8px;font-size:0.82rem;color:#ccc;transition:border-color 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Screen & Device Info</h1>
+  <div class="subtitle">Real-time display of your screen, viewport, browser, and device capabilities. Useful for debugging responsive design.</div>
+
+  <div class="live-badge"><span class="live-dot"></span> Live — updates in real time</div>
+
+  <button class="copy-all" onclick="copyAll()">Copy All Info</button>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128187;</span> Screen Resolution</div>
+      <div class="value" id="screenRes">—</div>
+      <div class="extra">Physical screen pixels</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128444;&#65039;</span> Viewport Size</div>
+      <div class="value" id="viewport">—</div>
+      <div class="extra">CSS pixels available in browser</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128302;</span> Device Pixel Ratio</div>
+      <div class="value" id="dpr">—</div>
+      <div class="extra">Physical pixels per CSS pixel</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#127912;</span> Color Depth</div>
+      <div class="value" id="colorDepth">—</div>
+      <div class="extra">Bits per pixel for color</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128260;</span> Orientation</div>
+      <div class="value" id="orientation">—</div>
+      <div class="extra">Screen orientation mode</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#9995;</span> Touch Support</div>
+      <div class="value" id="touchSupport">—</div>
+      <div class="extra">Max touch points available</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#127760;</span> Preferred Language</div>
+      <div class="value" id="language">—</div>
+      <div class="extra">Browser language preference</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128225;</span> Online Status</div>
+      <div class="value" id="onlineStatus">—</div>
+      <div class="extra">Network connectivity</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128267;</span> Battery Level</div>
+      <div class="value" id="battery">—</div>
+      <div class="extra" id="batteryExtra">If supported by browser</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128246;</span> Connection Type</div>
+      <div class="value" id="connection">—</div>
+      <div class="extra" id="connectionExtra">Network information</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128203;</span> Platform</div>
+      <div class="value" id="platform">—</div>
+      <div class="extra">Operating system platform</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#128200;</span> Available Memory</div>
+      <div class="value" id="memory">—</div>
+      <div class="extra">Device memory (if reported)</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#9881;&#65039;</span> CPU Cores</div>
+      <div class="value" id="cores">—</div>
+      <div class="extra">Logical processor count</div>
+    </div>
+    <div class="info-card">
+      <div class="label"><span class="icon">&#127909;</span> Media Queries</div>
+      <div class="value small" id="mediaQueries">—</div>
+      <div class="extra">Active CSS media features</div>
+    </div>
+  </div>
+
+  <div class="breakpoint-bar">
+    <h3>CSS Breakpoint Map</h3>
+    <div class="bp-visual" id="bpVisual"></div>
+    <div class="bp-labels">
+      <div class="bp-label"><div class="dot" style="background:#ef4444"></div> XS (&lt;576px)</div>
+      <div class="bp-label"><div class="dot" style="background:#f59e0b"></div> SM (576-767px)</div>
+      <div class="bp-label"><div class="dot" style="background:#10b981"></div> MD (768-991px)</div>
+      <div class="bp-label"><div class="dot" style="background:#3b82f6"></div> LG (992-1199px)</div>
+      <div class="bp-label"><div class="dot" style="background:#8b5cf6"></div> XL (1200-1399px)</div>
+      <div class="bp-label"><div class="dot" style="background:#ec4899"></div> XXL (1400px+)</div>
+    </div>
+  </div>
+
+  <div class="info-card" style="margin-bottom:24px;">
+    <div class="label"><span class="icon">&#128270;</span> User Agent String</div>
+    <div class="value small" id="userAgent">—</div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+
+  <div class="tool-links">
+    <a href="/json-formatter.html">JSON Formatter</a>
+    <a href="/html-minifier.html">HTML Minifier</a>
+    <a href="/json-to-csv.html">JSON to CSV</a>
+    <a href="/password-generator.html">Password Generator</a>
+    <a href="/color-palette.html">Color Palette</a>
+    <a href="/emoji-picker.html">Emoji Picker</a>
+    <a href="/placeholder-image.html">Placeholder Images</a>
+    <a href="/store" style="color:#ff5f1f;font-weight:700;">Get All 40+ Tools</a>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied-toast" id="copiedToast">Copied!</div>
+
+<script>
+const info = {};
+
+function updateAll() {
+  // Screen resolution
+  const sw = screen.width, sh = screen.height;
+  document.getElementById('screenRes').textContent = sw + ' x ' + sh;
+  info.screenResolution = sw + ' x ' + sh;
+
+  // Viewport
+  const vw = window.innerWidth, vh = window.innerHeight;
+  document.getElementById('viewport').textContent = vw + ' x ' + vh;
+  info.viewport = vw + ' x ' + vh;
+
+  // DPR
+  const dpr = window.devicePixelRatio || 1;
+  document.getElementById('dpr').textContent = dpr.toFixed(2) + 'x';
+  info.devicePixelRatio = dpr.toFixed(2);
+
+  // Color depth
+  const cd = screen.colorDepth;
+  document.getElementById('colorDepth').textContent = cd + '-bit';
+  info.colorDepth = cd + '-bit';
+
+  // Orientation
+  let orient = 'Unknown';
+  if (screen.orientation) {
+    orient = screen.orientation.type.replace('-primary', '').replace('-secondary', ' (secondary)');
+  } else if (typeof window.orientation !== 'undefined') {
+    orient = Math.abs(window.orientation) === 90 ? 'Landscape' : 'Portrait';
+  } else {
+    orient = vw > vh ? 'Landscape' : 'Portrait';
+  }
+  const orientEl = document.getElementById('orientation');
+  orientEl.textContent = orient.charAt(0).toUpperCase() + orient.slice(1);
+  info.orientation = orient;
+
+  // Touch
+  const maxTouch = navigator.maxTouchPoints || 0;
+  const touchEl = document.getElementById('touchSupport');
+  if (maxTouch > 0) {
+    touchEl.textContent = 'Yes (' + maxTouch + ' points)';
+    touchEl.className = 'value green';
+  } else {
+    touchEl.textContent = 'No';
+    touchEl.className = 'value orange';
+  }
+  info.touchSupport = maxTouch > 0 ? 'Yes (' + maxTouch + ' points)' : 'No';
+
+  // Language
+  document.getElementById('language').textContent = navigator.language || navigator.userLanguage || 'Unknown';
+  info.language = navigator.language || 'Unknown';
+
+  // Online
+  const onlineEl = document.getElementById('onlineStatus');
+  if (navigator.onLine) {
+    onlineEl.textContent = 'Online';
+    onlineEl.className = 'value green';
+  } else {
+    onlineEl.textContent = 'Offline';
+    onlineEl.className = 'value red';
+  }
+  info.onlineStatus = navigator.onLine ? 'Online' : 'Offline';
+
+  // Platform
+  const platform = navigator.userAgentData ? navigator.userAgentData.platform : navigator.platform || 'Unknown';
+  document.getElementById('platform').textContent = platform;
+  info.platform = platform;
+
+  // Memory
+  const mem = navigator.deviceMemory;
+  document.getElementById('memory').textContent = mem ? mem + ' GB' : 'Not available';
+  info.memory = mem ? mem + ' GB' : 'Not available';
+
+  // CPU cores
+  const cores = navigator.hardwareConcurrency;
+  document.getElementById('cores').textContent = cores ? cores + ' cores' : 'Not available';
+  info.cpuCores = cores ? cores + ' cores' : 'Not available';
+
+  // Connection
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const connEl = document.getElementById('connection');
+  const connExtra = document.getElementById('connectionExtra');
+  if (conn) {
+    const type = conn.effectiveType || conn.type || 'Unknown';
+    connEl.textContent = type.toUpperCase();
+    let extra = [];
+    if (conn.downlink) extra.push('Down: ' + conn.downlink + ' Mbps');
+    if (conn.rtt) extra.push('RTT: ' + conn.rtt + 'ms');
+    if (conn.saveData) extra.push('Data Saver: ON');
+    connExtra.textContent = extra.join(' | ') || 'Network information';
+    info.connection = type.toUpperCase() + (extra.length ? ' (' + extra.join(', ') + ')' : '');
+  } else {
+    connEl.textContent = 'Not available';
+    info.connection = 'Not available';
+  }
+
+  // Media queries
+  const queries = [];
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) queries.push('Dark mode');
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) queries.push('Light mode');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) queries.push('Reduced motion');
+  if (window.matchMedia('(prefers-contrast: more)').matches) queries.push('High contrast');
+  if (window.matchMedia('(hover: hover)').matches) queries.push('Hover capable');
+  if (window.matchMedia('(hover: none)').matches) queries.push('No hover');
+  if (window.matchMedia('(pointer: fine)').matches) queries.push('Fine pointer');
+  if (window.matchMedia('(pointer: coarse)').matches) queries.push('Coarse pointer');
+  if (window.matchMedia('(display-mode: standalone)').matches) queries.push('Standalone app');
+  document.getElementById('mediaQueries').textContent = queries.join(', ') || 'None detected';
+  info.mediaQueries = queries.join(', ') || 'None detected';
+
+  // User agent
+  document.getElementById('userAgent').textContent = navigator.userAgent;
+  info.userAgent = navigator.userAgent;
+
+  // Breakpoint bar
+  updateBreakpointBar(vw);
+}
+
+function updateBreakpointBar(vw) {
+  const breakpoints = [
+    { name: 'XS', max: 575, color: '#ef4444' },
+    { name: 'SM', max: 767, color: '#f59e0b' },
+    { name: 'MD', max: 991, color: '#10b981' },
+    { name: 'LG', max: 1199, color: '#3b82f6' },
+    { name: 'XL', max: 1399, color: '#8b5cf6' },
+    { name: 'XXL', max: 9999, color: '#ec4899' }
+  ];
+
+  let html = '';
+  const total = 1600;
+  let current = '';
+
+  breakpoints.forEach((bp, i) => {
+    const prev = i === 0 ? 0 : breakpoints[i - 1].max + 1;
+    const width = ((bp.max === 9999 ? 1600 : bp.max) - prev) / total * 100;
+    const isActive = vw >= prev && vw <= bp.max;
+    if (isActive) current = bp.name;
+    const opacity = isActive ? 1 : 0.25;
+    html += `<div class="bp-segment" style="width:${width}%;background:${bp.color};opacity:${opacity};">${isActive ? bp.name + ' (' + vw + 'px)' : bp.name}</div>`;
+  });
+
+  document.getElementById('bpVisual').innerHTML = html;
+}
+
+// Battery
+async function updateBattery() {
+  const batEl = document.getElementById('battery');
+  const batExtra = document.getElementById('batteryExtra');
+
+  if ('getBattery' in navigator) {
+    try {
+      const bat = await navigator.getBattery();
+      const update = () => {
+        const level = Math.round(bat.level * 100);
+        batEl.textContent = level + '%';
+        batEl.className = 'value ' + (level > 50 ? 'green' : level > 20 ? 'orange' : 'red');
+        let status = bat.charging ? 'Charging' : 'Discharging';
+        if (bat.chargingTime !== Infinity && bat.charging) status += ' (' + Math.round(bat.chargingTime / 60) + ' min to full)';
+        if (bat.dischargingTime !== Infinity && !bat.charging) status += ' (' + Math.round(bat.dischargingTime / 60) + ' min left)';
+        batExtra.textContent = status;
+        info.battery = level + '% - ' + status;
+      };
+      update();
+      bat.addEventListener('levelchange', update);
+      bat.addEventListener('chargingchange', update);
+    } catch (e) {
+      batEl.textContent = 'Not available';
+      info.battery = 'Not available';
+    }
+  } else {
+    batEl.textContent = 'Not supported';
+    batExtra.textContent = 'Battery API not available in this browser';
+    info.battery = 'Not supported';
+  }
+}
+
+function copyAll() {
+  let text = 'Screen & Device Info\n';
+  text += '====================\n';
+  text += 'Screen Resolution: ' + info.screenResolution + '\n';
+  text += 'Viewport Size: ' + info.viewport + '\n';
+  text += 'Device Pixel Ratio: ' + info.devicePixelRatio + '\n';
+  text += 'Color Depth: ' + info.colorDepth + '\n';
+  text += 'Orientation: ' + info.orientation + '\n';
+  text += 'Touch Support: ' + info.touchSupport + '\n';
+  text += 'Language: ' + info.language + '\n';
+  text += 'Online Status: ' + info.onlineStatus + '\n';
+  text += 'Battery: ' + info.battery + '\n';
+  text += 'Connection: ' + info.connection + '\n';
+  text += 'Platform: ' + info.platform + '\n';
+  text += 'Memory: ' + info.memory + '\n';
+  text += 'CPU Cores: ' + info.cpuCores + '\n';
+  text += 'Media Queries: ' + info.mediaQueries + '\n';
+  text += 'User Agent: ' + info.userAgent + '\n';
+  text += '\nGenerated at spunkart.com/screen-size.html';
+
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copiedToast');
+    toast.textContent = 'All Info Copied!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+  });
+  gtag('event', 'copy_screen_info', { event_category: 'tool_use' });
+}
+
+// Init
+updateAll();
+updateBattery();
+
+// Live updates
+window.addEventListener('resize', updateAll);
+window.addEventListener('orientationchange', updateAll);
+window.addEventListener('online', updateAll);
+window.addEventListener('offline', updateAll);
+
+// Periodic refresh for connection changes
+setInterval(updateAll, 2000);
+</script>
+</body>
+</html>

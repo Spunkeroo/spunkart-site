@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lorem Ipsum Generator — Classic, Hipster, Business & Tech Ipsum</title>
+<meta name="description" content="Generate lorem ipsum placeholder text instantly. Classic Latin, hipster, business, and tech ipsum styles. Free online tool — no signup required.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:700px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.controls{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.row{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.row label{font-size:0.85rem;color:#aaa;min-width:60px}
+select,input[type=number]{background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:8px 12px;font-size:0.9rem;outline:none}
+select:focus,input[type=number]:focus{border-color:#ff5f1f}
+input[type=number]{width:80px}
+.style-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.style-tab{padding:8px 16px;background:#1a1a1a;border:1px solid #333;border-radius:8px;font-size:0.8rem;cursor:pointer;color:#888;transition:all 0.2s}
+.style-tab:hover{border-color:#ff5f1f;color:#fff}
+.style-tab.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.btn{padding:10px 24px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-secondary{background:#222;color:#ccc}.btn-secondary:hover{background:#333}
+.output-box{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1rem;position:relative;min-height:120px}
+.output-text{font-size:0.95rem;line-height:1.7;color:#ccc;white-space:pre-wrap;word-wrap:break-word}
+.output-text p{margin-bottom:1em}
+.stats{display:flex;gap:16px;font-size:0.8rem;color:#666;margin-bottom:1.5rem}
+.stats span{color:#ff5f1f;font-weight:700}
+.copy-btn{position:absolute;top:12px;right:12px;background:#222;color:#ccc;border:none;border-radius:6px;padding:6px 12px;font-size:0.8rem;cursor:pointer;transition:all 0.2s}
+.copy-btn:hover{background:#ff5f1f;color:#fff}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{margin-top:2rem;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#999;font-size:0.9rem;margin-bottom:12px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+@media(max-width:600px){.container{padding:0 1rem}h1{font-size:1.5rem}.row{flex-direction:column}.style-tabs{justify-content:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lorem Ipsum Generator","description":"Generate lorem ipsum placeholder text. Classic Latin, hipster, business, and tech ipsum styles.","url":"https://spunkart.com/lorem-ipsum.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Lorem Ipsum Generator</h1>
+  <div class="sub">Generate placeholder text in multiple styles — instantly</div>
+
+  <div class="controls">
+    <div class="style-tabs">
+      <div class="style-tab active" onclick="setStyle('classic',this)">Classic Latin</div>
+      <div class="style-tab" onclick="setStyle('hipster',this)">Hipster</div>
+      <div class="style-tab" onclick="setStyle('business',this)">Business</div>
+      <div class="style-tab" onclick="setStyle('tech',this)">Tech</div>
+    </div>
+    <div class="row">
+      <label>Generate</label>
+      <input type="number" id="count" min="1" max="50" value="3">
+      <select id="unit">
+        <option value="paragraphs">Paragraphs</option>
+        <option value="sentences">Sentences</option>
+        <option value="words">Words</option>
+      </select>
+      <button class="btn" onclick="generate()">Generate</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div>Paragraphs: <span id="statP">0</span></div>
+    <div>Sentences: <span id="statS">0</span></div>
+    <div>Words: <span id="statW">0</span></div>
+    <div>Characters: <span id="statC">0</span></div>
+  </div>
+
+  <div class="output-box">
+    <button class="copy-btn" onclick="copyText()">Copy</button>
+    <div class="output-text" id="output">Click Generate to create placeholder text.</div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get notified when we launch new free tools.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/url-encoder.html">URL Encoder</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/markdown-editor.html">Markdown Editor</a>
+      <a href="/color-palette.html">Color Palette</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+let currentStyle = 'classic';
+
+const data = {
+  classic: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+    "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.",
+    "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+    "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+    "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.",
+    "Et harum quidem rerum facilis est et expedita distinctio nam libero tempore cum soluta nobis est eligendi optio.",
+    "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint.",
+    "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis.",
+    "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat.",
+    "Facere possimus, omnis voluptas assumenda est, omnis dolor repellendus temporibus autem quibusdam et aut officiis debitis.",
+    "Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    "Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.",
+    "Viverra justo nec ultrices dui sapien eget mi proin sed libero enim sed faucibus turpis in eu.",
+    "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+    "Cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem."
+  ],
+  hipster: [
+    "Craft beer fingerstache semiotics, pork belly man bun tattooed sustainable kogi echo park thundercats vexillologist.",
+    "Gluten-free organic tote bag, bicycle rights aesthetic waistcoat literally williamsburg brunch chambray kombucha.",
+    "Vegan poutine vinyl, artisan helvetica pug normcore bushwick tofu post-ironic dreamcatcher selfies.",
+    "Edison bulb shoreditch knausgaard, farm-to-table plaid fixie vaporwave trust fund retro hoodie stumptown.",
+    "Banjo cold-pressed paleo XOXO, roof party green juice taxidermy mixtape distillery meggings flannel.",
+    "Cliche tattooed listicle, forage skateboard cornhole VHS pitchfork lo-fi lyft echo park bushwick.",
+    "Letterpress cloud bread heirloom, viral chillwave palo santo subway tile tacos microdosing salvia tumblr.",
+    "Man braid raw denim cray, hell of bespoke activated charcoal truffaut keytar air plant squid.",
+    "90s pork belly literally before they sold out, crucifix celiac hammock keffiyeh chartreuse scenester street art.",
+    "Polaroid artisan af, butcher jean shorts occupy cardigan copper mug hashtag hammock trust fund YOLO.",
+    "Pour-over shoreditch pabst, glossier fanny pack tonx hoodie cronut la croix asymmetrical snackwave.",
+    "Fingerstache enamel pin affogato, slow-carb quinoa lomo pickled single-origin coffee master cleanse prism.",
+    "Succulents biodiesel lyft, cred cronut fashion axe woke venmo raclette kinfolk hashtag taiyaki.",
+    "Fixie wayfarers direct trade beard, helvetica seitan normcore franzen chia artisan kinfolk tousled.",
+    "Cardigan narwhal shabby chic, ennui godard VHS taxidermy lo-fi copper mug everyday carry yuccie.",
+    "Tacos aesthetic leggings, selfies vaporwave brooklyn keytar thundercats tilde meditation small batch.",
+    "Dreamcatcher portland listicle prism, blog ramps coloring book asymmetrical distillery occupy brunch.",
+    "Chartreuse ugh health goth, taiyaki mlkshk chicharrones deep v tousled sustainable cred readymade.",
+    "Hella vegan microdosing, copper mug raw denim brunch pop-up heirloom fam hashtag direct trade.",
+    "Wolf tofu kinfolk, tattooed pitchfork chillwave sustainable marfa selvage blog vinyl thundercats."
+  ],
+  business: [
+    "Leveraging synergies across the enterprise, we drive stakeholder value through innovative go-to-market strategies and scalable solutions.",
+    "Our mission-critical pipeline delivers end-to-end visibility, enabling data-driven decision-making at every organizational level.",
+    "By optimizing core competencies and streamlining operational workflows, we achieve sustainable competitive advantage in dynamic markets.",
+    "Cross-functional alignment ensures seamless execution of strategic initiatives while maximizing return on investment across business units.",
+    "Proactive risk mitigation and agile resource allocation empower teams to pivot rapidly in response to market disruptions.",
+    "The value proposition centers on delivering best-in-class customer experiences through omnichannel engagement and personalized touchpoints.",
+    "Quarterly benchmarks indicate a paradigm shift in customer acquisition costs, reflecting improved funnel optimization and conversion rates.",
+    "Executive leadership champions a culture of continuous improvement, fostering innovation through iterative feedback loops and sprint cycles.",
+    "Our ecosystem partners provide complementary capabilities that amplify market penetration and accelerate time-to-value for enterprise clients.",
+    "Revenue diversification strategies mitigate concentration risk while expanding total addressable market through adjacent verticals.",
+    "Digital transformation initiatives modernize legacy infrastructure, enabling real-time analytics and predictive business intelligence.",
+    "Stakeholder engagement frameworks ensure transparency, accountability, and alignment with fiduciary responsibilities across the organization.",
+    "The go-to-market playbook integrates demand generation, brand positioning, and thought leadership to capture market share effectively.",
+    "Operational excellence programs reduce cost-per-acquisition while simultaneously enhancing lifetime customer value and net promoter scores.",
+    "Strategic roadmap milestones track progress against key performance indicators, ensuring alignment with board-approved objectives.",
+    "Talent acquisition and retention strategies focus on building high-performing teams that deliver measurable impact across verticals.",
+    "Supply chain optimization reduces overhead, improves margins, and creates agile fulfillment capabilities for fluctuating demand cycles.",
+    "Customer success metrics demonstrate consistently improving satisfaction scores, reduced churn, and expanded product adoption rates.",
+    "Partnership development programs create mutually beneficial relationships that drive co-selling opportunities and shared revenue streams.",
+    "The fiscal year outlook projects sustained growth driven by product-market fit, operational leverage, and disciplined capital allocation."
+  ],
+  tech: [
+    "Refactoring the microservices architecture to implement event-driven design patterns improves throughput and reduces latency across distributed systems.",
+    "The CI/CD pipeline leverages containerized builds, automated testing, and blue-green deployments to achieve zero-downtime releases.",
+    "Kubernetes orchestration scales horizontally based on CPU and memory metrics, while Helm charts manage reproducible environment configurations.",
+    "GraphQL resolvers optimize data fetching by eliminating over-fetching and under-fetching problems inherent in traditional REST endpoints.",
+    "Implementing a message queue with dead letter handling ensures fault-tolerant asynchronous processing of mission-critical transactions.",
+    "The machine learning pipeline ingests terabytes of training data, leveraging GPU clusters for distributed model training and hyperparameter optimization.",
+    "Edge computing nodes reduce round-trip latency by processing requests closer to end users, improving perceived application performance significantly.",
+    "Database sharding distributes write load across multiple nodes while read replicas handle query traffic, achieving linear horizontal scalability.",
+    "WebAssembly modules deliver near-native performance in the browser, enabling compute-intensive applications without server-side dependencies.",
+    "Infrastructure as code with Terraform provisions cloud resources declaratively, ensuring reproducible environments across development, staging, and production.",
+    "The observability stack combines structured logging, distributed tracing, and custom metrics to provide full-stack visibility into system behavior.",
+    "Rate limiting and circuit breaker patterns protect downstream services from cascading failures during traffic spikes and partial outages.",
+    "Serverless functions handle bursty workloads cost-effectively, scaling from zero to thousands of concurrent executions within milliseconds.",
+    "Content delivery networks cache static assets at edge locations worldwide, reducing time-to-first-byte for geographically distributed users.",
+    "OAuth 2.0 with PKCE flow secures single-page applications while JWT tokens enable stateless authentication across microservice boundaries.",
+    "Real-time data streaming with Apache Kafka processes millions of events per second, enabling complex event processing and analytics pipelines.",
+    "Progressive web apps leverage service workers for offline functionality, push notifications, and app-like experiences without app store distribution.",
+    "Feature flags decouple deployment from release, enabling trunk-based development and controlled rollouts to specific user segments.",
+    "Vector databases enable semantic search and retrieval-augmented generation by storing high-dimensional embeddings for efficient similarity queries.",
+    "Load balancers distribute traffic using consistent hashing algorithms, maintaining session affinity while maximizing resource utilization across the cluster."
+  ]
+};
+
+function setStyle(style, el) {
+  currentStyle = style;
+  document.querySelectorAll('.style-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function generate() {
+  const count = Math.min(Math.max(parseInt(document.getElementById('count').value) || 1, 1), 50);
+  const unit = document.getElementById('unit').value;
+  const sentences = data[currentStyle];
+  let result = '';
+  let paragraphs = [];
+
+  if (unit === 'paragraphs') {
+    for (let p = 0; p < count; p++) {
+      const numSentences = 3 + Math.floor(Math.random() * 4);
+      let para = '';
+      for (let s = 0; s < numSentences; s++) {
+        para += sentences[Math.floor(Math.random() * sentences.length)] + ' ';
+      }
+      paragraphs.push(para.trim());
+    }
+    result = paragraphs.join('\n\n');
+  } else if (unit === 'sentences') {
+    let arr = [];
+    for (let i = 0; i < count; i++) {
+      arr.push(sentences[Math.floor(Math.random() * sentences.length)]);
+    }
+    result = arr.join(' ');
+  } else {
+    let words = [];
+    while (words.length < count) {
+      const s = sentences[Math.floor(Math.random() * sentences.length)];
+      words = words.concat(s.split(/\s+/));
+    }
+    result = words.slice(0, count).join(' ');
+    if (!/[.!?]$/.test(result)) result += '.';
+  }
+
+  document.getElementById('output').textContent = result;
+
+  const wordCount = result.split(/\s+/).filter(w => w).length;
+  const sentenceCount = result.split(/[.!?]+/).filter(s => s.trim()).length;
+  const paraCount = unit === 'paragraphs' ? count : result.split(/\n\n/).length;
+
+  document.getElementById('statP').textContent = paraCount;
+  document.getElementById('statS').textContent = sentenceCount;
+  document.getElementById('statW').textContent = wordCount;
+  document.getElementById('statC').textContent = result.length;
+}
+
+function copyText() {
+  const text = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(text);
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+generate();
+</script>
+</body>
+</html>

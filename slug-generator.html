@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Slug Generator - Free SEO Slug Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate clean, SEO-friendly URL slugs from titles and headlines. Options for separator, case, max length, stop word removal. Bulk mode included. Free tool.">
+<meta property="og:title" content="URL Slug Generator - Free SEO Slug Tool">
+<meta property="og:description" content="Generate clean, SEO-friendly URL slugs instantly. Bulk mode, stop word removal, and more.">
+<meta property="og:image" content="https://spunkart.com/assets/og-slug-generator.png">
+<meta property="og:url" content="https://spunkart.com/slug-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="URL Slug Generator - Free Tool">
+<meta name="twitter:description" content="Generate clean, SEO-friendly URL slugs from any title. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/slug-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Slug Generator","description":"Generate clean, SEO-friendly URL slugs from titles and headlines. Supports bulk mode, stop word removal, and custom separators.","url":"https://spunkart.com/slug-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.mode-tabs{display:flex;gap:0;margin-bottom:24px;}
+.mode-tab{padding:10px 24px;background:#1a1a1a;border:1px solid #333;color:#888;cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.2s;}
+.mode-tab:first-child{border-radius:8px 0 0 8px;}
+.mode-tab:last-child{border-radius:0 8px 8px 0;}
+.mode-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.card{background:#111;border:1px solid #333;border-radius:12px;padding:24px;margin-bottom:20px;}
+
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],textarea{width:100%;background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:12px 16px;border-radius:8px;font-size:1rem;font-family:inherit;outline:none;transition:border-color 0.2s;}
+input:focus,textarea:focus{border-color:#ff5f1f;}
+textarea{resize:vertical;min-height:120px;}
+
+.options{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid #222;}
+.option{display:flex;align-items:center;gap:8px;}
+.option label{margin-bottom:0;font-size:0.85rem;color:#ccc;text-transform:none;letter-spacing:0;font-weight:400;}
+.option select,.option input[type="number"]{background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:6px 10px;border-radius:6px;font-size:0.85rem;width:auto;}
+.toggle{position:relative;width:40px;height:22px;background:#333;border-radius:11px;cursor:pointer;transition:background 0.3s;flex-shrink:0;}
+.toggle.on{background:#ff5f1f;}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform 0.3s;}
+.toggle.on::after{transform:translateX(18px);}
+
+.slug-output{background:#0a0a0a;border:2px solid #333;border-radius:12px;padding:16px 20px;margin-top:16px;font-family:'SF Mono',Monaco,monospace;font-size:1.1rem;color:#10b981;word-break:break-all;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color 0.2s;}
+.slug-output.has-value{border-color:#10b981;}
+.slug-text{flex:1;word-break:break-all;}
+.slug-meta{display:flex;gap:16px;margin-top:8px;font-size:0.8rem;color:#666;}
+.slug-meta span{display:flex;align-items:center;gap:4px;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+.btn-icon{width:36px;height:36px;border-radius:8px;padding:0;display:flex;align-items:center;justify-content:center;font-size:1rem;background:#222;flex-shrink:0;}
+.btn-icon:hover{background:#ff5f1f;}
+
+.bulk-results{margin-top:16px;}
+.bulk-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#0a0a0a;border:1px solid #222;border-radius:8px;margin-bottom:6px;gap:12px;}
+.bulk-original{color:#888;font-size:0.85rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bulk-arrow{color:#666;flex-shrink:0;}
+.bulk-slug{color:#10b981;font-family:monospace;font-size:0.85rem;flex:1;word-break:break-all;text-align:right;}
+
+.toolbar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.8rem;color:#ccc;transition:all 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#999;margin-bottom:16px;font-size:0.9rem;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied.show{opacity:1;}
+
+#bulkMode{display:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>URL Slug Generator</h1>
+  <div class="subtitle">Generate clean, SEO-friendly URL slugs from any title or headline</div>
+
+  <div class="mode-tabs">
+    <div class="mode-tab active" onclick="setMode('single')">Single</div>
+    <div class="mode-tab" onclick="setMode('bulk')">Bulk Mode</div>
+  </div>
+
+  <!-- Single Mode -->
+  <div id="singleMode">
+    <div class="card">
+      <label>Enter title or headline</label>
+      <input type="text" id="singleInput" placeholder="How to Build an Amazing Website in 2026" oninput="generateSingle()">
+
+      <div class="options">
+        <div class="option">
+          <label>Separator:</label>
+          <select id="separator" onchange="generateSingle()">
+            <option value="-">Hyphen (-)</option>
+            <option value="_">Underscore (_)</option>
+          </select>
+        </div>
+        <div class="option">
+          <label>Lowercase</label>
+          <div class="toggle on" id="lowercase" onclick="this.classList.toggle('on');generateSingle()"></div>
+        </div>
+        <div class="option">
+          <label>Remove stop words</label>
+          <div class="toggle" id="stopWords" onclick="this.classList.toggle('on');generateSingle()"></div>
+        </div>
+        <div class="option">
+          <label>Max length:</label>
+          <input type="number" id="maxLength" value="0" min="0" max="200" placeholder="0 = no limit" style="width:70px;" onchange="generateSingle()">
+        </div>
+      </div>
+
+      <div class="slug-output" id="singleOutput">
+        <span class="slug-text" id="slugText">your-slug-will-appear-here</span>
+        <button class="btn-icon" onclick="copySingle()" title="Copy">&#128203;</button>
+      </div>
+      <div class="slug-meta">
+        <span id="charCount">0 characters</span>
+        <span id="wordCount">0 words</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Mode -->
+  <div id="bulkMode">
+    <div class="card">
+      <label>Paste titles (one per line)</label>
+      <textarea id="bulkInput" placeholder="How to Build an Amazing Website&#10;10 Tips for Better SEO&#10;The Ultimate Guide to CSS Flexbox&#10;Why JavaScript is Awesome" oninput="generateBulk()"></textarea>
+
+      <div class="options">
+        <div class="option">
+          <label>Separator:</label>
+          <select id="bulkSeparator" onchange="generateBulk()">
+            <option value="-">Hyphen (-)</option>
+            <option value="_">Underscore (_)</option>
+          </select>
+        </div>
+        <div class="option">
+          <label>Lowercase</label>
+          <div class="toggle on" id="bulkLowercase" onclick="this.classList.toggle('on');generateBulk()"></div>
+        </div>
+        <div class="option">
+          <label>Remove stop words</label>
+          <div class="toggle" id="bulkStopWords" onclick="this.classList.toggle('on');generateBulk()"></div>
+        </div>
+        <div class="option">
+          <label>Max length:</label>
+          <input type="number" id="bulkMaxLength" value="0" min="0" max="200" style="width:70px;" onchange="generateBulk()">
+        </div>
+      </div>
+
+      <div class="bulk-results" id="bulkResults"></div>
+
+      <div class="toolbar">
+        <button onclick="copyAllBulk()">Copy All Slugs</button>
+        <button class="btn-secondary" onclick="copyAsCsv()">Copy as CSV</button>
+        <button class="btn-secondary" onclick="document.getElementById('bulkInput').value='';generateBulk()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <div class="tool-links">
+      <a href="/og-preview.html">OG Preview</a>
+      <a href="/readme-generator.html">README Generator</a>
+      <a href="/htaccess-generator.html">.htaccess Generator</a>
+      <a href="/css-minifier.html">CSS Minifier</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/meta-generator.html">Meta Tag Generator</a>
+      <a href="/password-generator.html">Password Generator</a>
+    </div>
+    <br>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Free Tools + Discounts</h3>
+    <p>Join the SpunkArt newsletter for free tools, tips, and 10% off your first purchase.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:80px;border:none;border-radius:8px;"></iframe>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+const STOP_WORDS = new Set(['a','an','the','and','or','but','in','on','at','to','for','of','with','by','from','is','it','its','this','that','are','was','were','be','been','being','have','has','had','do','does','did','will','would','shall','should','may','might','can','could','not','no','nor','so','if','then','than','as','into','through','during','before','after','above','below','between','out','off','over','under','up','down','about','each','few','more','most','other','some','such','only','own','same','very','just','because','how','all','both','any','who','whom','which','what','where','when','why']);
+
+function setMode(mode) {
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  if (mode === 'single') {
+    document.querySelectorAll('.mode-tab')[0].classList.add('active');
+    document.getElementById('singleMode').style.display = 'block';
+    document.getElementById('bulkMode').style.display = 'none';
+  } else {
+    document.querySelectorAll('.mode-tab')[1].classList.add('active');
+    document.getElementById('singleMode').style.display = 'none';
+    document.getElementById('bulkMode').style.display = 'block';
+  }
+}
+
+function slugify(text, sep, lower, removeStops, maxLen) {
+  let s = text.trim();
+  // Transliterate common accented characters
+  const charMap = {'a':'aàáâãäå','e':'eèéêë','i':'iìíîï','o':'oòóôõö','u':'uùúûü','n':'nñ','c':'cç','s':'sš','z':'zž','y':'yýÿ'};
+  let cleaned = '';
+  for (const ch of s) {
+    let found = false;
+    for (const [base, chars] of Object.entries(charMap)) {
+      if (chars.includes(ch.toLowerCase())) {
+        cleaned += lower ? base : (ch === ch.toUpperCase() ? base.toUpperCase() : base);
+        found = true;
+        break;
+      }
+    }
+    if (!found) cleaned += ch;
+  }
+  s = cleaned;
+
+  if (lower) s = s.toLowerCase();
+
+  // Remove stop words
+  if (removeStops) {
+    s = s.split(/\s+/).filter(w => !STOP_WORDS.has(w.toLowerCase())).join(' ');
+  }
+
+  // Replace non-alphanumeric with separator
+  s = s.replace(/[^a-zA-Z0-9\s-]/g, '');
+  s = s.replace(/[\s-]+/g, sep);
+  s = s.replace(new RegExp('^\\' + sep + '+|\\' + sep + '+$', 'g'), '');
+
+  // Max length (don't cut mid-word)
+  if (maxLen && maxLen > 0 && s.length > maxLen) {
+    s = s.substring(0, maxLen);
+    const lastSep = s.lastIndexOf(sep);
+    if (lastSep > maxLen * 0.5) s = s.substring(0, lastSep);
+  }
+
+  return s;
+}
+
+function getOpts(prefix) {
+  const p = prefix || '';
+  return {
+    sep: document.getElementById(p + 'separator').value,
+    lower: document.getElementById(p + 'lowercase').classList.contains('on'),
+    stops: document.getElementById(p + 'stopWords').classList.contains('on'),
+    maxLen: parseInt(document.getElementById(p + 'maxLength').value) || 0
+  };
+}
+
+function generateSingle() {
+  const input = document.getElementById('singleInput').value;
+  const opts = getOpts('');
+  const slug = slugify(input, opts.sep, opts.lower, opts.stops, opts.maxLen);
+  document.getElementById('slugText').textContent = slug || 'your-slug-will-appear-here';
+  const output = document.getElementById('singleOutput');
+  if (slug) {
+    output.classList.add('has-value');
+  } else {
+    output.classList.remove('has-value');
+  }
+  document.getElementById('charCount').textContent = slug.length + ' characters';
+  document.getElementById('wordCount').textContent = (slug ? slug.split(opts.sep).length : 0) + ' words';
+}
+
+let bulkSlugs = [];
+
+function generateBulk() {
+  const input = document.getElementById('bulkInput').value;
+  const lines = input.split('\n').filter(l => l.trim());
+  const opts = getOpts('bulk');
+  bulkSlugs = [];
+
+  const html = lines.map(line => {
+    const slug = slugify(line, opts.sep, opts.lower, opts.stops, opts.maxLen);
+    bulkSlugs.push(slug);
+    return `<div class="bulk-row">
+      <span class="bulk-original">${escapeHtml(line.trim())}</span>
+      <span class="bulk-arrow">&#8594;</span>
+      <span class="bulk-slug">${escapeHtml(slug)}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('bulkResults').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function copySingle() {
+  const slug = document.getElementById('slugText').textContent;
+  if (slug && slug !== 'your-slug-will-appear-here') {
+    navigator.clipboard.writeText(slug);
+    showToast();
+  }
+}
+
+function copyAllBulk() {
+  if (bulkSlugs.length > 0) {
+    navigator.clipboard.writeText(bulkSlugs.join('\n'));
+    showToast();
+  }
+}
+
+function copyAsCsv() {
+  const input = document.getElementById('bulkInput').value;
+  const lines = input.split('\n').filter(l => l.trim());
+  const csv = lines.map((line, i) => '"' + line.trim().replace(/"/g,'""') + '","' + (bulkSlugs[i] || '') + '"').join('\n');
+  navigator.clipboard.writeText('title,slug\n' + csv);
+  showToast();
+}
+
+function showToast() {
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+</script>
+</body>
+</html>

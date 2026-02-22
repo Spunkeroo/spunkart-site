@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service Generator - Free Legal ToS Template | SPUNKART.COM</title>
+<meta name="description" content="Generate a complete Terms of Service for your website or app. Answer simple questions and get a professional, customizable ToS document instantly. Free tool.">
+<meta property="og:title" content="Terms of Service Generator | SPUNKART.COM">
+<meta property="og:description" content="Generate a complete Terms of Service document in minutes. Free step-by-step wizard with copy and download options.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/terms-of-service">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Terms of Service Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate a complete Terms of Service document for your website or app. Free tool.">
+<link rel="canonical" href="https://spunkart.com/terms-of-service">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.progress-wrap{margin-bottom:30px;}
+.progress-bar-outer{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;height:12px;overflow:hidden;margin-bottom:8px;}
+.progress-bar-inner{height:100%;background:linear-gradient(90deg,#ff5f1f,#ff8c42);border-radius:10px;transition:width .4s ease;}
+.progress-text{font-size:0.8rem;color:#666;text-align:right;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.step{display:none;}
+.step.active{display:block;}
+.step-question{font-size:1.15rem;font-weight:600;margin-bottom:6px;}
+.step-hint{font-size:0.85rem;color:#666;margin-bottom:20px;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input[type="text"],.input-group input[type="email"],.input-group input[type="url"],.input-group textarea,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus,.input-group select:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:80px;}
+.input-group select option{background:#1a1a1a;color:#e8e8e8;}
+
+.checkbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.checkbox-item{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .2s;user-select:none;}
+.checkbox-item:hover{border-color:#ff5f1f55;}
+.checkbox-item.checked{border-color:#ff5f1f;background:#ff5f1f11;}
+.checkbox-item input[type="checkbox"]{accent-color:#ff5f1f;width:16px;height:16px;cursor:pointer;}
+.checkbox-item span{font-size:0.9rem;}
+
+.radio-group{display:flex;gap:12px;flex-wrap:wrap;}
+.radio-item{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 20px;cursor:pointer;transition:all .2s;user-select:none;min-width:100px;justify-content:center;}
+.radio-item:hover{border-color:#ff5f1f55;}
+.radio-item.checked{border-color:#ff5f1f;background:#ff5f1f11;}
+.radio-item input[type="radio"]{accent-color:#ff5f1f;width:16px;height:16px;cursor:pointer;}
+.radio-item span{font-size:0.95rem;font-weight:500;}
+
+.sub-question{margin-top:16px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;display:none;}
+.sub-question.show{display:block;}
+.sub-question .sub-label{font-size:0.9rem;color:#aaa;margin-bottom:12px;}
+
+.btn-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn:disabled{opacity:0.4;cursor:not-allowed;}
+.copied-state{background:#10b981 !important;color:#fff !important;}
+
+.output-section{display:none;}
+.tab-bar{display:flex;gap:0;margin-bottom:0;border-bottom:2px solid #222;}
+.tab-btn{padding:10px 20px;background:transparent;border:none;color:#888;font-size:0.9rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.tab-btn.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+.tab-btn:hover{color:#ccc;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.output-area{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:0 0 8px 8px;padding:20px;font-family:'Courier New',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-word;color:#ccc;min-height:200px;max-height:500px;overflow-y:auto;line-height:1.6;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  .checkbox-grid{grid-template-columns:1fr;}
+  .btn-row{flex-direction:column;}
+  .btn{width:100%;text-align:center;}
+  .radio-group{flex-direction:column;}
+  .tab-btn{padding:8px 12px;font-size:0.8rem;}
+  main{padding:20px 16px 60px;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Terms of Service Generator","description":"Generate a complete Terms of Service document for your website or app. Step-by-step wizard with copy and download.","url":"https://spunkart.com/terms-of-service.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Terms of Service <span>Generator</span></h1>
+  <p class="subtitle">Generate a complete, professional Terms of Service for your website or app in minutes.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <!-- Progress -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-bar-outer">
+      <div class="progress-bar-inner" id="progressBar" style="width:12.5%"></div>
+    </div>
+    <p class="progress-text" id="progressText">Step 1 of 8</p>
+  </div>
+
+  <!-- Wizard -->
+  <div class="section" id="wizardSection">
+
+    <!-- Step 1: Business Name -->
+    <div class="step active" data-step="1">
+      <p class="step-question">What is your business or website name?</p>
+      <p class="step-hint">This name will appear throughout your Terms of Service document.</p>
+      <div class="input-group">
+        <input type="text" id="businessName" placeholder="e.g. Acme Inc." autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 2: Website URL -->
+    <div class="step" data-step="2">
+      <p class="step-question">What is your website URL?</p>
+      <p class="step-hint">The primary URL where your Terms of Service will apply.</p>
+      <div class="input-group">
+        <input type="url" id="websiteUrl" placeholder="https://example.com" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 3: Contact Email -->
+    <div class="step" data-step="3">
+      <p class="step-question">What is your contact email?</p>
+      <p class="step-hint">Users will use this email for questions about your terms.</p>
+      <div class="input-group">
+        <input type="email" id="contactEmail" placeholder="legal@example.com" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Step 4: Type of Service -->
+    <div class="step" data-step="4">
+      <p class="step-question">What type of service do you provide?</p>
+      <p class="step-hint">Select the option that best describes your business.</p>
+      <div class="radio-group" id="serviceTypeRadio">
+        <label class="radio-item"><input type="radio" name="serviceType" value="website"><span>Website</span></label>
+        <label class="radio-item"><input type="radio" name="serviceType" value="saas"><span>SaaS / App</span></label>
+        <label class="radio-item"><input type="radio" name="serviceType" value="ecommerce"><span>E-Commerce</span></label>
+        <label class="radio-item"><input type="radio" name="serviceType" value="marketplace"><span>Marketplace</span></label>
+        <label class="radio-item"><input type="radio" name="serviceType" value="blog"><span>Blog / Content</span></label>
+      </div>
+    </div>
+
+    <!-- Step 5: User Accounts -->
+    <div class="step" data-step="5">
+      <p class="step-question">Do users create accounts on your platform?</p>
+      <p class="step-hint">This affects sections about account responsibilities and termination.</p>
+      <div class="radio-group" id="accountsRadio">
+        <label class="radio-item"><input type="radio" name="accounts" value="yes"><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="accounts" value="no"><span>No</span></label>
+      </div>
+    </div>
+
+    <!-- Step 6: User-Generated Content -->
+    <div class="step" data-step="6">
+      <p class="step-question">Can users submit or post content?</p>
+      <p class="step-hint">This includes comments, reviews, uploads, forum posts, etc.</p>
+      <div class="radio-group" id="ugcRadio">
+        <label class="radio-item"><input type="radio" name="ugc" value="yes"><span>Yes</span></label>
+        <label class="radio-item"><input type="radio" name="ugc" value="no"><span>No</span></label>
+      </div>
+    </div>
+
+    <!-- Step 7: Refund Policy -->
+    <div class="step" data-step="7">
+      <p class="step-question">What is your refund policy?</p>
+      <p class="step-hint">Select the policy that best matches your business practices.</p>
+      <div class="radio-group" id="refundRadio">
+        <label class="radio-item"><input type="radio" name="refund" value="full30"><span>Full refund within 30 days</span></label>
+        <label class="radio-item"><input type="radio" name="refund" value="full14"><span>Full refund within 14 days</span></label>
+        <label class="radio-item"><input type="radio" name="refund" value="partial"><span>Partial / case-by-case</span></label>
+        <label class="radio-item"><input type="radio" name="refund" value="none"><span>No refunds (all sales final)</span></label>
+        <label class="radio-item"><input type="radio" name="refund" value="na"><span>N/A (free service)</span></label>
+      </div>
+    </div>
+
+    <!-- Step 8: Governing Law -->
+    <div class="step" data-step="8">
+      <p class="step-question">What governing law applies?</p>
+      <p class="step-hint">Enter the state/province and country whose laws govern your terms.</p>
+      <div class="input-group">
+        <label>State / Province</label>
+        <input type="text" id="govState" placeholder="e.g. California" autocomplete="off">
+      </div>
+      <div class="input-group">
+        <label>Country</label>
+        <input type="text" id="govCountry" placeholder="e.g. United States" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="prevBtn" onclick="prevStep()" disabled>Back</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next</button>
+      <button class="btn btn-primary" id="generateBtn" onclick="generateToS()" style="display:none;">Generate Terms of Service</button>
+    </div>
+  </div>
+
+  <!-- Output -->
+  <div class="output-section" id="outputSection">
+    <div class="section" style="padding:0;overflow:hidden;">
+      <div style="padding:20px 24px 0;">
+        <h2 style="margin-bottom:4px;">Your Terms of Service</h2>
+        <p style="font-size:0.85rem;color:#666;margin-bottom:16px;">Generated on <span id="generatedDate"></span></p>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('plaintext')">Plain Text</button>
+        <button class="tab-btn" onclick="switchTab('markdown')">Markdown</button>
+        <button class="tab-btn" onclick="switchTab('html')">HTML</button>
+      </div>
+      <div class="tab-content active" id="tab-plaintext">
+        <div class="output-area" id="output-plaintext"></div>
+      </div>
+      <div class="tab-content" id="tab-markdown">
+        <div class="output-area" id="output-markdown"></div>
+      </div>
+      <div class="tab-content" id="tab-html">
+        <div class="output-area" id="output-html"></div>
+      </div>
+      <div class="btn-row" style="padding:16px 24px 20px;">
+        <button class="btn btn-secondary" id="copyBtn" onclick="copyToS()">Copy to Clipboard</button>
+        <button class="btn btn-secondary" onclick="downloadToS()">Download</button>
+        <button class="btn btn-secondary" onclick="startOver()">Start Over</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/privacy-policy-generator">Privacy Policy Generator</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/invoice-generator">Invoice Generator</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+      <a href="/hashtag-generator">Hashtag Generator</a>
+      <a href="/word-counter">Word Counter</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentStep = 1;
+const totalSteps = 8;
+
+// Radio styling
+document.querySelectorAll('.radio-item input[type="radio"]').forEach(rb => {
+  rb.addEventListener('change', () => {
+    rb.closest('.radio-group').querySelectorAll('.radio-item').forEach(ri => ri.classList.remove('checked'));
+    rb.closest('.radio-item').classList.add('checked');
+  });
+});
+
+function updateProgress() {
+  const pct = (currentStep / totalSteps) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = 'Step ' + currentStep + ' of ' + totalSteps;
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelector('[data-step="' + n + '"]').classList.add('active');
+  document.getElementById('prevBtn').disabled = n === 1;
+  document.getElementById('nextBtn').style.display = n === totalSteps ? 'none' : '';
+  document.getElementById('generateBtn').style.display = n === totalSteps ? '' : 'none';
+  updateProgress();
+}
+
+function nextStep() { if (currentStep < totalSteps) { currentStep++; showStep(currentStep); } }
+function prevStep() { if (currentStep > 1) { currentStep--; showStep(currentStep); } }
+function getVal(id) { return document.getElementById(id).value.trim(); }
+function getRadio(name) { const s = document.querySelector('input[name="'+name+'"]:checked'); return s ? s.value : ''; }
+
+function todayFormatted() {
+  const d = new Date();
+  const m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return m[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function generateToS() {
+  const biz = getVal('businessName') || 'Our Company';
+  const url = getVal('websiteUrl') || 'https://example.com';
+  const email = getVal('contactEmail') || 'legal@example.com';
+  const stype = getRadio('serviceType') || 'website';
+  const hasAccounts = getRadio('accounts') === 'yes';
+  const hasUGC = getRadio('ugc') === 'yes';
+  const refund = getRadio('refund') || 'na';
+  const state = getVal('govState') || 'Delaware';
+  const country = getVal('govCountry') || 'United States';
+  const lastUpdated = todayFormatted();
+
+  const serviceDesc = {
+    website: 'website and all related services',
+    saas: 'software-as-a-service platform and related applications',
+    ecommerce: 'online store and e-commerce platform',
+    marketplace: 'online marketplace platform',
+    blog: 'blog, content platform, and related services'
+  }[stype];
+
+  let refundText = '';
+  if (refund === 'full30') refundText = 'You may request a full refund within 30 days of your purchase. To request a refund, contact us at ' + email + '. Refunds will be processed within 10 business days and returned to the original payment method.';
+  else if (refund === 'full14') refundText = 'You may request a full refund within 14 days of your purchase. To request a refund, contact us at ' + email + '. Refunds will be processed within 10 business days and returned to the original payment method.';
+  else if (refund === 'partial') refundText = 'Refunds are handled on a case-by-case basis. To request a refund, contact us at ' + email + ' with your order details and reason for the request. We reserve the right to approve or deny refund requests at our discretion.';
+  else if (refund === 'none') refundText = 'All sales are final. We do not offer refunds or exchanges unless required by applicable law. By making a purchase, you acknowledge and agree to this no-refund policy.';
+  else refundText = 'Our Service is provided free of charge. No purchases or payments are required to use the Service.';
+
+  // === Plain Text ===
+  let s = 1;
+  let txt = '';
+  txt += 'TERMS OF SERVICE\n';
+  txt += '=================\n\n';
+  txt += 'Last Updated: ' + lastUpdated + '\n\n';
+
+  txt += s + '. AGREEMENT TO TERMS\n\n';
+  txt += 'These Terms of Service ("Terms") constitute a legally binding agreement between you ("you", "your", or "User") and ' + biz + ' ("we", "us", or "our"), governing your access to and use of our ' + serviceDesc + ' located at ' + url + ' (the "Service").\n\n';
+  txt += 'By accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you must not access or use the Service.\n\n';
+  s++;
+
+  txt += s + '. ELIGIBILITY\n\n';
+  txt += 'You must be at least 18 years of age, or the age of legal majority in your jurisdiction, to use the Service. By using the Service, you represent and warrant that you meet this eligibility requirement. If you are using the Service on behalf of a business or other entity, you represent that you have the authority to bind that entity to these Terms.\n\n';
+  s++;
+
+  if (hasAccounts) {
+    txt += s + '. USER ACCOUNTS\n\n';
+    txt += 'To access certain features of the Service, you may be required to create an account. When creating an account, you agree to:\n\n';
+    txt += '  - Provide accurate, current, and complete information\n';
+    txt += '  - Maintain and promptly update your account information\n';
+    txt += '  - Maintain the security and confidentiality of your login credentials\n';
+    txt += '  - Accept responsibility for all activities that occur under your account\n';
+    txt += '  - Notify us immediately of any unauthorized use of your account\n\n';
+    txt += 'We reserve the right to suspend or terminate your account at any time, with or without notice, for conduct that we determine, in our sole discretion, violates these Terms or is harmful to other users, us, or third parties, or for any other reason.\n\n';
+    s++;
+  }
+
+  txt += s + '. INTELLECTUAL PROPERTY\n\n';
+  txt += 'The Service and its original content, features, and functionality are and will remain the exclusive property of ' + biz + ' and its licensors. The Service is protected by copyright, trademark, and other laws. Our trademarks and trade dress may not be used in connection with any product or service without our prior written consent.\n\n';
+  txt += 'You may not copy, modify, distribute, sell, or lease any part of the Service, nor may you reverse engineer or attempt to extract the source code of our software, unless applicable laws prohibit these restrictions or you have our written permission.\n\n';
+  s++;
+
+  if (hasUGC) {
+    txt += s + '. USER-GENERATED CONTENT\n\n';
+    txt += 'Our Service may allow you to post, submit, publish, display, or transmit content ("User Content"). You retain ownership of your User Content, but by posting it to the Service, you grant us a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, modify, adapt, publish, translate, distribute, and display such User Content in connection with operating and providing the Service.\n\n';
+    txt += 'You represent and warrant that:\n\n';
+    txt += '  - You own or control all rights to your User Content\n';
+    txt += '  - Your User Content does not violate the rights of any third party\n';
+    txt += '  - Your User Content is not unlawful, defamatory, obscene, or otherwise objectionable\n\n';
+    txt += 'We reserve the right to remove any User Content at our sole discretion, without notice, for any reason.\n\n';
+    s++;
+  }
+
+  txt += s + '. PROHIBITED USES\n\n';
+  txt += 'You agree not to use the Service:\n\n';
+  txt += '  - For any unlawful purpose or to solicit others to perform unlawful acts\n';
+  txt += '  - To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances\n';
+  txt += '  - To infringe upon or violate our intellectual property rights or the intellectual property rights of others\n';
+  txt += '  - To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate\n';
+  txt += '  - To submit false or misleading information\n';
+  txt += '  - To upload or transmit viruses, malware, or any other type of malicious code\n';
+  txt += '  - To collect or track the personal information of others without their consent\n';
+  txt += '  - To spam, phish, pharm, pretext, spider, crawl, or scrape\n';
+  txt += '  - To interfere with or circumvent the security features of the Service\n\n';
+  s++;
+
+  if (refund !== 'na') {
+    txt += s + '. PAYMENTS AND REFUNDS\n\n';
+    txt += refundText + '\n\n';
+    s++;
+  }
+
+  txt += s + '. DISCLAIMER OF WARRANTIES\n\n';
+  txt += 'THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR COURSE OF PERFORMANCE.\n\n';
+  txt += biz + ' does not warrant that the Service will function uninterrupted, secure, or available at any particular time or location, or that any errors or defects will be corrected. We do not warrant that the results obtained from use of the Service will be accurate or reliable.\n\n';
+  s++;
+
+  txt += s + '. LIMITATION OF LIABILITY\n\n';
+  txt += 'TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL ' + biz.toUpperCase() + ', ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:\n\n';
+  txt += '  - Your access to or use of or inability to access or use the Service\n';
+  txt += '  - Any conduct or content of any third party on the Service\n';
+  txt += '  - Any content obtained from the Service\n';
+  txt += '  - Unauthorized access, use, or alteration of your transmissions or content\n\n';
+  s++;
+
+  txt += s + '. INDEMNIFICATION\n\n';
+  txt += 'You agree to defend, indemnify, and hold harmless ' + biz + ' and its licensees and licensors, and their employees, contractors, agents, officers, and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses (including but not limited to attorney\'s fees), resulting from or arising out of:\n\n';
+  txt += '  - Your use and access of the Service\n';
+  txt += '  - Your violation of any term of these Terms\n';
+  txt += '  - Your violation of any third party right, including any intellectual property or privacy right\n';
+  txt += '  - Any claim that your content caused damage to a third party\n\n';
+  s++;
+
+  txt += s + '. TERMINATION\n\n';
+  txt += 'We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.\n\n';
+  txt += 'All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.\n\n';
+  s++;
+
+  txt += s + '. GOVERNING LAW\n\n';
+  txt += 'These Terms shall be governed and construed in accordance with the laws of ' + state + ', ' + country + ', without regard to its conflict of law provisions.\n\n';
+  txt += 'Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.\n\n';
+  s++;
+
+  txt += s + '. CHANGES TO TERMS\n\n';
+  txt += 'We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.\n\n';
+  txt += 'By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.\n\n';
+  s++;
+
+  txt += s + '. CONTACT US\n\n';
+  txt += 'If you have any questions about these Terms, please contact us:\n\n';
+  txt += '  - By email: ' + email + '\n';
+  txt += '  - By visiting: ' + url + '\n\n';
+  txt += '---\nGenerated by SPUNKART.COM Terms of Service Generator\n';
+
+  // === Markdown ===
+  let ms = 1;
+  let md = '# Terms of Service\n\n**Last Updated:** ' + lastUpdated + '\n\n';
+
+  md += '## ' + ms + '. Agreement to Terms\n\n';
+  md += 'These Terms of Service ("Terms") constitute a legally binding agreement between you ("you", "your", or "User") and **' + biz + '** ("we", "us", or "our"), governing your access to and use of our ' + serviceDesc + ' located at [' + url + '](' + url + ') (the "Service").\n\n';
+  md += 'By accessing or using the Service, you agree to be bound by these Terms. If you do not agree to these Terms, you must not access or use the Service.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Eligibility\n\n';
+  md += 'You must be at least 18 years of age, or the age of legal majority in your jurisdiction, to use the Service. By using the Service, you represent and warrant that you meet this eligibility requirement.\n\n';
+  ms++;
+
+  if (hasAccounts) {
+    md += '## ' + ms + '. User Accounts\n\n';
+    md += 'When creating an account, you agree to:\n\n';
+    md += '- Provide accurate, current, and complete information\n';
+    md += '- Maintain and promptly update your account information\n';
+    md += '- Maintain the security and confidentiality of your login credentials\n';
+    md += '- Accept responsibility for all activities under your account\n';
+    md += '- Notify us immediately of any unauthorized use\n\n';
+    md += 'We reserve the right to suspend or terminate your account at any time for any reason.\n\n';
+    ms++;
+  }
+
+  md += '## ' + ms + '. Intellectual Property\n\n';
+  md += 'The Service and its original content, features, and functionality are the exclusive property of **' + biz + '** and its licensors, protected by copyright, trademark, and other laws.\n\n';
+  ms++;
+
+  if (hasUGC) {
+    md += '## ' + ms + '. User-Generated Content\n\n';
+    md += 'By posting content to the Service, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, distribute, and display your content in connection with operating the Service.\n\n';
+    md += 'You represent that you own or control all rights to your content and that it does not violate any third-party rights.\n\n';
+    ms++;
+  }
+
+  md += '## ' + ms + '. Prohibited Uses\n\n';
+  md += 'You agree not to use the Service for any unlawful purpose, to violate regulations, to infringe intellectual property, to harass or harm others, to submit false information, to distribute malware, to collect others\' data without consent, to spam or scrape, or to interfere with the Service\'s security features.\n\n';
+  ms++;
+
+  if (refund !== 'na') {
+    md += '## ' + ms + '. Payments and Refunds\n\n';
+    md += refundText + '\n\n';
+    ms++;
+  }
+
+  md += '## ' + ms + '. Disclaimer of Warranties\n\n';
+  md += 'THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND. We do not warrant that the Service will function uninterrupted, secure, or error-free.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Limitation of Liability\n\n';
+  md += 'To the maximum extent permitted by law, **' + biz + '** shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, use, goodwill, or other intangible losses.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Indemnification\n\n';
+  md += 'You agree to defend, indemnify, and hold harmless **' + biz + '** from any claims, damages, obligations, losses, liabilities, costs, or expenses arising from your use of the Service or violation of these Terms.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Termination\n\n';
+  md += 'We may terminate or suspend your access immediately, without prior notice or liability, for any reason, including breach of these Terms.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Governing Law\n\n';
+  md += 'These Terms shall be governed by the laws of **' + state + ', ' + country + '**, without regard to conflict of law provisions.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Changes to Terms\n\n';
+  md += 'We reserve the right to modify or replace these Terms at any time. Material changes will include at least 30 days\' notice.\n\n';
+  ms++;
+
+  md += '## ' + ms + '. Contact Us\n\n';
+  md += 'If you have questions about these Terms, contact us:\n\n';
+  md += '- **Email:** ' + email + '\n';
+  md += '- **Website:** [' + url + '](' + url + ')\n\n';
+  md += '---\n*Generated by [SPUNKART.COM Terms of Service Generator](https://spunkart.com/terms-of-service)*\n';
+
+  // === HTML ===
+  let hs = 1;
+  let html = '';
+  html += '&lt;!DOCTYPE html&gt;\n&lt;html lang="en"&gt;\n&lt;head&gt;\n';
+  html += '  &lt;meta charset="UTF-8"&gt;\n  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;\n';
+  html += '  &lt;title&gt;Terms of Service - ' + escHtml(biz) + '&lt;/title&gt;\n';
+  html += '&lt;/head&gt;\n&lt;body&gt;\n';
+  html += '  &lt;h1&gt;Terms of Service&lt;/h1&gt;\n';
+  html += '  &lt;p&gt;&lt;strong&gt;Last Updated:&lt;/strong&gt; ' + lastUpdated + '&lt;/p&gt;\n\n';
+
+  html += '  &lt;h2&gt;' + hs + '. Agreement to Terms&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;These Terms of Service ("Terms") constitute a legally binding agreement between you and &lt;strong&gt;' + escHtml(biz) + '&lt;/strong&gt;, governing your access to and use of our ' + serviceDesc + ' located at &lt;a href="' + escHtml(url) + '"&gt;' + escHtml(url) + '&lt;/a&gt; (the "Service"). By accessing or using the Service, you agree to be bound by these Terms.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Eligibility&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;You must be at least 18 years of age, or the age of legal majority in your jurisdiction, to use the Service.&lt;/p&gt;\n\n';
+  hs++;
+
+  if (hasAccounts) {
+    html += '  &lt;h2&gt;' + hs + '. User Accounts&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;When creating an account, you agree to provide accurate information, maintain security of your credentials, and accept responsibility for all activities under your account.&lt;/p&gt;\n\n';
+    hs++;
+  }
+
+  html += '  &lt;h2&gt;' + hs + '. Intellectual Property&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;The Service and its content are the exclusive property of ' + escHtml(biz) + ' and are protected by copyright, trademark, and other laws.&lt;/p&gt;\n\n';
+  hs++;
+
+  if (hasUGC) {
+    html += '  &lt;h2&gt;' + hs + '. User-Generated Content&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;By posting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and display your content in connection with the Service.&lt;/p&gt;\n\n';
+    hs++;
+  }
+
+  html += '  &lt;h2&gt;' + hs + '. Prohibited Uses&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;You agree not to use the Service for any unlawful purpose, to violate any laws, to infringe intellectual property rights, to harass others, to submit false information, or to interfere with the Service.&lt;/p&gt;\n\n';
+  hs++;
+
+  if (refund !== 'na') {
+    html += '  &lt;h2&gt;' + hs + '. Payments and Refunds&lt;/h2&gt;\n';
+    html += '  &lt;p&gt;' + escHtml(refundText) + '&lt;/p&gt;\n\n';
+    hs++;
+  }
+
+  html += '  &lt;h2&gt;' + hs + '. Disclaimer of Warranties&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;The Service is provided "AS IS" and "AS AVAILABLE" without warranties of any kind.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Limitation of Liability&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;' + escHtml(biz) + ' shall not be liable for any indirect, incidental, special, consequential, or punitive damages.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Indemnification&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;You agree to defend, indemnify, and hold harmless ' + escHtml(biz) + ' from any claims arising from your use of the Service.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Termination&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;We may terminate your access immediately, without notice, for any reason.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Governing Law&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;These Terms shall be governed by the laws of ' + escHtml(state) + ', ' + escHtml(country) + '.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Changes to Terms&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;We reserve the right to modify these Terms at any time with at least 30 days\' notice for material changes.&lt;/p&gt;\n\n';
+  hs++;
+
+  html += '  &lt;h2&gt;' + hs + '. Contact Us&lt;/h2&gt;\n';
+  html += '  &lt;p&gt;Email: &lt;a href="mailto:' + escHtml(email) + '"&gt;' + escHtml(email) + '&lt;/a&gt;&lt;br&gt;Website: &lt;a href="' + escHtml(url) + '"&gt;' + escHtml(url) + '&lt;/a&gt;&lt;/p&gt;\n\n';
+  html += '  &lt;!-- Generated by SPUNKART.COM Terms of Service Generator --&gt;\n';
+  html += '&lt;/body&gt;\n&lt;/html&gt;';
+
+  // Display
+  document.getElementById('generatedDate').textContent = lastUpdated;
+  document.getElementById('output-plaintext').textContent = txt;
+  document.getElementById('output-markdown').textContent = md;
+  document.getElementById('output-html').textContent = html;
+
+  document.getElementById('wizardSection').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('outputSection').style.display = 'block';
+  document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+
+  gtag('event', 'generate_tos', { event_category: 'tool_use' });
+}
+
+let activeTab = 'plaintext';
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector('.tab-btn[onclick*="' + tab + '"]').classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function getActiveOutput() { return document.getElementById('output-' + activeTab).textContent; }
+
+function unescHtml(s) { return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"'); }
+
+function copyToS() {
+  let text = getActiveOutput();
+  if (!text) return;
+  if (activeTab === 'html') text = unescHtml(text);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied-state');
+    setTimeout(() => { btn.textContent = 'Copy to Clipboard'; btn.classList.remove('copied-state'); }, 2000);
+    gtag('event', 'copy_tos', { event_category: 'tool_use', event_label: activeTab });
+  });
+}
+
+function downloadToS() {
+  let text = getActiveOutput();
+  if (!text) return;
+  if (activeTab === 'html') text = unescHtml(text);
+  const ext = activeTab === 'html' ? 'html' : (activeTab === 'markdown' ? 'md' : 'txt');
+  const mime = activeTab === 'html' ? 'text/html' : (activeTab === 'markdown' ? 'text/markdown' : 'text/plain');
+  const blob = new Blob([text], { type: mime });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'terms-of-service.' + ext;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event', 'download_tos', { event_category: 'tool_use', event_label: activeTab });
+}
+
+function startOver() {
+  currentStep = 1;
+  document.getElementById('wizardSection').style.display = '';
+  document.getElementById('progressWrap').style.display = '';
+  document.getElementById('outputSection').style.display = 'none';
+  showStep(1);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

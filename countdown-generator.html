@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Countdown Timer Generator — Create Shareable Countdown Timers</title>
+<meta name="description" content="Create beautiful countdown timers with flip animations. Set a target date, add a title, and generate a shareable link. Free countdown timer generator.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:700px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.setup{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.setup h3{font-size:0.95rem;color:#888;margin-bottom:1rem}
+.form-row{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap;align-items:end}
+.form-group{display:flex;flex-direction:column;flex:1;min-width:140px}
+.form-group label{font-size:0.8rem;color:#666;margin-bottom:4px}
+.form-group input{padding:10px 12px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.95rem}
+.form-group input:focus{outline:none;border-color:#ff5f1f}
+.actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:10px;border:none;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-start{background:#ff5f1f;color:#fff}.btn-start:hover{background:#e5520f}
+.btn-share{background:#10b981;color:#fff}.btn-share:hover{background:#059669}
+.btn-reset{background:#333;color:#ccc}.btn-reset:hover{background:#444}
+.countdown-title{text-align:center;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:0.5rem;min-height:2rem}
+.countdown-target{text-align:center;font-size:0.85rem;color:#666;margin-bottom:1.5rem}
+.countdown-display{display:flex;justify-content:center;gap:16px;margin-bottom:2rem;flex-wrap:wrap}
+@media(max-width:480px){.countdown-display{gap:8px}}
+.flip-unit{display:flex;flex-direction:column;align-items:center}
+.flip-card{position:relative;width:90px;height:100px;perspective:300px}
+@media(max-width:480px){.flip-card{width:68px;height:76px}}
+.flip-top, .flip-bottom{position:absolute;width:100%;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.flip-top{top:0;height:50%;border-radius:10px 10px 0 0;border-bottom:1px solid #333;align-items:flex-end}
+.flip-bottom{bottom:0;height:50%;border-radius:0 0 10px 10px;align-items:flex-start}
+.flip-num{font-size:3.2rem;font-weight:800;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+@media(max-width:480px){.flip-num{font-size:2.2rem}}
+.flip-top .flip-num{transform:translateY(50%)}
+.flip-bottom .flip-num{transform:translateY(-50%)}
+.flip-label{font-size:0.7rem;color:#666;margin-top:8px;text-transform:uppercase;letter-spacing:1px}
+/* Flip animation overlay */
+.flip-card .flip-anim-top, .flip-card .flip-anim-bottom{position:absolute;width:100%;height:50%;overflow:hidden;z-index:2;backface-visibility:hidden;display:flex;align-items:center;justify-content:center}
+.flip-card .flip-anim-top{top:0;border-radius:10px 10px 0 0;background:#1a1a1a;transform-origin:bottom;align-items:flex-end;border-bottom:1px solid #333}
+.flip-card .flip-anim-bottom{bottom:0;border-radius:0 0 10px 10px;background:#1a1a1a;transform-origin:top;align-items:flex-start}
+.flip-card .flip-anim-top .flip-num{transform:translateY(50%)}
+.flip-card .flip-anim-bottom .flip-num{transform:translateY(-50%)}
+@keyframes flipTop{0%{transform:rotateX(0deg)}100%{transform:rotateX(-90deg)}}
+@keyframes flipBottom{0%{transform:rotateX(90deg)}100%{transform:rotateX(0deg)}}
+.flip-card.flipping .flip-anim-top{animation:flipTop 0.3s ease-in forwards}
+.flip-card.flipping .flip-anim-bottom{animation:flipBottom 0.3s 0.3s ease-out forwards}
+.expired-msg{text-align:center;font-size:1.5rem;color:#10b981;font-weight:700;padding:2rem 0}
+.share-box{background:#111;border:2px solid #222;border-radius:12px;padding:1rem;margin-bottom:1.5rem;display:none}
+.share-box label{font-size:0.8rem;color:#666;display:block;margin-bottom:6px}
+.share-row{display:flex;gap:8px}
+.share-row input{flex:1;padding:10px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-family:monospace;font-size:0.85rem}
+.share-row button{padding:10px 16px;background:#ff5f1f;border:none;border-radius:8px;color:#fff;font-weight:700;cursor:pointer;white-space:nowrap}.share-row button:hover{background:#e5520f}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.preset{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;cursor:pointer;color:#888;transition:all 0.2s}.preset:hover{border-color:#ff5f1f;color:#fff}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-top:24px;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#666;font-size:0.85rem;margin-bottom:12px}
+.newsletter iframe{width:100%;border:none;border-radius:8px;min-height:80px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Countdown Timer Generator","description":"Create beautiful countdown timers with flip animations and shareable links. Free countdown timer generator.","url":"https://spunkart.com/countdown-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Countdown Timer Generator</h1>
+  <div class="sub">Create beautiful countdowns with shareable links</div>
+
+  <div class="setup" id="setupPanel">
+    <h3>Set Up Your Countdown</h3>
+    <div class="form-row">
+      <div class="form-group" style="flex:2">
+        <label>Title</label>
+        <input type="text" id="titleInput" placeholder="e.g. Product Launch, New Year" maxlength="80">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="dateInput">
+      </div>
+      <div class="form-group">
+        <label>Time</label>
+        <input type="time" id="timeInput" value="00:00">
+      </div>
+    </div>
+    <div class="presets">
+      <div class="preset" onclick="setPresetDate(10)">10 Minutes</div>
+      <div class="preset" onclick="setPresetDate(60)">1 Hour</div>
+      <div class="preset" onclick="setPresetDate(1440)">24 Hours</div>
+      <div class="preset" onclick="setPresetDate(10080)">1 Week</div>
+      <div class="preset" onclick="setPresetDate(43200)">30 Days</div>
+      <div class="preset" onclick="setPresetNewYear()">New Year 2027</div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-start" onclick="startCountdown()">Start Countdown</button>
+    </div>
+  </div>
+
+  <div class="countdown-title" id="countdownTitle"></div>
+  <div class="countdown-target" id="countdownTarget"></div>
+
+  <div class="countdown-display" id="countdownDisplay" style="display:none">
+    <div class="flip-unit">
+      <div class="flip-card" id="flipDays">
+        <div class="flip-top"><span class="flip-num" id="daysTop">00</span></div>
+        <div class="flip-bottom"><span class="flip-num" id="daysBottom">00</span></div>
+        <div class="flip-anim-top"><span class="flip-num" id="daysAnimTop">00</span></div>
+        <div class="flip-anim-bottom"><span class="flip-num" id="daysAnimBottom">00</span></div>
+      </div>
+      <div class="flip-label">Days</div>
+    </div>
+    <div class="flip-unit">
+      <div class="flip-card" id="flipHours">
+        <div class="flip-top"><span class="flip-num" id="hoursTop">00</span></div>
+        <div class="flip-bottom"><span class="flip-num" id="hoursBottom">00</span></div>
+        <div class="flip-anim-top"><span class="flip-num" id="hoursAnimTop">00</span></div>
+        <div class="flip-anim-bottom"><span class="flip-num" id="hoursAnimBottom">00</span></div>
+      </div>
+      <div class="flip-label">Hours</div>
+    </div>
+    <div class="flip-unit">
+      <div class="flip-card" id="flipMinutes">
+        <div class="flip-top"><span class="flip-num" id="minutesTop">00</span></div>
+        <div class="flip-bottom"><span class="flip-num" id="minutesBottom">00</span></div>
+        <div class="flip-anim-top"><span class="flip-num" id="minutesAnimTop">00</span></div>
+        <div class="flip-anim-bottom"><span class="flip-num" id="minutesAnimBottom">00</span></div>
+      </div>
+      <div class="flip-label">Minutes</div>
+    </div>
+    <div class="flip-unit">
+      <div class="flip-card" id="flipSeconds">
+        <div class="flip-top"><span class="flip-num" id="secondsTop">00</span></div>
+        <div class="flip-bottom"><span class="flip-num" id="secondsBottom">00</span></div>
+        <div class="flip-anim-top"><span class="flip-num" id="secondsAnimTop">00</span></div>
+        <div class="flip-anim-bottom"><span class="flip-num" id="secondsAnimBottom">00</span></div>
+      </div>
+      <div class="flip-label">Seconds</div>
+    </div>
+  </div>
+
+  <div id="expiredMsg" class="expired-msg" style="display:none"></div>
+
+  <div class="share-box" id="shareBox">
+    <label>Shareable Link</label>
+    <div class="share-row">
+      <input type="text" id="shareUrl" readonly>
+      <button onclick="copyShareUrl()">Copy</button>
+    </div>
+  </div>
+
+  <div id="activeActions" style="display:none;text-align:center;margin-bottom:1.5rem">
+    <div class="actions" style="justify-content:center">
+      <button class="btn btn-share" onclick="generateShareLink()">Share Link</button>
+      <button class="btn btn-reset" onclick="resetCountdown()">New Countdown</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/pomodoro.html">Pomodoro Timer</a>
+      <a href="/color-converter.html">Color Converter</a>
+      <a href="/diff-checker.html">Diff Checker</a>
+      <a href="/keyboard-tester.html">Keyboard Tester</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+      <a href="/budget-tracker.html">Budget Tracker</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and tips delivered free.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" title="Newsletter signup"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+let targetDate = null;
+let countdownTitle = '';
+let timerInterval = null;
+let prevValues = {days:'00', hours:'00', minutes:'00', seconds:'00'};
+
+// Set default date to tomorrow
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+document.getElementById('dateInput').value = tomorrow.toISOString().split('T')[0];
+
+function setPresetDate(minutes) {
+  const d = new Date(Date.now() + minutes * 60000);
+  document.getElementById('dateInput').value = d.toISOString().split('T')[0];
+  document.getElementById('timeInput').value = d.toTimeString().slice(0,5);
+}
+
+function setPresetNewYear() {
+  const year = new Date().getFullYear() + 1;
+  document.getElementById('dateInput').value = year + '-01-01';
+  document.getElementById('timeInput').value = '00:00';
+  document.getElementById('titleInput').value = 'New Year ' + year;
+}
+
+function startCountdown() {
+  const dateVal = document.getElementById('dateInput').value;
+  const timeVal = document.getElementById('timeInput').value || '00:00';
+  if (!dateVal) { showToast('Please select a date'); return; }
+
+  targetDate = new Date(dateVal + 'T' + timeVal);
+  countdownTitle = document.getElementById('titleInput').value || 'Countdown';
+
+  if (targetDate <= new Date()) { showToast('Please select a future date'); return; }
+
+  document.getElementById('countdownTitle').textContent = countdownTitle;
+  document.getElementById('countdownTarget').textContent = targetDate.toLocaleString();
+  document.getElementById('countdownDisplay').style.display = 'flex';
+  document.getElementById('activeActions').style.display = 'block';
+  document.getElementById('expiredMsg').style.display = 'none';
+  document.getElementById('setupPanel').style.display = 'none';
+
+  prevValues = {days:'00', hours:'00', minutes:'00', seconds:'00'};
+  if (timerInterval) clearInterval(timerInterval);
+  updateCountdown();
+  timerInterval = setInterval(updateCountdown, 1000);
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    clearInterval(timerInterval);
+    document.getElementById('countdownDisplay').style.display = 'none';
+    document.getElementById('expiredMsg').style.display = 'block';
+    document.getElementById('expiredMsg').textContent = countdownTitle + ' has arrived!';
+    return;
+  }
+
+  const days = String(Math.floor(diff / 86400000)).padStart(2, '0');
+  const hours = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+  const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+  const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+
+  updateFlipUnit('Days', 'days', days);
+  updateFlipUnit('Hours', 'hours', hours);
+  updateFlipUnit('Minutes', 'minutes', minutes);
+  updateFlipUnit('Seconds', 'seconds', seconds);
+
+  document.title = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's — ' + countdownTitle;
+}
+
+function updateFlipUnit(name, key, newVal) {
+  const oldVal = prevValues[key];
+  if (newVal === oldVal) return;
+
+  const card = document.getElementById('flip' + name);
+  const topEl = document.getElementById(key + 'Top');
+  const bottomEl = document.getElementById(key + 'Bottom');
+  const animTopEl = document.getElementById(key + 'AnimTop');
+  const animBottomEl = document.getElementById(key + 'AnimBottom');
+
+  // Set the old value on the animation top (this flips away)
+  animTopEl.textContent = oldVal;
+  // Set the new value on the animation bottom (this flips in)
+  animBottomEl.textContent = newVal;
+  // Update the static layers
+  topEl.textContent = newVal;
+  bottomEl.textContent = oldVal;
+
+  // Trigger animation
+  card.classList.remove('flipping');
+  void card.offsetWidth; // reflow
+  card.classList.add('flipping');
+
+  // After animation, update bottom to new value
+  setTimeout(() => {
+    bottomEl.textContent = newVal;
+    card.classList.remove('flipping');
+  }, 600);
+
+  prevValues[key] = newVal;
+}
+
+function generateShareLink() {
+  if (!targetDate) return;
+  const params = new URLSearchParams();
+  params.set('t', targetDate.toISOString());
+  params.set('n', countdownTitle);
+  const url = window.location.origin + window.location.pathname + '?' + params.toString();
+  document.getElementById('shareUrl').value = url;
+  document.getElementById('shareBox').style.display = 'block';
+}
+
+function copyShareUrl() {
+  const url = document.getElementById('shareUrl').value;
+  navigator.clipboard.writeText(url);
+  showToast('Link copied!');
+}
+
+function resetCountdown() {
+  if (timerInterval) clearInterval(timerInterval);
+  targetDate = null;
+  document.getElementById('setupPanel').style.display = 'block';
+  document.getElementById('countdownDisplay').style.display = 'none';
+  document.getElementById('activeActions').style.display = 'none';
+  document.getElementById('shareBox').style.display = 'none';
+  document.getElementById('expiredMsg').style.display = 'none';
+  document.getElementById('countdownTitle').textContent = '';
+  document.getElementById('countdownTarget').textContent = '';
+  document.title = 'Countdown Timer Generator — Create Shareable Countdown Timers';
+}
+
+function showToast(msg) {
+  const el = document.getElementById('copied');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+// Check for URL params on load
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('t')) {
+    const t = new Date(params.get('t'));
+    const n = params.get('n') || 'Countdown';
+    if (!isNaN(t.getTime())) {
+      document.getElementById('titleInput').value = n;
+      document.getElementById('dateInput').value = t.toISOString().split('T')[0];
+      document.getElementById('timeInput').value = t.toTimeString().slice(0,5);
+      targetDate = t;
+      countdownTitle = n;
+      startCountdown();
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Keyboard Tester — Test Every Key on Your Keyboard</title>
+<meta name="description" content="Free online keyboard tester. Press any key to see key name, key code, character code, and modifier states. Visual keyboard layout with event log.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:900px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.key-display{background:#111;border:2px solid #222;border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem}
+.key-big{font-size:3rem;font-weight:800;color:#ff5f1f;min-height:4rem;display:flex;align-items:center;justify-content:center}
+.key-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:1rem}
+.key-info-item{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:10px}
+.key-info-item .label{font-size:0.7rem;color:#666;margin-bottom:4px}
+.key-info-item .value{font-family:monospace;font-size:0.95rem;color:#fff;word-break:break-all}
+.modifiers{display:flex;gap:8px;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.mod{padding:6px 14px;border-radius:6px;background:#1a1a1a;border:1px solid #333;font-size:0.8rem;color:#555;font-weight:600;transition:all 0.15s}
+.mod.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.keyboard{background:#111;border:2px solid #222;border-radius:16px;padding:1rem;margin-bottom:1.5rem;overflow-x:auto}
+.kb-row{display:flex;gap:4px;margin-bottom:4px;justify-content:center}
+.kb-key{min-width:40px;height:40px;border-radius:6px;background:#1a1a1a;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#888;transition:all 0.1s;flex-shrink:0;padding:0 4px;text-align:center}
+.kb-key.pressed{background:#ff5f1f;color:#fff;border-color:#ff5f1f;transform:scale(0.95)}
+.kb-key.was-pressed{background:#1a2a1a;border-color:#10b981;color:#10b981}
+@media(max-width:700px){.kb-key{min-width:28px;height:32px;font-size:0.55rem}}
+.event-log{background:#111;border:2px solid #222;border-radius:16px;padding:1rem;margin-bottom:1.5rem;max-height:250px;overflow-y:auto}
+.event-log h3{font-size:0.9rem;color:#888;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.event-log h3 button{background:#333;border:none;color:#888;padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer}.event-log h3 button:hover{background:#444;color:#fff}
+.log-entry{font-family:monospace;font-size:0.78rem;padding:4px 0;border-bottom:1px solid #1a1a1a;color:#aaa;display:flex;gap:12px}
+.log-entry .log-key{color:#ff5f1f;min-width:80px;font-weight:600}
+.log-entry .log-code{color:#10b981;min-width:60px}
+.log-entry .log-type{color:#666;min-width:60px}
+.prompt{text-align:center;color:#555;font-size:0.95rem;padding:2rem 0}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-top:24px;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#666;font-size:0.85rem;margin-bottom:12px}
+.newsletter iframe{width:100%;border:none;border-radius:8px;min-height:80px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Keyboard Tester","description":"Free online keyboard tester. Press any key to see key name, key code, and modifier states with a visual keyboard layout.","url":"https://spunkart.com/keyboard-tester.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Keyboard Tester</h1>
+  <div class="sub">Press any key to test it — see codes, modifiers, and more</div>
+
+  <div class="key-display" id="keyDisplay">
+    <div class="key-big" id="keyBig">Press any key...</div>
+    <div class="key-info" id="keyInfo" style="display:none">
+      <div class="key-info-item"><div class="label">Key</div><div class="value" id="infoKey">—</div></div>
+      <div class="key-info-item"><div class="label">Code</div><div class="value" id="infoCode">—</div></div>
+      <div class="key-info-item"><div class="label">KeyCode (deprecated)</div><div class="value" id="infoKeyCode">—</div></div>
+      <div class="key-info-item"><div class="label">Which</div><div class="value" id="infoWhich">—</div></div>
+      <div class="key-info-item"><div class="label">Location</div><div class="value" id="infoLocation">—</div></div>
+      <div class="key-info-item"><div class="label">Type</div><div class="value" id="infoType">—</div></div>
+    </div>
+    <div class="modifiers">
+      <span class="mod" id="modShift">Shift</span>
+      <span class="mod" id="modCtrl">Ctrl</span>
+      <span class="mod" id="modAlt">Alt</span>
+      <span class="mod" id="modMeta">Meta</span>
+    </div>
+  </div>
+
+  <div class="keyboard" id="keyboard"></div>
+
+  <div class="event-log">
+    <h3>Event Log <button onclick="clearLog()">Clear</button></h3>
+    <div id="logEntries">
+      <div class="prompt">Keypress events will appear here...</div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/pomodoro.html">Pomodoro Timer</a>
+      <a href="/color-converter.html">Color Converter</a>
+      <a href="/diff-checker.html">Diff Checker</a>
+      <a href="/countdown-generator.html">Countdown Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+      <a href="/budget-tracker.html">Budget Tracker</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and tips delivered free.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" title="Newsletter signup"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+// Keyboard layout (US QWERTY)
+const rows = [
+  [{l:'Esc',c:'Escape',w:1},{l:'F1',c:'F1',w:1},{l:'F2',c:'F2',w:1},{l:'F3',c:'F3',w:1},{l:'F4',c:'F4',w:1},{l:'F5',c:'F5',w:1},{l:'F6',c:'F6',w:1},{l:'F7',c:'F7',w:1},{l:'F8',c:'F8',w:1},{l:'F9',c:'F9',w:1},{l:'F10',c:'F10',w:1},{l:'F11',c:'F11',w:1},{l:'F12',c:'F12',w:1}],
+  [{l:'`',c:'Backquote',w:1},{l:'1',c:'Digit1',w:1},{l:'2',c:'Digit2',w:1},{l:'3',c:'Digit3',w:1},{l:'4',c:'Digit4',w:1},{l:'5',c:'Digit5',w:1},{l:'6',c:'Digit6',w:1},{l:'7',c:'Digit7',w:1},{l:'8',c:'Digit8',w:1},{l:'9',c:'Digit9',w:1},{l:'0',c:'Digit0',w:1},{l:'-',c:'Minus',w:1},{l:'=',c:'Equal',w:1},{l:'Back',c:'Backspace',w:2}],
+  [{l:'Tab',c:'Tab',w:1.5},{l:'Q',c:'KeyQ',w:1},{l:'W',c:'KeyW',w:1},{l:'E',c:'KeyE',w:1},{l:'R',c:'KeyR',w:1},{l:'T',c:'KeyT',w:1},{l:'Y',c:'KeyY',w:1},{l:'U',c:'KeyU',w:1},{l:'I',c:'KeyI',w:1},{l:'O',c:'KeyO',w:1},{l:'P',c:'KeyP',w:1},{l:'[',c:'BracketLeft',w:1},{l:']',c:'BracketRight',w:1},{l:'\\',c:'Backslash',w:1.5}],
+  [{l:'Caps',c:'CapsLock',w:1.8},{l:'A',c:'KeyA',w:1},{l:'S',c:'KeyS',w:1},{l:'D',c:'KeyD',w:1},{l:'F',c:'KeyF',w:1},{l:'G',c:'KeyG',w:1},{l:'H',c:'KeyH',w:1},{l:'J',c:'KeyJ',w:1},{l:'K',c:'KeyK',w:1},{l:'L',c:'KeyL',w:1},{l:';',c:'Semicolon',w:1},{l:"'",c:'Quote',w:1},{l:'Enter',c:'Enter',w:2.2}],
+  [{l:'Shift',c:'ShiftLeft',w:2.4},{l:'Z',c:'KeyZ',w:1},{l:'X',c:'KeyX',w:1},{l:'C',c:'KeyC',w:1},{l:'V',c:'KeyV',w:1},{l:'B',c:'KeyB',w:1},{l:'N',c:'KeyN',w:1},{l:'M',c:'KeyM',w:1},{l:',',c:'Comma',w:1},{l:'.',c:'Period',w:1},{l:'/',c:'Slash',w:1},{l:'Shift',c:'ShiftRight',w:2.6}],
+  [{l:'Ctrl',c:'ControlLeft',w:1.5},{l:'Meta',c:'MetaLeft',w:1.2},{l:'Alt',c:'AltLeft',w:1.2},{l:'Space',c:'Space',w:6},{l:'Alt',c:'AltRight',w:1.2},{l:'Meta',c:'MetaRight',w:1.2},{l:'Ctrl',c:'ControlRight',w:1.5}]
+];
+
+const pressedKeys = new Set();
+const keyElements = {};
+
+function buildKeyboard() {
+  const kb = document.getElementById('keyboard');
+  rows.forEach(row => {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'kb-row';
+    row.forEach(key => {
+      const el = document.createElement('div');
+      el.className = 'kb-key';
+      el.style.minWidth = (key.w * 40) + 'px';
+      el.textContent = key.l;
+      el.dataset.code = key.c;
+      keyElements[key.c] = el;
+      rowDiv.appendChild(el);
+    });
+    kb.appendChild(rowDiv);
+  });
+}
+
+const locationNames = ['Standard', 'Left', 'Right', 'Numpad'];
+let logCount = 0;
+
+function handleKeyDown(e) {
+  e.preventDefault();
+  const code = e.code;
+  const key = e.key;
+
+  // Update display
+  document.getElementById('keyBig').textContent = key.length === 1 ? key : key;
+  document.getElementById('keyInfo').style.display = 'grid';
+  document.getElementById('infoKey').textContent = e.key;
+  document.getElementById('infoCode').textContent = e.code;
+  document.getElementById('infoKeyCode').textContent = e.keyCode;
+  document.getElementById('infoWhich').textContent = e.which;
+  document.getElementById('infoLocation').textContent = (locationNames[e.location] || e.location);
+  document.getElementById('infoType').textContent = e.type;
+
+  // Modifiers
+  document.getElementById('modShift').classList.toggle('active', e.shiftKey);
+  document.getElementById('modCtrl').classList.toggle('active', e.ctrlKey);
+  document.getElementById('modAlt').classList.toggle('active', e.altKey);
+  document.getElementById('modMeta').classList.toggle('active', e.metaKey);
+
+  // Keyboard highlight
+  if (keyElements[code]) {
+    keyElements[code].classList.add('pressed');
+    keyElements[code].classList.remove('was-pressed');
+  }
+  pressedKeys.add(code);
+
+  // Log
+  addLog(e);
+}
+
+function handleKeyUp(e) {
+  e.preventDefault();
+  const code = e.code;
+  if (keyElements[code]) {
+    keyElements[code].classList.remove('pressed');
+    keyElements[code].classList.add('was-pressed');
+  }
+  pressedKeys.delete(code);
+
+  // Update modifiers on key up
+  document.getElementById('modShift').classList.toggle('active', e.shiftKey);
+  document.getElementById('modCtrl').classList.toggle('active', e.ctrlKey);
+  document.getElementById('modAlt').classList.toggle('active', e.altKey);
+  document.getElementById('modMeta').classList.toggle('active', e.metaKey);
+}
+
+function addLog(e) {
+  const container = document.getElementById('logEntries');
+  if (logCount === 0) container.innerHTML = '';
+  logCount++;
+
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  entry.innerHTML = `<span class="log-type">${e.type}</span><span class="log-key">${escHtml(e.key)}</span><span class="log-code">${e.code}</span><span style="color:#555">${e.keyCode}</span>`;
+  container.insertBefore(entry, container.firstChild);
+
+  // Keep max 50 entries
+  while (container.children.length > 50) container.removeChild(container.lastChild);
+}
+
+function clearLog() {
+  document.getElementById('logEntries').innerHTML = '<div class="prompt">Keypress events will appear here...</div>';
+  logCount = 0;
+  // Reset all keys
+  Object.values(keyElements).forEach(el => { el.classList.remove('pressed', 'was-pressed'); });
+  document.getElementById('keyBig').textContent = 'Press any key...';
+  document.getElementById('keyInfo').style.display = 'none';
+  ['modShift','modCtrl','modAlt','modMeta'].forEach(id => document.getElementById(id).classList.remove('active'));
+}
+
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+document.addEventListener('keydown', handleKeyDown);
+document.addEventListener('keyup', handleKeyUp);
+buildKeyboard();
+</script>
+</body>
+</html>

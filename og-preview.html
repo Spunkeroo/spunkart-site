@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Graph Preview - Social Card Preview Tool | SPUNKART.COM</title>
+<meta name="description" content="Preview how your page looks when shared on X/Twitter, Facebook, LinkedIn, and Discord. Validate Open Graph and Twitter Card meta tags instantly. Free tool.">
+<meta property="og:title" content="Open Graph Preview - Social Card Preview Tool">
+<meta property="og:description" content="Preview how your page looks when shared on social media. Validate OG tags instantly.">
+<meta property="og:image" content="https://spunkart.com/assets/og-og-preview.png">
+<meta property="og:url" content="https://spunkart.com/og-preview.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Open Graph Preview - Social Card Preview Tool">
+<meta name="twitter:description" content="Preview how your page looks when shared on social media. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/og-preview.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Open Graph Preview","description":"Preview how your page looks when shared on X/Twitter, Facebook, LinkedIn, and Discord. Validate Open Graph meta tags.","url":"https://spunkart.com/og-preview.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.input-section{margin-bottom:32px;}
+.tabs{display:flex;gap:0;margin-bottom:16px;}
+.tab{padding:10px 24px;background:#1a1a1a;border:1px solid #333;color:#888;cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.2s;}
+.tab:first-child{border-radius:8px 0 0 8px;}
+.tab:last-child{border-radius:0 8px 8px 0;}
+.tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+.form-group{margin-bottom:16px;}
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],input[type="url"],textarea{width:100%;background:#111;border:1px solid #333;color:#e8e8e8;padding:12px 16px;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color 0.2s;}
+input:focus,textarea:focus{border-color:#ff5f1f;}
+textarea{resize:vertical;min-height:100px;font-family:'SF Mono',Monaco,monospace;font-size:0.85rem;}
+.char-count{font-size:0.75rem;color:#666;text-align:right;margin-top:4px;}
+.char-count.warn{color:#f59e0b;}
+.char-count.over{color:#ef4444;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.previews{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+@media(max-width:768px){.previews{grid-template-columns:1fr;}}
+
+.preview-card{background:#111;border:1px solid #333;border-radius:12px;overflow:hidden;}
+.preview-label{padding:12px 16px;background:#1a1a1a;border-bottom:1px solid #333;font-size:0.8rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:8px;}
+.preview-label .icon{font-size:1rem;}
+.preview-body{padding:0;}
+
+/* Twitter/X Preview */
+.x-card{border-radius:0;overflow:hidden;font-family:-apple-system,sans-serif;}
+.x-card .card-image{width:100%;height:150px;background:#222;display:flex;align-items:center;justify-content:center;color:#555;font-size:0.85rem;overflow:hidden;}
+.x-card .card-image img{width:100%;height:100%;object-fit:cover;}
+.x-card .card-info{padding:12px;background:#16181c;}
+.x-card .card-url{font-size:0.75rem;color:#8899a6;text-transform:lowercase;}
+.x-card .card-title{font-size:0.9rem;color:#d9d9d9;font-weight:700;margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.x-card .card-desc{font-size:0.8rem;color:#8899a6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+/* Facebook Preview */
+.fb-card{font-family:Helvetica,sans-serif;}
+.fb-card .card-image{width:100%;height:160px;background:#222;display:flex;align-items:center;justify-content:center;color:#555;font-size:0.85rem;overflow:hidden;}
+.fb-card .card-image img{width:100%;height:100%;object-fit:cover;}
+.fb-card .card-info{padding:12px;background:#242526;border-top:1px solid #333;}
+.fb-card .card-url{font-size:0.7rem;color:#b0b3b8;text-transform:uppercase;letter-spacing:0.5px;}
+.fb-card .card-title{font-size:0.95rem;color:#e4e6eb;font-weight:700;margin:4px 0;}
+.fb-card .card-desc{font-size:0.8rem;color:#b0b3b8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+
+/* LinkedIn Preview */
+.li-card{font-family:-apple-system,sans-serif;}
+.li-card .card-image{width:100%;height:150px;background:#222;display:flex;align-items:center;justify-content:center;color:#555;font-size:0.85rem;overflow:hidden;}
+.li-card .card-image img{width:100%;height:100%;object-fit:cover;}
+.li-card .card-info{padding:12px;background:#1b1f23;}
+.li-card .card-title{font-size:0.9rem;color:#e8e8e8;font-weight:600;margin-bottom:2px;}
+.li-card .card-url{font-size:0.75rem;color:#888;}
+
+/* Discord Preview */
+.dc-card{background:#2f3136;border-left:4px solid #ff5f1f;border-radius:4px;padding:12px 16px;font-family:'gg sans',sans-serif;margin:8px;}
+.dc-card .card-url{font-size:0.7rem;color:#00b0f4;margin-bottom:4px;}
+.dc-card .card-title{font-size:0.95rem;color:#00b0f4;font-weight:700;margin-bottom:4px;text-decoration:underline;}
+.dc-card .card-desc{font-size:0.85rem;color:#dcddde;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.dc-card .card-image{width:100%;max-height:200px;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#555;font-size:0.85rem;background:#222;}
+.dc-card .card-image img{width:100%;height:auto;max-height:200px;object-fit:cover;}
+
+/* Validation */
+.validation{background:#111;border:1px solid #333;border-radius:12px;padding:20px;margin-top:24px;}
+.validation h3{color:#fff;margin-bottom:12px;font-size:1rem;}
+.val-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:0.85rem;}
+.val-pass{color:#10b981;}
+.val-fail{color:#ef4444;}
+.val-warn{color:#f59e0b;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.8rem;color:#ccc;transition:all 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#999;margin-bottom:16px;font-size:0.9rem;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied.show{opacity:1;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Open Graph / Social Card Preview</h1>
+  <div class="subtitle">See how your page looks when shared on X, Facebook, LinkedIn, and Discord</div>
+
+  <div class="input-section">
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('manual')">Enter Manually</div>
+      <div class="tab" onclick="switchTab('paste')">Paste HTML Tags</div>
+    </div>
+
+    <div class="tab-content active" id="tab-manual">
+      <div class="form-group">
+        <label>Page Title (og:title)</label>
+        <input type="text" id="ogTitle" placeholder="My Awesome Page" maxlength="90" oninput="updatePreview();countChars(this,90,'titleCount')">
+        <div class="char-count" id="titleCount">0 / 90</div>
+      </div>
+      <div class="form-group">
+        <label>Description (og:description)</label>
+        <input type="text" id="ogDesc" placeholder="A brief description of your page content..." maxlength="200" oninput="updatePreview();countChars(this,200,'descCount')">
+        <div class="char-count" id="descCount">0 / 200</div>
+      </div>
+      <div class="form-group">
+        <label>Image URL (og:image)</label>
+        <input type="url" id="ogImage" placeholder="https://example.com/image.png" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label>Page URL (og:url)</label>
+        <input type="url" id="ogUrl" placeholder="https://example.com/page" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label>Site Name (og:site_name)</label>
+        <input type="text" id="ogSiteName" placeholder="My Website" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label>Twitter Card Type</label>
+        <select id="twitterCard" style="width:100%;background:#111;border:1px solid #333;color:#e8e8e8;padding:12px 16px;border-radius:8px;font-size:0.9rem;" onchange="updatePreview()">
+          <option value="summary_large_image">summary_large_image</option>
+          <option value="summary">summary</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-paste">
+      <div class="form-group">
+        <label>Paste your &lt;meta&gt; tags</label>
+        <textarea id="metaPaste" rows="8" placeholder='<meta property="og:title" content="My Page Title">
+<meta property="og:description" content="Page description here">
+<meta property="og:image" content="https://example.com/image.png">
+<meta property="og:url" content="https://example.com">
+<meta name="twitter:card" content="summary_large_image">'></textarea>
+      </div>
+      <button onclick="parseMeta()">Parse Tags</button>
+    </div>
+  </div>
+
+  <div class="previews">
+    <div class="preview-card">
+      <div class="preview-label"><span class="icon">&#120143;</span> X / Twitter</div>
+      <div class="preview-body">
+        <div class="x-card">
+          <div class="card-image" id="xImg">No image set</div>
+          <div class="card-info">
+            <div class="card-url" id="xUrl">example.com</div>
+            <div class="card-title" id="xTitle">Your Title Here</div>
+            <div class="card-desc" id="xDesc">Your description will appear here...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <div class="preview-label"><span class="icon">f</span> Facebook</div>
+      <div class="preview-body">
+        <div class="fb-card">
+          <div class="card-image" id="fbImg">No image set</div>
+          <div class="card-info">
+            <div class="card-url" id="fbUrl">EXAMPLE.COM</div>
+            <div class="card-title" id="fbTitle">Your Title Here</div>
+            <div class="card-desc" id="fbDesc">Your description will appear here...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <div class="preview-label"><span class="icon">in</span> LinkedIn</div>
+      <div class="preview-body">
+        <div class="li-card">
+          <div class="card-image" id="liImg">No image set</div>
+          <div class="card-info">
+            <div class="card-title" id="liTitle">Your Title Here</div>
+            <div class="card-url" id="liUrl">example.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-card">
+      <div class="preview-label"><span class="icon">D</span> Discord</div>
+      <div class="preview-body">
+        <div class="dc-card">
+          <div class="card-url" id="dcSite">example.com</div>
+          <div class="card-title" id="dcTitle">Your Title Here</div>
+          <div class="card-desc" id="dcDesc">Your description will appear here...</div>
+          <div class="card-image" id="dcImg" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="validation" id="validation">
+    <h3>Tag Validation</h3>
+    <div id="valResults">
+      <div class="val-item val-warn">Enter your OG tags above to validate them</div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <div class="tool-links">
+      <a href="/meta-generator.html">Meta Tag Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/readme-generator.html">README Generator</a>
+      <a href="/slug-generator.html">Slug Generator</a>
+      <a href="/css-minifier.html">CSS Minifier</a>
+      <a href="/htaccess-generator.html">.htaccess Generator</a>
+      <a href="/password-generator.html">Password Generator</a>
+    </div>
+    <br>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Free Tools + Discounts</h3>
+    <p>Join the SpunkArt newsletter for free tools, tips, and 10% off your first purchase.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:80px;border:none;border-radius:8px;"></iframe>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  if (tab === 'manual') {
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('tab-manual').classList.add('active');
+  } else {
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('tab-paste').classList.add('active');
+  }
+}
+
+function countChars(el, max, countId) {
+  const len = el.value.length;
+  const countEl = document.getElementById(countId);
+  countEl.textContent = len + ' / ' + max;
+  countEl.className = 'char-count' + (len > max ? ' over' : len > max * 0.8 ? ' warn' : '');
+}
+
+function extractDomain(url) {
+  try { return new URL(url).hostname; } catch { return url || 'example.com'; }
+}
+
+function updatePreview() {
+  const title = document.getElementById('ogTitle').value || 'Your Title Here';
+  const desc = document.getElementById('ogDesc').value || 'Your description will appear here...';
+  const image = document.getElementById('ogImage').value;
+  const url = document.getElementById('ogUrl').value;
+  const siteName = document.getElementById('ogSiteName').value;
+  const domain = extractDomain(url);
+
+  // X/Twitter
+  document.getElementById('xTitle').textContent = title;
+  document.getElementById('xDesc').textContent = desc;
+  document.getElementById('xUrl').textContent = domain;
+  setImage('xImg', image);
+
+  // Facebook
+  document.getElementById('fbTitle').textContent = title;
+  document.getElementById('fbDesc').textContent = desc;
+  document.getElementById('fbUrl').textContent = domain.toUpperCase();
+  setImage('fbImg', image);
+
+  // LinkedIn
+  document.getElementById('liTitle').textContent = title;
+  document.getElementById('liUrl').textContent = domain;
+  setImage('liImg', image);
+
+  // Discord
+  document.getElementById('dcTitle').textContent = title;
+  document.getElementById('dcDesc').textContent = desc;
+  document.getElementById('dcSite').textContent = siteName || domain;
+  if (image) {
+    document.getElementById('dcImg').style.display = 'block';
+    document.getElementById('dcImg').innerHTML = '<img src="' + escapeHtml(image) + '" alt="Preview" onerror="this.parentElement.innerHTML=\'Image failed to load\'">';
+  } else {
+    document.getElementById('dcImg').style.display = 'none';
+  }
+
+  validate();
+}
+
+function setImage(id, src) {
+  const el = document.getElementById(id);
+  if (src) {
+    el.innerHTML = '<img src="' + escapeHtml(src) + '" alt="Preview" onerror="this.parentElement.innerHTML=\'Image failed to load\'">';
+  } else {
+    el.innerHTML = 'No image set';
+  }
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function parseMeta() {
+  const raw = document.getElementById('metaPaste').value;
+  const pairs = {};
+  const regex = /<meta\s+(?:property|name)=["']([^"']+)["']\s+content=["']([^"']+)["']\s*\/?>/gi;
+  let match;
+  while ((match = regex.exec(raw)) !== null) {
+    pairs[match[1].toLowerCase()] = match[2];
+  }
+  // Also try content-first order
+  const regex2 = /<meta\s+content=["']([^"']+)["']\s+(?:property|name)=["']([^"']+)["']\s*\/?>/gi;
+  while ((match = regex2.exec(raw)) !== null) {
+    pairs[match[2].toLowerCase()] = match[1];
+  }
+
+  if (pairs['og:title']) document.getElementById('ogTitle').value = pairs['og:title'];
+  if (pairs['og:description']) document.getElementById('ogDesc').value = pairs['og:description'];
+  if (pairs['og:image']) document.getElementById('ogImage').value = pairs['og:image'];
+  if (pairs['og:url']) document.getElementById('ogUrl').value = pairs['og:url'];
+  if (pairs['og:site_name']) document.getElementById('ogSiteName').value = pairs['og:site_name'];
+  if (pairs['twitter:card']) document.getElementById('twitterCard').value = pairs['twitter:card'];
+
+  switchTab('manual');
+  updatePreview();
+}
+
+function validate() {
+  const title = document.getElementById('ogTitle').value;
+  const desc = document.getElementById('ogDesc').value;
+  const image = document.getElementById('ogImage').value;
+  const url = document.getElementById('ogUrl').value;
+
+  const checks = [];
+
+  checks.push(title
+    ? { pass: true, msg: 'og:title is set (' + title.length + ' chars)' + (title.length > 60 ? ' - consider shortening' : '') }
+    : { pass: false, msg: 'og:title is missing (required)' });
+
+  checks.push(desc
+    ? { pass: true, msg: 'og:description is set (' + desc.length + ' chars)' + (desc.length > 160 ? ' - may be truncated' : '') }
+    : { pass: false, msg: 'og:description is missing (recommended)' });
+
+  checks.push(image
+    ? { pass: true, msg: 'og:image is set' }
+    : { pass: false, msg: 'og:image is missing (strongly recommended)' });
+
+  if (image && !image.startsWith('https://')) {
+    checks.push({ warn: true, msg: 'og:image should use HTTPS for best compatibility' });
+  }
+
+  if (image) {
+    const ext = image.split('?')[0].split('.').pop().toLowerCase();
+    if (['jpg','jpeg','png','webp','gif'].includes(ext)) {
+      checks.push({ pass: true, msg: 'og:image format looks valid (' + ext + ')' });
+    } else {
+      checks.push({ warn: true, msg: 'og:image format may not be supported everywhere' });
+    }
+  }
+
+  checks.push(url
+    ? { pass: true, msg: 'og:url is set' }
+    : { warn: true, msg: 'og:url is missing (recommended)' });
+
+  if (title && title.length < 15) {
+    checks.push({ warn: true, msg: 'og:title is very short. Aim for 30-60 characters.' });
+  }
+  if (title && title.length > 70) {
+    checks.push({ warn: true, msg: 'og:title may be truncated on some platforms (>70 chars)' });
+  }
+  if (desc && desc.length > 160) {
+    checks.push({ warn: true, msg: 'og:description may be truncated (>160 chars)' });
+  }
+
+  const html = checks.map(c => {
+    if (c.warn) return '<div class="val-item val-warn">&#9888; ' + c.msg + '</div>';
+    return '<div class="val-item ' + (c.pass ? 'val-pass' : 'val-fail') + '">' + (c.pass ? '&#10003;' : '&#10007;') + ' ' + c.msg + '</div>';
+  }).join('');
+
+  document.getElementById('valResults').innerHTML = html || '<div class="val-item val-warn">Enter your OG tags above to validate them</div>';
+}
+</script>
+</body>
+</html>

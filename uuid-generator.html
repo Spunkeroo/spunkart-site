@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UUID Generator — Generate & Validate UUIDs Instantly</title>
+<meta name="description" content="Generate UUID v4 instantly. Bulk generate up to 100 UUIDs, copy individual or all, toggle hyphens, and validate any UUID string. Free tool by SPUNKART.COM">
+<meta property="og:title" content="UUID Generator — Generate & Validate UUIDs Instantly">
+<meta property="og:description" content="Generate UUID v4 instantly. Bulk generate up to 100 UUIDs, copy individual or all, toggle hyphens, and validate any UUID string.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UUID Generator">
+<meta name="twitter:description" content="Generate UUID v4 instantly. Bulk generate, copy, toggle hyphens, validate. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/uuid-generator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UUID Generator","description":"Generate UUID v4 instantly. Bulk generate up to 100 UUIDs, copy individual or all, toggle hyphens, and validate any UUID string.","url":"https://spunkart.com/uuid-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:650px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.section h2{font-size:1.1rem;color:#ff5f1f;margin-bottom:1rem}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:1rem}
+label{font-size:0.85rem;color:#aaa}
+input[type="number"]{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:8px 12px;border-radius:6px;width:80px;font-size:0.95rem}
+input[type="number"]:focus{outline:none;border-color:#ff5f1f}
+.toggle-wrap{display:flex;align-items:center;gap:8px}
+.toggle{position:relative;width:44px;height:24px;background:#333;border-radius:12px;cursor:pointer;transition:background 0.3s;flex-shrink:0}
+.toggle.on{background:#ff5f1f}
+.toggle::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform 0.3s}
+.toggle.on::after{transform:translateX(20px)}
+.btn{padding:10px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333}
+.btn-secondary:hover{background:#333;color:#fff;transform:scale(1.02)}
+.btn-sm{padding:6px 12px;font-size:0.8rem;border-radius:6px}
+.uuid-list{max-height:400px;overflow-y:auto;margin-top:1rem}
+.uuid-item{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:6px;margin-bottom:4px;font-family:'Courier New',monospace;font-size:0.85rem;word-break:break-all}
+.uuid-item span{flex:1;margin-right:8px}
+.uuid-item button{flex-shrink:0}
+.validate-input{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-family:'Courier New',monospace;font-size:0.95rem;margin-bottom:1rem}
+.validate-input:focus{outline:none;border-color:#ff5f1f}
+.result{padding:10px 14px;border-radius:8px;font-size:0.9rem;font-weight:600}
+.result.valid{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+.result.invalid{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+.result.empty{background:#1a1a1a;color:#555;border:1px solid #222}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  .row{flex-direction:column;align-items:flex-start}
+  .uuid-item{font-size:0.75rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>UUID Generator</h1>
+  <div class="sub">Generate, bulk create, and validate UUID v4 strings</div>
+
+  <div class="section">
+    <h2>Generate UUIDs</h2>
+    <div class="row">
+      <label>Count:</label>
+      <input type="number" id="count" min="1" max="100" value="1">
+      <div class="toggle-wrap">
+        <div class="toggle on" id="hyphens" onclick="this.classList.toggle('on')"></div>
+        <label>Hyphens</label>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="generateUUIDs()">Generate</button>
+      <button class="btn btn-secondary" onclick="copyAll()">Copy All</button>
+      <button class="btn btn-secondary" onclick="clearList()">Clear</button>
+    </div>
+    <div class="uuid-list" id="uuidList"></div>
+  </div>
+
+  <div class="section">
+    <h2>Validate UUID</h2>
+    <input type="text" class="validate-input" id="validateInput" placeholder="Paste a UUID to validate..." oninput="validateUUID()">
+    <div class="result empty" id="validateResult">Enter a UUID to check if it's valid</div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/timestamp-converter.html">Timestamp Converter</a>
+      <a href="/tip-calculator.html">Tip Calculator</a>
+      <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="/age-calculator.html">Age Calculator</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+const uuids = [];
+
+function generateUUIDv4(hyphens) {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+  if (hyphens) {
+    return hex.slice(0,8) + '-' + hex.slice(8,12) + '-' + hex.slice(12,16) + '-' + hex.slice(16,20) + '-' + hex.slice(20);
+  }
+  return hex;
+}
+
+function generateUUIDs() {
+  const count = Math.min(100, Math.max(1, parseInt(document.getElementById('count').value) || 1));
+  const hyphens = document.getElementById('hyphens').classList.contains('on');
+  uuids.length = 0;
+  for (let i = 0; i < count; i++) {
+    uuids.push(generateUUIDv4(hyphens));
+  }
+  renderList();
+}
+
+function renderList() {
+  const list = document.getElementById('uuidList');
+  list.innerHTML = uuids.map((u, i) =>
+    `<div class="uuid-item"><span>${u}</span><button class="btn btn-secondary btn-sm" onclick="copyOne(${i})">Copy</button></div>`
+  ).join('');
+}
+
+function copyOne(i) {
+  navigator.clipboard.writeText(uuids[i]);
+  showCopied();
+}
+
+function copyAll() {
+  if (!uuids.length) return;
+  navigator.clipboard.writeText(uuids.join('\n'));
+  showCopied();
+}
+
+function clearList() {
+  uuids.length = 0;
+  document.getElementById('uuidList').innerHTML = '';
+}
+
+function showCopied() {
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+function validateUUID() {
+  const input = document.getElementById('validateInput').value.trim();
+  const result = document.getElementById('validateResult');
+  if (!input) {
+    result.className = 'result empty';
+    result.textContent = 'Enter a UUID to check if it\'s valid';
+    return;
+  }
+  const uuidRegex = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[1-5][0-9a-f]{3}-?[89ab][0-9a-f]{3}-?[0-9a-f]{12}$/i;
+  if (uuidRegex.test(input)) {
+    const normalized = input.replace(/-/g, '');
+    const version = parseInt(normalized[12], 16);
+    result.className = 'result valid';
+    result.textContent = 'Valid UUID (version ' + version + ')';
+  } else {
+    result.className = 'result invalid';
+    result.textContent = 'Not a valid UUID';
+  }
+}
+
+generateUUIDs();
+</script>
+</body>
+</html>

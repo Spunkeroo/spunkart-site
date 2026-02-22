@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Color Converter — HEX, RGB, HSL, HSV, CMYK Converter</title>
+<meta name="description" content="Convert colors between HEX, RGB, HSL, HSV, and CMYK formats instantly. Free color converter with palette saver, complementary colors, and shade generator.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:600px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.input-box{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.input-box label{font-size:0.85rem;color:#888;display:block;margin-bottom:8px}
+.input-row{display:flex;gap:10px}
+.input-row input{flex:1;padding:12px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#fff;font-size:1rem;font-family:monospace}
+.input-row button{padding:12px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap}.input-row button:hover{background:#e5520f}
+.swatch{width:100%;height:120px;border-radius:12px;border:2px solid #333;margin-bottom:1.5rem;transition:background 0.3s}
+.formats{display:flex;flex-direction:column;gap:8px;margin-bottom:1.5rem}
+.format-row{display:flex;justify-content:space-between;align-items:center;background:#111;border:1px solid #222;border-radius:10px;padding:10px 14px}
+.format-row .label{font-size:0.75rem;color:#666;min-width:50px}
+.format-row .value{font-family:monospace;font-size:0.9rem;color:#fff;flex:1;margin:0 12px}
+.format-row .copy-btn{background:#222;border:none;color:#888;padding:6px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer}.format-row .copy-btn:hover{background:#333;color:#fff}
+.section{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.section h3{font-size:0.95rem;color:#888;margin-bottom:12px}
+.shade-row{display:flex;gap:6px;flex-wrap:wrap}
+.shade{width:48px;height:48px;border-radius:8px;border:1px solid #333;cursor:pointer;transition:transform 0.2s;position:relative}
+.shade:hover{transform:scale(1.15);z-index:1}
+.complement-box{display:flex;gap:12px;align-items:center}
+.complement-swatch{width:60px;height:60px;border-radius:10px;border:1px solid #333}
+.complement-text{font-family:monospace;font-size:0.85rem}
+.palette-section{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.palette-section h3{font-size:0.95rem;color:#888;margin-bottom:12px}
+.palette-colors{display:flex;gap:8px;flex-wrap:wrap;min-height:48px}
+.palette-color{width:48px;height:48px;border-radius:8px;border:1px solid #333;cursor:pointer;position:relative}
+.palette-color:hover::after{content:'x';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);color:#fff;font-weight:700;border-radius:8px}
+.palette-actions{display:flex;gap:8px;margin-top:12px}
+.palette-actions button{padding:8px 16px;border-radius:8px;border:none;font-size:0.8rem;cursor:pointer;font-weight:600}
+.btn-save{background:#ff5f1f;color:#fff}.btn-save:hover{background:#e5520f}
+.btn-clear{background:#333;color:#ccc}.btn-clear:hover{background:#444}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-top:24px;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#666;font-size:0.85rem;margin-bottom:12px}
+.newsletter iframe{width:100%;border:none;border-radius:8px;min-height:80px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Converter","description":"Convert colors between HEX, RGB, HSL, HSV, and CMYK formats instantly with palette saver and shade generator.","url":"https://spunkart.com/color-converter.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Color Converter</h1>
+  <div class="sub">Enter any color format — get all others instantly</div>
+
+  <div class="input-box">
+    <label>Enter a color (HEX, RGB, HSL, HSV, or CMYK)</label>
+    <div class="input-row">
+      <input type="text" id="colorInput" placeholder="#ff5f1f or rgb(255,95,31) or hsl(20,100%,56%)" spellcheck="false">
+      <button onclick="convertColor()">Convert</button>
+    </div>
+  </div>
+
+  <div class="swatch" id="swatch" style="background:#ff5f1f"></div>
+
+  <div class="formats" id="formats"></div>
+
+  <div class="section">
+    <h3>Complementary Color</h3>
+    <div class="complement-box" id="complement"></div>
+  </div>
+
+  <div class="section">
+    <h3>Lighter Shades</h3>
+    <div class="shade-row" id="lighterShades"></div>
+  </div>
+
+  <div class="section">
+    <h3>Darker Shades</h3>
+    <div class="shade-row" id="darkerShades"></div>
+  </div>
+
+  <div class="palette-section">
+    <h3>Saved Palette</h3>
+    <div class="palette-colors" id="paletteColors"></div>
+    <div class="palette-actions">
+      <button class="btn-save" onclick="saveToPalette()">Save Current Color</button>
+      <button class="btn-clear" onclick="clearPalette()">Clear Palette</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/pomodoro.html">Pomodoro Timer</a>
+      <a href="/diff-checker.html">Diff Checker</a>
+      <a href="/keyboard-tester.html">Keyboard Tester</a>
+      <a href="/countdown-generator.html">Countdown Generator</a>
+      <a href="/color-palette.html">Color Palette</a>
+      <a href="/css-gradient.html">CSS Gradient</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and tips delivered free.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" title="Newsletter signup"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+let currentRGB = {r:255, g:95, b:31};
+
+function parseColor(str) {
+  str = str.trim();
+  // HEX
+  let m = str.match(/^#?([0-9a-f]{3,8})$/i);
+  if (m) {
+    let hex = m[1];
+    if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    if (hex.length === 6 || hex.length === 8) {
+      return {r:parseInt(hex.substr(0,2),16), g:parseInt(hex.substr(2,2),16), b:parseInt(hex.substr(4,2),16)};
+    }
+  }
+  // RGB
+  m = str.match(/^rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
+  if (m) return {r:+m[1], g:+m[2], b:+m[3]};
+  // HSL
+  m = str.match(/^hsla?\s*\(\s*([\d.]+)\s*,\s*([\d.]+)%?\s*,\s*([\d.]+)%?/i);
+  if (m) return hslToRgb(+m[1], +m[2], +m[3]);
+  // HSV
+  m = str.match(/^hsv\s*\(\s*([\d.]+)\s*,\s*([\d.]+)%?\s*,\s*([\d.]+)%?/i);
+  if (m) return hsvToRgb(+m[1], +m[2], +m[3]);
+  // CMYK
+  m = str.match(/^cmyk\s*\(\s*([\d.]+)%?\s*,\s*([\d.]+)%?\s*,\s*([\d.]+)%?\s*,\s*([\d.]+)%?/i);
+  if (m) return cmykToRgb(+m[1], +m[2], +m[3], +m[4]);
+  return null;
+}
+
+function rgbToHex(r,g,b) { return '#' + [r,g,b].map(v => v.toString(16).padStart(2,'0')).join(''); }
+
+function rgbToHsl(r,g,b) {
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
+  let h=0, s=0, l=(max+min)/2;
+  if(d){
+    s=l>0.5?d/(2-max-min):d/(max+min);
+    if(max===r) h=((g-b)/d+(g<b?6:0))/6;
+    else if(max===g) h=((b-r)/d+2)/6;
+    else h=((r-g)/d+4)/6;
+  }
+  return {h:Math.round(h*360), s:Math.round(s*100), l:Math.round(l*100)};
+}
+
+function hslToRgb(h,s,l) {
+  s/=100; l/=100;
+  const a=s*Math.min(l,1-l);
+  const f=(n)=>{const k=(n+h/30)%12;return l-a*Math.max(Math.min(k-3,9-k,1),-1);};
+  return {r:Math.round(f(0)*255), g:Math.round(f(8)*255), b:Math.round(f(4)*255)};
+}
+
+function rgbToHsv(r,g,b) {
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b), d=max-min;
+  let h=0, s=max?d/max:0, v=max;
+  if(d){
+    if(max===r) h=((g-b)/d+(g<b?6:0))/6;
+    else if(max===g) h=((b-r)/d+2)/6;
+    else h=((r-g)/d+4)/6;
+  }
+  return {h:Math.round(h*360), s:Math.round(s*100), v:Math.round(v*100)};
+}
+
+function hsvToRgb(h,s,v) {
+  s/=100; v/=100;
+  const c=v*s, x=c*(1-Math.abs((h/60)%2-1)), m=v-c;
+  let r=0,g=0,b=0;
+  if(h<60){r=c;g=x;} else if(h<120){r=x;g=c;} else if(h<180){g=c;b=x;} else if(h<240){g=x;b=c;} else if(h<300){r=x;b=c;} else{r=c;b=x;}
+  return {r:Math.round((r+m)*255), g:Math.round((g+m)*255), b:Math.round((b+m)*255)};
+}
+
+function rgbToCmyk(r,g,b) {
+  if(r===0&&g===0&&b===0) return {c:0,m:0,y:0,k:100};
+  const c1=1-r/255, m1=1-g/255, y1=1-b/255;
+  const k=Math.min(c1,m1,y1);
+  return {c:Math.round((c1-k)/(1-k)*100), m:Math.round((m1-k)/(1-k)*100), y:Math.round((y1-k)/(1-k)*100), k:Math.round(k*100)};
+}
+
+function cmykToRgb(c,m,y,k) {
+  c/=100; m/=100; y/=100; k/=100;
+  return {r:Math.round(255*(1-c)*(1-k)), g:Math.round(255*(1-m)*(1-k)), b:Math.round(255*(1-y)*(1-k))};
+}
+
+function clamp(v){return Math.max(0,Math.min(255,Math.round(v)));}
+
+function convertColor() {
+  const input = document.getElementById('colorInput').value;
+  const rgb = parseColor(input);
+  if (!rgb) { showToast('Invalid color format'); return; }
+  currentRGB = rgb;
+  renderAll();
+}
+
+function renderAll() {
+  const {r,g,b} = currentRGB;
+  const hex = rgbToHex(r,g,b);
+  const hsl = rgbToHsl(r,g,b);
+  const hsv = rgbToHsv(r,g,b);
+  const cmyk = rgbToCmyk(r,g,b);
+
+  document.getElementById('swatch').style.background = hex;
+
+  const formats = [
+    {label:'HEX', value:hex},
+    {label:'RGB', value:`rgb(${r}, ${g}, ${b})`},
+    {label:'HSL', value:`hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`},
+    {label:'HSV', value:`hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`},
+    {label:'CMYK', value:`cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`},
+  ];
+  document.getElementById('formats').innerHTML = formats.map(f =>
+    `<div class="format-row"><span class="label">${f.label}</span><span class="value">${f.value}</span><button class="copy-btn" onclick="copyText('${f.value}')">Copy</button></div>`
+  ).join('');
+
+  // Complementary
+  const compH = (hsl.h + 180) % 360;
+  const compRGB = hslToRgb(compH, hsl.s, hsl.l);
+  const compHex = rgbToHex(compRGB.r, compRGB.g, compRGB.b);
+  document.getElementById('complement').innerHTML = `<div class="complement-swatch" style="background:${compHex}"></div><div><div class="complement-text">${compHex}</div><div class="complement-text" style="color:#666">rgb(${compRGB.r}, ${compRGB.g}, ${compRGB.b})</div></div>`;
+
+  // Shades
+  let lighterHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const factor = i * 0.15;
+    const lr = clamp(r + (255 - r) * factor);
+    const lg = clamp(g + (255 - g) * factor);
+    const lb = clamp(b + (255 - b) * factor);
+    const lhex = rgbToHex(lr, lg, lb);
+    lighterHTML += `<div class="shade" style="background:${lhex}" title="${lhex}" onclick="copyText('${lhex}')"></div>`;
+  }
+  document.getElementById('lighterShades').innerHTML = lighterHTML;
+
+  let darkerHTML = '';
+  for (let i = 1; i <= 5; i++) {
+    const factor = 1 - i * 0.15;
+    const dr = clamp(r * factor);
+    const dg = clamp(g * factor);
+    const db = clamp(b * factor);
+    const dhex = rgbToHex(dr, dg, db);
+    darkerHTML += `<div class="shade" style="background:${dhex}" title="${dhex}" onclick="copyText('${dhex}')"></div>`;
+  }
+  document.getElementById('darkerShades').innerHTML = darkerHTML;
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  showToast('Copied!');
+}
+
+function showToast(msg) {
+  const el = document.getElementById('copied');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+// Palette (localStorage)
+function loadPalette() {
+  try { return JSON.parse(localStorage.getItem('spunkart_palette') || '[]'); } catch(e) { return []; }
+}
+function savePaletteData(data) { localStorage.setItem('spunkart_palette', JSON.stringify(data)); }
+
+function saveToPalette() {
+  const hex = rgbToHex(currentRGB.r, currentRGB.g, currentRGB.b);
+  const palette = loadPalette();
+  if (!palette.includes(hex)) { palette.push(hex); savePaletteData(palette); }
+  renderPalette();
+}
+
+function clearPalette() { savePaletteData([]); renderPalette(); }
+
+function removeFromPalette(hex) {
+  const palette = loadPalette().filter(c => c !== hex);
+  savePaletteData(palette);
+  renderPalette();
+}
+
+function renderPalette() {
+  const palette = loadPalette();
+  document.getElementById('paletteColors').innerHTML = palette.length === 0
+    ? '<span style="color:#555;font-size:0.85rem">No saved colors yet</span>'
+    : palette.map(hex => `<div class="palette-color" style="background:${hex}" title="${hex}" onclick="removeFromPalette('${hex}')"></div>`).join('');
+}
+
+document.getElementById('colorInput').addEventListener('keydown', e => { if (e.key === 'Enter') convertColor(); });
+
+renderAll();
+renderPalette();
+</script>
+</body>
+</html>

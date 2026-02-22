@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mortgage Calculator — Monthly Payment, Amortization & Interest</title>
+<meta name="description" content="Calculate mortgage payments, total interest, and see a full amortization schedule. Supports down payment in $ or %, 15/20/30 year terms, CSS-only pie chart. Free tool by SPUNKART.COM">
+<meta property="og:title" content="Mortgage Calculator">
+<meta property="og:description" content="Calculate mortgage payments, total interest, and see a full amortization schedule. Free tool.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mortgage Calculator">
+<meta name="twitter:description" content="Mortgage payment calculator with amortization table. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/mortgage-calculator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","description":"Calculate mortgage payments, total interest, and see a full amortization schedule with pie chart breakdown.","url":"https://spunkart.com/mortgage-calculator.html","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:700px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1.2rem}
+.field label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px}
+.field input,.field select{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem}
+.field input:focus,.field select:focus{outline:none;border-color:#ff5f1f}
+.dp-row{display:flex;gap:8px;align-items:center}
+.dp-row input{flex:1}
+.dp-toggle{padding:12px 16px;background:#222;border:1px solid #333;color:#ccc;border-radius:8px;cursor:pointer;font-size:0.9rem;font-weight:700;transition:all 0.2s;white-space:nowrap}
+.dp-toggle.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.term-btns{display:flex;gap:8px}
+.term-btn{flex:1;padding:12px;background:#1a1a1a;border:2px solid #333;border-radius:10px;color:#ccc;font-size:1rem;font-weight:700;cursor:pointer;text-align:center;transition:all 0.2s}
+.term-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.term-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.btn{display:block;width:100%;padding:14px;background:#ff5f1f;color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:1rem}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.results{display:none}
+.summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.5rem}
+.summary-item{background:#111;border:1px solid #222;border-radius:12px;padding:16px;text-align:center}
+.summary-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.summary-value{font-size:1.4rem;font-weight:800;font-family:'Courier New',monospace}
+.summary-value.orange{color:#ff5f1f}
+.summary-value.green{color:#10b981}
+.summary-value.white{color:#e8e8e8}
+.chart-section{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:1.5rem;flex-wrap:wrap}
+.pie{width:160px;height:160px;border-radius:50%;position:relative;flex-shrink:0}
+.pie-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:#0a0a0a;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pie-center .val{font-size:0.9rem;font-weight:800;color:#ff5f1f}
+.pie-center .lbl{font-size:0.6rem;color:#888}
+.legend{display:flex;flex-direction:column;gap:8px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:0.85rem}
+.legend-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+.amortization{max-height:400px;overflow-y:auto;border:1px solid #222;border-radius:12px}
+.amort-toggle{display:block;width:100%;padding:12px;background:#111;border:1px solid #222;color:#ff5f1f;border-radius:8px;cursor:pointer;text-align:center;font-size:0.9rem;font-weight:600;margin-bottom:8px;transition:all 0.2s}
+.amort-toggle:hover{background:#1a1a1a}
+table{width:100%;border-collapse:collapse;font-size:0.8rem}
+thead{position:sticky;top:0;background:#111;z-index:1}
+th{padding:10px 8px;text-align:right;color:#888;font-weight:600;border-bottom:1px solid #333;font-size:0.75rem;text-transform:uppercase}
+th:first-child{text-align:left}
+td{padding:8px;text-align:right;border-bottom:1px solid #1a1a1a;font-family:'Courier New',monospace;color:#ccc}
+td:first-child{text-align:left;color:#888}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  .summary{grid-template-columns:1fr}
+  .summary-value{font-size:1.2rem}
+  .chart-section{flex-direction:column}
+  table{font-size:0.7rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Mortgage Calculator</h1>
+  <div class="sub">Calculate monthly payments, total interest, and amortization</div>
+
+  <div class="card">
+    <div class="field">
+      <label>Home Price ($)</label>
+      <input type="number" id="homePrice" placeholder="350000" value="350000" min="0" step="1000">
+    </div>
+    <div class="field">
+      <label>Down Payment</label>
+      <div class="dp-row">
+        <input type="number" id="downPayment" placeholder="70000" value="70000" min="0">
+        <div class="dp-toggle active" id="dpDollar" onclick="setDPMode('dollar')">$</div>
+        <div class="dp-toggle" id="dpPercent" onclick="setDPMode('percent')">%</div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Interest Rate (%)</label>
+      <input type="number" id="interestRate" placeholder="6.5" value="6.5" min="0" max="30" step="0.01">
+    </div>
+    <div class="field">
+      <label>Loan Term</label>
+      <div class="term-btns">
+        <div class="term-btn" data-years="15" onclick="setTerm(this,15)">15 years</div>
+        <div class="term-btn" data-years="20" onclick="setTerm(this,20)">20 years</div>
+        <div class="term-btn active" data-years="30" onclick="setTerm(this,30)">30 years</div>
+      </div>
+    </div>
+    <button class="btn" onclick="calculate()">Calculate</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="summary">
+      <div class="summary-item">
+        <div class="summary-label">Monthly Payment</div>
+        <div class="summary-value orange" id="monthlyPayment">—</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Total Interest</div>
+        <div class="summary-value green" id="totalInterest">—</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Total Cost</div>
+        <div class="summary-value white" id="totalCost">—</div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <div class="pie" id="pieChart">
+        <div class="pie-center">
+          <div class="val" id="piePercent">—</div>
+          <div class="lbl">Interest</div>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#ff5f1f"></div><span>Principal: <strong id="legendPrincipal">—</strong></span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div><span>Interest: <strong id="legendInterest">—</strong></span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:#333"></div><span>Down Payment: <strong id="legendDown">—</strong></span></div>
+      </div>
+    </div>
+
+    <button class="amort-toggle" id="amortToggle" onclick="toggleAmort()">Show Amortization Table</button>
+    <div class="amortization" id="amortTable" style="display:none"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/uuid-generator.html">UUID Generator</a>
+      <a href="/timestamp-converter.html">Timestamp Converter</a>
+      <a href="/tip-calculator.html">Tip Calculator</a>
+      <a href="/age-calculator.html">Age Calculator</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let dpMode = 'dollar';
+let termYears = 30;
+
+function setDPMode(mode) {
+  dpMode = mode;
+  document.getElementById('dpDollar').classList.toggle('active', mode === 'dollar');
+  document.getElementById('dpPercent').classList.toggle('active', mode === 'percent');
+  if (mode === 'percent') {
+    const hp = parseFloat(document.getElementById('homePrice').value) || 0;
+    const dp = parseFloat(document.getElementById('downPayment').value) || 0;
+    if (hp > 0 && dp > 0 && dp < hp) {
+      document.getElementById('downPayment').value = ((dp / hp) * 100).toFixed(1);
+    }
+    document.getElementById('downPayment').setAttribute('max', '100');
+    document.getElementById('downPayment').setAttribute('step', '0.1');
+  } else {
+    const hp = parseFloat(document.getElementById('homePrice').value) || 0;
+    const dpPct = parseFloat(document.getElementById('downPayment').value) || 0;
+    if (hp > 0 && dpPct > 0 && dpPct <= 100) {
+      document.getElementById('downPayment').value = Math.round(hp * dpPct / 100);
+    }
+    document.getElementById('downPayment').removeAttribute('max');
+    document.getElementById('downPayment').setAttribute('step', '1000');
+  }
+}
+
+function setTerm(el, years) {
+  termYears = years;
+  document.querySelectorAll('.term-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function fmt(n) {
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+
+function calculate() {
+  const hp = parseFloat(document.getElementById('homePrice').value) || 0;
+  let dp = parseFloat(document.getElementById('downPayment').value) || 0;
+  if (dpMode === 'percent') dp = hp * (dp / 100);
+  const rate = parseFloat(document.getElementById('interestRate').value) || 0;
+  const principal = hp - dp;
+
+  if (principal <= 0 || rate < 0) return;
+
+  const monthlyRate = rate / 100 / 12;
+  const n = termYears * 12;
+
+  let monthly;
+  if (monthlyRate === 0) {
+    monthly = principal / n;
+  } else {
+    monthly = principal * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+  }
+
+  const totalPaid = monthly * n;
+  const totalInterest = totalPaid - principal;
+
+  document.getElementById('monthlyPayment').textContent = fmt(monthly);
+  document.getElementById('totalInterest').textContent = fmt(totalInterest);
+  document.getElementById('totalCost').textContent = fmt(totalPaid + dp);
+
+  // Pie chart
+  const interestPct = totalPaid > 0 ? (totalInterest / totalPaid) * 100 : 0;
+  const principalPct = 100 - interestPct;
+  const interestDeg = (interestPct / 100) * 360;
+  document.getElementById('pieChart').style.background = `conic-gradient(#ff5f1f 0deg ${360 - interestDeg}deg, #10b981 ${360 - interestDeg}deg 360deg)`;
+  document.getElementById('piePercent').textContent = interestPct.toFixed(1) + '%';
+  document.getElementById('legendPrincipal').textContent = fmt(principal);
+  document.getElementById('legendInterest').textContent = fmt(totalInterest);
+  document.getElementById('legendDown').textContent = fmt(dp);
+
+  // Amortization
+  let balance = principal;
+  let html = '<table><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>';
+  for (let i = 1; i <= n; i++) {
+    const intPayment = balance * monthlyRate;
+    const princPayment = monthly - intPayment;
+    balance = Math.max(0, balance - princPayment);
+    html += `<tr><td>${i}</td><td>${fmt(monthly)}</td><td>${fmt(princPayment)}</td><td>${fmt(intPayment)}</td><td>${fmt(balance)}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  document.getElementById('amortTable').innerHTML = html;
+
+  document.getElementById('results').style.display = 'block';
+}
+
+let amortVisible = false;
+function toggleAmort() {
+  amortVisible = !amortVisible;
+  document.getElementById('amortTable').style.display = amortVisible ? 'block' : 'none';
+  document.getElementById('amortToggle').textContent = amortVisible ? 'Hide Amortization Table' : 'Show Amortization Table';
+}
+
+calculate();
+</script>
+</body>
+</html>

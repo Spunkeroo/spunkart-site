@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placeholder Image Generator — Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate placeholder images instantly. Custom width, height, colors, text, and social media presets. Download as PNG or SVG. Free image tool for developers and designers.">
+<meta property="og:title" content="Placeholder Image Generator — Free Online Tool">
+<meta property="og:description" content="Generate placeholder images with custom sizes, colors, text. Social media presets included. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/placeholder-image.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Placeholder Image Generator">
+<meta name="twitter:description" content="Generate placeholder images instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/placeholder-image.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Placeholder Image Generator","description":"Generate placeholder images with custom width, height, colors, text. Social media presets. Download as PNG or SVG.","url":"https://spunkart.com/placeholder-image.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.layout{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start;}
+@media(max-width:768px){.layout{grid-template-columns:1fr;}}
+
+.controls{background:#111;border:1px solid #333;border-radius:12px;padding:20px;}
+.control-group{margin-bottom:16px;}
+.control-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.control-group input[type="number"],
+.control-group input[type="text"]{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;}
+.control-group input:focus{border-color:#ff5f1f;}
+
+.color-row{display:flex;gap:10px;align-items:center;}
+.color-row input[type="color"]{width:48px;height:36px;border:1px solid #333;border-radius:6px;cursor:pointer;background:none;padding:2px;}
+.color-row input[type="text"]{flex:1;}
+
+.size-row{display:grid;grid-template-columns:1fr 20px 1fr;gap:8px;align-items:end;}
+.size-row .x{text-align:center;color:#555;font-size:1.2rem;padding-bottom:10px;}
+
+.format-row{display:flex;gap:8px;}
+.format-btn{flex:1;padding:10px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;text-align:center;transition:all 0.2s;}
+.format-btn:hover,.format-btn.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.presets{margin-bottom:16px;}
+.presets h3{font-size:0.85rem;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.preset-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.preset-btn{padding:8px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#aaa;font-size:0.75rem;cursor:pointer;transition:all 0.2s;text-align:left;}
+.preset-btn:hover{border-color:#ff5f1f;color:#fff;}
+.preset-btn strong{display:block;color:#ccc;font-size:0.8rem;}
+
+button.primary{width:100%;padding:12px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:background 0.2s;margin-bottom:8px;}
+button.primary:hover{background:#e5520f;}
+button.download{width:100%;padding:10px;background:#222;color:#ccc;border:1px solid #333;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+button.download:hover{background:#333;color:#fff;}
+
+.preview-area{background:#111;border:1px solid #333;border-radius:12px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;}
+.preview-area canvas{max-width:100%;height:auto;border-radius:4px;image-rendering:auto;}
+.preview-info{margin-top:12px;font-size:0.82rem;color:#888;text-align:center;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.newsletter{background:#151515;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#fff;margin-bottom:4px;}
+.newsletter p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+
+.tool-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:8px;font-size:0.82rem;color:#ccc;transition:border-color 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Placeholder Image Generator</h1>
+  <div class="subtitle">Generate placeholder images for mockups, wireframes, and prototypes. Download as PNG or SVG.</div>
+
+  <div class="layout">
+    <div class="controls">
+      <div class="presets">
+        <h3>Social Media Presets</h3>
+        <div class="preset-grid">
+          <div class="preset-btn" onclick="setPreset(1200,675,'X / Twitter Post')"><strong>X Post</strong>1200 x 675</div>
+          <div class="preset-btn" onclick="setPreset(1080,1080,'Instagram Post')"><strong>Instagram</strong>1080 x 1080</div>
+          <div class="preset-btn" onclick="setPreset(820,312,'Facebook Cover')"><strong>FB Cover</strong>820 x 312</div>
+          <div class="preset-btn" onclick="setPreset(1584,396,'LinkedIn Banner')"><strong>LinkedIn</strong>1584 x 396</div>
+          <div class="preset-btn" onclick="setPreset(1280,720,'YouTube Thumbnail')"><strong>YouTube</strong>1280 x 720</div>
+          <div class="preset-btn" onclick="setPreset(1920,1080,'HD Wallpaper')"><strong>HD 1080p</strong>1920 x 1080</div>
+          <div class="preset-btn" onclick="setPreset(800,600,'Blog Image')"><strong>Blog Image</strong>800 x 600</div>
+          <div class="preset-btn" onclick="setPreset(512,512,'App Icon')"><strong>App Icon</strong>512 x 512</div>
+        </div>
+      </div>
+
+      <div class="size-row">
+        <div class="control-group">
+          <label>Width (px)</label>
+          <input type="number" id="imgWidth" value="800" min="1" max="4096" oninput="generatePreview()">
+        </div>
+        <div class="x">&times;</div>
+        <div class="control-group">
+          <label>Height (px)</label>
+          <input type="number" id="imgHeight" value="600" min="1" max="4096" oninput="generatePreview()">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Background Color</label>
+        <div class="color-row">
+          <input type="color" id="bgColorPicker" value="#333333" oninput="syncColor('bgColorPicker','bgColorText');generatePreview()">
+          <input type="text" id="bgColorText" value="#333333" oninput="syncColor('bgColorText','bgColorPicker');generatePreview()">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Text Color</label>
+        <div class="color-row">
+          <input type="color" id="txtColorPicker" value="#aaaaaa" oninput="syncColor('txtColorPicker','txtColorText');generatePreview()">
+          <input type="text" id="txtColorText" value="#aaaaaa" oninput="syncColor('txtColorText','txtColorPicker');generatePreview()">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Custom Text (optional)</label>
+        <input type="text" id="customText" placeholder="Leave empty for WxH" oninput="generatePreview()">
+      </div>
+
+      <div class="control-group">
+        <label>Format</label>
+        <div class="format-row">
+          <div class="format-btn active" id="fmtPng" onclick="setFormat('png')">PNG</div>
+          <div class="format-btn" id="fmtSvg" onclick="setFormat('svg')">SVG</div>
+        </div>
+      </div>
+
+      <button class="primary" onclick="downloadImage()">Download Image</button>
+      <button class="download" onclick="copyDataUrl()">Copy as Data URL</button>
+    </div>
+
+    <div class="preview-area">
+      <canvas id="canvas"></canvas>
+      <div class="preview-info" id="previewInfo">800 x 600 px</div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+
+  <div class="tool-links">
+    <a href="/json-formatter.html">JSON Formatter</a>
+    <a href="/html-minifier.html">HTML Minifier</a>
+    <a href="/json-to-csv.html">JSON to CSV</a>
+    <a href="/password-generator.html">Password Generator</a>
+    <a href="/color-palette.html">Color Palette</a>
+    <a href="/emoji-picker.html">Emoji Picker</a>
+    <a href="/screen-size.html">Screen Info</a>
+    <a href="/store" style="color:#ff5f1f;font-weight:700;">Get All 40+ Tools</a>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied-toast" id="copiedToast">Copied!</div>
+
+<script>
+let format = 'png';
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+function syncColor(from, to) {
+  document.getElementById(to).value = document.getElementById(from).value;
+}
+
+function setFormat(fmt) {
+  format = fmt;
+  document.getElementById('fmtPng').classList.toggle('active', fmt === 'png');
+  document.getElementById('fmtSvg').classList.toggle('active', fmt === 'svg');
+}
+
+function setPreset(w, h, text) {
+  document.getElementById('imgWidth').value = w;
+  document.getElementById('imgHeight').value = h;
+  document.getElementById('customText').value = text || '';
+  generatePreview();
+  gtag('event', 'preset_' + w + 'x' + h, { event_category: 'tool_use' });
+}
+
+function generatePreview() {
+  const w = Math.min(4096, Math.max(1, parseInt(document.getElementById('imgWidth').value) || 800));
+  const h = Math.min(4096, Math.max(1, parseInt(document.getElementById('imgHeight').value) || 600));
+  const bgColor = document.getElementById('bgColorText').value || '#333333';
+  const txtColor = document.getElementById('txtColorText').value || '#aaaaaa';
+  const customText = document.getElementById('customText').value;
+  const text = customText || (w + ' x ' + h);
+
+  canvas.width = w;
+  canvas.height = h;
+
+  // Background
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, w, h);
+
+  // Cross lines
+  ctx.strokeStyle = txtColor;
+  ctx.globalAlpha = 0.15;
+  ctx.lineWidth = Math.max(1, Math.min(w, h) / 200);
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.lineTo(w, h);
+  ctx.moveTo(w, 0);
+  ctx.lineTo(0, h);
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Border
+  ctx.strokeStyle = txtColor;
+  ctx.globalAlpha = 0.3;
+  ctx.lineWidth = Math.max(1, Math.min(w, h) / 150);
+  ctx.strokeRect(0, 0, w, h);
+  ctx.globalAlpha = 1;
+
+  // Text
+  const fontSize = Math.max(12, Math.min(w, h) / 8);
+  ctx.fillStyle = txtColor;
+  ctx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, w / 2, h / 2, w * 0.9);
+
+  // Dimension text below
+  if (customText) {
+    const smallSize = Math.max(10, fontSize * 0.35);
+    ctx.font = `${smallSize}px -apple-system, sans-serif`;
+    ctx.globalAlpha = 0.6;
+    ctx.fillText(w + ' x ' + h, w / 2, h / 2 + fontSize * 0.7);
+    ctx.globalAlpha = 1;
+  }
+
+  document.getElementById('previewInfo').textContent = w + ' x ' + h + ' px';
+}
+
+function downloadImage() {
+  const w = parseInt(document.getElementById('imgWidth').value) || 800;
+  const h = parseInt(document.getElementById('imgHeight').value) || 600;
+
+  if (format === 'svg') {
+    const svg = generateSVG();
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `placeholder-${w}x${h}.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } else {
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = `placeholder-${w}x${h}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  gtag('event', 'download_placeholder', { event_category: 'tool_use', event_label: format });
+}
+
+function generateSVG() {
+  const w = parseInt(document.getElementById('imgWidth').value) || 800;
+  const h = parseInt(document.getElementById('imgHeight').value) || 600;
+  const bgColor = document.getElementById('bgColorText').value || '#333333';
+  const txtColor = document.getElementById('txtColorText').value || '#aaaaaa';
+  const customText = document.getElementById('customText').value;
+  const text = customText || (w + ' x ' + h);
+  const fontSize = Math.max(12, Math.min(w, h) / 8);
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <rect width="${w}" height="${h}" fill="${bgColor}"/>
+  <line x1="0" y1="0" x2="${w}" y2="${h}" stroke="${txtColor}" stroke-opacity="0.15" stroke-width="${Math.max(1, Math.min(w, h) / 200)}"/>
+  <line x1="${w}" y1="0" x2="0" y2="${h}" stroke="${txtColor}" stroke-opacity="0.15" stroke-width="${Math.max(1, Math.min(w, h) / 200)}"/>
+  <rect x="0" y="0" width="${w}" height="${h}" fill="none" stroke="${txtColor}" stroke-opacity="0.3" stroke-width="${Math.max(1, Math.min(w, h) / 150)}"/>
+  <text x="${w / 2}" y="${h / 2}" fill="${txtColor}" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="${fontSize}" font-weight="bold" text-anchor="middle" dominant-baseline="central">${escXml(text)}</text>
+  ${customText ? `<text x="${w / 2}" y="${h / 2 + fontSize * 0.7}" fill="${txtColor}" fill-opacity="0.6" font-family="-apple-system, sans-serif" font-size="${Math.max(10, fontSize * 0.35)}" text-anchor="middle" dominant-baseline="central">${w} x ${h}</text>` : ''}
+</svg>`;
+}
+
+function escXml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+function copyDataUrl() {
+  let dataUrl;
+  if (format === 'svg') {
+    const svg = generateSVG();
+    dataUrl = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+  } else {
+    dataUrl = canvas.toDataURL('image/png');
+  }
+  navigator.clipboard.writeText(dataUrl).then(() => {
+    const toast = document.getElementById('copiedToast');
+    toast.textContent = 'Data URL Copied!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+  });
+}
+
+// Init
+generatePreview();
+</script>
+</body>
+</html>

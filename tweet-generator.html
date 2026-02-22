@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tweet & Thread Generator - Free X/Twitter Post Creator | SPUNKART.COM</title>
+<meta name="description" content="Generate 5 tweet variations and a 5-tweet thread outline for any topic. Choose your tone. Free tool with character counts and one-click copy.">
+<meta property="og:title" content="Tweet & Thread Generator | SPUNKART.COM">
+<meta property="og:description" content="Generate tweet variations and thread outlines for any topic. Free tool with multiple tones.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/tweet-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tweet & Thread Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate tweet variations and thread outlines instantly. Free tool.">
+<link rel="canonical" href="https://spunkart.com/tweet-generator">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:750px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input[type="text"],.input-group textarea{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+.input-group textarea{resize:vertical;min-height:60px;}
+
+.tone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.tone-pill{padding:8px 18px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;cursor:pointer;font-size:0.9rem;color:#888;transition:all .2s;user-select:none;}
+.tone-pill:hover{border-color:#ff5f1f55;color:#ccc;}
+.tone-pill.active{border-color:#ff5f1f;background:#ff5f1f18;color:#ff5f1f;font-weight:600;}
+
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;width:100%;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;font-size:0.8rem;padding:6px 14px;}
+.btn-secondary:hover{background:#333;}
+
+.results{display:none;margin-top:20px;}
+
+.tweet-card{background:#111;border:1px solid #222;border-radius:10px;padding:20px;margin-bottom:12px;position:relative;}
+.tweet-card .tweet-label{font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;}
+.tweet-card .tweet-text{font-size:0.95rem;line-height:1.5;margin-bottom:12px;white-space:pre-wrap;}
+.tweet-card .tweet-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.tweet-card .char-count{font-size:0.8rem;color:#666;}
+.tweet-card .char-count.over{color:#ef4444;}
+.tweet-card .char-count.ok{color:#10b981;}
+
+.thread-section{margin-top:30px;}
+.thread-section h2{font-size:1.1rem;color:#ccc;margin-bottom:16px;}
+.thread-card{background:#111;border:1px solid #222;border-radius:10px;padding:16px 20px;margin-bottom:8px;position:relative;}
+.thread-card .thread-num{font-size:0.75rem;color:#3b82f6;font-weight:600;margin-bottom:4px;}
+.thread-card .tweet-text{font-size:0.9rem;margin-bottom:8px;}
+.thread-card .tweet-meta{display:flex;justify-content:space-between;align-items:center;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .tone-pills{justify-content:center;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tweet & Thread Generator","description":"Generate tweet variations and thread outlines for any topic. Choose tone: professional, casual, funny, or motivational.","url":"https://spunkart.com/tweet-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Tweet & Thread <span>Generator</span></h1>
+  <p class="subtitle">Generate 5 tweet variations and a 5-tweet thread outline for any topic. No AI API needed.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="input-group">
+      <label>Topic</label>
+      <input type="text" id="topicInput" placeholder="e.g. Why remote work is the future" autocomplete="off">
+    </div>
+    <div class="input-group">
+      <label>Key Points (optional)</label>
+      <textarea id="keyPoints" placeholder="e.g. productivity gains, work-life balance, global talent pool"></textarea>
+    </div>
+
+    <label style="font-size:0.85rem;color:#888;margin-bottom:8px;display:block;">Tone</label>
+    <div class="tone-pills">
+      <div class="tone-pill active" onclick="setTone(this,'professional')">Professional</div>
+      <div class="tone-pill" onclick="setTone(this,'casual')">Casual</div>
+      <div class="tone-pill" onclick="setTone(this,'funny')">Funny</div>
+      <div class="tone-pill" onclick="setTone(this,'motivational')">Motivational</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateTweets()">Generate Tweets</button>
+  </div>
+
+  <div class="results" id="results">
+    <div id="tweetCards"></div>
+
+    <div class="thread-section">
+      <h2>Thread Outline (5 tweets)</h2>
+      <div id="threadCards"></div>
+      <button class="btn btn-secondary" style="width:100%;padding:12px;margin-top:8px;" onclick="copyThread()">Copy Entire Thread</button>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/hashtag-generator">Hashtag Generator</a>
+      <a href="/social-bio">Social Bio Generator</a>
+      <a href="/word-counter">Word Counter</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/color-contrast">Color Contrast Checker</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let selectedTone = 'professional';
+
+function setTone(el, tone) {
+  selectedTone = tone;
+  document.querySelectorAll('.tone-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copied!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+// Templates per tone
+const templates = {
+  professional: {
+    tweets: [
+      "{topic} is reshaping how we think about {aspect}.\n\nHere's why it matters: {point}.\n\nThe data is clear. The shift is happening now.",
+      "Most people overlook {topic}.\n\nBut the smartest leaders understand: {point}.\n\nThis isn't a trend. It's a fundamental shift.",
+      "3 things I've learned about {topic}:\n\n1. {point1}\n2. {point2}\n3. {point3}\n\nWhich resonates most with you?",
+      "If you're not paying attention to {topic}, you're already behind.\n\n{point}\n\nThe question isn't if - it's when.",
+      "Hot take on {topic}:\n\n{point}\n\nI've seen this play out dozens of times. The pattern is undeniable."
+    ],
+    thread: [
+      "I've spent years studying {topic}.\n\nHere are 5 insights that changed my perspective.\n\nA thread:",
+      "1/ The fundamentals\n\n{topic} comes down to one key principle: {point1}.\n\nMost people miss this entirely.",
+      "2/ The common mistake\n\nPeople assume {aspect} is straightforward.\n\nBut {point2} changes everything when you dig deeper.",
+      "3/ The data speaks\n\n{point3}\n\nThis alone should make you reconsider your approach to {topic}.",
+      "4/ The bottom line\n\nIf you take one thing away: {point1}.\n\nStart here. The rest follows.\n\nFollow for more on {topic}."
+    ]
+  },
+  casual: {
+    tweets: [
+      "ok but can we talk about {topic} for a sec?\n\n{point}\n\nthis is honestly wild",
+      "been thinking a lot about {topic} lately and honestly? {point}\n\nidk maybe it's just me but this feels big",
+      "things about {topic} that live in my head rent free:\n\n- {point1}\n- {point2}\n- {point3}\n\nyeah.",
+      "not me realizing {topic} is way more important than I thought\n\n{point}\n\nwhere was this information my whole life",
+      "someone needs to make a documentary about {topic}\n\nbecause {point}\n\nand nobody is talking about this enough"
+    ],
+    thread: [
+      "ok so I went down a rabbit hole about {topic} and now I need to share what I found\n\nthread time:",
+      "1/ so basically {topic} is one of those things everyone thinks they know about but actually? {point1}\n\nyeah. mind blown.",
+      "2/ and here's where it gets interesting\n\n{point2}\n\nlike... why isn't this common knowledge??",
+      "3/ but wait there's more (lol)\n\n{point3}\n\nI swear this keeps getting crazier the more you look into it",
+      "4/ anyway the tldr is:\n\n{point1}\n\nif you made it this far, drop a reply with your take on {topic}"
+    ]
+  },
+  funny: {
+    tweets: [
+      "me explaining {topic} to my friends:\n\n\"so basically {point}\"\n\nthem: *visible confusion*\n\nme: exactly.",
+      "nobody:\nabsolutely nobody:\nme at 2am: researching {topic}\n\nturns out {point}\n\nworth the lost sleep honestly",
+      "{topic} is the plot twist nobody asked for but everyone needed\n\n{point}\n\nyou're welcome for this information",
+      "petition to make {topic} a required subject in school\n\nbecause {point}\n\nand I had to learn this from twitter lmao",
+      "if {topic} was a person it would be that friend who's always right and you hate them for it\n\nbecause {point}\n\nannoyingly accurate."
+    ],
+    thread: [
+      "buckle up because I'm about to explain {topic} in a way your teacher never could\n\nthread (it's actually fun I promise):",
+      "1/ picture this: {topic} walks into a bar\n\nthe bartender says \"we don't serve your kind here\"\n\n{topic} says: \"{point1}\"\n\nthe bartender is speechless.",
+      "2/ but seriously tho\n\n{point2}\n\nI know right? I couldn't believe it either. my trust issues are growing.",
+      "3/ and the cherry on top?\n\n{point3}\n\nI'm starting to think we're all living in a simulation and {topic} is a glitch",
+      "4/ in conclusion:\n\n{point1}\n\nif you laughed AND learned something, that's a win\n\nfollow me for more {topic} comedy that's accidentally educational"
+    ]
+  },
+  motivational: {
+    tweets: [
+      "The truth about {topic} that nobody tells you:\n\n{point}\n\nStop waiting. Start now. Your future self will thank you.",
+      "Everyone talks about {topic}.\n\nFew actually take action.\n\n{point}\n\nBe the exception. Start today.",
+      "Your relationship with {topic} defines your trajectory:\n\n- {point1}\n- {point2}\n- {point3}\n\nWhich one are you committing to this week?",
+      "{topic} isn't complicated.\n\nWe just overcomplicate it.\n\nThe simple truth: {point}\n\nSimplicity wins. Every. Single. Time.",
+      "I used to underestimate {topic}.\n\nThen I learned: {point}\n\nThat single shift changed everything.\n\nDon't sleep on this."
+    ],
+    thread: [
+      "If you want to master {topic}, read this thread.\n\nThese 5 principles took me years to learn.\n\nSaving you the struggle:",
+      "1/ Start before you're ready\n\n{point1}\n\nPerfection is the enemy of progress. Take the first step today, not tomorrow.",
+      "2/ Consistency beats intensity\n\n{point2}\n\nSmall daily actions compound into extraordinary results. Show up every day.",
+      "3/ Learn from those ahead of you\n\n{point3}\n\nSuccess leaves clues. Find mentors. Study the greats. Apply what works.",
+      "4/ Take action NOW\n\n{point1}\n\nKnowledge without action is just entertainment.\n\nYour move.\n\nFollow for daily {topic} motivation."
+    ]
+  }
+};
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+function extractAspects(topic) {
+  const words = topic.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+  const aspects = ['success', 'growth', 'innovation', 'strategy', 'the future', 'progress', 'impact', 'value', 'potential'];
+  if (words.length > 0) aspects.unshift(words[words.length - 1]);
+  return aspects;
+}
+
+function generateTweets() {
+  const topic = document.getElementById('topicInput').value.trim();
+  if (!topic) { showToast('Enter a topic first'); return; }
+
+  const keyPointsRaw = document.getElementById('keyPoints').value.trim();
+  const keyPoints = keyPointsRaw ? keyPointsRaw.split(/[,;\n]+/).map(p => p.trim()).filter(p => p) : [];
+
+  // Generate default points if none provided
+  const aspects = extractAspects(topic);
+  const defaultPoints = [
+    'it changes how we approach ' + aspects[0],
+    'the results speak for themselves when done right',
+    'consistency and strategy make all the difference',
+    'most people give up right before the breakthrough',
+    'the opportunity is bigger than most realize'
+  ];
+
+  const point1 = keyPoints[0] || defaultPoints[0];
+  const point2 = keyPoints[1] || defaultPoints[1];
+  const point3 = keyPoints[2] || defaultPoints[2];
+  const mainPoint = keyPoints[0] || defaultPoints[0];
+
+  const toneTemplates = templates[selectedTone];
+
+  // Generate 5 tweets
+  const tweets = toneTemplates.tweets.map(tmpl => {
+    return tmpl
+      .replace(/\{topic\}/g, topic)
+      .replace(/\{aspect\}/g, aspects[Math.floor(Math.random() * aspects.length)])
+      .replace(/\{point\}/g, capitalize(mainPoint))
+      .replace(/\{point1\}/g, capitalize(point1))
+      .replace(/\{point2\}/g, capitalize(point2))
+      .replace(/\{point3\}/g, capitalize(point3));
+  });
+
+  // Generate thread
+  const threadTweets = toneTemplates.thread.map(tmpl => {
+    return tmpl
+      .replace(/\{topic\}/g, topic)
+      .replace(/\{aspect\}/g, aspects[Math.floor(Math.random() * aspects.length)])
+      .replace(/\{point\}/g, capitalize(mainPoint))
+      .replace(/\{point1\}/g, capitalize(point1))
+      .replace(/\{point2\}/g, capitalize(point2))
+      .replace(/\{point3\}/g, capitalize(point3));
+  });
+
+  // Render tweets
+  const tweetContainer = document.getElementById('tweetCards');
+  tweetContainer.innerHTML = tweets.map((tw, i) => {
+    const len = tw.length;
+    const isOver = len > 280;
+    return '<div class="tweet-card">' +
+      '<div class="tweet-label">Tweet ' + (i + 1) + '</div>' +
+      '<div class="tweet-text">' + escHtml(tw) + '</div>' +
+      '<div class="tweet-meta">' +
+        '<span class="char-count ' + (isOver ? 'over' : 'ok') + '">' + len + '/280' + (isOver ? ' (over limit)' : '') + '</span>' +
+        '<button class="btn btn-secondary" onclick="copyText(this,\'' + escAttr(tw) + '\')">Copy</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Render thread
+  const threadContainer = document.getElementById('threadCards');
+  threadContainer.innerHTML = threadTweets.map((tw, i) => {
+    const len = tw.length;
+    const isOver = len > 280;
+    return '<div class="thread-card">' +
+      '<div class="thread-num">Tweet ' + (i + 1) + ' of 5</div>' +
+      '<div class="tweet-text">' + escHtml(tw) + '</div>' +
+      '<div class="tweet-meta">' +
+        '<span class="char-count ' + (isOver ? 'over' : 'ok') + '">' + len + '/280' + (isOver ? ' (over limit)' : '') + '</span>' +
+        '<button class="btn btn-secondary" onclick="copyText(this,\'' + escAttr(tw) + '\')">Copy</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Store thread for bulk copy
+  window._currentThread = threadTweets;
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+  gtag('event', 'generate_tweets', { event_category: 'tool_use', event_label: selectedTone });
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function escAttr(s) {
+  return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n').replace(/\r/g,'');
+}
+
+function copyText(btn, text) {
+  const decoded = text.replace(/\\n/g, '\n').replace(/\\'/g, "'").replace(/\\\\/g, '\\');
+  navigator.clipboard.writeText(decoded);
+  const orig = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.style.background = '#10b981';
+  btn.style.borderColor = '#10b981';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.borderColor = ''; }, 1500);
+}
+
+function copyThread() {
+  if (!window._currentThread) return;
+  const full = window._currentThread.map((t, i) => '(' + (i + 1) + '/' + window._currentThread.length + ') ' + t).join('\n\n---\n\n');
+  navigator.clipboard.writeText(full);
+  showToast('Thread copied!');
+  gtag('event', 'copy_thread', { event_category: 'tool_use' });
+}
+
+// Allow Enter key
+document.getElementById('topicInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') generateTweets();
+});
+</script>
+</body>
+</html>

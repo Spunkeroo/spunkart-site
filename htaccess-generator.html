@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>.htaccess Generator - Free Apache Config Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate .htaccess files instantly. Force HTTPS, redirects, caching, gzip compression, block bots, custom error pages. Free Apache configuration tool.">
+<meta property="og:title" content=".htaccess Generator - Free Apache Config Tool">
+<meta property="og:description" content="Generate .htaccess files with HTTPS, redirects, caching, gzip, and more. Free tool.">
+<meta property="og:image" content="https://spunkart.com/assets/og-htaccess-generator.png">
+<meta property="og:url" content="https://spunkart.com/htaccess-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content=".htaccess Generator - Free Tool">
+<meta name="twitter:description" content="Generate .htaccess configuration files instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/htaccess-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":".htaccess Generator","description":"Generate .htaccess files with force HTTPS, www redirects, caching, gzip compression, bot blocking, custom redirects and error pages.","url":"https://spunkart.com/htaccess-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:900px){.layout{grid-template-columns:1fr;}}
+
+.config-panel{display:flex;flex-direction:column;gap:20px;}
+
+.section{background:#111;border:1px solid #333;border-radius:12px;padding:20px;}
+.section h3{font-size:0.95rem;color:#ff5f1f;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.section h3 .icon{font-size:1.1rem;}
+
+.toggle-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;}
+.toggle-row label{font-size:0.9rem;color:#ccc;cursor:pointer;}
+.toggle{position:relative;width:44px;height:24px;background:#333;border-radius:12px;cursor:pointer;transition:background 0.3s;flex-shrink:0;}
+.toggle.on{background:#ff5f1f;}
+.toggle::after{content:'';position:absolute;width:20px;height:20px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform 0.3s;}
+.toggle.on::after{transform:translateX(20px);}
+
+.radio-group{display:flex;gap:12px;padding:8px 0;}
+.radio-opt{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;cursor:pointer;color:#888;transition:all 0.2s;}
+.radio-opt.active{border-color:#ff5f1f;color:#ff5f1f;background:#1a0800;}
+
+.cache-row{display:flex;gap:8px;align-items:center;padding:6px 0;font-size:0.85rem;color:#ccc;}
+.cache-row label{min-width:80px;}
+.cache-row select,.cache-row input{background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:6px 10px;border-radius:6px;font-size:0.85rem;}
+.cache-row select{width:100px;}
+.cache-row input{width:60px;text-align:center;}
+
+.redirect-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.redirect-row input{flex:1;background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:8px 12px;border-radius:6px;font-size:0.85rem;}
+.redirect-row input:focus{border-color:#ff5f1f;outline:none;}
+.redirect-row select{background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:8px;border-radius:6px;font-size:0.85rem;}
+.btn-sm{padding:6px 12px;font-size:0.8rem;border-radius:6px;background:#222;color:#ccc;border:none;cursor:pointer;}
+.btn-sm:hover{background:#333;}
+.btn-sm.danger{color:#ef4444;}
+.btn-sm.danger:hover{background:#3a0000;}
+
+.error-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.error-row select,.error-row input{background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:8px 12px;border-radius:6px;font-size:0.85rem;}
+.error-row select{width:100px;}
+.error-row input{flex:1;}
+.error-row input:focus{border-color:#ff5f1f;outline:none;}
+
+.output-panel{background:#111;border:1px solid #333;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:sticky;top:20px;max-height:calc(100vh - 120px);}
+.output-header{background:#1a1a1a;padding:12px 16px;font-size:0.8rem;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:center;}
+.output-body{flex:1;overflow-y:auto;}
+.output-code{padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-all;line-height:1.6;color:#e8e8e8;}
+.output-code .comment{color:#666;}
+.output-code .directive{color:#ff5f1f;}
+.output-code .value{color:#10b981;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.8rem;color:#ccc;transition:all 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#999;margin-bottom:16px;font-size:0.9rem;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied.show{opacity:1;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>.htaccess Generator</h1>
+  <div class="subtitle">Generate Apache .htaccess configuration files with common rules</div>
+
+  <div class="toolbar">
+    <button onclick="generate()">Generate</button>
+    <button class="btn-secondary" onclick="copyOutput()">Copy to Clipboard</button>
+    <button class="btn-secondary" onclick="downloadFile()">Download .htaccess</button>
+  </div>
+
+  <div class="layout">
+    <div class="config-panel">
+      <!-- HTTPS -->
+      <div class="section">
+        <h3><span class="icon">&#128274;</span> HTTPS &amp; WWW</h3>
+        <div class="toggle-row">
+          <label>Force HTTPS</label>
+          <div class="toggle on" id="forceHttps" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div class="toggle-row">
+          <label>WWW Preference</label>
+          <div></div>
+        </div>
+        <div class="radio-group" id="wwwPref">
+          <div class="radio-opt active" onclick="setRadio(this,'wwwPref');generate()" data-val="none">No change</div>
+          <div class="radio-opt" onclick="setRadio(this,'wwwPref');generate()" data-val="add">Force www</div>
+          <div class="radio-opt" onclick="setRadio(this,'wwwPref');generate()" data-val="remove">Remove www</div>
+        </div>
+      </div>
+
+      <!-- Caching -->
+      <div class="section">
+        <h3><span class="icon">&#9889;</span> Browser Caching</h3>
+        <div class="toggle-row">
+          <label>Enable caching headers</label>
+          <div class="toggle" id="enableCache" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div id="cacheOptions" style="display:none;margin-top:12px;">
+          <div class="cache-row">
+            <label>Images:</label>
+            <input type="number" id="cacheImages" value="30" min="1" max="365" onchange="generate()">
+            <span>days</span>
+          </div>
+          <div class="cache-row">
+            <label>CSS:</label>
+            <input type="number" id="cacheCss" value="7" min="1" max="365" onchange="generate()">
+            <span>days</span>
+          </div>
+          <div class="cache-row">
+            <label>JavaScript:</label>
+            <input type="number" id="cacheJs" value="7" min="1" max="365" onchange="generate()">
+            <span>days</span>
+          </div>
+          <div class="cache-row">
+            <label>Fonts:</label>
+            <input type="number" id="cacheFonts" value="30" min="1" max="365" onchange="generate()">
+            <span>days</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compression -->
+      <div class="section">
+        <h3><span class="icon">&#128230;</span> Compression</h3>
+        <div class="toggle-row">
+          <label>Enable Gzip / Deflate</label>
+          <div class="toggle" id="enableGzip" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+      </div>
+
+      <!-- Bot Blocking -->
+      <div class="section">
+        <h3><span class="icon">&#128683;</span> Block Bad Bots</h3>
+        <div class="toggle-row">
+          <label>Block common bad bots</label>
+          <div class="toggle" id="blockBots" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div class="toggle-row">
+          <label>Block AI crawlers</label>
+          <div class="toggle" id="blockAI" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+      </div>
+
+      <!-- Custom Redirects -->
+      <div class="section">
+        <h3><span class="icon">&#8594;</span> Custom Redirects</h3>
+        <div id="redirectList"></div>
+        <button class="btn-sm" onclick="addRedirect()">+ Add Redirect</button>
+      </div>
+
+      <!-- Error Pages -->
+      <div class="section">
+        <h3><span class="icon">&#9888;</span> Custom Error Pages</h3>
+        <div id="errorList"></div>
+        <button class="btn-sm" onclick="addErrorPage()">+ Add Error Page</button>
+      </div>
+
+      <!-- Security -->
+      <div class="section">
+        <h3><span class="icon">&#128737;</span> Security</h3>
+        <div class="toggle-row">
+          <label>Disable directory listing</label>
+          <div class="toggle on" id="noIndex" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div class="toggle-row">
+          <label>Prevent hotlinking</label>
+          <div class="toggle" id="hotlink" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div class="toggle-row">
+          <label>Hide server signature</label>
+          <div class="toggle" id="hideServer" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+        <div class="toggle-row">
+          <label>Prevent access to .htaccess</label>
+          <div class="toggle on" id="protectHt" onclick="toggleSwitch(this);generate()"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="output-panel">
+      <div class="output-header">
+        <span>Generated .htaccess</span>
+        <span id="lineCount" style="color:#666;font-weight:400;">0 lines</span>
+      </div>
+      <div class="output-body">
+        <div class="output-code" id="outputCode"># Toggle options on the left to generate your .htaccess</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <div class="tool-links">
+      <a href="/og-preview.html">OG Preview</a>
+      <a href="/readme-generator.html">README Generator</a>
+      <a href="/slug-generator.html">Slug Generator</a>
+      <a href="/css-minifier.html">CSS Minifier</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/meta-generator.html">Meta Tag Generator</a>
+      <a href="/password-generator.html">Password Generator</a>
+    </div>
+    <br>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Free Tools + Discounts</h3>
+    <p>Join the SpunkArt newsletter for free tools, tips, and 10% off your first purchase.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:80px;border:none;border-radius:8px;"></iframe>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+let redirects = [];
+let errorPages = [];
+
+function toggleSwitch(el) {
+  el.classList.toggle('on');
+  // Show/hide cache options
+  if (el.id === 'enableCache') {
+    document.getElementById('cacheOptions').style.display = el.classList.contains('on') ? 'block' : 'none';
+  }
+}
+
+function setRadio(el, groupId) {
+  document.querySelectorAll('#' + groupId + ' .radio-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function getRadioVal(groupId) {
+  const active = document.querySelector('#' + groupId + ' .radio-opt.active');
+  return active ? active.dataset.val : 'none';
+}
+
+function isOn(id) { return document.getElementById(id).classList.contains('on'); }
+
+function addRedirect() {
+  redirects.push({ from: '', to: '', type: '301' });
+  renderRedirects();
+}
+
+function removeRedirect(i) {
+  redirects.splice(i, 1);
+  renderRedirects();
+  generate();
+}
+
+function renderRedirects() {
+  const list = document.getElementById('redirectList');
+  list.innerHTML = redirects.map((r, i) => `
+    <div class="redirect-row">
+      <select onchange="redirects[${i}].type=this.value;generate()">
+        <option value="301" ${r.type==='301'?'selected':''}>301</option>
+        <option value="302" ${r.type==='302'?'selected':''}>302</option>
+      </select>
+      <input placeholder="/old-page" value="${r.from}" oninput="redirects[${i}].from=this.value;generate()">
+      <input placeholder="/new-page" value="${r.to}" oninput="redirects[${i}].to=this.value;generate()">
+      <button class="btn-sm danger" onclick="removeRedirect(${i})">&#10005;</button>
+    </div>
+  `).join('');
+}
+
+function addErrorPage() {
+  errorPages.push({ code: '404', page: '' });
+  renderErrorPages();
+}
+
+function removeErrorPage(i) {
+  errorPages.splice(i, 1);
+  renderErrorPages();
+  generate();
+}
+
+function renderErrorPages() {
+  const list = document.getElementById('errorList');
+  list.innerHTML = errorPages.map((e, i) => `
+    <div class="error-row">
+      <select onchange="errorPages[${i}].code=this.value;generate()">
+        <option value="400" ${e.code==='400'?'selected':''}>400</option>
+        <option value="401" ${e.code==='401'?'selected':''}>401</option>
+        <option value="403" ${e.code==='403'?'selected':''}>403</option>
+        <option value="404" ${e.code==='404'?'selected':''}>404</option>
+        <option value="500" ${e.code==='500'?'selected':''}>500</option>
+        <option value="502" ${e.code==='502'?'selected':''}>502</option>
+        <option value="503" ${e.code==='503'?'selected':''}>503</option>
+      </select>
+      <input placeholder="/error-404.html" value="${e.page}" oninput="errorPages[${i}].page=this.value;generate()">
+      <button class="btn-sm danger" onclick="removeErrorPage(${i})">&#10005;</button>
+    </div>
+  `).join('');
+}
+
+function generate() {
+  let out = '# .htaccess generated by SPUNKART.COM\n# https://spunkart.com/htaccess-generator.html\n\n';
+
+  // Force HTTPS
+  if (isOn('forceHttps')) {
+    out += '# Force HTTPS\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTPS} !=on\n';
+    out += 'RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n\n';
+  }
+
+  // WWW
+  const www = getRadioVal('wwwPref');
+  if (www === 'add') {
+    out += '# Force www\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTP_HOST} !^www\\. [NC]\n';
+    out += 'RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n\n';
+  } else if (www === 'remove') {
+    out += '# Remove www\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]\n';
+    out += 'RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]\n\n';
+  }
+
+  // Caching
+  if (isOn('enableCache')) {
+    const imgDays = document.getElementById('cacheImages').value;
+    const cssDays = document.getElementById('cacheCss').value;
+    const jsDays = document.getElementById('cacheJs').value;
+    const fontDays = document.getElementById('cacheFonts').value;
+    out += '# Browser Caching\n';
+    out += '<IfModule mod_expires.c>\n';
+    out += '  ExpiresActive On\n';
+    out += '  ExpiresByType image/jpeg "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType image/png "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType image/gif "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType image/webp "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType image/svg+xml "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType image/x-icon "access plus ' + imgDays + ' days"\n';
+    out += '  ExpiresByType text/css "access plus ' + cssDays + ' days"\n';
+    out += '  ExpiresByType application/javascript "access plus ' + jsDays + ' days"\n';
+    out += '  ExpiresByType text/javascript "access plus ' + jsDays + ' days"\n';
+    out += '  ExpiresByType font/woff2 "access plus ' + fontDays + ' days"\n';
+    out += '  ExpiresByType font/woff "access plus ' + fontDays + ' days"\n';
+    out += '  ExpiresByType font/ttf "access plus ' + fontDays + ' days"\n';
+    out += '</IfModule>\n\n';
+  }
+
+  // Gzip
+  if (isOn('enableGzip')) {
+    out += '# Gzip Compression\n';
+    out += '<IfModule mod_deflate.c>\n';
+    out += '  AddOutputFilterByType DEFLATE text/html\n';
+    out += '  AddOutputFilterByType DEFLATE text/css\n';
+    out += '  AddOutputFilterByType DEFLATE text/javascript\n';
+    out += '  AddOutputFilterByType DEFLATE application/javascript\n';
+    out += '  AddOutputFilterByType DEFLATE application/json\n';
+    out += '  AddOutputFilterByType DEFLATE application/xml\n';
+    out += '  AddOutputFilterByType DEFLATE text/xml\n';
+    out += '  AddOutputFilterByType DEFLATE text/plain\n';
+    out += '  AddOutputFilterByType DEFLATE image/svg+xml\n';
+    out += '  AddOutputFilterByType DEFLATE font/woff\n';
+    out += '  AddOutputFilterByType DEFLATE font/woff2\n';
+    out += '  AddOutputFilterByType DEFLATE font/ttf\n';
+    out += '</IfModule>\n\n';
+  }
+
+  // Block bad bots
+  if (isOn('blockBots')) {
+    out += '# Block Bad Bots\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTP_USER_AGENT} (AhrefsBot|SemrushBot|MJ12bot|DotBot|BLEXBot|SearchmetricsBot) [NC]\n';
+    out += 'RewriteRule .* - [F,L]\n\n';
+  }
+
+  // Block AI crawlers
+  if (isOn('blockAI')) {
+    out += '# Block AI Crawlers\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTP_USER_AGENT} (GPTBot|ChatGPT-User|CCBot|Google-Extended|anthropic-ai|Claude-Web|Bytespider|Perplexity) [NC]\n';
+    out += 'RewriteRule .* - [F,L]\n\n';
+  }
+
+  // Custom redirects
+  const validRedirects = redirects.filter(r => r.from && r.to);
+  if (validRedirects.length > 0) {
+    out += '# Custom Redirects\n';
+    validRedirects.forEach(r => {
+      out += 'Redirect ' + r.type + ' ' + r.from + ' ' + r.to + '\n';
+    });
+    out += '\n';
+  }
+
+  // Error pages
+  const validErrors = errorPages.filter(e => e.page);
+  if (validErrors.length > 0) {
+    out += '# Custom Error Pages\n';
+    validErrors.forEach(e => {
+      out += 'ErrorDocument ' + e.code + ' ' + e.page + '\n';
+    });
+    out += '\n';
+  }
+
+  // Security
+  if (isOn('noIndex')) {
+    out += '# Disable Directory Listing\n';
+    out += 'Options -Indexes\n\n';
+  }
+
+  if (isOn('hotlink')) {
+    out += '# Prevent Hotlinking\n';
+    out += 'RewriteEngine On\n';
+    out += 'RewriteCond %{HTTP_REFERER} !^$\n';
+    out += 'RewriteCond %{HTTP_REFERER} !^https?://(www\\.)?%{HTTP_HOST} [NC]\n';
+    out += 'RewriteRule \\.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC,L]\n\n';
+  }
+
+  if (isOn('hideServer')) {
+    out += '# Hide Server Signature\n';
+    out += 'ServerSignature Off\n\n';
+  }
+
+  if (isOn('protectHt')) {
+    out += '# Protect .htaccess\n';
+    out += '<Files .htaccess>\n';
+    out += '  Order allow,deny\n';
+    out += '  Deny from all\n';
+    out += '</Files>\n\n';
+  }
+
+  const lines = out.split('\n').length;
+  document.getElementById('lineCount').textContent = lines + ' lines';
+  document.getElementById('outputCode').textContent = out;
+}
+
+function copyOutput() {
+  const code = document.getElementById('outputCode').textContent;
+  navigator.clipboard.writeText(code);
+  showToast();
+}
+
+function downloadFile() {
+  const code = document.getElementById('outputCode').textContent;
+  const blob = new Blob([code], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '.htaccess';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function showToast() {
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+// Init
+generate();
+</script>
+</body>
+</html>

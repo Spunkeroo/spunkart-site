@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>URL Encoder/Decoder — Encode, Decode & Parse URLs Free</title>
+<meta name="description" content="Encode and decode URLs instantly. Parse any URL into protocol, domain, path, query parameters, and fragment. Free online tool.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:750px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.section h2{font-size:1.1rem;color:#ff5f1f;margin-bottom:12px}
+textarea,.input-field{width:100%;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:12px;font-family:'Courier New',monospace;font-size:0.9rem;outline:none;resize:vertical}
+textarea:focus,.input-field:focus{border-color:#ff5f1f}
+textarea{height:100px}
+.input-field{height:auto}
+.btn-row{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap}
+.btn{padding:10px 24px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-secondary{background:#222;color:#ccc}.btn-secondary:hover{background:#333;transform:scale(1.02)}
+.output-box{position:relative;background:#0d0d0d;border:1px solid #222;border-radius:8px;padding:14px;margin-top:12px;min-height:48px;font-family:'Courier New',monospace;font-size:0.85rem;color:#ccc;word-break:break-all;white-space:pre-wrap}
+.copy-btn{position:absolute;top:8px;right:8px;background:#222;color:#ccc;border:none;border-radius:6px;padding:4px 10px;font-size:0.75rem;cursor:pointer;transition:all 0.2s}
+.copy-btn:hover{background:#ff5f1f;color:#fff}
+.parse-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:0.85rem}
+.parse-table th{text-align:left;padding:8px 12px;color:#ff5f1f;border-bottom:1px solid #333;font-weight:600}
+.parse-table td{padding:8px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;word-break:break-all;font-family:'Courier New',monospace;font-size:0.8rem}
+.parse-table td:first-child{color:#aaa;font-family:-apple-system,sans-serif;width:120px;white-space:nowrap}
+.params-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:0.8rem}
+.params-table th{text-align:left;padding:6px 10px;color:#10b981;border-bottom:1px solid #333;font-weight:600}
+.params-table td{padding:6px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;font-family:'Courier New',monospace;word-break:break-all}
+.error{color:#ef4444;font-size:0.85rem;margin-top:8px;min-height:20px}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{margin-top:2rem;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#999;font-size:0.9rem;margin-bottom:12px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+@media(max-width:600px){.container{padding:0 1rem}h1{font-size:1.5rem}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder/Decoder","description":"Encode and decode URLs instantly. Parse any URL into protocol, domain, path, query parameters, and fragment.","url":"https://spunkart.com/url-encoder.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>URL Encoder / Decoder</h1>
+  <div class="sub">Encode, decode, and parse URLs — everything stays in your browser</div>
+
+  <div class="section">
+    <h2>Encode / Decode</h2>
+    <textarea id="urlInput" placeholder="Paste text or URL here...">Hello World! How are you? Price=$50&discount=20%</textarea>
+    <div class="btn-row">
+      <button class="btn" onclick="encodeURL()">Encode</button>
+      <button class="btn" onclick="decodeURL()">Decode</button>
+      <button class="btn btn-secondary" onclick="encodeComponent()">Encode Component</button>
+      <button class="btn btn-secondary" onclick="clearEncode()">Clear</button>
+    </div>
+    <div class="error" id="encodeError"></div>
+    <div class="output-box" id="encodeOutput">
+      <button class="copy-btn" onclick="copyEl('encodeOutput')">Copy</button>
+      <span id="encodeResult">Click Encode or Decode to see results</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>URL Parser</h2>
+    <input type="text" class="input-field" id="parseInput" placeholder="Paste a full URL to parse..." value="https://example.com:8080/path/to/page?name=John+Doe&age=30&color=%23ff5f1f#section-2" oninput="parseURL()">
+    <div class="btn-row">
+      <button class="btn" onclick="parseURL()">Parse</button>
+      <button class="btn btn-secondary" onclick="clearParse()">Clear</button>
+    </div>
+    <div class="error" id="parseError"></div>
+    <table class="parse-table" id="parseTable">
+      <tbody id="parseBody"></tbody>
+    </table>
+    <div id="paramsSection" style="display:none;margin-top:16px">
+      <h3 style="font-size:0.9rem;color:#10b981;margin-bottom:4px">Query Parameters</h3>
+      <table class="params-table">
+        <thead><tr><th>Key</th><th>Value</th></tr></thead>
+        <tbody id="paramsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get notified when we launch new free tools.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/lorem-ipsum.html">Lorem Ipsum</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/markdown-editor.html">Markdown Editor</a>
+      <a href="/color-palette.html">Color Palette</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+function encodeURL() {
+  const input = document.getElementById('urlInput').value;
+  document.getElementById('encodeError').textContent = '';
+  try {
+    document.getElementById('encodeResult').textContent = encodeURI(input);
+  } catch (e) {
+    document.getElementById('encodeError').textContent = 'Error: ' + e.message;
+  }
+}
+
+function encodeComponent() {
+  const input = document.getElementById('urlInput').value;
+  document.getElementById('encodeError').textContent = '';
+  try {
+    document.getElementById('encodeResult').textContent = encodeURIComponent(input);
+  } catch (e) {
+    document.getElementById('encodeError').textContent = 'Error: ' + e.message;
+  }
+}
+
+function decodeURL() {
+  const input = document.getElementById('urlInput').value;
+  document.getElementById('encodeError').textContent = '';
+  try {
+    document.getElementById('encodeResult').textContent = decodeURIComponent(input);
+  } catch (e) {
+    document.getElementById('encodeError').textContent = 'Invalid encoded string. Check your input.';
+  }
+}
+
+function clearEncode() {
+  document.getElementById('urlInput').value = '';
+  document.getElementById('encodeResult').textContent = '';
+  document.getElementById('encodeError').textContent = '';
+}
+
+function copyEl(parentId) {
+  const el = document.getElementById(parentId);
+  const text = el.querySelector('span') ? el.querySelector('span').textContent : el.textContent;
+  navigator.clipboard.writeText(text);
+  const c = document.getElementById('copied');
+  c.classList.add('show');
+  setTimeout(() => c.classList.remove('show'), 1500);
+}
+
+function parseURL() {
+  const input = document.getElementById('parseInput').value.trim();
+  const body = document.getElementById('parseBody');
+  const paramsBody = document.getElementById('paramsBody');
+  const paramsSection = document.getElementById('paramsSection');
+  document.getElementById('parseError').textContent = '';
+  body.innerHTML = '';
+  paramsBody.innerHTML = '';
+  paramsSection.style.display = 'none';
+
+  if (!input) return;
+
+  try {
+    const url = new URL(input);
+    const parts = [
+      ['Protocol', url.protocol],
+      ['Hostname', url.hostname],
+      ['Port', url.port || '(default)'],
+      ['Pathname', url.pathname],
+      ['Search', url.search || '(none)'],
+      ['Hash / Fragment', url.hash || '(none)'],
+      ['Origin', url.origin],
+      ['Full URL', url.href]
+    ];
+
+    parts.forEach(([label, value]) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + label + '</td><td>' + escapeHtml(value) + '</td>';
+      body.appendChild(tr);
+    });
+
+    if (url.searchParams && [...url.searchParams].length > 0) {
+      paramsSection.style.display = 'block';
+      url.searchParams.forEach((value, key) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + escapeHtml(key) + '</td><td>' + escapeHtml(value) + '</td>';
+        paramsBody.appendChild(tr);
+      });
+    }
+  } catch (e) {
+    document.getElementById('parseError').textContent = 'Not a valid URL. Make sure it includes a protocol (e.g. https://).';
+  }
+}
+
+function clearParse() {
+  document.getElementById('parseInput').value = '';
+  document.getElementById('parseBody').innerHTML = '';
+  document.getElementById('paramsBody').innerHTML = '';
+  document.getElementById('paramsSection').style.display = 'none';
+  document.getElementById('parseError').textContent = '';
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Auto-parse on load
+parseURL();
+</script>
+</body>
+</html>

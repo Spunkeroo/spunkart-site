@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pomodoro Timer — Focus Better with Timed Work Sessions</title>
+<meta name="description" content="Free Pomodoro timer with 25-minute work sessions, breaks, audio alerts, and session tracking. Boost your productivity with the Pomodoro Technique.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:550px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.timer-box{background:#111;border:2px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem;text-align:center}
+.mode-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+.mode-tab{padding:8px 20px;border-radius:8px;background:#1a1a1a;border:1px solid #333;color:#888;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all 0.2s}
+.mode-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.mode-tab:hover:not(.active){border-color:#ff5f1f;color:#ccc}
+.countdown{font-size:5rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:2px;margin:1rem 0;color:#fff}
+@media(max-width:480px){.countdown{font-size:3.5rem}}
+.session-label{color:#888;font-size:0.9rem;margin-bottom:1rem}
+.controls{display:flex;gap:12px;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.btn{padding:12px 28px;border-radius:10px;border:none;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-start{background:#ff5f1f;color:#fff}.btn-start:hover{background:#e5520f}
+.btn-pause{background:#f59e0b;color:#fff}.btn-pause:hover{background:#d97706}
+.btn-reset{background:#333;color:#ccc}.btn-reset:hover{background:#444}
+.btn-skip{background:#222;color:#888;font-size:0.85rem;padding:8px 16px}.btn-skip:hover{color:#fff}
+.stats{display:flex;gap:16px;justify-content:center;margin:1.5rem 0;flex-wrap:wrap}
+.stat{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:12px 20px;text-align:center;min-width:100px}
+.stat-val{font-size:1.5rem;font-weight:800;color:#ff5f1f}.stat-label{font-size:0.75rem;color:#666;margin-top:4px}
+.settings{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.settings h3{font-size:0.95rem;color:#888;margin-bottom:1rem}
+.setting-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.setting-row label{font-size:0.85rem;color:#aaa}
+.setting-row input{width:70px;padding:6px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#fff;font-size:0.9rem;text-align:center}
+.progress-ring{width:100%;height:6px;background:#222;border-radius:3px;margin-top:1rem;overflow:hidden}
+.progress-fill{height:100%;background:#ff5f1f;border-radius:3px;transition:width 0.5s}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{background:#111;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-top:24px;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#666;font-size:0.85rem;margin-bottom:12px}
+.newsletter iframe{width:100%;border:none;border-radius:8px;min-height:80px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pomodoro Timer","description":"Free Pomodoro timer with customizable work sessions, breaks, audio alerts, and session tracking.","url":"https://spunkart.com/pomodoro.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Pomodoro Timer</h1>
+  <div class="sub">Focus better with timed work &amp; break sessions</div>
+
+  <div class="timer-box">
+    <div class="mode-tabs">
+      <div class="mode-tab active" onclick="setMode('work')">Work</div>
+      <div class="mode-tab" onclick="setMode('break')">Break</div>
+      <div class="mode-tab" onclick="setMode('longbreak')">Long Break</div>
+    </div>
+    <div class="session-label" id="sessionLabel">Work Session</div>
+    <div class="countdown" id="countdown">25:00</div>
+    <div class="progress-ring"><div class="progress-fill" id="progressFill" style="width:100%"></div></div>
+    <div class="controls">
+      <button class="btn btn-start" id="startBtn" onclick="toggleTimer()">Start</button>
+      <button class="btn btn-reset" onclick="resetTimer()">Reset</button>
+      <button class="btn btn-skip" onclick="skipSession()">Skip &rarr;</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-val" id="pomCount">0</div><div class="stat-label">Pomodoros</div></div>
+    <div class="stat"><div class="stat-val" id="totalMin">0</div><div class="stat-label">Minutes Focused</div></div>
+    <div class="stat"><div class="stat-val" id="cycleCount">0/4</div><div class="stat-label">Current Cycle</div></div>
+  </div>
+
+  <div class="settings">
+    <h3>Customize Durations (minutes)</h3>
+    <div class="setting-row">
+      <label>Work</label>
+      <input type="number" id="workMin" value="25" min="1" max="120" onchange="updateSettings()">
+    </div>
+    <div class="setting-row">
+      <label>Short Break</label>
+      <input type="number" id="breakMin" value="5" min="1" max="60" onchange="updateSettings()">
+    </div>
+    <div class="setting-row">
+      <label>Long Break</label>
+      <input type="number" id="longBreakMin" value="15" min="1" max="60" onchange="updateSettings()">
+    </div>
+    <div class="setting-row">
+      <label>Cycles before long break</label>
+      <input type="number" id="cyclesInput" value="4" min="1" max="12" onchange="updateSettings()">
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/color-converter.html">Color Converter</a>
+      <a href="/diff-checker.html">Diff Checker</a>
+      <a href="/keyboard-tester.html">Keyboard Tester</a>
+      <a href="/countdown-generator.html">Countdown Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+      <a href="/budget-tracker.html">Budget Tracker</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and tips delivered free.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" title="Newsletter signup"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Done!</div>
+
+<script>
+let workDuration = 25 * 60;
+let breakDuration = 5 * 60;
+let longBreakDuration = 15 * 60;
+let cyclesBeforeLong = 4;
+
+let currentMode = 'work'; // 'work', 'break', 'longbreak'
+let timeLeft = workDuration;
+let totalTime = workDuration;
+let running = false;
+let interval = null;
+let completedPomodoros = 0;
+let totalFocusMin = 0;
+let currentCycle = 0;
+
+function updateSettings() {
+  const w = parseInt(document.getElementById('workMin').value) || 25;
+  const b = parseInt(document.getElementById('breakMin').value) || 5;
+  const lb = parseInt(document.getElementById('longBreakMin').value) || 15;
+  const c = parseInt(document.getElementById('cyclesInput').value) || 4;
+  workDuration = w * 60;
+  breakDuration = b * 60;
+  longBreakDuration = lb * 60;
+  cyclesBeforeLong = c;
+  if (!running) {
+    if (currentMode === 'work') { timeLeft = workDuration; totalTime = workDuration; }
+    else if (currentMode === 'break') { timeLeft = breakDuration; totalTime = breakDuration; }
+    else { timeLeft = longBreakDuration; totalTime = longBreakDuration; }
+    render();
+  }
+  document.getElementById('cycleCount').textContent = currentCycle + '/' + cyclesBeforeLong;
+}
+
+function setMode(mode) {
+  if (running) { clearInterval(interval); running = false; }
+  currentMode = mode;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  if (mode === 'work') {
+    document.querySelectorAll('.mode-tab')[0].classList.add('active');
+    timeLeft = workDuration; totalTime = workDuration;
+    document.getElementById('sessionLabel').textContent = 'Work Session';
+  } else if (mode === 'break') {
+    document.querySelectorAll('.mode-tab')[1].classList.add('active');
+    timeLeft = breakDuration; totalTime = breakDuration;
+    document.getElementById('sessionLabel').textContent = 'Short Break';
+  } else {
+    document.querySelectorAll('.mode-tab')[2].classList.add('active');
+    timeLeft = longBreakDuration; totalTime = longBreakDuration;
+    document.getElementById('sessionLabel').textContent = 'Long Break';
+  }
+  document.getElementById('startBtn').textContent = 'Start';
+  document.getElementById('startBtn').className = 'btn btn-start';
+  render();
+}
+
+function toggleTimer() {
+  if (running) {
+    clearInterval(interval);
+    running = false;
+    document.getElementById('startBtn').textContent = 'Resume';
+    document.getElementById('startBtn').className = 'btn btn-start';
+  } else {
+    running = true;
+    document.getElementById('startBtn').textContent = 'Pause';
+    document.getElementById('startBtn').className = 'btn btn-pause';
+    interval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        running = false;
+        playBeep();
+        onSessionComplete();
+      }
+      render();
+    }, 1000);
+  }
+}
+
+function resetTimer() {
+  if (running) { clearInterval(interval); running = false; }
+  if (currentMode === 'work') { timeLeft = workDuration; totalTime = workDuration; }
+  else if (currentMode === 'break') { timeLeft = breakDuration; totalTime = breakDuration; }
+  else { timeLeft = longBreakDuration; totalTime = longBreakDuration; }
+  document.getElementById('startBtn').textContent = 'Start';
+  document.getElementById('startBtn').className = 'btn btn-start';
+  render();
+}
+
+function skipSession() {
+  if (running) { clearInterval(interval); running = false; }
+  onSessionComplete();
+}
+
+function onSessionComplete() {
+  if (currentMode === 'work') {
+    completedPomodoros++;
+    totalFocusMin += Math.round(workDuration / 60);
+    currentCycle++;
+    document.getElementById('pomCount').textContent = completedPomodoros;
+    document.getElementById('totalMin').textContent = totalFocusMin;
+    if (currentCycle >= cyclesBeforeLong) {
+      currentCycle = 0;
+      setMode('longbreak');
+    } else {
+      setMode('break');
+    }
+  } else {
+    setMode('work');
+  }
+  document.getElementById('cycleCount').textContent = currentCycle + '/' + cyclesBeforeLong;
+}
+
+function render() {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  document.getElementById('countdown').textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  const pct = totalTime > 0 ? (timeLeft / totalTime) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.title = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + ' — Pomodoro Timer';
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const freqs = [660, 880, 660];
+    freqs.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      osc.type = 'sine';
+      gain.gain.value = 0.3;
+      osc.start(ctx.currentTime + i * 0.25);
+      osc.stop(ctx.currentTime + i * 0.25 + 0.2);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.25 + 0.2);
+    });
+  } catch(e) {}
+}
+
+render();
+</script>
+</body>
+</html>

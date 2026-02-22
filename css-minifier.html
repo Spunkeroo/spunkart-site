@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Minifier & Beautifier - Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Minify or beautify CSS instantly. Compress CSS to reduce file size or format it with proper indentation. Shows before/after size and savings. Free tool.">
+<meta property="og:title" content="CSS Minifier & Beautifier - Free Online Tool">
+<meta property="og:description" content="Minify or beautify CSS instantly. Shows size savings percentage. Free tool.">
+<meta property="og:image" content="https://spunkart.com/assets/og-css-minifier.png">
+<meta property="og:url" content="https://spunkart.com/css-minifier.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CSS Minifier & Beautifier - Free Tool">
+<meta name="twitter:description" content="Minify or beautify CSS code instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/css-minifier.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Minifier & Beautifier","description":"Minify CSS to reduce file size or beautify it with proper indentation. Shows before/after size comparison and savings percentage.","url":"https://spunkart.com/css-minifier.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;}
+.btn-green:hover{background:#0d9668;}
+
+.stats{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+.stat{background:#111;border:1px solid #333;border-radius:8px;padding:10px 16px;font-size:0.85rem;display:flex;align-items:center;gap:8px;}
+.stat .label{color:#888;}
+.stat .value{color:#fff;font-weight:700;font-family:monospace;}
+.stat .value.green{color:#10b981;}
+.stat .value.orange{color:#ff5f1f;}
+.stat .value.red{color:#ef4444;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:500px;}
+@media(max-width:900px){.editor-wrap{grid-template-columns:1fr;min-height:300px;}}
+
+.panel{display:flex;flex-direction:column;min-height:0;}
+.panel-header{background:#1a1a1a;border:1px solid #333;border-bottom:none;border-radius:10px 10px 0 0;padding:10px 16px;font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;}
+textarea{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;border-radius:0 0 10px 10px;tab-size:2;line-height:1.5;min-height:400px;}
+textarea:focus{border-color:#ff5f1f;}
+
+.drop-zone{position:relative;}
+.drop-zone.dragover textarea{border-color:#ff5f1f;background:#0f0800;}
+.drop-hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:#555;font-size:0.8rem;pointer-events:none;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.8rem;color:#ccc;transition:all 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#999;margin-bottom:16px;font-size:0.9rem;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied.show{opacity:1;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>CSS Minifier &amp; Beautifier</h1>
+  <div class="subtitle">Minify CSS to reduce file size or beautify it with proper formatting</div>
+
+  <div class="toolbar">
+    <button onclick="minifyCSS()">Minify</button>
+    <button class="btn-green" onclick="beautifyCSS()">Beautify</button>
+    <button class="btn-secondary" onclick="copyInput()">Copy Input</button>
+    <button class="btn-secondary" onclick="copyOutput()">Copy Output</button>
+    <button class="btn-secondary" onclick="swapPanels()">Swap Input/Output</button>
+    <button class="btn-secondary" onclick="clearAll()">Clear</button>
+  </div>
+
+  <div class="stats" id="stats" style="display:none;">
+    <div class="stat">
+      <span class="label">Input:</span>
+      <span class="value" id="inputSize">0 B</span>
+    </div>
+    <div class="stat">
+      <span class="label">Output:</span>
+      <span class="value" id="outputSize">0 B</span>
+    </div>
+    <div class="stat">
+      <span class="label">Savings:</span>
+      <span class="value green" id="savings">0%</span>
+    </div>
+    <div class="stat">
+      <span class="label">Reduction:</span>
+      <span class="value" id="reduction">0 B</span>
+    </div>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header">
+        <span>Input CSS</span>
+        <span id="inputLines" style="color:#666;font-weight:400;">0 lines</span>
+      </div>
+      <div class="drop-zone" id="dropZone" style="display:flex;flex-direction:column;flex:1;">
+        <textarea id="inputCSS" placeholder="Paste your CSS here, or drag & drop a .css file..." oninput="updateInputStats()"></textarea>
+        <span class="drop-hint">Drag &amp; drop a .css file here</span>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        <span>Output</span>
+        <span id="outputLines" style="color:#666;font-weight:400;">0 lines</span>
+      </div>
+      <textarea id="outputCSS" placeholder="Minified or beautified CSS will appear here..." readonly></textarea>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <div class="tool-links">
+      <a href="/og-preview.html">OG Preview</a>
+      <a href="/readme-generator.html">README Generator</a>
+      <a href="/htaccess-generator.html">.htaccess Generator</a>
+      <a href="/slug-generator.html">Slug Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/css-gradient.html">CSS Gradient</a>
+      <a href="/password-generator.html">Password Generator</a>
+    </div>
+    <br>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Free Tools + Discounts</h3>
+    <p>Join the SpunkArt newsletter for free tools, tips, and 10% off your first purchase.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:80px;border:none;border-radius:8px;"></iframe>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+// Drag & drop
+const dropZone = document.getElementById('dropZone');
+const inputArea = document.getElementById('inputCSS');
+
+['dragenter','dragover'].forEach(evt => {
+  dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+});
+['dragleave','drop'].forEach(evt => {
+  dropZone.addEventListener(evt, e => { e.preventDefault(); dropZone.classList.remove('dragover'); });
+});
+dropZone.addEventListener('drop', e => {
+  const file = e.dataTransfer.files[0];
+  if (file && (file.name.endsWith('.css') || file.type === 'text/css' || file.type === 'text/plain')) {
+    const reader = new FileReader();
+    reader.onload = () => { inputArea.value = reader.result; updateInputStats(); };
+    reader.readAsText(file);
+  }
+});
+
+function updateInputStats() {
+  const val = inputArea.value;
+  const lines = val ? val.split('\n').length : 0;
+  document.getElementById('inputLines').textContent = lines + ' lines';
+}
+
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 B';
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+function showStats(inputStr, outputStr) {
+  const inputBytes = new Blob([inputStr]).size;
+  const outputBytes = new Blob([outputStr]).size;
+  const diff = inputBytes - outputBytes;
+  const pct = inputBytes > 0 ? ((diff / inputBytes) * 100).toFixed(1) : 0;
+
+  document.getElementById('stats').style.display = 'flex';
+  document.getElementById('inputSize').textContent = formatBytes(inputBytes);
+  document.getElementById('outputSize').textContent = formatBytes(outputBytes);
+
+  const savingsEl = document.getElementById('savings');
+  const reductionEl = document.getElementById('reduction');
+
+  if (diff > 0) {
+    savingsEl.textContent = pct + '% smaller';
+    savingsEl.className = 'value green';
+    reductionEl.textContent = '-' + formatBytes(diff);
+  } else if (diff < 0) {
+    savingsEl.textContent = Math.abs(pct) + '% larger';
+    savingsEl.className = 'value orange';
+    reductionEl.textContent = '+' + formatBytes(Math.abs(diff));
+  } else {
+    savingsEl.textContent = 'No change';
+    savingsEl.className = 'value';
+    reductionEl.textContent = '0 B';
+  }
+
+  const outputLines = outputStr ? outputStr.split('\n').length : 0;
+  document.getElementById('outputLines').textContent = outputLines + ' lines';
+}
+
+function minifyCSS() {
+  const input = inputArea.value;
+  if (!input.trim()) return;
+
+  let css = input;
+
+  // Remove comments
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+
+  // Remove newlines and extra whitespace
+  css = css.replace(/\s+/g, ' ');
+
+  // Remove spaces around special characters
+  css = css.replace(/\s*{\s*/g, '{');
+  css = css.replace(/\s*}\s*/g, '}');
+  css = css.replace(/\s*;\s*/g, ';');
+  css = css.replace(/\s*:\s*/g, ':');
+  css = css.replace(/\s*,\s*/g, ',');
+  css = css.replace(/\s*>\s*/g, '>');
+  css = css.replace(/\s*~\s*/g, '~');
+  css = css.replace(/\s*\+\s*/g, '+');
+
+  // Remove trailing semicolons before closing braces
+  css = css.replace(/;}/g, '}');
+
+  // Remove leading/trailing whitespace
+  css = css.trim();
+
+  // Shorthand optimizations
+  // #aabbcc -> #abc
+  css = css.replace(/#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3/g, '#$1$2$3');
+
+  // 0px -> 0 (but not inside things like 0.5px)
+  css = css.replace(/(?<=[\s:,])0(?:px|em|rem|%|pt|ex|ch|vw|vh|vmin|vmax|cm|mm|in|pc)(?=[;\s},])/g, '0');
+
+  // Remove empty rules
+  css = css.replace(/[^{}]+\{\s*\}/g, '');
+
+  document.getElementById('outputCSS').value = css;
+  showStats(input, css);
+}
+
+function beautifyCSS() {
+  const input = inputArea.value;
+  if (!input.trim()) return;
+
+  let css = input;
+
+  // First minify to normalize
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '/*COMMENT*/');
+  let comments = [];
+  css = input.replace(/\/\*([\s\S]*?)\*\//g, (match) => {
+    comments.push(match);
+    return '/*COMMENT_' + (comments.length - 1) + '*/';
+  });
+
+  css = css.replace(/\s+/g, ' ');
+  css = css.replace(/\s*{\s*/g, ' {\n');
+  css = css.replace(/\s*}\s*/g, '\n}\n\n');
+  css = css.replace(/\s*;\s*/g, ';\n');
+  css = css.replace(/\s*:\s*/g, ': ');
+
+  // Indent properties inside braces
+  let result = '';
+  let indent = 0;
+  const lines = css.split('\n');
+
+  for (let line of lines) {
+    line = line.trim();
+    if (!line) { result += '\n'; continue; }
+
+    // Decrease indent for closing brace
+    if (line.startsWith('}')) {
+      indent = Math.max(0, indent - 1);
+    }
+
+    result += '  '.repeat(indent) + line + '\n';
+
+    // Increase indent after opening brace
+    if (line.endsWith('{')) {
+      indent++;
+    }
+  }
+
+  // Restore comments
+  comments.forEach((comment, i) => {
+    result = result.replace('/*COMMENT_' + i + '*/', comment);
+  });
+
+  // Clean up extra blank lines
+  result = result.replace(/\n{3,}/g, '\n\n');
+  result = result.trim() + '\n';
+
+  document.getElementById('outputCSS').value = result;
+  showStats(input, result);
+}
+
+function copyInput() {
+  const val = inputArea.value;
+  if (val) { navigator.clipboard.writeText(val); showToast(); }
+}
+
+function copyOutput() {
+  const val = document.getElementById('outputCSS').value;
+  if (val) { navigator.clipboard.writeText(val); showToast(); }
+}
+
+function swapPanels() {
+  const output = document.getElementById('outputCSS').value;
+  if (output) {
+    inputArea.value = output;
+    document.getElementById('outputCSS').value = '';
+    document.getElementById('stats').style.display = 'none';
+    updateInputStats();
+  }
+}
+
+function clearAll() {
+  inputArea.value = '';
+  document.getElementById('outputCSS').value = '';
+  document.getElementById('stats').style.display = 'none';
+  document.getElementById('inputLines').textContent = '0 lines';
+  document.getElementById('outputLines').textContent = '0 lines';
+}
+
+function showToast() {
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+// Tab key support in textarea
+inputArea.addEventListener('keydown', function(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    this.value = this.value.substring(0, start) + '  ' + this.value.substring(end);
+    this.selectionStart = this.selectionEnd = start + 2;
+  }
+});
+</script>
+</body>
+</html>

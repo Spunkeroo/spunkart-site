@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Contrast Checker - WCAG AA & AAA Compliance | SPUNKART.COM</title>
+<meta name="description" content="Check color contrast ratios for WCAG AA and AAA compliance. Live preview, hex/RGB/HSL inputs, pass/fail badges for normal and large text. Free tool.">
+<meta property="og:title" content="Color Contrast Checker | SPUNKART.COM">
+<meta property="og:description" content="Check WCAG AA and AAA color contrast compliance. Live preview with hex, RGB, and HSL inputs. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/color-contrast">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color Contrast Checker | SPUNKART.COM">
+<meta name="twitter:description" content="Check WCAG color contrast ratios. Free accessibility tool.">
+<link rel="canonical" href="https://spunkart.com/color-contrast">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+
+.color-inputs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
+.color-group{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:16px;}
+.color-group h3{font-size:0.9rem;color:#888;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+
+.color-picker-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.color-picker-row input[type="color"]{width:48px;height:48px;border:2px solid #333;border-radius:8px;cursor:pointer;background:none;padding:2px;}
+.color-picker-row input[type="color"]::-webkit-color-swatch-wrapper{padding:0;}
+.color-picker-row input[type="color"]::-webkit-color-swatch{border:none;border-radius:6px;}
+
+.color-field{display:flex;flex-direction:column;gap:8px;}
+.color-field label{font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;}
+.color-field input[type="text"]{width:100%;padding:8px 10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.85rem;font-family:'Courier New',monospace;outline:none;}
+.color-field input[type="text"]:focus{border-color:#ff5f1f;}
+
+.color-fields-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.color-field-small input{width:100%;padding:6px 8px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.8rem;font-family:'Courier New',monospace;outline:none;text-align:center;}
+.color-field-small input:focus{border-color:#ff5f1f;}
+.color-field-small label{font-size:0.65rem;color:#555;text-align:center;display:block;margin-bottom:4px;text-transform:uppercase;}
+
+.swap-btn{display:flex;justify-content:center;align-items:center;margin:0 -10px;}
+.swap-btn button{background:#222;border:1px solid #333;border-radius:50%;width:40px;height:40px;color:#888;font-size:1.2rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.swap-btn button:hover{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+/* Preview */
+.preview-box{border-radius:12px;padding:32px 24px;text-align:center;margin-bottom:24px;border:2px solid #2a2a2a;transition:all .3s;}
+.preview-box .preview-normal{font-size:1rem;margin-bottom:8px;}
+.preview-box .preview-large{font-size:1.5rem;font-weight:700;}
+
+/* Ratio Display */
+.ratio-display{text-align:center;margin-bottom:24px;}
+.ratio-number{font-size:3rem;font-weight:800;letter-spacing:-1px;}
+.ratio-label{font-size:0.85rem;color:#888;margin-top:4px;}
+
+/* Results Grid */
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.result-card{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:16px;text-align:center;}
+.result-card h4{font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.result-card .result-level{font-size:0.9rem;color:#888;margin-bottom:4px;}
+.result-badge{display:inline-block;padding:4px 16px;border-radius:20px;font-size:0.85rem;font-weight:700;letter-spacing:0.5px;}
+.badge-pass{background:#10b98122;color:#10b981;border:1px solid #10b98144;}
+.badge-fail{background:#ef444422;color:#ef4444;border:1px solid #ef444444;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .color-inputs{grid-template-columns:1fr;}
+  .results-grid{grid-template-columns:1fr;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Contrast Checker","description":"Check WCAG AA and AAA color contrast compliance. Live preview with hex, RGB, and HSL inputs. Free accessibility tool.","url":"https://spunkart.com/color-contrast.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Color Contrast <span>Checker</span></h1>
+  <p class="subtitle">Check WCAG 2.1 AA and AAA contrast compliance. Live preview with Hex, RGB, and HSL inputs.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="color-inputs">
+      <!-- Foreground -->
+      <div class="color-group">
+        <h3>Foreground (Text)</h3>
+        <div class="color-picker-row">
+          <input type="color" id="fgPicker" value="#ffffff" oninput="onPickerChange('fg')">
+          <div class="color-field" style="flex:1">
+            <label>Hex</label>
+            <input type="text" id="fgHex" value="#ffffff" oninput="onHexChange('fg')">
+          </div>
+        </div>
+        <div class="color-fields-grid">
+          <div class="color-field-small"><label>R</label><input type="text" id="fgR" value="255" oninput="onRgbChange('fg')"></div>
+          <div class="color-field-small"><label>G</label><input type="text" id="fgG" value="255" oninput="onRgbChange('fg')"></div>
+          <div class="color-field-small"><label>B</label><input type="text" id="fgB" value="255" oninput="onRgbChange('fg')"></div>
+        </div>
+        <div class="color-fields-grid" style="margin-top:8px;">
+          <div class="color-field-small"><label>H</label><input type="text" id="fgH" value="0" oninput="onHslChange('fg')"></div>
+          <div class="color-field-small"><label>S%</label><input type="text" id="fgS" value="0" oninput="onHslChange('fg')"></div>
+          <div class="color-field-small"><label>L%</label><input type="text" id="fgL" value="100" oninput="onHslChange('fg')"></div>
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div class="color-group">
+        <h3>Background</h3>
+        <div class="color-picker-row">
+          <input type="color" id="bgPicker" value="#0a0a0a" oninput="onPickerChange('bg')">
+          <div class="color-field" style="flex:1">
+            <label>Hex</label>
+            <input type="text" id="bgHex" value="#0a0a0a" oninput="onHexChange('bg')">
+          </div>
+        </div>
+        <div class="color-fields-grid">
+          <div class="color-field-small"><label>R</label><input type="text" id="bgR" value="10" oninput="onRgbChange('bg')"></div>
+          <div class="color-field-small"><label>G</label><input type="text" id="bgG" value="10" oninput="onRgbChange('bg')"></div>
+          <div class="color-field-small"><label>B</label><input type="text" id="bgB" value="10" oninput="onRgbChange('bg')"></div>
+        </div>
+        <div class="color-fields-grid" style="margin-top:8px;">
+          <div class="color-field-small"><label>H</label><input type="text" id="bgH" value="0" oninput="onHslChange('bg')"></div>
+          <div class="color-field-small"><label>S%</label><input type="text" id="bgS" value="0" oninput="onHslChange('bg')"></div>
+          <div class="color-field-small"><label>L%</label><input type="text" id="bgL" value="4" oninput="onHslChange('bg')"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swap-btn">
+      <button onclick="swapColors()" title="Swap foreground and background">&#8646;</button>
+    </div>
+  </div>
+
+  <!-- Preview -->
+  <div class="section">
+    <div class="preview-box" id="previewBox">
+      <div class="preview-normal">Normal text preview (16px)</div>
+      <div class="preview-large">Large text preview (24px bold)</div>
+    </div>
+
+    <div class="ratio-display">
+      <div class="ratio-number" id="ratioNumber">19.56:1</div>
+      <div class="ratio-label">Contrast Ratio</div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <h4>WCAG AA</h4>
+        <div class="result-level">Normal Text (4.5:1)</div>
+        <span class="result-badge badge-pass" id="aaNormal">PASS</span>
+      </div>
+      <div class="result-card">
+        <h4>WCAG AA</h4>
+        <div class="result-level">Large Text (3:1)</div>
+        <span class="result-badge badge-pass" id="aaLarge">PASS</span>
+      </div>
+      <div class="result-card">
+        <h4>WCAG AAA</h4>
+        <div class="result-level">Normal Text (7:1)</div>
+        <span class="result-badge badge-pass" id="aaaNormal">PASS</span>
+      </div>
+      <div class="result-card">
+        <h4>WCAG AAA</h4>
+        <div class="result-level">Large Text (4.5:1)</div>
+        <span class="result-badge badge-pass" id="aaaLarge">PASS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/color-palette">Color Palette Generator</a>
+      <a href="/css-gradient">CSS Gradient Generator</a>
+      <a href="/favicon-generator">Favicon Generator</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+      <a href="/word-counter">Word Counter</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+// Color state
+let fgColor = { r: 255, g: 255, b: 255 };
+let bgColor = { r: 10, g: 10, b: 10 };
+
+// --- Conversion utilities ---
+function hexToRgb(hex) {
+  hex = hex.replace(/^#/, '');
+  if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  if (hex.length !== 6) return null;
+  const n = parseInt(hex, 16);
+  if (isNaN(n)) return null;
+  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b].map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) {
+    h = s = 0;
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
+}
+
+function hslToRgb(h, s, l) {
+  h /= 360; s /= 100; l /= 100;
+  let r, g, b;
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1/3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1/3);
+  }
+  return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+}
+
+// --- WCAG Contrast Ratio ---
+function luminance(r, g, b) {
+  const [rs, gs, bs] = [r, g, b].map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+function contrastRatio(rgb1, rgb2) {
+  const l1 = luminance(rgb1.r, rgb1.g, rgb1.b);
+  const l2 = luminance(rgb2.r, rgb2.g, rgb2.b);
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+// --- UI Update Functions ---
+function updateAllFields(prefix, rgb) {
+  const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+  const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+  document.getElementById(prefix + 'Picker').value = hex;
+  document.getElementById(prefix + 'Hex').value = hex;
+  document.getElementById(prefix + 'R').value = rgb.r;
+  document.getElementById(prefix + 'G').value = rgb.g;
+  document.getElementById(prefix + 'B').value = rgb.b;
+  document.getElementById(prefix + 'H').value = hsl.h;
+  document.getElementById(prefix + 'S').value = hsl.s;
+  document.getElementById(prefix + 'L').value = hsl.l;
+}
+
+function updateResults() {
+  const ratio = contrastRatio(fgColor, bgColor);
+  const ratioStr = ratio.toFixed(2) + ':1';
+
+  document.getElementById('ratioNumber').textContent = ratioStr;
+
+  // Set ratio color
+  const ratioEl = document.getElementById('ratioNumber');
+  if (ratio >= 7) ratioEl.style.color = '#10b981';
+  else if (ratio >= 4.5) ratioEl.style.color = '#3b82f6';
+  else if (ratio >= 3) ratioEl.style.color = '#f59e0b';
+  else ratioEl.style.color = '#ef4444';
+
+  // Update badges
+  setBadge('aaNormal', ratio >= 4.5);
+  setBadge('aaLarge', ratio >= 3);
+  setBadge('aaaNormal', ratio >= 7);
+  setBadge('aaaLarge', ratio >= 4.5);
+
+  // Update preview
+  const fgHex = rgbToHex(fgColor.r, fgColor.g, fgColor.b);
+  const bgHex = rgbToHex(bgColor.r, bgColor.g, bgColor.b);
+  const preview = document.getElementById('previewBox');
+  preview.style.backgroundColor = bgHex;
+  preview.style.color = fgHex;
+  preview.style.borderColor = bgHex === '#0a0a0a' || bgHex === '#000000' ? '#2a2a2a' : bgHex;
+}
+
+function setBadge(id, pass) {
+  const el = document.getElementById(id);
+  el.textContent = pass ? 'PASS' : 'FAIL';
+  el.className = 'result-badge ' + (pass ? 'badge-pass' : 'badge-fail');
+}
+
+// --- Event Handlers ---
+function onPickerChange(prefix) {
+  const hex = document.getElementById(prefix + 'Picker').value;
+  const rgb = hexToRgb(hex);
+  if (!rgb) return;
+  if (prefix === 'fg') fgColor = rgb; else bgColor = rgb;
+  updateAllFields(prefix, rgb);
+  updateResults();
+}
+
+function onHexChange(prefix) {
+  const hex = document.getElementById(prefix + 'Hex').value.trim();
+  const rgb = hexToRgb(hex);
+  if (!rgb) return;
+  if (prefix === 'fg') fgColor = rgb; else bgColor = rgb;
+  updateAllFields(prefix, rgb);
+  updateResults();
+}
+
+function onRgbChange(prefix) {
+  const r = parseInt(document.getElementById(prefix + 'R').value) || 0;
+  const g = parseInt(document.getElementById(prefix + 'G').value) || 0;
+  const b = parseInt(document.getElementById(prefix + 'B').value) || 0;
+  const rgb = { r: Math.max(0, Math.min(255, r)), g: Math.max(0, Math.min(255, g)), b: Math.max(0, Math.min(255, b)) };
+  if (prefix === 'fg') fgColor = rgb; else bgColor = rgb;
+  // Update hex, hsl, picker but not RGB fields (user is typing)
+  const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+  const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+  document.getElementById(prefix + 'Picker').value = hex;
+  document.getElementById(prefix + 'Hex').value = hex;
+  document.getElementById(prefix + 'H').value = hsl.h;
+  document.getElementById(prefix + 'S').value = hsl.s;
+  document.getElementById(prefix + 'L').value = hsl.l;
+  updateResults();
+}
+
+function onHslChange(prefix) {
+  const h = parseInt(document.getElementById(prefix + 'H').value) || 0;
+  const s = parseInt(document.getElementById(prefix + 'S').value) || 0;
+  const l = parseInt(document.getElementById(prefix + 'L').value) || 0;
+  const rgb = hslToRgb(Math.max(0, Math.min(360, h)), Math.max(0, Math.min(100, s)), Math.max(0, Math.min(100, l)));
+  if (prefix === 'fg') fgColor = rgb; else bgColor = rgb;
+  // Update hex, rgb, picker but not HSL fields (user is typing)
+  const hex = rgbToHex(rgb.r, rgb.g, rgb.b);
+  document.getElementById(prefix + 'Picker').value = hex;
+  document.getElementById(prefix + 'Hex').value = hex;
+  document.getElementById(prefix + 'R').value = rgb.r;
+  document.getElementById(prefix + 'G').value = rgb.g;
+  document.getElementById(prefix + 'B').value = rgb.b;
+  updateResults();
+}
+
+function swapColors() {
+  const temp = { ...fgColor };
+  fgColor = { ...bgColor };
+  bgColor = temp;
+  updateAllFields('fg', fgColor);
+  updateAllFields('bg', bgColor);
+  updateResults();
+}
+
+// Initialize
+updateResults();
+</script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regex Tester — Test Regular Expressions with Real-Time Matching</title>
+<meta name="description" content="Test regular expressions in real-time. See matches highlighted, capture groups in a table, and match counts instantly. Free online regex tester.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:800px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.regex-row{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.regex-input{flex:1;min-width:200px;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:10px 14px;font-family:'Courier New',monospace;font-size:0.95rem;outline:none}
+.regex-input:focus{border-color:#ff5f1f}
+.flags-input{width:80px;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:0.95rem;outline:none;text-align:center}
+.flags-input:focus{border-color:#ff5f1f}
+.regex-slash{color:#666;font-family:'Courier New',monospace;font-size:1.2rem}
+label.label{display:block;font-size:0.8rem;color:#666;margin-bottom:6px;font-weight:600}
+textarea{width:100%;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:14px;font-family:'Courier New',monospace;font-size:0.9rem;resize:vertical;outline:none;min-height:160px;line-height:1.6}
+textarea:focus{border-color:#ff5f1f}
+.stats-bar{display:flex;gap:16px;font-size:0.85rem;color:#666;margin-top:12px;flex-wrap:wrap}
+.stats-bar span{color:#ff5f1f;font-weight:700}
+.highlighted{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:14px;font-family:'Courier New',monospace;font-size:0.9rem;line-height:1.6;min-height:80px;color:#ccc;word-break:break-all;white-space:pre-wrap}
+.highlighted mark{background:#ff5f1f33;color:#ff5f1f;border-radius:2px;padding:1px 2px;border-bottom:2px solid #ff5f1f}
+.error{color:#ef4444;font-size:0.85rem;margin-top:8px;min-height:20px}
+.groups-section{margin-top:16px}
+.groups-section h3{font-size:0.9rem;color:#10b981;margin-bottom:8px}
+.groups-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.groups-table th{text-align:left;padding:6px 10px;color:#ff5f1f;border-bottom:1px solid #333;font-weight:600}
+.groups-table td{padding:6px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;font-family:'Courier New',monospace}
+.groups-table tr:hover td{background:#1a1a1a}
+.preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.preset{padding:5px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.7rem;cursor:pointer;color:#888;transition:all 0.2s;font-family:'Courier New',monospace}
+.preset:hover{border-color:#ff5f1f;color:#fff}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{margin-top:2rem;text-align:center}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#999;font-size:0.9rem;margin-bottom:12px}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+.no-matches{color:#666;font-style:italic}
+@media(max-width:600px){.container{padding:0 1rem}h1{font-size:1.5rem}.regex-row{flex-direction:column}.flags-input{width:100%}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Tester","description":"Test regular expressions in real-time with match highlighting, capture groups, and match counts.","url":"https://spunkart.com/regex-tester.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Regex Tester</h1>
+  <div class="sub">Test regular expressions with real-time match highlighting</div>
+
+  <div class="section">
+    <label class="label">Common Patterns</label>
+    <div class="preset-row">
+      <div class="preset" onclick="setPreset('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}','g')">Email</div>
+      <div class="preset" onclick="setPreset('https?://[^\\s]+','g')">URL</div>
+      <div class="preset" onclick="setPreset('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b','g')">IP Address</div>
+      <div class="preset" onclick="setPreset('\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})','g')">Phone Number</div>
+      <div class="preset" onclick="setPreset('#([0-9a-fA-F]{3}){1,2}\\b','g')">Hex Color</div>
+      <div class="preset" onclick="setPreset('\\b\\d{4}-\\d{2}-\\d{2}\\b','g')">Date YYYY-MM-DD</div>
+      <div class="preset" onclick="setPreset('<[^>]+>','g')">HTML Tags</div>
+    </div>
+
+    <label class="label">Regular Expression</label>
+    <div class="regex-row">
+      <span class="regex-slash">/</span>
+      <input type="text" class="regex-input" id="regexInput" placeholder="Enter regex pattern..." value="(\w+)@(\w+)\.(\w+)" oninput="runRegex()">
+      <span class="regex-slash">/</span>
+      <input type="text" class="flags-input" id="flagsInput" placeholder="gim" value="g" oninput="runRegex()">
+    </div>
+    <div class="error" id="regexError"></div>
+
+    <label class="label">Test String</label>
+    <textarea id="testString" oninput="runRegex()" placeholder="Enter your test string here...">Contact us at hello@example.com or support@spunkart.com. You can also reach admin@test.org for help.</textarea>
+  </div>
+
+  <div class="section">
+    <label class="label">Matches Highlighted</label>
+    <div class="highlighted" id="highlightOutput"></div>
+    <div class="stats-bar">
+      <div>Matches: <span id="matchCount">0</span></div>
+      <div>Groups: <span id="groupCount">0</span></div>
+    </div>
+  </div>
+
+  <div class="section groups-section" id="groupsSection" style="display:none">
+    <h3>Match Details</h3>
+    <table class="groups-table">
+      <thead><tr><th>#</th><th>Full Match</th><th>Index</th><th>Groups</th></tr></thead>
+      <tbody id="groupsBody"></tbody>
+    </table>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get notified when we launch new free tools.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/lorem-ipsum.html">Lorem Ipsum</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/url-encoder.html">URL Encoder</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/markdown-editor.html">Markdown Editor</a>
+      <a href="/color-palette.html">Color Palette</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function setPreset(pattern, flags) {
+  document.getElementById('regexInput').value = pattern;
+  document.getElementById('flagsInput').value = flags;
+  runRegex();
+}
+
+function runRegex() {
+  const patternStr = document.getElementById('regexInput').value;
+  const flagsStr = document.getElementById('flagsInput').value;
+  const testStr = document.getElementById('testString').value;
+  const errorEl = document.getElementById('regexError');
+  const highlightEl = document.getElementById('highlightOutput');
+  const groupsBody = document.getElementById('groupsBody');
+  const groupsSection = document.getElementById('groupsSection');
+
+  errorEl.textContent = '';
+  groupsBody.innerHTML = '';
+  groupsSection.style.display = 'none';
+  document.getElementById('matchCount').textContent = '0';
+  document.getElementById('groupCount').textContent = '0';
+
+  if (!patternStr) {
+    highlightEl.innerHTML = escapeHtml(testStr) || '<span class="no-matches">Enter a regex pattern above</span>';
+    return;
+  }
+
+  let regex;
+  try {
+    regex = new RegExp(patternStr, flagsStr);
+  } catch (e) {
+    errorEl.textContent = e.message;
+    highlightEl.innerHTML = escapeHtml(testStr);
+    return;
+  }
+
+  if (!testStr) {
+    highlightEl.innerHTML = '<span class="no-matches">Enter a test string above</span>';
+    return;
+  }
+
+  // Collect all matches
+  const matches = [];
+  let match;
+  const isGlobal = regex.global;
+
+  if (isGlobal) {
+    while ((match = regex.exec(testStr)) !== null) {
+      matches.push({ index: match.index, length: match[0].length, full: match[0], groups: [...match].slice(1) });
+      if (match[0].length === 0) regex.lastIndex++;
+    }
+  } else {
+    match = regex.exec(testStr);
+    if (match) {
+      matches.push({ index: match.index, length: match[0].length, full: match[0], groups: [...match].slice(1) });
+    }
+  }
+
+  document.getElementById('matchCount').textContent = matches.length;
+
+  // Build highlighted output
+  if (matches.length === 0) {
+    highlightEl.innerHTML = escapeHtml(testStr) + ' <span class="no-matches">(no matches)</span>';
+    return;
+  }
+
+  let html = '';
+  let lastIndex = 0;
+  let maxGroups = 0;
+
+  matches.forEach((m, i) => {
+    html += escapeHtml(testStr.slice(lastIndex, m.index));
+    html += '<mark>' + escapeHtml(m.full) + '</mark>';
+    lastIndex = m.index + m.length;
+
+    // Groups table
+    if (m.groups.length > maxGroups) maxGroups = m.groups.length;
+    const groupsStr = m.groups.length > 0 ? m.groups.map((g, gi) => '<span style="color:#10b981">$' + (gi + 1) + ':</span> ' + escapeHtml(g || '(undefined)')).join(', ') : '<span style="color:#666">none</span>';
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + (i + 1) + '</td><td style="color:#ff5f1f">' + escapeHtml(m.full) + '</td><td>' + m.index + '</td><td>' + groupsStr + '</td>';
+    groupsBody.appendChild(tr);
+  });
+
+  html += escapeHtml(testStr.slice(lastIndex));
+  highlightEl.innerHTML = html;
+
+  document.getElementById('groupCount').textContent = maxGroups;
+
+  if (matches.length > 0) {
+    groupsSection.style.display = 'block';
+  }
+}
+
+// Run on load
+runRegex();
+</script>
+</body>
+</html>

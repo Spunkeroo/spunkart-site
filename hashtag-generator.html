@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hashtag Generator - Free Hashtags for Instagram, TikTok, X & LinkedIn | SPUNKART.COM</title>
+<meta name="description" content="Generate 30 relevant hashtags for any topic. Grouped by popularity for Instagram, TikTok, X/Twitter, and LinkedIn. Free tool with one-click copy.">
+<meta property="og:title" content="Hashtag Generator | SPUNKART.COM">
+<meta property="og:description" content="Generate 30 relevant hashtags grouped by popularity. Free tool for Instagram, TikTok, X, and LinkedIn.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/hashtag-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hashtag Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate 30 relevant hashtags for any platform. Free tool with copy-all button.">
+<link rel="canonical" href="https://spunkart.com/hashtag-generator">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:750px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group input[type="text"],.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group input:focus,.input-group select:focus{border-color:#ff5f1f;}
+.input-group select option{background:#1a1a1a;color:#e8e8e8;}
+
+.platform-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.platform-pill{padding:8px 18px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;cursor:pointer;font-size:0.9rem;color:#888;transition:all .2s;user-select:none;}
+.platform-pill:hover{border-color:#ff5f1f55;color:#ccc;}
+.platform-pill.active{border-color:#ff5f1f;background:#ff5f1f18;color:#ff5f1f;font-weight:600;}
+
+.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;width:100%;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-small{padding:8px 16px;font-size:0.8rem;}
+
+.results{display:none;margin-top:20px;}
+.results-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.results-header h2{margin:0;font-size:1.1rem;color:#ccc;}
+
+.hashtag-group{margin-bottom:20px;}
+.hashtag-group h3{font-size:0.9rem;color:#888;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.hashtag-group h3 .badge{font-size:0.7rem;padding:2px 8px;border-radius:10px;font-weight:600;}
+.badge-high{background:#ff5f1f22;color:#ff5f1f;border:1px solid #ff5f1f44;}
+.badge-medium{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;}
+.badge-niche{background:#10b98122;color:#10b981;border:1px solid #10b98144;}
+
+.hashtag-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.hashtag-tag{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:6px 14px;font-size:0.85rem;cursor:pointer;transition:all .2s;user-select:none;}
+.hashtag-tag:hover{border-color:#ff5f1f;background:#ff5f1f11;color:#ff5f1f;}
+.hashtag-tag.copied{border-color:#10b981;background:#10b98111;color:#10b981;}
+
+.copy-all-area{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-top:16px;font-size:0.85rem;color:#aaa;word-break:break-word;min-height:60px;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .platform-pills{justify-content:center;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hashtag Generator","description":"Generate 30 relevant hashtags grouped by popularity for Instagram, TikTok, X/Twitter, and LinkedIn. Free tool.","url":"https://spunkart.com/hashtag-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Hashtag <span>Generator</span></h1>
+  <p class="subtitle">Generate 30 relevant hashtags grouped by popularity. Perfect for Instagram, TikTok, X, and LinkedIn.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="input-group">
+      <label>Topic or Keywords</label>
+      <input type="text" id="topicInput" placeholder="e.g. fitness, healthy eating, workout motivation" autocomplete="off">
+    </div>
+
+    <label style="font-size:0.85rem;color:#888;margin-bottom:8px;display:block;">Platform</label>
+    <div class="platform-pills">
+      <div class="platform-pill active" onclick="setPlatform(this,'instagram')">Instagram</div>
+      <div class="platform-pill" onclick="setPlatform(this,'tiktok')">TikTok</div>
+      <div class="platform-pill" onclick="setPlatform(this,'twitter')">X / Twitter</div>
+      <div class="platform-pill" onclick="setPlatform(this,'linkedin')">LinkedIn</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateHashtags()">Generate Hashtags</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="section">
+      <div class="results-header">
+        <h2>Your Hashtags</h2>
+        <button class="btn btn-secondary btn-small" onclick="copyAll()">Copy All 30</button>
+      </div>
+
+      <div class="hashtag-group">
+        <h3>Popular <span class="badge badge-high">High Volume</span></h3>
+        <div class="hashtag-grid" id="highTags"></div>
+      </div>
+
+      <div class="hashtag-group">
+        <h3>Moderate <span class="badge badge-medium">Medium Volume</span></h3>
+        <div class="hashtag-grid" id="medTags"></div>
+      </div>
+
+      <div class="hashtag-group">
+        <h3>Niche <span class="badge badge-niche">Low Competition</span></h3>
+        <div class="hashtag-grid" id="nicheTags"></div>
+      </div>
+
+      <div class="copy-all-area" id="copyArea"></div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/tweet-generator">Tweet Generator</a>
+      <a href="/social-bio">Social Bio Generator</a>
+      <a href="/word-counter">Word Counter</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/color-contrast">Color Contrast Checker</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let selectedPlatform = 'instagram';
+
+function setPlatform(el, platform) {
+  selectedPlatform = platform;
+  document.querySelectorAll('.platform-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copied!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+// Keyword expansion engine
+const expansions = {
+  // Common prefixes/suffixes
+  prefixes: ['best','top','daily','my','love','pro','real','the','new','free','easy','simple','quick','ultimate','epic'],
+  suffixes: ['life','tips','goals','vibes','community','lover','addict','inspo','motivation','style','world','hub','guru','hack','daily'],
+  // Platform-specific patterns
+  platformMods: {
+    instagram: {prefixes:['insta','ig','reels'], suffixes:['ofinstagram','gram','reels','feed','aesthetic']},
+    tiktok: {prefixes:['tiktok','viral','fyp'], suffixes:['tok','tiktok','viral','fyp','foryou','trending']},
+    twitter: {prefixes:['x','breaking','trending'], suffixes:['twitter','x','thread','takes','update']},
+    linkedin: {prefixes:['linkedin','career','professional'], suffixes:['linkedin','career','leadership','growth','networking']}
+  },
+  // Category-based related words
+  categories: {
+    fitness:['workout','gym','fit','health','exercise','training','muscle','strength','cardio','gains','bodybuilding','wellness','active','fitfam','legday'],
+    food:['recipe','cooking','foodie','eat','delicious','yummy','homemade','chef','kitchen','baking','meal','dinner','lunch','healthy','tasty'],
+    travel:['wanderlust','adventure','explore','vacation','trip','destination','tourism','backpacking','roadtrip','traveler','passport','journey','getaway','beach','nature'],
+    business:['entrepreneur','startup','success','hustle','money','growth','ceo','marketing','branding','strategy','sales','profit','mindset','grind','leadership'],
+    tech:['coding','developer','programming','software','ai','data','web','app','digital','innovation','cyber','cloud','automation','machinelearning','startup'],
+    fashion:['style','outfit','trendy','clothing','designer','streetwear','ootd','lookbook','fashionista','wardrobe','accessories','shopping','model','beauty','glamour'],
+    art:['creative','artist','design','painting','illustration','drawing','artwork','gallery','sketch','digital','abstract','contemporary','handmade','craft','studio'],
+    music:['musician','song','singer','band','concert','hiphop','rap','indie','guitar','producer','beats','playlist','newmusic','live','studio'],
+    photography:['photo','camera','photographer','portrait','landscape','nature','canon','nikon','lightroom','editing','photoshoot','composition','exposure','film','visual'],
+    marketing:['digital','seo','content','social','brand','strategy','advertising','analytics','growth','funnel','engagement','audience','conversion','leads','roi'],
+    crypto:['bitcoin','blockchain','web3','nft','defi','ethereum','trading','hodl','altcoin','token','metaverse','decentralized','wallet','mining','bullish'],
+    gaming:['gamer','twitch','esports','streaming','playstation','xbox','nintendo','pc','gameplay','videogames','online','multiplayer','rpg','fps','retro'],
+    education:['learning','student','teacher','study','school','university','knowledge','course','online','skill','training','tutorial','edtech','academic','mentor'],
+    health:['wellness','mental','selfcare','mindfulness','meditation','yoga','nutrition','organic','vegan','plantbased','holistic','healing','balance','lifestyle','energy']
+  }
+};
+
+function tokenize(input) {
+  return input.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(w => w.length > 1);
+}
+
+function findCategory(words) {
+  let bestCat = null, bestScore = 0;
+  for (const [cat, related] of Object.entries(expansions.categories)) {
+    let score = 0;
+    for (const w of words) {
+      if (cat.includes(w) || w.includes(cat)) score += 3;
+      for (const r of related) {
+        if (r.includes(w) || w.includes(r)) score++;
+      }
+    }
+    if (score > bestScore) { bestScore = score; bestCat = cat; }
+  }
+  return bestCat;
+}
+
+function seededRandom(seed) {
+  let s = seed;
+  return function() {
+    s = (s * 1103515245 + 12345) & 0x7fffffff;
+    return s / 0x7fffffff;
+  };
+}
+
+function shuffle(arr, rng) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function generateHashtags() {
+  const input = document.getElementById('topicInput').value.trim();
+  if (!input) { showToast('Enter a topic first'); return; }
+
+  const words = tokenize(input);
+  if (words.length === 0) { showToast('Enter a valid topic'); return; }
+
+  const seed = words.join('').split('').reduce((a, c) => a + c.charCodeAt(0), 0) + selectedPlatform.length;
+  const rng = seededRandom(seed);
+
+  const category = findCategory(words);
+  const catWords = category ? expansions.categories[category] : [];
+  const platMods = expansions.platformMods[selectedPlatform];
+
+  const allTags = new Set();
+
+  // 1. Direct hashtags from input words
+  words.forEach(w => allTags.add('#' + w));
+
+  // 2. Combined input words
+  if (words.length >= 2) {
+    for (let i = 0; i < words.length; i++) {
+      for (let j = i + 1; j < words.length; j++) {
+        allTags.add('#' + words[i] + words[j]);
+        allTags.add('#' + words[j] + words[i]);
+      }
+    }
+  }
+
+  // 3. Prefix/suffix combos from input words
+  words.forEach(w => {
+    shuffle(expansions.prefixes, rng).slice(0, 3).forEach(p => allTags.add('#' + p + w));
+    shuffle(expansions.suffixes, rng).slice(0, 3).forEach(s => allTags.add('#' + w + s));
+    shuffle(platMods.prefixes, rng).slice(0, 2).forEach(p => allTags.add('#' + p + w));
+    shuffle(platMods.suffixes, rng).slice(0, 2).forEach(s => allTags.add('#' + w + s));
+  });
+
+  // 4. Category-related hashtags
+  if (catWords.length > 0) {
+    shuffle(catWords, rng).forEach(cw => {
+      allTags.add('#' + cw);
+      words.forEach(w => { if (w !== cw) allTags.add('#' + w + cw); });
+    });
+    // Category + prefix/suffix
+    shuffle(catWords, rng).slice(0, 5).forEach(cw => {
+      const p = expansions.prefixes[Math.floor(rng() * expansions.prefixes.length)];
+      const s = expansions.suffixes[Math.floor(rng() * expansions.suffixes.length)];
+      allTags.add('#' + p + cw);
+      allTags.add('#' + cw + s);
+    });
+  }
+
+  // 5. Generic popular tags
+  const genericPopular = ['#trending','#viral','#explore','#follow','#share','#instagood','#photooftheday','#love','#like','#repost'];
+  const platPopular = {
+    instagram: ['#instadaily','#instagood','#reelsinstagram','#explorepage','#instaphoto','#igdaily','#instafollow','#instamood'],
+    tiktok: ['#fyp','#foryou','#foryoupage','#tiktokviral','#tiktoktrending','#duet','#greenscreen','#viralvideo'],
+    twitter: ['#trending','#thread','#breakingnews','#xpost','#retweet','#quote','#opinion','#mustread'],
+    linkedin: ['#networking','#careergrowth','#professionaldevelopment','#leadership','#innovation','#jobsearch','#careeradvice','#hiring']
+  };
+
+  platPopular[selectedPlatform].forEach(t => allTags.add(t));
+  shuffle(genericPopular, rng).slice(0, 4).forEach(t => allTags.add(t));
+
+  // Convert to array and clean
+  let tagsArr = [...allTags].filter(t => t.length > 2 && t.length <= 30);
+
+  // Deterministic shuffle then pick 30
+  tagsArr = shuffle(tagsArr, rng);
+
+  // Split into 3 tiers of 10
+  const high = tagsArr.slice(0, 10);
+  const med = tagsArr.slice(10, 20);
+  const niche = tagsArr.slice(20, 30);
+
+  // Ensure we have 30 (pad if needed)
+  while (high.length < 10) high.push('#' + words[0] + Math.floor(rng() * 1000));
+  while (med.length < 10) med.push('#' + words[0] + expansions.suffixes[Math.floor(rng() * expansions.suffixes.length)]);
+  while (niche.length < 10) niche.push('#' + expansions.prefixes[Math.floor(rng() * expansions.prefixes.length)] + words[0]);
+
+  // Render
+  renderTags('highTags', high);
+  renderTags('medTags', med);
+  renderTags('nicheTags', niche);
+
+  const all = [...high, ...med, ...niche];
+  document.getElementById('copyArea').textContent = all.join(' ');
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+  gtag('event', 'generate_hashtags', { event_category: 'tool_use', event_label: selectedPlatform });
+}
+
+function renderTags(containerId, tags) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = tags.map(t =>
+    '<span class="hashtag-tag" onclick="copyTag(this,\'' + t.replace(/'/g, "\\'") + '\')">' + t + '</span>'
+  ).join('');
+}
+
+function copyTag(el, tag) {
+  navigator.clipboard.writeText(tag);
+  el.classList.add('copied');
+  setTimeout(() => el.classList.remove('copied'), 1000);
+  showToast('Copied: ' + tag);
+}
+
+function copyAll() {
+  const text = document.getElementById('copyArea').textContent;
+  navigator.clipboard.writeText(text);
+  showToast('All 30 hashtags copied!');
+  gtag('event', 'copy_hashtags', { event_category: 'tool_use' });
+}
+
+// Allow Enter key
+document.getElementById('topicInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') generateHashtags();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tip Calculator — Calculate Tips & Split Bills Instantly</title>
+<meta name="description" content="Calculate tips and split bills instantly. Choose tip percentage, split between people, and see per-person amounts. Multiple currencies supported. Free tool by SPUNKART.COM">
+<meta property="og:title" content="Tip Calculator">
+<meta property="og:description" content="Calculate tips and split bills instantly. Choose tip percentage, split between people, see per-person amounts.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tip Calculator">
+<meta name="twitter:description" content="Calculate tips and split bills instantly. Multiple currencies. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/tip-calculator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator","description":"Calculate tips and split bills instantly. Choose tip percentage, split between people, and see per-person amounts.","url":"https://spunkart.com/tip-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:500px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1.5rem}
+.field label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px}
+.currency-input{display:flex;align-items:center;background:#1a1a1a;border:1px solid #333;border-radius:10px;overflow:hidden;transition:border-color 0.2s}
+.currency-input:focus-within{border-color:#ff5f1f}
+.currency-symbol{padding:12px 14px;background:#222;color:#888;font-size:1.1rem;font-weight:700;border-right:1px solid #333}
+.currency-input input{flex:1;background:transparent;border:none;color:#e8e8e8;padding:12px 14px;font-size:1.3rem;font-weight:600;outline:none}
+.currency-select{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-size:0.9rem;width:100%;cursor:pointer}
+.currency-select:focus{outline:none;border-color:#ff5f1f}
+.tip-presets{display:flex;gap:8px;flex-wrap:wrap}
+.tip-btn{flex:1;min-width:60px;padding:12px 8px;background:#1a1a1a;border:2px solid #333;border-radius:10px;color:#ccc;font-size:1rem;font-weight:700;cursor:pointer;text-align:center;transition:all 0.2s}
+.tip-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.tip-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.custom-tip{display:none;margin-top:12px}
+.custom-tip.show{display:block}
+.custom-tip input{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-size:1rem;text-align:center}
+.custom-tip input:focus{outline:none;border-color:#ff5f1f}
+.split-control{display:flex;align-items:center;gap:16px;justify-content:center}
+.split-btn{width:44px;height:44px;border-radius:50%;background:#1a1a1a;border:2px solid #333;color:#e8e8e8;font-size:1.3rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.split-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.split-count{font-size:2rem;font-weight:800;min-width:50px;text-align:center;color:#ff5f1f}
+.results{background:linear-gradient(135deg,#111,#1a1a1a);border:2px solid #ff5f1f;border-radius:16px;padding:2rem;text-align:center}
+.result-item{margin-bottom:1.5rem}
+.result-item:last-child{margin-bottom:0}
+.result-label{font-size:0.8rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.result-value{font-size:2.2rem;font-weight:800;color:#e8e8e8;font-family:'Courier New',monospace}
+.result-value.accent{color:#ff5f1f}
+.result-value.green{color:#10b981}
+.divider{height:1px;background:#333;margin:16px 0}
+.per-person-label{font-size:0.75rem;color:#666;margin-top:4px}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:500px){
+  h1{font-size:1.5rem}
+  .result-value{font-size:1.7rem}
+  .tip-btn{min-width:50px;padding:10px 6px;font-size:0.9rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Tip Calculator</h1>
+  <div class="sub">Calculate tips and split bills instantly</div>
+
+  <div class="card">
+    <div class="field">
+      <label>Bill Amount</label>
+      <div class="currency-input">
+        <div class="currency-symbol" id="currSymbol">$</div>
+        <input type="number" id="billAmount" placeholder="0.00" min="0" step="0.01" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Currency</label>
+      <select class="currency-select" id="currency" onchange="updateCurrency()">
+        <option value="$" data-code="USD">USD ($)</option>
+        <option value="&euro;" data-code="EUR">EUR (&euro;)</option>
+        <option value="&pound;" data-code="GBP">GBP (&pound;)</option>
+        <option value="&yen;" data-code="JPY">JPY (&yen;)</option>
+        <option value="C$" data-code="CAD">CAD (C$)</option>
+        <option value="A$" data-code="AUD">AUD (A$)</option>
+        <option value="CHF" data-code="CHF">CHF (Fr)</option>
+        <option value="&#8377;" data-code="INR">INR (&#8377;)</option>
+        <option value="R$" data-code="BRL">BRL (R$)</option>
+        <option value="&#8361;" data-code="KRW">KRW (&#8361;)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Tip Percentage</label>
+      <div class="tip-presets">
+        <div class="tip-btn" data-tip="10" onclick="setTip(this,10)">10%</div>
+        <div class="tip-btn" data-tip="15" onclick="setTip(this,15)">15%</div>
+        <div class="tip-btn active" data-tip="18" onclick="setTip(this,18)">18%</div>
+        <div class="tip-btn" data-tip="20" onclick="setTip(this,20)">20%</div>
+        <div class="tip-btn" data-tip="25" onclick="setTip(this,25)">25%</div>
+        <div class="tip-btn" data-tip="custom" onclick="setTip(this,'custom')">Custom</div>
+      </div>
+      <div class="custom-tip" id="customTip">
+        <input type="number" id="customTipValue" placeholder="Enter tip %" min="0" max="100" step="1" oninput="calculate()">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Split Between</label>
+      <div class="split-control">
+        <button class="split-btn" onclick="changeSplit(-1)">-</button>
+        <div class="split-count" id="splitCount">1</div>
+        <button class="split-btn" onclick="changeSplit(1)">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="result-item">
+      <div class="result-label">Tip Amount</div>
+      <div class="result-value accent" id="tipAmount">$0.00</div>
+    </div>
+    <div class="divider"></div>
+    <div class="result-item">
+      <div class="result-label">Total</div>
+      <div class="result-value" id="totalAmount">$0.00</div>
+    </div>
+    <div class="divider" id="splitDivider" style="display:none"></div>
+    <div class="result-item" id="perPersonSection" style="display:none">
+      <div class="result-label">Per Person</div>
+      <div class="result-value green" id="perPerson">$0.00</div>
+      <div class="per-person-label" id="perPersonLabel">Split between 1 person</div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/uuid-generator.html">UUID Generator</a>
+      <a href="/timestamp-converter.html">Timestamp Converter</a>
+      <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="/age-calculator.html">Age Calculator</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let tipPercent = 18;
+let splitPeople = 1;
+let isCustom = false;
+
+function setTip(el, val) {
+  document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  if (val === 'custom') {
+    isCustom = true;
+    document.getElementById('customTip').classList.add('show');
+    const cv = parseFloat(document.getElementById('customTipValue').value);
+    tipPercent = isNaN(cv) ? 0 : cv;
+  } else {
+    isCustom = false;
+    document.getElementById('customTip').classList.remove('show');
+    tipPercent = val;
+  }
+  calculate();
+}
+
+function changeSplit(dir) {
+  splitPeople = Math.max(1, Math.min(20, splitPeople + dir));
+  document.getElementById('splitCount').textContent = splitPeople;
+  if (splitPeople > 1) {
+    document.getElementById('splitDivider').style.display = 'block';
+    document.getElementById('perPersonSection').style.display = 'block';
+  } else {
+    document.getElementById('splitDivider').style.display = 'none';
+    document.getElementById('perPersonSection').style.display = 'none';
+  }
+  calculate();
+}
+
+function updateCurrency() {
+  const sel = document.getElementById('currency');
+  const sym = sel.value;
+  document.getElementById('currSymbol').innerHTML = sym;
+  calculate();
+}
+
+function getCurrSymbol() {
+  return document.getElementById('currency').value;
+}
+
+function formatMoney(amount) {
+  const sym = getCurrSymbol();
+  return sym + amount.toFixed(2);
+}
+
+function calculate() {
+  const bill = parseFloat(document.getElementById('billAmount').value) || 0;
+  if (isCustom) {
+    tipPercent = parseFloat(document.getElementById('customTipValue').value) || 0;
+  }
+  const tip = bill * (tipPercent / 100);
+  const total = bill + tip;
+  const perPerson = total / splitPeople;
+
+  document.getElementById('tipAmount').textContent = formatMoney(tip);
+  document.getElementById('totalAmount').textContent = formatMoney(total);
+  document.getElementById('perPerson').textContent = formatMoney(perPerson);
+  document.getElementById('perPersonLabel').textContent = 'Split between ' + splitPeople + (splitPeople === 1 ? ' person' : ' people');
+}
+
+calculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unix Timestamp Converter — Convert Timestamps & Dates Instantly</title>
+<meta name="description" content="Convert Unix timestamps to human-readable dates and vice versa. Live clock, multiple timezone support, seconds and milliseconds. Free tool by SPUNKART.COM">
+<meta property="og:title" content="Unix Timestamp Converter">
+<meta property="og:description" content="Convert Unix timestamps to human-readable dates and vice versa. Live clock, multiple timezones.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unix Timestamp Converter">
+<meta name="twitter:description" content="Convert Unix timestamps to dates and back. Live clock, multiple timezones. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/timestamp-converter.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unix Timestamp Converter","description":"Convert Unix timestamps to human-readable dates and vice versa. Live clock, multiple timezone support.","url":"https://spunkart.com/timestamp-converter.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:650px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.section h2{font-size:1.1rem;color:#ff5f1f;margin-bottom:1rem}
+.live-clock{text-align:center;padding:1.5rem;background:linear-gradient(135deg,#1a1a1a,#111);border:1px solid #222;border-radius:12px;margin-bottom:1.5rem}
+.live-ts{font-family:'Courier New',monospace;font-size:2rem;font-weight:800;color:#ff5f1f;cursor:pointer}
+.live-ts:hover{color:#ff9f1f}
+.live-label{font-size:0.8rem;color:#555;margin-top:4px}
+.live-date{font-size:0.9rem;color:#aaa;margin-top:4px}
+.input-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-bottom:1rem}
+.input-group{display:flex;flex-direction:column;flex:1;min-width:200px}
+.input-group label{font-size:0.8rem;color:#888;margin-bottom:4px}
+.input-group input,.input-group select{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-size:0.95rem;font-family:'Courier New',monospace}
+.input-group input:focus,.input-group select:focus{outline:none;border-color:#ff5f1f}
+.btn{padding:10px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333}
+.btn-secondary:hover{background:#333;color:#fff;transform:scale(1.02)}
+.results{margin-top:1rem}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a}
+.result-row:last-child{border-bottom:none}
+.result-label{font-size:0.8rem;color:#888}
+.result-value{font-family:'Courier New',monospace;font-size:0.9rem;color:#e8e8e8;cursor:pointer;padding:4px 8px;border-radius:4px;transition:background 0.2s}
+.result-value:hover{background:#222}
+.tz-results{margin-top:1rem}
+.tz-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.85rem}
+.tz-name{color:#888}.tz-time{font-family:'Courier New',monospace;color:#e8e8e8}
+.date-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.date-inputs input,.date-inputs select{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:8px 10px;border-radius:6px;font-size:0.9rem}
+.date-inputs input:focus,.date-inputs select:focus{outline:none;border-color:#ff5f1f}
+.date-inputs label{font-size:0.75rem;color:#666;display:block;margin-bottom:2px}
+.date-input-group{display:flex;flex-direction:column}
+.output-ts{text-align:center;padding:16px;background:#0a0a0a;border-radius:8px;margin-top:12px}
+.output-ts .big{font-family:'Courier New',monospace;font-size:1.5rem;font-weight:700;color:#ff5f1f;cursor:pointer}
+.output-ts .big:hover{color:#ff9f1f}
+.output-ts .lbl{font-size:0.75rem;color:#555;margin-top:4px}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  .live-ts{font-size:1.4rem}
+  .date-inputs{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Unix Timestamp Converter</h1>
+  <div class="sub">Convert between Unix timestamps and human-readable dates</div>
+
+  <div class="live-clock">
+    <div class="live-ts" id="liveClock" onclick="copyText(this.textContent)" title="Click to copy">—</div>
+    <div class="live-label">Current Unix Timestamp (click to copy)</div>
+    <div class="live-date" id="liveDate">—</div>
+  </div>
+
+  <div class="section">
+    <h2>Timestamp to Date</h2>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Unix Timestamp</label>
+        <input type="text" id="tsInput" placeholder="e.g. 1708617600" oninput="convertTimestamp()">
+      </div>
+      <div class="input-group" style="max-width:130px">
+        <label>Format</label>
+        <select id="tsFormat" onchange="convertTimestamp()">
+          <option value="s">Seconds</option>
+          <option value="ms">Milliseconds</option>
+        </select>
+      </div>
+    </div>
+    <div class="results" id="tsResults"></div>
+    <div class="tz-results" id="tzResults"></div>
+  </div>
+
+  <div class="section">
+    <h2>Date to Timestamp</h2>
+    <div class="date-inputs">
+      <div class="date-input-group"><label>Year</label><input type="number" id="dYear" min="1970" max="2100" value="2026"></div>
+      <div class="date-input-group"><label>Month</label><select id="dMonth"><option value="0">January</option><option value="1" selected>February</option><option value="2">March</option><option value="3">April</option><option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option><option value="8">September</option><option value="9">October</option><option value="10">November</option><option value="11">December</option></select></div>
+      <div class="date-input-group"><label>Day</label><input type="number" id="dDay" min="1" max="31" value="22"></div>
+      <div class="date-input-group"><label>Hour (0-23)</label><input type="number" id="dHour" min="0" max="23" value="0"></div>
+      <div class="date-input-group"><label>Minute</label><input type="number" id="dMin" min="0" max="59" value="0"></div>
+      <div class="date-input-group"><label>Second</label><input type="number" id="dSec" min="0" max="59" value="0"></div>
+    </div>
+    <button class="btn" onclick="convertDate()">Convert to Timestamp</button>
+    <div class="output-ts" id="dateOutput" style="display:none">
+      <div class="big" id="dateTs" onclick="copyText(this.textContent)" title="Click to copy">—</div>
+      <div class="lbl">Unix Timestamp (seconds) — click to copy</div>
+      <div class="big" id="dateTsMs" onclick="copyText(this.textContent)" title="Click to copy" style="font-size:1.1rem;margin-top:8px">—</div>
+      <div class="lbl">Milliseconds</div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/uuid-generator.html">UUID Generator</a>
+      <a href="/tip-calculator.html">Tip Calculator</a>
+      <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="/age-calculator.html">Age Calculator</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+function updateLiveClock() {
+  const now = Math.floor(Date.now() / 1000);
+  document.getElementById('liveClock').textContent = now;
+  document.getElementById('liveDate').textContent = new Date().toLocaleString('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',timeZoneName:'short'});
+}
+setInterval(updateLiveClock, 1000);
+updateLiveClock();
+
+const timezones = [
+  {name:'UTC', tz:'UTC'},
+  {name:'US Eastern', tz:'America/New_York'},
+  {name:'US Central', tz:'America/Chicago'},
+  {name:'US Mountain', tz:'America/Denver'},
+  {name:'US Pacific', tz:'America/Los_Angeles'},
+  {name:'London', tz:'Europe/London'},
+  {name:'Berlin', tz:'Europe/Berlin'},
+  {name:'Tokyo', tz:'Asia/Tokyo'},
+  {name:'Sydney', tz:'Australia/Sydney'},
+  {name:'Singapore', tz:'Asia/Singapore'},
+];
+
+function convertTimestamp() {
+  const raw = document.getElementById('tsInput').value.trim();
+  if (!raw) { document.getElementById('tsResults').innerHTML = ''; document.getElementById('tzResults').innerHTML = ''; return; }
+  const num = parseInt(raw);
+  if (isNaN(num)) { document.getElementById('tsResults').innerHTML = '<div style="color:#ef4444;font-size:0.9rem">Invalid timestamp</div>'; document.getElementById('tzResults').innerHTML = ''; return; }
+
+  const fmt = document.getElementById('tsFormat').value;
+  const ms = fmt === 'ms' ? num : num * 1000;
+  const date = new Date(ms);
+  if (isNaN(date.getTime())) { document.getElementById('tsResults').innerHTML = '<div style="color:#ef4444;font-size:0.9rem">Invalid timestamp</div>'; document.getElementById('tzResults').innerHTML = ''; return; }
+
+  const rows = [
+    {label: 'ISO 8601', value: date.toISOString()},
+    {label: 'UTC', value: date.toUTCString()},
+    {label: 'Local', value: date.toLocaleString()},
+    {label: 'Date Only', value: date.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'})},
+    {label: 'Relative', value: getRelative(ms)},
+    {label: 'Seconds', value: Math.floor(ms / 1000).toString()},
+    {label: 'Milliseconds', value: ms.toString()},
+  ];
+  document.getElementById('tsResults').innerHTML = rows.map(r =>
+    `<div class="result-row"><span class="result-label">${r.label}</span><span class="result-value" onclick="copyText(this.textContent)" title="Click to copy">${r.value}</span></div>`
+  ).join('');
+
+  document.getElementById('tzResults').innerHTML = '<div style="font-size:0.85rem;color:#666;margin-bottom:8px;margin-top:16px;">Timezones:</div>' + timezones.map(tz => {
+    try {
+      const str = date.toLocaleString('en-US', {timeZone: tz.tz, weekday:'short', year:'numeric', month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:true});
+      return `<div class="tz-row"><span class="tz-name">${tz.name}</span><span class="tz-time">${str}</span></div>`;
+    } catch(e) { return ''; }
+  }).join('');
+}
+
+function getRelative(ms) {
+  const diff = Date.now() - ms;
+  const abs = Math.abs(diff);
+  const future = diff < 0;
+  const secs = Math.floor(abs / 1000);
+  if (secs < 60) return (future ? 'in ' : '') + secs + ' seconds' + (future ? '' : ' ago');
+  const mins = Math.floor(secs / 60);
+  if (mins < 60) return (future ? 'in ' : '') + mins + ' minute' + (mins > 1 ? 's' : '') + (future ? '' : ' ago');
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return (future ? 'in ' : '') + hrs + ' hour' + (hrs > 1 ? 's' : '') + (future ? '' : ' ago');
+  const days = Math.floor(hrs / 24);
+  if (days < 365) return (future ? 'in ' : '') + days + ' day' + (days > 1 ? 's' : '') + (future ? '' : ' ago');
+  const years = Math.floor(days / 365.25);
+  return (future ? 'in ' : '') + years + ' year' + (years > 1 ? 's' : '') + (future ? '' : ' ago');
+}
+
+function convertDate() {
+  const y = parseInt(document.getElementById('dYear').value);
+  const m = parseInt(document.getElementById('dMonth').value);
+  const d = parseInt(document.getElementById('dDay').value);
+  const h = parseInt(document.getElementById('dHour').value);
+  const min = parseInt(document.getElementById('dMin').value);
+  const s = parseInt(document.getElementById('dSec').value);
+  const date = new Date(Date.UTC(y, m, d, h, min, s));
+  const ts = Math.floor(date.getTime() / 1000);
+  const tsMs = date.getTime();
+  document.getElementById('dateTs').textContent = ts;
+  document.getElementById('dateTsMs').textContent = tsMs;
+  document.getElementById('dateOutput').style.display = 'block';
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+</script>
+</body>
+</html>

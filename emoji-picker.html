@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emoji Search & Copy — Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Search, browse, and copy emojis instantly. Organized by category with skin tone selector and Unicode code points. Free emoji picker for everyone.">
+<meta property="og:title" content="Emoji Search & Copy — Free Online Tool">
+<meta property="og:description" content="Search, browse, and copy emojis instantly. Organized by category with skin tone selector. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/emoji-picker.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emoji Search & Copy">
+<meta name="twitter:description" content="Search and copy emojis instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/emoji-picker.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Emoji Search & Copy","description":"Search, browse, and copy emojis instantly. Organized by category with skin tone selector and Unicode code points.","url":"https://spunkart.com/emoji-picker.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.search-wrap{position:relative;margin-bottom:20px;}
+.search-wrap input{width:100%;padding:14px 20px 14px 48px;background:#111;border:2px solid #333;border-radius:12px;color:#e8e8e8;font-size:1rem;outline:none;transition:border-color 0.2s;}
+.search-wrap input:focus{border-color:#ff5f1f;}
+.search-wrap .icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#555;}
+
+.skin-tones{display:flex;gap:6px;margin-bottom:16px;align-items:center;}
+.skin-tones span{color:#888;font-size:0.85rem;margin-right:8px;}
+.skin-btn{font-size:1.4rem;cursor:pointer;padding:4px 6px;border-radius:6px;border:2px solid transparent;background:none;transition:border-color 0.2s;line-height:1;}
+.skin-btn:hover,.skin-btn.active{border-color:#ff5f1f;}
+
+.recent{margin-bottom:20px;display:none;}
+.recent h3{font-size:0.85rem;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.recent-grid{display:flex;gap:4px;flex-wrap:wrap;}
+
+.categories{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.cat-btn{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:20px;font-size:0.8rem;color:#aaa;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.cat-btn:hover,.cat-btn.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.emoji-section{margin-bottom:24px;}
+.emoji-section h3{font-size:0.9rem;color:#ff5f1f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.emoji-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:4px;}
+.emoji-cell{font-size:1.6rem;text-align:center;padding:8px 4px;border-radius:8px;cursor:pointer;transition:background 0.15s;position:relative;line-height:1.2;}
+.emoji-cell:hover{background:#222;}
+
+.tooltip{position:fixed;background:#222;border:1px solid #444;border-radius:8px;padding:8px 12px;font-size:0.8rem;color:#ccc;pointer-events:none;z-index:100;display:none;max-width:250px;}
+.tooltip .emoji-big{font-size:2rem;margin-bottom:4px;}
+.tooltip .emoji-name{color:#fff;font-weight:600;}
+.tooltip .emoji-code{color:#888;font-size:0.75rem;margin-top:2px;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:200;}
+.copied-toast.show{opacity:1;}
+
+.no-results{text-align:center;padding:40px;color:#555;font-size:1rem;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.newsletter{background:#151515;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#fff;margin-bottom:4px;}
+.newsletter p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+
+.tool-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:8px;font-size:0.82rem;color:#ccc;transition:border-color 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Emoji Search & Copy</h1>
+  <div class="subtitle">Click any emoji to copy. Search by name or browse by category.</div>
+
+  <div class="search-wrap">
+    <span class="icon">&#128269;</span>
+    <input type="text" id="searchInput" placeholder="Search emojis... (e.g. smile, heart, fire)" autocomplete="off">
+  </div>
+
+  <div class="skin-tones">
+    <span>Skin tone:</span>
+    <button class="skin-btn active" data-tone="" onclick="setSkinTone(this,'')">&#9996;</button>
+    <button class="skin-btn" data-tone="&#127995;" onclick="setSkinTone(this,'&#127995;')">&#9996;&#127995;</button>
+    <button class="skin-btn" data-tone="&#127996;" onclick="setSkinTone(this,'&#127996;')">&#9996;&#127996;</button>
+    <button class="skin-btn" data-tone="&#127997;" onclick="setSkinTone(this,'&#127997;')">&#9996;&#127997;</button>
+    <button class="skin-btn" data-tone="&#127998;" onclick="setSkinTone(this,'&#127998;')">&#9996;&#127998;</button>
+    <button class="skin-btn" data-tone="&#127999;" onclick="setSkinTone(this,'&#127999;')">&#9996;&#127999;</button>
+  </div>
+
+  <div class="recent" id="recentSection">
+    <h3>Recently Copied</h3>
+    <div class="recent-grid" id="recentGrid"></div>
+  </div>
+
+  <div class="categories" id="categories"></div>
+
+  <div id="emojiContainer"></div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+
+  <div class="tool-links">
+    <a href="/json-formatter.html">JSON Formatter</a>
+    <a href="/html-minifier.html">HTML Minifier</a>
+    <a href="/json-to-csv.html">JSON to CSV</a>
+    <a href="/password-generator.html">Password Generator</a>
+    <a href="/color-palette.html">Color Palette</a>
+    <a href="/placeholder-image.html">Placeholder Images</a>
+    <a href="/screen-size.html">Screen Info</a>
+    <a href="/store" style="color:#ff5f1f;font-weight:700;">Get All 40+ Tools</a>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied-toast" id="copiedToast">Copied!</div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const emojiData = {
+  "Smileys & Emotion": [
+    ["😀","grinning face"],["😃","grinning face with big eyes"],["😄","grinning face with smiling eyes"],["😁","beaming face"],["😆","grinning squinting face"],["😅","grinning face with sweat"],["🤣","rolling on the floor laughing"],["😂","face with tears of joy"],["🙂","slightly smiling face"],["🙃","upside-down face"],["😉","winking face"],["😊","smiling face with smiling eyes"],["😇","smiling face with halo"],["🥰","smiling face with hearts"],["😍","heart eyes"],["🤩","star-struck"],["😘","face blowing a kiss"],["😗","kissing face"],["😚","kissing face closed eyes"],["😙","kissing face smiling eyes"],["🥲","smiling face with tear"],["😋","face savoring food"],["😛","face with tongue"],["😜","winking face with tongue"],["🤪","zany face"],["😝","squinting face with tongue"],["🤑","money-mouth face"],["🤗","hugging face"],["🤭","face with hand over mouth"],["🤫","shushing face"],["🤔","thinking face"],["🫡","saluting face"],["🤐","zipper-mouth face"],["🤨","face with raised eyebrow"],["😐","neutral face"],["😑","expressionless face"],["😶","face without mouth"],["😏","smirking face"],["😒","unamused face"],["🙄","face with rolling eyes"],["😬","grimacing face"],["🤥","lying face"],["😌","relieved face"],["😔","pensive face"],["😪","sleepy face"],["🤤","drooling face"],["😴","sleeping face"],["😷","face with medical mask"],["🤒","face with thermometer"],["🤕","face with head-bandage"],["🤢","nauseated face"],["🤮","face vomiting"],["🥵","hot face"],["🥶","cold face"],["🥴","woozy face"],["😵","face with crossed-out eyes"],["🤯","exploding head"],["🤠","cowboy hat face"],["🥳","partying face"],["🥸","disguised face"],["😎","smiling face with sunglasses"],["🤓","nerd face"],["🧐","face with monocle"],["😕","confused face"],["🫤","face with diagonal mouth"],["😟","worried face"],["🙁","slightly frowning face"],["😮","face with open mouth"],["😯","hushed face"],["😲","astonished face"],["😳","flushed face"],["🥺","pleading face"],["🥹","face holding back tears"],["😦","frowning face open mouth"],["😧","anguished face"],["😨","fearful face"],["😰","anxious face with sweat"],["😥","sad but relieved face"],["😢","crying face"],["😭","loudly crying face"],["😱","face screaming in fear"],["😖","confounded face"],["😣","persevering face"],["😞","disappointed face"],["😓","downcast face sweat"],["😩","weary face"],["😫","tired face"],["🥱","yawning face"],["😤","face with steam from nose"],["😡","pouting face"],["😠","angry face"],["🤬","face with symbols on mouth"],["😈","smiling face with horns"],["👿","angry face with horns"],["💀","skull"],["☠️","skull and crossbones"],["💩","pile of poo"],["🤡","clown face"],["👹","ogre"],["👺","goblin"],["👻","ghost"],["👽","alien"],["👾","alien monster"],["🤖","robot"],["💋","kiss mark"],["❤️","red heart"],["🧡","orange heart"],["💛","yellow heart"],["💚","green heart"],["💙","blue heart"],["💜","purple heart"],["🖤","black heart"],["🤍","white heart"],["🤎","brown heart"],["💔","broken heart"],["❣️","heart exclamation"],["💕","two hearts"],["💞","revolving hearts"],["💓","beating heart"],["💗","growing heart"],["💖","sparkling heart"],["💘","heart with arrow"],["💝","heart with ribbon"],["🔥","fire"],["⭐","star"],["🌟","glowing star"],["✨","sparkles"],["💯","hundred points"],["💥","collision"],["💫","dizzy"],["💦","sweat droplets"],["💨","dashing away"],["🕳️","hole"],["💣","bomb"],["💬","speech balloon"],["🗨️","left speech bubble"],["🗯️","right anger bubble"],["💭","thought balloon"],["💤","zzz"]
+  ],
+  "People & Body": [
+    ["👋","waving hand"],["🤚","raised back of hand"],["🖐️","hand with fingers splayed"],["✋","raised hand"],["🖖","vulcan salute"],["🫱","rightwards hand"],["🫲","leftwards hand"],["🫳","palm down hand"],["🫴","palm up hand"],["👌","OK hand"],["🤌","pinched fingers"],["🤏","pinching hand"],["✌️","victory hand"],["🤞","crossed fingers"],["🫰","hand with index finger and thumb crossed"],["🤟","love-you gesture"],["🤘","sign of the horns"],["🤙","call me hand"],["👈","backhand index pointing left"],["👉","backhand index pointing right"],["👆","backhand index pointing up"],["🖕","middle finger"],["👇","backhand index pointing down"],["☝️","index pointing up"],["🫵","index pointing at the viewer"],["👍","thumbs up"],["👎","thumbs down"],["✊","raised fist"],["👊","oncoming fist"],["🤛","left-facing fist"],["🤜","right-facing fist"],["👏","clapping hands"],["🙌","raising hands"],["🫶","heart hands"],["👐","open hands"],["🤲","palms up together"],["🤝","handshake"],["🙏","folded hands"],["✍️","writing hand"],["💅","nail polish"],["🤳","selfie"],["💪","flexed biceps"],["👀","eyes"],["👁️","eye"],["👅","tongue"],["👄","mouth"],["👶","baby"],["🧒","child"],["👦","boy"],["👧","girl"],["🧑","person"],["👱","person blond hair"],["👨","man"],["🧔","person beard"],["👩","woman"],["🧓","older person"],["👴","old man"],["👵","old woman"],["🙍","person frowning"],["🙎","person pouting"],["🙅","person gesturing no"],["🙆","person gesturing ok"],["💁","person tipping hand"],["🙋","person raising hand"],["🧏","deaf person"],["🙇","person bowing"],["🤦","person facepalming"],["🤷","person shrugging"],["👮","police officer"],["🕵️","detective"],["💂","guard"],["🥷","ninja"],["👷","construction worker"],["🫅","person with crown"],["🤴","prince"],["👸","princess"],["👳","person wearing turban"],["👲","person with skullcap"],["🧕","woman with headscarf"],["🤵","person in tuxedo"],["👰","person with veil"],["🦸","superhero"],["🦹","supervillain"],["🧙","mage"],["🧚","fairy"],["🧛","vampire"],["🧜","merperson"],["🧝","elf"],["🧞","genie"],["🧟","zombie"]
+  ],
+  "Animals & Nature": [
+    ["🐶","dog face"],["🐱","cat face"],["🐭","mouse face"],["🐹","hamster"],["🐰","rabbit face"],["🦊","fox"],["🐻","bear"],["🐼","panda"],["🐻‍❄️","polar bear"],["🐨","koala"],["🐯","tiger face"],["🦁","lion"],["🐮","cow face"],["🐷","pig face"],["🐸","frog"],["🐵","monkey face"],["🙈","see-no-evil monkey"],["🙉","hear-no-evil monkey"],["🙊","speak-no-evil monkey"],["🐒","monkey"],["🦍","gorilla"],["🦧","orangutan"],["🐔","chicken"],["🐧","penguin"],["🐦","bird"],["🐤","baby chick"],["🦆","duck"],["🦅","eagle"],["🦉","owl"],["🦇","bat"],["🐺","wolf"],["🐗","boar"],["🐴","horse face"],["🦄","unicorn"],["🐝","honeybee"],["🪱","worm"],["🐛","bug"],["🦋","butterfly"],["🐌","snail"],["🐞","lady beetle"],["🐜","ant"],["🪰","fly"],["🪲","beetle"],["🦗","cricket"],["🕷️","spider"],["🦂","scorpion"],["🐢","turtle"],["🐍","snake"],["🦎","lizard"],["🦖","t-rex"],["🦕","sauropod"],["🐙","octopus"],["🦑","squid"],["🦐","shrimp"],["🦞","lobster"],["🦀","crab"],["🐡","blowfish"],["🐠","tropical fish"],["🐟","fish"],["🐬","dolphin"],["🐳","spouting whale"],["🐋","whale"],["🦈","shark"],["🐊","crocodile"],["🐅","tiger"],["🐆","leopard"],["🦓","zebra"],["🦬","bison"],["🐃","water buffalo"],["🐂","ox"],["🐄","cow"],["🐪","camel"],["🐫","two-hump camel"],["🦙","llama"],["🦒","giraffe"],["🐘","elephant"],["🦣","mammoth"],["🦏","rhinoceros"],["🦛","hippopotamus"],["🐁","mouse"],["🐀","rat"],["🐇","rabbit"],["🐿️","chipmunk"],["🦫","beaver"],["🦔","hedgehog"],["🦡","badger"],["🌵","cactus"],["🎄","christmas tree"],["🌲","evergreen tree"],["🌳","deciduous tree"],["🌴","palm tree"],["🪵","wood"],["🌱","seedling"],["🌿","herb"],["☘️","shamrock"],["🍀","four leaf clover"],["🌺","hibiscus"],["🌻","sunflower"],["🌹","rose"],["🥀","wilted flower"],["🌷","tulip"],["🌼","blossom"],["🌸","cherry blossom"],["💐","bouquet"],["🍄","mushroom"],["🌾","sheaf of rice"],["🪨","rock"],["🌈","rainbow"],["🌊","water wave"]
+  ],
+  "Food & Drink": [
+    ["🍎","red apple"],["🍐","pear"],["🍊","tangerine"],["🍋","lemon"],["🍌","banana"],["🍉","watermelon"],["🍇","grapes"],["🍓","strawberry"],["🫐","blueberries"],["🍈","melon"],["🍒","cherries"],["🍑","peach"],["🥭","mango"],["🍍","pineapple"],["🥥","coconut"],["🥝","kiwi"],["🍅","tomato"],["🍆","eggplant"],["🥑","avocado"],["🫛","pea pod"],["🥦","broccoli"],["🥬","leafy green"],["🫑","bell pepper"],["🥒","cucumber"],["🌶️","hot pepper"],["🫒","olive"],["🧄","garlic"],["🧅","onion"],["🥔","potato"],["🍠","sweet potato"],["🫘","beans"],["🥐","croissant"],["🥖","baguette bread"],["🍞","bread"],["🥨","pretzel"],["🧀","cheese"],["🥚","egg"],["🍳","cooking"],["🧈","butter"],["🥞","pancakes"],["🧇","waffle"],["🥓","bacon"],["🥩","cut of meat"],["🍗","poultry leg"],["🍖","meat on bone"],["🌭","hot dog"],["🍔","hamburger"],["🍟","french fries"],["🍕","pizza"],["🫓","flatbread"],["🥪","sandwich"],["🌮","taco"],["🌯","burrito"],["🫔","tamale"],["🥗","green salad"],["🥘","shallow pan of food"],["🫕","fondue"],["🍝","spaghetti"],["🍜","steaming bowl"],["🍲","pot of food"],["🍛","curry rice"],["🍣","sushi"],["🍱","bento box"],["🥟","dumpling"],["🍤","fried shrimp"],["🍙","rice ball"],["🍚","cooked rice"],["🍘","rice cracker"],["🍥","fish cake"],["🥮","moon cake"],["🍡","dango"],["🥡","takeout box"],["🍦","soft ice cream"],["🍧","shaved ice"],["🍨","ice cream"],["🍩","doughnut"],["🍪","cookie"],["🎂","birthday cake"],["🍰","shortcake"],["🧁","cupcake"],["🥧","pie"],["🍫","chocolate bar"],["🍬","candy"],["🍭","lollipop"],["🍮","custard"],["🍯","honey pot"],["☕","hot beverage"],["🫖","teapot"],["🍵","teacup without handle"],["🍶","sake"],["🍾","bottle with popping cork"],["🍷","wine glass"],["🍸","cocktail glass"],["🍹","tropical drink"],["🍺","beer mug"],["🍻","clinking beer mugs"],["🥂","clinking glasses"],["🥃","tumbler glass"],["🫗","pouring liquid"],["🥤","cup with straw"],["🧋","bubble tea"],["🧃","beverage box"],["🧉","mate"],["🧊","ice"]
+  ],
+  "Travel & Places": [
+    ["🚗","automobile"],["🚕","taxi"],["🚙","sport utility vehicle"],["🚌","bus"],["🚎","trolleybus"],["🏎️","racing car"],["🚓","police car"],["🚑","ambulance"],["🚒","fire engine"],["🚐","minibus"],["🛻","pickup truck"],["🚚","delivery truck"],["🚛","articulated lorry"],["🚜","tractor"],["🛵","motor scooter"],["🏍️","motorcycle"],["🛺","auto rickshaw"],["🚲","bicycle"],["🛴","kick scooter"],["🛹","skateboard"],["🚁","helicopter"],["🛩️","small airplane"],["✈️","airplane"],["🚀","rocket"],["🛸","flying saucer"],["🚂","locomotive"],["🚆","train"],["🚇","metro"],["🚈","light rail"],["🚉","station"],["🚊","tram"],["🛶","canoe"],["⛵","sailboat"],["🚤","speedboat"],["🛳️","passenger ship"],["⛴️","ferry"],["🚢","ship"],["⚓","anchor"],["🏠","house"],["🏡","house with garden"],["🏢","office building"],["🏣","Japanese post office"],["🏥","hospital"],["🏦","bank"],["🏨","hotel"],["🏩","love hotel"],["🏪","convenience store"],["🏫","school"],["🏬","department store"],["🏭","factory"],["🏯","Japanese castle"],["🏰","castle"],["💒","wedding"],["🗼","Tokyo tower"],["🗽","Statue of Liberty"],["⛪","church"],["🕌","mosque"],["🛕","Hindu temple"],["🕍","synagogue"],["⛩️","shinto shrine"],["🕋","kaaba"],["⛲","fountain"],["⛺","tent"],["🌁","foggy"],["🌃","night with stars"],["🏙️","cityscape"],["🌅","sunrise"],["🌄","sunrise over mountains"],["🌆","cityscape at dusk"],["🌇","sunset"],["🌉","bridge at night"],["🌌","milky way"],["🗺️","world map"],["🗾","map of Japan"],["🧭","compass"],["🏔️","snow-capped mountain"],["⛰️","mountain"],["🌋","volcano"],["🏕️","camping"],["🏖️","beach with umbrella"],["🏜️","desert"],["🏝️","desert island"],["🏞️","national park"]
+  ],
+  "Objects": [
+    ["⌚","watch"],["📱","mobile phone"],["📲","mobile phone with arrow"],["💻","laptop"],["⌨️","keyboard"],["🖥️","desktop computer"],["🖨️","printer"],["🖱️","computer mouse"],["💽","computer disk"],["💾","floppy disk"],["💿","optical disk"],["📀","dvd"],["🎥","movie camera"],["📷","camera"],["📸","camera with flash"],["📹","video camera"],["📼","videocassette"],["🔍","magnifying glass tilted left"],["🔎","magnifying glass tilted right"],["🕯️","candle"],["💡","light bulb"],["🔦","flashlight"],["🏮","red paper lantern"],["📔","notebook with decorative cover"],["📕","closed book"],["📖","open book"],["📗","green book"],["📘","blue book"],["📙","orange book"],["📚","books"],["📓","notebook"],["📒","ledger"],["📃","page with curl"],["📜","scroll"],["📄","page facing up"],["📰","newspaper"],["📁","file folder"],["📂","open file folder"],["📅","calendar"],["📆","tear-off calendar"],["📇","card index"],["📈","chart increasing"],["📉","chart decreasing"],["📊","bar chart"],["📋","clipboard"],["📌","pushpin"],["📍","round pushpin"],["📎","paperclip"],["🖇️","linked paperclips"],["📏","straight ruler"],["📐","triangular ruler"],["✂️","scissors"],["🗃️","card file box"],["🗄️","file cabinet"],["🗑️","wastebasket"],["🔒","locked"],["🔓","unlocked"],["🔑","key"],["🗝️","old key"],["🔨","hammer"],["🪓","axe"],["⛏️","pick"],["🛠️","hammer and wrench"],["🗡️","dagger"],["⚔️","crossed swords"],["🔫","water pistol"],["🪃","boomerang"],["🛡️","shield"],["🪚","carpentry saw"],["🔧","wrench"],["🪛","screwdriver"],["🔩","nut and bolt"],["⚙️","gear"],["🗜️","clamp"],["⚖️","balance scale"],["🧲","magnet"],["💊","pill"],["🩹","adhesive bandage"],["🩺","stethoscope"],["🧬","dna"],["🔬","microscope"],["🔭","telescope"],["📡","satellite antenna"],["🎮","video game"],["🕹️","joystick"],["🎰","slot machine"],["🎲","game die"],["🧩","puzzle piece"],["🎨","artist palette"],["🖌️","paintbrush"],["🖍️","crayon"],["🎹","musical keyboard"],["🎵","musical note"],["🎶","musical notes"],["🎤","microphone"],["🎧","headphone"],["🎷","saxophone"],["🪗","accordion"],["🎸","guitar"],["🎺","trumpet"],["🎻","violin"],["🥁","drum"]
+  ],
+  "Symbols": [
+    ["❤️","red heart"],["🧡","orange heart"],["💛","yellow heart"],["💚","green heart"],["💙","blue heart"],["💜","purple heart"],["🖤","black heart"],["🤍","white heart"],["🤎","brown heart"],["💔","broken heart"],["❗","exclamation mark"],["❓","question mark"],["❕","white exclamation mark"],["❔","white question mark"],["‼️","double exclamation mark"],["⁉️","exclamation question mark"],["💲","heavy dollar sign"],["♻️","recycling symbol"],["⚜️","fleur-de-lis"],["🔱","trident emblem"],["📛","name badge"],["🔰","Japanese symbol for beginner"],["⭕","hollow red circle"],["✅","check mark button"],["☑️","check box with check"],["✔️","check mark"],["❌","cross mark"],["❎","cross mark button"],["➕","plus"],["➖","minus"],["➗","division"],["✖️","multiply"],["♾️","infinity"],["💠","diamond with a dot"],["🔘","radio button"],["🔴","red circle"],["🟠","orange circle"],["🟡","yellow circle"],["🟢","green circle"],["🔵","blue circle"],["🟣","purple circle"],["⚫","black circle"],["⚪","white circle"],["🟤","brown circle"],["🔺","red triangle pointed up"],["🔻","red triangle pointed down"],["🔸","small orange diamond"],["🔹","small blue diamond"],["🔶","large orange diamond"],["🔷","large blue diamond"],["🔳","white square button"],["🔲","black square button"],["▪️","black small square"],["▫️","white small square"],["◾","black medium-small square"],["◻️","white medium square"],["◼️","black medium square"],["⬛","black large square"],["⬜","white large square"],["🟧","orange square"],["🟨","yellow square"],["🟩","green square"],["🟦","blue square"],["🟪","purple square"],["⬆️","up arrow"],["↗️","up-right arrow"],["➡️","right arrow"],["↘️","down-right arrow"],["⬇️","down arrow"],["↙️","down-left arrow"],["⬅️","left arrow"],["↖️","up-left arrow"],["↕️","up-down arrow"],["↔️","left-right arrow"],["↩️","right arrow curving left"],["↪️","left arrow curving right"],["⤴️","right arrow curving up"],["⤵️","right arrow curving down"],["🔃","clockwise vertical arrows"],["🔄","counterclockwise arrows button"],["🔙","back arrow"],["🔚","end arrow"],["🔛","on arrow"],["🔜","soon arrow"],["🔝","top arrow"],["🎵","musical note"],["🎶","musical notes"],["〽️","part alternation mark"],["✳️","eight-spoked asterisk"],["✴️","eight-pointed star"],["❇️","sparkle"],["©️","copyright"],["®️","registered"],["™️","trade mark"]
+  ],
+  "Flags": [
+    ["🏁","chequered flag"],["🚩","triangular flag"],["🎌","crossed flags"],["🏴","black flag"],["🏳️","white flag"],["🏳️‍🌈","rainbow flag"],["🏳️‍⚧️","transgender flag"],["🏴‍☠️","pirate flag"],["🇺🇸","US flag"],["🇬🇧","UK flag"],["🇨🇦","Canada flag"],["🇦🇺","Australia flag"],["🇫🇷","France flag"],["🇩🇪","Germany flag"],["🇮🇹","Italy flag"],["🇪🇸","Spain flag"],["🇯🇵","Japan flag"],["🇰🇷","South Korea flag"],["🇨🇳","China flag"],["🇮🇳","India flag"],["🇧🇷","Brazil flag"],["🇲🇽","Mexico flag"],["🇷🇺","Russia flag"],["🇿🇦","South Africa flag"],["🇳🇬","Nigeria flag"],["🇪🇬","Egypt flag"],["🇸🇪","Sweden flag"],["🇳🇴","Norway flag"],["🇩🇰","Denmark flag"],["🇫🇮","Finland flag"],["🇳🇱","Netherlands flag"],["🇧🇪","Belgium flag"],["🇨🇭","Switzerland flag"],["🇦🇹","Austria flag"],["🇵🇱","Poland flag"],["🇮🇪","Ireland flag"],["🇵🇹","Portugal flag"],["🇬🇷","Greece flag"],["🇹🇷","Turkey flag"],["🇮🇱","Israel flag"],["🇸🇦","Saudi Arabia flag"],["🇦🇪","UAE flag"],["🇹🇭","Thailand flag"],["🇻🇳","Vietnam flag"],["🇮🇩","Indonesia flag"],["🇵🇭","Philippines flag"],["🇲🇾","Malaysia flag"],["🇸🇬","Singapore flag"],["🇳🇿","New Zealand flag"],["🇦🇷","Argentina flag"],["🇨🇴","Colombia flag"],["🇨🇱","Chile flag"],["🇵🇪","Peru flag"],["🇺🇦","Ukraine flag"]
+  ]
+};
+
+const categoryNames = Object.keys(emojiData);
+let activeCategory = 'all';
+let recentEmojis = JSON.parse(localStorage.getItem('recentEmojis') || '[]');
+let skinTone = '';
+
+// Build category buttons
+const catContainer = document.getElementById('categories');
+let catHtml = '<button class="cat-btn active" onclick="filterCategory(\'all\',this)">All</button>';
+categoryNames.forEach(name => {
+  catHtml += `<button class="cat-btn" onclick="filterCategory('${name}',this)">${name}</button>`;
+});
+catContainer.innerHTML = catHtml;
+
+function filterCategory(cat, btn) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderEmojis();
+}
+
+function setSkinTone(btn, tone) {
+  skinTone = tone;
+  document.querySelectorAll('.skin-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function renderEmojis(filter) {
+  const container = document.getElementById('emojiContainer');
+  let html = '';
+  const query = (filter || '').toLowerCase();
+  let hasResults = false;
+
+  const categories = activeCategory === 'all' ? categoryNames : [activeCategory];
+
+  categories.forEach(cat => {
+    const emojis = emojiData[cat];
+    if (!emojis) return;
+    const filtered = query ? emojis.filter(e => e[1].toLowerCase().includes(query)) : emojis;
+    if (filtered.length === 0) return;
+    hasResults = true;
+
+    html += `<div class="emoji-section"><h3>${cat}</h3><div class="emoji-grid">`;
+    filtered.forEach(([emoji, name]) => {
+      const codePoints = [...emoji].map(c => 'U+' + c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')).join(' ');
+      html += `<div class="emoji-cell" data-name="${name}" data-code="${codePoints}" onclick="copyEmoji('${emoji.replace(/'/g, "\\'")}','${name.replace(/'/g, "\\'")}')" onmouseenter="showTooltip(event,'${emoji.replace(/'/g, "\\'")}','${name.replace(/'/g, "\\'")}','${codePoints}')" onmouseleave="hideTooltip()">${emoji}</div>`;
+    });
+    html += '</div></div>';
+  });
+
+  if (!hasResults) {
+    html = '<div class="no-results">No emojis found for "' + (query || '') + '"</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+function copyEmoji(emoji, name) {
+  navigator.clipboard.writeText(emoji).then(() => {
+    const toast = document.getElementById('copiedToast');
+    toast.textContent = emoji + ' Copied!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+
+    // Add to recent
+    recentEmojis = recentEmojis.filter(e => e[0] !== emoji);
+    recentEmojis.unshift([emoji, name]);
+    if (recentEmojis.length > 20) recentEmojis = recentEmojis.slice(0, 20);
+    localStorage.setItem('recentEmojis', JSON.stringify(recentEmojis));
+    renderRecent();
+
+    gtag('event', 'copy_emoji', { event_category: 'tool_use', event_label: name });
+  });
+}
+
+function renderRecent() {
+  const section = document.getElementById('recentSection');
+  const grid = document.getElementById('recentGrid');
+  if (recentEmojis.length === 0) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  grid.innerHTML = recentEmojis.map(([emoji, name]) =>
+    `<div class="emoji-cell" onclick="copyEmoji('${emoji.replace(/'/g, "\\'")}','${name.replace(/'/g, "\\'")}')" onmouseenter="showTooltip(event,'${emoji.replace(/'/g, "\\'")}','${name.replace(/'/g, "\\'")}','')" onmouseleave="hideTooltip()">${emoji}</div>`
+  ).join('');
+}
+
+function showTooltip(e, emoji, name, code) {
+  const tip = document.getElementById('tooltip');
+  tip.innerHTML = `<div class="emoji-big">${emoji}</div><div class="emoji-name">${name}</div>${code ? '<div class="emoji-code">' + code + '</div>' : ''}`;
+  tip.style.display = 'block';
+  const rect = tip.getBoundingClientRect();
+  let x = e.clientX + 12;
+  let y = e.clientY + 12;
+  if (x + 250 > window.innerWidth) x = e.clientX - 260;
+  if (y + 100 > window.innerHeight) y = e.clientY - 110;
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').style.display = 'none';
+}
+
+// Search
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', debounce(() => {
+  renderEmojis(searchInput.value.trim());
+}, 200));
+
+function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+
+// Init
+renderEmojis();
+renderRecent();
+</script>
+</body>
+</html>

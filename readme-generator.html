@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>README.md Generator - Free Markdown README Tool | SPUNKART.COM</title>
+<meta name="description" content="Generate professional README.md files for your GitHub projects. Fill in fields, get formatted markdown with badges. Live preview, copy or download. Free tool.">
+<meta property="og:title" content="README.md Generator - Free Markdown README Tool">
+<meta property="og:description" content="Generate professional README.md files instantly. Live markdown preview with badges.">
+<meta property="og:image" content="https://spunkart.com/assets/og-readme-generator.png">
+<meta property="og:url" content="https://spunkart.com/readme-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="README.md Generator - Free Tool">
+<meta name="twitter:description" content="Generate professional README.md files for GitHub projects. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/readme-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"README.md Generator","description":"Generate professional README.md files for your GitHub projects with badges, live preview, and download.","url":"https://spunkart.com/readme-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;min-height:600px;}
+@media(max-width:900px){.editor-wrap{grid-template-columns:1fr;}}
+
+.panel{background:#111;border:1px solid #333;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;}
+.panel-header{background:#1a1a1a;padding:12px 16px;font-size:0.8rem;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:center;}
+.panel-body{padding:20px;overflow-y:auto;flex:1;}
+
+.form-group{margin-bottom:18px;}
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],textarea,select{width:100%;background:#0a0a0a;border:1px solid #333;color:#e8e8e8;padding:10px 14px;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color 0.2s;}
+input:focus,textarea:focus,select:focus{border-color:#ff5f1f;}
+textarea{resize:vertical;min-height:80px;}
+.hint{font-size:0.75rem;color:#666;margin-top:4px;}
+
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.badge-opt{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;cursor:pointer;color:#888;transition:all 0.2s;user-select:none;}
+.badge-opt.active{border-color:#ff5f1f;color:#ff5f1f;background:#1a0800;}
+.badge-opt:hover{border-color:#ff5f1f;color:#ccc;}
+
+.toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.preview-md{padding:20px;font-family:'SF Mono',Monaco,monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-word;overflow-y:auto;flex:1;color:#e8e8e8;line-height:1.7;}
+.preview-md h1,.preview-md h2,.preview-md h3{color:#fff;margin:16px 0 8px;font-family:-apple-system,sans-serif;}
+.preview-md h1{font-size:1.6rem;border-bottom:1px solid #333;padding-bottom:8px;}
+.preview-md h2{font-size:1.2rem;border-bottom:1px solid #222;padding-bottom:6px;}
+.preview-md h3{font-size:1rem;}
+.preview-md code{background:#1a1a1a;padding:2px 6px;border-radius:4px;font-size:0.85em;color:#ff5f1f;}
+.preview-md pre{background:#1a1a1a;padding:12px;border-radius:8px;overflow-x:auto;margin:8px 0;}
+.preview-md pre code{background:none;padding:0;}
+.preview-md ul,.preview-md ol{padding-left:24px;margin:8px 0;}
+.preview-md li{margin:4px 0;}
+.preview-md img{max-width:100%;border-radius:4px;}
+.preview-md a{color:#ff5f1f;}
+.preview-md blockquote{border-left:3px solid #ff5f1f;padding-left:12px;color:#999;margin:8px 0;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.8rem;color:#ccc;transition:all 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#999;margin-bottom:16px;font-size:0.9rem;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied.show{opacity:1;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>README.md Generator</h1>
+  <div class="subtitle">Generate professional README files for your GitHub projects</div>
+
+  <div class="toolbar">
+    <button onclick="generateReadme()">Generate README</button>
+    <button class="btn-secondary" onclick="copyReadme()">Copy Markdown</button>
+    <button class="btn-secondary" onclick="downloadReadme()">Download .md</button>
+    <button class="btn-secondary" onclick="clearForm()">Clear All</button>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header">Input Fields</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label>Project Name *</label>
+          <input type="text" id="projName" placeholder="My Awesome Project" oninput="generateReadme()">
+        </div>
+        <div class="form-group">
+          <label>Short Description *</label>
+          <input type="text" id="projDesc" placeholder="A brief one-line description of your project" oninput="generateReadme()">
+        </div>
+        <div class="form-group">
+          <label>Badges</label>
+          <div class="badge-row">
+            <div class="badge-opt active" onclick="toggleBadge(this)" data-badge="license">License</div>
+            <div class="badge-opt" onclick="toggleBadge(this)" data-badge="version">Version</div>
+            <div class="badge-opt" onclick="toggleBadge(this)" data-badge="build">Build</div>
+            <div class="badge-opt" onclick="toggleBadge(this)" data-badge="stars">Stars</div>
+            <div class="badge-opt" onclick="toggleBadge(this)" data-badge="issues">Issues</div>
+            <div class="badge-opt" onclick="toggleBadge(this)" data-badge="prs">PRs Welcome</div>
+          </div>
+          <div class="hint">GitHub username/repo for badge URLs:</div>
+          <input type="text" id="githubRepo" placeholder="username/repo-name" oninput="generateReadme()" style="margin-top:6px;">
+        </div>
+        <div class="form-group">
+          <label>Features</label>
+          <textarea id="features" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" rows="4" oninput="generateReadme()"></textarea>
+          <div class="hint">One feature per line</div>
+        </div>
+        <div class="form-group">
+          <label>Prerequisites</label>
+          <textarea id="prereqs" placeholder="Node.js >= 18&#10;npm or yarn" rows="3" oninput="generateReadme()"></textarea>
+          <div class="hint">One per line</div>
+        </div>
+        <div class="form-group">
+          <label>Installation Steps</label>
+          <textarea id="install" placeholder="git clone https://github.com/user/repo.git&#10;cd repo&#10;npm install" rows="4" oninput="generateReadme()"></textarea>
+          <div class="hint">One command per line (wrapped in code blocks)</div>
+        </div>
+        <div class="form-group">
+          <label>Usage</label>
+          <textarea id="usage" placeholder="npm start&#10;# or&#10;npm run dev" rows="4" oninput="generateReadme()"></textarea>
+          <div class="hint">Usage examples / commands</div>
+        </div>
+        <div class="form-group">
+          <label>Tech Stack / Built With</label>
+          <textarea id="techStack" placeholder="React&#10;Node.js&#10;MongoDB" rows="3" oninput="generateReadme()"></textarea>
+          <div class="hint">One per line</div>
+        </div>
+        <div class="form-group">
+          <label>Contributing Guidelines</label>
+          <textarea id="contributing" placeholder="Fork the repo&#10;Create a feature branch&#10;Submit a pull request" rows="3" oninput="generateReadme()"></textarea>
+          <div class="hint">One step per line</div>
+        </div>
+        <div class="form-group">
+          <label>License</label>
+          <select id="license" onchange="generateReadme()">
+            <option value="MIT">MIT</option>
+            <option value="Apache-2.0">Apache 2.0</option>
+            <option value="GPL-3.0">GPL 3.0</option>
+            <option value="BSD-3-Clause">BSD 3-Clause</option>
+            <option value="ISC">ISC</option>
+            <option value="None">None</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Author / Contact</label>
+          <input type="text" id="author" placeholder="Your Name — your@email.com" oninput="generateReadme()">
+        </div>
+        <div class="form-group">
+          <label>Acknowledgments</label>
+          <textarea id="ack" placeholder="Thanks to..." rows="2" oninput="generateReadme()"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <span id="previewLabel">Live Preview (Rendered)</span>
+        <div style="display:flex;gap:4px;">
+          <button class="btn-secondary" style="padding:4px 12px;font-size:0.75rem;" onclick="togglePreviewMode('rendered')">Rendered</button>
+          <button class="btn-secondary" style="padding:4px 12px;font-size:0.75rem;" onclick="togglePreviewMode('raw')">Raw</button>
+        </div>
+      </div>
+      <div class="preview-md" id="previewArea">
+        <p style="color:#666;">Fill in the fields on the left to generate your README...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <div class="tool-links">
+      <a href="/og-preview.html">OG Preview</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/slug-generator.html">Slug Generator</a>
+      <a href="/css-minifier.html">CSS Minifier</a>
+      <a href="/htaccess-generator.html">.htaccess Generator</a>
+      <a href="/meta-generator.html">Meta Tag Generator</a>
+      <a href="/password-generator.html">Password Generator</a>
+    </div>
+    <br>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Free Tools + Discounts</h3>
+    <p>Join the SpunkArt newsletter for free tools, tips, and 10% off your first purchase.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:80px;border:none;border-radius:8px;"></iframe>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+let currentMarkdown = '';
+let previewMode = 'rendered';
+
+function toggleBadge(el) { el.classList.toggle('active'); generateReadme(); }
+
+function togglePreviewMode(mode) {
+  previewMode = mode;
+  document.getElementById('previewLabel').textContent = mode === 'rendered' ? 'Live Preview (Rendered)' : 'Live Preview (Raw Markdown)';
+  renderPreview();
+}
+
+function generateReadme() {
+  const name = document.getElementById('projName').value;
+  const desc = document.getElementById('projDesc').value;
+  const repo = document.getElementById('githubRepo').value;
+  const features = document.getElementById('features').value.trim();
+  const prereqs = document.getElementById('prereqs').value.trim();
+  const install = document.getElementById('install').value.trim();
+  const usage = document.getElementById('usage').value.trim();
+  const tech = document.getElementById('techStack').value.trim();
+  const contrib = document.getElementById('contributing').value.trim();
+  const license = document.getElementById('license').value;
+  const author = document.getElementById('author').value;
+  const ack = document.getElementById('ack').value.trim();
+
+  if (!name && !desc) {
+    currentMarkdown = '';
+    document.getElementById('previewArea').innerHTML = '<p style="color:#666;">Fill in the fields on the left to generate your README...</p>';
+    return;
+  }
+
+  let md = '';
+
+  // Title
+  md += '# ' + (name || 'Project Name') + '\n\n';
+
+  // Badges
+  const activeBadges = document.querySelectorAll('.badge-opt.active');
+  if (activeBadges.length > 0 && repo) {
+    activeBadges.forEach(b => {
+      const type = b.dataset.badge;
+      switch(type) {
+        case 'license': md += '![License](https://img.shields.io/github/license/' + repo + ')\n'; break;
+        case 'version': md += '![Version](https://img.shields.io/github/v/release/' + repo + ')\n'; break;
+        case 'build': md += '![Build](https://img.shields.io/github/actions/workflow/status/' + repo + '/ci.yml)\n'; break;
+        case 'stars': md += '![Stars](https://img.shields.io/github/stars/' + repo + ')\n'; break;
+        case 'issues': md += '![Issues](https://img.shields.io/github/issues/' + repo + ')\n'; break;
+        case 'prs': md += '![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)\n'; break;
+      }
+    });
+    md += '\n';
+  }
+
+  // Description
+  if (desc) md += desc + '\n\n';
+
+  // Features
+  if (features) {
+    md += '## Features\n\n';
+    features.split('\n').filter(l=>l.trim()).forEach(f => { md += '- ' + f.trim() + '\n'; });
+    md += '\n';
+  }
+
+  // Tech stack
+  if (tech) {
+    md += '## Built With\n\n';
+    tech.split('\n').filter(l=>l.trim()).forEach(t => { md += '- ' + t.trim() + '\n'; });
+    md += '\n';
+  }
+
+  // Prerequisites
+  if (prereqs) {
+    md += '## Prerequisites\n\n';
+    prereqs.split('\n').filter(l=>l.trim()).forEach(p => { md += '- ' + p.trim() + '\n'; });
+    md += '\n';
+  }
+
+  // Installation
+  if (install) {
+    md += '## Installation\n\n';
+    md += '```bash\n' + install + '\n```\n\n';
+  }
+
+  // Usage
+  if (usage) {
+    md += '## Usage\n\n';
+    md += '```bash\n' + usage + '\n```\n\n';
+  }
+
+  // Contributing
+  if (contrib) {
+    md += '## Contributing\n\n';
+    const steps = contrib.split('\n').filter(l=>l.trim());
+    steps.forEach((s, i) => { md += (i+1) + '. ' + s.trim() + '\n'; });
+    md += '\n';
+  }
+
+  // License
+  if (license !== 'None') {
+    md += '## License\n\n';
+    md += 'This project is licensed under the ' + license + ' License. See the [LICENSE](LICENSE) file for details.\n\n';
+  }
+
+  // Author
+  if (author) {
+    md += '## Contact\n\n';
+    md += author + '\n\n';
+    if (repo) md += 'Project Link: [https://github.com/' + repo + '](https://github.com/' + repo + ')\n\n';
+  }
+
+  // Acknowledgments
+  if (ack) {
+    md += '## Acknowledgments\n\n';
+    ack.split('\n').filter(l=>l.trim()).forEach(a => { md += '- ' + a.trim() + '\n'; });
+    md += '\n';
+  }
+
+  currentMarkdown = md;
+  renderPreview();
+}
+
+function renderPreview() {
+  const area = document.getElementById('previewArea');
+  if (!currentMarkdown) {
+    area.innerHTML = '<p style="color:#666;">Fill in the fields on the left to generate your README...</p>';
+    return;
+  }
+  if (previewMode === 'raw') {
+    area.textContent = currentMarkdown;
+  } else {
+    area.innerHTML = renderMarkdown(currentMarkdown);
+  }
+}
+
+function renderMarkdown(md) {
+  let html = md;
+  // Code blocks
+  html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+  // Headers
+  html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Images / badges
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="height:20px;margin-right:4px;">');
+  // Links
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  // Ordered lists
+  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+  // Unordered lists
+  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+  // Wrap consecutive li in ul
+  html = html.replace(/(<li>[\s\S]*?<\/li>\n?)+/g, '<ul>$&</ul>');
+  // Paragraphs
+  html = html.replace(/^(?!<[hupol]|<li|<img|<pre|<code|<ul|<strong)(.+)$/gm, '<p>$1</p>');
+  // Clean up
+  html = html.replace(/\n{2,}/g, '\n');
+  return html;
+}
+
+function copyReadme() {
+  if (!currentMarkdown) return;
+  navigator.clipboard.writeText(currentMarkdown);
+  showToast();
+}
+
+function downloadReadme() {
+  if (!currentMarkdown) return;
+  const blob = new Blob([currentMarkdown], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'README.md';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function clearForm() {
+  document.querySelectorAll('input[type="text"], textarea').forEach(el => el.value = '');
+  document.getElementById('license').value = 'MIT';
+  currentMarkdown = '';
+  renderPreview();
+}
+
+function showToast() {
+  const el = document.getElementById('copied');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1500);
+}
+
+generateReadme();
+</script>
+</body>
+</html>

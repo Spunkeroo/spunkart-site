@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to CSV Converter — Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Convert JSON arrays to CSV or CSV to JSON instantly. Flatten nested objects, preview as a table, and download .csv files. Free converter for developers.">
+<meta property="og:title" content="JSON to CSV Converter — Free Online Tool">
+<meta property="og:description" content="Convert JSON to CSV or CSV to JSON instantly. Flatten nested objects, preview as table, download .csv. Free tool by SPUNKART.COM">
+<meta property="og:url" content="https://spunkart.com/json-to-csv.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSON to CSV Converter">
+<meta name="twitter:description" content="Convert JSON to CSV or CSV to JSON instantly. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/json-to-csv.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON to CSV Converter","description":"Convert JSON arrays to CSV or CSV to JSON instantly. Flatten nested objects, preview as table, download CSV.","url":"https://spunkart.com/json-to-csv.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.mode-toggle{display:flex;gap:0;margin-bottom:20px;}
+.mode-btn{padding:10px 24px;background:#222;color:#ccc;border:1px solid #333;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.mode-btn:first-child{border-radius:8px 0 0 8px;}
+.mode-btn:last-child{border-radius:0 8px 8px 0;}
+.mode-btn.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:300px;}
+@media(max-width:768px){.editor-wrap{grid-template-columns:1fr;min-height:auto;}}
+.panel{display:flex;flex-direction:column;}
+.panel-header{background:#1a1a1a;border:1px solid #333;border-bottom:none;border-radius:10px 10px 0 0;padding:10px 16px;font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;}
+textarea{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;border-radius:0 0 10px 10px;tab-size:2;line-height:1.5;min-height:250px;}
+textarea:focus{border-color:#ff5f1f;}
+
+.copy-btn{background:#333;color:#ccc;border:none;padding:5px 12px;border-radius:5px;font-size:0.75rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#10b981;color:#fff;}
+
+.table-preview{margin-top:20px;overflow-x:auto;border-radius:10px;border:1px solid #333;}
+.table-preview table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+.table-preview th{background:#1a1a1a;color:#ff5f1f;padding:10px 12px;text-align:left;border-bottom:1px solid #333;white-space:nowrap;}
+.table-preview td{background:#111;padding:8px 12px;border-bottom:1px solid #1a1a1a;color:#ccc;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.table-preview tr:hover td{background:#1a1a1a;}
+.table-preview .empty{padding:32px;text-align:center;color:#555;background:#111;}
+
+.status{font-size:0.85rem;color:#888;margin-top:8px;}
+.status.error{color:#ef4444;}
+.status.success{color:#10b981;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.newsletter{background:#151515;border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#fff;margin-bottom:4px;}
+.newsletter p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+
+.tool-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.tool-links a{background:#1a1a1a;border:1px solid #333;padding:8px 16px;border-radius:8px;font-size:0.82rem;color:#ccc;transition:border-color 0.2s;}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>JSON to CSV Converter</h1>
+  <div class="subtitle">Convert between JSON and CSV formats instantly. Handles nested objects by flattening keys.</div>
+
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="modeJsonCsv" onclick="setMode('json2csv')">JSON &rarr; CSV</button>
+    <button class="mode-btn" id="modeCsvJson" onclick="setMode('csv2json')">CSV &rarr; JSON</button>
+  </div>
+
+  <div class="toolbar">
+    <button onclick="convert()">Convert</button>
+    <button class="btn-secondary" onclick="copyOutput()">Copy Output</button>
+    <button class="btn-secondary" onclick="downloadOutput()">Download</button>
+    <button class="btn-secondary" onclick="clearAll()">Clear</button>
+    <button class="btn-secondary" onclick="loadSample()">Load Sample</button>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header"><span id="inputLabel">JSON Input</span><button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('dataInput').value)">Copy</button></div>
+      <textarea id="dataInput" placeholder='Paste your JSON array here...' spellcheck="false"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><span id="outputLabel">CSV Output</span><button class="copy-btn" id="outCopyBtn" onclick="copyOutput()">Copy</button></div>
+      <textarea id="dataOutput" placeholder="Output will appear here..." spellcheck="false" readonly></textarea>
+    </div>
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <div class="table-preview" id="tablePreview">
+    <div class="empty">Convert data to see a table preview</div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+
+  <div class="tool-links">
+    <a href="/json-formatter.html">JSON Formatter</a>
+    <a href="/html-minifier.html">HTML Minifier</a>
+    <a href="/password-generator.html">Password Generator</a>
+    <a href="/color-palette.html">Color Palette</a>
+    <a href="/meta-generator.html">Meta Tag Generator</a>
+    <a href="/placeholder-image.html">Placeholder Images</a>
+    <a href="/screen-size.html">Screen Info</a>
+    <a href="/emoji-picker.html">Emoji Picker</a>
+    <a href="/store" style="color:#ff5f1f;font-weight:700;">Get All 40+ Tools</a>
+  </div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied-toast" id="copiedToast">Copied!</div>
+
+<script>
+let mode = 'json2csv';
+let lastOutput = '';
+let lastOutputType = 'csv';
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('modeJsonCsv').classList.toggle('active', m === 'json2csv');
+  document.getElementById('modeCsvJson').classList.toggle('active', m === 'csv2json');
+  document.getElementById('inputLabel').textContent = m === 'json2csv' ? 'JSON Input' : 'CSV Input';
+  document.getElementById('outputLabel').textContent = m === 'json2csv' ? 'CSV Output' : 'JSON Output';
+  document.getElementById('dataInput').placeholder = m === 'json2csv'
+    ? 'Paste your JSON array here...\n\nExample:\n[{"name":"Alice","age":30},{"name":"Bob","age":25}]'
+    : 'Paste your CSV here...\n\nExample:\nname,age\nAlice,30\nBob,25';
+  clearAll();
+}
+
+function flatten(obj, prefix) {
+  const result = {};
+  for (const key in obj) {
+    const fullKey = prefix ? prefix + '.' + key : key;
+    if (obj[key] !== null && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      Object.assign(result, flatten(obj[key], fullKey));
+    } else {
+      result[fullKey] = obj[key];
+    }
+  }
+  return result;
+}
+
+function jsonToCsv(jsonStr) {
+  let data = JSON.parse(jsonStr);
+  if (!Array.isArray(data)) {
+    if (typeof data === 'object' && data !== null) data = [data];
+    else throw new Error('Input must be a JSON array of objects');
+  }
+  if (data.length === 0) throw new Error('Empty array');
+
+  // Flatten all objects
+  const flatData = data.map(item => flatten(item, ''));
+
+  // Collect all unique headers
+  const headersSet = new Set();
+  flatData.forEach(item => Object.keys(item).forEach(k => headersSet.add(k)));
+  const headers = Array.from(headersSet);
+
+  // Build CSV
+  const escapeCell = (val) => {
+    if (val === null || val === undefined) return '';
+    const str = String(val);
+    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+      return '"' + str.replace(/"/g, '""') + '"';
+    }
+    return str;
+  };
+
+  const lines = [headers.map(escapeCell).join(',')];
+  flatData.forEach(item => {
+    lines.push(headers.map(h => escapeCell(item[h])).join(','));
+  });
+
+  return { csv: lines.join('\n'), headers, flatData };
+}
+
+function csvToJson(csvStr) {
+  const lines = csvStr.trim().split('\n');
+  if (lines.length < 2) throw new Error('CSV must have at least a header row and one data row');
+
+  // Parse CSV line respecting quoted fields
+  function parseLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inQuotes) {
+        if (ch === '"') {
+          if (i + 1 < line.length && line[i + 1] === '"') { current += '"'; i++; }
+          else inQuotes = false;
+        } else { current += ch; }
+      } else {
+        if (ch === '"') inQuotes = true;
+        else if (ch === ',') { result.push(current); current = ''; }
+        else { current += ch; }
+      }
+    }
+    result.push(current);
+    return result;
+  }
+
+  const headers = parseLine(lines[0]);
+  const data = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    if (!lines[i].trim()) continue;
+    const vals = parseLine(lines[i]);
+    const obj = {};
+    headers.forEach((h, idx) => {
+      let val = vals[idx] !== undefined ? vals[idx] : '';
+      // Try to parse numbers and booleans
+      if (val === 'true') val = true;
+      else if (val === 'false') val = false;
+      else if (val === 'null') val = null;
+      else if (val !== '' && !isNaN(val) && val.trim() !== '') val = Number(val);
+      obj[h.trim()] = val;
+    });
+    data.push(obj);
+  }
+
+  return { json: data, headers };
+}
+
+function convert() {
+  const raw = document.getElementById('dataInput').value.trim();
+  if (!raw) return;
+
+  const statusEl = document.getElementById('status');
+
+  try {
+    if (mode === 'json2csv') {
+      const { csv, headers, flatData } = jsonToCsv(raw);
+      document.getElementById('dataOutput').value = csv;
+      lastOutput = csv;
+      lastOutputType = 'csv';
+      statusEl.textContent = `Converted ${flatData.length} rows, ${headers.length} columns`;
+      statusEl.className = 'status success';
+      renderTable(headers, flatData);
+      gtag('event', 'json_to_csv', { event_category: 'tool_use' });
+    } else {
+      const { json, headers } = csvToJson(raw);
+      const jsonStr = JSON.stringify(json, null, 2);
+      document.getElementById('dataOutput').value = jsonStr;
+      lastOutput = jsonStr;
+      lastOutputType = 'json';
+      statusEl.textContent = `Converted ${json.length} rows, ${headers.length} columns`;
+      statusEl.className = 'status success';
+      // Flatten for table preview
+      const flatData = json.map(item => flatten(item, ''));
+      const allHeaders = new Set();
+      flatData.forEach(item => Object.keys(item).forEach(k => allHeaders.add(k)));
+      renderTable(Array.from(allHeaders), flatData);
+      gtag('event', 'csv_to_json', { event_category: 'tool_use' });
+    }
+  } catch (e) {
+    statusEl.textContent = 'Error: ' + e.message;
+    statusEl.className = 'status error';
+    document.getElementById('tablePreview').innerHTML = '<div class="empty">Fix the error above and try again</div>';
+  }
+}
+
+function renderTable(headers, data) {
+  if (!data.length) {
+    document.getElementById('tablePreview').innerHTML = '<div class="empty">No data to preview</div>';
+    return;
+  }
+  const maxRows = Math.min(data.length, 100);
+  let html = '<table><thead><tr>';
+  headers.forEach(h => { html += '<th>' + escHtml(h) + '</th>'; });
+  html += '</tr></thead><tbody>';
+  for (let i = 0; i < maxRows; i++) {
+    html += '<tr>';
+    headers.forEach(h => {
+      const val = data[i][h];
+      html += '<td>' + escHtml(val === null || val === undefined ? '' : String(val)) + '</td>';
+    });
+    html += '</tr>';
+  }
+  html += '</tbody></table>';
+  if (data.length > 100) html += '<div style="padding:8px;text-align:center;color:#888;font-size:0.8rem;">Showing first 100 of ' + data.length + ' rows</div>';
+  document.getElementById('tablePreview').innerHTML = html;
+}
+
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function copyOutput() {
+  const text = document.getElementById('dataOutput').value;
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copiedToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1500);
+    const btn = document.getElementById('outCopyBtn');
+    btn.textContent = 'Copied!'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function downloadOutput() {
+  const text = document.getElementById('dataOutput').value;
+  if (!text) return;
+  const ext = lastOutputType === 'csv' ? 'csv' : 'json';
+  const mime = lastOutputType === 'csv' ? 'text/csv' : 'application/json';
+  const blob = new Blob([text], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'converted.' + ext;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  gtag('event', 'download_' + ext, { event_category: 'tool_use' });
+}
+
+function clearAll() {
+  document.getElementById('dataInput').value = '';
+  document.getElementById('dataOutput').value = '';
+  document.getElementById('status').textContent = '';
+  document.getElementById('tablePreview').innerHTML = '<div class="empty">Convert data to see a table preview</div>';
+}
+
+function loadSample() {
+  if (mode === 'json2csv') {
+    document.getElementById('dataInput').value = JSON.stringify([
+      { "name": "Alice Johnson", "age": 30, "email": "alice@example.com", "address": { "city": "New York", "state": "NY", "zip": "10001" } },
+      { "name": "Bob Smith", "age": 25, "email": "bob@example.com", "address": { "city": "Los Angeles", "state": "CA", "zip": "90001" } },
+      { "name": "Carol White", "age": 35, "email": "carol@example.com", "address": { "city": "Chicago", "state": "IL", "zip": "60601" } },
+      { "name": "Dave Brown", "age": 28, "email": "dave@example.com", "address": { "city": "Houston", "state": "TX", "zip": "77001" } }
+    ], null, 2);
+  } else {
+    document.getElementById('dataInput').value = `name,age,email,city,state
+Alice Johnson,30,alice@example.com,New York,NY
+Bob Smith,25,bob@example.com,Los Angeles,CA
+Carol White,35,carol@example.com,Chicago,IL
+Dave Brown,28,dave@example.com,Houston,TX`;
+  }
+  convert();
+}
+</script>
+</body>
+</html>
