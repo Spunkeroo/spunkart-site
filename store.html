@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpunkArt Tools — Cloudflare Workers & Digital Products</title>
+<meta name="description" content="Premium Cloudflare Workers, digital tools, and ebooks. Deploy in seconds. Built by the team behind 120+ websites.">
+<meta property="og:title" content="SpunkArt Tools — Ship Faster with Edge Tools">
+<meta property="og:description" content="12 Cloudflare Workers, ebooks, and templates. Built by devs who run 120+ sites.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/store">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<link rel="canonical" href="https://spunkart.com/store">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+
+/* Hero */
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto}
+.hero h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1.1}
+.hero p{color:#888;font-size:1.15rem;max-width:600px;margin:0 auto 1.5rem}
+.hero-stats{display:flex;justify-content:center;gap:2rem;font-size:0.85rem;color:#666}
+.hero-stats span strong{color:#ff5f1f}
+
+/* Bundles */
+.bundles{max-width:1000px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.bundle{background:linear-gradient(145deg,#111,#0d0d0d);border:1px solid #222;border-radius:16px;padding:1.5rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden}
+.bundle:hover{border-color:#ff5f1f44;transform:translateY(-3px);box-shadow:0 10px 40px rgba(255,95,31,0.1)}
+.bundle-pop{border-color:#ff5f1f66}
+.bundle-pop::before{content:"BEST VALUE";position:absolute;top:12px;right:-30px;background:#ff5f1f;color:#fff;font-size:0.6rem;font-weight:800;padding:0.2rem 2rem;transform:rotate(45deg);letter-spacing:1px}
+.bundle-name{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.5rem}
+.bundle-price{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.2rem}
+.bundle-price small{font-size:0.9rem;color:#666}
+.bundle-desc{color:#666;font-size:0.8rem;margin-bottom:1rem;min-height:40px}
+.bundle-items{text-align:left;font-size:0.75rem;color:#888;margin-bottom:1.2rem}
+.bundle-items div{padding:0.2rem 0}
+.bundle-items div::before{content:"✓ ";color:#10b981}
+.bundle-btn{display:block;padding:0.7rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.bundle-btn:hover{background:#e5541b;transform:scale(1.02)}
+.bundle-free .bundle-btn{background:#10b981}
+
+/* Products */
+.section-title{text-align:center;padding:3rem 2rem 1.5rem}
+.section-title h2{font-size:1.8rem;font-weight:700;margin-bottom:0.3rem}
+.section-title p{color:#666;font-size:0.9rem}
+
+.products{max-width:1000px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.product{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.3rem;transition:all 0.3s}
+.product:hover{border-color:#333;transform:translateY(-2px)}
+.product-icon{font-size:2rem;margin-bottom:0.5rem}
+.product-name{font-weight:700;font-size:1rem;margin-bottom:0.3rem}
+.product-desc{color:#888;font-size:0.8rem;margin-bottom:0.8rem;line-height:1.5}
+.product-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.8rem}
+.tag{padding:0.15rem 0.5rem;background:#1a1a1a;border-radius:4px;font-size:0.65rem;color:#888}
+.product-footer{display:flex;justify-content:space-between;align-items:center}
+.product-price{font-weight:800;font-size:1.1rem;color:#ff5f1f}
+.product-buy{padding:0.4rem 1rem;background:#222;border-radius:6px;font-size:0.8rem;font-weight:600;color:#fff;transition:background 0.2s}
+.product-buy:hover{background:#ff5f1f}
+
+/* Ebook */
+.ebook{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.ebook-card{background:linear-gradient(145deg,#1a0a00,#111);border:1px solid #ff5f1f33;border-radius:20px;padding:2.5rem;display:flex;gap:2rem;align-items:center}
+.ebook-cover{width:180px;height:250px;background:linear-gradient(135deg,#ff5f1f,#f59e0b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;text-align:center;padding:1rem;flex-shrink:0;box-shadow:0 10px 40px rgba(255,95,31,0.3)}
+.ebook-info h3{font-size:1.5rem;margin-bottom:0.5rem}
+.ebook-info p{color:#888;font-size:0.85rem;margin-bottom:1rem}
+.ebook-info ul{list-style:none;font-size:0.8rem;color:#aaa;margin-bottom:1.2rem}
+.ebook-info ul li{padding:0.2rem 0}
+.ebook-info ul li::before{content:"📖 "}
+.ebook-price{font-size:1.8rem;font-weight:800;color:#ff5f1f;margin-bottom:1rem}
+.ebook-btn{display:inline-block;padding:0.8rem 2rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;transition:all 0.2s}
+.ebook-btn:hover{background:#e5541b;transform:scale(1.03)}
+
+/* Testimonials */
+.testimonials{max-width:800px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.testimonial{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:1.2rem}
+.testimonial-text{color:#aaa;font-size:0.85rem;font-style:italic;margin-bottom:0.5rem}
+.testimonial-author{color:#666;font-size:0.75rem}
+
+/* FAQ */
+.faq{max-width:700px;margin:0 auto;padding:0 2rem 3rem}
+.faq-item{border-bottom:1px solid #1a1a1a;padding:1rem 0}
+.faq-q{font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-a{color:#888;font-size:0.85rem;margin-top:0.5rem;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
+.footer a{color:#ff5f1f}
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .ebook-card{flex-direction:column;text-align:center}
+  .testimonials{grid-template-columns:1fr}
+  .bundles{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .bundles{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
+  <div class="nav-links">
+    <a href="#tools">Tools</a>
+    <a href="#ebook">Ebook</a>
+    <a href="#bundles">Bundles</a>
+    <a href="https://spunk.bet">Casino</a>
+    <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Edge Tools That Actually Work</h1>
+  <p>12 Cloudflare Workers + digital products built by the team running 120+ live websites. Deploy in 60 seconds.</p>
+  <div class="hero-stats">
+    <span><strong>12</strong> Tools</span>
+    <span><strong>120+</strong> Sites Built</span>
+    <span><strong>7</strong> Networks</span>
+    <span><strong>&lt;50ms</strong> Global</span>
+  </div>
+</section>
+
+<section id="bundles">
+  <div class="bundles">
+    <div class="bundle bundle-free">
+      <div class="bundle-name">Free</div>
+      <div class="bundle-price">$0</div>
+      <div class="bundle-desc">Try our free tools</div>
+      <div class="bundle-items">
+        <div>Scam Checker Tool</div>
+        <div>Basic Analytics Script</div>
+        <div>Community support</div>
+      </div>
+      <a href="#free-tools" class="bundle-btn">Get Free Tools</a>
+    </div>
+    <div class="bundle">
+      <div class="bundle-name">Starter</div>
+      <div class="bundle-price">$9<small>.99</small></div>
+      <div class="bundle-desc">Pick any 3 workers</div>
+      <div class="bundle-items">
+        <div>Choose 3 Workers</div>
+        <div>Full source code</div>
+        <div>Setup guide</div>
+        <div>6 months updates</div>
+      </div>
+      <a href="#" class="bundle-btn" onclick="buy('starter')">Buy Starter</a>
+    </div>
+    <div class="bundle bundle-pop">
+      <div class="bundle-name">Pro Bundle</div>
+      <div class="bundle-price">$19<small>.99</small></div>
+      <div class="bundle-desc">All 12 workers</div>
+      <div class="bundle-items">
+        <div>All 12 Cloudflare Workers</div>
+        <div>Full source code</div>
+        <div>Wrangler configs included</div>
+        <div>1 year updates</div>
+        <div>Priority support</div>
+      </div>
+      <a href="#" class="bundle-btn" onclick="buy('pro')">Buy Pro Bundle</a>
+    </div>
+    <div class="bundle">
+      <div class="bundle-name">Empire</div>
+      <div class="bundle-price">$49<small>.99</small></div>
+      <div class="bundle-desc">Everything + ebook</div>
+      <div class="bundle-items">
+        <div>All 12 Workers</div>
+        <div>AI Website Empire Ebook</div>
+        <div>50 AI Prompt Pack</div>
+        <div>Notion Templates</div>
+        <div>Lifetime updates</div>
+        <div>1-on-1 setup help</div>
+      </div>
+      <a href="#" class="bundle-btn" onclick="buy('empire')">Buy Empire Bundle</a>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="section-title">
+    <h2>Cloudflare Workers Toolkit</h2>
+    <p>Each tool is a single file. Deploy with <code>wrangler deploy</code>. Done.</p>
+  </div>
+
+  <div class="products">
+    <div class="product">
+      <div class="product-icon">🦀</div>
+      <div class="product-name">OpenClaw Game</div>
+      <div class="product-desc">Full claw machine game running on the edge. Provably fair, mobile responsive, built-in analytics.</div>
+      <div class="product-tags"><span class="tag">Game</span><span class="tag">Interactive</span><span class="tag">Engagement</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('openclaw')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🔒</div>
+      <div class="product-name">Auto-SSL Monitor</div>
+      <div class="product-desc">Monitor SSL certificates across all domains. Auto-alerts via Slack/Discord before expiry.</div>
+      <div class="product-tags"><span class="tag">Security</span><span class="tag">Monitoring</span><span class="tag">Alerts</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('ssl')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🎵</div>
+      <div class="product-name">Spotify Connect Widget</div>
+      <div class="product-desc">Show your Now Playing track on any website. Embeddable widget, auto-refresh, privacy-first.</div>
+      <div class="product-tags"><span class="tag">Widget</span><span class="tag">Music</span><span class="tag">Social</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('spotify')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🔗</div>
+      <div class="product-name">Link Shortener</div>
+      <div class="product-desc">Custom branded short links with click analytics, QR codes, and admin dashboard.</div>
+      <div class="product-tags"><span class="tag">Links</span><span class="tag">Analytics</span><span class="tag">Marketing</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('links')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">📊</div>
+      <div class="product-name">Uptime Monitor</div>
+      <div class="product-desc">Monitor any website from Cloudflare's edge. Public status page, webhook alerts, 90-day history.</div>
+      <div class="product-tags"><span class="tag">Monitoring</span><span class="tag">Status Page</span><span class="tag">Alerts</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('uptime')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🛡️</div>
+      <div class="product-name">Bot Blocker Pro</div>
+      <div class="product-desc">Stop scrapers, spam bots, and bad crawlers. Rate limiting, honeypots, real-time dashboard.</div>
+      <div class="product-tags"><span class="tag">Security</span><span class="tag">Protection</span><span class="tag">Anti-Spam</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('botblock')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">↪️</div>
+      <div class="product-name">Redirect Manager</div>
+      <div class="product-desc">Manage bulk URL redirects from a dashboard. Wildcard patterns, click tracking, CSV export.</div>
+      <div class="product-tags"><span class="tag">SEO</span><span class="tag">Redirects</span><span class="tag">Migration</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('redirect')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🖼️</div>
+      <div class="product-name">Image Optimizer</div>
+      <div class="product-desc">Auto-convert images to WebP/AVIF on the fly. Resize, compress, cache at the edge.</div>
+      <div class="product-tags"><span class="tag">Performance</span><span class="tag">Images</span><span class="tag">Speed</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('images')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">📧</div>
+      <div class="product-name">Email Forwarder</div>
+      <div class="product-desc">Custom domain email forwarding. Catch-all, spam filtering, auto-reply, email log dashboard.</div>
+      <div class="product-tags"><span class="tag">Email</span><span class="tag">Domain</span><span class="tag">Forwarding</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('email')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🧪</div>
+      <div class="product-name">A/B Testing Engine</div>
+      <div class="product-desc">Split test anything at the edge. Zero latency, cookie-based sessions, conversion tracking.</div>
+      <div class="product-tags"><span class="tag">Testing</span><span class="tag">CRO</span><span class="tag">Optimization</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('abtest')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">📈</div>
+      <div class="product-name">Privacy Analytics</div>
+      <div class="product-desc">Cookie-free, GDPR-compliant analytics. Page views, visitors, referrers. One script tag.</div>
+      <div class="product-tags"><span class="tag">Analytics</span><span class="tag">Privacy</span><span class="tag">GDPR</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('analytics')">Buy</a>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-icon">🗑️</div>
+      <div class="product-name">Cache Purger</div>
+      <div class="product-desc">One-click cache management dashboard. Purge URLs, check status, automation API.</div>
+      <div class="product-tags"><span class="tag">Cache</span><span class="tag">Performance</span><span class="tag">DevOps</span></div>
+      <div class="product-footer">
+        <span class="product-price">$4.99</span>
+        <a href="#" class="product-buy" onclick="buy('cache')">Buy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ebook">
+  <div class="section-title">
+    <h2>The Ebook</h2>
+    <p>How one person built 120+ websites in under a week using AI</p>
+  </div>
+
+  <div class="ebook">
+    <div class="ebook-card">
+      <div class="ebook-cover">
+        ZERO TO<br>120+<br>WEBSITES<br>IN 7 DAYS<br><br><small>The AI Website Empire Blueprint</small>
+      </div>
+      <div class="ebook-info">
+        <h3>The AI Website Empire Blueprint</h3>
+        <p>The exact system, prompts, and strategies used to build a network of 120+ live websites in less than one week — with zero coding experience required.</p>
+        <ul>
+          <li>Python generators that output 20+ sites at once</li>
+          <li>Free hosting on GitHub Pages with custom domains</li>
+          <li>Firebase for real-time data across all sites</li>
+          <li>Cross-network SEO linking strategy</li>
+          <li>Monetization: affiliates, ads, digital products</li>
+          <li>Automation: auto-update content every 10 seconds</li>
+          <li>The exact AI prompts that built everything</li>
+        </ul>
+        <div class="ebook-price">$14.99</div>
+        <a href="#" class="ebook-btn" onclick="buy('ebook')">Buy the Ebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>What People Are Saying</h2>
+  </div>
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="testimonial-text">"Deployed the bot blocker in 2 minutes. Already blocked 500+ scrapers in the first day."</div>
+      <div class="testimonial-author">— Web Developer</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-text">"The uptime monitor replaced my $20/mo service. Same features, runs on my own infrastructure."</div>
+      <div class="testimonial-author">— SaaS Founder</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-text">"120 websites in a week? I didn't believe it until I read the ebook. Now I'm building my own network."</div>
+      <div class="testimonial-author">— Digital Entrepreneur</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-text">"Privacy analytics without cookies. Finally something GDPR compliant that I actually own."</div>
+      <div class="testimonial-author">— EU Business Owner</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>FAQ</h2>
+  </div>
+  <div class="faq">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I need coding experience? <span>+</span></div>
+      <div class="faq-a">No. Each Worker is a single JavaScript file. Copy it, run <code>wrangler deploy</code>, done. The ebook walks through everything step-by-step.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">What do I need to use these? <span>+</span></div>
+      <div class="faq-a">A free Cloudflare account. Workers have a generous free tier (100,000 requests/day). Most tools work entirely within the free tier.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Can I modify the source code? <span>+</span></div>
+      <div class="faq-a">Yes! You get full, unminified source code. Customize colors, branding, features — it's yours.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I get updates? <span>+</span></div>
+      <div class="faq-a">Starter: 6 months. Pro: 1 year. Empire: lifetime updates + every new tool we build.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Is there a refund policy? <span>+</span></div>
+      <div class="faq-a">Yes, 30-day money-back guarantee. If it doesn't work for you, full refund, no questions asked.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">How do I get support? <span>+</span></div>
+      <div class="faq-a">DM us on X @SpunkArt13 or email hello@spunkart.com. Pro and Empire get priority responses.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto">
+  <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Ready to Ship?</h2>
+  <p style="color:#888;margin-bottom:1.5rem">Join hundreds of developers building on the edge with SpunkArt tools.</p>
+  <a href="#bundles" style="display:inline-block;padding:1rem 3rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s">Get Started</a>
+</section>
+
+<footer class="footer">
+  <div style="margin-bottom:1rem">
+    <a href="https://spunkart.com">SpunkArt</a> &middot;
+    <a href="https://spunk.bet">Spunk.Bet</a> &middot;
+    <a href="https://predict.autos">Predict Network</a> &middot;
+    <a href="https://stimulant.work">Stimulant</a> &middot;
+    <a href="https://aliens.coupons">Aliens</a> &middot;
+    <a href="https://aibot.beer">AiBot</a> &middot;
+    <a href="https://monkey.coupons">Monkey</a> &middot;
+    <a href="https://scam.ink">Scam Network</a> &middot;
+    <a href="https://claw.pizza">Claw.Pizza</a>
+  </div>
+  <div>&copy; 2026 SpunkArt. All rights reserved. <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a></div>
+</footer>
+
+<script>
+function buy(product) {
+  // TODO: Replace with Gumroad/Lemon Squeezy links
+  const prices = {
+    starter: { name: 'Starter Pack (3 Workers)', price: '$9.99' },
+    pro: { name: 'Pro Bundle (All 12 Workers)', price: '$19.99' },
+    empire: { name: 'Empire Bundle (Everything)', price: '$49.99' },
+    ebook: { name: 'AI Website Empire Ebook', price: '$14.99' },
+    openclaw: { name: 'OpenClaw Game Worker', price: '$4.99' },
+    ssl: { name: 'Auto-SSL Monitor', price: '$4.99' },
+    spotify: { name: 'Spotify Connect Widget', price: '$4.99' },
+    links: { name: 'Link Shortener', price: '$4.99' },
+    uptime: { name: 'Uptime Monitor', price: '$4.99' },
+    botblock: { name: 'Bot Blocker Pro', price: '$4.99' },
+    redirect: { name: 'Redirect Manager', price: '$4.99' },
+    images: { name: 'Image Optimizer', price: '$4.99' },
+    email: { name: 'Email Forwarder', price: '$4.99' },
+    abtest: { name: 'A/B Testing Engine', price: '$4.99' },
+    analytics: { name: 'Privacy Analytics', price: '$4.99' },
+    cache: { name: 'Cache Purger', price: '$4.99' },
+  };
+  const p = prices[product];
+  if (p) {
+    alert('Coming soon! ' + p.name + ' — ' + p.price + '\n\nDM @SpunkArt13 on X to pre-order.');
+  }
+}
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+
+</body>
+</html>
