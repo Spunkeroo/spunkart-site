@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>You Were Invited by Spunk — Exclusive Free Tool + 15% Off | SpunkArt</title>
-<meta name="description" content="You've been personally referred by Spunk. Claim your free Cloudflare Worker (Privacy Analytics — normally $4.99), get 15% off everything, and earn 25% as an affiliate.">
-<meta property="og:title" content="You Were Invited by Spunk — Exclusive Free Tool + 15% Off">
-<meta property="og:description" content="Claim your free Cloudflare Worker, 15% off everything, early access to 50 new tools, and your own affiliate link to earn 25%.">
+<title>You Were Referred — Free Tool + 15% Off | SpunkArt</title>
+<meta name="description" content="You were referred to SpunkArt. Claim your free Cloudflare Worker (Privacy Analytics — normally $4.99), get 15% off everything, and earn 25% as an affiliate.">
+<meta property="og:title" content="You Were Referred — Free Tool + 15% Off">
+<meta property="og:description" content="Claim your free Cloudflare Worker, 15% off everything, early access to 18 tools, and your own affiliate link to earn 25%.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://spunkart.com/join">
 <meta property="og:site_name" content="SpunkArt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@SpunkArt13">
-<meta name="twitter:title" content="You Were Invited by Spunk — Exclusive Free Tool + 15% Off">
+<meta name="twitter:title" content="You Were Referred — Free Tool + 15% Off">
 <meta name="twitter:description" content="Claim your free Cloudflare Worker, 15% off everything, and earn 25% on referrals.">
 <link rel="canonical" href="https://spunkart.com/join">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -24,8 +24,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Exclusive Referral Invite — SpunkArt",
-  "description": "Exclusive referral landing page. Claim a free Cloudflare Worker tool, 15% off all purchases, early access to new tools, and your own affiliate link.",
+  "name": "Referral Landing Page — SpunkArt",
+  "description": "Referral landing page. Claim a free Cloudflare Worker tool, 15% off all purchases, early access to new tools, and your own affiliate link.",
   "url": "https://spunkart.com/join",
   "publisher": {
     "@type": "Organization",
@@ -64,10 +64,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
 a{color:inherit;text-decoration:none}
-
-/* Urgency Bar */
-.urgency-bar{position:fixed;top:0;left:0;width:100%;z-index:200;background:linear-gradient(90deg,#ef4444,#ff5f1f);text-align:center;padding:0.6rem 1rem;font-size:0.85rem;font-weight:700;color:#fff}
-.urgency-bar .timer{font-family:monospace;font-size:1rem;background:rgba(0,0,0,0.3);padding:0.2rem 0.6rem;border-radius:4px;margin:0 0.3rem}
 
 /* Nav */
 .nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
@@ -163,12 +159,6 @@ a{color:inherit;text-decoration:none}
 .counter-num{font-size:3rem;font-weight:800;color:#ff5f1f;margin-bottom:0.3rem}
 .counter-label{color:#888;font-size:0.9rem}
 
-/* Testimonials */
-.testimonials{max-width:800px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.testimonial{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:1.2rem}
-.testimonial-text{color:#aaa;font-size:0.85rem;font-style:italic;margin-bottom:0.5rem}
-.testimonial-author{color:#666;font-size:0.75rem}
-
 /* Product Catalog */
 .catalog{max-width:1100px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
 .catalog-item{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.3rem;transition:all 0.3s}
@@ -215,18 +205,10 @@ a{color:inherit;text-decoration:none}
 .prize-list li span.prize-icon{font-size:1.2rem;flex-shrink:0}
 .prize-cta{color:#10b981;font-weight:700;font-size:0.95rem;font-style:italic}
 
-/* Social Proof Ticker */
-.social-proof{position:fixed;bottom:20px;left:20px;z-index:150;background:rgba(17,17,17,0.95);border:1px solid rgba(255,95,31,0.3);border-radius:12px;padding:0.7rem 1.2rem;font-size:0.8rem;color:#fff;backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,0.5);animation:proofSlideIn 0.5s ease;display:flex;align-items:center;gap:0.5rem}
-.social-proof .proof-dot{width:8px;height:8px;background:#10b981;border-radius:50%;animation:proofPulse 2s ease-in-out infinite}
-.social-proof .proof-num{color:#ff5f1f;font-weight:800}
-@keyframes proofSlideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-@keyframes proofPulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
 @media(max-width:768px){
   .hero h1{font-size:2rem}
   .hero p{font-size:1rem}
   .perks{grid-template-columns:1fr}
-  .testimonials{grid-template-columns:1fr}
   .preview-card{flex-direction:column;text-align:center}
   .preview-icon{margin:0 auto}
   .chain-flow{flex-direction:column}
@@ -235,9 +217,6 @@ a{color:inherit;text-decoration:none}
   .comp-table thead th,.comp-table tbody td{padding:0.5rem 0.3rem}
   .catalog{grid-template-columns:1fr}
   .cash-cards{grid-template-columns:1fr}
-  .social-proof{bottom:10px;left:10px;right:10px;font-size:0.75rem}
-  .urgency-bar{font-size:0.75rem;padding:0.5rem 0.5rem}
-  .urgency-bar .timer{font-size:0.85rem}
 }
 @media(max-width:480px){
   .nav{padding:0.8rem 1rem}
@@ -248,16 +227,8 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<!-- Urgency Countdown Bar -->
-<div class="urgency-bar" id="urgencyBar">
-  LIMITED TIME: This exclusive offer expires in <span class="timer" id="countdownTimer">--:--:--</span>. Sign up now to claim your free tool + 15% off.
-</div>
-
-<!-- Spacer for fixed urgency bar -->
-<div id="urgencySpacer" style="height:2.4rem"></div>
-
 <!-- Invite Banner -->
-<div class="invite-banner">You've been personally invited. Claim your free tool + 15% off below.</div>
+<div class="invite-banner">Welcome! You were referred by a friend. Claim your free tool + 15% off below.</div>
 
 <!-- Nav -->
 <nav class="nav">
@@ -274,9 +245,9 @@ a{color:inherit;text-decoration:none}
 
 <!-- Hero -->
 <section class="hero">
-  <div class="badge">EXCLUSIVE INVITE</div>
-  <h1>You Were Invited by Spunk</h1>
-  <p>Get an exclusive free tool + 25% cash commission on every sale + 15% off everything. Available for the next 72 hours only.</p>
+  <div class="badge">REFERRAL WELCOME</div>
+  <h1>Welcome! You Were Referred by a Friend</h1>
+  <p>Get a free tool + 25% cash commission on every sale + 15% off everything.</p>
   <a href="#signup" class="hero-cta">Claim My Free Tool</a>
 </section>
 
@@ -303,7 +274,7 @@ a{color:inherit;text-decoration:none}
     <div class="perk-num">3</div>
     <div class="perk-icon">&#9889;</div>
     <h3>Early Access to New Tools</h3>
-    <p>We're shipping 1 new Cloudflare Worker every day for 50 days. You get early access to each one <span class="perk-highlight">before anyone else</span>.</p>
+    <p>We currently have 18 Cloudflare Workers and are building more. You get early access to new releases <span class="perk-highlight">before anyone else</span>.</p>
   </div>
   <div class="perk">
     <div class="perk-num">4</div>
@@ -530,31 +501,6 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
-<!-- Testimonials -->
-<div class="section-title">
-  <h2>What People Are Saying</h2>
-  <p>Real feedback from SpunkArt customers.</p>
-</div>
-
-<div class="testimonials">
-  <div class="testimonial">
-    <div class="testimonial-text">"Deployed the bot blocker in 2 minutes. Already blocked 500+ scrapers in the first day."</div>
-    <div class="testimonial-author">-- Web Developer</div>
-  </div>
-  <div class="testimonial">
-    <div class="testimonial-text">"The uptime monitor replaced my $20/mo service. Same features, runs on my own infrastructure."</div>
-    <div class="testimonial-author">-- SaaS Founder</div>
-  </div>
-  <div class="testimonial">
-    <div class="testimonial-text">"120 websites in a week? I didn't believe it until I read the ebook. Now I'm building my own network."</div>
-    <div class="testimonial-author">-- Digital Entrepreneur</div>
-  </div>
-  <div class="testimonial">
-    <div class="testimonial-text">"Privacy analytics without cookies. Finally something GDPR compliant that I actually own."</div>
-    <div class="testimonial-author">-- EU Business Owner</div>
-  </div>
-</div>
-
 <!-- Referral Chain -->
 <div class="section-title">
   <h2>How the Referral Chain Works</h2>
@@ -778,8 +724,8 @@ a{color:inherit;text-decoration:none}
 
 <!-- Final CTA -->
 <section style="text-align:center;padding:3rem 2rem 4rem;max-width:600px;margin:0 auto">
-  <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Don't Miss This</h2>
-  <p style="color:#888;margin-bottom:1.5rem;font-size:0.95rem">Free tool. 15% off. Your own affiliate link. Only available through Spunk's invite.</p>
+  <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Ready to Get Started?</h2>
+  <p style="color:#888;margin-bottom:1.5rem;font-size:0.95rem">Free tool. 15% off. Your own affiliate link. Available to all referred members.</p>
   <a href="#signup" class="hero-cta" style="font-size:1.1rem;padding:1.1rem 3rem">Claim My Free Tool Now</a>
 </section>
 
@@ -831,10 +777,13 @@ a{color:inherit;text-decoration:none}
 // ========================
 (function() {
   var count = parseInt(localStorage.getItem('spunkart_join_count') || '0', 10);
-  // Base count for social proof + actual signups
-  var display = 147 + count;
+  var display = count;
   var el = document.getElementById('joinCounter');
   // Animate counter
+  if (display === 0) {
+    el.textContent = '0';
+    return;
+  }
   var current = 0;
   var step = Math.max(1, Math.floor(display / 40));
   var timer = setInterval(function() {
@@ -902,7 +851,7 @@ function claimFreeTool() {
   localStorage.setItem('spunkart_join_count', String(count + 1));
 
   // Update counter display
-  document.getElementById('joinCounter').textContent = (147 + count + 1).toLocaleString();
+  document.getElementById('joinCounter').textContent = (count + 1).toLocaleString();
 
   // Set affiliate link
   var affLink = 'https://spunkart.com/join?ref=' + refCode;
@@ -1007,73 +956,6 @@ window.viewEmails = function() {
 })();
 </script>
 
-<!-- Social Proof Ticker -->
-<div class="social-proof" id="socialProof">
-  <span class="proof-dot"></span>
-  <span><span class="proof-num" id="proofNum">--</span> people signed up in the last hour</span>
-</div>
-
-<!-- Countdown Timer + Social Proof Logic -->
-<script>
-// ========================
-// URGENCY COUNTDOWN TIMER
-// ========================
-(function() {
-  var TIMER_KEY = 'spunkart_offer_start';
-  var DURATION = 72 * 60 * 60 * 1000; // 72 hours in ms
-  var timerEl = document.getElementById('countdownTimer');
-  var barEl = document.getElementById('urgencyBar');
-
-  // Set first visit timestamp if not already set
-  if (!localStorage.getItem(TIMER_KEY)) {
-    localStorage.setItem(TIMER_KEY, Date.now().toString());
-  }
-
-  var startTime = parseInt(localStorage.getItem(TIMER_KEY), 10);
-  var endTime = startTime + DURATION;
-
-  function updateCountdown() {
-    var now = Date.now();
-    var remaining = endTime - now;
-
-    if (remaining <= 0) {
-      barEl.innerHTML = 'OFFER EXTENDED &mdash; Last chance! Sign up before midnight.';
-      return;
-    }
-
-    var hours = Math.floor(remaining / (1000 * 60 * 60));
-    var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-
-    var h = hours < 10 ? '0' + hours : hours;
-    var m = minutes < 10 ? '0' + minutes : minutes;
-    var s = seconds < 10 ? '0' + seconds : seconds;
-
-    timerEl.textContent = h + ':' + m + ':' + s;
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-})();
-
-// ========================
-// SOCIAL PROOF TICKER
-// ========================
-(function() {
-  var numEl = document.getElementById('proofNum');
-
-  function randomBetween(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  function updateProof() {
-    numEl.textContent = randomBetween(12, 47);
-  }
-
-  updateProof();
-  setInterval(updateProof, 30000);
-})();
-</script>
 
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
