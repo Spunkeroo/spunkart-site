@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Affiliate Program — Earn 25% on Every Sale | SpunkArt</title>
+<meta name="description" content="Earn 25% commission promoting SpunkArt tools. 90-day cookie. Paid in BTC, ETH, SOL, or PayPal. No minimums to join. Sign up free.">
+<meta property="og:title" content="SpunkArt Affiliate Program — Earn 25% on Every Sale">
+<meta property="og:description" content="Promote SpunkArt tools and earn 25% on every sale. 90-day cookie. Paid monthly in crypto or PayPal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/affiliates">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<link rel="canonical" href="https://spunkart.com/affiliates">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.active{color:#ff5f1f}
+
+/* Hero */
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:750px;margin:0 auto}
+.badge{display:inline-block;padding:0.3rem 1rem;background:#ff5f1f15;border:1px solid #ff5f1f33;border-radius:20px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1.5rem}
+.hero h1{font-size:2.8rem;font-weight:800;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#888;font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
+.hero-cta{display:inline-block;padding:1rem 2.5rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s}
+.hero-cta:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 8px 30px rgba(255,95,31,0.3)}
+
+/* Section */
+.section{max-width:900px;margin:0 auto;padding:0 2rem 3rem}
+.section-title{text-align:center;padding:3rem 2rem 1.5rem}
+.section-title h2{font-size:1.8rem;font-weight:700;margin-bottom:0.3rem}
+.section-title p{color:#666;font-size:0.9rem}
+
+/* How It Works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto;padding:0 2rem 3rem}
+.step{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:all 0.3s;position:relative}
+.step:hover{border-color:#ff5f1f44;transform:translateY(-3px)}
+.step-num{width:48px;height:48px;background:#ff5f1f22;border:2px solid #ff5f1f;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#ff5f1f;margin:0 auto 1rem}
+.step h3{font-size:1rem;margin-bottom:0.5rem}
+.step p{color:#888;font-size:0.85rem;line-height:1.5}
+
+/* Commission Table */
+.commission-grid{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.commission-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:#111;border:1px solid #1a1a1a;border-radius:12px;margin-bottom:0.6rem;transition:all 0.2s}
+.commission-row:hover{border-color:#ff5f1f33;background:#141414}
+.commission-label{font-weight:600;font-size:0.95rem}
+.commission-label small{display:block;color:#666;font-size:0.75rem;font-weight:400;margin-top:0.15rem}
+.commission-prices{display:flex;gap:1.5rem;align-items:center}
+.commission-sale{color:#888;font-size:0.85rem}
+.commission-earn{color:#ff5f1f;font-weight:800;font-size:1.1rem}
+
+/* Calculator */
+.calculator{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
+.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.calc-card{background:linear-gradient(145deg,#1a0a00,#111);border:1px solid #ff5f1f33;border-radius:16px;padding:1.8rem;text-align:center;transition:all 0.3s}
+.calc-card:hover{border-color:#ff5f1f66;transform:translateY(-2px)}
+.calc-scenario{font-size:0.8rem;color:#888;margin-bottom:0.8rem;line-height:1.4}
+.calc-amount{font-size:2.5rem;font-weight:800;color:#ff5f1f;margin-bottom:0.3rem}
+.calc-period{font-size:0.75rem;color:#666}
+
+/* Why Promote */
+.reasons{max-width:800px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.reason{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem;transition:all 0.3s}
+.reason:hover{border-color:#ff5f1f33;transform:translateY(-2px)}
+.reason-icon{font-size:1.8rem;margin-bottom:0.8rem}
+.reason h4{font-size:0.95rem;margin-bottom:0.3rem}
+.reason p{color:#888;font-size:0.8rem;line-height:1.5}
+
+/* Signup Form */
+.signup-section{max-width:550px;margin:0 auto;padding:0 2rem 3rem}
+.signup-card{background:linear-gradient(145deg,#111,#0d0d0d);border:1px solid #ff5f1f44;border-radius:20px;padding:2.5rem}
+.signup-card h2{font-size:1.5rem;font-weight:700;margin-bottom:0.3rem;text-align:center}
+.signup-card .signup-sub{color:#888;font-size:0.85rem;text-align:center;margin-bottom:2rem}
+.form-group{margin-bottom:1.2rem}
+.form-label{display:block;font-size:0.8rem;color:#888;margin-bottom:0.4rem;font-weight:600}
+.form-input{width:100%;padding:0.75rem 1rem;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none;transition:border-color 0.2s}
+.form-input:focus{border-color:#ff5f1f}
+.form-select{width:100%;padding:0.75rem 1rem;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.form-select:focus{border-color:#ff5f1f}
+.form-select option{background:#111;color:#e8e8e8}
+.form-submit{width:100%;padding:0.9rem;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.2s;margin-top:0.5rem}
+.form-submit:hover{background:#e5541b;transform:scale(1.01)}
+.form-note{font-size:0.7rem;color:#555;text-align:center;margin-top:0.8rem}
+
+/* Referral Link Display */
+.ref-result{display:none;text-align:center;padding:1.5rem 0}
+.ref-result h3{color:#10b981;font-size:1.2rem;margin-bottom:0.8rem}
+.ref-link-box{display:flex;gap:0.5rem;margin-bottom:1rem}
+.ref-link-input{flex:1;padding:0.7rem;background:#0a0a0a;border:1px solid #10b981;border-radius:8px;color:#10b981;font-size:0.8rem;font-family:'SF Mono',Monaco,monospace;outline:none}
+.ref-copy-btn{padding:0.7rem 1.2rem;background:#10b981;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.ref-copy-btn:hover{background:#0d9668}
+.ref-copy-btn.copied{background:#0d9668}
+.ref-stats{font-size:0.8rem;color:#888}
+
+/* Legal */
+.legal{max-width:700px;margin:0 auto;padding:0 2rem 3rem}
+.legal-card{background:#111;border:1px solid #1a1a1a;border-radius:16px;padding:2rem}
+.legal-card h3{font-size:1rem;margin-bottom:1rem;color:#888}
+.legal-card ul{list-style:none;font-size:0.8rem;color:#888}
+.legal-card ul li{padding:0.4rem 0;border-bottom:1px solid #1a1a1a}
+.legal-card ul li:last-child{border-bottom:none}
+.legal-card ul li::before{content:"- ";color:#ff5f1f}
+
+/* Email Capture */
+.email-section{max-width:600px;margin:0 auto;padding:2rem;text-align:center}
+.email-section h2{font-size:1.5rem;margin-bottom:0.5rem}
+.email-section p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
+.email-form{display:flex;gap:0.5rem;max-width:450px;margin:0 auto}
+.email-input{flex:1;padding:0.8rem 1rem;background:#111;border:1px solid #333;border-radius:8px;color:#fff;font-size:0.9rem;outline:none}
+.email-input:focus{border-color:#ff5f1f}
+.email-submit{padding:0.8rem 1.5rem;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem;white-space:nowrap}
+.email-submit:hover{background:#e5541b}
+.email-note{font-size:0.7rem;color:#555;margin-top:0.5rem}
+.email-success{display:none;color:#10b981;font-weight:700;margin-top:1rem}
+
+/* Network */
+.network{max-width:1000px;margin:0 auto;padding:0 2rem 3rem;text-align:center}
+.network-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-top:1rem}
+.network-link{padding:0.3rem 0.8rem;background:#111;border:1px solid #1a1a1a;border-radius:6px;font-size:0.7rem;color:#888;transition:all 0.2s}
+.network-link:hover{border-color:#ff5f1f;color:#ff5f1f}
+
+/* Footer */
+.footer{text-align:center;padding:2rem;border-top:1px solid #1a1a1a;color:#444;font-size:0.75rem}
+.footer a{color:#ff5f1f}
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .steps{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .commission-row{flex-direction:column;gap:0.5rem;text-align:center}
+  .commission-prices{justify-content:center}
+  .reasons{grid-template-columns:1fr}
+  .email-form{flex-direction:column}
+  .ref-link-box{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/affiliates" class="active">Affiliates</a>
+    <a href="/blog">Blog</a>
+    <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="badge">AFFILIATE PROGRAM</div>
+  <h1>Earn 25% on Every Sale</h1>
+  <p>Promote SpunkArt tools. Get paid in crypto or PayPal. No minimums to join.</p>
+  <a href="#signup" class="hero-cta">Join the Affiliate Program</a>
+</section>
+
+<!-- How It Works -->
+<div class="section-title">
+  <h2>How It Works</h2>
+  <p>Three steps. Five minutes. Start earning today.</p>
+</div>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <h3>Sign Up Free</h3>
+    <p>Enter your email below and get your unique referral link instantly. No approval process, no waiting.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <h3>Share Your Link</h3>
+    <p>Post it on X, Reddit, your blog, YouTube, newsletter, anywhere your audience hangs out.</p>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <h3>Earn 25% Per Sale</h3>
+    <p>Every sale through your link earns you 25% commission. Paid monthly in BTC, ETH, SOL, or PayPal.</p>
+  </div>
+</div>
+
+<!-- Commission Structure -->
+<div class="section-title">
+  <h2>Commission Structure</h2>
+  <p>25% across the board. No tiers, no complexity. You earn on everything.</p>
+</div>
+
+<div class="commission-grid">
+  <div class="commission-row">
+    <div class="commission-label">Individual Tool Sales<small>Any of the 18 Cloudflare Workers</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$4.99 sale</span>
+      <span class="commission-earn">You earn $1.25</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Pro Bundle<small>All 18 Workers</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$19.99 sale</span>
+      <span class="commission-earn">You earn $5.00</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Empire Bundle<small>Everything + Ebook</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$49.99 sale</span>
+      <span class="commission-earn">You earn $12.50</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Lifetime Access<small>Everything forever + future tools</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$99.99 sale</span>
+      <span class="commission-earn">You earn $25.00</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Starter Reseller License<small>5 tools to resell</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$99 sale</span>
+      <span class="commission-earn">You earn $25.00</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Pro Reseller License<small>All 18 tools to resell</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$199 sale</span>
+      <span class="commission-earn">You earn $50.00</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Agency Reseller License<small>Everything + exclusives</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$499 sale</span>
+      <span class="commission-earn">You earn $125.00</span>
+    </div>
+  </div>
+  <div class="commission-row">
+    <div class="commission-label">Ebook<small>The AI Website Empire Blueprint</small></div>
+    <div class="commission-prices">
+      <span class="commission-sale">$14.99 sale</span>
+      <span class="commission-earn">You earn $3.75</span>
+    </div>
+  </div>
+</div>
+
+<!-- Earnings Calculator -->
+<div class="section-title">
+  <h2>Earnings Calculator</h2>
+  <p>See what your referrals are worth.</p>
+</div>
+
+<div class="calculator">
+  <div class="calc-grid">
+    <div class="calc-card">
+      <div class="calc-scenario">Refer <strong style="color:#fff">10</strong> Lifetime customers</div>
+      <div class="calc-amount">$250</div>
+      <div class="calc-period">per month</div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-scenario">Refer <strong style="color:#fff">50</strong> Pro Bundle sales</div>
+      <div class="calc-amount">$250</div>
+      <div class="calc-period">per month</div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-scenario">Refer <strong style="color:#fff">100</strong> individual tool sales</div>
+      <div class="calc-amount">$125</div>
+      <div class="calc-period">per month</div>
+    </div>
+  </div>
+</div>
+
+<!-- Why Promote SpunkArt -->
+<div class="section-title">
+  <h2>Why Promote SpunkArt</h2>
+  <p>Real products. Real conversions. Real payouts.</p>
+</div>
+
+<div class="reasons">
+  <div class="reason">
+    <div class="reason-icon">&#9889;</div>
+    <h4>High Conversion</h4>
+    <p>People need these tools and the prices are low enough to convert on first visit. No hard sell needed.</p>
+  </div>
+  <div class="reason">
+    <div class="reason-icon">&#128337;</div>
+    <h4>90-Day Cookie</h4>
+    <p>Your referral gets credited for 90 days. If they come back and buy a month later, you still get paid.</p>
+  </div>
+  <div class="reason">
+    <div class="reason-icon">&#9989;</div>
+    <h4>Real Products That Work</h4>
+    <p>120+ live websites prove these tools work. Your audience can verify everything before buying.</p>
+  </div>
+  <div class="reason">
+    <div class="reason-icon">&#128200;</div>
+    <h4>Growing Catalog</h4>
+    <p>50 new tools shipping in 50 days. More products = more reasons for your audience to buy = more commissions.</p>
+  </div>
+  <div class="reason">
+    <div class="reason-icon">&#128230;</div>
+    <h4>We Handle Everything</h4>
+    <p>Support, delivery, updates, refunds. You just send traffic. We do the rest.</p>
+  </div>
+  <div class="reason">
+    <div class="reason-icon">&#8383;</div>
+    <h4>Crypto or PayPal</h4>
+    <p>Get paid in BTC, ETH, SOL, or PayPal. Your choice. Monthly payouts with no hoops to jump through.</p>
+  </div>
+</div>
+
+<!-- Affiliate Signup Form -->
+<div class="section-title" id="signup">
+  <h2>Join the Affiliate Program</h2>
+  <p>Free to join. Start earning in minutes.</p>
+</div>
+
+<div class="signup-section">
+  <div class="signup-card">
+    <div id="signupForm">
+      <h2>Sign Up as an Affiliate</h2>
+      <p class="signup-sub">Get your unique referral link instantly.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="affName">Your Name</label>
+        <input type="text" class="form-input" id="affName" placeholder="Jane Smith" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="affEmail">Email Address</label>
+        <input type="email" class="form-input" id="affEmail" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="affChannel">How will you promote?</label>
+        <select class="form-select" id="affChannel">
+          <option value="" disabled selected>Select your main channel</option>
+          <option value="blog">Blog / Website</option>
+          <option value="youtube">YouTube</option>
+          <option value="twitter">X / Twitter</option>
+          <option value="newsletter">Newsletter</option>
+          <option value="reddit">Reddit</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <button class="form-submit" onclick="signupAffiliate()">Get My Referral Link</button>
+      <p class="form-note">No approval needed. Your link is generated instantly.</p>
+    </div>
+
+    <div class="ref-result" id="refResult">
+      <h3>You're In!</h3>
+      <p style="color:#888;font-size:0.85rem;margin-bottom:1rem">Share this link anywhere. You earn 25% on every sale.</p>
+      <div class="ref-link-box">
+        <input type="text" class="ref-link-input" id="refLinkDisplay" readonly>
+        <button class="ref-copy-btn" id="refCopyBtn" onclick="copyRefLink()">Copy Link</button>
+      </div>
+      <p class="ref-stats">Your referral code: <strong id="refCodeDisplay" style="color:#ff5f1f"></strong></p>
+      <p style="color:#666;font-size:0.75rem;margin-top:0.8rem">Bookmark this page. Your affiliate info is saved locally.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Legal Terms -->
+<div class="section-title">
+  <h2>Affiliate Terms</h2>
+</div>
+
+<div class="legal">
+  <div class="legal-card">
+    <h3>Program Terms & Conditions</h3>
+    <ul>
+      <li>25% commission on net sales (after refunds and chargebacks)</li>
+      <li>90-day cookie duration from first click</li>
+      <li>Monthly payouts on the 1st of each month</li>
+      <li>Minimum payout threshold: $25</li>
+      <li>Payment via BTC, ETH, SOL, or PayPal (your choice)</li>
+      <li>No self-referrals — purchasing through your own link is not permitted</li>
+      <li>SpunkArt reserves the right to modify commission rates with 30 days written notice</li>
+      <li>Fraudulent activity, fake traffic, or misleading promotion results in immediate termination</li>
+      <li>Cookie credit goes to the last referrer if multiple affiliates are involved</li>
+      <li>Commissions on refunded orders will be deducted from future payouts</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Email Capture -->
+<section class="email-section" id="newsletter">
+  <h2>Get Affiliate Tips + Updates</h2>
+  <p>Join the SpunkArt newsletter for promotional assets, conversion tips, and new product announcements.</p>
+  <form class="email-form" onsubmit="return captureEmail(event)">
+    <input type="email" class="email-input" id="emailInput" placeholder="you@example.com" required>
+    <button type="submit" class="email-submit">Subscribe Free</button>
+  </form>
+  <div class="email-note">No spam. Unsubscribe anytime.</div>
+  <div class="email-success" id="emailSuccess">You're in! We'll send you affiliate tips and new product alerts.</div>
+</section>
+
+<!-- Network Showcase -->
+<section>
+  <div class="section-title">
+    <h2>The SpunkArt Network</h2>
+    <p>120+ live sites. Real products powering real businesses.</p>
+  </div>
+  <div class="network">
+    <div class="network-grid">
+      <a href="https://predict.autos" class="network-link" target="_blank">predict.autos</a>
+      <a href="https://predict.garden" class="network-link" target="_blank">predict.garden</a>
+      <a href="https://predict.beauty" class="network-link" target="_blank">predict.beauty</a>
+      <a href="https://predict.codes" class="network-link" target="_blank">predict.codes</a>
+      <a href="https://predict.horse" class="network-link" target="_blank">predict.horse</a>
+      <a href="https://predict.pics" class="network-link" target="_blank">predict.pics</a>
+      <a href="https://aliens.coupons" class="network-link" target="_blank">aliens.coupons</a>
+      <a href="https://monkey.coupons" class="network-link" target="_blank">monkey.coupons</a>
+      <a href="https://scam.ink" class="network-link" target="_blank">scam.ink</a>
+      <a href="https://claw.pizza" class="network-link" target="_blank">claw.pizza</a>
+      <a href="https://stimulant.work" class="network-link" target="_blank">stimulant.work</a>
+      <a href="https://aibot.beer" class="network-link" target="_blank">aibot.beer</a>
+      <a href="https://spunk.bet" class="network-link" target="_blank">spunk.bet</a>
+      <a href="https://predict.mom" class="network-link" target="_blank">predict.mom</a>
+      <a href="https://predict.gay" class="network-link" target="_blank">predict.gay</a>
+      <a href="https://predict.surf" class="network-link" target="_blank">predict.surf</a>
+    </div>
+    <p style="color:#555;font-size:0.75rem;margin-top:1rem">...and 100+ more across 7 networks</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div style="margin-bottom:1rem">
+    <a href="https://spunkart.com">SpunkArt</a> &middot;
+    <a href="/store">Store</a> &middot;
+    <a href="/ebook">Ebook</a> &middot;
+    <a href="/reseller">Reseller</a> &middot;
+    <a href="/affiliates">Affiliates</a> &middot;
+    <a href="/blog">Blog</a> &middot;
+    <a href="https://spunk.bet">Spunk.Bet</a> &middot;
+    <a href="https://predict.autos">Predict Network</a> &middot;
+    <a href="https://stimulant.work">Stimulant</a> &middot;
+    <a href="https://aliens.coupons">Aliens</a> &middot;
+    <a href="https://aibot.beer">AiBot</a> &middot;
+    <a href="https://monkey.coupons">Monkey</a> &middot;
+    <a href="https://scam.ink">Scam Network</a> &middot;
+    <a href="https://claw.pizza">Claw.Pizza</a>
+  </div>
+  <div>&copy; 2026 SpunkArt. All rights reserved. <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a></div>
+</footer>
+
+<script>
+// ========================
+// AFFILIATE SIGNUP
+// ========================
+function signupAffiliate() {
+  var name = document.getElementById('affName').value.trim();
+  var email = document.getElementById('affEmail').value.trim();
+  var channel = document.getElementById('affChannel').value;
+
+  if (!name) {
+    document.getElementById('affName').style.borderColor = '#ef4444';
+    document.getElementById('affName').focus();
+    return;
+  }
+  if (!email || !email.includes('@')) {
+    document.getElementById('affEmail').style.borderColor = '#ef4444';
+    document.getElementById('affEmail').focus();
+    return;
+  }
+
+  // Generate referral code from email
+  var refCode = email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '') + Math.random().toString(36).substr(2, 4);
+
+  // Save affiliate data
+  var affiliate = {
+    name: name,
+    email: email,
+    channel: channel,
+    refCode: refCode,
+    signupDate: new Date().toISOString()
+  };
+
+  localStorage.setItem('spunkart_affiliate', JSON.stringify(affiliate));
+
+  // Save email to list
+  saveEmail(email);
+
+  // Show referral link
+  var refLink = 'https://spunkart.com/store?ref=' + refCode;
+  document.getElementById('refLinkDisplay').value = refLink;
+  document.getElementById('refCodeDisplay').textContent = refCode;
+
+  document.getElementById('signupForm').style.display = 'none';
+  document.getElementById('refResult').style.display = 'block';
+
+  // GA4 tracking
+  if (typeof gtag === 'function') {
+    gtag('event', 'affiliate_signup', {
+      channel: channel,
+      ref_code: refCode
+    });
+  }
+}
+
+// Check for existing affiliate on load
+(function() {
+  var existing = localStorage.getItem('spunkart_affiliate');
+  if (existing) {
+    try {
+      var data = JSON.parse(existing);
+      if (data.refCode) {
+        var refLink = 'https://spunkart.com/store?ref=' + data.refCode;
+        document.getElementById('refLinkDisplay').value = refLink;
+        document.getElementById('refCodeDisplay').textContent = data.refCode;
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('refResult').style.display = 'block';
+      }
+    } catch(e) {}
+  }
+})();
+
+// ========================
+// COPY REFERRAL LINK
+// ========================
+function copyRefLink() {
+  var input = document.getElementById('refLinkDisplay');
+  input.select();
+  input.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(input.value).then(function() {
+    var btn = document.getElementById('refCopyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'Copy Link';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// ========================
+// EMAIL CAPTURE
+// ========================
+function captureEmail(e) {
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value.trim();
+  if (!email) return false;
+
+  saveEmail(email);
+
+  document.getElementById('emailInput').style.display = 'none';
+  document.querySelector('.email-submit').style.display = 'none';
+  document.getElementById('emailSuccess').style.display = 'block';
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'newsletter_signup', { page: 'affiliates', email_domain: email.split('@')[1] });
+  }
+  return false;
+}
+
+function saveEmail(email) {
+  var emails = JSON.parse(localStorage.getItem('spunkart_emails') || '[]');
+  if (emails.indexOf(email) === -1) {
+    emails.push(email);
+    localStorage.setItem('spunkart_emails', JSON.stringify(emails));
+  }
+}
+
+// ========================
+// ADMIN HELPERS
+// ========================
+window.viewAffiliates = function() {
+  var aff = localStorage.getItem('spunkart_affiliate');
+  if (aff) console.table([JSON.parse(aff)]);
+  else console.log('No affiliate data found.');
+};
+</script>
+
+<!-- Content Protection + Watermark -->
+<script>
+(function() {
+  var w = document.createElement('div');
+  w.style.cssText = 'position:fixed;bottom:10px;right:10px;font-size:0.6rem;color:rgba(255,95,31,0.15);font-weight:800;pointer-events:none;z-index:9999;letter-spacing:1px;text-transform:uppercase;';
+  w.textContent = 'SPUNKART.COM';
+  document.body.appendChild(w);
+})();
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+
+</body>
+</html>
