@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter & Text Analyzer - Free Online Tool | SPUNKART.COM</title>
+<meta name="description" content="Count words, characters, sentences, and paragraphs instantly. Get reading time and speaking time estimates. Free real-time text analyzer.">
+<meta property="og:title" content="Word Counter & Text Analyzer | SPUNKART.COM">
+<meta property="og:description" content="Count words, characters, sentences, paragraphs, reading time, and speaking time. Free real-time tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/word-counter">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Word Counter & Text Analyzer | SPUNKART.COM">
+<meta name="twitter:description" content="Free real-time word counter with reading and speaking time estimates.">
+<link rel="canonical" href="https://spunkart.com/word-counter">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+
+/* Stats Grid */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.stat-card{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:16px;text-align:center;transition:border-color .2s;}
+.stat-card:hover{border-color:#ff5f1f44;}
+.stat-number{font-size:2rem;font-weight:800;color:#ff5f1f;line-height:1;}
+.stat-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+
+/* Secondary stats */
+.stats-secondary{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+.stat-card-sm{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;}
+.stat-card-sm .stat-label-sm{font-size:0.85rem;color:#888;}
+.stat-card-sm .stat-value-sm{font-size:1.1rem;font-weight:700;color:#e8e8e8;}
+
+/* Textarea */
+.text-area{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.95rem;font-family:inherit;line-height:1.7;outline:none;resize:vertical;transition:border-color .2s;}
+.text-area:focus{border-color:#ff5f1f;}
+.text-area::placeholder{color:#444;}
+
+/* Action bar */
+.action-bar{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px;}
+.action-bar .info{font-size:0.8rem;color:#555;}
+.btn-row{display:flex;gap:8px;}
+.btn{padding:8px 16px;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+
+/* Top words */
+.top-words{margin-top:20px;}
+.top-words h3{font-size:0.9rem;color:#888;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
+.word-list{display:flex;flex-wrap:wrap;gap:8px;}
+.word-chip{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:4px 12px;font-size:0.8rem;color:#ccc;display:flex;align-items:center;gap:6px;}
+.word-chip .word-count{color:#ff5f1f;font-weight:600;font-size:0.75rem;}
+
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.copied-toast.show{opacity:1;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-secondary{grid-template-columns:1fr;}
+  .stat-number{font-size:1.5rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter & Text Analyzer","description":"Count words, characters, sentences, and paragraphs. Get reading and speaking time estimates. Free real-time tool.","url":"https://spunkart.com/word-counter.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Word Counter & <span>Text Analyzer</span></h1>
+  <p class="subtitle">Paste or type your text below. Stats update in real time as you type.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number" id="wordCount">0</div>
+      <div class="stat-label">Words</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="charCount">0</div>
+      <div class="stat-label">Characters</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="charNoSpaceCount">0</div>
+      <div class="stat-label">Chars (no spaces)</div>
+    </div>
+  </div>
+
+  <div class="stats-secondary">
+    <div class="stat-card-sm">
+      <span class="stat-label-sm">Sentences</span>
+      <span class="stat-value-sm" id="sentenceCount">0</span>
+    </div>
+    <div class="stat-card-sm">
+      <span class="stat-label-sm">Paragraphs</span>
+      <span class="stat-value-sm" id="paragraphCount">0</span>
+    </div>
+    <div class="stat-card-sm">
+      <span class="stat-label-sm">Reading Time</span>
+      <span class="stat-value-sm" id="readingTime">0 sec</span>
+    </div>
+    <div class="stat-card-sm">
+      <span class="stat-label-sm">Speaking Time</span>
+      <span class="stat-value-sm" id="speakingTime">0 sec</span>
+    </div>
+  </div>
+
+  <!-- Text Area -->
+  <div class="section" style="padding:16px;">
+    <textarea class="text-area" id="textInput" placeholder="Start typing or paste your text here..."></textarea>
+    <div class="action-bar">
+      <div class="info" id="avgInfo">Avg word length: 0 chars</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="copyText()">Copy Text</button>
+        <button class="btn btn-secondary" onclick="clearText()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Words -->
+  <div class="section top-words" id="topWordsSection" style="display:none;">
+    <h3>Top 10 Words</h3>
+    <div class="word-list" id="wordList"></div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/tweet-generator">Tweet Generator</a>
+      <a href="/hashtag-generator">Hashtag Generator</a>
+      <a href="/password-generator">Password Generator</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+      <a href="/color-contrast">Color Contrast Checker</a>
+      <a href="/terms-of-service">ToS Generator</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+const textInput = document.getElementById('textInput');
+
+// Common stop words to exclude from top words
+const stopWords = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','it','as','was','are','be','been','being','have','has','had','do','does','did','will','would','shall','should','may','might','must','can','could','that','this','these','those','i','you','he','she','we','they','me','him','her','us','them','my','your','his','its','our','their','not','no','so','if','than','too','very','just','about','up','out','into','over','after','under','between','through','during','before','then','more','also','only','other','new','some','what','which','who','how','all','each','every','both','few','most','such','any','own','same','when','where','why','while','again','further','once']);
+
+function analyze() {
+  const text = textInput.value;
+
+  // Word count
+  const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
+  const wordCount = words.length;
+
+  // Character counts
+  const charCount = text.length;
+  const charNoSpace = text.replace(/\s/g, '').length;
+
+  // Sentence count - split by . ! ? but handle abbreviations
+  const sentences = text.trim() === '' ? 0 : (text.match(/[.!?]+(\s|$)/g) || []).length || (text.trim().length > 0 ? 1 : 0);
+
+  // Paragraph count
+  const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length || (text.trim().length > 0 ? 1 : 0);
+
+  // Reading time (avg 238 words per minute)
+  const readingMinutes = wordCount / 238;
+  let readingTimeStr;
+  if (readingMinutes < 1) {
+    readingTimeStr = Math.ceil(readingMinutes * 60) + ' sec';
+  } else if (readingMinutes < 60) {
+    const mins = Math.floor(readingMinutes);
+    const secs = Math.round((readingMinutes - mins) * 60);
+    readingTimeStr = mins + ' min' + (secs > 0 ? ' ' + secs + ' sec' : '');
+  } else {
+    const hrs = Math.floor(readingMinutes / 60);
+    const mins = Math.round(readingMinutes % 60);
+    readingTimeStr = hrs + ' hr' + (mins > 0 ? ' ' + mins + ' min' : '');
+  }
+
+  // Speaking time (avg 150 words per minute)
+  const speakingMinutes = wordCount / 150;
+  let speakingTimeStr;
+  if (speakingMinutes < 1) {
+    speakingTimeStr = Math.ceil(speakingMinutes * 60) + ' sec';
+  } else if (speakingMinutes < 60) {
+    const mins = Math.floor(speakingMinutes);
+    const secs = Math.round((speakingMinutes - mins) * 60);
+    speakingTimeStr = mins + ' min' + (secs > 0 ? ' ' + secs + ' sec' : '');
+  } else {
+    const hrs = Math.floor(speakingMinutes / 60);
+    const mins = Math.round(speakingMinutes % 60);
+    speakingTimeStr = hrs + ' hr' + (mins > 0 ? ' ' + mins + ' min' : '');
+  }
+
+  // Average word length
+  const avgWordLen = wordCount > 0 ? (words.reduce((sum, w) => sum + w.replace(/[^a-zA-Z0-9]/g, '').length, 0) / wordCount).toFixed(1) : '0';
+
+  // Update DOM
+  document.getElementById('wordCount').textContent = wordCount.toLocaleString();
+  document.getElementById('charCount').textContent = charCount.toLocaleString();
+  document.getElementById('charNoSpaceCount').textContent = charNoSpace.toLocaleString();
+  document.getElementById('sentenceCount').textContent = sentences.toLocaleString();
+  document.getElementById('paragraphCount').textContent = paragraphs.toLocaleString();
+  document.getElementById('readingTime').textContent = readingTimeStr;
+  document.getElementById('speakingTime').textContent = speakingTimeStr;
+  document.getElementById('avgInfo').textContent = 'Avg word length: ' + avgWordLen + ' chars';
+
+  // Top words
+  if (wordCount > 0) {
+    const freq = {};
+    words.forEach(w => {
+      const clean = w.toLowerCase().replace(/[^a-z0-9'-]/g, '');
+      if (clean.length > 1 && !stopWords.has(clean)) {
+        freq[clean] = (freq[clean] || 0) + 1;
+      }
+    });
+
+    const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    if (sorted.length > 0) {
+      document.getElementById('topWordsSection').style.display = '';
+      document.getElementById('wordList').innerHTML = sorted.map(([word, count]) =>
+        '<span class="word-chip">' + escHtml(word) + ' <span class="word-count">' + count + '</span></span>'
+      ).join('');
+    } else {
+      document.getElementById('topWordsSection').style.display = 'none';
+    }
+  } else {
+    document.getElementById('topWordsSection').style.display = 'none';
+  }
+}
+
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copied!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+function copyText() {
+  const text = textInput.value;
+  if (!text) { showToast('Nothing to copy'); return; }
+  navigator.clipboard.writeText(text);
+  showToast('Text copied!');
+  gtag('event', 'copy_text', { event_category: 'tool_use' });
+}
+
+function clearText() {
+  textInput.value = '';
+  analyze();
+  textInput.focus();
+}
+
+// Real-time analysis
+textInput.addEventListener('input', analyze);
+
+// Initialize
+analyze();
+</script>
+</body>
+</html>
