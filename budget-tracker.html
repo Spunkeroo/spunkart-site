@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Budget Tracker — Free Personal Finance Tool</title>
+<meta name="description" content="Free budget tracker. Track income, expenses, and savings goals. Works offline, data stays on your device.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh}
+.app{max-width:700px;margin:0 auto;padding:1.5rem}
+h1{font-size:1.8rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.8rem}
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem}
+.stat{background:#111;border:1px solid #222;border-radius:12px;padding:1rem;text-align:center}
+.stat-num{font-size:1.5rem;font-weight:800}
+.stat-label{font-size:0.7rem;color:#666;margin-top:0.2rem}
+.income{color:#10b981}
+.expense{color:#ef4444}
+.balance{color:#3b82f6}
+.add-form{background:#111;border:1px solid #222;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem}
+.form-row{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
+.form-row input,.form-row select{padding:0.6rem;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#fff;font-size:0.85rem;flex:1;min-width:100px}
+.form-row select{min-width:120px}
+.type-toggle{display:flex;gap:0.3rem;margin-bottom:0.5rem}
+.type-btn{flex:1;padding:0.5rem;border:1px solid #333;background:#0a0a0a;color:#888;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.8rem;text-align:center;transition:all 0.2s}
+.type-btn.active-income{background:#10b98122;border-color:#10b981;color:#10b981}
+.type-btn.active-expense{background:#ef444422;border-color:#ef4444;color:#ef4444}
+.add-btn{width:100%;padding:0.7rem;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.85rem}
+.section-title{font-size:1rem;color:#888;margin-bottom:0.8rem;display:flex;justify-content:space-between;align-items:center}
+.transactions{margin-bottom:2rem}
+.tx{display:flex;align-items:center;padding:0.7rem;background:#111;border:1px solid #1a1a1a;border-radius:10px;margin-bottom:0.5rem;transition:all 0.2s}
+.tx:hover{border-color:#333}
+.tx-icon{font-size:1.3rem;width:40px;text-align:center}
+.tx-info{flex:1}
+.tx-name{font-weight:600;font-size:0.85rem}
+.tx-cat{color:#666;font-size:0.7rem}
+.tx-amount{font-weight:700;font-size:0.95rem}
+.tx-amount.pos{color:#10b981}
+.tx-amount.neg{color:#ef4444}
+.tx-del{background:none;border:none;color:#666;cursor:pointer;margin-left:0.5rem;font-size:0.75rem}
+.tx-del:hover{color:#ef4444}
+.chart{background:#111;border:1px solid #222;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem}
+.chart h3{font-size:0.9rem;color:#888;margin-bottom:0.8rem}
+.bars{display:flex;align-items:flex-end;gap:3px;height:100px}
+.bar{flex:1;border-radius:3px 3px 0 0;min-height:2px;transition:height 0.5s;position:relative}
+.bar:hover .bar-tip{display:block}
+.bar-tip{display:none;position:absolute;top:-25px;left:50%;transform:translateX(-50%);background:#333;padding:0.2rem 0.4rem;border-radius:4px;font-size:0.6rem;white-space:nowrap}
+.categories{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.cat-pill{padding:0.3rem 0.7rem;background:#111;border:1px solid #222;border-radius:20px;font-size:0.7rem;cursor:pointer;transition:all 0.2s}
+.cat-pill:hover{border-color:#3b82f6}
+.cat-pill.active{border-color:#3b82f6;background:#3b82f622}
+.export-btns{display:flex;gap:0.5rem;margin-bottom:1.5rem}
+.export-btn{padding:0.4rem 0.8rem;background:#222;border:none;border-radius:6px;color:#888;font-size:0.75rem;cursor:pointer}
+.export-btn:hover{color:#fff}
+.footer{text-align:center;padding:1.5rem;color:#444;font-size:0.7rem}
+.footer a{color:#10b981}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>💰 Budget Tracker</h1>
+  <div class="sub">100% private — data stays on your device</div>
+
+  <div class="overview">
+    <div class="stat"><div class="stat-num income" id="totalIncome">$0</div><div class="stat-label">Income</div></div>
+    <div class="stat"><div class="stat-num expense" id="totalExpense">$0</div><div class="stat-label">Expenses</div></div>
+    <div class="stat"><div class="stat-num balance" id="totalBalance">$0</div><div class="stat-label">Balance</div></div>
+  </div>
+
+  <div class="add-form">
+    <div class="type-toggle">
+      <div class="type-btn active-income" id="typeIncome" onclick="setType('income')">+ Income</div>
+      <div class="type-btn" id="typeExpense" onclick="setType('expense')">- Expense</div>
+    </div>
+    <div class="form-row">
+      <input type="text" id="txName" placeholder="Description">
+      <input type="number" id="txAmount" placeholder="Amount" step="0.01">
+    </div>
+    <div class="form-row">
+      <select id="txCategory">
+        <option value="salary">Salary</option>
+        <option value="freelance">Freelance</option>
+        <option value="food">Food & Dining</option>
+        <option value="transport">Transport</option>
+        <option value="housing">Housing</option>
+        <option value="utilities">Utilities</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="shopping">Shopping</option>
+        <option value="health">Health</option>
+        <option value="subscriptions">Subscriptions</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="date" id="txDate" value="">
+    </div>
+    <button class="add-btn" onclick="addTransaction()">Add Transaction</button>
+  </div>
+
+  <div class="chart" id="chartSection">
+    <h3>Last 30 Days</h3>
+    <div class="bars" id="chartBars"></div>
+  </div>
+
+  <div class="export-btns">
+    <button class="export-btn" onclick="exportCSV()">Export CSV</button>
+    <button class="export-btn" onclick="clearAll()">Clear All</button>
+  </div>
+
+  <div class="transactions">
+    <div class="section-title"><span>Transactions</span><span id="txCount" style="font-size:0.75rem;color:#666">0</span></div>
+    <div id="txList"></div>
+  </div>
+
+  <div class="footer">
+    Free tool by <a href="https://spunkart.com">SpunkArt</a> &middot;
+    <a href="https://spunkart.com/store">More Tools</a>
+  </div>
+</div>
+
+<script>
+const ICONS = {salary:'💼',freelance:'💻',food:'🍕',transport:'🚗',housing:'🏠',utilities:'⚡',entertainment:'🎮',shopping:'🛍️',health:'💊',subscriptions:'📱',other:'📌'};
+let transactions = JSON.parse(localStorage.getItem('budget_tx') || '[]');
+let txType = 'income';
+
+document.getElementById('txDate').value = new Date().toISOString().split('T')[0];
+
+function setType(type) {
+  txType = type;
+  document.getElementById('typeIncome').className = 'type-btn' + (type === 'income' ? ' active-income' : '');
+  document.getElementById('typeExpense').className = 'type-btn' + (type === 'expense' ? ' active-expense' : '');
+}
+
+function addTransaction() {
+  const name = document.getElementById('txName').value.trim();
+  const amount = parseFloat(document.getElementById('txAmount').value);
+  const category = document.getElementById('txCategory').value;
+  const date = document.getElementById('txDate').value;
+  if (!name || !amount) return;
+
+  transactions.unshift({ id: Date.now(), name, amount, type: txType, category, date });
+  save();
+  render();
+  document.getElementById('txName').value = '';
+  document.getElementById('txAmount').value = '';
+}
+
+function deleteTransaction(id) {
+  transactions = transactions.filter(t => t.id !== id);
+  save();
+  render();
+}
+
+function save() {
+  localStorage.setItem('budget_tx', JSON.stringify(transactions));
+}
+
+function render() {
+  const income = transactions.filter(t => t.type === 'income').reduce((a, t) => a + t.amount, 0);
+  const expense = transactions.filter(t => t.type === 'expense').reduce((a, t) => a + t.amount, 0);
+
+  document.getElementById('totalIncome').textContent = '$' + income.toLocaleString('en-US', {minimumFractionDigits: 2});
+  document.getElementById('totalExpense').textContent = '$' + expense.toLocaleString('en-US', {minimumFractionDigits: 2});
+  document.getElementById('totalBalance').textContent = '$' + (income - expense).toLocaleString('en-US', {minimumFractionDigits: 2});
+  document.getElementById('txCount').textContent = transactions.length + ' total';
+
+  document.getElementById('txList').innerHTML = transactions.slice(0, 50).map(t => `
+    <div class="tx">
+      <div class="tx-icon">${ICONS[t.category] || '📌'}</div>
+      <div class="tx-info">
+        <div class="tx-name">${t.name}</div>
+        <div class="tx-cat">${t.category} · ${t.date}</div>
+      </div>
+      <div class="tx-amount ${t.type === 'income' ? 'pos' : 'neg'}">${t.type === 'income' ? '+' : '-'}$${t.amount.toFixed(2)}</div>
+      <button class="tx-del" onclick="deleteTransaction(${t.id})">✕</button>
+    </div>
+  `).join('');
+
+  renderChart();
+}
+
+function renderChart() {
+  const days = 30;
+  const data = {};
+  const today = new Date();
+  for (let i = 0; i < days; i++) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().split('T')[0];
+    data[key] = { income: 0, expense: 0 };
+  }
+
+  transactions.forEach(t => {
+    if (data[t.date]) data[t.date][t.type] += t.amount;
+  });
+
+  const maxVal = Math.max(...Object.values(data).map(d => Math.max(d.income, d.expense)), 1);
+  const bars = document.getElementById('chartBars');
+  bars.innerHTML = Object.entries(data).reverse().map(([date, d]) => {
+    const h = Math.max((Math.max(d.income, d.expense) / maxVal) * 90, 2);
+    const color = d.income >= d.expense ? '#10b981' : '#ef4444';
+    return `<div class="bar" style="height:${h}px;background:${color}"><div class="bar-tip">${date.slice(5)}: +$${d.income.toFixed(0)} -$${d.expense.toFixed(0)}</div></div>`;
+  }).join('');
+}
+
+function exportCSV() {
+  let csv = 'Date,Type,Category,Description,Amount\n';
+  transactions.forEach(t => {
+    csv += `${t.date},${t.type},${t.category},"${t.name}",${t.type === 'expense' ? '-' : ''}${t.amount.toFixed(2)}\n`;
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'budget-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+}
+
+function clearAll() {
+  if (confirm('Delete all transactions? This cannot be undone.')) {
+    transactions = [];
+    save();
+    render();
+  }
+}
+
+render();
+</script>
+</body>
+</html>

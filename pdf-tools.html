@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDF Tools — Merge, Split, Compress PDFs Free</title>
+<meta name="description" content="Free online PDF tools. Merge, split, compress, and convert PDFs instantly in your browser. No upload required, 100% private.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh}
+.container{max-width:800px;margin:0 auto;padding:2rem}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ef4444,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:0.5rem;font-size:0.9rem}
+.privacy{text-align:center;color:#10b981;font-size:0.75rem;margin-bottom:2rem}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
+.tool-card{background:#111;border:1px solid #222;border-radius:14px;padding:1.5rem;text-align:center;cursor:pointer;transition:all 0.3s}
+.tool-card:hover{border-color:#ef444466;transform:translateY(-3px);box-shadow:0 8px 30px rgba(239,68,68,0.1)}
+.tool-card.active{border-color:#ef4444;background:#1a0a0a}
+.tool-icon{font-size:2rem;margin-bottom:0.5rem}
+.tool-name{font-weight:700;font-size:0.9rem;margin-bottom:0.2rem}
+.tool-desc{color:#666;font-size:0.7rem}
+.workspace{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:2rem;min-height:300px;display:none}
+.workspace.active{display:block}
+.drop-zone{border:2px dashed #333;border-radius:12px;padding:3rem;text-align:center;cursor:pointer;transition:all 0.3s}
+.drop-zone:hover,.drop-zone.drag{border-color:#ef4444;background:#ef444408}
+.drop-zone-icon{font-size:3rem;margin-bottom:0.5rem}
+.drop-zone-text{color:#888;font-size:0.9rem}
+.file-list{margin-top:1.5rem}
+.file-item{display:flex;justify-content:space-between;align-items:center;padding:0.7rem;background:#0a0a0a;border-radius:8px;margin-bottom:0.5rem;font-size:0.85rem}
+.file-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-size{color:#666;font-size:0.75rem;margin:0 1rem}
+.file-remove{background:none;border:none;color:#ef4444;cursor:pointer;font-size:1rem}
+.action-btn{display:block;width:100%;padding:1rem;background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;margin-top:1.5rem;transition:all 0.2s}
+.action-btn:hover{transform:scale(1.02)}
+.action-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.progress{height:6px;background:#222;border-radius:3px;margin-top:1rem;overflow:hidden;display:none}
+.progress-bar{height:100%;background:linear-gradient(90deg,#ef4444,#f59e0b);border-radius:3px;width:0;transition:width 0.3s}
+.footer{text-align:center;padding:2rem;color:#444;font-size:0.75rem}
+.footer a{color:#ef4444}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>PDF Tools</h1>
+  <div class="sub">Merge, Split, Compress — All in Your Browser</div>
+  <div class="privacy">🔒 Files never leave your device. 100% private.</div>
+
+  <div class="tools-grid">
+    <div class="tool-card active" onclick="selectTool('merge')">
+      <div class="tool-icon">🔗</div>
+      <div class="tool-name">Merge PDFs</div>
+      <div class="tool-desc">Combine multiple PDFs into one</div>
+    </div>
+    <div class="tool-card" onclick="selectTool('split')">
+      <div class="tool-icon">✂️</div>
+      <div class="tool-name">Split PDF</div>
+      <div class="tool-desc">Extract pages from a PDF</div>
+    </div>
+    <div class="tool-card" onclick="selectTool('compress')">
+      <div class="tool-icon">📦</div>
+      <div class="tool-name">Compress</div>
+      <div class="tool-desc">Reduce PDF file size</div>
+    </div>
+    <div class="tool-card" onclick="selectTool('img2pdf')">
+      <div class="tool-icon">🖼️</div>
+      <div class="tool-name">Image to PDF</div>
+      <div class="tool-desc">Convert images to PDF</div>
+    </div>
+  </div>
+
+  <!-- Merge Workspace -->
+  <div class="workspace active" id="ws-merge">
+    <h2 style="font-size:1.2rem;margin-bottom:1rem">Merge PDFs</h2>
+    <div class="drop-zone" id="drop-merge" onclick="document.getElementById('file-merge').click()">
+      <div class="drop-zone-icon">📄</div>
+      <div class="drop-zone-text">Drop PDF files here or click to browse</div>
+      <input type="file" id="file-merge" multiple accept=".pdf" style="display:none" onchange="addFiles('merge',this.files)">
+    </div>
+    <div class="file-list" id="list-merge"></div>
+    <button class="action-btn" id="btn-merge" onclick="doMerge()" disabled>Merge PDFs</button>
+    <div class="progress" id="progress-merge"><div class="progress-bar" id="pbar-merge"></div></div>
+  </div>
+
+  <!-- Split Workspace -->
+  <div class="workspace" id="ws-split">
+    <h2 style="font-size:1.2rem;margin-bottom:1rem">Split PDF</h2>
+    <div class="drop-zone" onclick="document.getElementById('file-split').click()">
+      <div class="drop-zone-icon">📄</div>
+      <div class="drop-zone-text">Drop a PDF file here</div>
+      <input type="file" id="file-split" accept=".pdf" style="display:none" onchange="addFiles('split',this.files)">
+    </div>
+    <div class="file-list" id="list-split"></div>
+    <div style="margin-top:1rem">
+      <label style="font-size:0.85rem;color:#888">Pages to extract (e.g. 1-3, 5, 7-10):</label>
+      <input type="text" id="split-pages" placeholder="1-3, 5, 7-10" style="width:100%;padding:0.6rem;background:#0a0a0a;border:1px solid #333;border-radius:6px;color:#fff;margin-top:0.5rem">
+    </div>
+    <button class="action-btn" id="btn-split" onclick="doSplit()" disabled>Split PDF</button>
+  </div>
+
+  <!-- Compress Workspace -->
+  <div class="workspace" id="ws-compress">
+    <h2 style="font-size:1.2rem;margin-bottom:1rem">Compress PDF</h2>
+    <div class="drop-zone" onclick="document.getElementById('file-compress').click()">
+      <div class="drop-zone-icon">📄</div>
+      <div class="drop-zone-text">Drop a PDF file here</div>
+      <input type="file" id="file-compress" accept=".pdf" style="display:none" onchange="addFiles('compress',this.files)">
+    </div>
+    <div class="file-list" id="list-compress"></div>
+    <div style="margin-top:1rem">
+      <label style="font-size:0.85rem;color:#888">Quality:</label>
+      <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
+        <button class="tool-card" style="padding:0.5rem;flex:1;font-size:0.75rem" onclick="setQuality('low')">Low<br><span style="color:#10b981">Max compression</span></button>
+        <button class="tool-card active" style="padding:0.5rem;flex:1;font-size:0.75rem" onclick="setQuality('medium')">Medium<br><span style="color:#f59e0b">Balanced</span></button>
+        <button class="tool-card" style="padding:0.5rem;flex:1;font-size:0.75rem" onclick="setQuality('high')">High<br><span style="color:#ef4444">Best quality</span></button>
+      </div>
+    </div>
+    <button class="action-btn" id="btn-compress" onclick="doCompress()" disabled>Compress PDF</button>
+  </div>
+
+  <!-- Image to PDF Workspace -->
+  <div class="workspace" id="ws-img2pdf">
+    <h2 style="font-size:1.2rem;margin-bottom:1rem">Images to PDF</h2>
+    <div class="drop-zone" onclick="document.getElementById('file-img2pdf').click()">
+      <div class="drop-zone-icon">🖼️</div>
+      <div class="drop-zone-text">Drop image files here (JPG, PNG, WebP)</div>
+      <input type="file" id="file-img2pdf" multiple accept="image/*" style="display:none" onchange="addFiles('img2pdf',this.files)">
+    </div>
+    <div class="file-list" id="list-img2pdf"></div>
+    <button class="action-btn" id="btn-img2pdf" onclick="doImg2Pdf()" disabled>Convert to PDF</button>
+  </div>
+
+  <div class="footer">
+    Free tool by <a href="https://spunkart.com">SpunkArt</a> &middot;
+    <a href="https://spunkart.com/store">More Tools</a> &middot;
+    <a href="https://scam.ink">Scam Checker</a> &middot;
+    Files processed 100% in your browser
+  </div>
+</div>
+
+<!-- PDF-lib for actual PDF manipulation -->
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<script>
+const files = { merge: [], split: [], compress: [], img2pdf: [] };
+let currentTool = 'merge';
+let compressQuality = 'medium';
+
+function selectTool(tool) {
+  currentTool = tool;
+  document.querySelectorAll('.tool-card').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.querySelectorAll('.workspace').forEach(w => w.classList.remove('active'));
+  document.getElementById('ws-' + tool).classList.add('active');
+}
+
+function addFiles(tool, newFiles) {
+  for (const f of newFiles) files[tool].push(f);
+  renderFiles(tool);
+  const btn = document.getElementById('btn-' + tool);
+  if (btn) btn.disabled = files[tool].length === 0;
+}
+
+function removeFile(tool, idx) {
+  files[tool].splice(idx, 1);
+  renderFiles(tool);
+  const btn = document.getElementById('btn-' + tool);
+  if (btn) btn.disabled = files[tool].length === 0;
+}
+
+function renderFiles(tool) {
+  const list = document.getElementById('list-' + tool);
+  list.innerHTML = files[tool].map((f, i) => `
+    <div class="file-item">
+      <span class="file-name">📄 ${f.name}</span>
+      <span class="file-size">${(f.size/1024).toFixed(0)} KB</span>
+      <button class="file-remove" onclick="removeFile('${tool}',${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function setQuality(q) { compressQuality = q; }
+
+async function doMerge() {
+  if (files.merge.length < 2) return alert('Add at least 2 PDFs');
+  const btn = document.getElementById('btn-merge');
+  btn.textContent = 'Merging...'; btn.disabled = true;
+
+  try {
+    const { PDFDocument } = PDFLib;
+    const merged = await PDFDocument.create();
+
+    for (const f of files.merge) {
+      const bytes = await f.arrayBuffer();
+      const doc = await PDFDocument.load(bytes);
+      const pages = await merged.copyPages(doc, doc.getPageIndices());
+      pages.forEach(p => merged.addPage(p));
+    }
+
+    const pdfBytes = await merged.save();
+    download(pdfBytes, 'merged.pdf');
+    btn.textContent = 'Merge PDFs';
+    btn.disabled = false;
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = 'Merge PDFs'; btn.disabled = false;
+  }
+}
+
+async function doSplit() {
+  if (!files.split.length) return;
+  const btn = document.getElementById('btn-split');
+  btn.textContent = 'Splitting...'; btn.disabled = true;
+
+  try {
+    const { PDFDocument } = PDFLib;
+    const bytes = await files.split[0].arrayBuffer();
+    const doc = await PDFDocument.load(bytes);
+    const pageRanges = parsePageRanges(document.getElementById('split-pages').value, doc.getPageCount());
+
+    const newDoc = await PDFDocument.create();
+    const pages = await newDoc.copyPages(doc, pageRanges.map(p => p - 1));
+    pages.forEach(p => newDoc.addPage(p));
+
+    const pdfBytes = await newDoc.save();
+    download(pdfBytes, 'split.pdf');
+    btn.textContent = 'Split PDF'; btn.disabled = false;
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = 'Split PDF'; btn.disabled = false;
+  }
+}
+
+async function doCompress() {
+  if (!files.compress.length) return;
+  const btn = document.getElementById('btn-compress');
+  btn.textContent = 'Compressing...'; btn.disabled = true;
+
+  try {
+    const { PDFDocument } = PDFLib;
+    const bytes = await files.compress[0].arrayBuffer();
+    const doc = await PDFDocument.load(bytes);
+
+    // Basic compression by re-saving (pdf-lib optimizes on save)
+    const pdfBytes = await doc.save();
+    const origSize = bytes.byteLength;
+    const newSize = pdfBytes.byteLength;
+    const savings = ((1 - newSize/origSize) * 100).toFixed(1);
+
+    download(pdfBytes, 'compressed.pdf');
+    btn.textContent = `Saved ${savings}% — Compress Again`;
+    btn.disabled = false;
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = 'Compress PDF'; btn.disabled = false;
+  }
+}
+
+async function doImg2Pdf() {
+  if (!files.img2pdf.length) return;
+  const btn = document.getElementById('btn-img2pdf');
+  btn.textContent = 'Converting...'; btn.disabled = true;
+
+  try {
+    const { PDFDocument } = PDFLib;
+    const doc = await PDFDocument.create();
+
+    for (const f of files.img2pdf) {
+      const bytes = await f.arrayBuffer();
+      let img;
+      if (f.type === 'image/png') img = await doc.embedPng(bytes);
+      else img = await doc.embedJpg(bytes);
+
+      const page = doc.addPage([img.width, img.height]);
+      page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
+    }
+
+    const pdfBytes = await doc.save();
+    download(pdfBytes, 'images.pdf');
+    btn.textContent = 'Convert to PDF'; btn.disabled = false;
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = 'Convert to PDF'; btn.disabled = false;
+  }
+}
+
+function parsePageRanges(str, max) {
+  if (!str.trim()) return Array.from({length: max}, (_, i) => i + 1);
+  const pages = new Set();
+  str.split(',').forEach(part => {
+    part = part.trim();
+    if (part.includes('-')) {
+      const [start, end] = part.split('-').map(Number);
+      for (let i = start; i <= Math.min(end, max); i++) pages.add(i);
+    } else {
+      const n = parseInt(part);
+      if (n >= 1 && n <= max) pages.add(n);
+    }
+  });
+  return Array.from(pages).sort((a, b) => a - b);
+}
+
+function download(bytes, name) {
+  const blob = new Blob([bytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Drag & drop
+document.querySelectorAll('.drop-zone').forEach(zone => {
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault(); zone.classList.remove('drag');
+    addFiles(currentTool, e.dataTransfer.files);
+  });
+});
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+</body>
+</html>
