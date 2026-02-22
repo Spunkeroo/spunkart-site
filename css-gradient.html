@@ -101,6 +101,17 @@ body.fullscreen-mode .fullscreen-toggle{z-index:1001;}
   .presets-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));}
   .preview-box{height:200px;}
 }
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Gradient Generator","description":"Design CSS gradients visually. Linear, radial, conic. Copy CSS code instantly.","url":"https://spunkart.com/css-gradient.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
 </head>
@@ -119,6 +130,7 @@ body.fullscreen-mode .fullscreen-toggle{z-index:1001;}
 <main>
   <h1>CSS Gradient <span>Generator</span></h1>
   <p class="subtitle">Create beautiful gradients visually. Pick colors, adjust angles, copy the CSS.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
 
   <!-- Live Preview -->
   <div class="preview-box" id="previewBox">
@@ -353,6 +365,32 @@ function toggleFullscreen() {
 // Init
 updateRemoveButtons();
 updateGradient();
+</script>
+<div class="sa-email-bar" id="saEmailBar"><p>Like this? Get 30 more free tools in your inbox.</p><input type="email" id="saBarEmail" placeholder="you@email.com"><button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button><button class="sa-dismiss" onclick="saDismissBar()">&times;</button></div>
+<script>
+(function(){
+  var TOOL_KEY='sa_usage_css-gradient';var BAR_KEY='sa_bar_dismissed_css-gradient';
+  var count=parseInt(localStorage.getItem(TOOL_KEY))||0;
+  var badge=document.getElementById('usageBadge');
+  function updateBadge(){badge.textContent='\uD83D\uDD25 Used '+count+' time'+(count!==1?'s':'');}
+  if(count>0) updateBadge(); else{count=0;badge.textContent='\uD83D\uDD25 Used 0 times';}
+  var _orig=updateGradient;
+  updateGradient=function(){
+    _orig.apply(this,arguments);
+    count++;localStorage.setItem(TOOL_KEY,count);updateBadge();
+    if(count>=2&&!localStorage.getItem(BAR_KEY)){document.getElementById('saEmailBar').classList.add('show');}
+  };
+  window.updateGradient=updateGradient;
+  window.saDismissBar=function(){document.getElementById('saEmailBar').classList.remove('show');localStorage.setItem(BAR_KEY,'1');};
+  window.saSubmitEmail=function(){
+    var email=document.getElementById('saBarEmail').value;
+    if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
+    localStorage.setItem('sa_subscriber_email',email);localStorage.setItem(BAR_KEY,'1');
+    window.open('https://embeds.beehiiv.com/cae41704-7588-4c50-83f1-11f5b4a0585f?email='+encodeURIComponent(email),'_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn=document.querySelector('.sa-sub-btn');btn.textContent='Subscribed!';btn.style.background='#10b981';
+  };
+})();
 </script>
 </body>
 </html>
