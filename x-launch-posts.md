@@ -10,6 +10,14 @@
 
 ---
 
+## EVERY POST RULE
+
+1. **Every image must say "Follow @SpunkArt13 for free tools & tips"** — bottom of every card, every time, no exceptions.
+2. **Every post must include spunkart.com/spunk** — this is the link. Always.
+3. **Keep it simple** — if your grandma can't understand it, rewrite it.
+
+---
+
 ## 1. LAUNCH THREAD (10 Tweets)
 
 ### Tweet 1 — Hook (appeals to EVERYONE)
@@ -18,11 +26,16 @@ I made 23 free online tools and I'm not charging a dime.
 
 No signup. No email. No credit card. No catch.
 
-Password generator, invoice maker, PDF tools, budget tracker, QR codes, scam checker, and 17 more.
+Make invoices. Merge PDFs. Create passwords. Track your budget. Build QR codes. Check if a site is a scam. And 17 more.
+
+Just open your browser and use them:
+spunkart.com/spunk
+
+Follow @SpunkArt13 for daily free tool drops — I DM back and share tips daily.
 
 Built solo with @AnthropicAI — here's the full list:
 
-**Image description:** 1200x675. Dark (#0a0a0a) background. Large white text: "23 Free Tools. Zero Signup." Below in green (#10b981): "Invoices. PDFs. Passwords. Budgets. QR Codes. And more." Orange (#ff5f1f) accent line across the bottom. SpunkArt logo small bottom-right.
+**Image description:** 1200x675. Dark (#0a0a0a) background. Large white text: "23 Free Tools. Zero Signup." Below in green (#10b981): "Invoices. PDFs. Passwords. Budgets. QR Codes. And more." Orange (#ff5f1f) accent line across the bottom. SpunkArt logo small bottom-right. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -30,30 +43,36 @@ Built solo with @AnthropicAI — here's the full list:
 
 These tools solve real problems:
 
-- Need an invoice? Free.
-- Need a privacy policy? Free.
-- Need to merge PDFs? Free.
-- Need a strong password? Free.
-- Need a QR code? Free.
-- Need to check if a site is a scam? Free.
+- Need to bill a client? Free invoice maker.
+- Need a privacy policy for your site? Free generator.
+- Need to combine two PDFs? Free merger.
+- Need a strong password? Free generator.
+- Need a QR code for your business? Free.
+- Think a website might be a scam? Free checker.
 
-No app to download. No account to create. Works in your browser.
+No app to download. No account to create. Just open it in your browser and go.
 
-**Image description:** 1200x675. Dark background. Two-column layout: left side lists problems in white, right side shows "FREE" in green (#10b981) next to each. Orange (#ff5f1f) header: "Every tool. Every time. Free."
+spunkart.com/spunk
+
+**Image description:** 1200x675. Dark background. Two-column layout: left side lists problems in white, right side shows "FREE" in green (#10b981) next to each. Orange (#ff5f1f) header: "Every tool. Every time. Free." Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tweet 3 — Who These Are For
 
-Who are these for?
+Who are these for? You.
 
-- Freelancers who need invoices without paying for QuickBooks
-- Small business owners who need a privacy policy without a lawyer
-- Anyone who needs to compress images without uploading to a sketchy site
-- Students managing their budget
-- Job seekers building a professional email signature
+- You freelance and need to send invoices (no QuickBooks needed)
+- You run a small business and need a privacy policy (no lawyer needed)
+- You want to shrink big image files (no sketchy upload sites)
+- You're a student tracking your spending
+- You're job hunting and need a professional email signature
 
-If you use the internet, something here saves you time. @IndieHackers
+If you use the internet, at least one of these saves you time and money.
+
+spunkart.com/spunk
+
+Follow @SpunkArt13 — I DM back and share tips daily. @IndieHackers
 
 ---
 
@@ -61,26 +80,30 @@ If you use the internet, something here saves you time. @IndieHackers
 
 What people normally pay for these tools:
 
-- Invoice generator: $15/mo (FreshBooks)
-- PDF tools: $12/mo (Adobe)
-- QR code generator: $12/mo (@Canva Pro)
-- Privacy policy: $100+ (lawyer or generator)
-- Image compression: $5/mo (TinyPNG Pro)
-- Landing page copy: $29/mo (Jasper)
+- Making invoices: $15/mo (FreshBooks)
+- Merging PDFs: $12/mo (Adobe)
+- Creating QR codes: $12/mo (@Canva Pro)
+- Getting a privacy policy: $100+ (lawyer)
+- Shrinking images: $5/mo (TinyPNG Pro)
+- Writing landing page text: $29/mo (Jasper)
 
-That's $800+/year.
+That's $800+/year for stuff you can do free right now.
 
 SpunkArt: $0. Forever.
+
+spunkart.com/spunk
 
 ---
 
 ### Tweet 5 — Privacy and Trust
 
-Every tool runs in your browser.
+Every tool runs right on your phone or computer.
 
-Your files never leave your device. Your data is never stored. There's no server upload. No tracking pixel. No analytics on your content.
+Your files never get sent anywhere. Nothing is saved. Nothing is tracked. Your stuff stays yours.
 
 I built these with @AnthropicAI the way I wish all free tools worked — actually free, actually private.
+
+spunkart.com/spunk
 
 ---
 
@@ -88,85 +111,98 @@ I built these with @AnthropicAI the way I wish all free tools worked — actuall
 
 All 23 free tools:
 
-1. Password Generator
-2. PDF Merge/Split/Compress
-3. Budget Tracker
-4. Invoice Generator
-5. QR Code Generator
-6. Business Name Generator
-7. Email Signature Generator
-8. Privacy Policy Generator
-9. Social Bio Generator
-10. Meta Tag Generator
-11. Color Palette Generator
-12. JSON Formatter
-13. Markdown Editor
-14. CSS Gradient Generator
-15. Image Compressor
-16. Landing Page Copy Generator
-17. Uptime Monitor
-18. Sitemap Generator
-19. HTTP Headers Checker
-20. Robots.txt Generator
-21. Favicon Generator
-22. Scam Checker
-23. Landing Page Builder
+1. Password Generator — make strong passwords
+2. PDF Tools — merge, split, or shrink PDFs
+3. Budget Tracker — see where your money goes
+4. Invoice Generator — bill clients in seconds
+5. QR Code Generator — make QR codes for anything
+6. Business Name Generator — brainstorm company names
+7. Email Signature Generator — look professional in every email
+8. Privacy Policy Generator — get a legal privacy policy for your site
+9. Social Bio Generator — write your X/LinkedIn/IG bio
+10. Meta Tag Generator — help Google find your site
+11. Color Palette Generator — pick brand colors
+12. JSON Formatter — clean up messy code
+13. Markdown Editor — write and preview docs
+14. CSS Gradient Generator — make color gradients
+15. Image Compressor — shrink big image files
+16. Landing Page Copy Generator — write website text
+17. Uptime Monitor — check if your site is up
+18. Sitemap Generator — tell Google about your pages
+19. HTTP Headers Checker — check your site's security
+20. Robots.txt Generator — control what Google sees
+21. Favicon Generator — make that little browser tab icon
+22. Scam Checker — check if a website is legit
+23. Landing Page Builder — build a web page without code
 
-spunkart.com/store#free-tools
+How to use them:
+1. Go to spunkart.com/spunk
+2. Click any tool
+3. Use it — no download, no signup, no account
+
+spunkart.com/spunk
 
 ---
 
 ### Tweet 7 — Premium Tools (soft pitch)
 
-I also built 18 premium tools for people who run websites.
+I also built 18 paid tools for people who run websites.
 
-Link shortener, redirect engine, A/B tester, form handler, rate limiter, and more. All built on @CloudflareDevs Workers.
+Shorten links, redirect pages, test which version works better, handle forms, block bots, and more.
 
-$4.99 each. Or $19.99 for all 18. One-time purchase. You own the code.
+$4.99 each. Or $19.99 for all 18. Pay once, keep forever. The code is yours.
 
 But the 23 free tools? Those stay free. No bait and switch.
 
-spunkart.com/store
+spunkart.com/spunk
 
 ---
 
 ### Tweet 8 — Referral Program
 
-Want to earn money just by sharing free tools?
+Want to earn money just by sharing a link?
 
 Share spunkart.com/spunk with anyone.
 
-If they buy any premium tool, you get 25% cash. No cap. No minimum. No expiry.
+If they buy any paid tool, you get 25% of the sale in cash. No limit. No minimum. It never expires.
 
 You also get 10% off everything for yourself.
 
 The free tools help people. The referral pays you for helping.
 
+spunkart.com/spunk
+
 ---
 
 ### Tweet 9 — Social Proof / Scale
 
-These aren't weekend projects sitting on a demo page.
+These aren't hobby projects sitting on a demo page.
 
-I built 120+ live websites across 7 networks. Every tool is battle-tested. Every one runs in production.
+I built 120+ live websites across 7 networks. Every tool is tested and used by real people every day.
 
-One solo developer. Built with @AnthropicAI + @CloudflareDevs. Real tools people actually use.
+One solo developer. Built with @AnthropicAI + @CloudflareDevs. Real tools that actually work.
+
+Follow @SpunkArt13 for daily free tool drops & DM me for help.
+
+spunkart.com/spunk
 
 ---
 
 ### Tweet 10 — CTA
 
-Try any tool right now. Takes 5 seconds.
+Try any tool right now. Takes 5 seconds:
 
-spunkart.com/store#free-tools
-
-No signup. No email. Just use it.
+1. Go to spunkart.com/spunk
+2. Click any tool
+3. Use it — no download, no signup, no account
 
 If it saves you time, share this thread. Someone in your feed needs these too.
 
+Follow @SpunkArt13 — I DM back and share tips daily.
+
 #freetools #smallbusiness #freelancer #productivity
 
-**Image description:** 1200x675. Dark background. "TRY FREE NOW" in large orange (#ff5f1f) text. "No signup. No email. No credit card." in white. URL "spunkart.com/spunk" in green (#10b981). Arrow pointing to the link. SpunkArt logo.
+**Image description:** 1200x675. Dark background. "TRY FREE NOW" in large orange (#ff5f1f) text. "1. Go to spunkart.com/spunk  2. Click any tool  3. Use it" in white, stacked. URL "spunkart.com/spunk" in green (#10b981). Arrow pointing to the link. SpunkArt logo. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -177,68 +213,76 @@ If it saves you time, share this thread. Someone in your feed needs these too.
 
 Still using your dog's name as a password?
 
-This free password generator creates unbreakable passwords in one click. Set length, toggle symbols, numbers, uppercase. Copy instantly.
+This free tool makes strong passwords in one click. Pick how long. Pick what characters. Copy it. Done.
 
-Nothing stored. Nothing sent anywhere. Runs 100% in your browser.
+Nothing saved. Nothing sent anywhere. Works right in your browser.
 
-spunkart.com/store#free-tools
+How to use it:
+1. Go to spunkart.com/spunk
+2. Click Password Generator
+3. Copy your new password
+
+Follow @SpunkArt13 for daily free tool drops & DM me for help.
 
 #cybersecurity #onlinesafety #freetools
 
-**Image description:** Screenshot of Password Generator UI on dark (#0a0a0a) background. Generated password visible in input field with green (#10b981) "Copy" button. Toggle options for length, symbols, numbers. Orange (#ff5f1f) SpunkArt logo top-left.
+**Image description:** Screenshot of Password Generator UI on dark (#0a0a0a) background. Generated password visible in input field with green (#10b981) "Copy" button. Toggle options for length, symbols, numbers. Orange (#ff5f1f) SpunkArt logo top-left. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 2 — PDF Tools
 **Target:** Office workers, students, freelancers
 
-Tired of paying Adobe $12/month just to merge 2 PDFs?
+Tired of paying Adobe $12/month just to combine 2 PDFs?
 
-This free tool merges, splits, and compresses PDFs right in your browser. No upload to any server. No file size limit. No watermark.
+This free tool combines, splits, and shrinks PDFs right in your browser. No upload. No file size limit. No watermark.
 
 Your documents never leave your device. @veraborns
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #productivity #officehacks #freetools
 
-**Image description:** Screenshot of PDF Tools on dark background. Three tabs: Merge, Split, Compress. File drop zone with orange (#ff5f1f) border. Green (#10b981) action button. Clean minimal layout.
+**Image description:** Screenshot of PDF Tools on dark background. Three tabs: Merge, Split, Compress. File drop zone with orange (#ff5f1f) border. Green (#10b981) action button. Clean minimal layout. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 3 — Budget Tracker
 **Target:** People trying to save money
 
-Trying to figure out where your money goes every month?
+Want to know where your money goes every month?
 
-This free budget tracker runs entirely in your browser. Add income, add expenses, see the breakdown by category.
+This free budget tracker works right in your browser. Add what you earn, add what you spend, and see it all broken down.
 
-No app download. No cloud sync. Your financial data stays on YOUR device.
+No app to download. No cloud account. Your money info stays on YOUR device.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #budgeting #personalfinance #moneytips
 
-**Image description:** Screenshot of Budget Tracker on dark background. Table of income/expense entries with totals. Green (#10b981) for income, orange (#ff5f1f) for expenses. Summary chart visible.
+**Image description:** Screenshot of Budget Tracker on dark background. Table of income/expense entries with totals. Green (#10b981) for income, orange (#ff5f1f) for expenses. Summary chart visible. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 4 — Invoice Generator
 **Target:** Freelancers, small business owners
 
-Freelancers: stop paying $15/month for invoicing software.
+Freelancers: stop paying $15/month just to bill your clients.
 
-This free invoice generator creates professional invoices in your browser. Add line items, tax, discounts. Export to PDF instantly.
+This free tool makes professional invoices in your browser. Add items, tax, discounts. Save as a PDF in one click.
 
 No account. No watermark. No "upgrade to remove branding."
 
 Just clean invoices. Free forever. @levaborns @marc_louvion
 
-spunkart.com/store#free-tools
+How to use it:
+1. Go to spunkart.com/spunk
+2. Click Invoice Generator
+3. Fill it out and export your PDF
 
 #freelancer #smallbusiness #invoicing
 
-**Image description:** Screenshot of Invoice Generator on dark background. Professional invoice with line items, subtotal, tax, total. Orange (#ff5f1f) "Export PDF" button. Company info fields at top.
+**Image description:** Screenshot of Invoice Generator on dark background. Professional invoice with line items, subtotal, tax, total. Orange (#ff5f1f) "Export PDF" button. Company info fields at top. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -247,15 +291,15 @@ spunkart.com/store#free-tools
 
 Starting a business and stuck on the name?
 
-Enter your industry and a few keywords. Get dozens of AI-powered business name ideas in seconds. Built with @OpenAI.
+Type in what your business does and a few words that describe it. Get dozens of name ideas in seconds.
 
-No signup. No email capture. Just brainstorm and go.
+No signup. No email. Just brainstorm and go.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #entrepreneur #startup #businessowner #newbusiness
 
-**Image description:** Screenshot of Business Name Generator on dark background. Input fields for industry and keywords. Generated list of 10+ names with green (#10b981) indicators. Orange (#ff5f1f) "Generate" button.
+**Image description:** Screenshot of Business Name Generator on dark background. Input fields for industry and keywords. Generated list of 10+ names with green (#10b981) indicators. Orange (#ff5f1f) "Generate" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -264,15 +308,17 @@ spunkart.com/store#free-tools
 
 QR codes for your menu, business card, or storefront — free.
 
-Generate QR codes for any URL, text, or contact info. Download as PNG or SVG. No tracking embedded. No expiry. No account.
+Type in any link, text, or contact info. Get a QR code. Download the image. Done.
+
+No tracking hidden inside. No expiration. No account needed.
 
 @Canva charges $12/month for this. Ours is free forever.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #smallbusiness #marketing #restaurantowner #qrcode
 
-**Image description:** Screenshot of QR Code Generator on dark background. URL input field with QR code rendered below. Green (#10b981) "Download PNG" and "Download SVG" buttons. Clean dark UI.
+**Image description:** Screenshot of QR Code Generator on dark background. URL input field with QR code rendered below. Green (#10b981) "Download PNG" and "Download SVG" buttons. Clean dark UI. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -281,15 +327,15 @@ spunkart.com/store#free-tools
 
 Your email signature is the first thing people see after reading your message.
 
-Build a professional one in 60 seconds. Add your name, title, company, links, social icons. Copy as HTML. Paste into Gmail, Outlook, or Apple Mail.
+Make a professional one in 60 seconds. Type in your name, title, company, and links. Copy it. Paste it into Gmail, Outlook, or Apple Mail.
 
 Free. No account needed.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #jobsearch #professionaltips #emailmarketing
 
-**Image description:** Screenshot of Email Signature Generator on dark background. Input fields on left. Live signature preview on right with clean formatting. Green (#10b981) "Copy HTML" button.
+**Image description:** Screenshot of Email Signature Generator on dark background. Input fields on left. Live signature preview on right with clean formatting. Green (#10b981) "Copy HTML" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -298,32 +344,32 @@ spunkart.com/store#free-tools
 
 If you have a website, you legally need a privacy policy.
 
-Lawyers charge $500+. Privacy policy generators charge $100+/year.
+Lawyers charge $500+. Other generators charge $100+/year.
 
-This one is free. Answer a few questions about your site. Get a complete, professional privacy policy covering data collection, cookies, GDPR, and third-party services.
+This one is free. Answer a few simple questions about your site. Get a complete privacy policy that covers everything — data collection, cookies, and more.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #smallbusiness #websiteowner #ecommerce #privacy
 
-**Image description:** Screenshot of Privacy Policy Generator on dark background. Step-by-step form with checkboxes. Generated policy preview below. Green (#10b981) "Download" button.
+**Image description:** Screenshot of Privacy Policy Generator on dark background. Step-by-step form with checkboxes. Generated policy preview below. Green (#10b981) "Download" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 9 — Social Bio Generator
 **Target:** Content creators, job seekers, anyone updating their profile
 
-Writing your own bio is the hardest writing assignment.
+Writing your own bio is the hardest thing to write.
 
-Pick your platform — X, LinkedIn, Instagram, or GitHub. Enter a few details. Get a polished AI-generated bio instantly. @svpino
+Pick your platform — X, LinkedIn, Instagram, or GitHub. Type a few details about yourself. Get a polished bio you can copy and paste. @svpino
 
-Stop staring at a blank bio field. Let the tool do it.
+Stop staring at a blank bio field. Let the tool write it for you.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #contentcreator #linkedin #socialmedia #personalbranding
 
-**Image description:** Screenshot of Social Bio Generator on dark background. Platform tabs (X, LinkedIn, Instagram, GitHub). Input fields for name, role, interests. Generated bio with green (#10b981) "Copy" button.
+**Image description:** Screenshot of Social Bio Generator on dark background. Platform tabs (X, LinkedIn, Instagram, GitHub). Input fields for name, role, interests. Generated bio with green (#10b981) "Copy" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -332,113 +378,113 @@ spunkart.com/store#free-tools
 
 Your website exists but Google can't find it?
 
-Proper meta tags fix that. Enter your page info, get perfectly formatted meta tags for SEO, Open Graph, and Twitter Cards.
+This tool fixes that. Type in your page info. Get the code that helps Google and social media show your site correctly.
 
-Copy-paste into your HTML. Done. Your site starts showing up correctly in search results and social shares.
+Copy and paste it into your website. Done. Your site starts showing up in search results and looks right when shared.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #seo #blogging #smallbusiness #websitetips
 
-**Image description:** Screenshot of Meta Tag Generator on dark background. Input fields for title, description, URL. Generated HTML meta tags in syntax-highlighted code block. Orange (#ff5f1f) "Generate" button.
+**Image description:** Screenshot of Meta Tag Generator on dark background. Input fields for title, description, URL. Generated HTML meta tags in syntax-highlighted code block. Orange (#ff5f1f) "Generate" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 11 — Color Palette Generator
 **Target:** Designers, content creators, small business owners doing their own branding
 
-Need brand colors but can't afford a designer?
+Need colors for your brand but can't afford a designer?
 
-Pick a base color. Get complementary, analogous, triadic, and split-complementary palettes instantly.
+Pick one color you like. The tool gives you 5 colors that look great together.
 
-Copy hex codes in one click. Use them for your website, social posts, presentations, anything. Free alternative to @Canva's color wheel.
+Copy the color codes in one click. Use them on your website, social posts, presentations, anything. Free alternative to @Canva's color wheel.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #design #branding #contentcreator #canva
 
-**Image description:** Screenshot of Color Palette Generator on dark background. Color picker on left. Five generated swatches with hex codes on right. Orange and green accent colors in UI.
+**Image description:** Screenshot of Color Palette Generator on dark background. Color picker on left. Five generated swatches with hex codes on right. Orange and green accent colors in UI. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 12 — JSON Formatter
 **Target:** Developers
 
-Paste ugly JSON. Get clean, formatted, syntax-highlighted output. Validate structure. Collapse and expand nodes.
+Paste messy JSON. Get clean, color-coded, readable output. Check if it's valid. Collapse and expand sections.
 
 Every developer needs this bookmarked.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #webdev #programming #json #devtools
 
-**Image description:** Screenshot of JSON Formatter on dark background. Left panel: raw JSON. Right panel: formatted, syntax-highlighted JSON with collapsible nodes. Green (#10b981) "Valid JSON" indicator.
+**Image description:** Screenshot of JSON Formatter on dark background. Left panel: raw JSON. Right panel: formatted, syntax-highlighted JSON with collapsible nodes. Green (#10b981) "Valid JSON" indicator. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 13 — Markdown Editor
 **Target:** Writers, bloggers, documentation people
 
-Write on the left. See the formatted preview on the right. Live. Instant.
+Write on the left. See how it looks on the right. Live. Instant.
 
-This free markdown editor is perfect for blog posts, README files, documentation, or just writing distraction-free.
+Great for blog posts, project docs, or just writing without distractions.
 
-Export to HTML or copy raw markdown. No account needed.
+Save it as a web page or copy the raw text. No account needed.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #writing #blogging #productivity #markdown
 
-**Image description:** Screenshot of Markdown Editor on dark background. Split-pane: raw markdown left, rendered preview right. Toolbar with formatting buttons. Green (#10b981) export button.
+**Image description:** Screenshot of Markdown Editor on dark background. Split-pane: raw markdown left, rendered preview right. Toolbar with formatting buttons. Green (#10b981) export button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 14 — CSS Gradient Generator
 **Target:** Designers, front-end developers
 
-Pick colors, set direction, get the CSS. Linear, radial, conic. Live preview. Copy the code.
+Pick colors, pick a direction, get a smooth color blend for your website. See it live. Copy the code.
 
 Takes 5 seconds to make a gradient that looks like you spent 20 minutes on it.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #design #css #webdesign #frontend
 
-**Image description:** Screenshot of CSS Gradient Generator on dark background. Large gradient preview. Color stop controls. CSS code output in code block. Direction/type toggles.
+**Image description:** Screenshot of CSS Gradient Generator on dark background. Large gradient preview. Color stop controls. CSS code output in code block. Direction/type toggles. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 15 — Image Compressor
 **Target:** Bloggers, social media managers, website owners
 
-Your website is slow because your images are 4MB each.
+Your website is slow because your images are too big.
 
-This free image compressor shrinks PNG, JPG, and WebP files in your browser. No upload to any server. Your images never leave your device.
+This free tool shrinks your image files right in your browser. No upload to any website. Your pictures never leave your device.
 
-A 2.4MB image becomes 380KB. Same quality.
+A 2.4MB image becomes 380KB. Looks the same. Loads way faster.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #blogging #websitespeed #socialmedia #photography
 
-**Image description:** Screenshot of Image Compressor on dark background. File drop zone with orange (#ff5f1f) border. Before/after size comparison: "2.4 MB -> 380 KB" in green (#10b981). Download button.
+**Image description:** Screenshot of Image Compressor on dark background. File drop zone with orange (#ff5f1f) border. Before/after size comparison: "2.4 MB -> 380 KB" in green (#10b981). Download button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 16 — Landing Page Copy Generator
 **Target:** Entrepreneurs, marketers, anyone launching something
 
-Launching a product and staring at a blank landing page?
+Launching something and staring at a blank page?
 
-Enter your product name and what it does. Get a headline, subheadline, CTA, feature descriptions, and social proof sections. Powered by @OpenAI.
+Type in your product name and what it does. Get a headline, tagline, button text, feature descriptions, and more. All written for you.
 
-First-draft copy in 10 seconds. Polish from there.
+First draft in 10 seconds. Edit from there.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #marketing #entrepreneur #copywriting #startup
 
-**Image description:** Screenshot of Landing Page Copy Generator on dark background. Input fields at top. Generated copy sections below: headline, subheadline, features, CTA. Orange (#ff5f1f) bordered cards.
+**Image description:** Screenshot of Landing Page Copy Generator on dark background. Input fields at top. Generated copy sections below: headline, subheadline, features, CTA. Orange (#ff5f1f) bordered cards. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -447,30 +493,30 @@ spunkart.com/store#free-tools
 
 Nothing kills trust faster than a website that's down.
 
-Enter your URLs. See uptime status, response times, and downtime alerts. Monitor your sites from your browser.
+Type in your website addresses. See if they're up, how fast they load, and get warned when they go down.
 
-Free. No account. No "upgrade for more monitors." @DanKulkov
+Free. No account. No "upgrade for more sites." @DanKulkov
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #websiteowner #ecommerce #smallbusiness #uptime
 
-**Image description:** Screenshot of Uptime Monitor on dark background. List of URLs with green (#10b981) "Up" badges and response times. One URL showing orange (#ff5f1f) warning. Clean table layout.
+**Image description:** Screenshot of Uptime Monitor on dark background. List of URLs with green (#10b981) "Up" badges and response times. One URL showing orange (#ff5f1f) warning. Clean table layout. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 18 — Sitemap Generator
 **Target:** Website owners, bloggers who want Google to find their pages
 
-Google can only index pages it knows about. A sitemap tells it where to look.
+Google can only show pages it knows about. A sitemap is like a map of your website that tells Google where everything is.
 
-Enter your domain. Get a properly formatted XML sitemap in seconds. Set priorities and update frequencies. Download and upload to your server.
+Type in your website address. Get a file that lists all your pages. Download it and add it to your site.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #seo #blogging #websitetips #googleranking
 
-**Image description:** Screenshot of Sitemap Generator on dark background. Domain input at top. URL list with priority/frequency dropdowns. XML preview in code block. Green (#10b981) "Download" button.
+**Image description:** Screenshot of Sitemap Generator on dark background. Domain input at top. URL list with priority/frequency dropdowns. XML preview in code block. Green (#10b981) "Download" button. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -479,15 +525,15 @@ spunkart.com/store#free-tools
 
 Is your website actually secure? Or does it just have a padlock icon?
 
-Check any site's HTTP response headers in one click. See security headers, caching rules, server info, and redirect chains.
+Paste any website address. See what security settings it has, what info it's sharing, and what might be exposed.
 
-Takes 3 seconds to find out what's exposed.
+Takes 3 seconds to find out.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #websecurity #websiteowner #cybersecurity
 
-**Image description:** Screenshot of Headers Checker on dark background. URL input with orange (#ff5f1f) "Check" button. Table of header key-value pairs with green (#10b981) status indicators.
+**Image description:** Screenshot of Headers Checker on dark background. URL input with orange (#ff5f1f) "Check" button. Table of header key-value pairs with green (#10b981) status indicators. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -496,13 +542,13 @@ spunkart.com/store#free-tools
 
 Your website might be accidentally blocking Google from seeing your pages.
 
-A robots.txt file tells search engines what to crawl. Generate one in 30 seconds — select crawlers, set rules, add your sitemap URL. Download. Upload. Done.
+This tool makes a small file that tells Google which pages to look at and which to skip. Pick your settings. Download the file. Add it to your site. Done.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #seo #websitetips #blogging #googleranking
 
-**Image description:** Screenshot of Robots.txt Generator on dark background. Checkboxes for crawlers (Googlebot, Bingbot). Allow/Disallow inputs. Generated robots.txt in code block.
+**Image description:** Screenshot of Robots.txt Generator on dark background. Checkboxes for crawlers (Googlebot, Bingbot). Allow/Disallow inputs. Generated robots.txt in code block. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -511,13 +557,13 @@ spunkart.com/store#free-tools
 
 That little icon in the browser tab? It makes your site look professional instead of generic.
 
-Upload any image. Get favicons in every size: 16x16, 32x32, 180x180, 192x192, 512x512. Download as a ZIP with the HTML code included.
+Upload any image. Get it resized to every size your website needs. Download everything in one ZIP file with the code to add it.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #webdesign #websiteowner #branding
 
-**Image description:** Screenshot of Favicon Generator on dark background. Image upload zone with orange (#ff5f1f) border. Preview grid at different sizes. Green (#10b981) "Download ZIP" button. HTML link tags in code block.
+**Image description:** Screenshot of Favicon Generator on dark background. Image upload zone with orange (#ff5f1f) border. Preview grid at different sizes. Green (#10b981) "Download ZIP" button. HTML link tags in code block. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -528,28 +574,33 @@ About to send money to a website you've never heard of?
 
 Check it first. Free.
 
-The Scam Checker analyzes websites and wallet addresses against known scam databases and community reports. Takes 5 seconds. Could save you thousands.
+Paste any website or crypto wallet address. It checks if it's been reported as a scam. Takes 5 seconds. Could save you thousands.
 
-scam.ink/scam-checker
+How to use it:
+1. Go to spunkart.com/spunk
+2. Click Scam Checker (or go to scam.ink/scam-checker)
+3. Paste the website or wallet address and check
+
+Follow @SpunkArt13 — I DM back and share safety tips daily.
 
 #scamalert #onlinesafety #crypto #protectyourmoney
 
-**Image description:** Screenshot of Scam Checker on dark background. Search bar for URL or wallet address. Risk score with color indicator (green = safe, orange = caution, red = danger). Details breakdown below.
+**Image description:** Screenshot of Scam Checker on dark background. Search bar for URL or wallet address. Risk score with color indicator (green = safe, orange = caution, red = danger). Details breakdown below. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
 ### Tool 23 — Landing Page Builder
 **Target:** Non-technical founders, small business owners
 
-Need a landing page but don't know how to code?
+Need a web page for your business but don't know how to code?
 
-This free tool lets you build a clean landing page right in your browser. No coding. No hosting headaches. Just fill in your content and go. @taborein
+This free tool lets you build a clean page right in your browser. No coding. No tech headaches. Just type your content and go. @taborein
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #entrepreneur #startup #nocode #smallbusiness
 
-**Image description:** Screenshot of Landing Page Builder on dark background. WYSIWYG editor with drag-and-drop sections. Preview panel on the right. Orange (#ff5f1f) "Export" button. Clean, accessible interface.
+**Image description:** Screenshot of Landing Page Builder on dark background. WYSIWYG editor with drag-and-drop sections. Preview panel on the right. Orange (#ff5f1f) "Export" button. Clean, accessible interface. Bottom bar in dark gray: "Follow @SpunkArt13 for free tools & tips" in white text.
 
 ---
 
@@ -559,14 +610,18 @@ spunkart.com/store#free-tools
 
 Free tools you'll actually use (thread) @swaborns:
 
-1. Merge PDFs without Adobe ($0 vs $12/mo)
-2. Create invoices without QuickBooks ($0 vs $15/mo)
-3. Generate QR codes without subscriptions ($0 vs $12/mo)
-4. Compress images without uploading to sketchy sites
+1. Combine PDFs without Adobe ($0 vs $12/mo)
+2. Make invoices without QuickBooks ($0 vs $15/mo)
+3. Create QR codes without paying monthly ($0 vs $12/mo)
+4. Shrink images without uploading to sketchy sites
 5. Check if a website is a scam before sending money
-6. Generate a privacy policy without a lawyer
+6. Get a privacy policy without a lawyer
 
-All free. All browser-based. All at spunkart.com/store#free-tools
+All free. Works in your browser. No signup.
+
+spunkart.com/spunk
+
+Follow @SpunkArt13 for daily free tool drops.
 
 #freetools #lifehack #productivity
 
@@ -574,14 +629,16 @@ All free. All browser-based. All at spunkart.com/store#free-tools
 
 ### Growth Post 2 — Poll-Style Engagement
 
-Which of these free tools would save you the most time?
+Which free tool would save you the most time?
 
-A) Invoice Generator (no more paying for QuickBooks)
-B) PDF Merge/Split/Compress (no more paying for Adobe)
-C) QR Code Generator (no more monthly subscriptions)
-D) Privacy Policy Generator (no more $500 lawyer bills)
+A) Invoice Maker (stop paying for QuickBooks)
+B) PDF Combiner (stop paying for Adobe)
+C) QR Code Maker (stop paying monthly)
+D) Privacy Policy Generator (stop paying $500 for a lawyer)
 
-All of them are free at spunkart.com/store#free-tools
+All of them are free. No signup. No account.
+
+spunkart.com/spunk
 
 Reply with your pick.
 
@@ -589,13 +646,13 @@ Reply with your pick.
 
 ### Growth Post 3 — Price Comparison (Canva QR)
 
-@Canva Pro charges $12.99/month for their QR code generator.
+@Canva Pro charges $12.99/month for their QR code maker.
 
-That's $155.88/year to make QR codes.
+That's $155.88/year just to make QR codes.
 
-I built a free alternative. No signup. No watermark. No limit. No expiry.
+I built a free one. No signup. No watermark. No limit. It never expires.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 The internet has a "make everything a subscription" problem. Not here.
 
@@ -605,15 +662,15 @@ The internet has a "make everything a subscription" problem. Not here.
 
 ### Growth Post 4 — Price Comparison (Adobe PDF)
 
-Adobe Acrobat: $12.99/month to merge PDFs.
+Adobe Acrobat: $12.99/month to combine PDFs.
 
-That's $155.88/year to combine two documents.
+That's $155.88/year to put two documents together.
 
-SpunkArt PDF Tools: Free. Merge, split, compress. In your browser. No upload. No account.
+SpunkArt PDF Tools: Free. Combine, split, shrink. In your browser. No upload. No account.
 
-Sometimes the free alternative is actually better.
+Sometimes the free option is actually better.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 #productivity #freetools
 
@@ -624,15 +681,15 @@ spunkart.com/store#free-tools
 I just showed a freelancer friend these free tools.
 
 She was paying:
-- $15/mo for invoicing
-- $12/mo for PDF tools
-- $5/mo for image compression
+- $15/mo to make invoices
+- $12/mo to combine PDFs
+- $5/mo to shrink images
 
 That's $384/year for things that should be free.
 
 Now she pays $0.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 ---
 
@@ -640,11 +697,13 @@ spunkart.com/store#free-tools
 
 People always ask "what free tools do you use?" @IndieHackers
 
-Here's my honest answer — I built 23 of them because the alternatives were either overpriced or required signups I didn't want to give.
+Here's my honest answer — I built 23 of them because everything else was overpriced or wanted me to create an account.
 
-Password generator, PDF tools, invoice maker, budget tracker, QR codes, scam checker, image compressor, and 16 more.
+Password maker, PDF tools, invoice maker, budget tracker, QR codes, scam checker, image shrinker, and 16 more.
 
-All free: spunkart.com/store#free-tools
+All free. No signup ever.
+
+spunkart.com/spunk
 
 ---
 
@@ -652,14 +711,16 @@ All free: spunkart.com/store#free-tools
 
 Things that should be free but usually aren't:
 
-- Merging PDFs [$12/mo]
-- Creating invoices [$15/mo]
-- Generating QR codes [$12/mo]
-- Writing a privacy policy [$100+]
-- Compressing images [$5/mo]
-- Getting a professional email signature [$8/mo]
+- Combining PDFs [$12/mo]
+- Making invoices [$15/mo]
+- Creating QR codes [$12/mo]
+- Getting a privacy policy [$100+]
+- Shrinking images [$5/mo]
+- Making a professional email signature [$8/mo]
 
-All free now: spunkart.com/store#free-tools
+All free now. No signup. No account.
+
+spunkart.com/spunk
 
 I built them. You use them. That's it. @gaborors @veraborns
 
@@ -669,11 +730,11 @@ I built them. You use them. That's it. @gaborors @veraborns
 
 What's the most money you've wasted on a tool that should've been free?
 
-I'll start: I paid $240/year for Adobe Acrobat just to merge PDFs.
+I'll start: I paid $240/year for Adobe Acrobat just to combine PDFs.
 
 Then I built a free one that does the same thing in your browser.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 Quote this with your answer.
 
@@ -685,22 +746,22 @@ Bookmark this. You'll need it eventually.
 
 23 free tools that work in your browser:
 
-- Passwords
-- PDFs (merge, split, compress)
+- Strong passwords
+- PDFs (combine, split, shrink)
 - Invoices
 - Budgets
 - QR codes
 - Email signatures
 - Privacy policies
-- Image compression
+- Image shrinking
 - Scam checking
-- Meta tags
-- Sitemaps
-- And 12 more
+- And 14 more
 
-No signup. Ever.
+No signup. No account. Ever.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
+
+Follow @SpunkArt13 for daily free tool drops & DM me for help.
 
 ---
 
@@ -709,14 +770,14 @@ spunkart.com/store#free-tools
 Know someone who:
 
 - Runs a small business?
-- Freelances and needs invoices?
+- Freelances and needs to send invoices?
 - Is starting a website?
 - Is worried about online scams?
-- Needs to compress images or merge PDFs?
+- Needs to shrink images or combine PDFs?
 
-Send them this: spunkart.com/store#free-tools
+Send them this: spunkart.com/spunk
 
-23 free tools. No signup. No email required. They'll thank you.
+23 free tools. No signup. No email needed. They'll thank you.
 
 ---
 
@@ -811,11 +872,11 @@ No hard sell needed. Free tools sell themselves.
 
 > "Anyone know a free invoice tool?"
 
-I built one — no signup, no watermark, exports to PDF. Runs in your browser.
+I built one — no signup, no watermark, saves as PDF. Works in your browser.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click Invoice Generator.
 
-(Scroll to Invoice Generator)
+Follow @SpunkArt13 for more free tools.
 
 ---
 
@@ -823,11 +884,11 @@ spunkart.com/store#free-tools
 
 > "Need a good password manager" / "How do I make strong passwords?"
 
-If you just need to generate strong passwords: I built a free generator that runs entirely in your browser. Nothing stored, nothing sent anywhere.
+If you just need to make strong passwords: I built a free tool that works right in your browser. Nothing saved, nothing sent anywhere.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click Password Generator.
 
-For managing them, I'd still recommend Bitwarden. But for generating — this is instant.
+For storing them, I'd still recommend Bitwarden. But for making them — this is instant.
 
 ---
 
@@ -835,11 +896,11 @@ For managing them, I'd still recommend Bitwarden. But for generating — this is
 
 > "Starting a business, need a name" / "How do I pick a business name?"
 
-I built a free business name generator — enter your industry and keywords, get a list of ideas in seconds.
+I built a free business name tool — type in what your business does and get a list of name ideas in seconds.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
-Also has a free privacy policy generator and email signature builder when you're ready for those.
+Also has a free privacy policy maker and email signature builder when you're ready for those.
 
 ---
 
@@ -847,11 +908,11 @@ Also has a free privacy policy generator and email signature builder when you're
 
 > "Do I need a privacy policy?" / "Where do I get a privacy policy?"
 
-Yes, legally you probably need one. Lawyers charge $500+. Privacy policy generators charge $100/year.
+Yes, legally you probably need one. Lawyers charge $500+. Other tools charge $100/year.
 
-I built a free one. Answer a few questions, get a complete policy covering GDPR, cookies, data collection, third-party services.
+I built a free one. Answer a few questions about your site, get a complete privacy policy that covers everything.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click Privacy Policy Generator.
 
 ---
 
@@ -859,9 +920,9 @@ spunkart.com/store#free-tools
 
 > "How do I merge PDFs without paying for Adobe?"
 
-I built free PDF tools — merge, split, and compress. Runs in your browser, files never leave your device. No watermark, no file limit.
+I built free PDF tools — combine, split, and shrink. Works in your browser, files never leave your device. No watermark, no file limit.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click PDF Tools.
 
 No reason to pay $12/month for this.
 
@@ -871,9 +932,9 @@ No reason to pay $12/month for this.
 
 > "Need a QR code for my business" / "Free QR code generator?"
 
-I built a free one — generates QR codes for any URL, text, or contact info. Download as PNG or SVG. No tracking embedded, no expiry, no account.
+I built a free one — makes QR codes for any link, text, or contact info. Download the image. No tracking hidden inside, never expires, no account needed.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click QR Code Generator.
 
 ---
 
@@ -881,9 +942,9 @@ spunkart.com/store#free-tools
 
 > "Is this website legit?" / "Has anyone used [sketchy site]?"
 
-Run it through this free scam checker first. Checks against known scam databases and community reports.
+Paste it into this free scam checker first. It checks if the site has been reported as a scam.
 
-scam.ink/scam-checker
+spunkart.com/spunk — click Scam Checker (or go to scam.ink/scam-checker)
 
 Takes 5 seconds. Could save you a lot.
 
@@ -893,11 +954,11 @@ Takes 5 seconds. Could save you a lot.
 
 > "Why does everything require a subscription now?"
 
-I felt the same way so I built 23 free tools that work in your browser. No signup, no subscription, no account.
+I felt the same way so I built 23 free tools that work in your browser. No signup, no monthly fee, no account.
 
-Invoices, PDFs, QR codes, passwords, image compression, privacy policies — all free. @marc_louvion
+Invoices, PDFs, QR codes, passwords, image shrinking, privacy policies — all free. @marc_louvion
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 ---
 
@@ -905,9 +966,9 @@ spunkart.com/store#free-tools
 
 > "How do I make a professional email signature?"
 
-Free email signature generator — enter your name, title, company, links, and social icons. Copy the HTML. Paste into Gmail, Outlook, or Apple Mail.
+Free email signature tool — type in your name, title, company, and links. Copy it. Paste it into Gmail, Outlook, or Apple Mail.
 
-spunkart.com/store#free-tools
+spunkart.com/spunk — click Email Signature Generator.
 
 Takes about 60 seconds.
 
@@ -919,11 +980,11 @@ Takes about 60 seconds.
 
 Start with these three free tools:
 
-1. Meta Tag Generator — get proper SEO tags for every page
-2. Sitemap Generator — tell Google what pages you have
-3. Robots.txt Generator — control what gets crawled
+1. Meta Tag Generator — add the right info so Google knows what your pages are about
+2. Sitemap Generator — give Google a map of all your pages
+3. Robots.txt Generator — tell Google which pages to show
 
-All free, no signup: spunkart.com/store#free-tools
+All free, no signup: spunkart.com/spunk
 
 ---
 
@@ -1119,7 +1180,7 @@ Target these audiences when boosting:
 | Facebook Groups | Small biz groups, freelancer groups | Free tool thread, comparison posts |
 | TikTok/Reels | Quick screen recordings of tools | PDF merge, QR code, Scam Checker (most visual) |
 | @ProductHunt | Launch as "23 Free Browser Tools" | Full collection |
-| Hacker News | "Show HN: 23 free tools, no signup" | Link to spunkart.com/store#free-tools |
+| Hacker News | "Show HN: 23 free tools, no signup" | Link to spunkart.com/spunk |
 
 ---
 
@@ -1178,9 +1239,9 @@ Target these audiences when boosting:
 
 I built a free one.
 
-No signup. No watermark. No expiry. No limit.
+No signup. No watermark. Never expires. No limit.
 
-spunkart.com/qr-generator
+spunkart.com/spunk — click QR Code Generator.
 
 One solo dev. Zero monthly fees. Same result.
 
@@ -1190,13 +1251,13 @@ One solo dev. Zero monthly fees. Same result.
 
 ### Alt Post 2 — Bitly Alternative
 
-Bitly charges $35/mo for link shortening.
+Bitly charges $35/mo to shorten links.
 
-I built a Cloudflare Worker that does the same thing. $4.99 one-time. You own the code. @CloudflareDevs
+I built a tool that does the same thing. $4.99 one-time. You own it forever. @CloudflareDevs
 
-spunkart.com/store
+spunkart.com/spunk
 
-Your links. Your infrastructure. No monthly ransom.
+Your links. Your setup. No monthly fees.
 
 #buildinpublic #indiedev
 
@@ -1206,11 +1267,11 @@ Your links. Your infrastructure. No monthly ransom.
 
 UptimeRobot charges $7/mo to tell you your site is down.
 
-I built a free uptime monitor that does the same thing.
+I built a free tool that does the same thing.
 
-No account. No email required. Just enter your URLs. @DanKulkov
+No account. No email needed. Just type in your website addresses. @DanKulkov
 
-spunkart.com/uptime-monitor
+spunkart.com/spunk — click Uptime Monitor.
 
 #freetools #websiteowner
 
@@ -1220,11 +1281,11 @@ spunkart.com/uptime-monitor
 
 Most invoice tools charge $10-15/mo.
 
-I built a free one that runs in your browser. No account needed. No cloud. Your data stays on your device.
+I built a free one that works in your browser. No account needed. Your info stays on your device.
 
-Add line items, tax, discounts. Export to PDF. @levaborns
+Add items, tax, discounts. Save as PDF. @levaborns
 
-spunkart.com/invoice-generator
+spunkart.com/spunk — click Invoice Generator.
 
 #freelancer #freetools
 
@@ -1232,13 +1293,13 @@ spunkart.com/invoice-generator
 
 ### Alt Post 5 — Privacy Policy Generator Alternative
 
-Privacy policy generators charge $50-100+.
+Privacy policy tools charge $50-100+.
 
 Lawyers charge $500+.
 
-I built one that's free. GDPR compliant. CCPA compliant. Answer a few questions, get a complete policy. @marc_louvion
+I built one that's free. Covers all the legal stuff your site needs. Answer a few questions, get a complete policy. @marc_louvion
 
-spunkart.com/privacy-policy-generator
+spunkart.com/spunk — click Privacy Policy Generator.
 
 #smallbusiness #freetools
 
@@ -1256,13 +1317,13 @@ spunkart.com/privacy-policy-generator
 
 23 free browser tools — no signup, no account, no catch.
 
-Invoices, PDFs, QR codes, passwords, scam checker, privacy policies, and 17 more.
+Make invoices, combine PDFs, create QR codes, make passwords, check for scams, get privacy policies, and 17 more.
 
-Also 18 premium Cloudflare Workers tools at $4.99 each.
+Also 18 paid tools at $4.99 each. Pay once, keep forever.
 
 One solo dev. 120+ live sites. @AnthropicAI + @CloudflareDevs
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
 ---
 
@@ -1274,13 +1335,13 @@ spunkart.com/store#free-tools
 
 I built 23 of them:
 
-- Invoice generator (free vs $15/mo FreshBooks)
-- PDF merge/split (free vs $12/mo Adobe)
-- QR code generator (free vs $12/mo @Canva)
-- Privacy policy generator (free vs $500 lawyer)
-- Password generator, image compressor, budget tracker...
+- Invoice maker (free vs $15/mo FreshBooks)
+- PDF combiner (free vs $12/mo Adobe)
+- QR code maker (free vs $12/mo @Canva)
+- Privacy policy maker (free vs $500 lawyer)
+- Password maker, image shrinker, budget tracker...
 
-All browser-based. No signup. spunkart.com/store#free-tools
+All work in your browser. No signup. spunkart.com/spunk
 
 ---
 
@@ -1292,11 +1353,11 @@ All browser-based. No signup. spunkart.com/store#free-tools
 
 I got tired of paying for things that should be free, so I built 23 free tools that work in your browser.
 
-No signup. No subscription. No "free trial that auto-charges."
+No signup. No monthly fee. No "free trial that auto-charges."
 
-Invoices, PDFs, QR codes, image compression, and more.
+Invoices, PDFs, QR codes, image shrinking, and more.
 
-spunkart.com/store#free-tools @veraborns
+spunkart.com/spunk @veraborns
 
 ---
 
@@ -1306,11 +1367,11 @@ spunkart.com/store#free-tools @veraborns
 
 **Your reply:**
 
-Cool launch! For anyone looking for a free alternative that works right in your browser with no signup:
+Cool launch! For anyone looking for a free option that works right in your browser with no signup:
 
-spunkart.com/store#free-tools
+spunkart.com/spunk
 
-23 free tools including [relevant tool]. No account needed. Runs 100% client-side.
+23 free tools including [relevant tool]. No account needed. Works right in your browser.
 
 ---
 
@@ -1320,11 +1381,11 @@ spunkart.com/store#free-tools
 
 **Your reply:**
 
-Built 18 premium tools on @CloudflareDevs Workers — link shortener, redirect engine, A/B tester, form handler, rate limiter, and more.
+Built 18 paid tools on @CloudflareDevs Workers — link shortener, page redirects, A/B testing, form handling, bot blocking, and more.
 
-$4.99 each or $19.99 for all 18. One-time purchase. You deploy to your own Cloudflare account.
+$4.99 each or $19.99 for all 18. Pay once, keep forever.
 
-Also 23 free browser tools at spunkart.com/store
+Also 23 free browser tools at spunkart.com/spunk
 
 ---
 
@@ -1350,9 +1411,9 @@ I follow your newsletter and love the tool recommendations. I built 23 free brow
 - Password generator
 - And 17 more
 
-Full list: spunkart.com/store#free-tools
+Full list: spunkart.com/spunk
 
-I also have 18 premium Cloudflare Workers tools ($4.99 each) if you ever feature paid tools.
+I also have 18 paid tools ($4.99 each) if you ever feature paid tools.
 
 Happy to provide any details, screenshots, or a custom referral link (25% commission). No pressure either way — just thought your audience would genuinely find these useful.
 
@@ -1369,8 +1430,8 @@ Hey [Name],
 
 I see you share tool compilations — your audience would love this:
 
-23 free tools, all browser-based, zero signup:
-spunkart.com/store#free-tools
+23 free tools, all work in your browser, zero signup:
+spunkart.com/spunk
 
 Highlights:
 - Free invoice generator (replaces $15/mo FreshBooks)
@@ -1392,22 +1453,23 @@ Let me know if you want screenshots or any other details.
 
 **Title:** I built 23 free browser tools — no signup, no account, no catch
 
-I got tired of paying monthly subscriptions for basic tools, so I built free alternatives that run entirely in your browser.
+I got tired of paying monthly fees for basic tools, so I built free versions that work right in your browser.
 
 **What's included:**
-- Invoice Generator (free vs $15/mo FreshBooks)
-- PDF Merge/Split/Compress (free vs $12/mo Adobe)
-- QR Code Generator (free vs $12/mo Canva Pro)
-- Privacy Policy Generator (free vs $100+ generators)
-- Password Generator, Budget Tracker, Image Compressor, Scam Checker, and 15 more
+- Invoice Maker (free vs $15/mo FreshBooks)
+- PDF Combiner/Splitter/Shrinker (free vs $12/mo Adobe)
+- QR Code Maker (free vs $12/mo Canva Pro)
+- Privacy Policy Generator (free vs $100+ other tools)
+- Password Maker, Budget Tracker, Image Shrinker, Scam Checker, and 15 more
 
-**Technical details:**
-- Everything runs client-side — your data never leaves your device
-- No server uploads, no tracking, no analytics on your content
-- Built as a solo developer using Claude (Anthropic) for AI features and Cloudflare Workers for premium tools
+**How it works:**
+- Go to spunkart.com/spunk, click any tool, and use it
+- No download, no signup, no account
+- Your files and data never leave your device
+- Built as a solo developer using Claude (Anthropic) for AI features
 
-**Free tools:** spunkart.com/store#free-tools
-**Premium tools (Cloudflare Workers):** $4.99 each or $19.99 for all 18 at spunkart.com/store
+**Free tools:** spunkart.com/spunk
+**Paid tools:** $4.99 each or $19.99 for all 18 at spunkart.com/spunk
 
 I'm not VC-funded. This is a solo operation. Feedback welcome.
 
@@ -1452,7 +1514,7 @@ I built this because I kept seeing people in this sub asking "is this legit?" �
 - Search these hashtags: #buildinpublic #indiehackers #freetools #solofounder
 - Find 10 tweets with 50+ likes from the last 24 hours
 - Reply to each with a GENUINE comment + relevant tool link
-- Example: Someone shares their project -> "This is great! I'm building something similar — 23 free browser tools at spunkart.com/store#free-tools. No signup needed."
+- Example: Someone shares their project -> "This is great! I'm building something similar — 23 free browser tools at spunkart.com/spunk. No signup needed."
 - DO NOT copy-paste the same reply. Personalize each one.
 
 ### Hour 2: Reddit Blitz (11:00 AM EST)
@@ -1539,9 +1601,11 @@ I built this because I kept seeing people in this sub asking "is this legit?" �
 
 ### OpenClaw Post 1 — X Growth Audience
 
-If you use @OpenClaw's Xcellent skill for X growth, you'll love our free Social Bio Generator. Generate 10 bios for every platform in seconds.
+If you use @OpenClaw's Xcellent skill for X growth, you'll love our free Social Bio Generator. It writes 10 bios for every platform in seconds.
 
-spunkart.com/social-bio
+spunkart.com/spunk — click Social Bio Generator.
+
+Follow @SpunkArt13 for daily free tool drops.
 
 #freetools
 
@@ -1549,9 +1613,9 @@ spunkart.com/social-bio
 
 ### OpenClaw Post 2 — Marketing Audience
 
-Running @OpenClaw's Marketing Experiments? Our free Landing Page Copy Generator creates headlines, CTAs, and feature copy instantly. Perfect for your landing pages.
+Running @OpenClaw's Marketing Experiments? Our free Landing Page Copy Generator writes headlines, button text, and feature descriptions instantly. Great for your landing pages.
 
-spunkart.com/landing-page-copy
+spunkart.com/spunk — click Landing Page Copy Generator.
 
 ---
 
@@ -1573,9 +1637,9 @@ Invoice Generator, Business Name Generator, Privacy Policy Generator, Email Sign
 
 ### OpenClaw Post 5 — Automation / Premium Pitch
 
-@OpenClaw skills are incredible for automation. We built 18 Cloudflare Workers that do the same for websites — uptime monitoring, bot blocking, A/B testing, analytics. $4.99 each.
+@OpenClaw skills are incredible for automation. We built 18 tools that do the same for websites — uptime monitoring, bot blocking, A/B testing, analytics. $4.99 each.
 
-spunkart.com/store
+spunkart.com/spunk
 
 ---
 
@@ -1597,9 +1661,9 @@ spunkart.com/store
 
 #### X Grower Post 1 — Bio Hook
 
-Your X bio is the first thing people see. Our free generator creates 10 versions for you. Pick the best.
+Your X bio is the first thing people see. Our free tool writes 10 versions for you. Pick the best one.
 
-spunkart.com/social-bio
+spunkart.com/spunk — click Social Bio Generator.
 
 #freetools #personalbranding
 
@@ -1622,15 +1686,15 @@ All at spunkart.com/spunk
 
 Thread: The 5 free tools every X creator needs
 
-1/ Social Bio Generator — stop agonizing over your bio. Get 10 AI-written options in seconds. spunkart.com/social-bio
+1/ Social Bio Generator — stop stressing over your bio. Get 10 options written for you in seconds. spunkart.com/spunk
 
-2/ QR Code Generator — put a QR code in your content, stories, or link-in-bio. Free, no watermark. spunkart.com/qr-generator
+2/ QR Code Generator — make a QR code for your link, content, or business card. Free, no watermark. spunkart.com/spunk
 
-3/ Color Palette Generator — pick your brand colors in one click. Complementary, triadic, split — all generated instantly. spunkart.com/color-palette
+3/ Color Palette Generator — pick one color, get 5 that look great together. Instant brand colors. spunkart.com/spunk
 
-4/ Landing Page Copy Generator — need copy for your link-in-bio landing page? Headlines, CTAs, feature descriptions. Done. spunkart.com/landing-page-copy
+4/ Landing Page Copy Generator — need words for your website? Headlines, buttons, features — all written for you. spunkart.com/spunk
 
-5/ Image Compressor — your content loads faster when your images aren't 4MB. Compress in-browser. Nothing uploaded. spunkart.com/image-compressor
+5/ Image Compressor — big images make your site slow. Shrink them in your browser. Nothing gets uploaded. spunkart.com/spunk
 
 All free. No signup. No email. spunkart.com/spunk
 
@@ -1638,7 +1702,7 @@ All free. No signup. No email. spunkart.com/spunk
 
 #### X Grower Post 4 — Stop Paying
 
-Stop paying for tools. Free password gen, free QR codes, free invoices, free bio generator. 23 tools, zero signup.
+Stop paying for tools. Free password maker, free QR codes, free invoices, free bio writer. 23 tools, zero signup.
 
 spunkart.com/spunk
 
@@ -1702,9 +1766,9 @@ spunkart.com/spunk
 
 #### Entrepreneur Post 5 — Reseller Pitch
 
-Want to SELL tools instead of buying them? Our reseller program lets you rebrand 18 premium tools and keep 100% profit. From $99.
+Want to SELL tools instead of buying them? Our reseller program lets you put your name on 18 tools and keep 100% of the money. From $99.
 
-spunkart.com/reseller
+spunkart.com/spunk (reseller details at spunkart.com/reseller)
 
 #sidehustle #passiveincome
 
@@ -1716,9 +1780,9 @@ spunkart.com/reseller
 
 Worried about online security? Free tools:
 
-- Password Generator (crypto-random)
-- Scam Checker (instant URL safety)
-- HTTP Headers Checker (site security audit)
+- Password Generator (makes strong random passwords)
+- Scam Checker (checks if a website is legit)
+- HTTP Headers Checker (checks your site's security settings)
 
 All at spunkart.com/spunk
 
@@ -1728,9 +1792,9 @@ All at spunkart.com/spunk
 
 #### Security Post 2 — Password Deep Dive
 
-Our password generator uses crypto.getRandomValues() — the same randomness source banks use. Free. No signup. No data sent anywhere.
+Our password maker uses the same secure method banks use to create random passwords. Free. No signup. Nothing sent anywhere.
 
-spunkart.com/password-generator
+spunkart.com/spunk — click Password Generator.
 
 #cybersecurity #freetools
 
@@ -1738,9 +1802,9 @@ spunkart.com/password-generator
 
 #### Security Post 3 — Scam Check CTA
 
-Is that website legit? Paste any URL into our free Scam Checker. Instant safety score.
+Is that website legit? Paste any link into our free Scam Checker. Get a safety score instantly.
 
-scam.ink/scam-checker
+spunkart.com/spunk — click Scam Checker (or go to scam.ink/scam-checker)
 
 #scamalert #onlinesafety
 

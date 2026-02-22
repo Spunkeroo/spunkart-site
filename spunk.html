@@ -488,7 +488,16 @@ gtag('config','G-GVNL11PEGP');
   if(ref!=='spunk'){
     var bar=document.querySelector('.welcome-bar');
     if(bar){
-      bar.innerHTML='You were referred by <strong>'+ref+'</strong>! Use code <span>SPUNK</span> for 10% off your first purchase';
+      var refSpan=document.createElement('strong');
+      refSpan.textContent=ref;
+      bar.textContent='';
+      bar.appendChild(document.createTextNode('You were referred by '));
+      bar.appendChild(refSpan);
+      var code=document.createElement('span');
+      code.textContent='SPUNK';
+      bar.appendChild(document.createTextNode('! Use code '));
+      bar.appendChild(code);
+      bar.appendChild(document.createTextNode(' for 10% off your first purchase'));
     }
   }
 })();

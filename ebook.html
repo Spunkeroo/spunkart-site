@@ -363,7 +363,7 @@ function captureEmail(e){
 (function(){
   var params=new URLSearchParams(window.location.search);
   var ref=params.get('ref');
-  if(ref)localStorage.setItem('ref',ref);
+  if(ref && /^[a-zA-Z0-9_-]{1,64}$/.test(ref))localStorage.setItem('spunkart_ref',ref);
 })();
 </script>
 

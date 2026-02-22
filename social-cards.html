@@ -189,6 +189,20 @@
     font-size: 1.05rem;
     color: #10b981;
   }
+
+  /* ── Follow CTA ── */
+  .card .follow-cta {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    z-index: 3;
+  }
 </style>
 </head>
 <body>
@@ -247,6 +261,7 @@ freeTools.forEach(t => {
       <div class="tool-name">${t.name}</div>
       <div class="tool-desc">${t.desc}</div>
       <div class="bottom-left free">FREE &mdash; No Signup Required</div>
+      <div class="follow-cta">Follow @SpunkArt13 for free tools &amp; tips</div>
       <div class="bottom-right">spunkart.com/spunk</div>
     </div>
   `);
@@ -262,6 +277,7 @@ products.forEach(t => {
       <div class="tool-name">${t.name}</div>
       <div class="tool-desc">${t.desc}</div>
       <div class="bottom-left paid">${t.price}</div>
+      <div class="follow-cta">Follow @SpunkArt13 for free tools &amp; tips</div>
       <div class="bottom-right">spunkart.com/spunk</div>
     </div>
   `);
@@ -276,6 +292,7 @@ createCard(`
     <div class="tool-name">50+ Free Digital Tools</div>
     <div class="tool-desc">23 free. No signup. No catch.</div>
     <div class="bottom-left">Launch &mdash; spunkart.com/spunk</div>
+    <div class="follow-cta">Follow @SpunkArt13 for free tools &amp; tips</div>
     <div class="bottom-right">spunkart.com/spunk</div>
   </div>
 `);
