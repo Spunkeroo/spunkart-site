@@ -17,6 +17,8 @@
 <link rel="canonical" href="https://spunkart.com/qr-generator.html">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <meta name="author" content="SpunkArt.com">
 <meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
@@ -255,6 +257,20 @@ if(!localStorage.getItem('emailDismissed')){setTimeout(()=>{document.getElementB
 <div class="sa-email-bar" id="saEmailBar"><p>Like this? Get 30 more free tools in your inbox.</p><input type="email" id="saBarEmail" placeholder="you@email.com"><button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button><button class="sa-dismiss" onclick="saDismissBar()">&times;</button></div>
 <script>
 (function(){var TOOL_KEY='sa_usage_qr-generator',BAR_KEY='sa_bar_dismissed_qr-generator';var count=parseInt(localStorage.getItem(TOOL_KEY))||0;var badge=document.getElementById('usageBadge');function updateBadge(){badge.textContent='\uD83D\uDD25 Used '+count+' time'+(count!==1?'s':'');}if(count>0)updateBadge();else badge.textContent='\uD83D\uDD25 Used 0 times';function increment(){count++;localStorage.setItem(TOOL_KEY,count);updateBadge();if(count>=2&&!localStorage.getItem(BAR_KEY))document.getElementById('saEmailBar').classList.add('show');}var _orig=generateQR;generateQR=function(){_orig.apply(this,arguments);increment();};window.generateQR=generateQR;window.saDismissBar=function(){document.getElementById('saEmailBar').classList.remove('show');localStorage.setItem(BAR_KEY,'1');};window.saSubmitEmail=function(){var email=document.getElementById('saBarEmail').value;if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}localStorage.setItem('sa_subscriber_email',email);localStorage.setItem(BAR_KEY,'1');window.open('https://embeds.beehiiv.com/cae41704-7588-4c50-83f1-11f5b4a0585f?email='+encodeURIComponent(email),'_blank');document.getElementById('saEmailBar').classList.remove('show');var btn=document.querySelector('.sa-sub-btn');btn.textContent='Subscribed!';btn.style.background='#10b981';};})();
+</script>
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+})();
 </script>
 </body>
 </html>
