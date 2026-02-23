@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Tech Stack Detector — What's This Site Built With? | SPUNKART.COM</title>
+<meta name="description" content="Free website tech stack detector. Enter any URL to discover what frameworks, CMS, analytics, CDN, fonts, and technologies a website uses. Instant results.">
+<meta property="og:title" content="Website Tech Stack Detector — What's This Site Built With?">
+<meta property="og:description" content="Enter any URL to discover what frameworks, CMS, analytics, CDN, fonts, and technologies a website uses. Free instant analysis.">
+<meta property="og:image" content="https://spunkart.com/assets/og-tech-stack.png">
+<meta property="og:url" content="https://spunkart.com/tech-stack.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Tech Stack Detector — What's This Site Built With?">
+<meta name="twitter:description" content="Detect frameworks, CMS, analytics, CDN, fonts &amp; more. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/tech-stack.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pg6x1oa1if");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h2{color:#fff;margin-bottom:16px;font-size:1.3rem;}
+.subtitle{color:#999;margin-bottom:32px;font-size:1rem;}
+
+.form-group{margin-bottom:20px;}
+label{display:block;font-size:0.85rem;color:#aaa;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],input[type="url"],textarea{width:100%;background:#151515;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:0.95rem;outline:none;transition:border-color 0.2s;font-family:inherit;}
+input:focus,textarea:focus{border-color:#ff5f1f;}
+textarea{min-height:160px;resize:vertical;font-family:monospace;font-size:0.85rem;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+button:disabled{opacity:0.5;cursor:not-allowed;}
+.btn-secondary{background:#222;color:#ccc;margin-left:8px;}
+.btn-secondary:hover{background:#333;}
+
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+
+.tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid #222;}
+.tab{padding:10px 24px;cursor:pointer;color:#888;font-weight:600;font-size:0.9rem;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+.tab:hover{color:#ccc;}
+.tab.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+.loading{display:none;text-align:center;padding:40px;color:#999;}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #333;border-top-color:#ff5f1f;border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* Results */
+.results{display:none;margin-top:32px;}
+.results-url{font-size:0.85rem;color:#888;margin-bottom:24px;word-break:break-all;}
+.results-url span{color:#ff5f1f;font-weight:600;}
+
+.category{margin-bottom:28px;}
+.category-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #222;}
+.category-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.category-title{font-weight:700;color:#fff;font-size:1.05rem;}
+.category-count{background:#222;color:#ff5f1f;font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:10px;}
+
+.tech-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.tech-badge{background:#151515;border:1px solid #333;border-radius:8px;padding:8px 14px;display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;color:#e8e8e8;transition:border-color 0.2s;}
+.tech-badge:hover{border-color:#ff5f1f;}
+.tech-badge .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.tech-badge .tech-detail{font-size:0.75rem;color:#888;margin-left:2px;}
+
+.empty-cat{color:#555;font-size:0.85rem;font-style:italic;padding:8px 0;}
+
+.summary-card{background:linear-gradient(135deg,#151515,#1a1a1a);border:1px solid #333;border-radius:14px;padding:24px;margin-bottom:28px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;}
+.summary-stat{text-align:center;min-width:100px;}
+.summary-stat .num{font-size:2rem;font-weight:900;color:#ff5f1f;line-height:1;}
+.summary-stat .lbl{font-size:0.75rem;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px;}
+
+.note{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;margin-top:24px;font-size:0.85rem;color:#888;}
+.note strong{color:#ff5f1f;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:600px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .summary-card{gap:12px;padding:16px;}
+  .summary-stat .num{font-size:1.5rem;}
+  .tab{padding:8px 14px;font-size:0.8rem;}
+  .tech-grid{gap:8px;}
+  .btn-row{flex-direction:column;}
+  .btn-row button{width:100%;}
+  .btn-secondary{margin-left:0;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Website Tech Stack Detector","description":"Enter any URL to discover what frameworks, CMS, analytics, CDN, fonts, and technologies a website uses. Free instant analysis.","url":"https://spunkart.com/tech-stack.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Website Tech Stack Detector</h1>
+  <p class="subtitle">Enter a URL or paste HTML source code to detect frameworks, CMS, analytics, CDN, fonts, and more.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="url" onclick="switchTab('url')">Analyze URL</div>
+    <div class="tab" data-tab="html" onclick="switchTab('html')">Paste HTML Source</div>
+  </div>
+
+  <div class="tab-panel active" id="panel-url">
+    <div class="form-group">
+      <label>Website URL</label>
+      <input type="url" id="urlInput" placeholder="https://example.com" onkeydown="if(event.key==='Enter')analyzeURL()">
+    </div>
+    <div class="btn-row">
+      <button onclick="analyzeURL()" id="analyzeBtn">Analyze Tech Stack</button>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-html">
+    <div class="form-group">
+      <label>Paste HTML Source Code</label>
+      <textarea id="htmlInput" placeholder="<!DOCTYPE html>&#10;<html>&#10;  <head>...</head>&#10;  <body>...</body>&#10;</html>"></textarea>
+    </div>
+    <div class="btn-row">
+      <button onclick="analyzeHTML()" id="analyzeHtmlBtn">Detect Technologies</button>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Scanning for technologies...</p>
+  </div>
+
+  <div class="results" id="results">
+    <div class="results-url" id="resultsUrl"></div>
+    <div class="summary-card" id="summaryCard"></div>
+    <div id="categoryResults"></div>
+
+    <div class="note">
+      <strong>Note:</strong> This tool analyzes HTML source code client-side. Detection via URL uses a CORS proxy and may not work for all sites. For best results, paste the full HTML source code (View Source in your browser). Some technologies loaded dynamically may not appear in the initial HTML.
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this tool? Get 30+ more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<script>
+/* ==================== TAB SWITCHING ==================== */
+function switchTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='panel-'+tab));
+}
+
+/* ==================== TECHNOLOGY SIGNATURES ==================== */
+const TECH_DB={
+  /* ---- Frameworks & Libraries ---- */
+  frameworks:[
+    {name:'React',color:'#61dafb',test:h=>/react[\.\-@\/]|react\.production|reactDOM|__REACT|data-reactroot|data-reactid/i.test(h)},
+    {name:'Next.js',color:'#fff',test:h=>/__next|_next\/static|next\/script|nextjs/i.test(h)},
+    {name:'Vue.js',color:'#42b883',test:h=>/vue[\.\-@\/]|vue\.min\.js|vue\.global|v-cloak|data-v-[a-f0-9]/i.test(h)},
+    {name:'Nuxt',color:'#00dc82',test:h=>/__nuxt|nuxt\.js|_nuxt\//i.test(h)},
+    {name:'Angular',color:'#dd0031',test:h=>/angular[\.\-@\/]|ng-version|ng-app|ng-controller|\[ngClass\]|_ng(host|content)/i.test(h)},
+    {name:'Svelte',color:'#ff3e00',test:h=>/svelte[\.\-@\/]|__svelte|svelte-[a-z0-9]/i.test(h)},
+    {name:'SvelteKit',color:'#ff3e00',test:h=>/__sveltekit|sveltekit/i.test(h)},
+    {name:'jQuery',color:'#0769ad',test:h=>/jquery[\.\-@\/]|jquery\.min\.js|jquery\.slim/i.test(h)},
+    {name:'Alpine.js',color:'#8bc0d0',test:h=>/alpine[\.\-@\/]|x-data|x-bind|x-on|x-show|x-init|alpinejs/i.test(h)},
+    {name:'HTMX',color:'#3366cc',test:h=>/htmx[\.\-@\/]|hx-get|hx-post|hx-trigger|hx-swap/i.test(h)},
+    {name:'Backbone.js',color:'#0071b5',test:h=>/backbone[\.\-@\/]|backbone\.min/i.test(h)},
+    {name:'Ember.js',color:'#e04e39',test:h=>/ember[\.\-@\/]|ember\.min|ember-cli|data-ember/i.test(h)},
+    {name:'Preact',color:'#673ab8',test:h=>/preact[\.\-@\/]|preact\.min/i.test(h)},
+    {name:'Stimulus',color:'#77e8b9',test:h=>/stimulus[\.\-@\/]|data-controller|data-action.*->/i.test(h)},
+    {name:'Turbo',color:'#5cd8e5',test:h=>/turbo[\.\-@\/]|data-turbo|turbo-frame|turbo-stream/i.test(h)},
+    {name:'Remix',color:'#121212',test:h=>/__remix|remix\.run/i.test(h)},
+    {name:'Gatsby',color:'#663399',test:h=>/gatsby[\.\-@\/]|___gatsby|gatsby-image|gatsby-chunk/i.test(h)},
+    {name:'Astro',color:'#ff5d01',test:h=>/astro[\.\-@\/]|astro-island|astro-slot/i.test(h)},
+    {name:'Lit',color:'#325cff',test:h=>/lit[\.\-@\/]|lit-html|lit-element/i.test(h)},
+    {name:'Three.js',color:'#049ef4',test:h=>/three[\.\-@\/]|three\.min\.js|THREE\./i.test(h)},
+    {name:'D3.js',color:'#f9a03c',test:h=>/d3[\.\-@\/]|d3\.min\.js|d3\.v[0-9]/i.test(h)},
+    {name:'Chart.js',color:'#ff6384',test:h=>/chart[\.\-@\/]js|chart\.min\.js|chartjs/i.test(h)},
+    {name:'Lodash',color:'#3492ff',test:h=>/lodash[\.\-@\/]|lodash\.min/i.test(h)},
+    {name:'Moment.js',color:'#4a4a4a',test:h=>/moment[\.\-@\/]|moment\.min|moment-with-locales/i.test(h)},
+    {name:'Axios',color:'#5a29e4',test:h=>/axios[\.\-@\/]|axios\.min/i.test(h)},
+    {name:'Socket.io',color:'#010101',test:h=>/socket\.io[\.\-@\/]|socket\.io\.min/i.test(h)},
+    {name:'GSAP',color:'#88ce02',test:h=>/gsap[\.\-@\/]|gsap\.min|TweenMax|TweenLite|greensock/i.test(h)},
+    {name:'Anime.js',color:'#f74f7b',test:h=>/anime[\.\-@\/]|anime\.min\.js|animejs/i.test(h)},
+    {name:'Lottie',color:'#00ddb3',test:h=>/lottie[\.\-@\/]|lottie-player|lottie-web/i.test(h)},
+  ],
+
+  /* ---- CSS Frameworks ---- */
+  css:[
+    {name:'Tailwind CSS',color:'#38bdf8',test:h=>/tailwindcss|tailwind[\.\-@\/]|tailwind\.min/i.test(h)||/(?:^|\s)(?:flex|grid|text-(?:sm|lg|xl|2xl)|bg-(?:white|black|gray|blue)|p-[0-9]|m-[0-9]|rounded-|shadow-|hover:|focus:){3,}/m.test(h)},
+    {name:'Bootstrap',color:'#7952b3',test:h=>/bootstrap[\.\-@\/]|bootstrap\.min|bootstrap\.bundle/i.test(h)},
+    {name:'Bulma',color:'#00d1b2',test:h=>/bulma[\.\-@\/]|bulma\.min/i.test(h)},
+    {name:'Foundation',color:'#1779ba',test:h=>/foundation[\.\-@\/]|foundation\.min/i.test(h)},
+    {name:'Materialize',color:'#ee6e73',test:h=>/materialize[\.\-@\/]|materialize\.min/i.test(h)},
+    {name:'Material UI',color:'#007fff',test:h=>/mui[\.\-@\/]|material-ui|MuiBox|Mui[A-Z]/i.test(h)},
+    {name:'Chakra UI',color:'#319795',test:h=>/chakra[\.\-@\/]|chakra-ui/i.test(h)},
+    {name:'Ant Design',color:'#1890ff',test:h=>/antd[\.\-@\/]|ant-design|ant-btn|ant-card/i.test(h)},
+    {name:'Semantic UI',color:'#35bdb2',test:h=>/semantic[\.\-@\/]ui|semantic\.min/i.test(h)},
+    {name:'Animate.css',color:'#8b5cf6',test:h=>/animate[\.\-@\/]css|animate\.min\.css|animate\.compat/i.test(h)},
+    {name:'Font Awesome',color:'#528dd7',test:h=>/font-?awesome|fontawesome[\.\-@\/]|fa-solid|fa-brands|fa-regular|fa fa-/i.test(h)},
+    {name:'Material Icons',color:'#757575',test:h=>/material-icons|material-symbols|fonts\.googleapis\.com\/icon/i.test(h)},
+    {name:'Normalize.css',color:'#e3695f',test:h=>/normalize[\.\-@\/]css|normalize\.min/i.test(h)},
+    {name:'DaisyUI',color:'#1ad1a5',test:h=>/daisyui|daisy[\.\-@\/]/i.test(h)},
+  ],
+
+  /* ---- CMS & Platforms ---- */
+  cms:[
+    {name:'WordPress',color:'#21759b',test:h=>/wp-content|wp-includes|wp-json|wordpress|wp-admin|wp-emoji/i.test(h)},
+    {name:'Shopify',color:'#96bf48',test:h=>/shopify|cdn\.shopify\.com|myshopify|Shopify\.theme/i.test(h)},
+    {name:'Wix',color:'#faad4d',test:h=>/wix\.com|wixstatic\.com|wix-code|X-Wix/i.test(h)},
+    {name:'Squarespace',color:'#222',test:h=>/squarespace|sqsp\.net|squarespace-cdn/i.test(h)},
+    {name:'Webflow',color:'#4353ff',test:h=>/webflow|assets-global\.website-files\.com|wf-[a-z]/i.test(h)},
+    {name:'Ghost',color:'#15171a',test:h=>/ghost[\.\-@\/]|ghost\/api|class="gh-/i.test(h)},
+    {name:'Drupal',color:'#0678be',test:h=>/drupal[\.\-@\/]|sites\/default\/files|drupal\.js|Drupal\.settings/i.test(h)},
+    {name:'Joomla',color:'#5091cd',test:h=>/joomla|\/media\/system\/js|com_content/i.test(h)},
+    {name:'Magento',color:'#ee672f',test:h=>/magento|mage\/|Magento_|static\/version/i.test(h)},
+    {name:'BigCommerce',color:'#121118',test:h=>/bigcommerce|mybigcommerce\.com/i.test(h)},
+    {name:'PrestaShop',color:'#df0067',test:h=>/prestashop|presta[\.\-@\/]|modules\/ps_/i.test(h)},
+    {name:'HubSpot',color:'#ff7a59',test:h=>/hubspot|hs-scripts\.com|hbspt\.forms|hs-banner/i.test(h)},
+    {name:'Contentful',color:'#2478cc',test:h=>/contentful|ctfassets\.net|images\.ctfassets/i.test(h)},
+    {name:'Sanity',color:'#f03e2f',test:h=>/sanity[\.\-@\/]|cdn\.sanity\.io|sanity-image/i.test(h)},
+    {name:'Strapi',color:'#4945ff',test:h=>/strapi[\.\-@\/]|\/api\/.*\?populate/i.test(h)},
+    {name:'Prismic',color:'#5163ba',test:h=>/prismic[\.\-@\/]|prismic\.io|cdn\.prismic/i.test(h)},
+    {name:'Framer',color:'#05f',test:h=>/framer[\.\-@\/]|framerusercontent\.com|framer\.com/i.test(h)},
+    {name:'Carrd',color:'#ff6600',test:h=>/carrd\.co|static\.carrd/i.test(h)},
+    {name:'Notion',color:'#fff',test:h=>/notion[\.\-@\/]|super\.so|notion\.site|notionusercontent/i.test(h)},
+    {name:'Blogger',color:'#f57d00',test:h=>/blogger\.com|blogspot\.com|blogblog\.com/i.test(h)},
+    {name:'Weebly',color:'#2c5ddb',test:h=>/weebly\.com|editmysite\.com/i.test(h)},
+    {name:'Cargo',color:'#111',test:h=>/cargo\.site|cargocollective/i.test(h)},
+  ],
+
+  /* ---- Analytics & Marketing ---- */
+  analytics:[
+    {name:'Google Analytics (GA4)',color:'#e37400',test:h=>/gtag|G-[A-Z0-9]{8,}|googletagmanager\.com\/gtag|google-analytics\.com\/g\//i.test(h)},
+    {name:'Google Analytics (UA)',color:'#e37400',test:h=>/UA-[0-9]+-[0-9]+|analytics\.js|ga\.js|google-analytics\.com\/analytics/i.test(h)},
+    {name:'Google Tag Manager',color:'#4285f4',test:h=>/googletagmanager\.com\/gtm|GTM-[A-Z0-9]+/i.test(h)},
+    {name:'Microsoft Clarity',color:'#4f46e5',test:h=>/clarity\.ms|clarity[\.\-@\/]/i.test(h)},
+    {name:'Hotjar',color:'#fd3a5c',test:h=>/hotjar|static\.hotjar\.com|hj\(/i.test(h)},
+    {name:'Facebook Pixel',color:'#1877f2',test:h=>/fbevents\.js|connect\.facebook\.net\/.*fbevents|fbq\(/i.test(h)},
+    {name:'Meta Pixel',color:'#0081fb',test:h=>/facebook\.net\/en_US\/fbevents|meta-pixel/i.test(h)},
+    {name:'Plausible',color:'#5850ec',test:h=>/plausible[\.\-@\/]|plausible\.io/i.test(h)},
+    {name:'Fathom',color:'#8c54fb',test:h=>/usefathom\.com|cdn\.usefathom/i.test(h)},
+    {name:'Mixpanel',color:'#4f44e0',test:h=>/mixpanel[\.\-@\/]|cdn\.mxpnl/i.test(h)},
+    {name:'Segment',color:'#52bd94',test:h=>/cdn\.segment\.com|analytics\.js.*segment|segment[\.\-@\/]/i.test(h)},
+    {name:'Amplitude',color:'#1b1f3b',test:h=>/amplitude[\.\-@\/]|cdn\.amplitude\.com/i.test(h)},
+    {name:'Heap',color:'#5c2d91',test:h=>/heap[\.\-@\/]|cdn\.heapanalytics/i.test(h)},
+    {name:'PostHog',color:'#f9bd2b',test:h=>/posthog[\.\-@\/]|app\.posthog\.com|us\.posthog/i.test(h)},
+    {name:'Google Ads',color:'#4285f4',test:h=>/googleads|googlesyndication|adsbygoogle|pagead2\.googlesyndication/i.test(h)},
+    {name:'Pinterest Tag',color:'#e60023',test:h=>/pintrk|s\.pinimg\.com\/ct\/core/i.test(h)},
+    {name:'TikTok Pixel',color:'#000',test:h=>/analytics\.tiktok\.com|ttq\.track/i.test(h)},
+    {name:'Snap Pixel',color:'#fffc00',test:h=>/sc-static\.net\/scevent|snaptr\(/i.test(h)},
+    {name:'LinkedIn Insight',color:'#0a66c2',test:h=>/snap\.licdn\.com\/li\.lms-analytics|linkedin\.com\/px/i.test(h)},
+    {name:'Intercom',color:'#286efa',test:h=>/intercom[\.\-@\/]|widget\.intercom\.io|intercomSettings/i.test(h)},
+    {name:'Crisp',color:'#4b7bec',test:h=>/crisp\.chat|client\.crisp\.chat/i.test(h)},
+    {name:'Zendesk',color:'#03363d',test:h=>/zdassets\.com|zendesk[\.\-@\/]|zE\(/i.test(h)},
+    {name:'Drift',color:'#0176ff',test:h=>/drift[\.\-@\/]|js\.driftt\.com/i.test(h)},
+    {name:'Tawk.to',color:'#1cc91e',test:h=>/tawk\.to|embed\.tawk/i.test(h)},
+    {name:'LiveChat',color:'#ff5100',test:h=>/livechatinc\.com|cdn\.livechatinc/i.test(h)},
+    {name:'Sentry',color:'#362d59',test:h=>/sentry[\.\-@\/]|browser\.sentry-cdn|dsn.*sentry\.io/i.test(h)},
+    {name:'LogRocket',color:'#764abc',test:h=>/logrocket[\.\-@\/]|cdn\.logrocket/i.test(h)},
+    {name:'FullStory',color:'#448aff',test:h=>/fullstory[\.\-@\/]|fullstory\.com\/s\/fs/i.test(h)},
+    {name:'Optimizely',color:'#0037ff',test:h=>/optimizely[\.\-@\/]|cdn\.optimizely/i.test(h)},
+    {name:'VWO',color:'#3fa9f5',test:h=>/vwo[\.\-@\/]|dev\.visualwebsiteoptimizer/i.test(h)},
+    {name:'Cookiebot',color:'#1d4ed8',test:h=>/cookiebot[\.\-@\/]|consent\.cookiebot/i.test(h)},
+    {name:'OneTrust',color:'#005e3a',test:h=>/onetrust[\.\-@\/]|cdn\.cookielaw\.org|optanon/i.test(h)},
+    {name:'Mailchimp',color:'#ffe01b',test:h=>/mailchimp[\.\-@\/]|chimpstatic\.com|list-manage\.com|mc\.us[0-9]+/i.test(h)},
+    {name:'Klaviyo',color:'#1a1a1a',test:h=>/klaviyo[\.\-@\/]|static\.klaviyo\.com/i.test(h)},
+    {name:'ConvertKit',color:'#fb6970',test:h=>/convertkit[\.\-@\/]|convertkit\.com/i.test(h)},
+    {name:'Beehiiv',color:'#ffd700',test:h=>/beehiiv[\.\-@\/]|embeds\.beehiiv/i.test(h)},
+  ],
+
+  /* ---- CDN & Hosting ---- */
+  cdn:[
+    {name:'Cloudflare',color:'#f38020',test:h=>/cloudflare[\.\-@\/]|cdnjs\.cloudflare\.com|cf-ray|__cf_bm|cloudflareinsights/i.test(h)},
+    {name:'Vercel',color:'#fff',test:h=>/vercel[\.\-@\/]|_vercel|vercel\.app|x-vercel/i.test(h)},
+    {name:'Netlify',color:'#00c7b7',test:h=>/netlify[\.\-@\/]|netlify\.app|netlify-identity/i.test(h)},
+    {name:'AWS CloudFront',color:'#ff9900',test:h=>/cloudfront\.net|x-amz-cf/i.test(h)},
+    {name:'AWS S3',color:'#569a31',test:h=>/s3\.amazonaws\.com|s3[\.\-].*amazonaws/i.test(h)},
+    {name:'Google Cloud CDN',color:'#4285f4',test:h=>/storage\.googleapis\.com|googleusercontent\.com/i.test(h)},
+    {name:'Firebase',color:'#ffca28',test:h=>/firebaseapp\.com|firebase[\.\-@\/]|firebaseio\.com|firebase\.js/i.test(h)},
+    {name:'GitHub Pages',color:'#c9d1d9',test:h=>/github\.io|githubusercontent\.com/i.test(h)},
+    {name:'Fastly',color:'#ff282d',test:h=>/fastly[\.\-@\/]|fastly\.net|x-served-by.*cache/i.test(h)},
+    {name:'Akamai',color:'#009bde',test:h=>/akamai[\.\-@\/]|akamaized\.net|akam\//i.test(h)},
+    {name:'KeyCDN',color:'#0094d4',test:h=>/keycdn[\.\-@\/]|kxcdn\.com/i.test(h)},
+    {name:'BunnyCDN',color:'#f5a623',test:h=>/bunnycdn|bunny\.net|b-cdn\.net/i.test(h)},
+    {name:'DigitalOcean',color:'#0080ff',test:h=>/digitaloceanspaces\.com|digitalocean[\.\-@\/]/i.test(h)},
+    {name:'Heroku',color:'#430098',test:h=>/herokuapp\.com|heroku[\.\-@\/]/i.test(h)},
+    {name:'Railway',color:'#0b0d0e',test:h=>/railway\.app|up\.railway/i.test(h)},
+    {name:'Render',color:'#46e3b7',test:h=>/onrender\.com|render[\.\-@\/]/i.test(h)},
+    {name:'Fly.io',color:'#8b5cf6',test:h=>/fly\.dev|fly\.io/i.test(h)},
+    {name:'jsDelivr',color:'#e84d3d',test:h=>/cdn\.jsdelivr\.net/i.test(h)},
+    {name:'unpkg',color:'#fff',test:h=>/unpkg\.com/i.test(h)},
+    {name:'cdnjs',color:'#f36b3b',test:h=>/cdnjs\.cloudflare\.com/i.test(h)},
+  ],
+
+  /* ---- Fonts ---- */
+  fonts:[
+    {name:'Google Fonts',color:'#4285f4',test:h=>/fonts\.googleapis\.com|fonts\.gstatic\.com/i.test(h)},
+    {name:'Adobe Fonts (Typekit)',color:'#ff0000',test:h=>/use\.typekit\.net|p\.typekit\.net|typekit[\.\-@\/]/i.test(h)},
+    {name:'Font Squirrel',color:'#3db566',test:h=>/fontsquirrel/i.test(h)},
+    {name:'Custom Web Fonts',color:'#888',test:h=>/@font-face/i.test(h)},
+  ],
+
+  /* ---- Meta & SEO ---- */
+  seo:[
+    {name:'Open Graph Tags',color:'#4267B2',test:h=>/property="og:|property='og:/i.test(h)},
+    {name:'Twitter Cards',color:'#1DA1F2',test:h=>/name="twitter:|name='twitter:/i.test(h)},
+    {name:'Schema.org / JSON-LD',color:'#f06',test:h=>/application\/ld\+json|schema\.org/i.test(h)},
+    {name:'Canonical Tag',color:'#2ecc71',test:h=>/rel="canonical"|rel='canonical'/i.test(h)},
+    {name:'Hreflang Tags',color:'#e67e22',test:h=>/hreflang=/i.test(h)},
+    {name:'AMP',color:'#0379c4',test:h=>/<html[^>]*amp|ampproject\.org/i.test(h)},
+    {name:'RSS Feed',color:'#f26522',test:h=>/type="application\/rss\+xml"|type="application\/atom\+xml"/i.test(h)},
+    {name:'Sitemap Reference',color:'#888',test:h=>/sitemap\.xml/i.test(h)},
+    {name:'Robots Meta',color:'#555',test:h=>/name="robots"|name='robots'/i.test(h)},
+    {name:'PWA Manifest',color:'#5a0fc8',test:h=>/rel="manifest"|manifest\.json|manifest\.webmanifest/i.test(h)},
+    {name:'Service Worker',color:'#ff8c00',test:h=>/serviceWorker\.register|navigator\.serviceWorker/i.test(h)},
+    {name:'Viewport Meta',color:'#888',test:h=>/name="viewport"|name='viewport'/i.test(h)},
+    {name:'Charset UTF-8',color:'#888',test:h=>/charset="?utf-8"?|charset='utf-8'/i.test(h)},
+    {name:'Favicon',color:'#888',test:h=>/rel="icon"|rel="shortcut icon"|rel='icon'|favicon/i.test(h)},
+    {name:'Apple Touch Icon',color:'#888',test:h=>/apple-touch-icon/i.test(h)},
+  ],
+
+  /* ---- Payments & eCommerce ---- */
+  payments:[
+    {name:'Stripe',color:'#635bff',test:h=>/stripe[\.\-@\/]|js\.stripe\.com|stripe\.js/i.test(h)},
+    {name:'PayPal',color:'#003087',test:h=>/paypal[\.\-@\/]|paypalobjects\.com/i.test(h)},
+    {name:'Square',color:'#006aff',test:h=>/squareup\.com|square[\.\-@\/]/i.test(h)},
+    {name:'Paddle',color:'#ffc043',test:h=>/paddle[\.\-@\/]|cdn\.paddle\.com/i.test(h)},
+    {name:'Gumroad',color:'#ff90e8',test:h=>/gumroad[\.\-@\/]|gumroad\.com/i.test(h)},
+    {name:'LemonSqueezy',color:'#ffc233',test:h=>/lemonsqueezy[\.\-@\/]|lemon\.squeezy/i.test(h)},
+    {name:'Razorpay',color:'#072654',test:h=>/razorpay[\.\-@\/]|checkout\.razorpay/i.test(h)},
+  ],
+
+  /* ---- Security ---- */
+  security:[
+    {name:'reCAPTCHA',color:'#4285f4',test:h=>/recaptcha|google\.com\/recaptcha/i.test(h)},
+    {name:'hCaptcha',color:'#0074bf',test:h=>/hcaptcha[\.\-@\/]|hcaptcha\.com/i.test(h)},
+    {name:'Turnstile (Cloudflare)',color:'#f38020',test:h=>/challenges\.cloudflare\.com\/turnstile/i.test(h)},
+    {name:'Content Security Policy',color:'#2ecc71',test:h=>/content=".*(?:default-src|script-src|style-src)/i.test(h)},
+    {name:'Subresource Integrity',color:'#888',test:h=>/integrity="sha/i.test(h)},
+  ],
+
+  /* ---- Media & Embeds ---- */
+  media:[
+    {name:'YouTube Embed',color:'#ff0000',test:h=>/youtube\.com\/embed|youtube-nocookie\.com|ytimg\.com/i.test(h)},
+    {name:'Vimeo Embed',color:'#1ab7ea',test:h=>/player\.vimeo\.com|vimeocdn\.com/i.test(h)},
+    {name:'Twitter Embed',color:'#1DA1F2',test:h=>/platform\.twitter\.com\/widgets|twitter-tweet/i.test(h)},
+    {name:'Instagram Embed',color:'#e1306c',test:h=>/instagram\.com\/embed|instgrm\.Embeds/i.test(h)},
+    {name:'Spotify Embed',color:'#1db954',test:h=>/open\.spotify\.com\/embed/i.test(h)},
+    {name:'Lazy Loading',color:'#888',test:h=>/loading="lazy"|loading='lazy'|lazyload|lazysizes/i.test(h)},
+    {name:'WebP Images',color:'#888',test:h=>/\.webp["'\s>)]/i.test(h)},
+    {name:'AVIF Images',color:'#888',test:h=>/\.avif["'\s>)]/i.test(h)},
+    {name:'SVG Graphics',color:'#ffb13b',test:h=>/<svg[\s>]|\.svg["'\s>)]/i.test(h)},
+  ],
+
+  /* ---- Build Tools & Bundlers ---- */
+  build:[
+    {name:'Webpack',color:'#8dd6f9',test:h=>/webpack|webpackJsonp|__webpack_require__|webpackChunk/i.test(h)},
+    {name:'Vite',color:'#646cff',test:h=>/\/@vite\/|vite[\.\-@\/]|modulepreload/i.test(h)},
+    {name:'Parcel',color:'#e98523',test:h=>/parcel[\.\-@\/]|parcelRequire/i.test(h)},
+    {name:'Turbopack',color:'#f00',test:h=>/turbopack/i.test(h)},
+    {name:'esbuild',color:'#ffcf00',test:h=>/esbuild[\.\-@\/]/i.test(h)},
+    {name:'Rollup',color:'#ff3333',test:h=>/rollup[\.\-@\/]/i.test(h)},
+    {name:'RequireJS',color:'#394e79',test:h=>/requirejs|require\.js|data-main.*require/i.test(h)},
+  ],
+};
+
+/* Category display config */
+const CATEGORIES=[
+  {key:'cms',label:'CMS & Platforms',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff5f1f" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',bg:'rgba(255,95,31,0.1)'},
+  {key:'frameworks',label:'Frameworks & Libraries',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#61dafb" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="8.5"/><line x1="22" y1="8.5" x2="2" y2="8.5"/></svg>',bg:'rgba(97,218,251,0.1)'},
+  {key:'css',label:'CSS & UI Frameworks',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',bg:'rgba(167,139,250,0.1)'},
+  {key:'analytics',label:'Analytics & Marketing',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>',bg:'rgba(245,158,11,0.1)'},
+  {key:'cdn',label:'CDN & Hosting',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#34d399" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',bg:'rgba(52,211,153,0.1)'},
+  {key:'fonts',label:'Fonts',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#f472b6" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9.5" y1="4" x2="9.5" y2="20"/><line x1="14.5" y1="4" x2="14.5" y2="20"/><line x1="7" y1="20" x2="17" y2="20"/></svg>',bg:'rgba(244,114,182,0.1)'},
+  {key:'seo',label:'SEO & Meta',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#60a5fa" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',bg:'rgba(96,165,250,0.1)'},
+  {key:'payments',label:'Payments & eCommerce',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4ade80" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',bg:'rgba(74,222,128,0.1)'},
+  {key:'security',label:'Security',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#f87171" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',bg:'rgba(248,113,113,0.1)'},
+  {key:'media',label:'Media & Embeds',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#c084fc" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',bg:'rgba(192,132,252,0.1)'},
+  {key:'build',label:'Build Tools & Bundlers',icon:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fb923c" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',bg:'rgba(251,146,60,0.1)'},
+];
+
+/* ==================== META GENERATOR EXTRACTION ==================== */
+function extractMetaGenerators(html){
+  const generators=[];
+  const re=/<meta[^>]*name=["']generator["'][^>]*content=["']([^"']+)["']/gi;
+  let m;
+  while((m=re.exec(html))!==null){generators.push(m[1].trim());}
+  /* Also check content before name */
+  const re2=/<meta[^>]*content=["']([^"']+)["'][^>]*name=["']generator["']/gi;
+  while((m=re2.exec(html))!==null){generators.push(m[1].trim());}
+  return[...new Set(generators)];
+}
+
+/* ==================== DETECT LANGUAGE ==================== */
+function detectLang(html){
+  const m=html.match(/<html[^>]*lang=["']([^"']+)["']/i);
+  return m?m[1]:null;
+}
+
+/* ==================== DETECT DOCTYPE ==================== */
+function detectDoctype(html){
+  if(/<!DOCTYPE\s+html>/i.test(html))return 'HTML5';
+  if(/<!DOCTYPE[^>]*XHTML/i.test(html))return 'XHTML';
+  if(/<!DOCTYPE[^>]*HTML\s+4/i.test(html))return 'HTML 4';
+  return null;
+}
+
+/* ==================== CORE ANALYSIS ==================== */
+function analyzeSource(html,sourceUrl){
+  const detected={};
+  let totalFound=0;
+
+  for(const cat of CATEGORIES){
+    detected[cat.key]=[];
+    const techList=TECH_DB[cat.key]||[];
+    for(const tech of techList){
+      if(tech.test(html)){
+        detected[cat.key].push({name:tech.name,color:tech.color});
+        totalFound++;
+      }
+    }
+  }
+
+  /* Meta generators */
+  const generators=extractMetaGenerators(html);
+  const lang=detectLang(html);
+  const doctype=detectDoctype(html);
+
+  /* Count categories with detections */
+  let catCount=0;
+  for(const cat of CATEGORIES){
+    if(detected[cat.key].length>0)catCount++;
+  }
+
+  return{detected,totalFound,catCount,generators,lang,doctype};
+}
+
+/* ==================== RENDER RESULTS ==================== */
+function renderResults(result,sourceLabel){
+  const{detected,totalFound,catCount,generators,lang,doctype}=result;
+
+  document.getElementById('resultsUrl').innerHTML=sourceLabel?'<span>Analyzed:</span> '+escHtml(sourceLabel):'';
+
+  /* Summary card */
+  let summaryHtml=`
+    <div class="summary-stat"><div class="num">${totalFound}</div><div class="lbl">Technologies</div></div>
+    <div class="summary-stat"><div class="num">${catCount}</div><div class="lbl">Categories</div></div>
+  `;
+  if(doctype) summaryHtml+=`<div class="summary-stat"><div class="num" style="font-size:1.2rem;">${doctype}</div><div class="lbl">Doctype</div></div>`;
+  if(lang) summaryHtml+=`<div class="summary-stat"><div class="num" style="font-size:1.2rem;">${escHtml(lang)}</div><div class="lbl">Language</div></div>`;
+  document.getElementById('summaryCard').innerHTML=summaryHtml;
+
+  /* Generators */
+  let catHtml='';
+  if(generators.length>0){
+    catHtml+=`<div class="category">
+      <div class="category-header">
+        <div class="category-icon" style="background:rgba(255,95,31,0.15);">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#ff5f1f" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </div>
+        <span class="category-title">Meta Generator</span>
+        <span class="category-count">${generators.length}</span>
+      </div>
+      <div class="tech-grid">
+        ${generators.map(g=>`<div class="tech-badge"><span class="dot" style="background:#ff5f1f;"></span>${escHtml(g)}</div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  /* Category results */
+  for(const cat of CATEGORIES){
+    const items=detected[cat.key];
+    catHtml+=`<div class="category">
+      <div class="category-header">
+        <div class="category-icon" style="background:${cat.bg};">${cat.icon}</div>
+        <span class="category-title">${cat.label}</span>
+        <span class="category-count">${items.length}</span>
+      </div>`;
+    if(items.length>0){
+      catHtml+=`<div class="tech-grid">`;
+      for(const t of items){
+        catHtml+=`<div class="tech-badge"><span class="dot" style="background:${t.color};"></span>${escHtml(t.name)}</div>`;
+      }
+      catHtml+=`</div>`;
+    }else{
+      catHtml+=`<div class="empty-cat">No technologies detected in this category</div>`;
+    }
+    catHtml+=`</div>`;
+  }
+
+  document.getElementById('categoryResults').innerHTML=catHtml;
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+/* ==================== ANALYZE URL ==================== */
+async function analyzeURL(){
+  const urlInput=document.getElementById('urlInput');
+  let url=urlInput.value.trim();
+  if(!url){alert('Please enter a URL.');return;}
+  if(!url.startsWith('http'))url='https://'+url;
+
+  document.getElementById('loading').style.display='block';
+  document.getElementById('results').style.display='none';
+  document.getElementById('analyzeBtn').disabled=true;
+
+  let html='';
+  let fetched=false;
+
+  const proxies=[
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
+  ];
+
+  for(const proxyUrl of proxies){
+    try{
+      const resp=await fetch(proxyUrl,{signal:AbortSignal.timeout(12000)});
+      if(resp.ok){
+        html=await resp.text();
+        if(html.length>100){fetched=true;break;}
+      }
+    }catch(e){/* try next */}
+  }
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('analyzeBtn').disabled=false;
+
+  if(!fetched||html.length<100){
+    alert('Could not fetch this URL due to CORS restrictions.\n\nTry the "Paste HTML Source" tab instead:\n1. Visit the site in your browser\n2. Right-click > View Page Source\n3. Copy all the HTML and paste it here');
+    return;
+  }
+
+  const result=analyzeSource(html,url);
+  renderResults(result,url);
+  incrementUsage();
+  gtag('event','analyze_techstack',{event_category:'tool_use',event_label:'url',value:result.totalFound});
+}
+
+/* ==================== ANALYZE PASTED HTML ==================== */
+function analyzeHTML(){
+  const html=document.getElementById('htmlInput').value.trim();
+  if(!html||html.length<20){alert('Please paste valid HTML source code (at least 20 characters).');return;}
+
+  document.getElementById('results').style.display='none';
+
+  const result=analyzeSource(html,'Pasted HTML source');
+  renderResults(result,'Pasted HTML source ('+html.length.toLocaleString()+' characters)');
+  incrementUsage();
+  gtag('event','analyze_techstack',{event_category:'tool_use',event_label:'paste',value:result.totalFound});
+}
+
+/* ==================== HELPERS ==================== */
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ==================== USAGE COUNTER ==================== */
+var TOOL_KEY='spunkart_techstack_uses';
+var BAR_KEY='sa_bar_dismissed_techstack';
+var usageCount=parseInt(localStorage.getItem(TOOL_KEY))||0;
+
+function updateBadge(){
+  document.getElementById('usageBadge').textContent=usageCount+' site'+(usageCount!==1?'s':'')+' analyzed';
+}
+
+function incrementUsage(){
+  usageCount++;
+  localStorage.setItem(TOOL_KEY,usageCount);
+  updateBadge();
+  if(usageCount>=2&&!localStorage.getItem(BAR_KEY)){
+    document.getElementById('saEmailBar').classList.add('show');
+  }
+}
+
+updateBadge();
+
+/* ==================== EMAIL BAR ==================== */
+window.saDismissBar=function(){
+  document.getElementById('saEmailBar').classList.remove('show');
+  localStorage.setItem(BAR_KEY,'1');
+};
+window.saSubmitEmail=function(){
+  var email=document.getElementById('saBarEmail').value;
+  if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
+  localStorage.setItem('sa_subscriber_email',email);
+  localStorage.setItem(BAR_KEY,'1');
+  window.open('https://embeds.beehiiv.com/cae41704-7588-4c50-83f1-11f5b4a0585f?email='+encodeURIComponent(email),'_blank');
+  document.getElementById('saEmailBar').classList.remove('show');
+  var btn=document.querySelector('.sa-sub-btn');btn.textContent='Subscribed!';btn.style.background='#10b981';
+};
+</script>
+
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

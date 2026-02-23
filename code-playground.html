@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Playground — Live HTML/CSS/JS Editor | SPUNKART.COM</title>
+<meta name="description" content="Free browser-based code playground with live preview. Edit HTML, CSS, and JavaScript side by side with instant results. Like a mini CodePen — no signup needed.">
+<meta property="og:title" content="Code Playground — Live HTML/CSS/JS Editor">
+<meta property="og:description" content="Free browser-based code editor with live preview. Write HTML, CSS, and JS with instant results. No signup needed.">
+<meta property="og:image" content="https://spunkart.com/assets/og-code-playground.png">
+<meta property="og:url" content="https://spunkart.com/code-playground">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Code Playground — Live HTML/CSS/JS Editor">
+<meta name="twitter:description" content="Free live code editor with HTML, CSS, JS panels and instant preview. By SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/code-playground">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","oc40smih97");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;display:flex;flex-direction:column;padding:20px 20px 80px;max-width:100%;overflow:hidden;}
+h1{font-size:1.8rem;margin-bottom:4px;color:#fff;}
+.subtitle{color:#999;margin-bottom:16px;font-size:0.95rem;}
+
+.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
+.toolbar button,.toolbar select{background:#222;color:#ccc;border:1px solid #333;padding:7px 14px;border-radius:6px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:4px;}
+.toolbar button:hover{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.toolbar select{appearance:none;-webkit-appearance:none;padding-right:24px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
+.toolbar select:hover{border-color:#ff5f1f;}
+.toolbar select option{background:#222;color:#ccc;}
+.toolbar .separator{width:1px;height:28px;background:#333;margin:0 4px;}
+.toolbar .layout-toggle{display:flex;gap:0;border-radius:6px;overflow:hidden;}
+.toolbar .layout-toggle button{border-radius:0;border-right:none;}
+.toolbar .layout-toggle button:first-child{border-radius:6px 0 0 6px;}
+.toolbar .layout-toggle button:last-child{border-radius:0 6px 6px 0;border-right:1px solid #333;}
+.toolbar .layout-toggle button.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333;}
+.btn-secondary:hover{background:#333;color:#fff;}
+
+.playground-wrap{display:flex;flex:1;gap:0;min-height:0;border-radius:10px;overflow:hidden;border:1px solid #333;}
+.playground-wrap.horizontal{flex-direction:column;}
+.playground-wrap.vertical{flex-direction:row;}
+
+.editors{display:flex;flex-direction:column;min-width:0;min-height:0;}
+.playground-wrap.vertical .editors{width:50%;flex-shrink:0;}
+.playground-wrap.horizontal .editors{height:50%;flex-shrink:0;}
+
+.editor-tabs{display:flex;background:#151515;border-bottom:1px solid #333;flex-shrink:0;}
+.editor-tab{padding:8px 18px;font-size:0.8rem;font-weight:700;color:#777;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.5px;user-select:none;}
+.editor-tab:hover{color:#ccc;}
+.editor-tab.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+
+.editor-panels{flex:1;position:relative;min-height:0;}
+.editor-panel{position:absolute;inset:0;display:none;flex-direction:column;}
+.editor-panel.active{display:flex;}
+.editor-panel textarea{flex:1;background:#111;border:none;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;tab-size:2;line-height:1.6;min-height:0;}
+.editor-panel textarea:focus{background:#0e0e0e;}
+.editor-panel textarea::placeholder{color:#444;}
+
+.resize-handle{background:#222;flex-shrink:0;z-index:5;transition:background 0.2s;}
+.resize-handle:hover,.resize-handle.dragging{background:#ff5f1f;}
+.playground-wrap.vertical .resize-handle{width:6px;cursor:col-resize;}
+.playground-wrap.horizontal .resize-handle{height:6px;cursor:row-resize;}
+
+.preview-area{flex:1;display:flex;flex-direction:column;min-width:0;min-height:0;background:#fff;}
+.preview-header{background:#151515;border-bottom:1px solid #333;padding:8px 16px;font-size:0.8rem;color:#777;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.preview-header span{font-weight:400;font-size:0.7rem;color:#555;}
+#previewFrame{flex:1;border:none;background:#fff;min-height:0;}
+
+.console-area{background:#111;border-top:1px solid #333;flex-shrink:0;display:flex;flex-direction:column;max-height:180px;}
+.console-header{display:flex;justify-content:space-between;align-items:center;padding:6px 16px;background:#151515;border-bottom:1px solid #282828;flex-shrink:0;cursor:pointer;user-select:none;}
+.console-header span{font-size:0.75rem;font-weight:700;color:#777;text-transform:uppercase;letter-spacing:0.5px;}
+.console-header button{padding:2px 10px;font-size:0.7rem;background:#222;border:1px solid #333;color:#888;border-radius:4px;}
+.console-header button:hover{background:#333;color:#fff;}
+.console-badge{background:#ff5f1f;color:#fff;font-size:0.6rem;padding:1px 6px;border-radius:10px;font-weight:700;margin-left:6px;}
+.console-output{overflow-y:auto;padding:8px 16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.78rem;line-height:1.5;flex:1;min-height:0;}
+.console-output .log-line{padding:2px 0;border-bottom:1px solid #1a1a1a;color:#aaa;word-break:break-all;}
+.console-output .log-line.error{color:#e74c3c;}
+.console-output .log-line.warn{color:#f39c12;}
+.console-output .log-line.info{color:#3498db;}
+.console-collapsed .console-output{display:none;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:12px;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:32px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:#2ecc71;color:#fff;padding:10px 24px;border-radius:8px;font-size:0.85rem;font-weight:600;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.toast.show{opacity:1;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:900px){
+  h1{font-size:1.3rem;}
+  main{padding:12px 10px 60px;}
+  .toolbar{gap:4px;}
+  .toolbar button,.toolbar select{padding:5px 8px;font-size:0.72rem;}
+  .playground-wrap{flex-direction:column !important;min-height:70vh;}
+  .playground-wrap .editors{width:100% !important;height:auto !important;min-height:260px;}
+  .playground-wrap .resize-handle{width:100% !important;height:6px !important;cursor:row-resize !important;}
+  .playground-wrap .preview-area{min-height:200px;}
+  .editor-tab{padding:6px 12px;font-size:0.72rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Code Playground","description":"Free browser-based code playground with live HTML, CSS, and JavaScript editing and instant preview. Like a mini CodePen with no signup required.","url":"https://spunkart.com/code-playground.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"},"featureList":["Live HTML/CSS/JS editing","Instant preview","Console output","Starter templates","Download as HTML","Resizable panels","Dark theme"]}</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Code Playground</h1>
+  <p class="subtitle">Live HTML/CSS/JS editor with instant preview. Write code, see results immediately.</p>
+  <div class="usage-badge" id="usageBadge"></div>
+
+  <div class="toolbar">
+    <select id="templateSelect" title="Load a starter template">
+      <option value="">Load Template...</option>
+      <option value="blank">Blank</option>
+      <option value="landing">Landing Page</option>
+      <option value="animation">CSS Animation</option>
+      <option value="form">Form</option>
+    </select>
+    <div class="separator"></div>
+    <div class="layout-toggle">
+      <button id="btnVertical" class="active" onclick="setLayout('vertical')" title="Side by side">&#9635;</button>
+      <button id="btnHorizontal" onclick="setLayout('horizontal')" title="Top and bottom">&#9636;</button>
+    </div>
+    <div class="separator"></div>
+    <button onclick="runCode()" title="Run code (Ctrl+Enter)">&#9654; Run</button>
+    <button onclick="resetEditors()" title="Reset all editors">Reset</button>
+    <button onclick="copyAllCode()" title="Copy combined HTML">Copy All</button>
+    <button onclick="downloadAsHTML()" title="Download as .html file">Download .html</button>
+  </div>
+
+  <div class="playground-wrap vertical" id="playgroundWrap">
+    <div class="editors" id="editorsPane">
+      <div class="editor-tabs">
+        <div class="editor-tab active" data-panel="html" onclick="switchTab('html')">HTML</div>
+        <div class="editor-tab" data-panel="css" onclick="switchTab('css')">CSS</div>
+        <div class="editor-tab" data-panel="js" onclick="switchTab('js')">JavaScript</div>
+      </div>
+      <div class="editor-panels">
+        <div class="editor-panel active" id="panelHtml">
+          <textarea id="editorHtml" placeholder="Write HTML here..." spellcheck="false"></textarea>
+        </div>
+        <div class="editor-panel" id="panelCss">
+          <textarea id="editorCss" placeholder="Write CSS here..." spellcheck="false"></textarea>
+        </div>
+        <div class="editor-panel" id="panelJs">
+          <textarea id="editorJs" placeholder="Write JavaScript here... (console.log output appears below)" spellcheck="false"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="resize-handle" id="resizeHandle"></div>
+    <div class="preview-area">
+      <div class="preview-header">
+        Preview
+        <span>Auto-updates on edit</span>
+      </div>
+      <iframe id="previewFrame" sandbox="allow-scripts allow-modals"></iframe>
+      <div class="console-area" id="consoleArea">
+        <div class="console-header" onclick="toggleConsole()">
+          <span>Console <span class="console-badge" id="consoleBadge" style="display:none;">0</span></span>
+          <button onclick="event.stopPropagation();clearConsole()">Clear</button>
+        </div>
+        <div class="console-output" id="consoleOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast"></div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+<script>
+(function(){
+  'use strict';
+
+  // --- DOM refs ---
+  var editorHtml = document.getElementById('editorHtml');
+  var editorCss = document.getElementById('editorCss');
+  var editorJs = document.getElementById('editorJs');
+  var previewFrame = document.getElementById('previewFrame');
+  var consoleOutput = document.getElementById('consoleOutput');
+  var consoleBadge = document.getElementById('consoleBadge');
+  var playgroundWrap = document.getElementById('playgroundWrap');
+  var resizeHandle = document.getElementById('resizeHandle');
+  var editorsPane = document.getElementById('editorsPane');
+  var templateSelect = document.getElementById('templateSelect');
+  var consoleArea = document.getElementById('consoleArea');
+
+  var debounceTimer = null;
+  var logCount = 0;
+  var currentLayout = 'vertical';
+
+  // --- Templates ---
+  var templates = {
+    blank: { html: '', css: '', js: '' },
+    landing: {
+      html: '<header>\n  <h1>My Landing Page</h1>\n  <p>A clean, simple starter.</p>\n  <a href="#features" class="btn">Learn More</a>\n</header>\n\n<section id="features">\n  <div class="card">\n    <h3>Fast</h3>\n    <p>Lightning-fast performance.</p>\n  </div>\n  <div class="card">\n    <h3>Simple</h3>\n    <p>Easy to use and customize.</p>\n  </div>\n  <div class="card">\n    <h3>Free</h3>\n    <p>No cost, no strings attached.</p>\n  </div>\n</section>\n\n<footer>\n  <p>Built with Code Playground</p>\n</footer>',
+      css: '* { margin: 0; padding: 0; box-sizing: border-box; }\nbody { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #333; }\n\nheader {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  color: #fff;\n  text-align: center;\n  padding: 80px 20px;\n}\nheader h1 { font-size: 2.5rem; margin-bottom: 12px; }\nheader p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 24px; }\n.btn {\n  display: inline-block;\n  background: #fff;\n  color: #764ba2;\n  padding: 12px 32px;\n  border-radius: 30px;\n  text-decoration: none;\n  font-weight: 700;\n  transition: transform 0.2s;\n}\n.btn:hover { transform: scale(1.05); }\n\n#features {\n  display: flex;\n  gap: 24px;\n  padding: 60px 20px;\n  max-width: 900px;\n  margin: 0 auto;\n  flex-wrap: wrap;\n  justify-content: center;\n}\n.card {\n  background: #f9f9f9;\n  border-radius: 12px;\n  padding: 32px 24px;\n  flex: 1;\n  min-width: 220px;\n  text-align: center;\n  box-shadow: 0 2px 12px rgba(0,0,0,0.06);\n}\n.card h3 { color: #764ba2; margin-bottom: 8px; }\n\nfooter {\n  text-align: center;\n  padding: 24px;\n  color: #999;\n  font-size: 0.85rem;\n}',
+      js: 'document.querySelector(".btn").addEventListener("click", function(e) {\n  e.preventDefault();\n  document.querySelector("#features").scrollIntoView({ behavior: "smooth" });\n});\n\nconsole.log("Landing page loaded!");\nconsole.log("Try editing the HTML to customize.");'
+    },
+    animation: {
+      html: '<div class="scene">\n  <div class="box"></div>\n  <div class="box delay-1"></div>\n  <div class="box delay-2"></div>\n  <div class="box delay-3"></div>\n  <div class="box delay-4"></div>\n</div>\n<p class="caption">CSS Keyframe Animation</p>',
+      css: '* { margin: 0; padding: 0; box-sizing: border-box; }\nbody {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  min-height: 100vh;\n  background: #0a0a0a;\n}\n\n.scene {\n  display: flex;\n  gap: 16px;\n  align-items: center;\n  justify-content: center;\n}\n\n.box {\n  width: 40px;\n  height: 40px;\n  background: linear-gradient(135deg, #ff5f1f, #ff9f1f);\n  border-radius: 8px;\n  animation: bounce 1.4s ease-in-out infinite;\n}\n.delay-1 { animation-delay: 0.1s; }\n.delay-2 { animation-delay: 0.2s; }\n.delay-3 { animation-delay: 0.3s; }\n.delay-4 { animation-delay: 0.4s; }\n\n@keyframes bounce {\n  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }\n  50% { transform: translateY(-60px) scale(1.1); opacity: 0.7; }\n}\n\n.caption {\n  color: #555;\n  font-family: -apple-system, sans-serif;\n  margin-top: 40px;\n  font-size: 0.9rem;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n}',
+      js: 'console.log("Animation running!");\nconsole.log("Try changing the @keyframes or adding more .box elements.");'
+    },
+    form: {
+      html: '<div class="form-wrapper">\n  <h2>Contact Us</h2>\n  <p class="form-subtitle">We would love to hear from you.</p>\n  <form id="contactForm">\n    <div class="field">\n      <label for="name">Name</label>\n      <input type="text" id="name" placeholder="Your name" required>\n    </div>\n    <div class="field">\n      <label for="email">Email</label>\n      <input type="email" id="email" placeholder="you@example.com" required>\n    </div>\n    <div class="field">\n      <label for="message">Message</label>\n      <textarea id="message" rows="4" placeholder="What is on your mind?" required></textarea>\n    </div>\n    <button type="submit">Send Message</button>\n  </form>\n  <p class="status" id="status"></p>\n</div>',
+      css: '* { margin: 0; padding: 0; box-sizing: border-box; }\nbody {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 100vh;\n  background: #f5f5f5;\n  font-family: -apple-system, BlinkMacSystemFont, sans-serif;\n}\n\n.form-wrapper {\n  background: #fff;\n  padding: 40px 32px;\n  border-radius: 16px;\n  box-shadow: 0 4px 24px rgba(0,0,0,0.08);\n  max-width: 480px;\n  width: 100%;\n}\nh2 { color: #1a1a1a; margin-bottom: 4px; }\n.form-subtitle { color: #888; margin-bottom: 24px; font-size: 0.95rem; }\n\n.field { margin-bottom: 16px; }\nlabel { display: block; font-weight: 600; margin-bottom: 6px; color: #333; font-size: 0.9rem; }\ninput, textarea {\n  width: 100%;\n  padding: 10px 14px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  font-size: 0.95rem;\n  outline: none;\n  transition: border-color 0.2s;\n  font-family: inherit;\n}\ninput:focus, textarea:focus { border-color: #667eea; }\ntextarea { resize: vertical; }\n\nbutton {\n  width: 100%;\n  padding: 12px;\n  background: #667eea;\n  color: #fff;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  font-weight: 700;\n  cursor: pointer;\n  transition: background 0.2s;\n}\nbutton:hover { background: #5a6fd6; }\n\n.status { text-align: center; margin-top: 12px; color: #27ae60; font-weight: 600; font-size: 0.9rem; }',
+      js: 'document.getElementById("contactForm").addEventListener("submit", function(e) {\n  e.preventDefault();\n  var name = document.getElementById("name").value;\n  var email = document.getElementById("email").value;\n  var message = document.getElementById("message").value;\n\n  console.log("Form submitted:");\n  console.log("Name:", name);\n  console.log("Email:", email);\n  console.log("Message:", message);\n\n  document.getElementById("status").textContent = "Thanks, " + name + "! Message sent.";\n  this.reset();\n});'
+    }
+  };
+
+  // --- Tab switching ---
+  window.switchTab = function(panel) {
+    document.querySelectorAll('.editor-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.editor-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelector('.editor-tab[data-panel="' + panel + '"]').classList.add('active');
+    document.getElementById('panel' + panel.charAt(0).toUpperCase() + panel.slice(1)).classList.add('active');
+  };
+
+  // --- Layout toggle ---
+  window.setLayout = function(layout) {
+    currentLayout = layout;
+    playgroundWrap.className = 'playground-wrap ' + layout;
+    document.getElementById('btnVertical').classList.toggle('active', layout === 'vertical');
+    document.getElementById('btnHorizontal').classList.toggle('active', layout === 'horizontal');
+    gtag('event', 'layout_change', { event_category: 'playground', event_label: layout });
+  };
+
+  // --- Template loading ---
+  templateSelect.addEventListener('change', function() {
+    var key = this.value;
+    if (!key) return;
+    var t = templates[key];
+    if (!t) return;
+    if (editorHtml.value.trim() || editorCss.value.trim() || editorJs.value.trim()) {
+      if (!confirm('Load the "' + key + '" template? This will replace your current code.')) {
+        this.value = '';
+        return;
+      }
+    }
+    editorHtml.value = t.html;
+    editorCss.value = t.css;
+    editorJs.value = t.js;
+    this.value = '';
+    switchTab('html');
+    runCode();
+    incrementUsage();
+    gtag('event', 'template_load', { event_category: 'playground', event_label: key });
+  });
+
+  // --- Build & run preview ---
+  window.runCode = function() {
+    var html = editorHtml.value;
+    var css = editorCss.value;
+    var js = editorJs.value;
+
+    // Clear console
+    clearConsoleInternal();
+
+    var doc = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><style>' + css + '<\/style></head><body>' + html +
+      '<script>' +
+      '(function(){' +
+      'var _post=function(t,a){try{window.parent.postMessage({type:"console",level:t,args:Array.prototype.slice.call(a).map(function(v){if(v===null)return"null";if(v===undefined)return"undefined";if(typeof v==="object"){try{return JSON.stringify(v,null,2)}catch(e){return String(v)}}return String(v)})},"*")}catch(e){}};' +
+      'var _origLog=console.log,_origError=console.error,_origWarn=console.warn,_origInfo=console.info;' +
+      'console.log=function(){_origLog.apply(console,arguments);_post("log",arguments)};' +
+      'console.error=function(){_origError.apply(console,arguments);_post("error",arguments)};' +
+      'console.warn=function(){_origWarn.apply(console,arguments);_post("warn",arguments)};' +
+      'console.info=function(){_origInfo.apply(console,arguments);_post("info",arguments)};' +
+      'window.addEventListener("error",function(e){_post("error",["Error: "+e.message+" (line "+e.lineno+")"])});' +
+      '})();' +
+      '<\/script>' +
+      '<script>' + js + '<\/script>' +
+      '</body></html>';
+
+    var frame = previewFrame;
+    frame.srcdoc = doc;
+
+    // Autosave
+    autosave();
+  };
+
+  // --- Debounced auto-run ---
+  function scheduleRun() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() { runCode(); }, 400);
+  }
+
+  editorHtml.addEventListener('input', scheduleRun);
+  editorCss.addEventListener('input', scheduleRun);
+  editorJs.addEventListener('input', scheduleRun);
+
+  // Ctrl+Enter to run immediately
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      runCode();
+    }
+  });
+
+  // Tab key in editors
+  [editorHtml, editorCss, editorJs].forEach(function(el) {
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        var s = el.selectionStart, end = el.selectionEnd;
+        el.value = el.value.substring(0, s) + '  ' + el.value.substring(end);
+        el.selectionStart = el.selectionEnd = s + 2;
+      }
+    });
+  });
+
+  // --- Console ---
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'console') {
+      var level = e.data.level || 'log';
+      var text = (e.data.args || []).join(' ');
+      appendConsole(text, level);
+    }
+  });
+
+  function appendConsole(text, level) {
+    var div = document.createElement('div');
+    div.className = 'log-line ' + (level || 'log');
+    var prefix = '';
+    if (level === 'error') prefix = '[error] ';
+    else if (level === 'warn') prefix = '[warn] ';
+    else if (level === 'info') prefix = '[info] ';
+    div.textContent = prefix + text;
+    consoleOutput.appendChild(div);
+    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    logCount++;
+    consoleBadge.textContent = logCount;
+    consoleBadge.style.display = 'inline';
+    // Expand console if collapsed
+    consoleArea.classList.remove('console-collapsed');
+  }
+
+  function clearConsoleInternal() {
+    consoleOutput.innerHTML = '';
+    logCount = 0;
+    consoleBadge.style.display = 'none';
+  }
+  window.clearConsole = function() { clearConsoleInternal(); };
+
+  window.toggleConsole = function() {
+    consoleArea.classList.toggle('console-collapsed');
+  };
+
+  // --- Reset ---
+  window.resetEditors = function() {
+    if ((editorHtml.value.trim() || editorCss.value.trim() || editorJs.value.trim()) && !confirm('Reset all editors? This cannot be undone.')) return;
+    editorHtml.value = '';
+    editorCss.value = '';
+    editorJs.value = '';
+    clearConsoleInternal();
+    previewFrame.srcdoc = '';
+    localStorage.removeItem('playground_html');
+    localStorage.removeItem('playground_css');
+    localStorage.removeItem('playground_js');
+    switchTab('html');
+    showToast('Editors reset');
+    gtag('event', 'editor_reset', { event_category: 'playground' });
+  };
+
+  // --- Copy all code ---
+  window.copyAllCode = function() {
+    var combined = buildFullHTML();
+    navigator.clipboard.writeText(combined).then(function() {
+      showToast('Code copied to clipboard');
+      incrementUsage();
+    }).catch(function() {
+      showToast('Failed to copy');
+    });
+    gtag('event', 'copy_code', { event_category: 'playground' });
+  };
+
+  // --- Download as HTML ---
+  window.downloadAsHTML = function() {
+    var combined = buildFullHTML();
+    var blob = new Blob([combined], { type: 'text/html' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'playground-export.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Downloaded playground-export.html');
+    incrementUsage();
+    gtag('event', 'download_html', { event_category: 'playground' });
+  };
+
+  function buildFullHTML() {
+    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Code Playground Export</title>\n<style>\n' + editorCss.value + '\n</style>\n</head>\n<body>\n' + editorHtml.value + '\n<script>\n' + editorJs.value + '\n<\/script>\n</body>\n</html>';
+  }
+
+  // --- Autosave / restore ---
+  function autosave() {
+    localStorage.setItem('playground_html', editorHtml.value);
+    localStorage.setItem('playground_css', editorCss.value);
+    localStorage.setItem('playground_js', editorJs.value);
+  }
+
+  function restoreDraft() {
+    var h = localStorage.getItem('playground_html');
+    var c = localStorage.getItem('playground_css');
+    var j = localStorage.getItem('playground_js');
+    if (h !== null || c !== null || j !== null) {
+      editorHtml.value = h || '';
+      editorCss.value = c || '';
+      editorJs.value = j || '';
+      if ((h && h.trim()) || (c && c.trim()) || (j && j.trim())) {
+        runCode();
+      }
+    }
+  }
+  restoreDraft();
+
+  // --- Resizable panels ---
+  (function() {
+    var dragging = false;
+    var startPos = 0;
+    var startSize = 0;
+
+    resizeHandle.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      dragging = true;
+      resizeHandle.classList.add('dragging');
+      if (currentLayout === 'vertical') {
+        startPos = e.clientX;
+        startSize = editorsPane.offsetWidth;
+      } else {
+        startPos = e.clientY;
+        startSize = editorsPane.offsetHeight;
+      }
+      document.body.style.cursor = currentLayout === 'vertical' ? 'col-resize' : 'row-resize';
+      document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      if (currentLayout === 'vertical') {
+        var delta = e.clientX - startPos;
+        var newW = Math.max(200, Math.min(startSize + delta, playgroundWrap.offsetWidth - 200));
+        editorsPane.style.width = newW + 'px';
+        editorsPane.style.flexShrink = '0';
+      } else {
+        var delta = e.clientY - startPos;
+        var newH = Math.max(120, Math.min(startSize + delta, playgroundWrap.offsetHeight - 120));
+        editorsPane.style.height = newH + 'px';
+        editorsPane.style.flexShrink = '0';
+      }
+    });
+
+    document.addEventListener('mouseup', function() {
+      if (dragging) {
+        dragging = false;
+        resizeHandle.classList.remove('dragging');
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+      }
+    });
+
+    // Touch support
+    resizeHandle.addEventListener('touchstart', function(e) {
+      var touch = e.touches[0];
+      dragging = true;
+      resizeHandle.classList.add('dragging');
+      if (currentLayout === 'vertical') {
+        startPos = touch.clientX;
+        startSize = editorsPane.offsetWidth;
+      } else {
+        startPos = touch.clientY;
+        startSize = editorsPane.offsetHeight;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(e) {
+      if (!dragging) return;
+      var touch = e.touches[0];
+      if (currentLayout === 'vertical') {
+        var delta = touch.clientX - startPos;
+        var newW = Math.max(200, Math.min(startSize + delta, playgroundWrap.offsetWidth - 200));
+        editorsPane.style.width = newW + 'px';
+        editorsPane.style.flexShrink = '0';
+      } else {
+        var delta = touch.clientY - startPos;
+        var newH = Math.max(120, Math.min(startSize + delta, playgroundWrap.offsetHeight - 120));
+        editorsPane.style.height = newH + 'px';
+        editorsPane.style.flexShrink = '0';
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function() {
+      if (dragging) {
+        dragging = false;
+        resizeHandle.classList.remove('dragging');
+      }
+    });
+  })();
+
+  // --- Toast ---
+  window.showToast = function(msg) {
+    var toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2500);
+  };
+
+  // --- Usage counter & email bar ---
+  var TOOL_KEY = 'spunkart_playground_uses';
+  var BAR_KEY = 'sa_bar_dismissed_code-playground';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+
+  function updateBadge() {
+    badge.textContent = '\uD83D\uDD25 ' + usageCount + ' project' + (usageCount !== 1 ? 's' : '') + ' created';
+  }
+  updateBadge();
+
+  function incrementUsage() {
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    if (usageCount >= 2 && !localStorage.getItem(BAR_KEY)) {
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  window.saDismissBar = function() {
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+
+  window.saSubmitEmail = function() {
+    var email = document.getElementById('saBarEmail').value;
+    if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/cae41704-7588-4c50-83f1-11f5b4a0585f?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+  // Show email bar if already past threshold and not dismissed
+  if (usageCount >= 2 && !localStorage.getItem(BAR_KEY)) {
+    document.getElementById('saEmailBar').classList.add('show');
+  }
+
+})();
+</script>
+</body>
+</html>

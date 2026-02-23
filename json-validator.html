@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Schema Validator — Validate JSON Data Online | SPUNKART.COM</title>
+<meta name="description" content="Validate JSON data against JSON Schema online. Syntax checking, schema validation with clear error messages and line numbers. Free developer tool.">
+<meta property="og:title" content="JSON Schema Validator — Validate JSON Data Online">
+<meta property="og:description" content="Validate JSON data against JSON Schema online. Syntax checking, schema validation with clear error messages and line numbers.">
+<meta property="og:image" content="https://spunkart.com/assets/og-json-validator.png">
+<meta property="og:url" content="https://spunkart.com/json-validator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="JSON Schema Validator — Validate JSON Data Online">
+<meta name="twitter:description" content="Validate JSON data against JSON Schema. Syntax checking, error messages with line numbers. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/json-validator.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+button{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+button:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:420px;}
+.panel{display:flex;flex-direction:column;}
+.panel-header{background:#1a1a1a;border:1px solid #333;border-bottom:none;border-radius:10px 10px 0 0;padding:10px 16px;font-size:0.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;}
+.panel-header .hint{font-size:0.7rem;color:#555;text-transform:none;letter-spacing:0;font-weight:400;}
+textarea{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:none;border-radius:0 0 10px 10px;tab-size:2;line-height:1.5;}
+textarea:focus{border-color:#ff5f1f;}
+
+.result-box{margin-top:16px;border-radius:10px;padding:20px;display:none;font-size:0.9rem;line-height:1.7;}
+.result-box.pass{display:block;background:rgba(16,185,129,0.08);border:1px solid #10b981;}
+.result-box.fail{display:block;background:rgba(231,76,60,0.08);border:1px solid #e74c3c;}
+.result-box .result-icon{font-size:1.3rem;margin-right:8px;}
+.result-box .result-title{font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.result-box.pass .result-title{color:#10b981;}
+.result-box.fail .result-title{color:#e74c3c;}
+
+.error-list{list-style:none;padding:0;margin:0;}
+.error-list li{padding:8px 12px;background:rgba(0,0,0,0.3);border-radius:6px;margin-bottom:6px;font-family:'SF Mono',Monaco,monospace;font-size:0.82rem;line-height:1.5;color:#e8e8e8;border-left:3px solid #e74c3c;}
+.error-list li .err-path{color:#ff5f1f;font-weight:600;}
+.error-list li .err-msg{color:#ccc;}
+.error-list li .err-line{color:#888;font-size:0.75rem;}
+
+.status-bar{display:flex;gap:16px;margin-bottom:16px;font-size:0.85rem;flex-wrap:wrap;}
+.status-item{color:#888;}
+
+.copy-btn{background:#333;color:#ccc;border:none;padding:4px 12px;border-radius:5px;font-size:0.7rem;cursor:pointer;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#10b981;color:#fff;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{margin-bottom:0;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+@media(max-width:768px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .editor-wrap{grid-template-columns:1fr;min-height:auto;}
+  textarea{min-height:200px;}
+  .toolbar{gap:6px;}
+  .toolbar button{padding:8px 14px;font-size:0.8rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Schema Validator","description":"Validate JSON data against JSON Schema online. Syntax checking, schema validation with clear error messages and line numbers. Free developer tool.","url":"https://spunkart.com/json-validator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>JSON Schema Validator</h1>
+  <p class="subtitle">Validate JSON data against a JSON Schema. Syntax checking, schema validation, clear error messages with line numbers.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <div class="toolbar">
+    <button class="btn-green" onclick="runValidation()" id="validateBtn">Validate</button>
+    <button class="btn-secondary" onclick="prettyPrintData()">Pretty-Print Data</button>
+    <button class="btn-secondary" onclick="minifyData()">Minify Data</button>
+    <button class="btn-secondary" onclick="prettyPrintSchema()">Pretty-Print Schema</button>
+    <button class="btn-secondary" onclick="loadSample()">Load Sample</button>
+    <button class="btn-secondary" onclick="clearAll()">Clear</button>
+  </div>
+
+  <div class="status-bar">
+    <span class="status-item" id="statusInfo">Paste JSON data and click Validate</span>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="panel">
+      <div class="panel-header">
+        JSON Data
+        <button class="copy-btn" onclick="copyText('jsonData',this)">Copy</button>
+      </div>
+      <textarea id="jsonData" placeholder='Paste your JSON data here...
+
+Example:
+{
+  "name": "John",
+  "age": 30,
+  "email": "john@example.com"
+}' spellcheck="false"></textarea>
+    </div>
+    <div class="panel">
+      <div class="panel-header">
+        JSON Schema <span class="hint">(optional)</span>
+        <button class="copy-btn" onclick="copyText('jsonSchema',this)">Copy</button>
+      </div>
+      <textarea id="jsonSchema" placeholder='Paste a JSON Schema here (optional)...
+
+Example:
+{
+  "type": "object",
+  "required": ["name", "age"],
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "integer", "minimum": 0 }
+  }
+}' spellcheck="false"></textarea>
+    </div>
+  </div>
+
+  <div class="result-box" id="resultBox">
+    <div class="result-title" id="resultTitle"></div>
+    <div id="resultBody"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<script>
+/* ============================================================
+   JSON Schema Validator - Client-Side Implementation
+   Supports JSON Schema Draft-07 / Draft-04 subset
+   ============================================================ */
+
+// Tab key support for both textareas
+document.querySelectorAll('textarea').forEach(function(ta){
+  ta.addEventListener('keydown',function(e){
+    if(e.key==='Tab'){
+      e.preventDefault();
+      var s=ta.selectionStart,end=ta.selectionEnd;
+      ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(end);
+      ta.selectionStart=ta.selectionEnd=s+2;
+    }
+  });
+});
+
+// Ctrl+Enter to validate
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key==='Enter') runValidation();
+});
+
+/* ---- JSON parsing with line number tracking ---- */
+function parseJSONWithLineNumbers(str){
+  // First try standard parse for the parsed object
+  var obj=JSON.parse(str);
+  // Build a line map: for each character index, which line is it on?
+  var lineMap=[];
+  var line=1;
+  for(var i=0;i<str.length;i++){
+    lineMap[i]=line;
+    if(str[i]==='\n') line++;
+  }
+  return {obj:obj,lineMap:lineMap,raw:str};
+}
+
+function getLineForPath(raw,path){
+  // Given a JSON path like "/name" or "/items/0/price", find an approximate line number
+  if(!path||path==='/') return 1;
+  var parts=path.replace(/^\//,'').split('/');
+  var searchKey=parts[parts.length-1];
+  var lines=raw.split('\n');
+  // Try to find the key in the JSON string
+  for(var i=0;i<lines.length;i++){
+    var line=lines[i];
+    // Match "key": or array index context
+    if(line.indexOf('"'+searchKey+'"')!==-1){
+      return i+1;
+    }
+  }
+  // Fallback: try numeric index context
+  return null;
+}
+
+/* ---- JSON Schema Validator Engine ---- */
+function validateSchema(data,schema,rawJSON){
+  var errors=[];
+
+  function addError(path,message,keyword){
+    var line=getLineForPath(rawJSON,path);
+    errors.push({path:path||'/',message:message,keyword:keyword||'',line:line});
+  }
+
+  function getType(val){
+    if(val===null) return 'null';
+    if(Array.isArray(val)) return 'array';
+    return typeof val;
+  }
+
+  function validate(instance,sch,path){
+    if(!sch||typeof sch!=='object') return;
+
+    // $ref - basic support (same-document refs)
+    if(sch['$ref']){
+      var ref=sch['$ref'];
+      if(ref==='#'){
+        validate(instance,schema,path);
+      } else if(ref.startsWith('#/definitions/')){
+        var defName=ref.replace('#/definitions/','');
+        if(schema.definitions&&schema.definitions[defName]){
+          validate(instance,schema.definitions[defName],path);
+        } else {
+          addError(path,'Unresolved $ref: '+ref,'$ref');
+        }
+      }
+      return;
+    }
+
+    // boolean schema
+    if(sch===true) return;
+    if(sch===false){addError(path,'Schema is false - no value is valid','false');return;}
+
+    var instanceType=getType(instance);
+
+    // --- type ---
+    if(sch.type){
+      var types=Array.isArray(sch.type)?sch.type:[sch.type];
+      var typeMatch=false;
+      for(var t=0;t<types.length;t++){
+        var st=types[t];
+        if(st==='integer'){
+          if(instanceType==='number'&&Number.isInteger(instance)) typeMatch=true;
+        } else if(st===instanceType){
+          typeMatch=true;
+        }
+      }
+      if(!typeMatch){
+        addError(path,'Expected type "'+sch.type+'" but got "'+instanceType+'"','type');
+        return; // type mismatch, skip further checks for this node
+      }
+    }
+
+    // --- enum ---
+    if(sch['enum']){
+      var matched=false;
+      for(var ei=0;ei<sch['enum'].length;ei++){
+        if(JSON.stringify(instance)===JSON.stringify(sch['enum'][ei])){matched=true;break;}
+      }
+      if(!matched) addError(path,'Value must be one of: '+JSON.stringify(sch['enum']),'enum');
+    }
+
+    // --- const ---
+    if(sch.hasOwnProperty('const')){
+      if(JSON.stringify(instance)!==JSON.stringify(sch['const'])){
+        addError(path,'Value must be '+JSON.stringify(sch['const']),'const');
+      }
+    }
+
+    // --- String validations ---
+    if(instanceType==='string'){
+      if(sch.minLength!==undefined&&instance.length<sch.minLength){
+        addError(path,'String must be at least '+sch.minLength+' characters (got '+instance.length+')','minLength');
+      }
+      if(sch.maxLength!==undefined&&instance.length>sch.maxLength){
+        addError(path,'String must be at most '+sch.maxLength+' characters (got '+instance.length+')','maxLength');
+      }
+      if(sch.pattern){
+        try{
+          var re=new RegExp(sch.pattern);
+          if(!re.test(instance)){
+            addError(path,'String does not match pattern: '+sch.pattern,'pattern');
+          }
+        }catch(e){}
+      }
+      if(sch.format){
+        validateFormat(instance,sch.format,path);
+      }
+    }
+
+    // --- Number validations ---
+    if(instanceType==='number'){
+      if(sch.minimum!==undefined&&instance<sch.minimum){
+        addError(path,'Value must be >= '+sch.minimum+' (got '+instance+')','minimum');
+      }
+      if(sch.maximum!==undefined&&instance>sch.maximum){
+        addError(path,'Value must be <= '+sch.maximum+' (got '+instance+')','maximum');
+      }
+      if(sch.exclusiveMinimum!==undefined){
+        var exMin=typeof sch.exclusiveMinimum==='number'?sch.exclusiveMinimum:sch.minimum;
+        if(typeof sch.exclusiveMinimum==='number'&&instance<=sch.exclusiveMinimum){
+          addError(path,'Value must be > '+sch.exclusiveMinimum+' (got '+instance+')','exclusiveMinimum');
+        }
+      }
+      if(sch.exclusiveMaximum!==undefined){
+        var exMax=typeof sch.exclusiveMaximum==='number'?sch.exclusiveMaximum:sch.maximum;
+        if(typeof sch.exclusiveMaximum==='number'&&instance>=sch.exclusiveMaximum){
+          addError(path,'Value must be < '+sch.exclusiveMaximum+' (got '+instance+')','exclusiveMaximum');
+        }
+      }
+      if(sch.multipleOf!==undefined&&sch.multipleOf>0){
+        var remainder=instance/sch.multipleOf;
+        if(Math.abs(remainder-Math.round(remainder))>1e-10){
+          addError(path,'Value must be a multiple of '+sch.multipleOf,'multipleOf');
+        }
+      }
+    }
+
+    // --- Object validations ---
+    if(instanceType==='object'){
+      var keys=Object.keys(instance);
+
+      // required
+      if(sch.required&&Array.isArray(sch.required)){
+        for(var ri=0;ri<sch.required.length;ri++){
+          var rk=sch.required[ri];
+          if(!instance.hasOwnProperty(rk)){
+            addError(path,'Missing required property: "'+rk+'"','required');
+          }
+        }
+      }
+
+      // properties
+      if(sch.properties){
+        for(var pk in sch.properties){
+          if(instance.hasOwnProperty(pk)){
+            validate(instance[pk],sch.properties[pk],path+'/'+pk);
+          }
+        }
+      }
+
+      // patternProperties
+      if(sch.patternProperties){
+        for(var pp in sch.patternProperties){
+          try{
+            var ppre=new RegExp(pp);
+            for(var ki=0;ki<keys.length;ki++){
+              if(ppre.test(keys[ki])){
+                validate(instance[keys[ki]],sch.patternProperties[pp],path+'/'+keys[ki]);
+              }
+            }
+          }catch(e){}
+        }
+      }
+
+      // additionalProperties
+      if(sch.additionalProperties!==undefined){
+        var allowed={};
+        if(sch.properties) for(var ap in sch.properties) allowed[ap]=true;
+        if(sch.patternProperties){
+          for(var ppp in sch.patternProperties){
+            try{
+              var ppre2=new RegExp(ppp);
+              for(var ki2=0;ki2<keys.length;ki2++){
+                if(ppre2.test(keys[ki2])) allowed[keys[ki2]]=true;
+              }
+            }catch(e){}
+          }
+        }
+        for(var ai=0;ai<keys.length;ai++){
+          if(!allowed[keys[ai]]){
+            if(sch.additionalProperties===false){
+              addError(path+'/'+keys[ai],'Additional property "'+keys[ai]+'" is not allowed','additionalProperties');
+            } else if(typeof sch.additionalProperties==='object'){
+              validate(instance[keys[ai]],sch.additionalProperties,path+'/'+keys[ai]);
+            }
+          }
+        }
+      }
+
+      // minProperties / maxProperties
+      if(sch.minProperties!==undefined&&keys.length<sch.minProperties){
+        addError(path,'Object must have at least '+sch.minProperties+' properties (got '+keys.length+')','minProperties');
+      }
+      if(sch.maxProperties!==undefined&&keys.length>sch.maxProperties){
+        addError(path,'Object must have at most '+sch.maxProperties+' properties (got '+keys.length+')','maxProperties');
+      }
+
+      // dependencies
+      if(sch.dependencies){
+        for(var dk in sch.dependencies){
+          if(instance.hasOwnProperty(dk)){
+            if(Array.isArray(sch.dependencies[dk])){
+              for(var di=0;di<sch.dependencies[dk].length;di++){
+                if(!instance.hasOwnProperty(sch.dependencies[dk][di])){
+                  addError(path,'Property "'+dk+'" requires "'+sch.dependencies[dk][di]+'" to be present','dependencies');
+                }
+              }
+            } else if(typeof sch.dependencies[dk]==='object'){
+              validate(instance,sch.dependencies[dk],path);
+            }
+          }
+        }
+      }
+    }
+
+    // --- Array validations ---
+    if(instanceType==='array'){
+      if(sch.minItems!==undefined&&instance.length<sch.minItems){
+        addError(path,'Array must have at least '+sch.minItems+' items (got '+instance.length+')','minItems');
+      }
+      if(sch.maxItems!==undefined&&instance.length>sch.maxItems){
+        addError(path,'Array must have at most '+sch.maxItems+' items (got '+instance.length+')','maxItems');
+      }
+      if(sch.uniqueItems){
+        var seen=[];
+        for(var ui=0;ui<instance.length;ui++){
+          var serialized=JSON.stringify(instance[ui]);
+          if(seen.indexOf(serialized)!==-1){
+            addError(path+'/'+ui,'Array items must be unique (duplicate found)','uniqueItems');
+            break;
+          }
+          seen.push(serialized);
+        }
+      }
+      // items
+      if(sch.items){
+        if(Array.isArray(sch.items)){
+          // tuple validation
+          for(var ti=0;ti<instance.length;ti++){
+            if(ti<sch.items.length){
+              validate(instance[ti],sch.items[ti],path+'/'+ti);
+            } else if(sch.additionalItems===false){
+              addError(path+'/'+ti,'Additional item at index '+ti+' is not allowed','additionalItems');
+            } else if(typeof sch.additionalItems==='object'){
+              validate(instance[ti],sch.additionalItems,path+'/'+ti);
+            }
+          }
+        } else {
+          for(var ii=0;ii<instance.length;ii++){
+            validate(instance[ii],sch.items,path+'/'+ii);
+          }
+        }
+      }
+      if(sch.contains){
+        var containsMatch=false;
+        for(var ci=0;ci<instance.length;ci++){
+          var subErrors=[];
+          var origLen=errors.length;
+          validate(instance[ci],sch.contains,path+'/'+ci);
+          if(errors.length===origLen){containsMatch=true;break;}
+          else{
+            // Remove errors added for this check
+            errors.length=origLen;
+          }
+        }
+        if(!containsMatch){
+          addError(path,'Array must contain at least one item matching the "contains" schema','contains');
+        }
+      }
+    }
+
+    // --- Combinators ---
+    // allOf
+    if(sch.allOf&&Array.isArray(sch.allOf)){
+      for(var aoi=0;aoi<sch.allOf.length;aoi++){
+        validate(instance,sch.allOf[aoi],path);
+      }
+    }
+
+    // anyOf
+    if(sch.anyOf&&Array.isArray(sch.anyOf)){
+      var anyMatch=false;
+      for(var anyi=0;anyi<sch.anyOf.length;anyi++){
+        var origLen2=errors.length;
+        validate(instance,sch.anyOf[anyi],path);
+        if(errors.length===origLen2){anyMatch=true;break;}
+        else{errors.length=origLen2;}
+      }
+      if(!anyMatch){
+        addError(path,'Value does not match any of the "anyOf" schemas','anyOf');
+      }
+    }
+
+    // oneOf
+    if(sch.oneOf&&Array.isArray(sch.oneOf)){
+      var matchCount=0;
+      for(var onei=0;onei<sch.oneOf.length;onei++){
+        var origLen3=errors.length;
+        validate(instance,sch.oneOf[onei],path);
+        if(errors.length===origLen3) matchCount++;
+        else errors.length=origLen3;
+      }
+      if(matchCount===0){
+        addError(path,'Value does not match any of the "oneOf" schemas','oneOf');
+      } else if(matchCount>1){
+        addError(path,'Value matches more than one "oneOf" schema (must match exactly one)','oneOf');
+      }
+    }
+
+    // not
+    if(sch.not){
+      var origLen4=errors.length;
+      validate(instance,sch.not,path);
+      if(errors.length===origLen4){
+        addError(path,'Value must NOT match the "not" schema','not');
+      } else {
+        errors.length=origLen4;
+      }
+    }
+
+    // if/then/else
+    if(sch['if']){
+      var origLen5=errors.length;
+      validate(instance,sch['if'],path);
+      var ifPassed=(errors.length===origLen5);
+      if(!ifPassed) errors.length=origLen5;
+      if(ifPassed&&sch['then']){
+        validate(instance,sch['then'],path);
+      }
+      if(!ifPassed&&sch['else']){
+        validate(instance,sch['else'],path);
+      }
+    }
+  }
+
+  function validateFormat(value,format,path){
+    var formats={
+      'email':/^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      'uri':/^https?:\/\/.+/,
+      'uri-reference':/^(https?:\/\/)?[^\s]+$/,
+      'date':/^\d{4}-\d{2}-\d{2}$/,
+      'date-time':/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/,
+      'time':/^\d{2}:\d{2}:\d{2}/,
+      'ipv4':/^(\d{1,3}\.){3}\d{1,3}$/,
+      'ipv6':/^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/,
+      'uuid':/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i,
+      'hostname':/^[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    };
+    if(formats[format]&&!formats[format].test(value)){
+      addError(path,'String does not match format "'+format+'"','format');
+    }
+  }
+
+  validate(data,schema,'');
+  return errors;
+}
+
+/* ---- Better JSON parse error with line numbers ---- */
+function getJSONParseError(str){
+  try{
+    JSON.parse(str);
+    return null;
+  }catch(e){
+    var msg=e.message;
+    var line=null;
+    var col=null;
+    // Try to extract position from error message
+    var posMatch=msg.match(/position\s+(\d+)/i);
+    if(posMatch){
+      var pos=parseInt(posMatch[1]);
+      var lines=str.substring(0,pos).split('\n');
+      line=lines.length;
+      col=lines[lines.length-1].length+1;
+    }
+    // Some browsers give "line X column Y"
+    var lineMatch=msg.match(/line\s+(\d+)/i);
+    if(lineMatch) line=parseInt(lineMatch[1]);
+    var colMatch=msg.match(/column\s+(\d+)/i);
+    if(colMatch) col=parseInt(colMatch[1]);
+
+    return {
+      message:msg,
+      line:line,
+      column:col
+    };
+  }
+}
+
+/* ---- Main Validation ---- */
+function runValidation(){
+  var dataStr=document.getElementById('jsonData').value.trim();
+  var schemaStr=document.getElementById('jsonSchema').value.trim();
+  var resultBox=document.getElementById('resultBox');
+  var resultTitle=document.getElementById('resultTitle');
+  var resultBody=document.getElementById('resultBody');
+  var statusInfo=document.getElementById('statusInfo');
+
+  resultBox.className='result-box';
+  resultBox.style.display='none';
+
+  if(!dataStr){
+    statusInfo.textContent='Please paste JSON data to validate';
+    return;
+  }
+
+  incrementUsage();
+
+  // Step 1: Validate JSON data syntax
+  var dataError=getJSONParseError(dataStr);
+  if(dataError){
+    resultBox.className='result-box fail';
+    resultBox.style.display='block';
+    resultTitle.textContent='JSON Syntax Error in Data';
+    var lineInfo=dataError.line?'Line '+dataError.line+(dataError.column?', Column '+dataError.column:''):''
+    resultBody.innerHTML='<ul class="error-list"><li>'
+      +(lineInfo?'<span class="err-line">'+escHtml(lineInfo)+'</span><br>':'')
+      +'<span class="err-msg">'+escHtml(dataError.message)+'</span></li></ul>';
+    statusInfo.textContent='Validation failed - JSON syntax error';
+    gtag('event','json_validate',{event_category:'tool_use',event_label:'syntax_error'});
+    return;
+  }
+
+  var data=JSON.parse(dataStr);
+
+  // Step 2: If no schema, just syntax validation
+  if(!schemaStr){
+    resultBox.className='result-box pass';
+    resultBox.style.display='block';
+    resultTitle.textContent='Valid JSON';
+    var info=getDataInfo(data,dataStr);
+    resultBody.innerHTML='<p style="color:#10b981;">JSON syntax is valid. No schema provided - only syntax was checked.</p>'
+      +'<p style="color:#888;margin-top:8px;font-size:0.85rem;">Type: <strong style="color:#ccc;">'+info.type+'</strong> | '
+      +'Size: <strong style="color:#ccc;">'+info.size+'</strong> | '
+      +'Lines: <strong style="color:#ccc;">'+info.lines+'</strong>'
+      +(info.keys!==null?' | Properties: <strong style="color:#ccc;">'+info.keys+'</strong>':'')
+      +'</p>';
+    statusInfo.textContent='Valid JSON syntax (no schema)';
+    gtag('event','json_validate',{event_category:'tool_use',event_label:'syntax_only_pass'});
+    return;
+  }
+
+  // Step 3: Validate schema syntax
+  var schemaError=getJSONParseError(schemaStr);
+  if(schemaError){
+    resultBox.className='result-box fail';
+    resultBox.style.display='block';
+    resultTitle.textContent='JSON Syntax Error in Schema';
+    var lineInfo2=schemaError.line?'Line '+schemaError.line+(schemaError.column?', Column '+schemaError.column:''):'';
+    resultBody.innerHTML='<ul class="error-list"><li>'
+      +(lineInfo2?'<span class="err-line">'+escHtml(lineInfo2)+'</span><br>':'')
+      +'<span class="err-msg">'+escHtml(schemaError.message)+'</span></li></ul>';
+    statusInfo.textContent='Validation failed - schema syntax error';
+    gtag('event','json_validate',{event_category:'tool_use',event_label:'schema_syntax_error'});
+    return;
+  }
+
+  var schemaObj=JSON.parse(schemaStr);
+
+  // Step 4: Validate data against schema
+  var errors=validateSchema(data,schemaObj,dataStr);
+
+  if(errors.length===0){
+    resultBox.className='result-box pass';
+    resultBox.style.display='block';
+    resultTitle.textContent='Validation Passed';
+    var info2=getDataInfo(data,dataStr);
+    resultBody.innerHTML='<p style="color:#10b981;">JSON data is valid against the provided schema.</p>'
+      +'<p style="color:#888;margin-top:8px;font-size:0.85rem;">Type: <strong style="color:#ccc;">'+info2.type+'</strong> | '
+      +'Size: <strong style="color:#ccc;">'+info2.size+'</strong> | '
+      +'Lines: <strong style="color:#ccc;">'+info2.lines+'</strong>'
+      +(info2.keys!==null?' | Properties: <strong style="color:#ccc;">'+info2.keys+'</strong>':'')
+      +'</p>';
+    statusInfo.textContent='Validation passed - '+errors.length+' errors';
+    gtag('event','json_validate',{event_category:'tool_use',event_label:'schema_pass'});
+  } else {
+    resultBox.className='result-box fail';
+    resultBox.style.display='block';
+    resultTitle.textContent='Validation Failed — '+errors.length+' Error'+(errors.length!==1?'s':'');
+    var html='<ul class="error-list">';
+    for(var i=0;i<errors.length;i++){
+      var err=errors[i];
+      html+='<li>';
+      if(err.line) html+='<span class="err-line">Line '+err.line+'</span> ';
+      html+='<span class="err-path">'+escHtml(err.path)+'</span><br>';
+      html+='<span class="err-msg">'+escHtml(err.message)+'</span>';
+      if(err.keyword) html+=' <span style="color:#555;font-size:0.7rem;">['+escHtml(err.keyword)+']</span>';
+      html+='</li>';
+    }
+    html+='</ul>';
+    resultBody.innerHTML=html;
+    statusInfo.textContent='Validation failed - '+errors.length+' error'+(errors.length!==1?'s':'');
+    gtag('event','json_validate',{event_category:'tool_use',event_label:'schema_fail'});
+  }
+}
+
+function getDataInfo(data,raw){
+  var type=Array.isArray(data)?'array':typeof data;
+  if(data===null) type='null';
+  var bytes=new Blob([raw]).size;
+  var size=bytes<1024?bytes+' B':(bytes/1024).toFixed(1)+' KB';
+  var lines=raw.split('\n').length;
+  var keys=null;
+  if(type==='object') keys=Object.keys(data).length;
+  else if(type==='array') keys=data.length;
+  return {type:type,size:size,lines:lines,keys:keys};
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ---- Utility buttons ---- */
+function prettyPrintData(){
+  var ta=document.getElementById('jsonData');
+  var raw=ta.value.trim();
+  if(!raw) return;
+  try{
+    var obj=JSON.parse(raw);
+    ta.value=JSON.stringify(obj,null,2);
+  }catch(e){
+    alert('Cannot pretty-print: JSON syntax error.\n'+e.message);
+  }
+}
+
+function minifyData(){
+  var ta=document.getElementById('jsonData');
+  var raw=ta.value.trim();
+  if(!raw) return;
+  try{
+    var obj=JSON.parse(raw);
+    ta.value=JSON.stringify(obj);
+  }catch(e){
+    alert('Cannot minify: JSON syntax error.\n'+e.message);
+  }
+}
+
+function prettyPrintSchema(){
+  var ta=document.getElementById('jsonSchema');
+  var raw=ta.value.trim();
+  if(!raw) return;
+  try{
+    var obj=JSON.parse(raw);
+    ta.value=JSON.stringify(obj,null,2);
+  }catch(e){
+    alert('Cannot pretty-print: JSON Schema syntax error.\n'+e.message);
+  }
+}
+
+function clearAll(){
+  document.getElementById('jsonData').value='';
+  document.getElementById('jsonSchema').value='';
+  document.getElementById('resultBox').className='result-box';
+  document.getElementById('resultBox').style.display='none';
+  document.getElementById('statusInfo').textContent='Paste JSON data and click Validate';
+}
+
+function loadSample(){
+  document.getElementById('jsonData').value=JSON.stringify({
+    "name":"Jane Smith",
+    "age":28,
+    "email":"jane@example.com",
+    "address":{
+      "street":"123 Main St",
+      "city":"Springfield",
+      "state":"IL",
+      "zip":"62701"
+    },
+    "hobbies":["reading","hiking","coding"],
+    "active":true,
+    "score":95.5,
+    "notes":null
+  },null,2);
+
+  document.getElementById('jsonSchema').value=JSON.stringify({
+    "$schema":"http://json-schema.org/draft-07/schema#",
+    "title":"Person",
+    "description":"A person record",
+    "type":"object",
+    "required":["name","age","email"],
+    "properties":{
+      "name":{"type":"string","minLength":1,"maxLength":100},
+      "age":{"type":"integer","minimum":0,"maximum":150},
+      "email":{"type":"string","format":"email"},
+      "address":{
+        "type":"object",
+        "required":["street","city","state","zip"],
+        "properties":{
+          "street":{"type":"string"},
+          "city":{"type":"string"},
+          "state":{"type":"string","minLength":2,"maxLength":2},
+          "zip":{"type":"string","pattern":"^\\d{5}(-\\d{4})?$"}
+        },
+        "additionalProperties":false
+      },
+      "hobbies":{
+        "type":"array",
+        "items":{"type":"string"},
+        "minItems":1,
+        "uniqueItems":true
+      },
+      "active":{"type":"boolean"},
+      "score":{"type":"number","minimum":0,"maximum":100},
+      "notes":{"type":["string","null"]}
+    },
+    "additionalProperties":false
+  },null,2);
+
+  document.getElementById('statusInfo').textContent='Sample loaded - click Validate';
+}
+
+function copyText(id,btn){
+  var text=document.getElementById(id).value;
+  if(!text) return;
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+/* ---- Usage counter ---- */
+var TOOL_KEY='spunkart_json_valid_uses';
+var BAR_KEY='sa_bar_dismissed_json-validator';
+var usageCount=parseInt(localStorage.getItem(TOOL_KEY))||0;
+
+function updateBadge(){
+  var badge=document.getElementById('usageBadge');
+  badge.textContent=usageCount+' validation'+(usageCount!==1?'s':'')+' run';
+}
+updateBadge();
+
+function incrementUsage(){
+  usageCount++;
+  localStorage.setItem(TOOL_KEY,usageCount);
+  updateBadge();
+  if(usageCount>=3&&!localStorage.getItem(BAR_KEY)){
+    document.getElementById('saEmailBar').classList.add('show');
+  }
+}
+
+/* ---- Email bar ---- */
+window.saDismissBar=function(){
+  document.getElementById('saEmailBar').classList.remove('show');
+  localStorage.setItem(BAR_KEY,'1');
+};
+
+window.saSubmitEmail=function(){
+  var email=document.getElementById('saBarEmail').value;
+  if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
+  localStorage.setItem('sa_subscriber_email',email);
+  localStorage.setItem(BAR_KEY,'1');
+  window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email='+encodeURIComponent(email),'_blank');
+  document.getElementById('saEmailBar').classList.remove('show');
+  var btn=document.querySelector('.sa-sub-btn');
+  btn.textContent='Subscribed!';btn.style.background='#10b981';
+};
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");
+</script>
+
+<!-- Code Protection -->
+<script>
+(function(){document.addEventListener('contextmenu',function(e){if(e.target.tagName!=='TEXTAREA'&&e.target.tagName!=='INPUT')e.preventDefault();});document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='u')e.preventDefault();if(e.key==='F12')e.preventDefault();if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))e.preventDefault();});})();
+</script>
+</body>
+</html>

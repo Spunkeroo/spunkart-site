@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Audit Checklist &mdash; 50-Point Website SEO Checker | SPUNKART.COM</title>
+<meta name="description" content="Free interactive 50-point SEO audit checklist. Check technical SEO, on-page, content, mobile, speed, links, and local SEO. Save progress, export PDF or text report. Score your site instantly.">
+<meta property="og:title" content="SEO Audit Checklist &mdash; 50-Point Website SEO Checker | SPUNKART.COM">
+<meta property="og:description" content="Interactive 50-point SEO audit checklist across 7 categories. Score your website, save progress, export reports. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/seo-checklist">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEO Audit Checklist &mdash; 50-Point Website SEO Checker | SPUNKART.COM">
+<meta name="twitter:description" content="50-point interactive SEO audit checklist. Technical, on-page, content, mobile, speed, links, local. Free tool with scoring and export.">
+<link rel="canonical" href="https://spunkart.com/seo-checklist">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;transition:color .2s;}
+nav .links a:hover{color:#ff5f1f;}
+
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
+
+main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
+
+/* Progress bar */
+.progress-wrapper{background:#1a1a1a;border-radius:12px;height:28px;overflow:hidden;margin-bottom:24px;position:relative;border:1px solid #222;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#ff5f1f,#ff8c00);border-radius:12px;transition:width .5s cubic-bezier(.4,0,.2,1);min-width:0;position:relative;}
+.progress-fill::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.12) 50%,transparent 100%);animation:shimmer 2s infinite;}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.progress-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.8rem;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);z-index:2;white-space:nowrap;}
+
+/* Actions row */
+.actions-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-danger{background:#1a1a1a;color:#ef4444;border:1px solid #333;}
+.btn-danger:hover{background:#ef444422;border-color:#ef4444;}
+
+/* Category cards */
+.category-card{background:#141414;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden;}
+.category-card.completed{border-color:#10b98155;}
+.category-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
+.category-title{font-size:1.15rem;font-weight:700;color:#e8e8e8;}
+.category-title .cat-icon{margin-right:8px;}
+.category-title .cat-num{color:#ff5f1f;margin-right:6px;font-size:0.85rem;font-weight:600;}
+.category-badge{font-size:0.75rem;padding:4px 12px;border-radius:12px;font-weight:600;}
+.badge-technical{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;}
+.badge-onpage{background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644;}
+.badge-content{background:#ec489922;color:#ec4899;border:1px solid #ec489944;}
+.badge-mobile{background:#14b8a622;color:#14b8a6;border:1px solid #14b8a644;}
+.badge-speed{background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44;}
+.badge-links{background:#6366f122;color:#6366f1;border:1px solid #6366f144;}
+.badge-local{background:#10b98122;color:#10b981;border:1px solid #10b98144;}
+.category-progress{font-size:0.8rem;color:#666;margin-bottom:16px;}
+
+/* Checklist items */
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:8px;margin-bottom:4px;transition:background .2s;cursor:pointer;user-select:none;}
+.check-item:hover{background:#1a1a1a;}
+.check-item.checked{opacity:1;}
+.check-item.checked .check-label{color:#10b981;text-decoration:line-through;text-decoration-color:#10b98188;}
+.check-item.checked .check-label .tool-link{color:#10b98188;}
+.check-item.checked .check-label .check-desc{color:#10b98166;}
+
+.check-box{width:22px;height:22px;min-width:22px;border:2px solid #444;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .25s;margin-top:1px;position:relative;}
+.check-box svg{width:14px;height:14px;opacity:0;transform:scale(0);transition:all .25s cubic-bezier(.4,0,.2,1);}
+.check-item.checked .check-box{background:#10b981;border-color:#10b981;}
+.check-item.checked .check-box svg{opacity:1;transform:scale(1);}
+
+.check-label{font-size:0.92rem;color:#ccc;line-height:1.5;flex:1;}
+.check-title{font-weight:600;color:#e8e8e8;}
+.check-item.checked .check-title{color:#10b981;}
+.check-desc{display:block;font-size:0.82rem;color:#777;margin-top:2px;font-weight:400;}
+.tool-link{color:#ff5f1f;font-weight:500;white-space:nowrap;font-size:0.8rem;}
+.tool-link:hover{text-decoration:underline;}
+
+/* Check animation */
+@keyframes checkPop{
+  0%{transform:scale(1)}
+  30%{transform:scale(1.3)}
+  60%{transform:scale(0.9)}
+  100%{transform:scale(1)}
+}
+.check-item.just-checked .check-box{animation:checkPop .4s ease;}
+
+/* Category celebration */
+@keyframes celebrateFlash{
+  0%{box-shadow:0 0 0 0 #10b98155}
+  50%{box-shadow:0 0 30px 10px #10b98133}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+.category-card.celebrate{animation:celebrateFlash .8s ease;}
+
+/* Confetti */
+.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;z-index:9998;pointer-events:none;animation:confettiFall 1.5s ease-out forwards;}
+@keyframes confettiFall{
+  0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1);}
+  100%{opacity:0;transform:translateY(600px) rotate(720deg) scale(0.3);}
+}
+
+/* Toast */
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
+.toast.show{opacity:1;}
+
+/* Usage badge */
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#888;margin-left:12px;vertical-align:middle;}
+
+/* Score card */
+.score-card{background:#141414;border:1px solid #222;border-radius:12px;padding:32px;margin-top:24px;text-align:center;display:none;}
+.score-card.visible{display:block;}
+.score-value{font-size:3.5rem;font-weight:800;line-height:1;margin-bottom:4px;}
+.score-label{font-size:1.3rem;font-weight:700;margin-bottom:4px;}
+.score-sub{color:#888;font-size:0.9rem;margin-bottom:20px;}
+.score-poor{color:#ef4444;}
+.score-fair{color:#f59e0b;}
+.score-good{color:#3b82f6;}
+.score-excellent{color:#10b981;}
+.score-bar{display:flex;gap:4px;margin:16px auto;max-width:400px;height:8px;border-radius:4px;overflow:hidden;}
+.score-bar-seg{flex:1;border-radius:4px;opacity:0.25;}
+.score-bar-seg.active{opacity:1;}
+.score-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:16px;text-align:left;}
+.score-breakdown-item{background:#1a1a1a;border-radius:8px;padding:10px 12px;font-size:0.82rem;}
+.score-breakdown-item .sbi-label{color:#888;}
+.score-breakdown-item .sbi-val{color:#e8e8e8;font-weight:700;float:right;}
+
+/* Newsletter */
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;display:none;}
+.newsletter.visible{display:block;}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
+
+/* Cross-sell */
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
+
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+@media(max-width:600px){
+  h1{font-size:1.5rem;}
+  main{padding:20px 16px 60px;}
+  .category-card{padding:16px;}
+  .check-item{padding:8px 8px;gap:10px;}
+  .actions-row{flex-direction:column;}
+  .actions-row .btn{width:100%;}
+  .score-value{font-size:2.5rem;}
+  .score-breakdown{grid-template-columns:1fr 1fr;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SEO Audit Checklist — 50-Point Website SEO Checker","description":"Free interactive 50-point SEO audit checklist covering technical SEO, on-page, content, mobile, speed, links, and local SEO. Save progress, export PDF or text reports, and get your SEO score.","url":"https://spunkart.com/seo-checklist","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store#free-tools">&larr; All Tools</a>
+    <a href="/store">Store</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>SEO Audit <span>Checklist</span></h1>
+  <p class="subtitle">50-point interactive SEO checker across 7 categories &mdash; score your website and export your report.</p>
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+    <div class="pricing-badge">100% Free Tool</div>
+    <span class="usage-badge"><span id="use-count">0</span> audits completed</span>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-wrapper">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    <div class="progress-text" id="progressText">0 / 50 completed (0%)</div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="actions-row">
+    <button class="btn btn-primary" onclick="exportPDF()">Export as PDF</button>
+    <button class="btn btn-secondary" onclick="exportText()">Export as Text</button>
+    <button class="btn btn-danger" onclick="resetChecklist()">Reset Checklist</button>
+  </div>
+
+  <!-- Categories render here -->
+  <div id="categories-container"></div>
+
+  <!-- Score Card -->
+  <div class="score-card" id="scoreCard">
+    <div class="score-value" id="scoreValue">0/50</div>
+    <div class="score-label" id="scoreLabel">Not Started</div>
+    <div class="score-sub" id="scoreSub">Check items above to get your SEO score</div>
+    <div class="score-bar" id="scoreBar">
+      <div class="score-bar-seg" style="background:#ef4444;"></div>
+      <div class="score-bar-seg" style="background:#f59e0b;"></div>
+      <div class="score-bar-seg" style="background:#3b82f6;"></div>
+      <div class="score-bar-seg" style="background:#10b981;"></div>
+    </div>
+    <div class="score-breakdown" id="scoreBreakdown"></div>
+  </div>
+
+  <!-- Newsletter (shown after completion) -->
+  <div class="newsletter" id="newsletterBox">
+    <h3>Get More SEO Tips</h3>
+    <p>Free tools, SEO strategies, and marketing tips delivered to your inbox.</p>
+    <iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+    <div class="tool-links">
+      <a href="/meta-generator">Meta Tag Generator</a>
+      <a href="/sitemap-generator">Sitemap Generator</a>
+      <a href="/robots-generator">Robots.txt Generator</a>
+      <a href="/speed-test">Speed Test</a>
+      <a href="/headers-checker">Headers Checker</a>
+      <a href="/og-preview">OG Preview</a>
+    </div>
+  </div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Done!</div>
+
+<footer>&copy; 2026 <a href="https://spunkart.com" style="color:#ff5f1f;text-decoration:none">SpunkArt</a>. All rights reserved. &middot; <a href="https://x.com/SpunkArt13" style="color:#888;text-decoration:none">@SpunkArt13</a></footer>
+
+<script>
+/* ============================================
+   SEO CHECKLIST DATA — 50 items, 7 categories
+   ============================================ */
+var CATEGORIES = [
+  {
+    id: 'technical',
+    title: 'Technical SEO',
+    icon: '&#9881;',
+    badge: 'badge-technical',
+    badgeText: '12 checks',
+    items: [
+      { id: 't1', title: 'XML Sitemap exists and is submitted', desc: 'Verify sitemap.xml is accessible and submitted to Google Search Console and Bing Webmaster Tools.', link: '/sitemap-generator', linkText: 'Generate Sitemap' },
+      { id: 't2', title: 'Robots.txt is configured correctly', desc: 'Ensure robots.txt allows crawling of important pages and blocks admin/private areas.', link: '/robots-generator', linkText: 'Generate Robots.txt' },
+      { id: 't3', title: 'HTTPS is enforced sitewide', desc: 'All pages load over HTTPS with a valid SSL certificate. HTTP redirects to HTTPS.' },
+      { id: 't4', title: 'No crawl errors in Search Console', desc: 'Check Google Search Console for 404s, server errors, and crawl anomalies.' },
+      { id: 't5', title: 'Canonical tags are set on every page', desc: 'Each page has a rel="canonical" tag pointing to the preferred URL version.' },
+      { id: 't6', title: 'Clean URL structure', desc: 'URLs are short, readable, lowercase, use hyphens, and include target keywords.', link: '/slug-generator', linkText: 'Generate Slugs' },
+      { id: 't7', title: 'Structured data / Schema markup', desc: 'Implement relevant Schema.org markup (Organization, Article, Product, FAQ, etc.).' },
+      { id: 't8', title: 'No duplicate content issues', desc: 'Check for duplicate pages, thin content, and proper canonical handling across the site.' },
+      { id: 't9', title: 'Proper 301 redirects for moved pages', desc: 'All old/moved URLs redirect with 301 status codes to the correct destinations.' },
+      { id: 't10', title: 'Hreflang tags for multilingual sites', desc: 'If you serve multiple languages or regions, hreflang tags tell Google which version to show.' },
+      { id: 't11', title: 'Proper HTTP security headers', desc: 'Check for X-Frame-Options, Content-Security-Policy, HSTS, and other security headers.', link: '/headers-checker', linkText: 'Check Headers' },
+      { id: 't12', title: 'HTML sitemap for users', desc: 'Provide an HTML sitemap page that lists all important pages for both users and crawlers.' }
+    ]
+  },
+  {
+    id: 'onpage',
+    title: 'On-Page SEO',
+    icon: '&#9998;',
+    badge: 'badge-onpage',
+    badgeText: '10 checks',
+    items: [
+      { id: 'o1', title: 'Unique title tags on every page', desc: 'Each page has a unique, descriptive title tag under 60 characters with the primary keyword.', link: '/meta-generator', linkText: 'Generate Meta Tags' },
+      { id: 'o2', title: 'Meta descriptions are optimized', desc: 'Every page has a unique meta description (120-160 chars) that includes the target keyword and a CTA.', link: '/meta-generator', linkText: 'Generate Meta Tags' },
+      { id: 'o3', title: 'One H1 tag per page with target keyword', desc: 'Each page has exactly one H1 tag containing the primary keyword naturally.' },
+      { id: 'o4', title: 'Proper heading hierarchy (H1-H6)', desc: 'Headings follow a logical hierarchy: H1 > H2 > H3. No skipped levels.' },
+      { id: 'o5', title: 'Image alt text on all images', desc: 'Every image has descriptive alt text that includes relevant keywords where appropriate.' },
+      { id: 'o6', title: 'Internal linking strategy', desc: 'Pages link to related content with descriptive anchor text. Key pages have the most internal links.' },
+      { id: 'o7', title: 'Open Graph and Twitter Card tags', desc: 'OG title, description, and image are set for proper social media previews.', link: '/og-preview', linkText: 'Preview OG Tags' },
+      { id: 'o8', title: 'Keyword placement in first 100 words', desc: 'The primary keyword appears naturally within the first paragraph of the page content.' },
+      { id: 'o9', title: 'Optimized image file sizes', desc: 'Images are compressed, properly sized, and use modern formats (WebP) where possible.', link: '/image-compressor', linkText: 'Compress Images' },
+      { id: 'o10', title: 'URL contains target keyword', desc: 'The page URL slug includes the primary keyword in a clean, readable format.', link: '/slug-generator', linkText: 'Generate Slugs' }
+    ]
+  },
+  {
+    id: 'content',
+    title: 'Content Quality',
+    icon: '&#9997;',
+    badge: 'badge-content',
+    badgeText: '8 checks',
+    items: [
+      { id: 'c1', title: 'Content matches search intent', desc: 'Page content directly answers what users are searching for (informational, transactional, navigational).' },
+      { id: 'c2', title: 'Content is comprehensive and in-depth', desc: 'Pages cover topics thoroughly with at least 800+ words for key pages. Thin content hurts rankings.' },
+      { id: 'c3', title: 'Content is original and unique', desc: 'No copied or spun content. Every page offers unique value not found elsewhere.' },
+      { id: 'c4', title: 'Regular content updates and freshness', desc: 'Key pages are updated regularly. Blog posts are published on a consistent schedule.' },
+      { id: 'c5', title: 'E-E-A-T signals present', desc: 'Demonstrate Experience, Expertise, Authoritativeness, and Trustworthiness through author bios, credentials, and citations.' },
+      { id: 'c6', title: 'FAQ section on key pages', desc: 'Add FAQ schema and content to target featured snippets and voice search queries.' },
+      { id: 'c7', title: 'Content uses multimedia', desc: 'Pages include images, videos, infographics, or interactive elements to improve engagement.' },
+      { id: 'c8', title: 'No keyword stuffing', desc: 'Keywords are used naturally. Content reads well for humans, not just search engines.' }
+    ]
+  },
+  {
+    id: 'mobile',
+    title: 'Mobile SEO',
+    icon: '&#128241;',
+    badge: 'badge-mobile',
+    badgeText: '5 checks',
+    items: [
+      { id: 'm1', title: 'Site is fully mobile-responsive', desc: 'All pages render correctly on mobile devices. No horizontal scrolling, no tiny text, no overlapping elements.' },
+      { id: 'm2', title: 'Viewport meta tag is set', desc: 'The viewport meta tag is present: <meta name="viewport" content="width=device-width, initial-scale=1.0">.' },
+      { id: 'm3', title: 'Touch targets are properly sized', desc: 'Buttons and links are at least 48x48px with adequate spacing. No frustrating mis-taps.' },
+      { id: 'm4', title: 'No intrusive interstitials on mobile', desc: 'Avoid full-screen popups that block content on mobile. Google penalizes intrusive interstitials.' },
+      { id: 'm5', title: 'Mobile page speed under 3 seconds', desc: 'Test mobile load time with Google PageSpeed Insights. Target under 3 seconds on 3G.', link: '/speed-test', linkText: 'Run Speed Test' }
+    ]
+  },
+  {
+    id: 'speed',
+    title: 'Page Speed',
+    icon: '&#9889;',
+    badge: 'badge-speed',
+    badgeText: '5 checks',
+    items: [
+      { id: 's1', title: 'Core Web Vitals pass (LCP, FID, CLS)', desc: 'LCP under 2.5s, FID under 100ms, CLS under 0.1. Check in Google Search Console or PageSpeed Insights.', link: '/speed-test', linkText: 'Run Speed Test' },
+      { id: 's2', title: 'Images are lazy-loaded', desc: 'Images below the fold use loading="lazy" to defer loading until they enter the viewport.' },
+      { id: 's3', title: 'CSS and JavaScript are minified', desc: 'All CSS and JS files are minified and combined where possible to reduce HTTP requests.', link: '/css-minifier', linkText: 'Minify CSS' },
+      { id: 's4', title: 'Browser caching is configured', desc: 'Static assets have proper cache headers (Cache-Control, ETag) for repeat visitors.', link: '/htaccess-generator', linkText: 'Generate .htaccess' },
+      { id: 's5', title: 'CDN is configured for static assets', desc: 'A content delivery network serves images, CSS, and JS from edge servers closest to users.' }
+    ]
+  },
+  {
+    id: 'links',
+    title: 'Link Profile',
+    icon: '&#128279;',
+    badge: 'badge-links',
+    badgeText: '5 checks',
+    items: [
+      { id: 'l1', title: 'No broken internal links (404s)', desc: 'Crawl the site to find and fix all broken internal links that return 404 errors.' },
+      { id: 'l2', title: 'No broken external links', desc: 'Outbound links to external sites still work. Remove or update dead links.' },
+      { id: 'l3', title: 'External links use rel="noopener"', desc: 'Links opening in new tabs include rel="noopener noreferrer" for security and performance.' },
+      { id: 'l4', title: 'Quality backlink profile', desc: 'Check backlinks for spam, toxic links, or low-quality domains. Disavow harmful links.' },
+      { id: 'l5', title: 'Anchor text is varied and natural', desc: 'Internal and inbound links use diverse, descriptive anchor text. Avoid over-optimized exact-match anchors.' }
+    ]
+  },
+  {
+    id: 'local',
+    title: 'Local SEO',
+    icon: '&#128205;',
+    badge: 'badge-local',
+    badgeText: '5 checks',
+    items: [
+      { id: 'lo1', title: 'Google Business Profile is claimed and optimized', desc: 'Claim your GBP listing. Add photos, hours, categories, and a complete description.' },
+      { id: 'lo2', title: 'NAP consistency across the web', desc: 'Name, Address, and Phone number are identical on your site, GBP, and all directory listings.' },
+      { id: 'lo3', title: 'Local business Schema markup', desc: 'Add LocalBusiness schema with address, phone, hours, and geo coordinates.' },
+      { id: 'lo4', title: 'Customer reviews strategy', desc: 'Actively collect Google reviews. Respond to all reviews (positive and negative) promptly.' },
+      { id: 'lo5', title: 'Location pages for each service area', desc: 'Create unique, optimized pages for each city or region you serve with local content.' }
+    ]
+  }
+];
+
+var TOTAL_ITEMS = 50;
+var STORAGE_KEY = 'spunkart_seo_checklist_state';
+var USES_KEY = 'spunkart_seo_check_uses';
+var SESSION_KEY = 'spunkart_seo_checklist_session_counted';
+var state = {};
+var sessionCounted = false;
+var categoryCelebrated = {};
+
+/* Load state from localStorage */
+function loadState() {
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) state = JSON.parse(saved);
+  } catch(e) { state = {}; }
+  sessionCounted = !!sessionStorage.getItem(SESSION_KEY);
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+/* Build checklist DOM */
+function buildChecklists() {
+  var container = document.getElementById('categories-container');
+  container.innerHTML = '';
+
+  CATEGORIES.forEach(function(cat) {
+    var card = document.createElement('div');
+    card.className = 'category-card';
+    card.id = 'cat-' + cat.id;
+
+    var headerHtml = '<div class="category-header">' +
+      '<div class="category-title"><span class="cat-icon">' + cat.icon + '</span>' + cat.title + '</div>' +
+      '<span class="category-badge ' + cat.badge + '">' + cat.badgeText + '</span>' +
+      '</div>' +
+      '<div class="category-progress" id="cat-' + cat.id + '-progress">0 / ' + cat.items.length + ' completed</div>';
+
+    card.innerHTML = headerHtml;
+
+    var listDiv = document.createElement('div');
+    listDiv.className = 'checklist';
+    listDiv.id = 'cat-' + cat.id + '-list';
+
+    cat.items.forEach(function(item) {
+      var div = document.createElement('div');
+      div.className = 'check-item' + (state[item.id] ? ' checked' : '');
+      div.setAttribute('data-id', item.id);
+      div.onclick = function(e) {
+        if (e.target.closest('.tool-link')) return;
+        toggleItem(item.id, div, cat.id);
+      };
+
+      var linkHtml = '';
+      if (item.link) {
+        linkHtml = ' <a href="' + item.link + '" class="tool-link" onclick="event.stopPropagation()">&rarr; ' + item.linkText + '</a>';
+      }
+
+      div.innerHTML = '<div class="check-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 4" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+        '<div class="check-label"><span class="check-title">' + item.title + '</span>' +
+        '<span class="check-desc">' + item.desc + linkHtml + '</span></div>';
+
+      listDiv.appendChild(div);
+    });
+
+    card.appendChild(listDiv);
+    container.appendChild(card);
+  });
+}
+
+/* Toggle item */
+function toggleItem(id, el, catId) {
+  state[id] = !state[id];
+  saveState();
+
+  if (state[id]) {
+    el.classList.add('checked', 'just-checked');
+    setTimeout(function() { el.classList.remove('just-checked'); }, 500);
+  } else {
+    el.classList.remove('checked');
+  }
+
+  /* Count usage on first checkbox click per session */
+  if (!sessionCounted) {
+    sessionCounted = true;
+    sessionStorage.setItem(SESSION_KEY, '1');
+    window._spunkCountUse();
+  }
+
+  updateProgress();
+  checkCategoryComplete(catId);
+  updateScore();
+}
+
+/* Update progress */
+function updateProgress() {
+  var total = 0, checked = 0;
+  CATEGORIES.forEach(function(cat) {
+    var catChecked = 0;
+    cat.items.forEach(function(item) {
+      total++;
+      if (state[item.id]) { checked++; catChecked++; }
+    });
+    document.getElementById('cat-' + cat.id + '-progress').textContent = catChecked + ' / ' + cat.items.length + ' completed';
+    if (catChecked === cat.items.length) {
+      document.getElementById('cat-' + cat.id).classList.add('completed');
+    } else {
+      document.getElementById('cat-' + cat.id).classList.remove('completed');
+    }
+  });
+
+  var pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = checked + ' / ' + total + ' completed (' + pct + '%)';
+}
+
+/* Update score card */
+function updateScore() {
+  var checked = 0;
+  CATEGORIES.forEach(function(cat) {
+    cat.items.forEach(function(item) {
+      if (state[item.id]) checked++;
+    });
+  });
+
+  var scoreCard = document.getElementById('scoreCard');
+  var scoreValue = document.getElementById('scoreValue');
+  var scoreLabel = document.getElementById('scoreLabel');
+  var scoreSub = document.getElementById('scoreSub');
+  var scoreBar = document.getElementById('scoreBar');
+  var segs = scoreBar.querySelectorAll('.score-bar-seg');
+
+  if (checked === 0) {
+    scoreCard.classList.remove('visible');
+    document.getElementById('newsletterBox').classList.remove('visible');
+    return;
+  }
+
+  scoreCard.classList.add('visible');
+
+  scoreValue.textContent = checked + '/50';
+  var pct = Math.round((checked / TOTAL_ITEMS) * 100);
+
+  /* Reset all segment highlights */
+  for (var s = 0; s < segs.length; s++) segs[s].classList.remove('active');
+
+  if (pct < 25) {
+    scoreLabel.textContent = 'Poor';
+    scoreLabel.className = 'score-label score-poor';
+    scoreValue.className = 'score-value score-poor';
+    scoreSub.textContent = 'Major SEO issues detected. Focus on the basics first.';
+    segs[0].classList.add('active');
+  } else if (pct < 50) {
+    scoreLabel.textContent = 'Fair';
+    scoreLabel.className = 'score-label score-fair';
+    scoreValue.className = 'score-value score-fair';
+    scoreSub.textContent = 'Some fundamentals are covered, but significant gaps remain.';
+    segs[0].classList.add('active');
+    segs[1].classList.add('active');
+  } else if (pct < 80) {
+    scoreLabel.textContent = 'Good';
+    scoreLabel.className = 'score-label score-good';
+    scoreValue.className = 'score-value score-good';
+    scoreSub.textContent = 'Solid SEO foundation. Address remaining items to reach excellence.';
+    segs[0].classList.add('active');
+    segs[1].classList.add('active');
+    segs[2].classList.add('active');
+  } else {
+    scoreLabel.textContent = 'Excellent';
+    scoreLabel.className = 'score-label score-excellent';
+    scoreValue.className = 'score-value score-excellent';
+    scoreSub.textContent = 'Outstanding SEO health. Keep monitoring and updating regularly.';
+    for (var a = 0; a < segs.length; a++) segs[a].classList.add('active');
+  }
+
+  /* Category breakdown */
+  var bd = document.getElementById('scoreBreakdown');
+  bd.innerHTML = '';
+  CATEGORIES.forEach(function(cat) {
+    var cc = 0;
+    cat.items.forEach(function(item) { if (state[item.id]) cc++; });
+    var div = document.createElement('div');
+    div.className = 'score-breakdown-item';
+    div.innerHTML = '<span class="sbi-label">' + cat.title + '</span><span class="sbi-val">' + cc + '/' + cat.items.length + '</span>';
+    bd.appendChild(div);
+  });
+
+  /* Show newsletter after 50% or more */
+  if (pct >= 50) {
+    document.getElementById('newsletterBox').classList.add('visible');
+  }
+}
+
+/* Category completion celebration */
+function checkCategoryComplete(catId) {
+  var cat = CATEGORIES.find(function(c) { return c.id === catId; });
+  if (!cat) return;
+  var allChecked = cat.items.every(function(item) { return state[item.id]; });
+  if (allChecked && !categoryCelebrated[catId]) {
+    categoryCelebrated[catId] = true;
+    var card = document.getElementById('cat-' + catId);
+    card.classList.add('celebrate');
+    setTimeout(function() { card.classList.remove('celebrate'); }, 1000);
+    spawnConfetti(card);
+    showToast(cat.title + ' complete!');
+  } else if (!allChecked) {
+    categoryCelebrated[catId] = false;
+  }
+
+  /* Check all done */
+  var totalChecked = 0;
+  CATEGORIES.forEach(function(c) {
+    c.items.forEach(function(item) { if (state[item.id]) totalChecked++; });
+  });
+  if (totalChecked === TOTAL_ITEMS) {
+    setTimeout(function() {
+      showToast('Perfect score! All 50 checks passed!');
+      for (var i = 0; i < 3; i++) {
+        setTimeout(function() { spawnConfetti(document.getElementById('scoreCard')); }, i * 400);
+      }
+    }, 600);
+  }
+}
+
+/* Confetti */
+function spawnConfetti(targetEl) {
+  var rect = targetEl.getBoundingClientRect();
+  var cx = rect.left + rect.width / 2;
+  var cy = rect.top;
+  var colors = ['#ff5f1f','#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899'];
+  for (var i = 0; i < 40; i++) {
+    var piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = (cx + (Math.random() - 0.5) * 300) + 'px';
+    piece.style.top = (cy + Math.random() * 40) + 'px';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = (6 + Math.random() * 6) + 'px';
+    piece.style.height = (6 + Math.random() * 6) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.animationDuration = (1 + Math.random() * 1) + 's';
+    piece.style.animationDelay = (Math.random() * 0.3) + 's';
+    document.body.appendChild(piece);
+    (function(p) {
+      setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 2500);
+    })(piece);
+  }
+}
+
+/* Toast */
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg || 'Done!';
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2000);
+}
+
+/* Generate report text */
+function generateReport() {
+  var checked = 0;
+  CATEGORIES.forEach(function(cat) {
+    cat.items.forEach(function(item) { if (state[item.id]) checked++; });
+  });
+  var pct = Math.round((checked / TOTAL_ITEMS) * 100);
+  var grade = pct < 25 ? 'POOR' : pct < 50 ? 'FAIR' : pct < 80 ? 'GOOD' : 'EXCELLENT';
+
+  var report = '========================================\n';
+  report += ' SEO AUDIT REPORT\n';
+  report += ' Generated: ' + new Date().toLocaleDateString() + '\n';
+  report += ' Score: ' + checked + '/50 (' + pct + '%) - ' + grade + '\n';
+  report += '========================================\n\n';
+
+  CATEGORIES.forEach(function(cat) {
+    var cc = 0;
+    cat.items.forEach(function(item) { if (state[item.id]) cc++; });
+    report += '--- ' + cat.title.toUpperCase() + ' (' + cc + '/' + cat.items.length + ') ---\n';
+    cat.items.forEach(function(item) {
+      var mark = state[item.id] ? '[PASS]' : '[FAIL]';
+      report += mark + ' ' + item.title + '\n';
+      if (!state[item.id]) {
+        report += '       -> ' + item.desc + '\n';
+        if (item.link) report += '       -> Fix: https://spunkart.com' + item.link + '\n';
+      }
+    });
+    report += '\n';
+  });
+
+  report += '========================================\n';
+  report += 'Generated with SpunkArt SEO Audit Checklist\n';
+  report += 'https://spunkart.com/seo-checklist\n';
+  report += '========================================\n';
+
+  return report;
+}
+
+/* Export as text */
+function exportText() {
+  var report = generateReport();
+  navigator.clipboard.writeText(report).then(function() {
+    showToast('Report copied to clipboard!');
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = report;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Report copied to clipboard!');
+  });
+  gtag('event', 'export_text', { event_category: 'tool_use', event_label: 'seo_checklist' });
+}
+
+/* Export as PDF */
+function exportPDF() {
+  var checked = 0;
+  CATEGORIES.forEach(function(cat) {
+    cat.items.forEach(function(item) { if (state[item.id]) checked++; });
+  });
+  var pct = Math.round((checked / TOTAL_ITEMS) * 100);
+  var grade = pct < 25 ? 'Poor' : pct < 50 ? 'Fair' : pct < 80 ? 'Good' : 'Excellent';
+  var gradeColor = pct < 25 ? '#ef4444' : pct < 50 ? '#f59e0b' : pct < 80 ? '#3b82f6' : '#10b981';
+
+  var w = window.open('', '_blank');
+  if (!w) { showToast('Please allow popups to export PDF'); return; }
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>SEO Audit Report</title>';
+  html += '<style>';
+  html += 'body{font-family:system-ui,-apple-system,sans-serif;max-width:700px;margin:0 auto;padding:40px 30px;color:#222;line-height:1.5;}';
+  html += 'h1{font-size:1.6rem;margin-bottom:4px;}';
+  html += 'h2{font-size:1.1rem;margin-top:28px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid #eee;}';
+  html += '.header{text-align:center;margin-bottom:30px;padding-bottom:20px;border-bottom:3px solid #222;}';
+  html += '.score-big{font-size:2.5rem;font-weight:800;margin:10px 0 4px;}';
+  html += '.grade{font-size:1.3rem;font-weight:700;}';
+  html += '.date{color:#888;font-size:0.85rem;margin-bottom:8px;}';
+  html += '.item{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:0.9rem;}';
+  html += '.pass{color:#16a34a;font-weight:700;min-width:50px;}';
+  html += '.fail{color:#dc2626;font-weight:700;min-width:50px;}';
+  html += '.item-title{font-weight:600;}';
+  html += '.item-desc{color:#666;font-size:0.82rem;margin-left:60px;margin-top:2px;}';
+  html += '.item-fix{color:#ea580c;font-size:0.82rem;margin-left:60px;}';
+  html += '.summary{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;}';
+  html += '.sum-box{flex:1;min-width:120px;border:1px solid #ddd;border-radius:8px;padding:10px;text-align:center;}';
+  html += '.sum-box .num{font-size:1.3rem;font-weight:800;}';
+  html += '.sum-box .lbl{font-size:0.75rem;color:#888;}';
+  html += '.footer{text-align:center;color:#888;font-size:0.8rem;margin-top:40px;padding-top:20px;border-top:1px solid #eee;}';
+  html += '@media print{body{padding:20px;}}';
+  html += '</style></head><body>';
+
+  html += '<div class="header">';
+  html += '<h1>SEO Audit Report</h1>';
+  html += '<div class="date">' + new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'}) + '</div>';
+  html += '<div class="score-big" style="color:' + gradeColor + '">' + checked + '/50</div>';
+  html += '<div class="grade" style="color:' + gradeColor + '">' + grade + ' (' + pct + '%)</div>';
+  html += '</div>';
+
+  html += '<div class="summary">';
+  CATEGORIES.forEach(function(cat) {
+    var cc = 0;
+    cat.items.forEach(function(item) { if (state[item.id]) cc++; });
+    html += '<div class="sum-box"><div class="num">' + cc + '/' + cat.items.length + '</div><div class="lbl">' + cat.title + '</div></div>';
+  });
+  html += '</div>';
+
+  CATEGORIES.forEach(function(cat) {
+    var cc = 0;
+    cat.items.forEach(function(item) { if (state[item.id]) cc++; });
+    html += '<h2>' + cat.title + ' (' + cc + '/' + cat.items.length + ')</h2>';
+    cat.items.forEach(function(item) {
+      var passed = !!state[item.id];
+      html += '<div class="item"><span class="' + (passed ? 'pass' : 'fail') + '">' + (passed ? 'PASS' : 'FAIL') + '</span><span class="item-title">' + item.title + '</span></div>';
+      if (!passed) {
+        html += '<div class="item-desc">' + item.desc + '</div>';
+        if (item.link) html += '<div class="item-fix">Fix: spunkart.com' + item.link + '</div>';
+      }
+    });
+  });
+
+  html += '<div class="footer">Generated with SpunkArt SEO Audit Checklist &mdash; spunkart.com/seo-checklist</div>';
+  html += '<script>setTimeout(function(){window.print();},500);<\/script>';
+  html += '</body></html>';
+
+  w.document.write(html);
+  w.document.close();
+
+  showToast('PDF export opened in new tab');
+  gtag('event', 'export_pdf', { event_category: 'tool_use', event_label: 'seo_checklist' });
+}
+
+/* Reset checklist */
+function resetChecklist() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  state = {};
+  saveState();
+  categoryCelebrated = {};
+  buildChecklists();
+  updateProgress();
+  updateScore();
+  showToast('Checklist reset');
+  gtag('event', 'reset_checklist', { event_category: 'tool_use', event_label: 'seo_checklist' });
+}
+
+/* Initialize */
+loadState();
+buildChecklists();
+updateProgress();
+updateScore();
+
+/* Restore category celebrated state */
+CATEGORIES.forEach(function(cat) {
+  var allChecked = cat.items.every(function(item) { return state[item.id]; });
+  if (allChecked) categoryCelebrated[cat.id] = true;
+});
+</script>
+
+<script>
+/* Usage counter */
+(function(){
+  var k=USES_KEY,c=parseInt(localStorage.getItem(k)||'0');
+  document.getElementById('use-count').textContent=c;
+  window._spunkCountUse=function(){
+    c++;localStorage.setItem(k,String(c));
+    document.getElementById('use-count').textContent=c;
+  };
+})();
+
+/* Email collection after 2nd use */
+(function(){
+  var ek='spunkart_email_collected',uk=USES_KEY;
+  if(localStorage.getItem(ek))return;
+  var check=setInterval(function(){
+    if(parseInt(localStorage.getItem(uk)||'0')>=2){
+      clearInterval(check);
+      var bar=document.createElement('div');
+      bar.innerHTML='<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools &amp; updates \u2014 </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
+      document.body.appendChild(bar);
+    }
+  },1000);
+})();
+</script>
+
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

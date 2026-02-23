@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grid Generator — Visual Grid Layout Builder | SPUNKART.COM</title>
+<meta name="description" content="Visual CSS Grid playground. Define rows, columns, gaps, place items, merge cells, name grid areas, and copy the generated CSS. Free online tool.">
+<meta property="og:title" content="CSS Grid Generator — Visual Grid Layout Builder | SPUNKART.COM">
+<meta property="og:description" content="Build CSS Grid layouts visually. Set columns, rows, gaps, merge cells, name areas, copy CSS. Free, no signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/grid-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-grid-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="CSS Grid Generator — Visual Grid Layout Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Build CSS Grid layouts visually. Define rows, columns, gaps, merge cells, copy CSS. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/grid-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Preview area */
+.preview-wrapper{position:relative;}
+.preview-box{width:100%;min-height:400px;border-radius:14px;border:1px solid #222;margin-bottom:24px;padding:20px;position:relative;overflow:auto;background:#151515;transition:max-width .3s;}
+.preview-box .preview-label{position:absolute;bottom:12px;right:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:1px;pointer-events:none;}
+
+/* Responsive toggle */
+.responsive-bar{display:flex;gap:8px;margin-bottom:16px;align-items:center;flex-wrap:wrap;}
+.responsive-bar span{color:#888;font-size:0.85rem;margin-right:8px;}
+.resp-btn{padding:6px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.resp-btn:hover{border-color:#555;color:#ccc;}
+.resp-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700;}
+
+/* Grid preview */
+.grid-container{min-height:300px;border:2px dashed #333;border-radius:10px;padding:4px;display:grid;transition:all .3s;}
+.grid-cell{border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;min-height:50px;transition:all .2s;cursor:pointer;position:relative;user-select:none;border:2px solid transparent;}
+.grid-cell:hover{opacity:0.85;border-color:rgba(255,255,255,0.3);}
+.grid-cell.selected{border-color:#fff;box-shadow:0 0 10px rgba(255,255,255,0.3);}
+.grid-cell.merge-start{border-color:#ff5f1f;box-shadow:0 0 12px rgba(255,95,31,0.4);}
+.grid-cell .cell-label{pointer-events:none;text-align:center;font-size:0.75rem;line-height:1.3;}
+.grid-cell .cell-area-name{font-size:0.65rem;opacity:0.7;display:block;}
+
+/* Cell colors */
+.gc-0{background:#ff5f1f;}.gc-1{background:#3b82f6;}.gc-2{background:#10b981;}.gc-3{background:#a855f7;}
+.gc-4{background:#f43f5e;}.gc-5{background:#eab308;}.gc-6{background:#06b6d4;}.gc-7{background:#ec4899;}
+.gc-8{background:#f97316;}.gc-9{background:#6366f1;}.gc-10{background:#14b8a6;}.gc-11{background:#8b5cf6;}
+.gc-empty{background:#1a1a1a;border:1px dashed #333;}
+
+/* Controls */
+.controls-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.controls-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.input-group{margin-bottom:0;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group select,.input-group input[type="text"],.input-group input[type="number"]{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.input-group select:focus,.input-group input:focus{border-color:#ff5f1f;}
+.input-group input[type="range"]{width:100%;-webkit-appearance:none;height:6px;background:#2a2a2a;border-radius:3px;padding:0;border:none;cursor:pointer;outline:none;}
+.input-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#ff5f1f;cursor:pointer;}
+.input-group input[type="number"]{-moz-appearance:textfield;}
+.input-group input[type="number"]::-webkit-inner-spin-button,.input-group input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+
+/* Track definition table */
+.track-def{width:100%;border-collapse:collapse;margin-top:12px;}
+.track-def th{text-align:left;font-size:0.8rem;color:#666;padding:6px 8px;border-bottom:1px solid #222;font-weight:600;}
+.track-def td{padding:6px 8px;border-bottom:1px solid #1a1a1a;}
+.track-def input,.track-def select{padding:7px 10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;width:100%;transition:border-color .2s;}
+.track-def input:focus,.track-def select:focus{border-color:#ff5f1f;}
+.track-num{color:#555;font-size:0.8rem;font-weight:600;width:30px;}
+
+/* Toggle buttons */
+.prop-toggle-group{display:flex;flex-wrap:wrap;gap:6px;}
+.prop-btn{padding:7px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:monospace;white-space:nowrap;}
+.prop-btn:hover{border-color:#555;color:#ccc;}
+.prop-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700;}
+
+/* Item placement panel */
+.item-panel{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-top:16px;}
+.item-panel h3{font-size:0.95rem;color:#ccc;margin-bottom:12px;}
+.item-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.item-chip{padding:6px 14px;border-radius:6px;cursor:pointer;font-size:0.85rem;font-weight:600;border:2px solid transparent;transition:all .2s;color:#fff;}
+.item-chip:hover{opacity:0.8;}
+.item-chip.selected{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.2);}
+.placement-controls{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;}
+
+/* Named areas */
+.areas-grid{display:grid;gap:4px;margin-top:12px;}
+.area-cell{padding:8px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;text-align:center;}
+.area-cell input{width:100%;background:transparent;border:none;color:#e8e8e8;text-align:center;font-size:0.8rem;outline:none;font-family:monospace;}
+.area-cell input::placeholder{color:#444;}
+
+/* CSS Output */
+.css-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;color:#8f8;white-space:pre-wrap;word-break:break-all;line-height:1.7;position:relative;max-height:500px;overflow-y:auto;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+.btn-danger{background:#2a1515;color:#ff4444;border:1px solid #4a2020;}
+.btn-danger:hover{background:#3a1515;}
+.btn-sm{padding:6px 14px;font-size:0.82rem;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+
+/* Merge hint */
+.merge-hint{background:#1a1200;border:1px solid #ff5f1f33;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:0.85rem;color:#cc9955;display:none;}
+.merge-hint.show{display:block;}
+
+/* Item management */
+.item-management{display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+/* Tabs */
+.tab-bar{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid #222;padding-bottom:0;}
+.tab-btn{padding:10px 20px;background:transparent;border:none;border-bottom:2px solid transparent;color:#888;font-size:0.9rem;cursor:pointer;transition:all .2s;font-weight:600;}
+.tab-btn:hover{color:#ccc;}
+.tab-btn.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* Responsive */
+@media(max-width:768px){
+  h1{font-size:1.5rem;}
+  .controls-grid{grid-template-columns:1fr 1fr;}
+  .controls-grid-2{grid-template-columns:1fr;}
+  .placement-controls{grid-template-columns:1fr 1fr;}
+  .preview-box{min-height:280px;}
+}
+@media(max-width:500px){
+  .controls-grid{grid-template-columns:1fr;}
+  .placement-controls{grid-template-columns:1fr;}
+  .prop-btn{padding:6px 10px;font-size:0.75rem;}
+  .resp-btn{padding:5px 10px;font-size:0.75rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Grid Generator","description":"Visual CSS Grid playground. Define rows, columns, gaps, place items, merge cells, name grid areas, and copy the generated CSS. Free online tool.","url":"https://spunkart.com/grid-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>CSS Grid <span>Generator</span></h1>
+  <p class="subtitle">Visual grid playground. Define rows, columns, gaps, merge cells, name areas, and copy the CSS.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <!-- Responsive Preview Toggle -->
+  <div class="responsive-bar">
+    <span>Preview:</span>
+    <button class="resp-btn active" data-width="100%" onclick="setPreviewWidth(this,'100%')">Desktop</button>
+    <button class="resp-btn" data-width="768px" onclick="setPreviewWidth(this,'768px')">Tablet</button>
+    <button class="resp-btn" data-width="375px" onclick="setPreviewWidth(this,'375px')">Mobile</button>
+  </div>
+
+  <!-- Live Preview -->
+  <div class="preview-wrapper">
+    <div class="preview-box" id="previewBox">
+      <div class="grid-container" id="gridContainer"></div>
+      <span class="preview-label">LIVE PREVIEW</span>
+    </div>
+  </div>
+
+  <!-- Merge Hint -->
+  <div class="merge-hint" id="mergeHint">Click a cell to start a merge selection, then click another cell to span across columns and/or rows. Press Escape to cancel.</div>
+
+  <!-- Grid Structure Controls -->
+  <div class="section">
+    <h2>Grid Structure</h2>
+    <div class="controls-grid">
+      <div class="input-group">
+        <label>Columns: <span id="colCountVal">3</span></label>
+        <input type="range" id="colCountRange" min="1" max="12" value="3">
+      </div>
+      <div class="input-group">
+        <label>Rows: <span id="rowCountVal">3</span></label>
+        <input type="range" id="rowCountRange" min="1" max="8" value="3">
+      </div>
+      <div class="input-group">
+        <label>Gap: <span id="gapVal">10</span>px</label>
+        <input type="range" id="gapRange" min="0" max="60" value="10">
+      </div>
+      <div class="input-group">
+        <label>Column Gap: <span id="colGapVal">--</span></label>
+        <input type="range" id="colGapRange" min="0" max="60" value="0" disabled>
+      </div>
+      <div class="input-group">
+        <label>Row Gap: <span id="rowGapVal">--</span></label>
+        <input type="range" id="rowGapRange" min="0" max="60" value="0" disabled>
+      </div>
+      <div class="input-group">
+        <label style="display:flex;align-items:center;gap:8px;"><input type="checkbox" id="splitGapCheck" style="width:auto;accent-color:#ff5f1f;"> Separate column/row gaps</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column / Row Sizing -->
+  <div class="section">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('colTab',this)">Column Widths</button>
+      <button class="tab-btn" onclick="switchTab('rowTab',this)">Row Heights</button>
+      <button class="tab-btn" onclick="switchTab('areaTab',this)">Named Areas</button>
+    </div>
+
+    <!-- Column widths -->
+    <div class="tab-content active" id="colTab">
+      <table class="track-def" id="colTable">
+        <thead><tr><th>#</th><th>Value</th><th>Unit</th></tr></thead>
+        <tbody id="colTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Row heights -->
+    <div class="tab-content" id="rowTab">
+      <table class="track-def" id="rowTable">
+        <thead><tr><th>#</th><th>Value</th><th>Unit</th></tr></thead>
+        <tbody id="rowTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Named areas -->
+    <div class="tab-content" id="areaTab">
+      <p style="font-size:0.85rem;color:#888;margin-bottom:12px;">Type area names into each cell. Use the same name across adjacent cells to define a region. Use a dot (.) for empty cells.</p>
+      <div class="areas-grid" id="areasGrid"></div>
+    </div>
+  </div>
+
+  <!-- Alignment -->
+  <div class="section">
+    <h2>Alignment</h2>
+    <div class="controls-grid">
+      <div class="input-group">
+        <label>justify-items</label>
+        <div class="prop-toggle-group" data-prop="justifyItems">
+          <button class="prop-btn active" data-val="stretch">stretch</button>
+          <button class="prop-btn" data-val="start">start</button>
+          <button class="prop-btn" data-val="end">end</button>
+          <button class="prop-btn" data-val="center">center</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>align-items</label>
+        <div class="prop-toggle-group" data-prop="alignItems">
+          <button class="prop-btn active" data-val="stretch">stretch</button>
+          <button class="prop-btn" data-val="start">start</button>
+          <button class="prop-btn" data-val="end">end</button>
+          <button class="prop-btn" data-val="center">center</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>justify-content</label>
+        <div class="prop-toggle-group" data-prop="justifyContent">
+          <button class="prop-btn active" data-val="start">start</button>
+          <button class="prop-btn" data-val="end">end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="space-between">space-between</button>
+          <button class="prop-btn" data-val="space-around">space-around</button>
+          <button class="prop-btn" data-val="space-evenly">space-evenly</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>align-content</label>
+        <div class="prop-toggle-group" data-prop="alignContent">
+          <button class="prop-btn active" data-val="start">start</button>
+          <button class="prop-btn" data-val="end">end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="space-between">space-between</button>
+          <button class="prop-btn" data-val="space-around">space-around</button>
+          <button class="prop-btn" data-val="space-evenly">space-evenly</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Items / Placement -->
+  <div class="section">
+    <h2>Grid Items</h2>
+    <div class="item-management">
+      <button class="btn btn-green btn-sm" onclick="addGridItem()">+ Add Item</button>
+      <button class="btn btn-danger btn-sm" onclick="removeGridItem()">- Remove</button>
+      <button class="btn btn-secondary btn-sm" onclick="startMergeMode()">Merge Cells</button>
+      <button class="btn btn-secondary btn-sm" onclick="clearAllSpans()">Clear Spans</button>
+      <span style="color:#888;font-size:0.85rem;" id="itemCountLabel">9 items</span>
+    </div>
+
+    <label style="font-size:0.85rem;color:#888;margin-bottom:10px;display:block;">Select an item to edit its placement:</label>
+    <div class="item-chips" id="itemChips"></div>
+
+    <div class="item-panel" id="itemPanel">
+      <h3>Item <span id="itemPanelTitle">1</span> Placement</h3>
+      <div class="placement-controls">
+        <div class="input-group">
+          <label>grid-column-start</label>
+          <input type="number" id="gcStart" min="1" max="13" value="1">
+        </div>
+        <div class="input-group">
+          <label>grid-column-end</label>
+          <input type="number" id="gcEnd" min="1" max="13" value="2">
+        </div>
+        <div class="input-group">
+          <label>grid-row-start</label>
+          <input type="number" id="grStart" min="1" max="9" value="1">
+        </div>
+        <div class="input-group">
+          <label>grid-row-end</label>
+          <input type="number" id="grEnd" min="1" max="9" value="2">
+        </div>
+      </div>
+      <div class="controls-grid-2" style="margin-top:12px;">
+        <div class="input-group">
+          <label>justify-self</label>
+          <div class="prop-toggle-group" data-prop="justifySelf">
+            <button class="prop-btn active" data-val="auto">auto</button>
+            <button class="prop-btn" data-val="start">start</button>
+            <button class="prop-btn" data-val="end">end</button>
+            <button class="prop-btn" data-val="center">center</button>
+            <button class="prop-btn" data-val="stretch">stretch</button>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>align-self</label>
+          <div class="prop-toggle-group" data-prop="alignSelf">
+            <button class="prop-btn active" data-val="auto">auto</button>
+            <button class="prop-btn" data-val="start">start</button>
+            <button class="prop-btn" data-val="end">end</button>
+            <button class="prop-btn" data-val="center">center</button>
+            <button class="prop-btn" data-val="stretch">stretch</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS Output -->
+  <div class="section">
+    <h2>Generated CSS</h2>
+    <div class="css-output" id="cssOutput"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-primary" id="copyBtn" onclick="copyCSS()">Copy CSS</button>
+      <button class="btn btn-secondary" onclick="resetAll()">Reset All</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ================================================
+     STATE
+  ================================================ */
+  var state = {
+    cols: 3,
+    rows: 3,
+    gap: 10,
+    colGap: 0,
+    rowGap: 0,
+    splitGap: false,
+    colDefs: [],   // [{value:'1',unit:'fr'}, ...]
+    rowDefs: [],
+    justifyItems: 'stretch',
+    alignItems: 'stretch',
+    justifyContent: 'start',
+    alignContent: 'start',
+    items: [],     // [{colStart,colEnd,rowStart,rowEnd,justifySelf,alignSelf}]
+    areaNames: [], // 2D array [row][col] of strings
+    selectedItem: 0,
+    mergeMode: false,
+    mergeStart: null
+  };
+
+  var COLORS = ['gc-0','gc-1','gc-2','gc-3','gc-4','gc-5','gc-6','gc-7','gc-8','gc-9','gc-10','gc-11'];
+
+  function defaultColDef(){ return {value:'1',unit:'fr'}; }
+  function defaultRowDef(){ return {value:'1',unit:'fr'}; }
+  function defaultItem(i){
+    var r = Math.floor(i / state.cols);
+    var c = i % state.cols;
+    return {
+      colStart: c + 1, colEnd: c + 2,
+      rowStart: r + 1, rowEnd: r + 2,
+      justifySelf: 'auto', alignSelf: 'auto'
+    };
+  }
+
+  function initState(){
+    state.colDefs = [];
+    state.rowDefs = [];
+    for(var i = 0; i < state.cols; i++) state.colDefs.push(defaultColDef());
+    for(var i = 0; i < state.rows; i++) state.rowDefs.push(defaultRowDef());
+    state.items = [];
+    var total = state.cols * state.rows;
+    for(var i = 0; i < total; i++) state.items.push(defaultItem(i));
+    state.areaNames = [];
+    for(var r = 0; r < state.rows; r++){
+      state.areaNames[r] = [];
+      for(var c = 0; c < state.cols; c++){
+        state.areaNames[r][c] = '.';
+      }
+    }
+    state.selectedItem = 0;
+    state.mergeMode = false;
+    state.mergeStart = null;
+  }
+
+  initState();
+
+  /* ================================================
+     DOM REFS
+  ================================================ */
+  var $colCountRange = document.getElementById('colCountRange');
+  var $colCountVal = document.getElementById('colCountVal');
+  var $rowCountRange = document.getElementById('rowCountRange');
+  var $rowCountVal = document.getElementById('rowCountVal');
+  var $gapRange = document.getElementById('gapRange');
+  var $gapVal = document.getElementById('gapVal');
+  var $colGapRange = document.getElementById('colGapRange');
+  var $colGapVal = document.getElementById('colGapVal');
+  var $rowGapRange = document.getElementById('rowGapRange');
+  var $rowGapVal = document.getElementById('rowGapVal');
+  var $splitGapCheck = document.getElementById('splitGapCheck');
+  var $gridContainer = document.getElementById('gridContainer');
+  var $cssOutput = document.getElementById('cssOutput');
+  var $previewBox = document.getElementById('previewBox');
+  var $mergeHint = document.getElementById('mergeHint');
+
+  /* ================================================
+     RESPONSIVE PREVIEW
+  ================================================ */
+  window.setPreviewWidth = function(btn, width){
+    document.querySelectorAll('.resp-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    $previewBox.style.maxWidth = width;
+    if(width === '100%'){
+      $previewBox.style.margin = '0';
+    } else {
+      $previewBox.style.margin = '0 auto 24px auto';
+    }
+  };
+
+  /* ================================================
+     TABS
+  ================================================ */
+  window.switchTab = function(tabId, btn){
+    document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  };
+
+  /* ================================================
+     COLUMN/ROW COUNT
+  ================================================ */
+  $colCountRange.addEventListener('input', function(){
+    var newCols = parseInt(this.value);
+    $colCountVal.textContent = newCols;
+    adjustGrid(newCols, state.rows);
+    bumpUsage();
+  });
+
+  $rowCountRange.addEventListener('input', function(){
+    var newRows = parseInt(this.value);
+    $rowCountVal.textContent = newRows;
+    adjustGrid(state.cols, newRows);
+    bumpUsage();
+  });
+
+  function adjustGrid(newCols, newRows){
+    var oldCols = state.cols;
+    var oldRows = state.rows;
+    state.cols = newCols;
+    state.rows = newRows;
+
+    // Adjust colDefs
+    while(state.colDefs.length < newCols) state.colDefs.push(defaultColDef());
+    state.colDefs.length = newCols;
+
+    // Adjust rowDefs
+    while(state.rowDefs.length < newRows) state.rowDefs.push(defaultRowDef());
+    state.rowDefs.length = newRows;
+
+    // Adjust area names
+    while(state.areaNames.length < newRows){
+      var row = [];
+      for(var c = 0; c < newCols; c++) row.push('.');
+      state.areaNames.push(row);
+    }
+    state.areaNames.length = newRows;
+    for(var r = 0; r < newRows; r++){
+      while(state.areaNames[r].length < newCols) state.areaNames[r].push('.');
+      state.areaNames[r].length = newCols;
+    }
+
+    // Rebuild items to fill grid
+    rebuildItems();
+    renderAll();
+  }
+
+  function rebuildItems(){
+    var total = state.cols * state.rows;
+    // Keep existing items that still fit, remove out of bounds
+    var kept = [];
+    state.items.forEach(function(item){
+      if(item.colStart <= state.cols && item.rowStart <= state.rows){
+        var fixed = {
+          colStart: item.colStart,
+          colEnd: Math.min(item.colEnd, state.cols + 1),
+          rowStart: item.rowStart,
+          rowEnd: Math.min(item.rowEnd, state.rows + 1),
+          justifySelf: item.justifySelf,
+          alignSelf: item.alignSelf
+        };
+        kept.push(fixed);
+      }
+    });
+
+    // Find occupied cells
+    var occupied = {};
+    kept.forEach(function(item){
+      for(var r = item.rowStart; r < item.rowEnd; r++){
+        for(var c = item.colStart; c < item.colEnd; c++){
+          occupied[r + '-' + c] = true;
+        }
+      }
+    });
+
+    // Fill empty cells with new items
+    for(var r = 1; r <= state.rows; r++){
+      for(var c = 1; c <= state.cols; c++){
+        if(!occupied[r + '-' + c]){
+          kept.push({
+            colStart: c, colEnd: c + 1,
+            rowStart: r, rowEnd: r + 1,
+            justifySelf: 'auto', alignSelf: 'auto'
+          });
+          occupied[r + '-' + c] = true;
+        }
+      }
+    }
+
+    state.items = kept;
+    if(state.selectedItem >= state.items.length){
+      state.selectedItem = 0;
+    }
+  }
+
+  /* ================================================
+     GAP CONTROLS
+  ================================================ */
+  $gapRange.addEventListener('input', function(){
+    state.gap = parseInt(this.value);
+    $gapVal.textContent = this.value;
+    renderPreview();
+    updateCSSOutput();
+    bumpUsage();
+  });
+
+  $colGapRange.addEventListener('input', function(){
+    state.colGap = parseInt(this.value);
+    $colGapVal.textContent = this.value + 'px';
+    renderPreview();
+    updateCSSOutput();
+    bumpUsage();
+  });
+
+  $rowGapRange.addEventListener('input', function(){
+    state.rowGap = parseInt(this.value);
+    $rowGapVal.textContent = this.value + 'px';
+    renderPreview();
+    updateCSSOutput();
+    bumpUsage();
+  });
+
+  $splitGapCheck.addEventListener('change', function(){
+    state.splitGap = this.checked;
+    $colGapRange.disabled = !this.checked;
+    $rowGapRange.disabled = !this.checked;
+    $gapRange.disabled = this.checked;
+    if(this.checked){
+      state.colGap = state.gap;
+      state.rowGap = state.gap;
+      $colGapRange.value = state.gap;
+      $rowGapRange.value = state.gap;
+      $colGapVal.textContent = state.gap + 'px';
+      $rowGapVal.textContent = state.gap + 'px';
+      $gapVal.textContent = '--';
+    } else {
+      $gapVal.textContent = state.gap;
+      $colGapVal.textContent = '--';
+      $rowGapVal.textContent = '--';
+    }
+    renderPreview();
+    updateCSSOutput();
+  });
+
+  /* ================================================
+     ALIGNMENT TOGGLES
+  ================================================ */
+  var containerAlignProps = ['justifyItems','alignItems','justifyContent','alignContent'];
+  containerAlignProps.forEach(function(prop){
+    var group = document.querySelector('.prop-toggle-group[data-prop="' + prop + '"]');
+    if(!group) return;
+    group.querySelectorAll('.prop-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.prop-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        state[prop] = btn.dataset.val;
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+  });
+
+  /* ================================================
+     ITEM SELF-ALIGNMENT TOGGLES
+  ================================================ */
+  var itemAlignProps = ['justifySelf','alignSelf'];
+  itemAlignProps.forEach(function(prop){
+    var group = document.querySelector('#itemPanel .prop-toggle-group[data-prop="' + prop + '"]');
+    if(!group) return;
+    group.querySelectorAll('.prop-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.prop-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        state.items[state.selectedItem][prop] = btn.dataset.val;
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+  });
+
+  /* ================================================
+     ITEM PLACEMENT INPUTS
+  ================================================ */
+  var $gcStart = document.getElementById('gcStart');
+  var $gcEnd = document.getElementById('gcEnd');
+  var $grStart = document.getElementById('grStart');
+  var $grEnd = document.getElementById('grEnd');
+
+  [$gcStart, $gcEnd, $grStart, $grEnd].forEach(function(input){
+    input.addEventListener('change', function(){
+      var item = state.items[state.selectedItem];
+      item.colStart = parseInt($gcStart.value) || 1;
+      item.colEnd = parseInt($gcEnd.value) || 2;
+      item.rowStart = parseInt($grStart.value) || 1;
+      item.rowEnd = parseInt($grEnd.value) || 2;
+      renderPreview();
+      updateCSSOutput();
+      bumpUsage();
+    });
+  });
+
+  /* ================================================
+     COLUMN/ROW SIZE TABLES
+  ================================================ */
+  function renderColTable(){
+    var tbody = document.getElementById('colTableBody');
+    tbody.innerHTML = '';
+    state.colDefs.forEach(function(def, i){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td class="track-num">' + (i + 1) + '</td>' +
+        '<td><input type="text" value="' + def.value + '" data-idx="' + i + '" data-type="colVal"></td>' +
+        '<td><select data-idx="' + i + '" data-type="colUnit">' +
+          '<option value="fr"' + (def.unit === 'fr' ? ' selected' : '') + '>fr</option>' +
+          '<option value="px"' + (def.unit === 'px' ? ' selected' : '') + '>px</option>' +
+          '<option value="%"' + (def.unit === '%' ? ' selected' : '') + '>%</option>' +
+          '<option value="auto"' + (def.unit === 'auto' ? ' selected' : '') + '>auto</option>' +
+          '<option value="min-content"' + (def.unit === 'min-content' ? ' selected' : '') + '>min-content</option>' +
+          '<option value="max-content"' + (def.unit === 'max-content' ? ' selected' : '') + '>max-content</option>' +
+          '<option value="minmax"' + (def.unit === 'minmax' ? ' selected' : '') + '>minmax()</option>' +
+        '</select></td>';
+      tbody.appendChild(tr);
+    });
+
+    // Attach events
+    tbody.querySelectorAll('input[data-type="colVal"]').forEach(function(input){
+      input.addEventListener('input', function(){
+        state.colDefs[parseInt(this.dataset.idx)].value = this.value;
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+    tbody.querySelectorAll('select[data-type="colUnit"]').forEach(function(sel){
+      sel.addEventListener('change', function(){
+        var idx = parseInt(this.dataset.idx);
+        state.colDefs[idx].unit = this.value;
+        if(this.value === 'auto' || this.value === 'min-content' || this.value === 'max-content'){
+          state.colDefs[idx].value = '';
+        } else if(this.value === 'minmax'){
+          state.colDefs[idx].value = '100px, 1fr';
+        } else if(!state.colDefs[idx].value){
+          state.colDefs[idx].value = '1';
+        }
+        renderColTable();
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+  }
+
+  function renderRowTable(){
+    var tbody = document.getElementById('rowTableBody');
+    tbody.innerHTML = '';
+    state.rowDefs.forEach(function(def, i){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td class="track-num">' + (i + 1) + '</td>' +
+        '<td><input type="text" value="' + def.value + '" data-idx="' + i + '" data-type="rowVal"></td>' +
+        '<td><select data-idx="' + i + '" data-type="rowUnit">' +
+          '<option value="fr"' + (def.unit === 'fr' ? ' selected' : '') + '>fr</option>' +
+          '<option value="px"' + (def.unit === 'px' ? ' selected' : '') + '>px</option>' +
+          '<option value="%"' + (def.unit === '%' ? ' selected' : '') + '>%</option>' +
+          '<option value="auto"' + (def.unit === 'auto' ? ' selected' : '') + '>auto</option>' +
+          '<option value="min-content"' + (def.unit === 'min-content' ? ' selected' : '') + '>min-content</option>' +
+          '<option value="max-content"' + (def.unit === 'max-content' ? ' selected' : '') + '>max-content</option>' +
+          '<option value="minmax"' + (def.unit === 'minmax' ? ' selected' : '') + '>minmax()</option>' +
+        '</select></td>';
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('input[data-type="rowVal"]').forEach(function(input){
+      input.addEventListener('input', function(){
+        state.rowDefs[parseInt(this.dataset.idx)].value = this.value;
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+    tbody.querySelectorAll('select[data-type="rowUnit"]').forEach(function(sel){
+      sel.addEventListener('change', function(){
+        var idx = parseInt(this.dataset.idx);
+        state.rowDefs[idx].unit = this.value;
+        if(this.value === 'auto' || this.value === 'min-content' || this.value === 'max-content'){
+          state.rowDefs[idx].value = '';
+        } else if(this.value === 'minmax'){
+          state.rowDefs[idx].value = '80px, 1fr';
+        } else if(!state.rowDefs[idx].value){
+          state.rowDefs[idx].value = '1';
+        }
+        renderRowTable();
+        renderPreview();
+        updateCSSOutput();
+        bumpUsage();
+      });
+    });
+  }
+
+  /* ================================================
+     NAMED AREAS GRID
+  ================================================ */
+  function renderAreasGrid(){
+    var grid = document.getElementById('areasGrid');
+    grid.innerHTML = '';
+    grid.style.gridTemplateColumns = 'repeat(' + state.cols + ', 1fr)';
+
+    for(var r = 0; r < state.rows; r++){
+      for(var c = 0; c < state.cols; c++){
+        var cell = document.createElement('div');
+        cell.className = 'area-cell';
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.value = state.areaNames[r][c];
+        input.placeholder = 'r' + (r+1) + 'c' + (c+1);
+        input.dataset.row = r;
+        input.dataset.col = c;
+        input.addEventListener('input', function(){
+          var rr = parseInt(this.dataset.row);
+          var cc = parseInt(this.dataset.col);
+          var val = this.value.trim() || '.';
+          state.areaNames[rr][cc] = val;
+          renderPreview();
+          updateCSSOutput();
+          bumpUsage();
+        });
+        cell.appendChild(input);
+        grid.appendChild(cell);
+      }
+    }
+  }
+
+  /* ================================================
+     ITEM MANAGEMENT
+  ================================================ */
+  window.addGridItem = function(){
+    var maxItems = state.cols * state.rows * 2; // Allow overlapping
+    if(state.items.length >= maxItems) return;
+    state.items.push({
+      colStart: 1, colEnd: 2,
+      rowStart: 1, rowEnd: 2,
+      justifySelf: 'auto', alignSelf: 'auto'
+    });
+    state.selectedItem = state.items.length - 1;
+    renderAll();
+    bumpUsage();
+  };
+
+  window.removeGridItem = function(){
+    if(state.items.length <= 1) return;
+    state.items.splice(state.selectedItem, 1);
+    if(state.selectedItem >= state.items.length) state.selectedItem = state.items.length - 1;
+    renderAll();
+    bumpUsage();
+  };
+
+  function renderItemChips(){
+    var container = document.getElementById('itemChips');
+    container.innerHTML = '';
+    state.items.forEach(function(_, i){
+      var chip = document.createElement('div');
+      chip.className = 'item-chip ' + COLORS[i % COLORS.length] + (i === state.selectedItem ? ' selected' : '');
+      chip.textContent = i + 1;
+      chip.addEventListener('click', function(){
+        state.selectedItem = i;
+        renderItemChips();
+        loadItemPanel();
+        renderPreview();
+      });
+      container.appendChild(chip);
+    });
+    document.getElementById('itemCountLabel').textContent = state.items.length + ' item' + (state.items.length !== 1 ? 's' : '');
+  }
+
+  function loadItemPanel(){
+    var item = state.items[state.selectedItem];
+    document.getElementById('itemPanelTitle').textContent = state.selectedItem + 1;
+    $gcStart.value = item.colStart;
+    $gcEnd.value = item.colEnd;
+    $grStart.value = item.rowStart;
+    $grEnd.value = item.rowEnd;
+    $gcStart.max = state.cols + 1;
+    $gcEnd.max = state.cols + 1;
+    $grStart.max = state.rows + 1;
+    $grEnd.max = state.rows + 1;
+
+    // Update self-alignment toggles
+    itemAlignProps.forEach(function(prop){
+      var group = document.querySelector('#itemPanel .prop-toggle-group[data-prop="' + prop + '"]');
+      if(!group) return;
+      group.querySelectorAll('.prop-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.val === item[prop]);
+      });
+    });
+  }
+
+  /* ================================================
+     MERGE MODE
+  ================================================ */
+  window.startMergeMode = function(){
+    state.mergeMode = true;
+    state.mergeStart = null;
+    $mergeHint.classList.add('show');
+    renderPreview();
+  };
+
+  function cancelMerge(){
+    state.mergeMode = false;
+    state.mergeStart = null;
+    $mergeHint.classList.remove('show');
+    renderPreview();
+  }
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && state.mergeMode){
+      cancelMerge();
+    }
+  });
+
+  window.clearAllSpans = function(){
+    state.items = [];
+    for(var r = 1; r <= state.rows; r++){
+      for(var c = 1; c <= state.cols; c++){
+        state.items.push({
+          colStart: c, colEnd: c + 1,
+          rowStart: r, rowEnd: r + 1,
+          justifySelf: 'auto', alignSelf: 'auto'
+        });
+      }
+    }
+    state.selectedItem = 0;
+    renderAll();
+    bumpUsage();
+  };
+
+  function handleCellClick(itemIndex){
+    if(!state.mergeMode){
+      state.selectedItem = itemIndex;
+      renderItemChips();
+      loadItemPanel();
+      renderPreview();
+      return;
+    }
+
+    if(!state.mergeStart){
+      state.mergeStart = itemIndex;
+      renderPreview();
+      return;
+    }
+
+    // Merge from mergeStart to this cell
+    var a = state.items[state.mergeStart];
+    var b = state.items[itemIndex];
+    if(!a || !b){ cancelMerge(); return; }
+
+    var minCol = Math.min(a.colStart, b.colStart);
+    var maxCol = Math.max(a.colEnd, b.colEnd);
+    var minRow = Math.min(a.rowStart, b.rowStart);
+    var maxRow = Math.max(a.rowEnd, b.rowEnd);
+
+    // Remove items that fall within this merged area
+    var newItems = [];
+    var mergedItem = null;
+    state.items.forEach(function(item, i){
+      var itemInside = item.colStart >= minCol && item.colEnd <= maxCol &&
+                       item.rowStart >= minRow && item.rowEnd <= maxRow;
+      if(itemInside){
+        if(!mergedItem){
+          mergedItem = {
+            colStart: minCol, colEnd: maxCol,
+            rowStart: minRow, rowEnd: maxRow,
+            justifySelf: 'auto', alignSelf: 'auto'
+          };
+          newItems.push(mergedItem);
+        }
+      } else {
+        newItems.push(item);
+      }
+    });
+
+    if(!mergedItem){
+      mergedItem = {
+        colStart: minCol, colEnd: maxCol,
+        rowStart: minRow, rowEnd: maxRow,
+        justifySelf: 'auto', alignSelf: 'auto'
+      };
+      newItems.push(mergedItem);
+    }
+
+    state.items = newItems;
+    state.selectedItem = newItems.indexOf(mergedItem);
+    cancelMerge();
+    renderAll();
+    bumpUsage();
+  }
+
+  /* ================================================
+     TRACK SIZE STRING
+  ================================================ */
+  function trackStr(def){
+    if(def.unit === 'auto' || def.unit === 'min-content' || def.unit === 'max-content'){
+      return def.unit;
+    }
+    if(def.unit === 'minmax'){
+      return 'minmax(' + (def.value || '100px, 1fr') + ')';
+    }
+    return (def.value || '1') + def.unit;
+  }
+
+  /* ================================================
+     RENDER PREVIEW
+  ================================================ */
+  function renderPreview(){
+    $gridContainer.innerHTML = '';
+    $gridContainer.style.display = 'grid';
+    $gridContainer.style.gridTemplateColumns = state.colDefs.map(trackStr).join(' ');
+    $gridContainer.style.gridTemplateRows = state.rowDefs.map(trackStr).join(' ');
+
+    if(state.splitGap){
+      $gridContainer.style.gap = '';
+      $gridContainer.style.columnGap = state.colGap + 'px';
+      $gridContainer.style.rowGap = state.rowGap + 'px';
+    } else {
+      $gridContainer.style.gap = state.gap + 'px';
+      $gridContainer.style.columnGap = '';
+      $gridContainer.style.rowGap = '';
+    }
+
+    $gridContainer.style.justifyItems = state.justifyItems;
+    $gridContainer.style.alignItems = state.alignItems;
+    $gridContainer.style.justifyContent = state.justifyContent;
+    $gridContainer.style.alignContent = state.alignContent;
+
+    // Check if named areas are used
+    var hasAreas = false;
+    state.areaNames.forEach(function(row){
+      row.forEach(function(name){
+        if(name && name !== '.') hasAreas = true;
+      });
+    });
+    if(hasAreas){
+      var areaStr = state.areaNames.map(function(row){
+        return '"' + row.join(' ') + '"';
+      }).join(' ');
+      $gridContainer.style.gridTemplateAreas = areaStr;
+    } else {
+      $gridContainer.style.gridTemplateAreas = '';
+    }
+
+    state.items.forEach(function(item, i){
+      var div = document.createElement('div');
+      var colorClass = COLORS[i % COLORS.length];
+      var isSelected = (i === state.selectedItem);
+      var isMergeStart = (state.mergeMode && state.mergeStart === i);
+      div.className = 'grid-cell ' + colorClass +
+        (isSelected && !state.mergeMode ? ' selected' : '') +
+        (isMergeStart ? ' merge-start' : '');
+
+      div.style.gridColumnStart = item.colStart;
+      div.style.gridColumnEnd = item.colEnd;
+      div.style.gridRowStart = item.rowStart;
+      div.style.gridRowEnd = item.rowEnd;
+
+      if(item.justifySelf !== 'auto') div.style.justifySelf = item.justifySelf;
+      if(item.alignSelf !== 'auto') div.style.alignSelf = item.alignSelf;
+
+      var span = item.colEnd - item.colStart > 1 || item.rowEnd - item.rowStart > 1;
+      var labelText = '' + (i + 1);
+      if(span){
+        labelText += '<br><span style="font-size:0.65rem;opacity:0.7;">' +
+          (item.colEnd - item.colStart) + 'x' + (item.rowEnd - item.rowStart) + '</span>';
+      }
+      div.innerHTML = '<span class="cell-label">' + labelText + '</span>';
+
+      var idx = i;
+      div.addEventListener('click', function(){ handleCellClick(idx); });
+      $gridContainer.appendChild(div);
+    });
+  }
+
+  /* ================================================
+     CSS OUTPUT
+  ================================================ */
+  function updateCSSOutput(){
+    var lines = [];
+    lines.push('.grid-container {');
+    lines.push('  display: grid;');
+
+    // Check if all cols are same
+    var colStrs = state.colDefs.map(trackStr);
+    var allColsSame = colStrs.every(function(s){ return s === colStrs[0]; });
+    if(allColsSame && state.cols > 1){
+      lines.push('  grid-template-columns: repeat(' + state.cols + ', ' + colStrs[0] + ');');
+    } else {
+      lines.push('  grid-template-columns: ' + colStrs.join(' ') + ';');
+    }
+
+    var rowStrs = state.rowDefs.map(trackStr);
+    var allRowsSame = rowStrs.every(function(s){ return s === rowStrs[0]; });
+    if(allRowsSame && state.rows > 1){
+      lines.push('  grid-template-rows: repeat(' + state.rows + ', ' + rowStrs[0] + ');');
+    } else {
+      lines.push('  grid-template-rows: ' + rowStrs.join(' ') + ';');
+    }
+
+    // Gap
+    if(state.splitGap){
+      if(state.colGap > 0) lines.push('  column-gap: ' + state.colGap + 'px;');
+      if(state.rowGap > 0) lines.push('  row-gap: ' + state.rowGap + 'px;');
+    } else {
+      if(state.gap > 0) lines.push('  gap: ' + state.gap + 'px;');
+    }
+
+    // Alignment (only non-defaults)
+    if(state.justifyItems !== 'stretch') lines.push('  justify-items: ' + state.justifyItems + ';');
+    if(state.alignItems !== 'stretch') lines.push('  align-items: ' + state.alignItems + ';');
+    if(state.justifyContent !== 'start') lines.push('  justify-content: ' + state.justifyContent + ';');
+    if(state.alignContent !== 'start') lines.push('  align-content: ' + state.alignContent + ';');
+
+    // Named areas
+    var hasAreas = false;
+    state.areaNames.forEach(function(row){
+      row.forEach(function(name){ if(name && name !== '.') hasAreas = true; });
+    });
+    if(hasAreas){
+      lines.push('  grid-template-areas:');
+      state.areaNames.forEach(function(row, i){
+        var rowStr = '    "' + row.join(' ') + '"';
+        if(i < state.areaNames.length - 1) rowStr += '';
+        else rowStr += ';';
+        lines.push(rowStr);
+      });
+    }
+
+    lines.push('}');
+
+    // Item placement rules (only for items with non-default placement)
+    var hasCustomItems = false;
+    state.items.forEach(function(item, i){
+      var isDefault = (item.colEnd - item.colStart === 1 && item.rowEnd - item.rowStart === 1 &&
+                       item.justifySelf === 'auto' && item.alignSelf === 'auto');
+
+      // Check if placement matches auto-flow position
+      var autoRow = Math.floor(i / state.cols) + 1;
+      var autoCol = (i % state.cols) + 1;
+      var isAutoPosition = (item.colStart === autoCol && item.rowStart === autoRow);
+
+      if(!isDefault || (!isAutoPosition && (item.colEnd - item.colStart > 1 || item.rowEnd - item.rowStart > 1))){
+        hasCustomItems = true;
+      }
+    });
+
+    if(hasCustomItems){
+      state.items.forEach(function(item, i){
+        var isDefault = (item.colEnd - item.colStart === 1 && item.rowEnd - item.rowStart === 1 &&
+                         item.justifySelf === 'auto' && item.alignSelf === 'auto');
+        var autoRow = Math.floor(i / state.cols) + 1;
+        var autoCol = (i % state.cols) + 1;
+        var isAutoPosition = (item.colStart === autoCol && item.rowStart === autoRow);
+
+        if(isDefault && isAutoPosition) return;
+
+        lines.push('');
+        lines.push('.item-' + (i + 1) + ' {');
+
+        var colSpan = item.colEnd - item.colStart;
+        var rowSpan = item.rowEnd - item.rowStart;
+
+        if(colSpan > 1){
+          lines.push('  grid-column: ' + item.colStart + ' / ' + item.colEnd + ';');
+        } else if(!isAutoPosition){
+          lines.push('  grid-column: ' + item.colStart + ';');
+        }
+
+        if(rowSpan > 1){
+          lines.push('  grid-row: ' + item.rowStart + ' / ' + item.rowEnd + ';');
+        } else if(!isAutoPosition){
+          lines.push('  grid-row: ' + item.rowStart + ';');
+        }
+
+        if(item.justifySelf !== 'auto') lines.push('  justify-self: ' + item.justifySelf + ';');
+        if(item.alignSelf !== 'auto') lines.push('  align-self: ' + item.alignSelf + ';');
+
+        lines.push('}');
+      });
+    }
+
+    $cssOutput.textContent = lines.join('\n');
+  }
+
+  /* ================================================
+     COPY CSS
+  ================================================ */
+  window.copyCSS = function(){
+    var text = $cssOutput.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'Copy CSS'; btn.classList.remove('copied'); }, 2000);
+      gtag('event', 'copy_grid_css', { event_category: 'tool_use' });
+    });
+  };
+
+  /* ================================================
+     RESET
+  ================================================ */
+  window.resetAll = function(){
+    state.cols = 3;
+    state.rows = 3;
+    state.gap = 10;
+    state.colGap = 0;
+    state.rowGap = 0;
+    state.splitGap = false;
+    state.justifyItems = 'stretch';
+    state.alignItems = 'stretch';
+    state.justifyContent = 'start';
+    state.alignContent = 'start';
+    state.selectedItem = 0;
+    state.mergeMode = false;
+    state.mergeStart = null;
+
+    $colCountRange.value = 3; $colCountVal.textContent = '3';
+    $rowCountRange.value = 3; $rowCountVal.textContent = '3';
+    $gapRange.value = 10; $gapVal.textContent = '10';
+    $gapRange.disabled = false;
+    $colGapRange.value = 0; $colGapVal.textContent = '--';
+    $rowGapRange.value = 0; $rowGapVal.textContent = '--';
+    $colGapRange.disabled = true;
+    $rowGapRange.disabled = true;
+    $splitGapCheck.checked = false;
+    $mergeHint.classList.remove('show');
+
+    // Reset alignment toggles
+    containerAlignProps.forEach(function(prop){
+      var group = document.querySelector('.prop-toggle-group[data-prop="' + prop + '"]');
+      if(!group) return;
+      var defaults = {justifyItems:'stretch',alignItems:'stretch',justifyContent:'start',alignContent:'start'};
+      group.querySelectorAll('.prop-btn').forEach(function(b){
+        b.classList.toggle('active', b.dataset.val === defaults[prop]);
+      });
+    });
+
+    // Reset responsive preview
+    document.querySelectorAll('.resp-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.resp-btn[data-width="100%"]').classList.add('active');
+    $previewBox.style.maxWidth = '100%';
+    $previewBox.style.margin = '0';
+
+    initState();
+    renderAll();
+  };
+
+  /* ================================================
+     RENDER ALL
+  ================================================ */
+  function renderAll(){
+    renderColTable();
+    renderRowTable();
+    renderAreasGrid();
+    renderItemChips();
+    loadItemPanel();
+    renderPreview();
+    updateCSSOutput();
+  }
+
+  /* ================================================
+     USAGE COUNTER
+  ================================================ */
+  var TOOL_KEY = 'spunkart_grid_gen_uses';
+  var BAR_KEY = 'sa_bar_dismissed_grid';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+  var usageBumped = false;
+
+  function updateBadge(){
+    badge.textContent = usageCount + ' grid' + (usageCount !== 1 ? 's' : '') + ' built';
+  }
+  updateBadge();
+
+  function bumpUsage(){
+    if(usageBumped) return;
+    usageBumped = true;
+    setTimeout(function(){ usageBumped = false; }, 3000);
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    if(usageCount >= 3 && !localStorage.getItem(BAR_KEY)){
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  /* ================================================
+     EMAIL BAR
+  ================================================ */
+  window.saDismissBar = function(){
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+  window.saSubmitEmail = function(){
+    var email = document.getElementById('saBarEmail').value;
+    if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+  /* ================================================
+     INIT
+  ================================================ */
+  renderAll();
+
+})();
+</script>
+
+<!-- Email collection bar -->
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<!-- Code Protection -->
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
