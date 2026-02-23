@@ -7,9 +7,35 @@ Allow: /blog/
 Allow: /art/
 
 # Block non-essential paths
-Disallow: /promo.js
-Disallow: /x-launch-posts.md
 Disallow: /CNAME
+
+# AI Crawlers — welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 # Sitemap
 Sitemap: https://spunkart.com/sitemap.xml
