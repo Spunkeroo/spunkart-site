@@ -287,7 +287,7 @@ h1 span{background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-cl
   <p style="color:#888;margin-bottom:0.5rem">One purchase. Unlimited sales. 100% profit.</p>
   <p style="color:#666;font-size:0.85rem;margin-bottom:2rem">Most resellers break even within 20 sales. The rest is pure profit.</p>
   <button onclick="buyReseller('pro')" class="cta-btn">Get Your Reseller License →</button>
-  <p style="color:#555;font-size:0.75rem;margin-top:1rem">Secure checkout powered by Stripe</p>
+  <p style="color:#555;font-size:0.75rem;margin-top:1rem">Secure checkout powered by Gumroad</p>
 </section>
 
 <section class="email-capture" id="email-capture">
@@ -334,21 +334,13 @@ document.addEventListener('contextmenu', function(e) { if (e.target.closest('.ti
   }
 })();
 
-/* Stripe Checkout */
+/* Gumroad Checkout */
 function buyReseller(tier) {
-  var links = {
-    starter: '', // Stripe link for $99 starter
-    pro: '', // Stripe link for $199 pro
-    agency: '' // Stripe link for $499 agency
-  };
-  var link = links[tier];
-  if (!link) {
-    alert('Payment is being set up. DM @SpunkArt13 on X or email hello@spunkart.com to purchase.');
-    return;
-  }
+  var gumroadLink = 'https://monkeyshine40.gumroad.com/l/wtunlc';
   var ref = localStorage.getItem('spunkart_ref') || localStorage.getItem('sa_ref') || '';
-  var url = link + (ref ? '?client_reference_id=' + encodeURIComponent(ref) : '');
+  var url = gumroadLink + (ref ? '?ref=' + encodeURIComponent(ref) : '');
   window.open(url, '_blank');
+  if (typeof gtag === 'function') gtag('event', 'begin_checkout', { payment_type: 'gumroad', item_name: 'reseller_' + tier });
 }
 
 /* Email capture */

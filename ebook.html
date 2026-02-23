@@ -329,16 +329,13 @@ document.addEventListener('selectstart', function(e) {
 <meta http-equiv="X-Frame-Options" content="DENY">
 
 <script>
-/* Stripe Checkout */
+/* Gumroad Checkout */
 function buyEbook() {
-  var stripeLink = ''; // Stripe payment link will go here
-  if (!stripeLink) {
-    alert('Payment is being set up. DM @SpunkArt13 on X or email hello@spunkart.com to purchase.');
-    return;
-  }
+  var gumroadLink = 'https://monkeyshine40.gumroad.com/l/mhmzrz';
   var ref = localStorage.getItem('spunkart_ref') || localStorage.getItem('sa_ref') || '';
-  var url = stripeLink + (ref ? '?client_reference_id=' + encodeURIComponent(ref) : '');
+  var url = gumroadLink + (ref ? '?ref=' + encodeURIComponent(ref) : '');
   window.open(url, '_blank');
+  if (typeof gtag === 'function') gtag('event', 'begin_checkout', { payment_type: 'gumroad', item_name: 'ebook' });
 }
 
 /* Email Capture */
