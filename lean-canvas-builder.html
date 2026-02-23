@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lean Canvas Builder - Free Business Model Canvas Tool | SPUNKART.COM</title>
+<meta name="description" content="Build your Lean Canvas business model with an interactive 9-box canvas. Fill in Problem, Solution, Key Metrics, and more. Save and export your canvas.">
+<meta name="keywords" content="lean canvas builder, business model canvas, lean startup canvas, one page business plan, startup canvas tool">
+<meta property="og:title" content="Lean Canvas Builder | SPUNKART.COM">
+<meta property="og:description" content="Interactive Lean Canvas with 9 boxes. Save and export your business model. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/lean-canvas-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lean Canvas Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Build your lean canvas business model. Free interactive tool.">
+<link rel="canonical" href="https://spunkart.com/lean-canvas-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;margin-bottom:20px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.canvas-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:2px;background:#333;border-radius:12px;overflow:hidden;border:2px solid #333}
+.canvas-cell{background:#111;padding:16px;min-height:180px;display:flex;flex-direction:column}
+.canvas-cell h3{font-size:0.75rem;text-transform:uppercase;letter-spacing:1.5px;color:#ff5f1f;margin-bottom:10px;font-weight:700;display:flex;align-items:center;gap:6px}
+.canvas-cell h3 .num{background:#ff5f1f22;color:#ff5f1f;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem}
+.canvas-cell textarea{flex:1;background:transparent;border:none;color:#e8e8e8;font-size:0.85rem;font-family:inherit;line-height:1.6;resize:none;outline:none}
+.canvas-cell textarea::placeholder{color:#444}
+.c-problem{grid-column:1;grid-row:1/3}
+.c-solution{grid-column:2;grid-row:1}
+.c-metrics{grid-column:2;grid-row:2}
+.c-uvp{grid-column:3;grid-row:1/3}
+.c-advantage{grid-column:4;grid-row:1}
+.c-channels{grid-column:4;grid-row:2}
+.c-segments{grid-column:5;grid-row:1/3}
+.c-costs{grid-column:1/3;grid-row:3}
+.c-revenue{grid-column:3/6;grid-row:3}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;margin-top:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;transition:border-color .2s}
+input:focus{border-color:#ff5f1f}
+.saved-list{margin-top:12px}
+.saved-item{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;cursor:pointer;transition:border-color .2s}
+.saved-item:hover{border-color:#ff5f1f}
+.btn-danger{background:#dc2626;color:#fff;font-size:0.8rem;padding:6px 14px;border:none;border-radius:6px;cursor:pointer}.btn-danger:hover{background:#b91c1c}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:768px){
+  h1{font-size:1.5rem}
+  main{padding:20px 12px 60px}
+  .canvas-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .c-problem,.c-solution,.c-metrics,.c-uvp,.c-advantage,.c-channels,.c-segments,.c-costs,.c-revenue{grid-column:1;grid-row:auto}
+  .canvas-cell{min-height:120px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lean Canvas Builder","description":"Build your Lean Canvas business model with an interactive 9-box canvas. Save and export.","url":"https://spunkart.com/lean-canvas-builder.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Lean Canvas <span>Builder</span></h1>
+  <p class="subtitle">Fill in the 9 boxes of your Lean Canvas. Auto-saves as you type. Export as markdown or image-ready HTML.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="saveCanvas()">Save Canvas</button>
+    <button class="btn btn-secondary" onclick="exportMarkdown()">Export Markdown</button>
+    <button class="btn btn-secondary" onclick="exportHTML()">Export HTML</button>
+    <button class="btn btn-secondary" onclick="clearCanvas()">Clear All</button>
+  </div>
+
+  <div class="canvas-grid">
+    <div class="canvas-cell c-problem">
+      <h3><span class="num">1</span> Problem</h3>
+      <textarea id="c_problem" placeholder="Top 3 problems your customers face..." oninput="autoSave()">1. Manual deployment wastes 40% of engineering time
+2. Existing tools are too complex for small teams
+3. High cost of DevOps specialists</textarea>
+    </div>
+    <div class="canvas-cell c-solution">
+      <h3><span class="num">2</span> Solution</h3>
+      <textarea id="c_solution" placeholder="Top 3 features that solve the problems..." oninput="autoSave()">1. One-click automated deployments
+2. Zero-config setup in 5 minutes
+3. AI-powered monitoring and rollbacks</textarea>
+    </div>
+    <div class="canvas-cell c-metrics">
+      <h3><span class="num">3</span> Key Metrics</h3>
+      <textarea id="c_metrics" placeholder="Key activities you measure..." oninput="autoSave()">- Monthly active users
+- Deploy frequency per team
+- Time saved per deploy
+- Net revenue retention
+- NPS score</textarea>
+    </div>
+    <div class="canvas-cell c-uvp">
+      <h3><span class="num">4</span> Unique Value Proposition</h3>
+      <textarea id="c_uvp" placeholder="Single clear compelling message..." oninput="autoSave()">Deploy in 1 click. No DevOps required.
+
+The simplest deployment platform for teams that ship fast. Set up in 5 minutes, not 5 days.</textarea>
+    </div>
+    <div class="canvas-cell c-advantage">
+      <h3><span class="num">5</span> Unfair Advantage</h3>
+      <textarea id="c_advantage" placeholder="Something that cannot be easily copied..." oninput="autoSave()">- Proprietary AI model trained on 1M+ deployments
+- Team has 30+ years combined DevOps experience
+- First-mover in AI-native deployment space</textarea>
+    </div>
+    <div class="canvas-cell c-channels">
+      <h3><span class="num">6</span> Channels</h3>
+      <textarea id="c_channels" placeholder="Path to customers..." oninput="autoSave()">- Product Hunt launches
+- Developer blog + SEO
+- GitHub integrations marketplace
+- Dev Twitter/X community
+- Conference talks</textarea>
+    </div>
+    <div class="canvas-cell c-segments">
+      <h3><span class="num">7</span> Customer Segments</h3>
+      <textarea id="c_segments" placeholder="Target customers..." oninput="autoSave()">Primary: Startup engineering teams (2-20 devs)
+Secondary: Solo developers shipping SaaS
+Early adopters: YC-backed companies, indie hackers</textarea>
+    </div>
+    <div class="canvas-cell c-costs">
+      <h3><span class="num">8</span> Cost Structure</h3>
+      <textarea id="c_costs" placeholder="Fixed and variable costs..." oninput="autoSave()">- Cloud infrastructure: $8K/mo
+- Team salaries: $80K/mo
+- Marketing: $5K/mo
+- Tools & services: $2K/mo</textarea>
+    </div>
+    <div class="canvas-cell c-revenue">
+      <h3><span class="num">9</span> Revenue Streams</h3>
+      <textarea id="c_revenue" placeholder="Sources of revenue..." oninput="autoSave()">- Free tier (up to 3 projects)
+- Pro: $29/mo per team
+- Enterprise: $199/mo (custom)
+- Target: $50K MRR by month 12</textarea>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Saved Canvases</h2>
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <input type="text" id="canvasName" placeholder="Canvas name (e.g. DeployBot v1)" style="flex:1">
+      <button class="btn btn-primary" onclick="saveNamedCanvas()" style="white-space:nowrap">Save As</button>
+    </div>
+    <div id="savedList" class="saved-list"><p style="color:#555;font-size:0.9rem">No saved canvases yet.</p></div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/pitch-deck-builder">Pitch Deck</a>
+      <a href="/business-plan">Business Plan</a>
+      <a href="/mrr-calculator">MRR Calculator</a>
+      <a href="/customer-persona-builder">Persona Builder</a>
+      <a href="/okr-tracker">OKR Tracker</a>
+      <a href="/startup-costs">Startup Costs</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Saved!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+const fields=['c_problem','c_solution','c_metrics','c_uvp','c_advantage','c_channels','c_segments','c_costs','c_revenue'];
+const labels={c_problem:'Problem',c_solution:'Solution',c_metrics:'Key Metrics',c_uvp:'Unique Value Proposition',c_advantage:'Unfair Advantage',c_channels:'Channels',c_segments:'Customer Segments',c_costs:'Cost Structure',c_revenue:'Revenue Streams'};
+
+function getData(){
+  const d={};
+  fields.forEach(f=>d[f]=document.getElementById(f).value);
+  return d;
+}
+function setData(d){
+  fields.forEach(f=>{if(d[f]!==undefined)document.getElementById(f).value=d[f]});
+}
+
+function autoSave(){
+  localStorage.setItem('spunkart_canvas_draft',JSON.stringify(getData()));
+}
+
+function saveCanvas(){
+  autoSave();
+  showToast('Canvas saved!');
+  gtag('event','save_canvas',{event_category:'tool_use'});
+}
+
+function clearCanvas(){
+  if(!confirm('Clear all canvas content?'))return;
+  fields.forEach(f=>document.getElementById(f).value='');
+  autoSave();
+}
+
+function saveNamedCanvas(){
+  const name=document.getElementById('canvasName').value.trim();
+  if(!name){showToast('Enter a name');return}
+  let saved=JSON.parse(localStorage.getItem('spunkart_canvases')||'[]');
+  const existing=saved.findIndex(s=>s.name===name);
+  const entry={name:name,data:getData(),date:new Date().toISOString()};
+  if(existing>=0)saved[existing]=entry;else saved.push(entry);
+  localStorage.setItem('spunkart_canvases',JSON.stringify(saved));
+  document.getElementById('canvasName').value='';
+  renderSaved();
+  showToast('Saved: '+name);
+  gtag('event','save_named_canvas',{event_category:'tool_use'});
+}
+
+function loadCanvas(i){
+  const saved=JSON.parse(localStorage.getItem('spunkart_canvases')||'[]');
+  if(saved[i])setData(saved[i].data);
+  showToast('Loaded: '+saved[i].name);
+}
+
+function deleteCanvas(i){
+  let saved=JSON.parse(localStorage.getItem('spunkart_canvases')||'[]');
+  saved.splice(i,1);
+  localStorage.setItem('spunkart_canvases',JSON.stringify(saved));
+  renderSaved();
+}
+
+function renderSaved(){
+  const saved=JSON.parse(localStorage.getItem('spunkart_canvases')||'[]');
+  const el=document.getElementById('savedList');
+  if(!saved.length){el.innerHTML='<p style="color:#555;font-size:0.9rem">No saved canvases yet.</p>';return}
+  el.innerHTML=saved.map((s,i)=>`<div class="saved-item">
+    <div onclick="loadCanvas(${i})" style="flex:1;cursor:pointer"><strong>${s.name}</strong> <span style="color:#666;font-size:0.8rem">${new Date(s.date).toLocaleDateString()}</span></div>
+    <button class="btn-danger" onclick="deleteCanvas(${i})">Delete</button>
+  </div>`).join('');
+}
+
+function exportMarkdown(){
+  const d=getData();
+  let md='# Lean Canvas\n\n';
+  fields.forEach(f=>{
+    md+=`## ${labels[f]}\n${d[f]||'(empty)'}\n\n`;
+  });
+  navigator.clipboard.writeText(md);
+  showToast('Markdown copied!');
+  gtag('event','export_canvas_md',{event_category:'tool_use'});
+}
+
+function exportHTML(){
+  const d=getData();
+  let html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lean Canvas</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,sans-serif;background:#fff;color:#1a1a1a;padding:40px}
+h1{text-align:center;margin-bottom:30px;font-size:2rem}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:1px;background:#ccc;border:1px solid #ccc;border-radius:8px;overflow:hidden}
+.cell{background:#fff;padding:16px;min-height:160px}.cell h3{font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:#666;margin-bottom:8px;border-bottom:2px solid #6366f1;padding-bottom:4px}
+.cell p{font-size:0.85rem;line-height:1.6;white-space:pre-line}
+.c1{grid-column:1;grid-row:1/3}.c4{grid-column:3;grid-row:1/3}.c7{grid-column:5;grid-row:1/3}
+.c8{grid-column:1/3;grid-row:3}.c9{grid-column:3/6;grid-row:3}
+</style></head><body><h1>Lean Canvas</h1><div class="grid">`;
+  const cellClasses={c_problem:'c1',c_solution:'',c_metrics:'',c_uvp:'c4',c_advantage:'',c_channels:'',c_segments:'c7',c_costs:'c8',c_revenue:'c9'};
+  fields.forEach(f=>{
+    const cls=cellClasses[f]?` ${cellClasses[f]}`:'';
+    html+=`<div class="cell${cls}"><h3>${labels[f]}</h3><p>${(d[f]||'').replace(/</g,'&lt;')}</p></div>\n`;
+  });
+  html+=`</div></body></html>`;
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lean-canvas.html';a.click();
+  gtag('event','export_canvas_html',{event_category:'tool_use'});
+}
+
+// Load draft
+const draft=localStorage.getItem('spunkart_canvas_draft');
+if(draft){try{setData(JSON.parse(draft))}catch(e){}}
+renderSaved();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
