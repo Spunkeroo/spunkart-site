@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Entity Encoder/Decoder — Convert Special Characters | SPUNKART.COM</title>
+<meta name="description" content="Free HTML entity encoder and decoder. Convert special characters to HTML entities and back. Named and numeric entity support.">
+<meta name="keywords" content="HTML entity encoder, HTML entity decoder, HTML special characters, HTML entities converter, encode HTML">
+<link rel="canonical" href="https://spunkart.com/html-entity-encoder.html">
+<meta property="og:title" content="HTML Entity Encoder/Decoder — Convert Special Characters">
+<meta property="og:description" content="Free HTML entity encoder and decoder. Convert special characters to HTML entities and back instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/html-entity-encoder.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HTML Entity Encoder/Decoder — Convert Special Characters">
+<meta name="twitter:description" content="Free HTML entity encoder and decoder. Convert special characters to HTML entities and back instantly.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HTML Entity Encoder/Decoder",
+  "description": "Free HTML entity encoder and decoder. Convert special characters to HTML entities and back instantly.",
+  "url": "https://spunkart.com/html-entity-encoder.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "SPUNKART.COM",
+    "url": "https://spunkart.com"
+  }
+}
+</script>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-user-select:none;user-select:none;}
+::selection{background:#ff5f1f;color:#fff;}
+a{color:#ff5f1f;text-decoration:none;transition:color .2s;}
+a:hover{color:#ff8c5a;}
+
+/* NAV */
+nav{background:#111;border-bottom:1px solid #222;padding:0 20px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-brand{font-size:1.25rem;font-weight:800;color:#ff5f1f;letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:#e8e8e8;font-size:.9rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.nav-toggle{display:none;background:none;border:none;color:#e8e8e8;font-size:1.5rem;cursor:pointer;}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:#111;flex-direction:column;padding:16px 20px;gap:16px;border-bottom:1px solid #222;}
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:block;}
+}
+
+/* MAIN */
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:40px 20px;}
+h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:32px;font-size:1.05rem;}
+h2{font-size:1.3rem;font-weight:700;margin:32px 0 16px;color:#e8e8e8;}
+
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:24px;}
+.tab{flex:1;padding:12px;text-align:center;background:#1a1a1a;border:1px solid #222;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s;color:#888;}
+.tab:first-child{border-radius:8px 0 0 8px;}
+.tab:last-child{border-radius:0 8px 8px 0;}
+.tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+/* EDITOR */
+.editor-area{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:24px;}
+.editor-label{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:8px;}
+textarea{width:100%;min-height:140px;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:14px;color:#e8e8e8;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:.9rem;resize:vertical;outline:none;transition:border-color .2s;-webkit-user-select:text;user-select:text;}
+textarea:focus{border-color:#ff5f1f;}
+textarea::placeholder{color:#555;}
+.action-row{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;align-items:center;}
+.btn{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;white-space:nowrap;}
+.btn:hover{background:#e8520f;}
+.btn:active{transform:scale(.97);}
+.btn-secondary{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;}
+.btn-secondary:hover{background:#252525;border-color:#ff5f1f;}
+.btn-green{background:#10b981;}
+.btn-green:hover{background:#0d9668;}
+.btn-small{padding:8px 16px;font-size:.85rem;}
+.status-msg{font-size:.85rem;color:#10b981;opacity:0;transition:opacity .3s;}
+.status-msg.show{opacity:1;}
+.arrow-icon{font-size:1.5rem;color:#ff5f1f;text-align:center;margin:8px 0;}
+.output-box{background:#0d0d0d;border:1px solid #222;border-radius:8px;padding:14px;min-height:100px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:.9rem;color:#10b981;word-break:break-all;white-space:pre-wrap;-webkit-user-select:text;user-select:text;}
+
+/* REFERENCE TABLE */
+.ref-table-wrap{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:24px;overflow-x:auto;}
+.ref-table{width:100%;border-collapse:collapse;}
+.ref-table th{text-align:left;padding:10px 14px;border-bottom:2px solid #333;color:#ff5f1f;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;}
+.ref-table td{padding:10px 14px;border-bottom:1px solid #1a1a1a;font-family:'SF Mono',Monaco,monospace;font-size:.9rem;color:#e8e8e8;}
+.ref-table tr:hover td{background:#1a1a1a;}
+.ref-table .char{font-size:1.2rem;text-align:center;}
+
+/* EMAIL BAR */
+.email-bar{display:none;background:linear-gradient(135deg,#1a0a00,#111);border:1px solid #ff5f1f;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.email-bar.show{display:block;animation:slideDown .4s ease;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.email-bar h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.email-bar p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.email-bar form{display:flex;gap:8px;max-width:450px;margin:0 auto;}
+.email-bar form input{flex:1;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#e8e8e8;font-size:.95rem;}
+.email-bar form button{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-weight:600;cursor:pointer;}
+
+/* CROSS-SELL */
+.cross-sell{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}
+.cross-sell p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.cross-sell .price{font-size:1.5rem;font-weight:800;color:#10b981;margin-bottom:16px;}
+
+/* SEO */
+.seo-content{margin-top:48px;}
+.seo-content h2{font-size:1.2rem;color:#ff5f1f;}
+.seo-content p,.seo-content ul{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.seo-content ul{padding-left:20px;}
+.seo-content li{margin-bottom:6px;}
+
+/* FOOTER */
+footer{background:#111;border-top:1px solid #222;padding:32px 20px;margin-top:auto;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner p{color:#555;font-size:.85rem;}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{color:#888;font-size:.85rem;}
+
+/* WATERMARK */
+.watermark{position:fixed;bottom:12px;right:16px;font-size:.7rem;color:rgba(255,95,31,.25);font-weight:800;letter-spacing:1px;pointer-events:none;z-index:9999;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://spunkart.com" class="nav-brand">SPUNKART.COM</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="https://spunkart.com/#store">Store</a></li>
+      <li><a href="https://spunkart.com/#tools">Free Tools</a></li>
+      <li><a href="https://spunkart.com/#resell">Resell</a></li>
+      <li><a href="https://spunkart.com/#blog">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <h1>HTML Entity <span>Encoder/Decoder</span></h1>
+  <p class="subtitle">Convert special characters to HTML entities and back. Supports named and numeric entities.</p>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" data-mode="encode" onclick="setMode('encode')">Encode</div>
+    <div class="tab" data-mode="decode" onclick="setMode('decode')">Decode</div>
+  </div>
+
+  <div class="editor-area">
+    <div class="editor-label" id="inputLabel">Text to Encode</div>
+    <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+
+    <div class="action-row">
+      <button class="btn" id="convertBtn" onclick="convert()">Encode</button>
+      <button class="btn btn-secondary btn-small" onclick="clearAll()">Clear</button>
+      <button class="btn btn-secondary btn-small" onclick="swapInputOutput()">Swap</button>
+      <span class="status-msg" id="statusMsg"></span>
+    </div>
+
+    <div class="arrow-icon">&#8595;</div>
+
+    <div class="editor-label" id="outputLabel">Encoded Output</div>
+    <div class="output-box" id="outputBox">Your result will appear here.</div>
+
+    <div class="action-row" style="margin-top:12px;">
+      <button class="btn btn-green btn-small" onclick="copyOutput()">Copy Output</button>
+      <span class="status-msg" id="copyStatus"></span>
+    </div>
+  </div>
+
+  <!-- ENTITY REFERENCE TABLE -->
+  <h2>Common HTML Entities Reference</h2>
+  <div class="ref-table-wrap">
+    <table class="ref-table">
+      <thead>
+        <tr><th>Character</th><th>Named Entity</th><th>Numeric Entity</th><th>Description</th></tr>
+      </thead>
+      <tbody id="refTableBody"></tbody>
+    </table>
+  </div>
+
+  <!-- EMAIL BAR -->
+  <div class="email-bar" id="emailBar">
+    <h3>Like This Tool?</h3>
+    <p>Get free tools, templates, and digital product drops delivered to your inbox.</p>
+    <form onsubmit="return submitEmail(event)">
+      <input type="email" placeholder="you@email.com" required id="emailInput">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- CROSS-SELL -->
+  <div class="cross-sell">
+    <h3>Want All 50+ Tools Offline?</h3>
+    <p>Get the full SPUNKART digital tools bundle. Use them offline, forever. No limits.</p>
+    <div class="price">$9.99</div>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" target="_blank" rel="noopener" class="btn">Get the Bundle</a>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-content">
+    <h2>How to Use the HTML Entity Encoder/Decoder</h2>
+    <p>Select "Encode" to convert special characters in your text into their HTML entity equivalents. Select "Decode" to convert HTML entities back into readable characters. The tool handles both named entities (like &amp;amp;) and numeric entities (like &amp;#38;).</p>
+
+    <h2>Why Encode HTML Entities?</h2>
+    <ul>
+      <li><strong>Prevent XSS attacks</strong> — encoding user input stops malicious script injection</li>
+      <li><strong>Display special characters</strong> — show &lt;, &gt;, &amp; correctly in HTML pages</li>
+      <li><strong>Preserve formatting</strong> — ensure characters render as intended across browsers</li>
+      <li><strong>Email templates</strong> — safely embed special characters in HTML emails</li>
+    </ul>
+
+    <h2>Supported Entity Types</h2>
+    <p><strong>Named entities</strong> use a readable keyword like <code>&amp;amp;</code> for the ampersand. <strong>Numeric entities</strong> use a Unicode code point like <code>&amp;#38;</code>. This tool supports encoding to both formats and decoding from either.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>Is this tool free?</strong> Yes. The HTML Entity Encoder/Decoder is 100% free with no registration required.</p>
+    <p><strong>Is my data safe?</strong> All processing happens locally in your browser. Nothing is sent to any server.</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 SPUNKART.COM — All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://spunkart.com">Home</a>
+      <a href="https://spunkart.com/#tools">Tools</a>
+      <a href="https://spunkart.com/#store">Store</a>
+    </div>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  var _0x=['contextmenu','keydown'];
+  _0x.forEach(function(e){document.addEventListener(e,function(ev){
+    if(e==='contextmenu')ev.preventDefault();
+    if(e==='keydown'&&(ev.key==='F12'||(ev.ctrlKey&&ev.shiftKey&&['I','J','C'].includes(ev.key))||(ev.ctrlKey&&ev.key==='u')))ev.preventDefault();
+  });});
+})();
+
+var currentMode = 'encode';
+var USAGE_KEY = 'spunkart_html_entity_uses';
+
+function getUses(){ return parseInt(localStorage.getItem(USAGE_KEY)||'0',10); }
+function addUse(){
+  var n = getUses()+1;
+  localStorage.setItem(USAGE_KEY, n.toString());
+  if(n >= 3) showEmailBar();
+}
+function showEmailBar(){
+  var bar = document.getElementById('emailBar');
+  if(bar && !localStorage.getItem('spunkart_email_subscribed')) bar.classList.add('show');
+}
+
+function submitEmail(e){
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value;
+  if(!email) return false;
+  var iframe = document.createElement('iframe');
+  iframe.style.display='none';
+  iframe.src='https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email='+encodeURIComponent(email);
+  document.body.appendChild(iframe);
+  localStorage.setItem('spunkart_email_subscribed','1');
+  document.getElementById('emailBar').innerHTML='<h3 style="color:#10b981;">You\'re in! Check your inbox.</h3>';
+  return false;
+}
+
+function setMode(mode){
+  currentMode = mode;
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.classList.toggle('active', t.dataset.mode === mode);
+  });
+  if(mode === 'encode'){
+    document.getElementById('inputLabel').textContent = 'Text to Encode';
+    document.getElementById('outputLabel').textContent = 'Encoded Output';
+    document.getElementById('convertBtn').textContent = 'Encode';
+  } else {
+    document.getElementById('inputLabel').textContent = 'HTML Entities to Decode';
+    document.getElementById('outputLabel').textContent = 'Decoded Output';
+    document.getElementById('convertBtn').textContent = 'Decode';
+  }
+  document.getElementById('outputBox').textContent = 'Your result will appear here.';
+}
+
+// Named entity map for encoding
+var namedEntities = {
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;',
+  '\u00a0':'&nbsp;','\u00a9':'&copy;','\u00ae':'&reg;','\u2122':'&trade;',
+  '\u2013':'&ndash;','\u2014':'&mdash;','\u2018':'&lsquo;','\u2019':'&rsquo;',
+  '\u201c':'&ldquo;','\u201d':'&rdquo;','\u2026':'&hellip;','\u00b0':'&deg;',
+  '\u00b1':'&plusmn;','\u00d7':'&times;','\u00f7':'&divide;','\u2260':'&ne;',
+  '\u2264':'&le;','\u2265':'&ge;','\u221e':'&infin;','\u00bd':'&frac12;',
+  '\u00bc':'&frac14;','\u00be':'&frac34;','\u00a2':'&cent;','\u00a3':'&pound;',
+  '\u20ac':'&euro;','\u00a5':'&yen;','\u2190':'&larr;','\u2191':'&uarr;',
+  '\u2192':'&rarr;','\u2193':'&darr;'
+};
+
+// Reverse map for highlighting in reference
+var reverseNamed = {};
+Object.keys(namedEntities).forEach(function(k){ reverseNamed[namedEntities[k]] = k; });
+
+function encodeToEntities(str){
+  var out = '';
+  for(var i=0; i<str.length; i++){
+    var ch = str[i];
+    if(namedEntities[ch]){
+      out += namedEntities[ch];
+    } else if(ch.charCodeAt(0) > 127){
+      out += '&#'+ch.charCodeAt(0)+';';
+    } else {
+      out += ch;
+    }
+  }
+  return out;
+}
+
+function decodeFromEntities(str){
+  var el = document.createElement('textarea');
+  el.innerHTML = str;
+  return el.value;
+}
+
+function convert(){
+  var input = document.getElementById('inputText').value;
+  if(!input.trim()){
+    showStatus('Please enter some text first.', '#ff5f1f');
+    return;
+  }
+  var result;
+  if(currentMode === 'encode'){
+    result = encodeToEntities(input);
+  } else {
+    result = decodeFromEntities(input);
+  }
+  document.getElementById('outputBox').textContent = result;
+  addUse();
+  if(typeof gtag==='function') gtag('event','html_entity_'+currentMode,{length: input.length});
+}
+
+function copyOutput(){
+  var text = document.getElementById('outputBox').textContent;
+  if(!text || text === 'Your result will appear here.') return;
+  navigator.clipboard.writeText(text).then(function(){
+    showCopyStatus('Copied!');
+  });
+}
+
+function clearAll(){
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputBox').textContent = 'Your result will appear here.';
+}
+
+function swapInputOutput(){
+  var output = document.getElementById('outputBox').textContent;
+  if(output === 'Your result will appear here.') return;
+  document.getElementById('inputText').value = output;
+  document.getElementById('outputBox').textContent = 'Your result will appear here.';
+  setMode(currentMode === 'encode' ? 'decode' : 'encode');
+}
+
+function showStatus(msg, color){
+  var el = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.style.color = color || '#10b981';
+  el.classList.add('show');
+  setTimeout(function(){ el.classList.remove('show'); }, 2500);
+}
+
+function showCopyStatus(msg){
+  var el = document.getElementById('copyStatus');
+  el.textContent = msg;
+  el.style.color = '#10b981';
+  el.classList.add('show');
+  setTimeout(function(){ el.classList.remove('show'); }, 2000);
+}
+
+// Build reference table
+var refData = [
+  ['&','&amp;','&#38;','Ampersand'],
+  ['<','&lt;','&#60;','Less than'],
+  ['>','&gt;','&#62;','Greater than'],
+  ['"','&quot;','&#34;','Double quote'],
+  ["'",'&apos;','&#39;','Apostrophe'],
+  [' ','&nbsp;','&#160;','Non-breaking space'],
+  ['\u00a9','&copy;','&#169;','Copyright'],
+  ['\u00ae','&reg;','&#174;','Registered'],
+  ['\u2122','&trade;','&#8482;','Trademark'],
+  ['\u2013','&ndash;','&#8211;','En dash'],
+  ['\u2014','&mdash;','&#8212;','Em dash'],
+  ['\u2018','&lsquo;','&#8216;','Left single quote'],
+  ['\u2019','&rsquo;','&#8217;','Right single quote'],
+  ['\u201c','&ldquo;','&#8220;','Left double quote'],
+  ['\u201d','&rdquo;','&#8221;','Right double quote'],
+  ['\u2026','&hellip;','&#8230;','Ellipsis'],
+  ['\u00b0','&deg;','&#176;','Degree'],
+  ['\u00b1','&plusmn;','&#177;','Plus-minus'],
+  ['\u00d7','&times;','&#215;','Multiplication'],
+  ['\u00f7','&divide;','&#247;','Division'],
+  ['\u20ac','&euro;','&#8364;','Euro sign'],
+  ['\u00a3','&pound;','&#163;','Pound sign'],
+  ['\u00a5','&yen;','&#165;','Yen sign'],
+  ['\u00a2','&cent;','&#162;','Cent sign'],
+  ['\u2190','&larr;','&#8592;','Left arrow'],
+  ['\u2192','&rarr;','&#8594;','Right arrow'],
+  ['\u2191','&uarr;','&#8593;','Up arrow'],
+  ['\u2193','&darr;','&#8595;','Down arrow'],
+  ['\u221e','&infin;','&#8734;','Infinity'],
+  ['\u2260','&ne;','&#8800;','Not equal']
+];
+
+var tbody = document.getElementById('refTableBody');
+refData.forEach(function(r){
+  var tr = document.createElement('tr');
+  tr.innerHTML = '<td class="char">'+r[0]+'</td><td>'+r[1].replace(/&/g,'&amp;')+'</td><td>'+r[2].replace(/&/g,'&amp;')+'</td><td>'+r[3]+'</td>';
+  tbody.appendChild(tr);
+});
+
+// Keyboard shortcut
+document.getElementById('inputText').addEventListener('keydown', function(e){
+  if((e.ctrlKey || e.metaKey) && e.key === 'Enter') convert();
+});
+
+if(getUses() >= 3) showEmailBar();
+</script>
+</body>
+</html>
