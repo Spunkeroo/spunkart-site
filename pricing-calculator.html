@@ -1,711 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Product Pricing Calculator — Find the Right Price for Your Product | SPUNKART.COM</title>
-<meta name="description" content="Free pricing calculator for solo founders. Calculate minimum viable price, break-even, recommended pricing, and get 3-tier pricing suggestions. No signup required.">
-<meta property="og:title" content="Product Pricing Calculator | SPUNKART.COM">
-<meta property="og:description" content="Figure out the right price for your product or service. Break-even analysis, competitor positioning, and 3-tier pricing suggestions. Free tool.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Product Pricing Calculator | SpunkArt.com</title>
+<meta name="description" content="Free digital product pricing calculator. Generate tiered pricing, analyze pricing psychology, simulate revenue, and compare competitors. Built for solo founders.">
+<meta name="keywords" content="pricing calculator, digital product pricing, SaaS pricing, pricing strategy, pricing psychology">
+<meta property="og:title" content="Digital Product Pricing Calculator | SpunkArt.com">
+<meta property="og:description" content="Generate tiered pricing, analyze pricing psychology, simulate revenue at different price points.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://spunkart.com/pricing-calculator">
+<meta property="og:url" content="https://spunkart.com/pricing-calculator.html">
+<meta property="og:image" content="https://spunkart.com/art/og-pricing-calculator.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Product Pricing Calculator | SPUNKART.COM">
-<meta name="twitter:description" content="Free pricing calculator for founders. Break-even, recommended price, revenue projections, and 3-tier suggestions.">
-<link rel="canonical" href="https://spunkart.com/pricing-calculator">
-<!-- GA4 -->
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Digital Product Pricing Calculator">
+<meta name="twitter:description" content="Generate tiered pricing, simulate revenue, and apply pricing psychology.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Digital Product Pricing Calculator",
+  "description": "Generate tiered pricing, analyze pricing psychology, simulate revenue, and compare competitors for digital products.",
+  "url": "https://spunkart.com/pricing-calculator.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Product Pricing Calculator","description":"Free pricing calculator for solo founders. Calculate minimum viable price, break-even, recommended pricing, competitor positioning, and 3-tier pricing suggestions.","url":"https://spunkart.com/pricing-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
-<meta name="author" content="SpunkArt.com">
-<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
-a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
-
-nav{background:#111;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222}
-nav .logo{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.2rem}
-nav .back{color:#e8e8e8;text-decoration:none;font-size:.9rem}
-nav .back:hover{color:#ff5f1f}
-
-main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
-h1{font-size:2rem;font-weight:700;margin-bottom:6px}
-h1 span{color:#ff5f1f}
-.subtitle{color:#888;margin-bottom:8px;font-size:1rem}
-.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.78rem;color:#ff5f1f;font-weight:600;margin-bottom:24px}
-
-/* Inputs section */
-.section{background:#141414;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:20px}
-.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;font-weight:600}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.input-group{display:flex;flex-direction:column}
-.input-group.full{grid-column:1/-1}
-.input-group label{font-size:0.82rem;color:#888;margin-bottom:5px;font-weight:500}
-.input-group input,.input-group select{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit}
-.input-group input:focus,.input-group select:focus{border-color:#ff5f1f}
-.input-group input::placeholder{color:#555}
-.input-group .hint{font-size:0.72rem;color:#555;margin-top:3px}
-
-/* Dashboard cards */
-.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-.dash-card{background:#141414;border:1px solid #222;border-radius:12px;padding:18px;text-align:center;transition:border-color .2s}
-.dash-card:hover{border-color:#ff5f1f44}
-.dash-card .label{font-size:0.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.dash-card .value{font-size:1.5rem;font-weight:800;font-family:'Courier New',monospace}
-.dash-card .sub{font-size:0.72rem;color:#555;margin-top:4px}
-.c-orange{color:#ff5f1f}
-.c-green{color:#10b981}
-.c-white{color:#e8e8e8}
-.c-yellow{color:#f59e0b}
-
-/* Revenue table */
-.rev-table{width:100%;border-collapse:collapse;margin-top:12px}
-.rev-table th{text-align:left;padding:10px 12px;font-size:0.78rem;color:#888;border-bottom:1px solid #333;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
-.rev-table th:not(:first-child){text-align:right}
-.rev-table td{padding:10px 12px;border-bottom:1px solid #1a1a1a;font-size:0.9rem;font-family:'Courier New',monospace}
-.rev-table td:not(:first-child){text-align:right}
-.rev-table tr:hover{background:#1a1a1a}
-.rev-table .row-rec{color:#10b981;font-weight:700}
-
-/* Competitor bar */
-.comp-bar-wrap{margin-top:12px}
-.comp-bar-labels{display:flex;justify-content:space-between;font-size:0.78rem;color:#888;margin-bottom:6px}
-.comp-bar{position:relative;height:40px;background:#1a1a1a;border:1px solid #333;border-radius:8px;overflow:hidden}
-.comp-range{position:absolute;top:0;height:100%;background:#ffffff0d;border-left:2px solid #555;border-right:2px solid #555}
-.comp-marker{position:absolute;top:0;height:100%;width:3px;border-radius:2px;transition:left .3s}
-.comp-marker-label{position:absolute;top:-20px;transform:translateX(-50%);font-size:0.68rem;font-weight:700;white-space:nowrap}
-
-/* Tips */
-.tips{list-style:none;padding:0}
-.tips li{padding:10px 14px;background:#1a1a1a;border:1px solid #222;border-radius:8px;margin-bottom:8px;font-size:0.88rem;color:#ccc;line-height:1.5}
-.tips li strong{color:#ff5f1f}
-
-/* Tier cards */
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
-.tier{background:#1a1a1a;border:1px solid #222;border-radius:12px;padding:20px;text-align:center;transition:border-color .2s}
-.tier:hover{border-color:#ff5f1f44}
-.tier.featured{border-color:#ff5f1f;position:relative}
-.tier.featured::before{content:'MOST POPULAR';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#ff5f1f;color:#fff;font-size:0.65rem;font-weight:700;padding:2px 12px;border-radius:10px;letter-spacing:.5px}
-.tier-name{font-size:1rem;font-weight:700;color:#ccc;margin-bottom:4px}
-.tier-price{font-size:1.8rem;font-weight:800;color:#ff5f1f;margin-bottom:8px;font-family:'Courier New',monospace}
-.tier-price .period{font-size:0.75rem;color:#666;font-weight:400}
-.tier-features{list-style:none;padding:0;text-align:left;margin-top:12px}
-.tier-features li{font-size:0.82rem;color:#888;padding:4px 0;border-bottom:1px solid #222}
-.tier-features li:last-child{border:none}
-.tier-features li::before{content:'\2713 ';color:#10b981;font-weight:700}
-
-/* Action buttons */
-.actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-.btn{padding:12px 24px;border:none;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
-.btn-primary{background:#ff5f1f;color:#fff}
-.btn-primary:hover{background:#e5520f}
-.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
-.btn-secondary:hover{background:#333}
-
-/* Toast */
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:0.9rem;font-weight:600;opacity:0;transition:all .3s;z-index:9999;pointer-events:none}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* Cross sell */
-.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
-.cross-sell h3{color:#ff5f1f;margin-bottom:8px}
-.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
-.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}
-.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
-
-footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
-
-@media(max-width:700px){
-  .form-grid{grid-template-columns:1fr}
-  .dashboard{grid-template-columns:1fr 1fr}
-  .tiers{grid-template-columns:1fr}
-  .tier.featured{margin-top:14px}
-  h1{font-size:1.5rem}
-  .comp-marker-label{font-size:0.6rem}
-}
-@media(max-width:400px){
-  .dashboard{grid-template-columns:1fr}
-  main{padding:20px 12px}
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+.cta-banner{background:linear-gradient(135deg,#ff5f1f,#e04500);text-align:center;padding:10px 16px;font-size:14px;font-weight:600;color:#fff;position:sticky;top:0;z-index:100;}
+.cta-banner a{color:#fff;text-decoration:underline;}
+.container{max-width:960px;margin:0 auto;padding:24px 16px 80px;}
+h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:6px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;font-size:14px;margin-bottom:20px;}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:6px 14px;font-size:12px;color:#888;}
+.stat strong{color:#ff5f1f;}
+h2{font-size:1.1rem;font-weight:700;margin:28px 0 14px;color:#e8e8e8;}
+.templates{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.tpl-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 16px;color:#e8e8e8;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s;}
+.tpl-btn:hover,.tpl-btn.active{border-color:#ff5f1f;color:#ff5f1f;background:#1f1008;}
+.input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
+.input-group{display:flex;flex-direction:column;gap:5px;}
+.input-group label{font-size:13px;color:#aaa;font-weight:500;}
+.input-group input,.input-group select{background:#111;border:1px solid #333;border-radius:8px;padding:10px 12px;color:#e8e8e8;font-size:14px;transition:border-color .2s;}
+.input-group input:focus,.input-group select:focus{outline:none;border-color:#ff5f1f;}
+.btn-calc{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s;width:100%;max-width:300px;margin:0 auto 32px;display:block;}
+.btn-calc:hover{background:#e04500;}
+.results{display:none;}
+.tiers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:32px;}
+.tier-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;text-align:center;position:relative;transition:border-color .3s;}
+.tier-card.popular{border-color:#ff5f1f;}
+.tier-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#ff5f1f;color:#fff;font-size:10px;font-weight:700;padding:3px 12px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px;}
+.tier-name{font-size:14px;font-weight:600;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.tier-price{font-size:2rem;font-weight:800;color:#e8e8e8;margin-bottom:4px;}
+.tier-price .currency{font-size:1rem;vertical-align:super;color:#888;}
+.tier-sub{font-size:12px;color:#666;margin-bottom:14px;}
+.tier-features{list-style:none;text-align:left;font-size:13px;color:#aaa;}
+.tier-features li{padding:4px 0;border-bottom:1px solid #1a1a1a;}
+.tier-features li::before{content:"+ ";color:#10b981;font-weight:700;}
+.psych-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:32px;}
+.psych-card{background:#111;border:1px solid #222;border-radius:12px;padding:16px;}
+.psych-card h3{font-size:14px;font-weight:700;margin-bottom:6px;color:#ff5f1f;}
+.psych-card p{font-size:13px;color:#aaa;}
+.psych-card .tip{margin-top:8px;font-size:12px;color:#10b981;font-weight:600;}
+.sim-table{width:100%;border-collapse:collapse;margin-bottom:24px;}
+.sim-table th{text-align:left;font-size:12px;color:#888;padding:8px 12px;border-bottom:1px solid #333;text-transform:uppercase;letter-spacing:.5px;}
+.sim-table td{padding:8px 12px;border-bottom:1px solid #1a1a1a;font-size:14px;}
+.sim-table tr:hover{background:#111;}
+.sim-table .best{color:#10b981;font-weight:700;}
+.chart-wrap{margin-bottom:32px;}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:200px;padding:16px 0;border-bottom:1px solid #333;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;}
+.bar{width:100%;max-width:60px;border-radius:6px 6px 0 0;transition:height .5s ease;min-height:3px;}
+.bar.high{background:linear-gradient(180deg,#10b981,#059669);}
+.bar.med{background:linear-gradient(180deg,#f59e0b,#d97706);}
+.bar.low{background:linear-gradient(180deg,#ef4444,#dc2626);}
+.bar-val{font-size:11px;font-weight:700;margin-bottom:3px;color:#e8e8e8;}
+.bar-lbl{font-size:10px;color:#888;margin-top:6px;text-align:center;}
+.comp-table{width:100%;border-collapse:collapse;margin-bottom:24px;}
+.comp-table th{text-align:left;font-size:12px;color:#888;padding:8px 12px;border-bottom:1px solid #333;}
+.comp-table td{padding:8px 12px;border-bottom:1px solid #1a1a1a;font-size:14px;}
+.comp-table tr:hover{background:#111;}
+.comp-table .your-row{background:#1f1008;border-left:3px solid #ff5f1f;}
+.export-row{display:flex;gap:10px;margin-top:20px;}
+.btn-export{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 20px;color:#e8e8e8;font-size:13px;cursor:pointer;transition:all .2s;}
+.btn-export:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@media(max-width:600px){.tiers-grid{grid-template-columns:1fr;}.psych-cards{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
+<div class="cta-banner"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+<div class="container">
+  <h1><span>Digital Product</span> Pricing Calculator</h1>
+  <p class="subtitle">Generate tiered pricing, apply pricing psychology, and simulate revenue at different price points</p>
+  <div class="stats-row">
+    <div class="stat">Used <strong id="usageCount">0</strong> times</div>
+  </div>
 
-<nav>
-  <a href="/" class="logo">SpunkArt</a>
-  <a href="/store" class="back">&larr; All Tools</a>
-</nav>
+  <h2>Quick Templates</h2>
+  <div class="templates">
+    <button class="tpl-btn" onclick="loadTemplate('saas')">SaaS Product</button>
+    <button class="tpl-btn" onclick="loadTemplate('ebook')">Ebook / Guide</button>
+    <button class="tpl-btn" onclick="loadTemplate('bundle')">Tool Bundle</button>
+    <button class="tpl-btn" onclick="loadTemplate('course')">Online Course</button>
+    <button class="tpl-btn" onclick="loadTemplate('templates')">Template Pack</button>
+  </div>
 
-<main>
-  <h1>Product <span>Pricing Calculator</span></h1>
-  <div class="subtitle">Figure out the right price for your product or service</div>
-  <div class="usage-badge" id="usageBadge">Used 0 times</div>
-
-  <!-- Inputs -->
-  <div class="section">
-    <h2>Your Product Details</h2>
-    <div class="form-grid">
-      <div class="input-group">
-        <label>Product Type</label>
-        <select id="productType" oninput="calc()">
-          <option value="digital">Digital Product</option>
-          <option value="saas">SaaS</option>
-          <option value="service">Service</option>
-          <option value="physical">Physical Product</option>
-          <option value="course">Course</option>
-          <option value="ebook">Ebook</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label>Pricing Model</label>
-        <select id="pricingModel" oninput="calc()">
-          <option value="one-time">One-time Purchase</option>
-          <option value="monthly">Monthly Subscription</option>
-          <option value="annual">Annual Subscription</option>
-          <option value="usage">Usage-based</option>
-        </select>
-      </div>
-      <div class="input-group">
-        <label>Monthly Costs ($)</label>
-        <input type="number" id="monthlyCosts" placeholder="e.g. 50" min="0" step="1" oninput="calc()">
-        <div class="hint">Hosting, tools, subscriptions, COGS</div>
-      </div>
-      <div class="input-group">
-        <label>Hours Per Month Spent</label>
-        <input type="number" id="hoursPerMonth" placeholder="e.g. 40" min="0" step="1" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Your Hourly Rate Target ($)</label>
-        <input type="number" id="hourlyRate" placeholder="e.g. 75" min="0" step="1" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Expected Monthly Customers</label>
-        <input type="number" id="monthlyCustomers" placeholder="e.g. 100" min="1" step="1" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Competitor Price Low ($)</label>
-        <input type="number" id="compLow" placeholder="e.g. 19" min="0" step="0.01" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Competitor Price High ($)</label>
-        <input type="number" id="compHigh" placeholder="e.g. 99" min="0" step="0.01" oninput="calc()">
-      </div>
-      <div class="input-group">
-        <label>Value Delivered</label>
-        <select id="valueType" oninput="calc()">
-          <option value="saves-time">Saves Time</option>
-          <option value="saves-money">Saves Money</option>
-          <option value="makes-money">Makes Money</option>
-          <option value="entertainment">Entertainment</option>
-          <option value="education">Education</option>
-        </select>
-      </div>
+  <h2>Your Product</h2>
+  <div class="input-grid">
+    <div class="input-group">
+      <label>Product Type</label>
+      <select id="productType">
+        <option value="saas">SaaS / Subscription</option>
+        <option value="digital">Digital Download</option>
+        <option value="course">Online Course</option>
+        <option value="service">Productized Service</option>
+        <option value="bundle">Bundle / Pack</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Target Audience</label>
+      <select id="audience">
+        <option value="indie">Solo Founders / Indie Hackers</option>
+        <option value="smb">Small Businesses</option>
+        <option value="enterprise">Enterprise / Teams</option>
+        <option value="consumer">Individual Consumers</option>
+        <option value="creators">Creators / Freelancers</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Number of Features / Items</label>
+      <input type="number" id="featureCount" value="15" min="1" max="200">
+    </div>
+    <div class="input-group">
+      <label>Monthly Visitors</label>
+      <input type="number" id="monthlyVisitors" value="5000" min="100">
     </div>
   </div>
 
-  <!-- Price Dashboard -->
-  <div class="dashboard" id="priceDash">
-    <div class="dash-card">
-      <div class="label">Minimum Viable</div>
-      <div class="value c-white" id="priceMin">$0</div>
-      <div class="sub">Covers costs only</div>
+  <h2>Competitor Prices (optional)</h2>
+  <div class="input-grid" style="margin-bottom:8px;">
+    <div class="input-group">
+      <label>Competitor 1 Name</label>
+      <input type="text" id="comp1Name" placeholder="e.g. Gumroad competitor">
     </div>
-    <div class="dash-card">
-      <div class="label">Break-Even</div>
-      <div class="value c-yellow" id="priceBreakeven">$0</div>
-      <div class="sub">Costs + your time</div>
+    <div class="input-group">
+      <label>Competitor 1 Price ($)</label>
+      <input type="number" id="comp1Price" placeholder="29" min="0" step="0.01">
     </div>
-    <div class="dash-card">
-      <div class="label">Recommended</div>
-      <div class="value c-green" id="priceRecommended">$0</div>
-      <div class="sub">With 40% margin</div>
+    <div class="input-group">
+      <label>Competitor 2 Name</label>
+      <input type="text" id="comp2Name" placeholder="e.g. Another product">
     </div>
-    <div class="dash-card">
-      <div class="label">Premium</div>
-      <div class="value c-orange" id="pricePremium">$0</div>
-      <div class="sub">2x recommended</div>
+    <div class="input-group">
+      <label>Competitor 2 Price ($)</label>
+      <input type="number" id="comp2Price" placeholder="49" min="0" step="0.01">
+    </div>
+  </div>
+  <div class="input-grid">
+    <div class="input-group">
+      <label>Competitor 3 Name</label>
+      <input type="text" id="comp3Name" placeholder="Optional">
+    </div>
+    <div class="input-group">
+      <label>Competitor 3 Price ($)</label>
+      <input type="number" id="comp3Price" placeholder="" min="0" step="0.01">
     </div>
   </div>
 
-  <!-- Revenue Projections -->
-  <div class="section">
-    <h2>Annual Revenue Projections</h2>
-    <table class="rev-table">
-      <thead>
-        <tr><th>Price Point</th><th>Monthly</th><th>Annual</th><th>Annual Profit</th></tr>
-      </thead>
-      <tbody id="revBody">
-        <tr><td colspan="4" style="color:#555;text-align:center;font-family:system-ui">Enter your details above</td></tr>
-      </tbody>
+  <button class="btn-calc" onclick="calculate()">Generate Pricing Strategy</button>
+
+  <div class="results" id="results">
+    <h2>Recommended Tiered Pricing</h2>
+    <div class="tiers-grid" id="tiersGrid"></div>
+
+    <h2>Pricing Psychology Breakdown</h2>
+    <div class="psych-cards" id="psychCards"></div>
+
+    <h2>Revenue Simulator</h2>
+    <p style="font-size:13px;color:#888;margin-bottom:12px;">Estimated conversions at different price points based on price sensitivity modeling</p>
+    <table class="sim-table">
+      <thead><tr><th>Price Point</th><th>Est. Conv. Rate</th><th>Monthly Sales</th><th>Monthly Revenue</th><th>Annual Revenue</th></tr></thead>
+      <tbody id="simBody"></tbody>
     </table>
-  </div>
 
-  <!-- Competitor Positioning -->
-  <div class="section">
-    <h2>Competitor Price Positioning</h2>
-    <div class="comp-bar-wrap" id="compSection">
-      <div class="comp-bar-labels">
-        <span id="compLowLabel">$0</span>
-        <span id="compHighLabel">$0</span>
-      </div>
-      <div class="comp-bar" id="compBar">
-        <div class="comp-range" id="compRange"></div>
-        <div class="comp-marker" id="markerMin" style="background:#e8e8e8"><div class="comp-marker-label" style="color:#e8e8e8">Min</div></div>
-        <div class="comp-marker" id="markerBreakeven" style="background:#f59e0b"><div class="comp-marker-label" style="color:#f59e0b">Break-even</div></div>
-        <div class="comp-marker" id="markerRec" style="background:#10b981"><div class="comp-marker-label" style="color:#10b981">Recommended</div></div>
-        <div class="comp-marker" id="markerPremium" style="background:#ff5f1f"><div class="comp-marker-label" style="color:#ff5f1f">Premium</div></div>
-      </div>
+    <h2>Price Sensitivity Chart</h2>
+    <div class="chart-wrap">
+      <div class="bar-chart" id="sensChart"></div>
+    </div>
+
+    <div id="compSection" style="display:none;">
+      <h2>Competitor Price Comparison</h2>
+      <table class="comp-table">
+        <thead><tr><th>Product</th><th>Price</th><th>Position</th><th>Difference</th></tr></thead>
+        <tbody id="compBody"></tbody>
+      </table>
+    </div>
+
+    <div class="export-row">
+      <button class="btn-export" onclick="exportStrategy()">Copy Strategy as Text</button>
     </div>
   </div>
+</div>
 
-  <!-- Pricing Psychology Tips -->
-  <div class="section">
-    <h2>Pricing Psychology Tips</h2>
-    <ul class="tips" id="tipsList">
-      <li>Enter your product details above to get personalized pricing tips.</li>
-    </ul>
-  </div>
-
-  <!-- 3-Tier Pricing Suggestion -->
-  <div class="section">
-    <h2>3-Tier Pricing Suggestion</h2>
-    <div class="tiers" id="tiersGrid">
-      <div class="tier">
-        <div class="tier-name">Starter</div>
-        <div class="tier-price">--</div>
-        <ul class="tier-features"><li>Basic features</li><li>Email support</li><li>1 user</li></ul>
-      </div>
-      <div class="tier featured">
-        <div class="tier-name">Pro</div>
-        <div class="tier-price">--</div>
-        <ul class="tier-features"><li>All Starter features</li><li>Priority support</li><li>5 users</li><li>Advanced analytics</li></ul>
-      </div>
-      <div class="tier">
-        <div class="tier-name">Enterprise</div>
-        <div class="tier-price">--</div>
-        <ul class="tier-features"><li>All Pro features</li><li>Dedicated support</li><li>Unlimited users</li><li>Custom integrations</li><li>SLA guarantee</li></ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Actions -->
-  <div class="actions">
-    <button class="btn btn-primary" onclick="copySummary()">Copy Pricing Summary</button>
-    <button class="btn btn-secondary" onclick="downloadSummary()">Download as Text</button>
-  </div>
-
-  <div class="cross-sell">
-    <h3>Get All 40+ Tools</h3>
-    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
-    <a href="/store" class="cta">Visit the Store</a>
-  </div>
-</main>
-
-<footer>&copy; 2025 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
-
+<div class="watermark">SPUNKART.COM</div>
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== Calculation Engine ===== */
-var lastCalcData = {};
+let usage = parseInt(localStorage.getItem('pc_usage')||'0');
+document.getElementById('usageCount').textContent = usage;
 
-function getVal(id) { return parseFloat(document.getElementById(id).value) || 0; }
-function fmt(n) { return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-function fmtInt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+const TEMPLATES = {
+  saas:{type:'saas',audience:'indie',features:20,visitors:8000,c1:'Competitor A',c1p:29,c2:'Competitor B',c2p:79,c3:'',c3p:''},
+  ebook:{type:'digital',audience:'creators',features:8,visitors:3000,c1:'Similar Ebook',c1p:19,c2:'Premium Guide',c2p:39,c3:'',c3p:''},
+  bundle:{type:'bundle',audience:'indie',features:30,visitors:5000,c1:'Starter Pack',c1p:49,c2:'Pro Bundle',c2p:99,c3:'',c3p:''},
+  course:{type:'course',audience:'creators',features:25,visitors:4000,c1:'Udemy Course',c1p:29,c2:'Premium Course',c2p:199,c3:'',c3p:''},
+  templates:{type:'bundle',audience:'smb',features:50,visitors:6000,c1:'Template Kit A',c1p:19,c2:'Template Kit B',c2p:59,c3:'',c3p:''}
+};
 
-function calc() {
-  var costs = getVal('monthlyCosts');
-  var hours = getVal('hoursPerMonth');
-  var rate = getVal('hourlyRate');
-  var customers = getVal('monthlyCustomers') || 1;
-  var compLow = getVal('compLow');
-  var compHigh = getVal('compHigh');
-  var valueType = document.getElementById('valueType').value;
-  var productType = document.getElementById('productType').value;
-  var pricingModel = document.getElementById('pricingModel').value;
-
-  var timeValue = hours * rate;
-  var totalMonthlyCost = costs + timeValue;
-
-  var minPrice = costs / customers;
-  var breakevenPrice = totalMonthlyCost / customers;
-  var recommendedPrice = breakevenPrice / 0.6; // 40% margin
-  var premiumPrice = recommendedPrice * 2;
-
-  // Round to sensible numbers
-  minPrice = Math.max(minPrice, 0);
-  breakevenPrice = Math.max(breakevenPrice, 0);
-  recommendedPrice = Math.max(recommendedPrice, 0);
-  premiumPrice = Math.max(premiumPrice, 0);
-
-  lastCalcData = { minPrice: minPrice, breakevenPrice: breakevenPrice, recommendedPrice: recommendedPrice, premiumPrice: premiumPrice, costs: costs, timeValue: timeValue, totalMonthlyCost: totalMonthlyCost, customers: customers, compLow: compLow, compHigh: compHigh, valueType: valueType, productType: productType, pricingModel: pricingModel, hours: hours, rate: rate };
-
-  // Update dashboard
-  var suffix = '';
-  if (pricingModel === 'monthly') suffix = '/mo';
-  else if (pricingModel === 'annual') suffix = '/yr';
-  else if (pricingModel === 'usage') suffix = '/use';
-
-  document.getElementById('priceMin').textContent = fmt(minPrice) + suffix;
-  document.getElementById('priceBreakeven').textContent = fmt(breakevenPrice) + suffix;
-  document.getElementById('priceRecommended').textContent = fmt(recommendedPrice) + suffix;
-  document.getElementById('pricePremium').textContent = fmt(premiumPrice) + suffix;
-
-  // Revenue projections
-  updateRevTable(minPrice, breakevenPrice, recommendedPrice, premiumPrice, customers, totalMonthlyCost, pricingModel);
-
-  // Competitor positioning
-  updateCompBar(minPrice, breakevenPrice, recommendedPrice, premiumPrice, compLow, compHigh);
-
-  // Pricing tips
-  updateTips(valueType, productType, pricingModel, recommendedPrice, compLow, compHigh, breakevenPrice);
-
-  // 3-tier suggestion
-  updateTiers(recommendedPrice, pricingModel, productType);
+function loadTemplate(key){
+  document.querySelectorAll('.tpl-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  const t=TEMPLATES[key];
+  document.getElementById('productType').value=t.type;
+  document.getElementById('audience').value=t.audience;
+  document.getElementById('featureCount').value=t.features;
+  document.getElementById('monthlyVisitors').value=t.visitors;
+  document.getElementById('comp1Name').value=t.c1;
+  document.getElementById('comp1Price').value=t.c1p;
+  document.getElementById('comp2Name').value=t.c2;
+  document.getElementById('comp2Price').value=t.c2p;
+  document.getElementById('comp3Name').value=t.c3;
+  document.getElementById('comp3Price').value=t.c3p||'';
 }
 
-function updateRevTable(minP, beP, recP, premP, cust, monthlyCost, model) {
-  var prices = [
-    { name: 'Minimum Viable', price: minP, cls: '' },
-    { name: 'Break-Even', price: beP, cls: '' },
-    { name: 'Recommended', price: recP, cls: 'row-rec' },
-    { name: 'Premium', price: premP, cls: '' }
-  ];
+function charmPrice(n){
+  if(n<5)return Math.max(1,Math.floor(n))-0.01;
+  if(n<15)return Math.round(n)-0.01;
+  const base=Math.round(n/5)*5;
+  return base>0?base-1:n;
+}
 
-  var multiplier = 1;
-  if (model === 'annual') multiplier = 1; // annual already per year
-  else multiplier = 12; // monthly, one-time (monthly customers * 12), usage
+function fmt(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function fmtK(n){return n>=1000?'$'+(n/1000).toFixed(1)+'K':fmt(n);}
 
-  var annualCost = monthlyCost * 12;
+let lastResult={};
 
-  var html = '';
-  prices.forEach(function(p) {
-    var monthlyRev, annualRev, annualProfit;
-    if (model === 'annual') {
-      monthlyRev = (p.price * cust) / 12;
-      annualRev = p.price * cust;
-    } else {
-      monthlyRev = p.price * cust;
-      annualRev = p.price * cust * 12;
-    }
-    annualProfit = annualRev - annualCost;
-    html += '<tr class="' + p.cls + '"><td>' + p.name + ' (' + fmt(p.price) + ')</td><td>' + fmtInt(monthlyRev) + '</td><td>' + fmtInt(annualRev) + '</td><td style="color:' + (annualProfit >= 0 ? '#10b981' : '#ef4444') + '">' + fmtInt(annualProfit) + '</td></tr>';
+function calculate(){
+  usage++;localStorage.setItem('pc_usage',usage);document.getElementById('usageCount').textContent=usage;
+
+  const type=document.getElementById('productType').value;
+  const audience=document.getElementById('audience').value;
+  const features=parseInt(document.getElementById('featureCount').value)||10;
+  const visitors=parseInt(document.getElementById('monthlyVisitors').value)||1000;
+
+  const typeM={saas:1.5,digital:0.8,course:1.2,service:2.0,bundle:1.0};
+  const audM={indie:1.0,smb:1.5,enterprise:3.0,consumer:0.7,creators:0.9};
+  const basePrice=features*2*typeM[type]*audM[audience];
+
+  const competitors=[];
+  for(let i=1;i<=3;i++){
+    const name=document.getElementById('comp'+i+'Name').value.trim();
+    const price=parseFloat(document.getElementById('comp'+i+'Price').value);
+    if(name&&price>0)competitors.push({name,price});
+  }
+
+  let avgComp=0;
+  if(competitors.length>0) avgComp=competitors.reduce((s,c)=>s+c.price,0)/competitors.length;
+  let adjustedBase=avgComp>0?(basePrice*0.4+avgComp*0.6):basePrice;
+
+  const isSaaS=type==='saas';
+  const tierCount=isSaaS?3:(features>20?4:3);
+  const tiers=[];
+
+  tiers.push({
+    name:isSaaS?'Starter':'Basic',
+    price:charmPrice(adjustedBase*0.5),
+    features:Math.round(features*0.4),
+    popular:false,
+    desc:isSaaS?'/month':'one-time'
+  });
+  tiers.push({
+    name:isSaaS?'Pro':'Standard',
+    price:charmPrice(adjustedBase),
+    features:Math.round(features*0.75),
+    popular:true,
+    desc:isSaaS?'/month':'one-time'
+  });
+  tiers.push({
+    name:isSaaS?'Business':'Premium',
+    price:charmPrice(adjustedBase*2),
+    features:features,
+    popular:false,
+    desc:isSaaS?'/month':'one-time'
+  });
+  if(tierCount===4){
+    tiers.push({
+      name:'Enterprise',
+      price:charmPrice(adjustedBase*3.5),
+      features:features,
+      popular:false,
+      desc:'custom / contact us'
+    });
+  }
+
+  // Render tiers
+  const tiersGrid=document.getElementById('tiersGrid');
+  tiersGrid.innerHTML='';
+  tiers.forEach(tier=>{
+    const featureLines = [
+      `${tier.features} features included`,
+      `${tier.popular?'Priority':'Standard'} support`,
+      `${tier.features>=features?'All':'Core'} functionality`,
+    ];
+    if(tier.popular) featureLines.push('Best value for most users');
+    if(tier.name==='Enterprise') featureLines.push('Custom onboarding included');
+
+    tiersGrid.innerHTML+=`<div class="tier-card${tier.popular?' popular':''}">
+      ${tier.popular?'<div class="tier-badge">Most Popular</div>':''}
+      <div class="tier-name">${tier.name}</div>
+      <div class="tier-price"><span class="currency">$</span>${tier.price<1000?tier.price.toFixed(0):tier.price.toLocaleString()}</div>
+      <div class="tier-sub">${tier.desc}</div>
+      <ul class="tier-features">${featureLines.map(f=>'<li>'+f+'</li>').join('')}</ul>
+    </div>`;
   });
 
-  document.getElementById('revBody').innerHTML = html;
-}
+  // Psychology
+  const recPrice=tiers.find(t=>t.popular)?.price||tiers[1]?.price||adjustedBase;
+  const psychCards=document.getElementById('psychCards');
+  psychCards.innerHTML=`
+    <div class="psych-card">
+      <h3>Anchoring Effect</h3>
+      <p>Your highest tier at ${fmt(tiers[tiers.length-1].price)} makes the ${fmt(recPrice)} tier feel like a deal. Customers anchor to the most expensive option they see first.</p>
+      <div class="tip">Show the highest tier first or prominently</div>
+    </div>
+    <div class="psych-card">
+      <h3>Decoy Effect</h3>
+      <p>The ${tiers[0].name} tier at ${fmt(tiers[0].price)} has only ${tiers[0].features} features, making the ${tiers[1].name} tier's ${tiers[1].features} features look like much better value for the price difference.</p>
+      <div class="tip">Limit the lowest tier to push upgrades</div>
+    </div>
+    <div class="psych-card">
+      <h3>Charm Pricing</h3>
+      <p>Prices ending in 9 or 7 (like ${fmt(recPrice)}) feel significantly cheaper than round numbers. The left-digit effect makes $${Math.ceil(recPrice)} feel more expensive than ${fmt(recPrice)}.</p>
+      <div class="tip">Always use .99, .97, or .00 endings strategically</div>
+    </div>
+    <div class="psych-card">
+      <h3>Center Stage Effect</h3>
+      <p>Marking the ${tiers.find(t=>t.popular)?.name||'middle'} tier as "Most Popular" creates social proof and guides the choice. 60-70% of buyers typically choose the highlighted middle option.</p>
+      <div class="tip">Always highlight one tier as recommended</div>
+    </div>
+    <div class="psych-card">
+      <h3>Price-Value Framing</h3>
+      <p>At ${fmt(recPrice)} for ${tiers.find(t=>t.popular)?.features||features} features, each feature costs approximately ${fmt(recPrice/(tiers.find(t=>t.popular)?.features||features))}. Frame this in your copy as pennies per feature.</p>
+      <div class="tip">Break the price down per feature, per day, or per use</div>
+    </div>
+    <div class="psych-card">
+      <h3>Loss Aversion</h3>
+      <p>Highlight what the ${tiers[0].name} tier is missing compared to ${tiers[1].name}. People are 2x more motivated by losing something than by gaining the equivalent.</p>
+      <div class="tip">Show crossed-out features on lower tiers</div>
+    </div>`;
 
-function updateCompBar(minP, beP, recP, premP, low, high) {
-  if (low <= 0 && high <= 0) {
-    document.getElementById('compLowLabel').textContent = '$0';
-    document.getElementById('compHighLabel').textContent = '$0';
-    document.getElementById('compRange').style.display = 'none';
-    positionMarkers(minP, beP, recP, premP, 0, Math.max(premP * 1.3, 1));
-    return;
-  }
+  // Revenue simulator
+  const simBody=document.getElementById('simBody');
+  simBody.innerHTML='';
+  const pricePoints=[recPrice*0.5,recPrice*0.75,recPrice,recPrice*1.25,recPrice*1.5,recPrice*2];
+  const baseConvRate=type==='saas'?2.5:3.5;
+  let maxRev=0;
+  const simData=[];
 
-  var scaleMax = Math.max(high, premP) * 1.3;
-  if (scaleMax <= 0) scaleMax = 100;
+  pricePoints.forEach(pp=>{
+    const priceRatio=recPrice/pp;
+    const convRate=Math.min(baseConvRate*Math.pow(priceRatio,0.8),15);
+    const sales=Math.round(visitors*(convRate/100));
+    const monthlyRev=sales*pp;
+    const annualRev=monthlyRev*12;
+    if(monthlyRev>maxRev)maxRev=monthlyRev;
+    simData.push({pp,convRate,sales,monthlyRev,annualRev});
+  });
 
-  document.getElementById('compLowLabel').textContent = fmt(low);
-  document.getElementById('compHighLabel').textContent = fmt(high);
+  const bestIdx=simData.reduce((best,d,i)=>d.monthlyRev>simData[best].monthlyRev?i:best,0);
 
-  var range = document.getElementById('compRange');
-  range.style.display = 'block';
-  range.style.left = ((low / scaleMax) * 100) + '%';
-  range.style.width = (((high - low) / scaleMax) * 100) + '%';
+  simData.forEach((d,i)=>{
+    const isBest=i===bestIdx;
+    simBody.innerHTML+=`<tr>
+      <td>${fmt(d.pp)}</td>
+      <td>${d.convRate.toFixed(1)}%</td>
+      <td>${d.sales.toLocaleString()}</td>
+      <td class="${isBest?'best':''}">${fmt(d.monthlyRev)}${isBest?' (optimal)':''}</td>
+      <td>${fmtK(d.annualRev)}</td>
+    </tr>`;
+  });
 
-  positionMarkers(minP, beP, recP, premP, 0, scaleMax);
-}
+  // Sensitivity chart
+  const chart=document.getElementById('sensChart');
+  chart.innerHTML='';
+  simData.forEach(d=>{
+    const pct=(d.monthlyRev/maxRev)*100;
+    const cls=pct>=90?'high':pct>=60?'med':'low';
+    chart.innerHTML+=`<div class="bar-col"><div class="bar-val">${fmtK(d.monthlyRev)}</div><div class="bar ${cls}" style="height:${Math.max(pct,3)}%"></div><div class="bar-lbl">${fmt(d.pp)}</div></div>`;
+  });
 
-function positionMarkers(minP, beP, recP, premP, scaleMin, scaleMax) {
-  var range = scaleMax - scaleMin;
-  if (range <= 0) range = 1;
-
-  function pct(v) { return Math.min(Math.max(((v - scaleMin) / range) * 100, 0), 98); }
-
-  document.getElementById('markerMin').style.left = pct(minP) + '%';
-  document.getElementById('markerBreakeven').style.left = pct(beP) + '%';
-  document.getElementById('markerRec').style.left = pct(recP) + '%';
-  document.getElementById('markerPremium').style.left = pct(premP) + '%';
-}
-
-function updateTips(valueType, productType, pricingModel, recPrice, compLow, compHigh, bePrice) {
-  var tips = [];
-
-  // Value-based tips
-  if (valueType === 'makes-money') {
-    tips.push('<strong>You help people make money.</strong> Price based on ROI -- if your product helps earn $1,000/mo, charging $99/mo is a no-brainer. Aim for 10-20x ROI for the customer.');
-  } else if (valueType === 'saves-time') {
-    tips.push('<strong>You save people time.</strong> Calculate the hourly value of time saved. If you save 5 hours/month and your customer values time at $50/hr, that is $250/mo in value. Price at 10-20% of value saved.');
-  } else if (valueType === 'saves-money') {
-    tips.push('<strong>You save people money.</strong> Quantify the savings and price at 20-30% of what you save them. If you save $500/mo, $99-149/mo is very justifiable.');
-  } else if (valueType === 'entertainment') {
-    tips.push('<strong>Entertainment pricing is perception-driven.</strong> Compare to Netflix ($15/mo), Spotify ($10/mo), and games ($5-70). Engagement time matters more than features.');
-  } else if (valueType === 'education') {
-    tips.push('<strong>Education commands premium pricing.</strong> Outcome-based pricing works best. If the knowledge leads to a $10K raise, $500-2,000 is reasonable for a course.');
-  }
-
-  // Product type tips
-  if (productType === 'saas') {
-    tips.push('<strong>SaaS tip:</strong> Monthly subscriptions win on cash flow. Offer annual at 2 months free (16.7% discount) to reduce churn and increase LTV.');
-  } else if (productType === 'course') {
-    tips.push('<strong>Course tip:</strong> Higher prices signal higher quality. Courses under $50 are perceived as low-value. Consider $97, $197, or $497 tiers.');
-  } else if (productType === 'ebook') {
-    tips.push('<strong>Ebook tip:</strong> $9-29 is the sweet spot for ebooks. Under $9 feels throwaway, over $29 needs heavy social proof. Bundle with templates or tools.');
-  } else if (productType === 'service') {
-    tips.push('<strong>Service tip:</strong> Never charge hourly if you can charge per-project or per-outcome. Package your service into fixed-price tiers to increase perceived value.');
-  } else if (productType === 'physical') {
-    tips.push('<strong>Physical product tip:</strong> Factor in shipping, returns (5-15%), and payment processing (2.9% + $0.30). Your real margin is smaller than you think.');
-  } else if (productType === 'digital') {
-    tips.push('<strong>Digital product tip:</strong> Near-zero marginal cost is your superpower. Once built, every sale is almost pure profit. Price for value, not cost.');
-  }
-
-  // Pricing psychology
-  tips.push('<strong>Charm pricing works.</strong> $49 outperforms $50 by 8-24% in studies. Use .99 or .97 endings for consumer products, round numbers for premium/B2B.');
-
-  if (pricingModel === 'monthly' || pricingModel === 'annual') {
-    tips.push('<strong>Anchor high, offer a deal.</strong> Show the monthly price first, then the annual with savings highlighted. "Save 33%" is more compelling than showing a lower number.');
-  }
-
-  // Competitor positioning
-  if (compLow > 0 && compHigh > 0) {
-    if (recPrice < compLow) {
-      tips.push('<strong>You are priced below all competitors.</strong> This can signal low quality. Consider raising to at least ' + fmt(compLow * 0.9) + ' unless you are deliberately undercutting to gain market share.');
-    } else if (recPrice > compHigh) {
-      tips.push('<strong>You are priced above all competitors.</strong> Make sure your positioning, branding, and feature set justify the premium. Lead with outcomes and social proof.');
-    } else {
-      tips.push('<strong>You are positioned within the competitive range.</strong> Good baseline. Differentiate on value, speed, support, or experience rather than price.');
-    }
-  }
-
-  if (recPrice > 0 && bePrice > 0) {
-    var margin = ((recPrice - bePrice) / recPrice * 100);
-    tips.push('<strong>Your margin at the recommended price is ' + margin.toFixed(0) + '%.</strong> A healthy margin (30-60%) gives room for marketing, refunds, and growth. Below 20% is dangerously thin.');
-  }
-
-  document.getElementById('tipsList').innerHTML = tips.map(function(t) { return '<li>' + t + '</li>'; }).join('');
-}
-
-function updateTiers(recPrice, pricingModel, productType) {
-  var starter, pro, enterprise;
-
-  // Smart tier pricing
-  starter = recPrice * 0.6;
-  pro = recPrice;
-  enterprise = recPrice * 2.2;
-
-  // Smart rounding (charm pricing)
-  starter = smartRound(starter);
-  pro = smartRound(pro);
-  enterprise = smartRound(enterprise);
-
-  var suffix = '';
-  if (pricingModel === 'monthly') suffix = '/mo';
-  else if (pricingModel === 'annual') suffix = '/yr';
-  else if (pricingModel === 'usage') suffix = '/use';
-
-  var starterFeatures, proFeatures, enterpriseFeatures;
-
-  if (productType === 'saas') {
-    starterFeatures = ['Core features', 'Email support', '1 user', '1 project', 'Community access'];
-    proFeatures = ['All Starter features', 'Priority support', '5 users', 'Unlimited projects', 'API access', 'Advanced analytics'];
-    enterpriseFeatures = ['All Pro features', 'Dedicated account manager', 'Unlimited users', 'Custom integrations', 'SLA guarantee', 'On-boarding call'];
-  } else if (productType === 'course') {
-    starterFeatures = ['Video lessons', 'Downloadable resources', 'Community forum'];
-    proFeatures = ['All Starter content', 'Bonus modules', 'Templates & worksheets', 'Certificate', 'Monthly Q&A calls'];
-    enterpriseFeatures = ['All Pro content', '1-on-1 coaching calls', 'Private Slack channel', 'Lifetime updates', 'Custom feedback'];
-  } else if (productType === 'service') {
-    starterFeatures = ['Basic deliverable', 'Email support', '1 revision', '5-day turnaround'];
-    proFeatures = ['Enhanced deliverable', 'Priority support', '3 revisions', '3-day turnaround', 'Strategy call'];
-    enterpriseFeatures = ['Premium deliverable', 'Dedicated support', 'Unlimited revisions', '24hr turnaround', 'Ongoing retainer option'];
+  // Competitor comparison
+  if(competitors.length>0){
+    document.getElementById('compSection').style.display='block';
+    const compBody=document.getElementById('compBody');
+    compBody.innerHTML='';
+    const allPrices=[...competitors.map(c=>({name:c.name,price:c.price,yours:false})),{name:'Your Product (recommended tier)',price:recPrice,yours:true}];
+    allPrices.sort((a,b)=>a.price-b.price);
+    allPrices.forEach((p,i)=>{
+      const position=i===0?'Lowest':i===allPrices.length-1?'Highest':'Mid-range';
+      const diff=p.yours?'--':(((recPrice-p.price)/p.price)*100).toFixed(0)+'% '+(recPrice>p.price?'higher':'lower');
+      compBody.innerHTML+=`<tr class="${p.yours?'your-row':''}"><td>${p.name}</td><td>${fmt(p.price)}</td><td>${position}</td><td>${diff}</td></tr>`;
+    });
   } else {
-    starterFeatures = ['Core product', 'Email support', 'Basic features', 'Documentation'];
-    proFeatures = ['All Starter features', 'Priority support', 'Advanced features', 'Regular updates', 'Analytics'];
-    enterpriseFeatures = ['All Pro features', 'Dedicated support', 'Custom features', 'White-label option', 'SLA guarantee'];
+    document.getElementById('compSection').style.display='none';
   }
 
-  var html = '';
-  var tiers = [
-    { name: 'Starter', price: starter, features: starterFeatures, cls: '' },
-    { name: 'Pro', price: pro, features: proFeatures, cls: ' featured' },
-    { name: 'Enterprise', price: enterprise, features: enterpriseFeatures, cls: '' }
-  ];
-
-  tiers.forEach(function(t) {
-    html += '<div class="tier' + t.cls + '"><div class="tier-name">' + t.name + '</div>';
-    html += '<div class="tier-price">' + fmt(t.price) + '<span class="period"> ' + suffix + '</span></div>';
-    html += '<ul class="tier-features">' + t.features.map(function(f) { return '<li>' + f + '</li>'; }).join('') + '</ul>';
-    html += '</div>';
-  });
-
-  document.getElementById('tiersGrid').innerHTML = html;
+  lastResult={tiers,recPrice,simData,competitors,type,audience,features,visitors};
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
 }
 
-function smartRound(n) {
-  if (n <= 0) return 0;
-  if (n < 5) return Math.round(n * 100) / 100;
-  if (n < 10) return Math.ceil(n) - 0.01;
-  if (n < 50) return Math.ceil(n / 5) * 5 - 1;
-  if (n < 100) return Math.ceil(n / 10) * 10 - 1;
-  if (n < 500) return Math.ceil(n / 50) * 50 - 1;
-  if (n < 1000) return Math.ceil(n / 100) * 100 - 1;
-  return Math.ceil(n / 500) * 500 - 1;
-}
-
-/* ===== Summary generation ===== */
-function generateSummaryText() {
-  var d = lastCalcData;
-  if (!d.recommendedPrice) return 'No data yet. Fill in the form first.';
-
-  var model = document.getElementById('pricingModel').selectedOptions[0].text;
-  var product = document.getElementById('productType').selectedOptions[0].text;
-  var value = document.getElementById('valueType').selectedOptions[0].text;
-
-  var lines = [
-    'PRODUCT PRICING SUMMARY',
-    '========================',
-    '',
-    'Product Type: ' + product,
-    'Pricing Model: ' + model,
-    'Value Delivered: ' + value,
-    '',
-    'MONTHLY COSTS',
-    '  Fixed costs: ' + fmt(d.costs),
-    '  Time value (' + d.hours + 'h x ' + fmt(d.rate) + '/hr): ' + fmt(d.timeValue),
-    '  Total monthly cost: ' + fmt(d.totalMonthlyCost),
-    '  Expected customers: ' + d.customers + '/month',
-    '',
-    'PRICE POINTS',
-    '  Minimum Viable Price: ' + fmt(d.minPrice),
-    '  Break-Even Price: ' + fmt(d.breakevenPrice),
-    '  Recommended Price (40% margin): ' + fmt(d.recommendedPrice),
-    '  Premium Price (2x): ' + fmt(d.premiumPrice),
-    ''
-  ];
-
-  if (d.compLow > 0 || d.compHigh > 0) {
-    lines.push('COMPETITOR RANGE: ' + fmt(d.compLow) + ' - ' + fmt(d.compHigh));
-    lines.push('');
+function exportStrategy(){
+  const r=lastResult;
+  let txt=`PRICING STRATEGY — Digital Product Pricing Calculator\nGenerated: ${new Date().toLocaleDateString()}\n${'='.repeat(50)}\n\n`;
+  txt+=`PRODUCT: ${r.type} | Audience: ${r.audience} | Features: ${r.features}\nMonthly Visitors: ${r.visitors.toLocaleString()}\n\n`;
+  txt+=`RECOMMENDED TIERS\n`;
+  r.tiers.forEach(t=>{txt+=`  ${t.name}: $${t.price.toFixed(2)} ${t.desc} (${t.features} features)${t.popular?' <- RECOMMENDED':''}\n`;});
+  txt+=`\nREVENUE PROJECTIONS\n`;
+  r.simData.forEach(d=>{txt+=`  ${fmt(d.pp)} -> ${d.convRate.toFixed(1)}% conv -> ${d.sales} sales -> ${fmt(d.monthlyRev)}/mo -> ${fmtK(d.annualRev)}/yr\n`;});
+  if(r.competitors.length){
+    txt+=`\nCOMPETITOR PRICES\n`;
+    r.competitors.forEach(c=>txt+=`  ${c.name}: ${fmt(c.price)}\n`);
   }
-
-  lines.push('ANNUAL REVENUE PROJECTIONS');
-  var annualCost = d.totalMonthlyCost * 12;
-  [
-    { name: 'Minimum', p: d.minPrice },
-    { name: 'Break-Even', p: d.breakevenPrice },
-    { name: 'Recommended', p: d.recommendedPrice },
-    { name: 'Premium', p: d.premiumPrice }
-  ].forEach(function(item) {
-    var rev = item.p * d.customers * 12;
-    var profit = rev - annualCost;
-    lines.push('  ' + item.name + ' (' + fmt(item.p) + '): ' + fmtInt(rev) + '/yr | Profit: ' + fmtInt(profit));
-  });
-
-  lines.push('');
-  lines.push('3-TIER SUGGESTION');
-  var starter = smartRound(d.recommendedPrice * 0.6);
-  var pro = smartRound(d.recommendedPrice);
-  var enterprise = smartRound(d.recommendedPrice * 2.2);
-  lines.push('  Starter: ' + fmt(starter));
-  lines.push('  Pro: ' + fmt(pro));
-  lines.push('  Enterprise: ' + fmt(enterprise));
-  lines.push('');
-  lines.push('Generated by SpunkArt.com/pricing-calculator');
-
-  return lines.join('\n');
+  txt+=`\nPRICING PSYCHOLOGY APPLIED: Anchoring, Decoy, Charm Pricing, Center Stage, Loss Aversion\n`;
+  txt+=`\nGenerated at SpunkArt.com/pricing-calculator.html`;
+  navigator.clipboard.writeText(txt);
+  showToast('Strategy copied to clipboard!');
 }
 
-function copySummary() {
-  var text = generateSummaryText();
-  navigator.clipboard.writeText(text).then(function() {
-    showToast('Pricing summary copied to clipboard!');
-  }).catch(function() {
-    // Fallback
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('Pricing summary copied to clipboard!');
-  });
-  countUse();
-}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2000);}
 
-function downloadSummary() {
-  var text = generateSummaryText();
-  var blob = new Blob([text], { type: 'text/plain' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'pricing-summary-' + new Date().toISOString().split('T')[0] + '.txt';
-  a.click();
-  URL.revokeObjectURL(a.href);
-  showToast('Pricing summary downloaded!');
-  countUse();
-}
-
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(function() { t.classList.remove('show'); }, 2500);
-}
-
-/* ===== Usage counter ===== */
-(function() {
-  var TOOL_KEY = 'spunkart_pricing_calc_uses';
-  var count = parseInt(localStorage.getItem(TOOL_KEY) || '0');
-  var badge = document.getElementById('usageBadge');
-
-  function updateBadge() {
-    badge.textContent = 'Used ' + count + ' time' + (count !== 1 ? 's' : '');
-  }
-  updateBadge();
-
-  window.countUse = function() {
-    count++;
-    localStorage.setItem(TOOL_KEY, String(count));
-    updateBadge();
-    checkEmailBar();
-  };
-})();
-
-/* ===== Email collection slide-up (after 2nd use) ===== */
-(function() {
-  var ek = 'spunkart_email_collected', uk = 'spunkart_pricing_calc_uses';
-  if (localStorage.getItem(ek)) return;
-
-  window.checkEmailBar = function() {
-    if (parseInt(localStorage.getItem(uk) || '0') >= 2 && !localStorage.getItem(ek)) {
-      var existing = document.getElementById('saEmailSlide');
-      if (existing) return;
-      var bar = document.createElement('div');
-      bar.id = 'saEmailSlide';
-      bar.innerHTML = '<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;animation:slideUp .4s ease"><span style="color:#e8e8e8;font-size:.95rem">Like this tool? Get 30+ more free tools in your inbox.</span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
-      document.body.appendChild(bar);
-    }
-  };
-
-  // Also check on load in case they already have 2+ uses
-  setTimeout(function() { window.checkEmailBar(); }, 1500);
-})();
-
-/* ===== Code protection ===== */
-document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'u') || (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.metaKey && e.key === 'u')) {
-    e.preventDefault();
-  }
-});
-
-/* ===== Init ===== */
-calc();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
 </script>
-
-<!-- Clarity -->
-<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
 </body>
 </html>

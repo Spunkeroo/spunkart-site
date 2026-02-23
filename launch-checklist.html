@@ -1,538 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Launch Checklist Generator - Free Interactive Launch Guide | SPUNKART.COM</title>
-<meta name="description" content="Interactive product launch checklist with 35 steps across pre-launch, launch day, and post-launch phases. Progress tracking, localStorage persistence, and markdown export. Free tool.">
-<meta property="og:title" content="Product Launch Checklist Generator | SPUNKART.COM">
-<meta property="og:description" content="Guide your product launch with a 35-step interactive checklist. Tracks progress, saves automatically, exports to markdown. Free tool.">
+<title>Website Launch Checklist — 75 Points | SpunkArt.com</title>
+<meta name="description" content="Complete 75-point website launch checklist covering SEO, performance, security, analytics, content, legal, social, and monetization. Free and interactive.">
+<meta name="keywords" content="website launch checklist, site launch, website checklist, pre-launch checklist, go-live checklist">
+<meta property="og:title" content="Website Launch Checklist — 75 Points | SpunkArt.com">
+<meta property="og:description" content="Complete 75-point website launch checklist. Track your progress from pre-launch to post-launch.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://spunkart.com/launch-checklist">
+<meta property="og:url" content="https://spunkart.com/launch-checklist.html">
+<meta property="og:image" content="https://spunkart.com/art/og-launch-checklist.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Product Launch Checklist Generator | SPUNKART.COM">
-<meta name="twitter:description" content="35-step interactive product launch checklist. Free tool with progress tracking and markdown export.">
-<link rel="canonical" href="https://spunkart.com/launch-checklist">
-<!-- GA4 -->
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Website Launch Checklist — 75 Points">
+<meta name="twitter:description" content="Complete 75-point interactive website launch checklist for solo founders.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Website Launch Checklist — 75 Points",
+  "description": "Complete 75-point interactive website launch checklist covering SEO, performance, security, analytics, content, legal, social, and monetization.",
+  "url": "https://spunkart.com/launch-checklist.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
-<!-- Clarity -->
-<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
-<meta name="author" content="SpunkArt.com">
-<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#0a0a0a;color:#e8e8e8;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
-a{color:#ff5f1f;text-decoration:none;}
-a:hover{text-decoration:underline;}
-
-nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
-nav .links{display:flex;gap:20px;font-size:0.9rem;}
-nav .links a{color:#ccc;transition:color .2s;}
-nav .links a:hover{color:#ff5f1f;}
-
-.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:0;}
-
-main{flex:1;max-width:800px;width:100%;margin:0 auto;padding:30px 20px;}
-h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+.cta-banner{background:linear-gradient(135deg,#ff5f1f,#e04500);text-align:center;padding:10px 16px;font-size:14px;font-weight:600;color:#fff;position:sticky;top:0;z-index:100;}
+.cta-banner a{color:#fff;text-decoration:underline;}
+.container{max-width:800px;margin:0 auto;padding:24px 16px 80px;}
+h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:6px;}
 h1 span{color:#ff5f1f;}
-.subtitle{color:#888;margin-bottom:10px;font-size:1rem;}
-.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px;}
-
-/* Progress bar */
-.progress-wrapper{background:#1a1a1a;border-radius:12px;height:28px;overflow:hidden;margin-bottom:24px;position:relative;border:1px solid #222;}
-.progress-fill{height:100%;background:linear-gradient(90deg,#ff5f1f,#ff8c00);border-radius:12px;transition:width .5s cubic-bezier(.4,0,.2,1);min-width:0;position:relative;}
-.progress-fill::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.12) 50%,transparent 100%);animation:shimmer 2s infinite;}
-@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.progress-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.8rem;font-weight:700;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.5);z-index:2;white-space:nowrap;}
-
-/* Actions row */
-.actions-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
-.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
-.btn-primary{background:#ff5f1f;color:#fff;}
-.btn-primary:hover{background:#e5500a;}
-.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
-.btn-secondary:hover{background:#333;}
-.btn-danger{background:#1a1a1a;color:#ef4444;border:1px solid #333;}
-.btn-danger:hover{background:#ef444422;border-color:#ef4444;}
-
-/* Phase cards */
-.phase-card{background:#141414;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden;}
-.phase-card.completed{border-color:#10b98155;}
-.phase-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
-.phase-title{font-size:1.15rem;font-weight:700;color:#e8e8e8;}
-.phase-title .phase-num{color:#ff5f1f;margin-right:6px;}
-.phase-badge{font-size:0.75rem;padding:4px 12px;border-radius:12px;font-weight:600;}
-.phase-badge-pre{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644;}
-.phase-badge-launch{background:#ff5f1f22;color:#ff5f1f;border:1px solid #ff5f1f44;}
-.phase-badge-post{background:#10b98122;color:#10b981;border:1px solid #10b98144;}
-.phase-progress{font-size:0.8rem;color:#666;margin-bottom:16px;}
-
-/* Checklist items */
-.check-item{display:flex;align-items:flex-start;gap:12px;padding:10px 12px;border-radius:8px;margin-bottom:4px;transition:background .2s;cursor:pointer;user-select:none;}
-.check-item:hover{background:#1a1a1a;}
-.check-item.checked{opacity:1;}
-.check-item.checked .check-label{color:#10b981;text-decoration:line-through;text-decoration-color:#10b98188;}
-.check-item.checked .check-label .tool-link{color:#10b98188;}
-
-.check-box{width:22px;height:22px;min-width:22px;border:2px solid #444;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .25s;margin-top:1px;position:relative;}
-.check-box svg{width:14px;height:14px;opacity:0;transform:scale(0);transition:all .25s cubic-bezier(.4,0,.2,1);}
-.check-item.checked .check-box{background:#10b981;border-color:#10b981;}
-.check-item.checked .check-box svg{opacity:1;transform:scale(1);}
-
-.check-label{font-size:0.92rem;color:#ccc;line-height:1.5;flex:1;}
-.tool-link{color:#ff5f1f;font-weight:500;white-space:nowrap;}
-.tool-link:hover{text-decoration:underline;}
-
-/* Check animation */
-@keyframes checkPop{
-  0%{transform:scale(1)}
-  30%{transform:scale(1.3)}
-  60%{transform:scale(0.9)}
-  100%{transform:scale(1)}
-}
-.check-item.just-checked .check-box{animation:checkPop .4s ease;}
-
-/* Phase celebration */
-@keyframes celebrateFlash{
-  0%{box-shadow:0 0 0 0 #10b98155}
-  50%{box-shadow:0 0 30px 10px #10b98133}
-  100%{box-shadow:0 0 0 0 transparent}
-}
-.phase-card.celebrate{animation:celebrateFlash .8s ease;}
-
-/* Confetti */
-.confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;z-index:9998;pointer-events:none;animation:confettiFall 1.5s ease-out forwards;}
-@keyframes confettiFall{
-  0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1);}
-  100%{opacity:0;transform:translateY(600px) rotate(720deg) scale(0.3);}
-}
-
-/* Toast */
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100;}
-.toast.show{opacity:1;}
-
-/* Usage badge */
-.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#888;margin-left:12px;vertical-align:middle;}
-
-/* Newsletter */
-.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px;}
-.newsletter h3{color:#ff5f1f;margin-bottom:8px;}
-.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px;}
-
-/* Cross-sell */
-.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
-.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
-.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
-.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none;}
-.cross-sell a.cta:hover{background:#e5500a;text-decoration:none;}
-
-.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px;}
-.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s;}
-.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none;}
-
-footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
-
-@media(max-width:600px){
-  h1{font-size:1.5rem;}
-  main{padding:20px 16px 60px;}
-  .phase-card{padding:16px;}
-  .check-item{padding:8px 8px;gap:10px;}
-  .actions-row{flex-direction:column;}
-  .actions-row .btn{width:100%;}
-}
+.subtitle{color:#888;font-size:14px;margin-bottom:20px;}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+.stat{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:6px 14px;font-size:12px;color:#888;}
+.stat strong{color:#ff5f1f;}
+.progress-wrap{background:#1a1a1a;border:1px solid #222;border-radius:12px;padding:16px 20px;margin-bottom:24px;}
+.progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.progress-header .pct{font-size:1.6rem;font-weight:800;color:#10b981;}
+.progress-header .label{font-size:13px;color:#888;}
+.progress-bar{height:10px;background:#222;border-radius:6px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#ff5f1f,#10b981);border-radius:6px;transition:width .4s ease;width:0%;}
+.top-actions{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 16px;color:#e8e8e8;font-size:13px;cursor:pointer;transition:all .2s;font-weight:500;}
+.btn:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.btn-danger{border-color:#dc2626;color:#dc2626;}
+.btn-danger:hover{background:#dc2626;color:#fff;}
+.category{margin-bottom:24px;}
+.cat-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#111;border:1px solid #222;border-radius:10px 10px 0 0;cursor:pointer;user-select:none;}
+.cat-header h2{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.cat-header .cat-count{font-size:12px;color:#888;background:#1a1a1a;padding:2px 10px;border-radius:12px;}
+.cat-header .cat-count .done{color:#10b981;}
+.cat-items{border:1px solid #222;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;}
+.cat-items.collapsed{display:none;}
+.check-item{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #1a1a1a;transition:background .15s;cursor:pointer;}
+.check-item:last-child{border-bottom:none;}
+.check-item:hover{background:#111;}
+.check-item.checked{opacity:.5;}
+.check-item.checked .item-text{text-decoration:line-through;}
+.checkbox{width:20px;height:20px;border:2px solid #444;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px;color:transparent;}
+.check-item.checked .checkbox{background:#10b981;border-color:#10b981;color:#fff;}
+.item-text{font-size:14px;flex:1;}
+.item-priority{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;flex-shrink:0;}
+.item-priority.critical{background:#ef444422;color:#ef4444;}
+.item-priority.important{background:#f59e0b22;color:#f59e0b;}
+.item-priority.nice{background:#10b98122;color:#10b981;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:300;display:none;}
+@media(max-width:600px){.check-item{padding:8px 12px;gap:8px;}.item-text{font-size:13px;}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Product Launch Checklist Generator","description":"Interactive product launch checklist with 35 steps across pre-launch, launch day, and post-launch phases. Progress tracking, localStorage persistence, and markdown export. Free tool.","url":"https://spunkart.com/launch-checklist","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
 </head>
 <body>
+<div class="cta-banner"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+<div class="container">
+  <h1><span>Website Launch Checklist</span> — 75 Points</h1>
+  <p class="subtitle">The definitive checklist for launching your website without missing a thing</p>
 
-<nav>
-  <a href="/" class="logo">SPUNKART.COM</a>
-  <div class="links">
-    <a href="/store#free-tools">&larr; All Tools</a>
-    <a href="/store">Store</a>
-    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
-    <a href="/blog">Blog</a>
-  </div>
-</nav>
-
-<main>
-  <h1>Product Launch <span>Checklist</span></h1>
-  <p class="subtitle">35-step interactive guide to launching your product &mdash; before, during, and after launch day.</p>
-  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
-    <div class="pricing-badge">100% Free Tool</div>
-    <span class="usage-badge">Used <span id="use-count">0</span> times</span>
+  <div class="stats-row">
+    <div class="stat"><strong id="checkedCount">0</strong> / <strong>75</strong> completed</div>
+    <div class="stat">Used <strong id="usageCount">0</strong> times</div>
   </div>
 
-  <!-- Progress Bar -->
-  <div class="progress-wrapper">
-    <div class="progress-fill" id="progressFill" style="width:0%"></div>
-    <div class="progress-text" id="progressText">0 / 35 completed (0%)</div>
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="actions-row">
-    <button class="btn btn-primary" onclick="copyMarkdown()">Copy as Markdown</button>
-    <button class="btn btn-danger" onclick="resetChecklist()">Reset Checklist</button>
-  </div>
-
-  <!-- Phase 1: Pre-Launch -->
-  <div class="phase-card" id="phase-1">
-    <div class="phase-header">
-      <div class="phase-title"><span class="phase-num">Phase 1:</span> Pre-Launch</div>
-      <span class="phase-badge phase-badge-pre">2-4 weeks before</span>
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <div><span class="pct" id="pctText">0%</span></div>
+      <div class="label" id="statusText">Just getting started</div>
     </div>
-    <div class="phase-progress" id="phase-1-progress">0 / 15 completed</div>
-    <div class="checklist" id="phase-1-list"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   </div>
 
-  <!-- Phase 2: Launch Day -->
-  <div class="phase-card" id="phase-2">
-    <div class="phase-header">
-      <div class="phase-title"><span class="phase-num">Phase 2:</span> Launch Day</div>
-      <span class="phase-badge phase-badge-launch">The big day</span>
-    </div>
-    <div class="phase-progress" id="phase-2-progress">0 / 10 completed</div>
-    <div class="checklist" id="phase-2-list"></div>
+  <div class="top-actions">
+    <button class="btn" onclick="expandAll()">Expand All</button>
+    <button class="btn" onclick="collapseAll()">Collapse All</button>
+    <button class="btn" onclick="exportMarkdown()">Export Markdown</button>
+    <button class="btn btn-danger" onclick="resetAll()">Reset All</button>
   </div>
 
-  <!-- Phase 3: Post-Launch -->
-  <div class="phase-card" id="phase-3">
-    <div class="phase-header">
-      <div class="phase-title"><span class="phase-num">Phase 3:</span> Post-Launch</div>
-      <span class="phase-badge phase-badge-post">First 7 days</span>
-    </div>
-    <div class="phase-progress" id="phase-3-progress">0 / 10 completed</div>
-    <div class="checklist" id="phase-3-list"></div>
-  </div>
+  <div id="checklistContainer"></div>
+</div>
 
-  <!-- Newsletter -->
-  <div class="newsletter">
-    <h3>Stay Updated</h3>
-    <p>Get free tools, templates, and tips delivered to your inbox.</p>
-    <iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
-  </div>
-
-  <!-- Cross-sell -->
-  <div class="cross-sell">
-    <h3>Get All 40+ Tools</h3>
-    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
-    <a href="/store" class="cta">Visit the Store</a>
-    <div class="tool-links">
-      <a href="/landing-page-copy">Landing Page Copy</a>
-      <a href="/tweet-generator">Tweet Generator</a>
-      <a href="/hashtag-generator">Hashtag Generator</a>
-      <a href="/meta-generator">Meta Tag Generator</a>
-      <a href="/sitemap-generator">Sitemap Generator</a>
-      <a href="/privacy-policy-generator">Privacy Policy</a>
-    </div>
-  </div>
-</main>
-
+<canvas class="confetti" id="confetti"></canvas>
 <div class="watermark">SPUNKART.COM</div>
-<div class="toast" id="toast">Copied!</div>
-
-<footer>&copy; 2025 <a href="https://spunkart.com" style="color:#ff5f1f;text-decoration:none">SpunkArt</a>. All rights reserved. &middot; <a href="https://x.com/SpunkArt13" style="color:#888;text-decoration:none">@SpunkArt13</a></footer>
+<div class="toast" id="toast"></div>
 
 <script>
-/* Checklist Data */
-var PHASES = [
-  {
-    id: 1,
-    items: [
-      { id: 'p1_1', text: 'Define your target audience' },
-      { id: 'p1_2', text: 'Set launch date' },
-      { id: 'p1_3', text: 'Create landing page', link: '/landing-page-copy', linkText: 'use Landing Page Copy tool' },
-      { id: 'p1_4', text: 'Set up email collection', link: '/email-signature', linkText: 'use Email Signature tool' },
-      { id: 'p1_5', text: 'Write product description' },
-      { id: 'p1_6', text: 'Set pricing', link: '/pricing-calculator', linkText: 'use Pricing Calculator' },
-      { id: 'p1_7', text: 'Create social media accounts' },
-      { id: 'p1_8', text: 'Write launch announcement', link: '/tweet-generator', linkText: 'use Tweet Generator' },
-      { id: 'p1_9', text: 'Generate hashtags', link: '/hashtag-generator', linkText: 'use Hashtag Generator' },
-      { id: 'p1_10', text: 'Create social bio', link: '/social-bio', linkText: 'use Social Bio Generator' },
-      { id: 'p1_11', text: 'Set up payment processing' },
-      { id: 'p1_12', text: 'Prepare FAQ document' },
-      { id: 'p1_13', text: 'Create terms of service', link: '/terms-of-service', linkText: 'use Terms of Service Generator' },
-      { id: 'p1_14', text: 'Generate privacy policy', link: '/privacy-policy-generator', linkText: 'use Privacy Policy Generator' },
-      { id: 'p1_15', text: 'Test everything on mobile' }
-    ]
-  },
-  {
-    id: 2,
-    items: [
-      { id: 'p2_1', text: 'Publish product/landing page' },
-      { id: 'p2_2', text: 'Send launch email to list' },
-      { id: 'p2_3', text: 'Post on X/Twitter' },
-      { id: 'p2_4', text: 'Post on Product Hunt' },
-      { id: 'p2_5', text: 'Post on Reddit (relevant subreddits)' },
-      { id: 'p2_6', text: 'Post on LinkedIn' },
-      { id: 'p2_7', text: 'Share in Discord/Slack communities' },
-      { id: 'p2_8', text: 'DM 10 potential customers' },
-      { id: 'p2_9', text: 'Monitor for bugs/issues' },
-      { id: 'p2_10', text: 'Respond to every comment within 1 hour' }
-    ]
-  },
-  {
-    id: 3,
-    items: [
-      { id: 'p3_1', text: 'Follow up with every sign-up' },
-      { id: 'p3_2', text: 'Collect testimonials' },
-      { id: 'p3_3', text: 'Fix any reported bugs' },
-      { id: 'p3_4', text: 'Send thank-you emails' },
-      { id: 'p3_5', text: 'Analyze traffic sources', link: '/speed-test', linkText: 'use Speed Test for performance' },
-      { id: 'p3_6', text: 'Update meta tags for SEO', link: '/meta-generator', linkText: 'use Meta Tag Generator' },
-      { id: 'p3_7', text: 'Create sitemap', link: '/sitemap-generator', linkText: 'use Sitemap Generator' },
-      { id: 'p3_8', text: 'Write blog post about the launch' },
-      { id: 'p3_9', text: 'Plan first content calendar week' },
-      { id: 'p3_10', text: 'Set up referral program' }
-    ]
-  }
+const CHECKLIST = [
+  {cat:"Pre-Launch",items:[
+    {t:"Register and configure custom domain name",p:"critical"},
+    {t:"Set up hosting or deployment platform (Vercel, Netlify, GitHub Pages)",p:"critical"},
+    {t:"Install and verify SSL certificate — enforce HTTPS everywhere",p:"critical"},
+    {t:"Create and upload favicon in all sizes (16x16, 32x32, apple-touch-icon 180x180)",p:"important"},
+    {t:"Set up Open Graph meta tags (og:title, og:description, og:image) for every page",p:"important"},
+    {t:"Configure DNS records correctly (A, CNAME, MX for email)",p:"critical"},
+    {t:"Set up a staging or preview environment for testing changes",p:"nice"},
+    {t:"Test site in Chrome, Firefox, Safari, and Edge browsers",p:"important"},
+    {t:"Verify mobile responsiveness on actual phones and tablets",p:"critical"}
+  ]},
+  {cat:"SEO",items:[
+    {t:"Write unique title tags for every page (under 60 characters each)",p:"critical"},
+    {t:"Write compelling meta descriptions for every page (under 155 characters)",p:"critical"},
+    {t:"Generate and submit an XML sitemap to Google Search Console",p:"critical"},
+    {t:"Add structured data / Schema.org JSON-LD markup to key pages",p:"important"},
+    {t:"Create and properly configure robots.txt file",p:"critical"},
+    {t:"Set canonical URLs on all pages to prevent duplicate content",p:"important"},
+    {t:"Implement proper heading hierarchy (single H1, then H2s, H3s)",p:"important"},
+    {t:"Add descriptive alt text to every image on the site",p:"important"},
+    {t:"Set up 301 redirects for any old or changed URLs",p:"nice"},
+    {t:"Run a crawl to verify zero broken internal or external links",p:"important"}
+  ]},
+  {cat:"Performance",items:[
+    {t:"Minify all CSS and JavaScript files for production",p:"important"},
+    {t:"Compress and optimize all images — use WebP format where possible",p:"critical"},
+    {t:"Implement lazy loading for all images and iframes below the fold",p:"important"},
+    {t:"Set up a CDN (Cloudflare, BunnyCDN) for static asset delivery",p:"nice"},
+    {t:"Enable browser caching with proper Cache-Control and ETag headers",p:"important"},
+    {t:"Eliminate or defer render-blocking CSS and JavaScript resources",p:"important"},
+    {t:"Test and pass Core Web Vitals: LCP under 2.5s, FID under 100ms, CLS under 0.1",p:"critical"},
+    {t:"Enable Gzip or Brotli compression on the server",p:"important"}
+  ]},
+  {cat:"Security",items:[
+    {t:"Force HTTPS on all pages — redirect all HTTP requests to HTTPS",p:"critical"},
+    {t:"Set Content-Security-Policy (CSP) headers to prevent XSS attacks",p:"important"},
+    {t:"Validate and sanitize all user input on both client and server",p:"critical"},
+    {t:"Set X-Frame-Options header to DENY or SAMEORIGIN to prevent clickjacking",p:"important"},
+    {t:"Configure X-Content-Type-Options: nosniff header",p:"nice"},
+    {t:"Set a strict Referrer-Policy header",p:"nice"},
+    {t:"Remove server software version info from HTTP response headers",p:"nice"},
+    {t:"Test for common vulnerabilities: XSS, CSRF, SQL injection, open redirects",p:"critical"}
+  ]},
+  {cat:"Analytics",items:[
+    {t:"Install Google Analytics 4 (GA4) and verify data collection",p:"critical"},
+    {t:"Install Microsoft Clarity or Hotjar for heatmaps and session recordings",p:"important"},
+    {t:"Set up conversion tracking — define and configure key goals in GA4",p:"critical"},
+    {t:"Configure UTM parameter tracking strategy for all campaign links",p:"important"},
+    {t:"Set up and verify Google Search Console ownership",p:"critical"},
+    {t:"Enable Enhanced Measurement in GA4 (scroll, outbound clicks, search)",p:"nice"},
+    {t:"Test that all tracking events and goals fire correctly before launch",p:"important"}
+  ]},
+  {cat:"Content",items:[
+    {t:"Proofread every page for spelling, grammar, and factual errors",p:"critical"},
+    {t:"Add clear calls-to-action (CTAs) on every page — tell visitors what to do next",p:"critical"},
+    {t:"Include social proof elements: testimonials, client logos, review ratings",p:"important"},
+    {t:"Add a working contact form or clearly visible contact information",p:"critical"},
+    {t:"Create a compelling and authentic About page that builds trust",p:"important"},
+    {t:"Verify all external links open in new tabs and point to live pages",p:"nice"},
+    {t:"Add site search functionality if the site has 20 or more pages",p:"nice"},
+    {t:"Create a custom branded 404 error page with helpful navigation",p:"important"}
+  ]},
+  {cat:"Legal",items:[
+    {t:"Publish a comprehensive Privacy Policy page",p:"critical"},
+    {t:"Publish Terms of Service or Terms of Use page",p:"critical"},
+    {t:"Implement a cookie consent banner compliant with GDPR and CCPA",p:"critical"},
+    {t:"Add a copyright notice with current year in the site footer",p:"nice"},
+    {t:"Add any industry-specific disclaimers required for your business",p:"nice"},
+    {t:"Verify compliance with WCAG 2.1 AA accessibility standards",p:"important"}
+  ]},
+  {cat:"Social",items:[
+    {t:"Add social media share buttons to all content and product pages",p:"important"},
+    {t:"Create custom OG images (1200x630px) for all key landing pages",p:"important"},
+    {t:"Set up Twitter Card meta tags (summary_large_image) on all pages",p:"important"},
+    {t:"Test share previews using Facebook Debugger and Twitter Card Validator",p:"nice"},
+    {t:"Link to all social media profiles in the header or footer",p:"nice"},
+    {t:"Add a social media follow widget or prompt on key pages",p:"nice"}
+  ]},
+  {cat:"Monetization",items:[
+    {t:"Set up and test payment processing end-to-end (Stripe, LemonSqueezy, PayPal)",p:"critical"},
+    {t:"Add email capture forms with a compelling lead magnet on key pages",p:"critical"},
+    {t:"Configure affiliate tracking links and dashboards if applicable",p:"nice"},
+    {t:"Set up abandoned cart recovery emails for any e-commerce flows",p:"important"},
+    {t:"Complete a full test purchase through every checkout path",p:"critical"},
+    {t:"Add a pricing page with clear tier comparisons and feature lists",p:"important"},
+    {t:"Set up automated receipt, confirmation, and welcome emails",p:"important"}
+  ]},
+  {cat:"Post-Launch",items:[
+    {t:"Request indexing for all key pages in Google Search Console",p:"critical"},
+    {t:"Submit site to Bing Webmaster Tools for broader search coverage",p:"nice"},
+    {t:"Announce launch on all social media channels with a compelling post",p:"important"},
+    {t:"Send a launch announcement email to your entire mailing list",p:"important"},
+    {t:"Set up uptime monitoring with alerts (UptimeRobot, Better Stack)",p:"important"},
+    {t:"Monitor server error logs closely for the first 48 hours post-launch",p:"critical"},
+    {t:"Manually test all forms, buttons, and interactive features on production",p:"critical"},
+    {t:"Set up automated daily or weekly backups of site and database",p:"important"}
+  ]}
 ];
 
-var STORAGE_KEY = 'spunkart_launch_checklist_state';
-var USES_KEY = 'spunkart_launch_checklist_uses';
-var SESSION_KEY = 'spunkart_launch_checklist_session_counted';
-var state = {};
-var sessionCounted = false;
+let checked = JSON.parse(localStorage.getItem('lc_checked')||'{}');
+let usage = parseInt(localStorage.getItem('lc_usage')||'0');
+document.getElementById('usageCount').textContent = usage;
+let collapsed = JSON.parse(localStorage.getItem('lc_collapsed')||'{}');
 
-/* Load state from localStorage */
-function loadState() {
-  try {
-    var saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) state = JSON.parse(saved);
-  } catch(e) { state = {}; }
-  sessionCounted = !!sessionStorage.getItem(SESSION_KEY);
-}
+function getItemId(ci,ii){return ci+'_'+ii;}
+function getTotalItems(){let n=0;CHECKLIST.forEach(c=>n+=c.items.length);return n;}
+function getCheckedCount(){return Object.values(checked).filter(Boolean).length;}
 
-function saveState() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
-}
-
-/* Build checklist DOM */
-function buildChecklists() {
-  PHASES.forEach(function(phase) {
-    var container = document.getElementById('phase-' + phase.id + '-list');
-    container.innerHTML = '';
-    phase.items.forEach(function(item) {
-      var div = document.createElement('div');
-      div.className = 'check-item' + (state[item.id] ? ' checked' : '');
-      div.setAttribute('data-id', item.id);
-      div.onclick = function(e) {
-        if (e.target.closest('.tool-link')) return;
-        toggleItem(item.id, div, phase.id);
-      };
-
-      var linkHtml = '';
-      if (item.link) {
-        linkHtml = ' <a href="' + item.link + '" class="tool-link" onclick="event.stopPropagation()">&rarr; ' + item.linkText + '</a>';
-      }
-
-      div.innerHTML = '<div class="check-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 4" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">' + item.text + linkHtml + '</div>';
-      container.appendChild(div);
+function render(){
+  const container = document.getElementById('checklistContainer');
+  container.innerHTML = '';
+  CHECKLIST.forEach((cat,ci)=>{
+    const catDone = cat.items.filter((_,ii)=>checked[getItemId(ci,ii)]).length;
+    const isCollapsed = collapsed[ci];
+    let html = `<div class="category">
+      <div class="cat-header" onclick="toggleCat(${ci})">
+        <h2>${cat.cat}</h2>
+        <span class="cat-count"><span class="done">${catDone}</span> / ${cat.items.length}</span>
+      </div>
+      <div class="cat-items${isCollapsed?' collapsed':''}" id="catItems_${ci}">`;
+    cat.items.forEach((item,ii)=>{
+      const id = getItemId(ci,ii);
+      const isChecked = checked[id];
+      html += `<div class="check-item${isChecked?' checked':''}" onclick="toggleItem(${ci},${ii})">
+        <div class="checkbox">${isChecked?'&#10003;':''}</div>
+        <div class="item-text">${item.t}</div>
+        <span class="item-priority ${item.p}">${item.p}</span>
+      </div>`;
     });
+    html += '</div></div>';
+    container.innerHTML += html;
   });
-}
-
-/* Toggle item */
-function toggleItem(id, el, phaseId) {
-  state[id] = !state[id];
-  saveState();
-
-  if (state[id]) {
-    el.classList.add('checked', 'just-checked');
-    setTimeout(function() { el.classList.remove('just-checked'); }, 500);
-  } else {
-    el.classList.remove('checked');
-  }
-
-  /* Count usage on first checkbox click per session */
-  if (!sessionCounted) {
-    sessionCounted = true;
-    sessionStorage.setItem(SESSION_KEY, '1');
-    window._spunkCountUse();
-  }
-
   updateProgress();
-  checkPhaseComplete(phaseId);
 }
 
-/* Update progress */
-function updateProgress() {
-  var total = 0, checked = 0;
-  PHASES.forEach(function(phase) {
-    var phaseChecked = 0;
-    phase.items.forEach(function(item) {
-      total++;
-      if (state[item.id]) { checked++; phaseChecked++; }
-    });
-    document.getElementById('phase-' + phase.id + '-progress').textContent = phaseChecked + ' / ' + phase.items.length + ' completed';
-    if (phaseChecked === phase.items.length) {
-      document.getElementById('phase-' + phase.id).classList.add('completed');
-    } else {
-      document.getElementById('phase-' + phase.id).classList.remove('completed');
-    }
-  });
-
-  var pct = total > 0 ? Math.round((checked / total) * 100) : 0;
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = checked + ' / ' + total + ' completed (' + pct + '%)';
+function toggleItem(ci,ii){
+  const id = getItemId(ci,ii);
+  checked[id] = !checked[id];
+  localStorage.setItem('lc_checked',JSON.stringify(checked));
+  usage++;localStorage.setItem('lc_usage',usage);document.getElementById('usageCount').textContent=usage;
+  render();
+  if(getCheckedCount()===getTotalItems()) celebrate();
 }
 
-/* Phase completion celebration */
-var phaseCelebrated = {};
-function checkPhaseComplete(phaseId) {
-  var phase = PHASES.find(function(p) { return p.id === phaseId; });
-  if (!phase) return;
-  var allChecked = phase.items.every(function(item) { return state[item.id]; });
-  if (allChecked && !phaseCelebrated[phaseId]) {
-    phaseCelebrated[phaseId] = true;
-    var card = document.getElementById('phase-' + phaseId);
-    card.classList.add('celebrate');
-    setTimeout(function() { card.classList.remove('celebrate'); }, 1000);
-    spawnConfetti(card);
-    showToast('Phase ' + phaseId + ' complete!');
-  } else if (!allChecked) {
-    phaseCelebrated[phaseId] = false;
-  }
+function toggleCat(ci){
+  collapsed[ci] = !collapsed[ci];
+  localStorage.setItem('lc_collapsed',JSON.stringify(collapsed));
+  const el = document.getElementById('catItems_'+ci);
+  el.classList.toggle('collapsed');
 }
 
-/* Confetti */
-function spawnConfetti(targetEl) {
-  var rect = targetEl.getBoundingClientRect();
-  var cx = rect.left + rect.width / 2;
-  var cy = rect.top;
-  var colors = ['#ff5f1f','#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#ec4899'];
-  for (var i = 0; i < 40; i++) {
-    var piece = document.createElement('div');
-    piece.className = 'confetti-piece';
-    piece.style.left = (cx + (Math.random() - 0.5) * 300) + 'px';
-    piece.style.top = (cy + Math.random() * 40) + 'px';
-    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.width = (6 + Math.random() * 6) + 'px';
-    piece.style.height = (6 + Math.random() * 6) + 'px';
-    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    piece.style.animationDuration = (1 + Math.random() * 1) + 's';
-    piece.style.animationDelay = (Math.random() * 0.3) + 's';
-    document.body.appendChild(piece);
-    (function(p) {
-      setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 2500);
-    })(piece);
-  }
+function updateProgress(){
+  const total = getTotalItems();
+  const done = getCheckedCount();
+  const pct = Math.round((done/total)*100);
+  document.getElementById('checkedCount').textContent = done;
+  document.getElementById('pctText').textContent = pct+'%';
+  document.getElementById('progressFill').style.width = pct+'%';
+  let status = 'Just getting started';
+  if(pct>=100) status='Launch ready! Ship it!';
+  else if(pct>=75) status='Almost there — final checks';
+  else if(pct>=50) status='Halfway through — keep going';
+  else if(pct>=25) status='Making good progress';
+  else if(pct>0) status='Off to a great start';
+  document.getElementById('statusText').textContent = status;
 }
 
-/* Toast */
-function showToast(msg) {
-  var t = document.getElementById('toast');
-  t.textContent = msg || 'Done!';
-  t.classList.add('show');
-  setTimeout(function() { t.classList.remove('show'); }, 2000);
+function expandAll(){collapsed={};localStorage.setItem('lc_collapsed','{}');render();}
+function collapseAll(){CHECKLIST.forEach((_,i)=>collapsed[i]=true);localStorage.setItem('lc_collapsed',JSON.stringify(collapsed));render();}
+
+function resetAll(){
+  if(!confirm('Reset all progress? This cannot be undone.')) return;
+  checked={};localStorage.setItem('lc_checked','{}');render();showToast('Checklist reset');
 }
 
-/* Copy as Markdown */
-function copyMarkdown() {
-  var md = '# Product Launch Checklist\n\n';
-  var phaseNames = ['Pre-Launch (2-4 weeks before)', 'Launch Day', 'Post-Launch (first 7 days)'];
-  PHASES.forEach(function(phase, idx) {
-    md += '## Phase ' + phase.id + ': ' + phaseNames[idx] + '\n\n';
-    phase.items.forEach(function(item) {
-      var check = state[item.id] ? 'x' : ' ';
-      var line = '- [' + check + '] ' + item.text;
-      if (item.link) line += ' (https://spunkart.com' + item.link + ')';
-      md += line + '\n';
+function exportMarkdown(){
+  let md = `# Website Launch Checklist\n\nProgress: ${getCheckedCount()}/${getTotalItems()} (${Math.round((getCheckedCount()/getTotalItems())*100)}%)\n\n`;
+  CHECKLIST.forEach((cat,ci)=>{
+    md += `## ${cat.cat}\n\n`;
+    cat.items.forEach((item,ii)=>{
+      const done = checked[getItemId(ci,ii)]?'x':' ';
+      md += `- [${done}] ${item.t} *(${item.p})*\n`;
     });
     md += '\n';
   });
-  md += '---\nGenerated with SpunkArt Launch Checklist — https://spunkart.com/launch-checklist\n';
-
-  navigator.clipboard.writeText(md).then(function() {
-    showToast('Markdown copied to clipboard!');
-  }).catch(function() {
-    /* Fallback for older browsers */
-    var ta = document.createElement('textarea');
-    ta.value = md;
-    ta.style.position = 'fixed';
-    ta.style.left = '-9999px';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('Markdown copied to clipboard!');
-  });
-
-  gtag('event', 'copy_markdown', { event_category: 'tool_use', event_label: 'launch_checklist' });
+  md += '---\nGenerated at SpunkArt.com/launch-checklist.html';
+  navigator.clipboard.writeText(md);
+  showToast('Markdown copied to clipboard!');
 }
 
-/* Reset checklist */
-function resetChecklist() {
-  if (!confirm('Reset all progress? This cannot be undone.')) return;
-  state = {};
-  saveState();
-  phaseCelebrated = {};
-  buildChecklists();
-  updateProgress();
-  showToast('Checklist reset');
-  gtag('event', 'reset_checklist', { event_category: 'tool_use', event_label: 'launch_checklist' });
-}
-
-/* Initialize */
-loadState();
-buildChecklists();
-updateProgress();
-
-/* Restore phase celebrated state */
-PHASES.forEach(function(phase) {
-  var allChecked = phase.items.every(function(item) { return state[item.id]; });
-  if (allChecked) phaseCelebrated[phase.id] = true;
-});
-</script>
-
-<script>
-/* Usage counter */
-(function(){
-  var k=USES_KEY,c=parseInt(localStorage.getItem(k)||'0');
-  document.getElementById('use-count').textContent=c;
-  window._spunkCountUse=function(){
-    c++;localStorage.setItem(k,String(c));
-    document.getElementById('use-count').textContent=c;
-  };
-})();
-
-/* Email collection after 2nd use */
-(function(){
-  var ek='spunkart_email_collected',uk=USES_KEY;
-  if(localStorage.getItem(ek))return;
-  var check=setInterval(function(){
-    if(parseInt(localStorage.getItem(uk)||'0')>=2){
-      clearInterval(check);
-      var bar=document.createElement('div');
-      bar.innerHTML='<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools &amp; updates \u2014 </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
-      document.body.appendChild(bar);
-    }
-  },1000);
-})();
-</script>
-
-<script>
-/* SpunkArt Protection */
-(function(){
-  document.addEventListener('contextmenu',function(e){e.preventDefault();});
-  document.addEventListener('keydown',function(e){
-    if(e.key==='F12')e.preventDefault();
-    if(e.ctrlKey&&e.key==='u')e.preventDefault();
-    if(e.ctrlKey&&e.key==='s')e.preventDefault();
-    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
-  });
-  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
-  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
-  if(!document.querySelector('.watermark')){
-    var w=document.createElement('div');
-    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
-    w.textContent='SPUNKART.COM';
-    document.body.appendChild(w);
+function celebrate(){
+  const canvas = document.getElementById('confetti');
+  canvas.style.display = 'block';
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  const particles = [];
+  const colors = ['#ff5f1f','#10b981','#f59e0b','#2563eb','#a855f7','#e8e8e8'];
+  for(let i=0;i<150;i++){
+    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,w:Math.random()*8+4,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],vy:Math.random()*3+2,vx:Math.random()*2-1,rot:Math.random()*360,vr:Math.random()*6-3});
   }
-})();
+  let frame=0;
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();});
+    frame++;
+    if(frame<180)requestAnimationFrame(animate);else canvas.style.display='none';
+  }
+  animate();
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2000);}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+render();
 </script>
 </body>
 </html>
