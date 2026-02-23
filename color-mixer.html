@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Mixer - Blend Colors & Generate Palettes | SPUNKART.COM</title>
+<meta name="description" content="Mix and blend 2+ colors visually. Generate harmonious palettes, complementary colors, and export as CSS variables or Tailwind config. Free color tool for designers.">
+<meta property="og:title" content="Color Mixer - Blend Colors & Generate Palettes">
+<meta property="og:description" content="Mix 2+ colors visually, generate harmonious palettes, export as CSS variables or Tailwind config. Free tool by SPUNKART.COM">
+<meta property="og:image" content="https://spunkart.com/assets/og-color-mixer.png">
+<meta property="og:url" content="https://spunkart.com/color-mixer.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Color Mixer - Free Design Tool">
+<meta name="twitter:description" content="Blend colors, generate palettes, export CSS variables or Tailwind config. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/color-mixer.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Color Mixer",
+  "description": "Mix and blend colors visually. Generate harmonious palettes and export as CSS variables or Tailwind config.",
+  "url": "https://spunkart.com/color-mixer.html",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h1 span{color:#ff5f1f;}
+h2{font-size:1.2rem;color:#fff;margin:28px 0 16px;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:24px;}
+.usage-badge strong{color:#ff5f1f;}
+.mixer-section{margin-bottom:32px;}
+.color-inputs{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end;}
+.color-input-group{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;}
+.color-input-group label{font-size:0.75rem;color:#888;font-weight:600;}
+.color-input-group input[type="color"]{width:64px;height:64px;border:2px solid #333;border-radius:12px;cursor:pointer;background:none;padding:2px;}
+.color-input-group input[type="color"]::-webkit-color-swatch-wrapper{padding:2px;}
+.color-input-group input[type="color"]::-webkit-color-swatch{border-radius:8px;border:none;}
+.color-input-group .hex{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.8rem;color:#aaa;cursor:pointer;}
+.color-input-group .hex:hover{color:#ff5f1f;}
+.color-input-group .remove-color{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:#333;color:#ff4444;border:none;font-size:0.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.color-input-group .remove-color:hover{background:#ff4444;color:#fff;}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333;}
+.btn-secondary:hover{background:#333;color:#fff;}
+.btn-sm{padding:8px 16px;font-size:0.8rem;}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.plus-btn{width:64px;height:64px;border:2px dashed #333;border-radius:12px;background:none;color:#555;font-size:1.5rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.plus-btn:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.mix-controls{display:flex;gap:16px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.mix-controls label{font-size:0.85rem;color:#aaa;}
+.mix-controls input[type="range"]{width:200px;accent-color:#ff5f1f;}
+.mix-controls .range-val{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;color:#ff5f1f;min-width:40px;}
+.result-display{display:flex;gap:0;border-radius:16px;overflow:hidden;margin-bottom:24px;min-height:120px;}
+.result-swatch{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 8px;cursor:pointer;transition:flex .3s;min-height:120px;}
+.result-swatch:hover{flex:1.4;}
+.result-swatch .swatch-hex{background:rgba(0,0,0,0.5);color:#fff;padding:3px 10px;border-radius:6px;font-size:0.8rem;font-weight:700;letter-spacing:0.5px;margin-bottom:4px;backdrop-filter:blur(4px);}
+.result-swatch .swatch-rgb{font-size:0.65rem;color:rgba(255,255,255,0.6);background:rgba(0,0,0,0.4);padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);}
+.copied-flash{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#10b981;padding:6px 14px;border-radius:8px;font-weight:700;font-size:0.85rem;opacity:0;transition:opacity .3s;pointer-events:none;}
+.harmony-section{margin-bottom:32px;}
+.harmony-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.harmony-tab{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 16px;color:#ccc;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all .2s;}
+.harmony-tab:hover,.harmony-tab.active{border-color:#ff5f1f;color:#ff5f1f;background:#1f1008;}
+.palette-row{display:flex;border-radius:12px;overflow:hidden;min-height:80px;margin-bottom:16px;}
+.palette-swatch{flex:1;display:flex;align-items:center;justify-content:center;cursor:pointer;min-height:80px;transition:flex .2s;}
+.palette-swatch:hover{flex:1.3;}
+.palette-swatch span{background:rgba(0,0,0,0.5);color:#fff;padding:3px 8px;border-radius:5px;font-size:0.75rem;font-weight:700;backdrop-filter:blur(4px);}
+.export-section{margin-bottom:24px;}
+.export-block{background:#111;border:1px solid #222;border-radius:10px;padding:16px;position:relative;margin-bottom:12px;}
+.export-block h3{font-size:0.85rem;color:#ff5f1f;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.export-block pre{background:#0d0d0d;padding:12px;border-radius:6px;font-size:0.82rem;color:#ccc;white-space:pre-wrap;overflow-x:auto;font-family:'SF Mono',Monaco,Consolas,monospace;line-height:1.6;}
+.export-block .copy-btn{position:absolute;top:12px;right:12px;background:#333;color:#ccc;border:none;padding:5px 12px;border-radius:5px;font-size:0.75rem;cursor:pointer;}
+.export-block .copy-btn:hover{background:#ff5f1f;color:#fff;}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+@media(max-width:600px){h1{font-size:1.5rem;}.color-inputs{gap:10px;}.color-input-group input[type="color"]{width:48px;height:48px;}.plus-btn{width:48px;height:48px;font-size:1.2rem;}.mix-controls{flex-direction:column;align-items:flex-start;}.mix-controls input[type="range"]{width:100%;}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">SPUNKART</a>
+<div class="links">
+<a href="/store.html">Store</a>
+<a href="/blog.html">Blog</a>
+<a href="/index.html#tools">Free Tools</a>
+</div>
+</nav>
+
+<main>
+<h1><span>Color</span> Mixer</h1>
+<p class="subtitle">Pick 2+ colors, blend them with adjustable steps, generate harmonious palettes, and export as CSS variables or Tailwind config.</p>
+<div class="usage-badge">Mixed <strong id="usageCount">0</strong> times</div>
+
+<div class="mixer-section">
+<h2>Input Colors</h2>
+<div class="color-inputs" id="colorInputs">
+<div class="color-input-group" data-index="0">
+<label>Color 1</label>
+<input type="color" value="#ff5f1f" onchange="updateMix()">
+<span class="hex" onclick="copyHex(this)">#ff5f1f</span>
+</div>
+<div class="color-input-group" data-index="1">
+<label>Color 2</label>
+<input type="color" value="#3498db" onchange="updateMix()">
+<span class="hex" onclick="copyHex(this)">#3498db</span>
+</div>
+<button class="plus-btn" onclick="addColor()">+</button>
+</div>
+
+<div class="mix-controls">
+<label>Blend Steps:</label>
+<input type="range" id="blendSteps" min="3" max="15" value="7" oninput="updateMix()">
+<span class="range-val" id="stepsVal">7</span>
+<label style="margin-left:16px;">Mode:</label>
+<select id="blendMode" onchange="updateMix()" style="background:#111;border:1px solid #333;border-radius:6px;padding:6px 10px;color:#e8e8e8;font-size:0.85rem;">
+<option value="rgb">RGB</option>
+<option value="hsl">HSL</option>
+</select>
+</div>
+
+<h2>Blended Result</h2>
+<div class="result-display" id="resultDisplay"></div>
+</div>
+
+<div class="harmony-section">
+<h2>Harmony Palettes</h2>
+<div class="harmony-tabs">
+<button class="harmony-tab active" onclick="setHarmony('complementary',this)">Complementary</button>
+<button class="harmony-tab" onclick="setHarmony('analogous',this)">Analogous</button>
+<button class="harmony-tab" onclick="setHarmony('triadic',this)">Triadic</button>
+<button class="harmony-tab" onclick="setHarmony('split',this)">Split Complementary</button>
+<button class="harmony-tab" onclick="setHarmony('tetradic',this)">Tetradic</button>
+<button class="harmony-tab" onclick="setHarmony('monochromatic',this)">Monochromatic</button>
+</div>
+<div class="palette-row" id="harmonyPalette"></div>
+</div>
+
+<div class="export-section">
+<h2>Export</h2>
+<div class="export-block">
+<h3>CSS Custom Properties</h3>
+<button class="copy-btn" onclick="copyExport('cssExport')">Copy</button>
+<pre id="cssExport"></pre>
+</div>
+<div class="export-block">
+<h3>Tailwind Config</h3>
+<button class="copy-btn" onclick="copyExport('tailwindExport')">Copy</button>
+<pre id="tailwindExport"></pre>
+</div>
+<div class="export-block">
+<h3>SCSS Variables</h3>
+<button class="copy-btn" onclick="copyExport('scssExport')">Copy</button>
+<pre id="scssExport"></pre>
+</div>
+</div>
+
+<div class="cross-sell">
+<h3>Design Faster</h3>
+<p>Check out our Color Palette Generator, CSS Gradient Tool, and 80+ other free tools.</p>
+<a href="/store.html" class="cta">Browse All Tools</a>
+<br><br>
+<a href="/ebook-vibe-coding.html" style="color:#999;font-size:0.85rem;">Get the Vibe Coding Ebook &rarr;</a>
+</div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Copied!</div>
+
+<div class="email-overlay" id="emailOverlay">
+<div class="email-popup">
+<button class="close-popup" onclick="closePopup()">&times;</button>
+<h2>Design Tips Weekly</h2>
+<p>Join 2,000+ solo founders getting free design tools, palettes, and creative shortcuts.</p>
+<iframe src="https://embeds.beehiiv.com/a23fb2e5-bb3b-4ed4-884e-0ace68a5a55b?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin-bottom:12px;"></iframe>
+<button class="btn btn-secondary" onclick="closePopup()" style="padding:8px 16px;font-size:0.85rem;margin-top:8px;">Maybe later</button>
+</div>
+</div>
+
+<footer>&copy; 2026 SpunkArt.com. All rights reserved.</footer>
+
+<script>
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))){e.preventDefault();}});})();
+
+let usage = parseInt(localStorage.getItem('colormixer_usage') || '0');
+document.getElementById('usageCount').textContent = usage;
+let currentHarmony = 'complementary';
+let blendedColors = [];
+
+function incrementUsage() {
+  usage++;
+  localStorage.setItem('colormixer_usage', usage);
+  document.getElementById('usageCount').textContent = usage;
+  if (usage === 3) showPopup();
+}
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b].map(x => Math.round(Math.max(0, Math.min(255, x))).toString(16).padStart(2, '0')).join('');
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return { h: h * 360, s: s * 100, l: l * 100 };
+}
+
+function hslToRgb(h, s, l) {
+  h /= 360; s /= 100; l /= 100;
+  let r, g, b;
+  if (s === 0) { r = g = b = l; }
+  else {
+    const hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1; if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1/3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1/3);
+  }
+  return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+}
+
+function getInputColors() {
+  const inputs = document.querySelectorAll('#colorInputs .color-input-group input[type="color"]');
+  return Array.from(inputs).map(i => i.value);
+}
+
+function addColor() {
+  const container = document.getElementById('colorInputs');
+  const btn = container.querySelector('.plus-btn');
+  const count = container.querySelectorAll('.color-input-group').length;
+  if (count >= 8) { showToast('Max 8 colors'); return; }
+
+  const randomHex = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+  const group = document.createElement('div');
+  group.className = 'color-input-group';
+  group.dataset.index = count;
+  group.innerHTML = `<label>Color ${count + 1}</label><input type="color" value="${randomHex}" onchange="updateMix()"><span class="hex" onclick="copyHex(this)">${randomHex}</span><button class="remove-color" onclick="removeColor(this)">&times;</button>`;
+  container.insertBefore(group, btn);
+  updateMix();
+}
+
+function removeColor(btn) {
+  const groups = document.querySelectorAll('#colorInputs .color-input-group');
+  if (groups.length <= 2) { showToast('Need at least 2 colors'); return; }
+  btn.parentElement.remove();
+  updateMix();
+}
+
+function blendColorsRGB(colors, steps) {
+  const results = [];
+  for (let i = 0; i <= steps - 1; i++) {
+    const t = i / (steps - 1);
+    const totalSegments = colors.length - 1;
+    const segment = Math.min(Math.floor(t * totalSegments), totalSegments - 1);
+    const segT = (t * totalSegments) - segment;
+
+    const c1 = hexToRgb(colors[segment]);
+    const c2 = hexToRgb(colors[Math.min(segment + 1, colors.length - 1)]);
+
+    const r = c1.r + (c2.r - c1.r) * segT;
+    const g = c1.g + (c2.g - c1.g) * segT;
+    const b = c1.b + (c2.b - c1.b) * segT;
+    results.push(rgbToHex(r, g, b));
+  }
+  return results;
+}
+
+function blendColorsHSL(colors, steps) {
+  const results = [];
+  const hslColors = colors.map(c => {
+    const rgb = hexToRgb(c);
+    return rgbToHsl(rgb.r, rgb.g, rgb.b);
+  });
+
+  for (let i = 0; i <= steps - 1; i++) {
+    const t = i / (steps - 1);
+    const totalSegments = hslColors.length - 1;
+    const segment = Math.min(Math.floor(t * totalSegments), totalSegments - 1);
+    const segT = (t * totalSegments) - segment;
+
+    const c1 = hslColors[segment];
+    const c2 = hslColors[Math.min(segment + 1, hslColors.length - 1)];
+
+    let hDiff = c2.h - c1.h;
+    if (hDiff > 180) hDiff -= 360;
+    if (hDiff < -180) hDiff += 360;
+
+    const h = (c1.h + hDiff * segT + 360) % 360;
+    const s = c1.s + (c2.s - c1.s) * segT;
+    const l = c1.l + (c2.l - c1.l) * segT;
+    const rgb = hslToRgb(h, s, l);
+    results.push(rgbToHex(rgb.r, rgb.g, rgb.b));
+  }
+  return results;
+}
+
+function updateMix() {
+  const colors = getInputColors();
+  const steps = parseInt(document.getElementById('blendSteps').value);
+  const mode = document.getElementById('blendMode').value;
+
+  document.getElementById('stepsVal').textContent = steps;
+
+  document.querySelectorAll('#colorInputs .color-input-group').forEach(g => {
+    const input = g.querySelector('input[type="color"]');
+    const hex = g.querySelector('.hex');
+    if (input && hex) hex.textContent = input.value;
+  });
+
+  blendedColors = mode === 'hsl' ? blendColorsHSL(colors, steps) : blendColorsRGB(colors, steps);
+
+  const display = document.getElementById('resultDisplay');
+  display.innerHTML = '';
+  blendedColors.forEach(hex => {
+    const rgb = hexToRgb(hex);
+    const swatch = document.createElement('div');
+    swatch.className = 'result-swatch';
+    swatch.style.background = hex;
+    swatch.innerHTML = `<span class="swatch-hex">${hex}</span><span class="swatch-rgb">rgb(${rgb.r},${rgb.g},${rgb.b})</span>`;
+    swatch.onclick = () => { navigator.clipboard.writeText(hex); showToast('Copied ' + hex); };
+    display.appendChild(swatch);
+  });
+
+  updateHarmony();
+  updateExports();
+  incrementUsage();
+}
+
+function setHarmony(type, btn) {
+  currentHarmony = type;
+  document.querySelectorAll('.harmony-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateHarmony();
+}
+
+function updateHarmony() {
+  const midColor = blendedColors[Math.floor(blendedColors.length / 2)] || '#ff5f1f';
+  const rgb = hexToRgb(midColor);
+  const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+  let palette = [];
+
+  switch (currentHarmony) {
+    case 'complementary':
+      palette = [hsl.h, (hsl.h + 180) % 360].map(h => {
+        const c = hslToRgb(h, hsl.s, hsl.l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+    case 'analogous':
+      palette = [-30, -15, 0, 15, 30].map(offset => {
+        const c = hslToRgb((hsl.h + offset + 360) % 360, hsl.s, hsl.l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+    case 'triadic':
+      palette = [0, 120, 240].map(offset => {
+        const c = hslToRgb((hsl.h + offset) % 360, hsl.s, hsl.l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+    case 'split':
+      palette = [0, 150, 210].map(offset => {
+        const c = hslToRgb((hsl.h + offset) % 360, hsl.s, hsl.l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+    case 'tetradic':
+      palette = [0, 90, 180, 270].map(offset => {
+        const c = hslToRgb((hsl.h + offset) % 360, hsl.s, hsl.l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+    case 'monochromatic':
+      palette = [20, 35, 50, 65, 80].map(l => {
+        const c = hslToRgb(hsl.h, hsl.s, l);
+        return rgbToHex(c.r, c.g, c.b);
+      });
+      break;
+  }
+
+  const container = document.getElementById('harmonyPalette');
+  container.innerHTML = '';
+  palette.forEach(hex => {
+    const swatch = document.createElement('div');
+    swatch.className = 'palette-swatch';
+    swatch.style.background = hex;
+    swatch.innerHTML = `<span>${hex}</span>`;
+    swatch.onclick = () => { navigator.clipboard.writeText(hex); showToast('Copied ' + hex); };
+    container.appendChild(swatch);
+  });
+}
+
+function updateExports() {
+  let css = ':root {\n';
+  blendedColors.forEach((hex, i) => {
+    css += `  --color-${i + 1}: ${hex};\n`;
+  });
+  css += '}';
+  document.getElementById('cssExport').textContent = css;
+
+  let tailwind = 'module.exports = {\n  theme: {\n    extend: {\n      colors: {\n        mix: {\n';
+  blendedColors.forEach((hex, i) => {
+    tailwind += `          ${(i + 1) * 100}: '${hex}',\n`;
+  });
+  tailwind += '        }\n      }\n    }\n  }\n}';
+  document.getElementById('tailwindExport').textContent = tailwind;
+
+  let scss = '';
+  blendedColors.forEach((hex, i) => {
+    scss += `$color-${i + 1}: ${hex};\n`;
+  });
+  document.getElementById('scssExport').textContent = scss;
+}
+
+function copyHex(el) {
+  navigator.clipboard.writeText(el.textContent);
+  showToast('Copied ' + el.textContent);
+}
+
+function copyExport(id) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent);
+  showToast('Copied to clipboard!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2000);
+}
+
+function showPopup() {
+  if (localStorage.getItem('colormixer_subscribed')) return;
+  document.getElementById('emailOverlay').classList.add('show');
+}
+function closePopup() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('colormixer_subscribed', '1');
+}
+
+updateMix();
+</script>
+</body>
+</html>
