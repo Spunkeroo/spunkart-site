@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deployment Checklist - Production Launch Checklist | SPUNKART.COM</title>
+<meta name="description" content="Interactive deployment checklist for shipping to production. Security, Performance, SEO, Accessibility, Legal, Analytics, Infrastructure. Track progress and export reports.">
+<meta name="keywords" content="deployment checklist, production checklist, launch checklist, shipping checklist, go live checklist, deploy to production">
+<meta property="og:title" content="Deployment Checklist — Production Launch | SPUNKART.COM">
+<meta property="og:description" content="Interactive deployment checklist with progress tracking and report export. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/deployment-checklist">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deployment Checklist | SPUNKART.COM">
+<meta name="twitter:description" content="Production launch checklist. Security, Performance, SEO, A11y, Legal, Analytics.">
+<link rel="canonical" href="https://spunkart.com/deployment-checklist">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+/* Progress */
+.progress-bar{width:100%;height:24px;background:#1a1a1a;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#ff5f1f,#10b981);transition:width .4s ease;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;min-width:40px}
+.progress-text{text-align:center;font-size:0.85rem;color:#888;margin-bottom:20px}
+.category{margin-bottom:16px}
+.cat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#1a1a1a;border-radius:8px;cursor:pointer;margin-bottom:8px;transition:background .2s}
+.cat-header:hover{background:#222}
+.cat-title{font-weight:700;font-size:0.95rem;display:flex;align-items:center;gap:8px}
+.cat-icon{font-size:1.1rem}
+.cat-count{font-size:0.8rem;color:#888}
+.cat-items{padding-left:8px}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:6px;cursor:pointer;transition:background .2s;font-size:0.88rem}
+.check-item:hover{background:#1a1a1a}
+.check-box{width:20px;height:20px;min-width:20px;border:2px solid #444;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
+.check-item.checked .check-box{background:#10b981;border-color:#10b981}
+.check-item.checked .check-box::after{content:'\\2713';color:#fff;font-size:0.75rem;font-weight:700}
+.check-item.checked .check-label{color:#666;text-decoration:line-through}
+.check-label{flex:1}
+.check-priority{font-size:0.7rem;padding:2px 6px;border-radius:4px;font-weight:600}
+.priority-critical{background:#ef444422;color:#ef4444}
+.priority-high{background:#f59e0b22;color:#f59e0b}
+.priority-medium{background:#3b82f622;color:#3b82f6}
+.priority-low{background:#10b98122;color:#10b981}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Deployment Checklist","description":"Interactive deployment checklist for shipping to production. Security, Performance, SEO, Accessibility, Legal, Analytics, Infrastructure categories.","url":"https://spunkart.com/deployment-checklist.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Deployment <span>Checklist</span></h1>
+  <p class="subtitle">Interactive checklist for shipping to production. Track progress by category and export a report.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%">0%</div></div>
+    <div class="progress-text" id="progressText">0 of 0 items complete</div>
+    <div id="categories"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="resetAll()">Reset All</button>
+      <button class="btn btn-primary" onclick="exportReport()">Export Report</button>
+      <button class="btn btn-secondary" onclick="copyReport()">Copy Report</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/changelog-generator">Changelog Generator</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/database-schema-designer">DB Schema Designer</a>
+      <a href="/automation-builder">Automation Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+const checklist = {
+  'Security': {icon:'&#128274;',items:[
+    {text:'HTTPS enforced on all pages',priority:'critical'},
+    {text:'Environment variables secured (no secrets in code)',priority:'critical'},
+    {text:'SQL injection protection enabled',priority:'critical'},
+    {text:'XSS protection headers set',priority:'critical'},
+    {text:'CSRF tokens implemented',priority:'high'},
+    {text:'Rate limiting configured',priority:'high'},
+    {text:'Authentication tested thoroughly',priority:'high'},
+    {text:'Password hashing uses bcrypt/argon2',priority:'high'},
+    {text:'CORS policy configured correctly',priority:'medium'},
+    {text:'Security headers (CSP, HSTS, X-Frame-Options)',priority:'medium'},
+    {text:'Dependencies scanned for vulnerabilities',priority:'medium'},
+    {text:'API keys rotated and stored securely',priority:'high'}
+  ]},
+  'Performance': {icon:'&#9889;',items:[
+    {text:'Images optimized (WebP, lazy loading)',priority:'high'},
+    {text:'CSS/JS minified and bundled',priority:'high'},
+    {text:'Gzip/Brotli compression enabled',priority:'high'},
+    {text:'CDN configured for static assets',priority:'medium'},
+    {text:'Database queries optimized with indexes',priority:'high'},
+    {text:'Caching strategy implemented (Redis/Memcached)',priority:'medium'},
+    {text:'Lighthouse score above 90',priority:'medium'},
+    {text:'Core Web Vitals passing',priority:'high'},
+    {text:'No memory leaks in long-running processes',priority:'medium'},
+    {text:'Load testing completed',priority:'low'}
+  ]},
+  'SEO': {icon:'&#128270;',items:[
+    {text:'Meta title and description on all pages',priority:'high'},
+    {text:'Open Graph tags configured',priority:'medium'},
+    {text:'Twitter Card tags configured',priority:'medium'},
+    {text:'Sitemap.xml generated and submitted',priority:'high'},
+    {text:'Robots.txt configured correctly',priority:'high'},
+    {text:'Canonical URLs set',priority:'medium'},
+    {text:'Structured data (JSON-LD) added',priority:'medium'},
+    {text:'404 page customized',priority:'low'},
+    {text:'Redirects configured for old URLs',priority:'medium'}
+  ]},
+  'Accessibility': {icon:'&#9855;',items:[
+    {text:'All images have alt text',priority:'high'},
+    {text:'Keyboard navigation works',priority:'high'},
+    {text:'Color contrast ratios meet WCAG 2.1 AA',priority:'high'},
+    {text:'ARIA labels on interactive elements',priority:'medium'},
+    {text:'Form inputs have labels',priority:'high'},
+    {text:'Focus indicators visible',priority:'medium'},
+    {text:'Screen reader tested',priority:'medium'},
+    {text:'Skip navigation link present',priority:'low'}
+  ]},
+  'Legal': {icon:'&#9878;',items:[
+    {text:'Privacy policy published',priority:'critical'},
+    {text:'Terms of service published',priority:'critical'},
+    {text:'Cookie consent banner (GDPR)',priority:'high'},
+    {text:'CCPA compliance if serving California',priority:'medium'},
+    {text:'Copyright notices updated',priority:'low'},
+    {text:'Third-party licenses documented',priority:'low'}
+  ]},
+  'Analytics': {icon:'&#128200;',items:[
+    {text:'Analytics tracking installed (GA4/Plausible)',priority:'high'},
+    {text:'Conversion goals configured',priority:'medium'},
+    {text:'Error tracking set up (Sentry/LogRocket)',priority:'high'},
+    {text:'Uptime monitoring configured',priority:'high'},
+    {text:'Custom events tracking key actions',priority:'medium'},
+    {text:'Performance monitoring enabled',priority:'low'}
+  ]},
+  'Infrastructure': {icon:'&#9881;',items:[
+    {text:'Backups configured and tested',priority:'critical'},
+    {text:'CI/CD pipeline working',priority:'high'},
+    {text:'Staging environment matches production',priority:'high'},
+    {text:'Rollback strategy documented',priority:'high'},
+    {text:'DNS configured correctly',priority:'critical'},
+    {text:'SSL certificate auto-renews',priority:'high'},
+    {text:'Logging centralized and searchable',priority:'medium'},
+    {text:'Auto-scaling configured',priority:'medium'},
+    {text:'Health check endpoint responding',priority:'high'},
+    {text:'Database migrations tested',priority:'high'}
+  ]}
+};
+
+let checked = JSON.parse(localStorage.getItem('spunkart_deploy_checklist') || '{}');
+
+function saveState() {
+  localStorage.setItem('spunkart_deploy_checklist', JSON.stringify(checked));
+}
+
+function getTotal() {
+  let total = 0;
+  for(const cat of Object.values(checklist)) total += cat.items.length;
+  return total;
+}
+
+function getCheckedCount() {
+  return Object.values(checked).filter(Boolean).length;
+}
+
+function updateProgress() {
+  const total = getTotal();
+  const done = getCheckedCount();
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressFill').textContent = pct+'%';
+  document.getElementById('progressText').textContent = `${done} of ${total} items complete`;
+  // Update category counts
+  for(const [catName, catData] of Object.entries(checklist)) {
+    const catDone = catData.items.filter((_,i) => checked[catName+'-'+i]).length;
+    const el = document.getElementById('cat-count-'+catName.replace(/\s/g,''));
+    if(el) el.textContent = `${catDone}/${catData.items.length}`;
+  }
+}
+
+function toggleItem(key, el) {
+  checked[key] = !checked[key];
+  el.classList.toggle('checked', checked[key]);
+  saveState();
+  updateProgress();
+  gtag('event','toggle_checklist',{event_category:'tool_use',checked:checked[key]});
+}
+
+function render() {
+  const container = document.getElementById('categories');
+  container.innerHTML = Object.entries(checklist).map(([catName, catData]) => {
+    const catDone = catData.items.filter((_,i) => checked[catName+'-'+i]).length;
+    return `
+      <div class="category">
+        <div class="cat-header" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'">
+          <div class="cat-title"><span class="cat-icon">${catData.icon}</span> ${catName}</div>
+          <span class="cat-count" id="cat-count-${catName.replace(/\s/g,'')}">${catDone}/${catData.items.length}</span>
+        </div>
+        <div class="cat-items">
+          ${catData.items.map((item, i) => {
+            const key = catName+'-'+i;
+            return `<div class="check-item${checked[key]?' checked':''}" onclick="toggleItem('${key}',this)">
+              <div class="check-box"></div>
+              <span class="check-label">${item.text}</span>
+              <span class="check-priority priority-${item.priority}">${item.priority}</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+  }).join('');
+  updateProgress();
+}
+
+function resetAll() {
+  checked = {};
+  saveState();
+  render();
+  showToast('Checklist reset');
+}
+
+function generateReport() {
+  const total = getTotal();
+  const done = getCheckedCount();
+  const pct = total ? Math.round((done/total)*100) : 0;
+  let report = `DEPLOYMENT CHECKLIST REPORT\n${'='.repeat(40)}\nDate: ${new Date().toLocaleString()}\nProgress: ${done}/${total} (${pct}%)\n\n`;
+  for(const [catName, catData] of Object.entries(checklist)) {
+    report += `\n${catName}\n${'-'.repeat(30)}\n`;
+    catData.items.forEach((item, i) => {
+      const key = catName+'-'+i;
+      report += `[${checked[key]?'x':' '}] ${item.text} (${item.priority})\n`;
+    });
+  }
+  report += `\n${'='.repeat(40)}\nGenerated by SPUNKART.COM Deployment Checklist`;
+  return report;
+}
+
+function exportReport() {
+  const report = generateReport();
+  const blob = new Blob([report], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'deployment-checklist-report.txt'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('Report exported!');
+  gtag('event','export_report',{event_category:'tool_use'});
+}
+
+function copyReport() {
+  navigator.clipboard.writeText(generateReport());
+  showToast('Report copied!');
+}
+
+render();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

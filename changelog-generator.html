@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Changelog Generator - Keep a Changelog Format | SPUNKART.COM</title>
+<meta name="description" content="Generate formatted CHANGELOG.md files in Keep a Changelog format. Paste git log or describe changes. Categorize as Added, Changed, Fixed, Removed, Security.">
+<meta name="keywords" content="changelog generator, keep a changelog, changelog format, git changelog, release notes generator, semantic versioning">
+<meta property="og:title" content="Changelog Generator — Keep a Changelog | SPUNKART.COM">
+<meta property="og:description" content="Generate formatted CHANGELOG.md files. Categorize changes automatically. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/changelog-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Changelog Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate CHANGELOG.md in Keep a Changelog format. Free tool.">
+<link rel="canonical" href="https://spunkart.com/changelog-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.text-area{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.9rem;font-family:'Courier New',monospace;line-height:1.7;outline:none;resize:vertical;transition:border-color .2s}
+.text-area:focus{border-color:#ff5f1f}
+.text-area::placeholder{color:#444}
+.ver-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.ver-input{padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;width:120px}
+.ver-input:focus{border-color:#ff5f1f}
+.entry-section{margin-bottom:16px}
+.entry-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.entry-cat{font-weight:700;font-size:0.9rem;padding:4px 12px;border-radius:6px}
+.cat-added{color:#10b981;background:#10b98122}
+.cat-changed{color:#3b82f6;background:#3b82f622}
+.cat-fixed{color:#f59e0b;background:#f59e0b22}
+.cat-removed{color:#ef4444;background:#ef444422}
+.cat-security{color:#a855f7;background:#a855f722}
+.cat-deprecated{color:#888;background:#88888822}
+.entry-list{list-style:none}
+.entry-item{display:flex;gap:8px;align-items:center;padding:6px 0}
+.entry-item input{flex:1;padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none}
+.entry-item input:focus{border-color:#ff5f1f}
+.entry-item select{padding:8px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.82rem;outline:none}
+.output-area{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.85rem;font-family:'Courier New',monospace;white-space:pre-wrap;overflow-x:auto;line-height:1.6}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.mode-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Changelog Generator","description":"Generate formatted CHANGELOG.md in Keep a Changelog format. Categorize changes as Added, Changed, Fixed, Removed, Security.","url":"https://spunkart.com/changelog-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Changelog <span>Generator</span></h1>
+  <p class="subtitle">Generate formatted CHANGELOG.md in Keep a Changelog format. Paste git log or add entries manually.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Input Mode</h3>
+    <div class="mode-grid">
+      <button class="mode-btn active" onclick="setMode(this,'manual')">Manual Entry</button>
+      <button class="mode-btn" onclick="setMode(this,'gitlog')">Parse Git Log</button>
+    </div>
+
+    <div id="manualMode">
+      <div class="ver-row">
+        <label style="font-size:0.85rem;color:#888">Version:</label>
+        <input type="text" class="ver-input" id="version" placeholder="1.0.0" value="1.0.0">
+        <label style="font-size:0.85rem;color:#888">Date:</label>
+        <input type="date" class="ver-input" id="releaseDate" style="width:160px">
+      </div>
+
+      <div id="entries"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Added')">+ Added</button>
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Changed')">+ Changed</button>
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Fixed')">+ Fixed</button>
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Removed')">+ Removed</button>
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Security')">+ Security</button>
+        <button class="btn btn-secondary btn-sm" onclick="addEntry('Deprecated')">+ Deprecated</button>
+      </div>
+    </div>
+
+    <div id="gitlogMode" style="display:none">
+      <label style="font-size:0.85rem;color:#888;display:block;margin-bottom:8px">Paste your git log output:</label>
+      <textarea class="text-area" id="gitLogInput" placeholder="commit abc1234&#10;Author: Dev <dev@email.com>&#10;Date: Mon Jan 1 12:00:00 2026&#10;&#10;    feat: add user authentication&#10;    fix: resolve login issue&#10;&#10;Or just paste commit messages, one per line:&#10;feat: add dark mode&#10;fix: button alignment&#10;chore: update dependencies"></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="parseGitLog()">Parse Git Log</button>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:16px">
+      <button class="btn btn-primary" onclick="generateChangelog()">Generate CHANGELOG</button>
+    </div>
+  </div>
+
+  <div class="section" id="outputSection" style="display:none">
+    <h3>Generated CHANGELOG.md</h3>
+    <div class="output-area" id="changelogOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyChangelog()">Copy</button>
+      <button class="btn btn-secondary" onclick="downloadChangelog()">Download .md</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/deployment-checklist">Deployment Checklist</a>
+      <a href="/package-json-builder">Package.json Builder</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/monorepo-generator">Monorepo Generator</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentInputMode = 'manual';
+let entries = [];
+let entryCounter = 0;
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+// Set today's date
+document.getElementById('releaseDate').valueAsDate = new Date();
+
+function setMode(el, mode) {
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentInputMode = mode;
+  document.getElementById('manualMode').style.display = mode==='manual'?'block':'none';
+  document.getElementById('gitlogMode').style.display = mode==='gitlog'?'block':'none';
+}
+
+function addEntry(category, text) {
+  const id = ++entryCounter;
+  entries.push({id, category, text: text || ''});
+  renderEntries();
+}
+
+function removeEntry(id) {
+  entries = entries.filter(e => e.id !== id);
+  renderEntries();
+}
+
+function updateEntry(id, field, val) {
+  const e = entries.find(e => e.id === id);
+  if(e) e[field] = val;
+}
+
+const catColors = {Added:'cat-added',Changed:'cat-changed',Fixed:'cat-fixed',Removed:'cat-removed',Security:'cat-security',Deprecated:'cat-deprecated'};
+
+function renderEntries() {
+  const container = document.getElementById('entries');
+  if(!entries.length){container.innerHTML='<p style="color:#555;font-size:0.85rem;margin-bottom:12px">No entries yet. Add changes below.</p>';return;}
+
+  const grouped = {};
+  entries.forEach(e => {
+    if(!grouped[e.category]) grouped[e.category] = [];
+    grouped[e.category].push(e);
+  });
+
+  container.innerHTML = Object.entries(grouped).map(([cat, items]) => `
+    <div class="entry-section">
+      <div class="entry-header">
+        <span class="entry-cat ${catColors[cat]}">${cat}</span>
+      </div>
+      <div class="entry-list">
+        ${items.map(item => `
+          <div class="entry-item">
+            <select onchange="updateEntry(${item.id},'category',this.value);renderEntries()">
+              ${['Added','Changed','Fixed','Removed','Security','Deprecated'].map(c=>`<option ${c===item.category?'selected':''}>${c}</option>`).join('')}
+            </select>
+            <input type="text" value="${(item.text||'').replace(/"/g,'&quot;')}" placeholder="Describe the change..." oninput="updateEntry(${item.id},'text',this.value)">
+            <button class="btn btn-secondary btn-sm" style="padding:4px 10px;color:#ef4444" onclick="removeEntry(${item.id})">x</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function parseGitLog() {
+  const input = document.getElementById('gitLogInput').value.trim();
+  if(!input){showToast('Paste git log first');return;}
+  entries = [];
+
+  const lines = input.split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('commit ') && !l.startsWith('Author:') && !l.startsWith('Date:') && !l.startsWith('Merge:'));
+
+  const prefixMap = {
+    'feat':'Added','feature':'Added','add':'Added','new':'Added',
+    'fix':'Fixed','bugfix':'Fixed','hotfix':'Fixed','patch':'Fixed',
+    'change':'Changed','update':'Changed','refactor':'Changed','improve':'Changed','enhance':'Changed','perf':'Changed',
+    'remove':'Removed','delete':'Removed','drop':'Removed',
+    'security':'Security','vuln':'Security',
+    'deprecate':'Deprecated','deprecated':'Deprecated'
+  };
+
+  lines.forEach(line => {
+    let category = 'Changed';
+    let text = line;
+    // Parse conventional commits: feat: ..., fix: ..., etc.
+    const match = line.match(/^(\w+)(?:\(.+?\))?:\s*(.+)/);
+    if(match) {
+      const prefix = match[1].toLowerCase();
+      if(prefixMap[prefix]) category = prefixMap[prefix];
+      text = match[2];
+    } else {
+      // Try keyword detection
+      const lower = line.toLowerCase();
+      if(lower.includes('add') || lower.includes('new') || lower.includes('create') || lower.includes('implement')) category = 'Added';
+      else if(lower.includes('fix') || lower.includes('resolve') || lower.includes('bug')) category = 'Fixed';
+      else if(lower.includes('remove') || lower.includes('delete')) category = 'Removed';
+      else if(lower.includes('security') || lower.includes('vulnerability')) category = 'Security';
+      else if(lower.includes('deprecat')) category = 'Deprecated';
+    }
+    addEntry(category, text.charAt(0).toUpperCase() + text.slice(1));
+  });
+
+  // Switch to manual mode to show parsed entries
+  setMode(document.querySelector('.mode-btn'), 'manual');
+  showToast(`Parsed ${entries.length} entries`);
+  gtag('event','parse_gitlog',{event_category:'tool_use',count:entries.length});
+}
+
+function generateChangelog() {
+  if(!entries.length){showToast('Add some entries first');return;}
+  const version = document.getElementById('version').value || 'Unreleased';
+  const date = document.getElementById('releaseDate').value || new Date().toISOString().split('T')[0];
+
+  let md = `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n## [${version}] - ${date}\n`;
+
+  const grouped = {};
+  const order = ['Added','Changed','Deprecated','Removed','Fixed','Security'];
+  entries.forEach(e => {
+    if(!grouped[e.category]) grouped[e.category] = [];
+    if(e.text.trim()) grouped[e.category].push(e.text.trim());
+  });
+
+  order.forEach(cat => {
+    if(grouped[cat] && grouped[cat].length) {
+      md += `\n### ${cat}\n\n`;
+      grouped[cat].forEach(text => {
+        md += `- ${text}\n`;
+      });
+    }
+  });
+
+  document.getElementById('changelogOutput').textContent = md;
+  document.getElementById('outputSection').style.display = 'block';
+  gtag('event','generate_changelog',{event_category:'tool_use'});
+}
+
+function copyChangelog() {
+  navigator.clipboard.writeText(document.getElementById('changelogOutput').textContent);
+  showToast('Changelog copied!');
+}
+
+function downloadChangelog() {
+  const blob = new Blob([document.getElementById('changelogOutput').textContent], {type:'text/markdown'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'CHANGELOG.md'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded!');
+}
+
+// Start with some example entries
+addEntry('Added', 'New user authentication system');
+addEntry('Fixed', 'Login page redirect issue');
+addEntry('Changed', 'Updated dashboard UI');
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
