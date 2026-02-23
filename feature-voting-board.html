@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Feature Voting Board - Free Feature Request Tracker | SPUNKART.COM</title>
+<meta name="description" content="Create a feature request voting board. Add features, upvote/downvote, categorize as planned/in-progress/done. Sort by votes. Save to browser.">
+<meta name="keywords" content="feature voting board, feature request tracker, product feedback board, upvote feature requests, product roadmap tool">
+<meta property="og:title" content="Feature Voting Board | SPUNKART.COM">
+<meta property="og:description" content="Track feature requests with voting, categories, and sorting. Free tool for product teams.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/feature-voting-board">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feature Voting Board | SPUNKART.COM">
+<meta name="twitter:description" content="Feature request voting board. Free tool for founders.">
+<link rel="canonical" href="https://spunkart.com/feature-voting-board">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input,select,textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:#ff5f1f}
+textarea{min-height:60px;resize:vertical;line-height:1.6}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.filter-btn{padding:6px 16px;background:#1a1a1a;border:1px solid #333;border-radius:20px;color:#ccc;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.filter-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.filter-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.sort-select{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:6px 12px;color:#ccc;font-size:0.8rem;cursor:pointer;outline:none;width:auto}
+.feature-card{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:0;margin-bottom:10px;display:flex;overflow:hidden;transition:border-color .2s}
+.feature-card:hover{border-color:#444}
+.vote-col{display:flex;flex-direction:column;align-items:center;padding:12px 16px;background:#111;border-right:1px solid #222;min-width:60px;gap:4px}
+.vote-btn{background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem;padding:2px 6px;border-radius:4px;transition:all .15s}
+.vote-btn:hover{color:#ff5f1f;background:#ff5f1f11}
+.vote-btn.upvoted{color:#10b981}
+.vote-btn.downvoted{color:#ef4444}
+.vote-count{font-size:1.1rem;font-weight:800;color:#ff5f1f}
+.feature-body{flex:1;padding:14px 18px}
+.feature-title{font-weight:700;font-size:0.95rem;margin-bottom:4px}
+.feature-desc{color:#888;font-size:0.85rem;margin-bottom:8px}
+.feature-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.status-tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.status-idea{background:#3b82f622;color:#3b82f6;border:1px solid #3b82f644}
+.status-planned{background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44}
+.status-in-progress{background:#8b5cf622;color:#8b5cf6;border:1px solid #8b5cf644}
+.status-done{background:#10b98122;color:#10b981;border:1px solid #10b98144}
+.category-tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.7rem;color:#888;border:1px solid #333}
+.feature-actions{display:flex;gap:4px;margin-left:auto}
+.feature-actions button{background:none;border:none;color:#555;cursor:pointer;font-size:0.85rem;padding:2px 6px}.feature-actions button:hover{color:#ff5f1f}
+.stats-bar{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:1.4rem;font-weight:800;color:#ff5f1f}
+.stat .lbl{font-size:0.75rem;color:#888}
+.empty-state{text-align:center;padding:40px;color:#555}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Feature Voting Board","description":"Create a feature request voting board with upvotes, categories, and sorting. Save to localStorage.","url":"https://spunkart.com/feature-voting-board.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Feature Voting <span>Board</span></h1>
+  <p class="subtitle">Add feature requests, vote, categorize, and track your product roadmap. Everything saves to your browser.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="stats-bar" id="statsBar">
+    <div class="stat"><div class="num" id="statTotal">0</div><div class="lbl">Total Features</div></div>
+    <div class="stat"><div class="num" id="statIdea" style="color:#3b82f6">0</div><div class="lbl">Ideas</div></div>
+    <div class="stat"><div class="num" id="statPlanned" style="color:#f59e0b">0</div><div class="lbl">Planned</div></div>
+    <div class="stat"><div class="num" id="statProgress" style="color:#8b5cf6">0</div><div class="lbl">In Progress</div></div>
+    <div class="stat"><div class="num" id="statDone" style="color:#10b981">0</div><div class="lbl">Done</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Add Feature Request</h2>
+    <div class="grid-2">
+      <div><label>Feature Title</label><input type="text" id="newTitle" placeholder="e.g. Dark mode support"></div>
+      <div>
+        <label>Category</label>
+        <select id="newCategory">
+          <option value="UI/UX">UI/UX</option>
+          <option value="Performance">Performance</option>
+          <option value="Integration">Integration</option>
+          <option value="Feature">Feature</option>
+          <option value="Bug Fix">Bug Fix</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <label>Description (optional)</label>
+    <textarea id="newDesc" placeholder="Brief description of the feature request..."></textarea>
+    <button class="btn btn-primary" onclick="addFeature()" style="margin-top:12px">Add Feature</button>
+  </div>
+
+  <div class="section">
+    <h2>Feature Board</h2>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter(this,'all')">All</button>
+      <button class="filter-btn" data-filter="idea" onclick="setFilter(this,'idea')">Ideas</button>
+      <button class="filter-btn" data-filter="planned" onclick="setFilter(this,'planned')">Planned</button>
+      <button class="filter-btn" data-filter="in-progress" onclick="setFilter(this,'in-progress')">In Progress</button>
+      <button class="filter-btn" data-filter="done" onclick="setFilter(this,'done')">Done</button>
+      <select class="sort-select" id="sortBy" onchange="render()">
+        <option value="votes-desc">Most Votes</option>
+        <option value="votes-asc">Least Votes</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+    <div id="featureList"></div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="exportBoard()">Export as Markdown</button>
+    <button class="btn btn-secondary" onclick="exportHTML()">Export Embed HTML</button>
+    <button class="btn btn-secondary" onclick="resetBoard()">Reset Board</button>
+  </div>
+
+  <div class="newsletter" style="margin-top:24px">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/okr-tracker">OKR Tracker</a>
+      <a href="/lean-canvas-builder">Lean Canvas</a>
+      <a href="/customer-persona-builder">Persona Builder</a>
+      <a href="/ab-test-significance">A/B Test Calculator</a>
+      <a href="/mrr-calculator">MRR Calculator</a>
+      <a href="/social-proof-generator">Social Proof</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Saved!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+let features=[];
+let currentFilter='all';
+
+const defaultFeatures=[
+  {id:1,title:'Dark mode support',desc:'Add a dark/light theme toggle for the dashboard.',category:'UI/UX',status:'in-progress',votes:24,voted:0,date:Date.now()-86400000*5},
+  {id:2,title:'Slack integration',desc:'Send notifications to Slack channels when events happen.',category:'Integration',status:'planned',votes:18,voted:0,date:Date.now()-86400000*3},
+  {id:3,title:'Export to CSV',desc:'Allow exporting all data tables to CSV format.',category:'Feature',status:'done',votes:31,voted:0,date:Date.now()-86400000*10},
+  {id:4,title:'Faster dashboard loading',desc:'Optimize API calls to reduce initial load time below 1 second.',category:'Performance',status:'planned',votes:15,voted:0,date:Date.now()-86400000*2},
+  {id:5,title:'Custom webhooks',desc:'Let users configure custom webhook endpoints for events.',category:'Integration',status:'idea',votes:9,voted:0,date:Date.now()-86400000},
+  {id:6,title:'Mobile responsive tables',desc:'Data tables should scroll horizontally on mobile devices.',category:'UI/UX',status:'idea',votes:7,voted:0,date:Date.now()},
+  {id:7,title:'Two-factor authentication',desc:'Add 2FA support for account security.',category:'Feature',status:'in-progress',votes:22,voted:0,date:Date.now()-86400000*7}
+];
+
+function load(){
+  const saved=localStorage.getItem('spunkart_features');
+  if(saved){try{features=JSON.parse(saved)}catch(e){features=[...defaultFeatures]}}
+  else{features=JSON.parse(JSON.stringify(defaultFeatures))}
+}
+
+function save(){localStorage.setItem('spunkart_features',JSON.stringify(features))}
+
+function setFilter(el,f){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter=f;
+  render();
+}
+
+function getStatusClass(s){
+  const map={idea:'status-idea',planned:'status-planned','in-progress':'status-in-progress',done:'status-done'};
+  return map[s]||'status-idea';
+}
+
+function getStatusLabel(s){
+  const map={idea:'Idea',planned:'Planned','in-progress':'In Progress',done:'Done'};
+  return map[s]||'Idea';
+}
+
+function render(){
+  let filtered=currentFilter==='all'?[...features]:features.filter(f=>f.status===currentFilter);
+  const sort=document.getElementById('sortBy').value;
+  if(sort==='votes-desc')filtered.sort((a,b)=>b.votes-a.votes);
+  else if(sort==='votes-asc')filtered.sort((a,b)=>a.votes-b.votes);
+  else if(sort==='newest')filtered.sort((a,b)=>b.date-a.date);
+  else if(sort==='oldest')filtered.sort((a,b)=>a.date-b.date);
+
+  const el=document.getElementById('featureList');
+  if(!filtered.length){
+    el.innerHTML='<div class="empty-state">No features found. Add one above!</div>';
+  } else {
+    el.innerHTML=filtered.map(f=>{
+      return `<div class="feature-card">
+        <div class="vote-col">
+          <button class="vote-btn${f.voted===1?' upvoted':''}" onclick="vote(${f.id},1)" title="Upvote">&#9650;</button>
+          <span class="vote-count">${f.votes}</span>
+          <button class="vote-btn${f.voted===-1?' downvoted':''}" onclick="vote(${f.id},-1)" title="Downvote">&#9660;</button>
+        </div>
+        <div class="feature-body">
+          <div class="feature-title">${f.title}</div>
+          ${f.desc?`<div class="feature-desc">${f.desc}</div>`:''}
+          <div class="feature-meta">
+            <span class="status-tag ${getStatusClass(f.status)}">${getStatusLabel(f.status)}</span>
+            <span class="category-tag">${f.category}</span>
+            <div class="feature-actions">
+              <button onclick="cycleStatus(${f.id})" title="Change status">&#8635;</button>
+              <button onclick="deleteFeature(${f.id})" title="Delete">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Update stats
+  document.getElementById('statTotal').textContent=features.length;
+  document.getElementById('statIdea').textContent=features.filter(f=>f.status==='idea').length;
+  document.getElementById('statPlanned').textContent=features.filter(f=>f.status==='planned').length;
+  document.getElementById('statProgress').textContent=features.filter(f=>f.status==='in-progress').length;
+  document.getElementById('statDone').textContent=features.filter(f=>f.status==='done').length;
+}
+
+function addFeature(){
+  const title=document.getElementById('newTitle').value.trim();
+  if(!title){showToast('Enter a title');return}
+  const desc=document.getElementById('newDesc').value.trim();
+  const cat=document.getElementById('newCategory').value;
+  const id=Date.now();
+  features.unshift({id:id,title:title,desc:desc,category:cat,status:'idea',votes:0,voted:0,date:Date.now()});
+  document.getElementById('newTitle').value='';
+  document.getElementById('newDesc').value='';
+  save();render();
+  showToast('Feature added!');
+  gtag('event','add_feature',{event_category:'tool_use'});
+}
+
+function vote(id,dir){
+  const f=features.find(f=>f.id===id);if(!f)return;
+  if(f.voted===dir){f.votes-=dir;f.voted=0}
+  else{if(f.voted!=0)f.votes-=f.voted;f.votes+=dir;f.voted=dir}
+  save();render();
+}
+
+function cycleStatus(id){
+  const f=features.find(f=>f.id===id);if(!f)return;
+  const order=['idea','planned','in-progress','done'];
+  const cur=order.indexOf(f.status);
+  f.status=order[(cur+1)%order.length];
+  save();render();
+}
+
+function deleteFeature(id){
+  features=features.filter(f=>f.id!==id);
+  save();render();
+}
+
+function resetBoard(){
+  if(!confirm('Reset the board to sample data?'))return;
+  features=JSON.parse(JSON.stringify(defaultFeatures));
+  localStorage.removeItem('spunkart_features');
+  save();render();
+  showToast('Board reset');
+}
+
+function exportBoard(){
+  let md='# Feature Voting Board\n\n';
+  const sorted=[...features].sort((a,b)=>b.votes-a.votes);
+  md+='| Votes | Status | Feature | Category |\n';
+  md+='|-------|--------|---------|----------|\n';
+  sorted.forEach(f=>{
+    md+=`| ${f.votes} | ${getStatusLabel(f.status)} | ${f.title} | ${f.category} |\n`;
+  });
+  navigator.clipboard.writeText(md);
+  showToast('Markdown copied!');
+  gtag('event','export_features',{event_category:'tool_use'});
+}
+
+function exportHTML(){
+  const sorted=[...features].sort((a,b)=>b.votes-a.votes);
+  let html=`<div style="font-family:-apple-system,sans-serif;max-width:600px;margin:0 auto">\n`;
+  html+=`<h2 style="margin-bottom:16px">Feature Roadmap</h2>\n`;
+  sorted.forEach(f=>{
+    const colors={idea:'#3b82f6',planned:'#f59e0b','in-progress':'#8b5cf6',done:'#10b981'};
+    const c=colors[f.status]||'#888';
+    html+=`<div style="display:flex;gap:12px;padding:12px;border-bottom:1px solid #eee;align-items:center">
+  <div style="font-weight:800;color:#6366f1;min-width:40px;text-align:center">${f.votes}</div>
+  <div style="flex:1"><div style="font-weight:600">${f.title}</div>${f.desc?'<div style="color:#888;font-size:0.85rem">'+f.desc+'</div>':''}</div>
+  <span style="padding:2px 10px;border-radius:12px;font-size:0.7rem;font-weight:700;background:${c}22;color:${c};border:1px solid ${c}44">${getStatusLabel(f.status)}</span>
+</div>\n`;
+  });
+  html+=`</div>`;
+  navigator.clipboard.writeText(html);
+  showToast('Embed HTML copied!');
+  gtag('event','export_features_html',{event_category:'tool_use'});
+}
+
+load();
+render();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
