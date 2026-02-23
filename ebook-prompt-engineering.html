@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Prompt Engineering Bible: Complete Guide to AI Prompts — Free Ebook by SpunkArt.com</title>
+<meta name="description" content="Master prompt engineering for ChatGPT, Claude, Gemini, and every AI model. 150+ proven prompt templates, advanced techniques, and real-world applications. Free ebook from SpunkArt.com.">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<meta name="keywords" content="prompt engineering, AI prompts, ChatGPT prompts, Claude prompts, Gemini prompts, LLM prompting, chain of thought, few-shot prompting, system prompts, AI guide 2026">
+<meta property="og:title" content="The Prompt Engineering Bible: Complete Guide to AI Prompts">
+<meta property="og:description" content="150+ proven prompt templates and advanced techniques for ChatGPT, Claude, and every AI model. Free ebook.">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://spunkart.com/ebook-prompt-engineering.html">
+<meta property="og:site_name" content="SpunkArt.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="The Prompt Engineering Bible: Complete Guide to AI Prompts">
+<meta name="twitter:description" content="150+ proven prompt templates for ChatGPT, Claude, and every AI. Free ebook.">
+<link rel="canonical" href="https://spunkart.com/ebook-prompt-engineering.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "The Prompt Engineering Bible",
+  "author": {"@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com"},
+  "publisher": {"@type": "Organization", "name": "SpunkArt.com"},
+  "datePublished": "2026-02-23",
+  "description": "The complete guide to prompt engineering — 150+ templates, advanced techniques, and real-world applications for every major AI model.",
+  "inLanguage": "en",
+  "genre": "Technology",
+  "url": "https://spunkart.com/ebook-prompt-engineering.html",
+  "bookFormat": "https://schema.org/EBook",
+  "numberOfPages": "14 chapters",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--border:#222;--text:#e8e8e8;--muted:#999;--dim:#666;--accent:#ff5f1f;--accent-hover:#e5520f;--green:#10b981;--purple:#8b5cf6;--violet:#a78bfa;--code-bg:#0d1117;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--mono:'SF Mono','Fira Code','Courier New',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.8;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color 0.2s}
+a:hover{color:#ff8c5a;text-decoration:underline}
+::selection{background:var(--purple);color:#fff}
+
+nav{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+nav .logo{font-weight:800;font-size:1.1rem;color:var(--accent);letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:var(--accent)}
+
+.landing{max-width:900px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+.hero{display:flex;gap:3rem;align-items:center;padding:3rem 0 4rem;border-bottom:2px solid var(--border)}
+.hero-text{flex:1}
+.hero-text .badge{display:inline-block;background:var(--purple);color:#fff;padding:6px 20px;border-radius:20px;font-size:0.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-text h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.15;margin-bottom:0.75rem;background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-text .subtitle{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.hero-text .author{color:var(--dim);font-size:0.9rem;margin-bottom:0.25rem}
+.hero-text .edition{color:var(--dim);font-size:0.85rem}
+
+.book-cover{flex-shrink:0;width:240px;height:340px;background:linear-gradient(145deg,#1a102e,#120a20 40%,#0d0618);border-radius:4px 16px 16px 4px;box-shadow:-6px 6px 20px rgba(0,0,0,0.5),0 0 40px rgba(139,92,246,0.15);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem 1.5rem;text-align:center;border-left:6px solid var(--purple);transition:transform 0.3s}
+.book-cover:hover{transform:rotateY(-5deg) scale(1.02)}
+.book-cover::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--violet),var(--accent))}
+.book-cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,0.4))}
+.book-cover .cover-label{font-size:0.65rem;color:var(--purple);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:0.75rem}
+.book-cover .cover-title{font-size:1.25rem;font-weight:900;color:#fff;line-height:1.3;margin-bottom:0.5rem}
+.book-cover .cover-sub{font-size:0.75rem;color:rgba(255,255,255,0.6);line-height:1.4;margin-bottom:1rem}
+.book-cover .cover-author{font-size:0.7rem;color:var(--purple);font-weight:600;letter-spacing:1px;position:relative;z-index:1}
+.book-cover .cover-icon{font-size:2.5rem;margin-bottom:1rem;opacity:0.3}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:2.5rem 0}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
+.stat-num{font-size:1.6rem;font-weight:800;color:var(--purple)}
+.stat-label{font-size:0.8rem;color:var(--dim);margin-top:4px}
+
+.learn-section{padding:3rem 0;border-bottom:1px solid var(--border)}
+.learn-section h2{font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:2rem;color:var(--text)}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.learn-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:border-color 0.2s}
+.learn-item:hover{border-color:var(--purple)}
+.learn-item h3{font-size:1rem;color:var(--purple);margin-bottom:0.5rem;font-weight:700}
+.learn-item p{font-size:0.9rem;color:var(--muted);line-height:1.5;margin:0}
+
+.toc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem 2.5rem;margin:3rem 0}
+.toc h2{font-size:1.5rem;margin-bottom:1.5rem;color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:2px;font-weight:800}
+.toc ol{list-style:none;counter-reset:toc}
+.toc ol li{counter-increment:toc;padding:10px 0;border-bottom:1px solid #1a1a1a;transition:all 0.2s}
+.toc ol li:last-child{border-bottom:none}
+.toc ol li::before{content:'Chapter ' counter(toc);color:var(--purple);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:12px}
+.toc ol li span{color:var(--text);font-weight:500}
+
+.preview{padding:3rem 0;border-bottom:1px solid var(--border)}
+.preview h2{font-size:1.8rem;font-weight:800;margin-bottom:1rem}
+.preview .chapter-num{font-size:0.8rem;color:var(--purple);text-transform:uppercase;letter-spacing:3px;font-weight:700;margin-bottom:0.5rem}
+.preview p{color:#d0d0d0;margin-bottom:1rem}
+.preview h3{font-size:1.15rem;color:var(--green);margin:1.5rem 0 0.75rem;font-weight:700}
+.preview ul{margin:0 0 1.5rem 1.5rem;color:#d0d0d0}
+.preview li{margin-bottom:0.5rem}
+.preview li strong{color:var(--text)}
+.preview blockquote{border-left:4px solid var(--purple);background:var(--bg2);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:0 8px 8px 0;font-style:italic;color:var(--muted)}
+.preview .prompt-example{background:var(--code-bg);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin:1rem 0;font-family:var(--mono);font-size:0.85rem;line-height:1.6;color:#c9d1d9;position:relative}
+.preview .prompt-example::before{content:'EXAMPLE PROMPT';position:absolute;top:8px;right:12px;font-size:0.65rem;color:var(--purple);letter-spacing:1px;font-family:var(--font);font-weight:700}
+
+.cta-banner{background:linear-gradient(135deg,#120a20,#0a1a10);border:1px solid var(--purple);border-radius:16px;padding:2.5rem;text-align:center;margin:3rem 0}
+.cta-banner h3{color:var(--purple);font-size:1.4rem;margin-bottom:0.5rem}
+.cta-banner p{color:var(--muted);margin-bottom:1.5rem;font-size:1rem}
+.cta-banner .btn{display:inline-block;background:var(--purple);color:#fff;padding:16px 40px;border-radius:10px;font-weight:700;font-size:1.05rem;text-decoration:none;transition:all 0.2s;margin:0 8px 8px}
+.cta-banner .btn:hover{background:#7c3aed;transform:translateY(-2px);text-decoration:none}
+.cta-banner .btn-alt{background:transparent;border:2px solid var(--green);color:var(--green)}
+.cta-banner .btn-alt:hover{background:var(--green);color:#fff}
+
+.more-ebooks{padding:3rem 0}
+.more-ebooks h2{font-size:1.5rem;font-weight:800;text-align:center;margin-bottom:2rem;color:var(--text)}
+.ebooks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.ebook-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;transition:all 0.2s}
+.ebook-card:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
+.ebook-card h4{font-size:0.95rem;color:var(--text);margin-bottom:0.5rem}
+.ebook-card p{font-size:0.8rem;color:var(--dim);margin:0}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center}
+footer p{color:var(--dim);font-size:0.85rem;margin-bottom:0.5rem}
+footer a{color:var(--accent)}
+footer .social{margin-top:0.75rem}
+footer .social a{color:var(--muted);margin:0 8px;font-size:0.9rem}
+
+.watermark{position:fixed;bottom:20px;right:20px;font-size:1.1rem;font-weight:900;color:rgba(255,95,31,0.10);letter-spacing:3px;pointer-events:none;z-index:50;user-select:none;-webkit-user-select:none}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--green));z-index:200;transition:width 0.15s ease;width:0}
+.scroll-top{position:fixed;bottom:80px;right:20px;width:44px;height:44px;background:var(--purple);color:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;opacity:0;transition:all 0.3s;z-index:100;display:flex;align-items:center;justify-content:center}
+.scroll-top.visible{opacity:0.8}
+.scroll-top:hover{opacity:1;transform:translateY(-2px)}
+
+@media print{
+  body{background:#fff;color:#111;font-size:12pt}
+  nav,.watermark,.progress-bar,.scroll-top,.cta-banner{display:none!important}
+  .landing{max-width:100%;padding:0}
+  .hero-text h1{-webkit-text-fill-color:#111;color:#111;background:none}
+  .book-cover{display:none}
+  footer{border-top:1px solid #ddd}footer p,footer a{color:#333}
+}
+@media(max-width:768px){
+  .hero{flex-direction:column-reverse;text-align:center;gap:2rem;padding:2rem 0 3rem}
+  .book-cover{width:200px;height:280px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .learn-grid{grid-template-columns:1fr}
+  .landing{padding:1rem 1rem 3rem}
+  nav{padding:10px 16px}
+}
+@media(max-width:480px){
+  .stats{grid-template-columns:1fr 1fr}
+  .book-cover{width:180px;height:260px}
+}
+</style>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav>
+  <a href="https://spunkart.com" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="https://spunkart.com/store">80+ Free Tools</a>
+    <a href="https://spunkart.com/blog.html">Blog</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a>
+  </div>
+</nav>
+
+<div class="landing">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="hero-text">
+    <div class="badge">Free Ebook &mdash; 2026 Edition</div>
+    <h1>The Prompt Engineering Bible</h1>
+    <p class="subtitle">The definitive guide to writing prompts that get results. 150+ templates for ChatGPT, Claude, Gemini, and every major AI model. From basics to advanced multi-step reasoning chains.</p>
+    <p class="author">By <a href="https://spunkart.com">SpunkArt.com</a></p>
+    <p class="edition">First Edition &bull; February 2026 &bull; 14 Chapters &bull; 150+ Templates</p>
+  </div>
+  <div class="book-cover">
+    <div class="cover-icon">&#9881;</div>
+    <div class="cover-label">SpunkArt.com</div>
+    <div class="cover-title">The Prompt Engineering Bible</div>
+    <div class="cover-sub">150+ Templates for Every AI Model</div>
+    <div class="cover-author">Free Edition</div>
+  </div>
+</section>
+
+<!-- ==================== STATS ==================== -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Chapters</div></div>
+  <div class="stat"><div class="stat-num">150+</div><div class="stat-label">Templates</div></div>
+  <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Price</div></div>
+  <div class="stat"><div class="stat-num">2026</div><div class="stat-label">Updated</div></div>
+</div>
+
+<!-- ==================== WHAT YOU'LL LEARN ==================== -->
+<section class="learn-section">
+  <h2>What You Will Learn</h2>
+  <div class="learn-grid">
+    <div class="learn-item">
+      <h3>Prompt Fundamentals</h3>
+      <p>The anatomy of an effective prompt. Role assignment, context injection, output formatting, and the principles that make AI respond exactly how you want.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Chain-of-Thought Reasoning</h3>
+      <p>Force AI to think step-by-step for complex problems. Multi-step reasoning chains that produce dramatically better outputs for math, logic, and analysis.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Few-Shot and Zero-Shot Patterns</h3>
+      <p>When to use examples and when to rely on instructions alone. Master both approaches and know which works best for each use case.</p>
+    </div>
+    <div class="learn-item">
+      <h3>System Prompts and Personas</h3>
+      <p>Configure AI behavior at the system level. Create custom personas, enforce output formats, and maintain consistent behavior across long conversations.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Coding with AI</h3>
+      <p>50+ prompt templates specifically for software development. Generate code, debug errors, refactor, write tests, and build complete applications.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Content and Marketing</h3>
+      <p>Prompts for blog posts, social media, email sequences, ad copy, SEO content, and product descriptions that convert.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Data Analysis Prompts</h3>
+      <p>Extract insights from data, generate reports, create visualizations, and build dashboards using AI-powered analysis prompts.</p>
+    </div>
+    <div class="learn-item">
+      <h3>Advanced Techniques</h3>
+      <p>Prompt chaining, tree-of-thought, self-consistency, constitutional AI, and meta-prompting. The cutting edge of prompt engineering.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<section class="toc" id="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><span>The Prompt Engineering Mindset</span></li>
+    <li><span>Anatomy of a Perfect Prompt</span></li>
+    <li><span>Role Assignment and Persona Creation</span></li>
+    <li><span>Context Injection: Giving AI What It Needs</span></li>
+    <li><span>Output Formatting and Structured Responses</span></li>
+    <li><span>Chain-of-Thought and Step-by-Step Reasoning</span></li>
+    <li><span>Few-Shot Learning: Teaching by Example</span></li>
+    <li><span>50 Coding Prompts That Ship Production Code</span></li>
+    <li><span>30 Marketing and Content Prompts</span></li>
+    <li><span>20 Data Analysis and Research Prompts</span></li>
+    <li><span>Prompt Chaining: Complex Workflows</span></li>
+    <li><span>Model-Specific Optimization (ChatGPT, Claude, Gemini)</span></li>
+    <li><span>Common Mistakes and How to Fix Them</span></li>
+    <li><span>Building Your Prompt Library: A System for Scale</span></li>
+  </ol>
+</section>
+
+<!-- ==================== PREVIEW ==================== -->
+<section class="preview">
+  <div class="chapter-num">Chapter 2 Preview</div>
+  <h2>Anatomy of a Perfect Prompt</h2>
+
+  <p>Every effective prompt contains four components, whether you write them explicitly or imply them through context. Understanding these components lets you write prompts that work on the first attempt, saving hours of back-and-forth iteration.</p>
+
+  <h3>The Four Components</h3>
+  <ul>
+    <li><strong>Role.</strong> Who should the AI be? A senior Python developer. A marketing strategist. A data analyst. The role sets the expertise level and perspective for the entire response.</li>
+    <li><strong>Context.</strong> What does the AI need to know? Background information, constraints, existing code, target audience, brand voice. The more relevant context you provide, the more targeted the output.</li>
+    <li><strong>Task.</strong> What exactly should the AI do? Be specific. "Write a blog post" is vague. "Write a 1,500-word blog post about CSS Grid for intermediate developers, with 3 code examples" is actionable.</li>
+    <li><strong>Format.</strong> How should the output be structured? Bullet points, numbered steps, code blocks, JSON, markdown, table. Specifying the format eliminates ambiguity and makes the output immediately usable.</li>
+  </ul>
+
+  <div class="prompt-example">You are a senior front-end developer with 10 years of experience (role). I am building a responsive dashboard for a SaaS analytics product using vanilla JavaScript and CSS Grid (context). Create the HTML and CSS for a three-column layout that collapses to single column on mobile, with a sticky sidebar navigation on desktop (task). Provide the code as a single HTML file with inline styles, and add comments explaining each section (format).</div>
+
+  <blockquote>"A well-structured prompt is like a well-written brief: it tells the AI exactly what success looks like. The clearer the brief, the better the deliverable."</blockquote>
+
+  <p>The remaining chapters build on this foundation, adding techniques like chain-of-thought reasoning, few-shot examples, and prompt chaining that transform simple prompts into powerful multi-step workflows. Each technique comes with ready-to-use templates you can copy and customize for your own projects.</p>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<div class="cta-banner">
+  <h3>Download the Full Ebook &mdash; Free</h3>
+  <p>14 chapters with 150+ prompt templates for coding, marketing, data analysis, and more. Works with every major AI model.</p>
+  <a href="https://spunkart.gumroad.com" target="_blank" rel="noopener" class="btn">Download Free on Gumroad &rarr;</a>
+  <a href="https://spunkart.com/store" class="btn btn-alt">Explore 80+ Free Tools &rarr;</a>
+</div>
+
+<!-- ==================== MORE EBOOKS ==================== -->
+<section class="more-ebooks">
+  <h2>More Free Ebooks</h2>
+  <div class="ebooks-grid">
+    <a href="https://spunkart.com/ebook-vibe-coding.html" class="ebook-card">
+      <h4>Vibe Coding Mastery</h4>
+      <p>Ship 100 projects with AI</p>
+    </a>
+    <a href="https://spunkart.com/ebook-ai-agents.html" class="ebook-card">
+      <h4>AI Agents Unleashed</h4>
+      <p>Build autonomous AI systems</p>
+    </a>
+    <a href="https://spunkart.com/ebook-ai-automation.html" class="ebook-card">
+      <h4>AI Automation Blueprint</h4>
+      <p>Automate everything with AI</p>
+    </a>
+    <a href="https://spunkart.com/ebook-seo-masterclass.html" class="ebook-card">
+      <h4>SEO Masterclass 2026</h4>
+      <p>Modern search optimization</p>
+    </a>
+    <a href="https://spunkart.com/ebook-side-hustle.html" class="ebook-card">
+      <h4>50 Side Hustles</h4>
+      <p>Start earning today</p>
+    </a>
+    <a href="https://spunkart.com/ebook-crypto-trading.html" class="ebook-card">
+      <h4>Crypto Trading for Beginners</h4>
+      <p>Start trading with confidence</p>
+    </a>
+    <a href="https://spunkart.com/ebook-passive-income.html" class="ebook-card">
+      <h4>The Passive Income Machine</h4>
+      <p>50 automated revenue streams</p>
+    </a>
+    <a href="https://spunkart.com/ebook-vibe-coders-playbook.html" class="ebook-card">
+      <h4>Vibe Coder's Playbook</h4>
+      <p>Advanced vibe coding strategies</p>
+    </a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 <a href="https://spunkart.com">SpunkArt.com</a>. All rights reserved.</p>
+  <p style="margin-top:4px">80+ free tools &rarr; <a href="https://spunkart.com/store">spunkart.com/store</a></p>
+  <div class="social">
+    <a href="https://spunkart.com">SpunkArt.com</a> &bull;
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</button>
+
+<script>
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'F12') { e.preventDefault(); return false; }
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i')) { e.preventDefault(); return false; }
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u')) { e.preventDefault(); return false; }
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j')) { e.preventDefault(); return false; }
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.key === 'c')) { e.preventDefault(); return false; }
+});
+function updateProgress() {
+  var h = document.documentElement;
+  var scrollTop = window.pageYOffset || h.scrollTop;
+  var scrollHeight = h.scrollHeight - h.clientHeight;
+  var progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+}
+window.addEventListener('scroll', updateProgress);
+window.addEventListener('resize', updateProgress);
+var scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function() {
+  if (window.pageYOffset > 600) { scrollBtn.classList.add('visible'); }
+  else { scrollBtn.classList.remove('visible'); }
+});
+scrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
+</body>
+</html>
