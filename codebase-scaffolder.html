@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codebase Scaffolder - Project Structure Generator | SPUNKART.COM</title>
+<meta name="description" content="Generate complete project scaffolds for React, Next.js, Vue, Svelte, Express, FastAPI, Flask. Pick features like auth, DB, Docker, CI/CD. Copy full structure.">
+<meta name="keywords" content="project scaffolder, codebase generator, project structure, boilerplate generator, react scaffolder, nextjs scaffolder">
+<meta property="og:title" content="Codebase Scaffolder — Project Generator | SPUNKART.COM">
+<meta property="og:description" content="Generate full project structures for popular frameworks. Free scaffolding tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/codebase-scaffolder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Codebase Scaffolder | SPUNKART.COM">
+<meta name="twitter:description" content="Generate complete project scaffolds for React, Next.js, Vue, Express, FastAPI, and more.">
+<link rel="canonical" href="https://spunkart.com/codebase-scaffolder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.fw-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fw-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.fw-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.fw-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.feat-grid{display:flex;flex-wrap:wrap;gap:10px}
+.feat-check{display:flex;align-items:center;gap:6px;padding:8px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:0.85rem;color:#ccc;transition:all .2s}
+.feat-check:hover{border-color:#ff5f1f}
+.feat-check.checked{border-color:#10b981;color:#10b981;background:#10b98112}
+.feat-check input{display:none}
+.proj-input{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;margin-bottom:12px}
+.proj-input:focus{border-color:#ff5f1f}
+.tree-output{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.82rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;margin-top:12px;line-height:1.5}
+.file-content{margin-top:16px}
+.file-tab{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.file-tab button{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-size:0.78rem;cursor:pointer;font-family:'Courier New',monospace}
+.file-tab button.active{border-color:#ff5f1f;color:#ff5f1f;background:#ff5f1f11}
+.file-code{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.82rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;line-height:1.5}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .fw-btn{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Codebase Scaffolder","description":"Generate complete project scaffolds for React, Next.js, Vue, Svelte, Express, FastAPI, Flask with auth, DB, Docker, CI/CD features.","url":"https://spunkart.com/codebase-scaffolder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Codebase <span>Scaffolder</span></h1>
+  <p class="subtitle">Pick a framework and features. Generate a complete project structure with file contents.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Project Name</h3>
+    <input type="text" class="proj-input" id="projName" placeholder="my-awesome-app">
+
+    <h3>Choose Framework</h3>
+    <div class="fw-grid" id="fwGrid">
+      <button class="fw-btn active" onclick="setFW(this,'react')">React</button>
+      <button class="fw-btn" onclick="setFW(this,'nextjs')">Next.js</button>
+      <button class="fw-btn" onclick="setFW(this,'vue')">Vue</button>
+      <button class="fw-btn" onclick="setFW(this,'svelte')">Svelte</button>
+      <button class="fw-btn" onclick="setFW(this,'express')">Express</button>
+      <button class="fw-btn" onclick="setFW(this,'fastapi')">FastAPI</button>
+      <button class="fw-btn" onclick="setFW(this,'flask')">Flask</button>
+    </div>
+
+    <h3>Select Features</h3>
+    <div class="feat-grid" id="featGrid">
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="auth">Authentication</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="db">Database</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="api">REST API</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="tests">Tests</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="docker">Docker</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="cicd">CI/CD</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="lint">Linting</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="env">Env Config</label>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateScaffold()">Generate Scaffold</button>
+    </div>
+  </div>
+
+  <div class="section" id="outputSection" style="display:none">
+    <h3>Project Structure</h3>
+    <div class="tree-output" id="treeOutput"></div>
+    <div class="file-content">
+      <h3 style="margin-top:16px">File Contents</h3>
+      <div class="file-tab" id="fileTabs"></div>
+      <div class="file-code" id="fileCode">Select a file above to view its contents.</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyTree()">Copy Tree</button>
+      <button class="btn btn-primary" onclick="copyAll()">Copy All Files</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/automation-builder">Automation Builder</a>
+      <a href="/package-json-builder">Package.json Builder</a>
+      <a href="/monorepo-generator">Monorepo Generator</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/deployment-checklist">Deployment Checklist</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let selectedFW = 'react';
+let generatedFiles = {};
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function setFW(el, fw) {
+  document.querySelectorAll('.fw-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  selectedFW = fw;
+}
+
+function getFeatures() {
+  return [...document.querySelectorAll('.feat-check input:checked')].map(i=>i.value);
+}
+
+function generateScaffold() {
+  const name = document.getElementById('projName').value.trim() || 'my-app';
+  const feats = getFeatures();
+  generatedFiles = {};
+  let tree = [];
+
+  const fw = selectedFW;
+  const isJS = ['react','nextjs','vue','svelte','express'].includes(fw);
+  const isPy = ['fastapi','flask'].includes(fw);
+
+  // Root files
+  generatedFiles['README.md'] = `# ${name}\n\nGenerated with SPUNKART.COM Codebase Scaffolder.\n\n## Setup\n\n${isJS?'```bash\nnpm install\nnpm run dev\n```':'```bash\npip install -r requirements.txt\npython main.py\n```'}\n`;
+  generatedFiles['.gitignore'] = isJS ? 'node_modules/\ndist/\n.env\n.env.local\ncoverage/\n.DS_Store' : '__pycache__/\n*.pyc\n.env\nvenv/\n.DS_Store\ndist/';
+  tree.push(name + '/');
+  tree.push('  README.md');
+  tree.push('  .gitignore');
+
+  if(isJS) {
+    generatedFiles['package.json'] = JSON.stringify({name,version:'1.0.0',private:true,scripts:{dev:fw==='express'?'nodemon src/index.js':fw==='nextjs'?'next dev':'vite',build:fw==='nextjs'?'next build':'vite build',start:fw==='express'?'node src/index.js':fw==='nextjs'?'next start':'vite preview',...(feats.includes('tests')?{test:'vitest'}:{}),
+    ...(feats.includes('lint')?{lint:'eslint . --ext .js,.jsx,.ts,.tsx'}:{})},dependencies:{},devDependencies:{}},null,2);
+    tree.push('  package.json');
+  }
+  if(isPy) {
+    const deps = fw==='fastapi' ? ['fastapi','uvicorn[standard]','pydantic'] : ['flask'];
+    if(feats.includes('db')) deps.push('sqlalchemy','alembic');
+    if(feats.includes('auth')) deps.push(fw==='fastapi'?'python-jose[cryptography]':'flask-login','passlib[bcrypt]');
+    if(feats.includes('tests')) deps.push('pytest','httpx');
+    generatedFiles['requirements.txt'] = deps.join('\n');
+    tree.push('  requirements.txt');
+  }
+
+  if(feats.includes('env')) {
+    generatedFiles['.env.example'] = 'DATABASE_URL=postgresql://user:pass@localhost:5432/dbname\nSECRET_KEY=your-secret-key\nPORT=3000\nNODE_ENV=development';
+    tree.push('  .env.example');
+  }
+
+  // Source directory
+  const srcDir = isPy ? 'app' : 'src';
+  tree.push('  ' + srcDir + '/');
+
+  if(fw === 'react') {
+    generatedFiles[srcDir+'/main.jsx'] = `import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\nimport './index.css';\n\nReactDOM.createRoot(document.getElementById('root')).render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);`;
+    generatedFiles[srcDir+'/App.jsx'] = `import React from 'react';\n\nexport default function App() {\n  return (\n    <div className="app">\n      <h1>${name}</h1>\n      <p>Welcome to your new React app.</p>\n    </div>\n  );\n}`;
+    generatedFiles[srcDir+'/index.css'] = `* { margin: 0; padding: 0; box-sizing: border-box; }\nbody { font-family: system-ui, sans-serif; background: #0a0a0a; color: #e8e8e8; }`;
+    tree.push('    main.jsx','    App.jsx','    index.css');
+  } else if(fw === 'nextjs') {
+    generatedFiles[srcDir+'/app/layout.tsx'] = `export const metadata = { title: '${name}', description: 'Generated with SPUNKART.COM' };\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang="en">\n      <body>{children}</body>\n    </html>\n  );\n}`;
+    generatedFiles[srcDir+'/app/page.tsx'] = `export default function Home() {\n  return (\n    <main>\n      <h1>${name}</h1>\n      <p>Welcome to your Next.js app.</p>\n    </main>\n  );\n}`;
+    generatedFiles['next.config.js'] = `/** @type {import('next').NextConfig} */\nconst nextConfig = {};\nmodule.exports = nextConfig;`;
+    tree.push('    app/','      layout.tsx','      page.tsx');
+    tree.push('  next.config.js');
+  } else if(fw === 'vue') {
+    generatedFiles[srcDir+'/main.js'] = `import { createApp } from 'vue';\nimport App from './App.vue';\n\ncreateApp(App).mount('#app');`;
+    generatedFiles[srcDir+'/App.vue'] = `<template>\n  <div id="app">\n    <h1>${name}</h1>\n    <p>Welcome to your Vue app.</p>\n  </div>\n</template>\n\n<script setup>\n// Component logic here\n</script>`;
+    tree.push('    main.js','    App.vue');
+  } else if(fw === 'svelte') {
+    generatedFiles[srcDir+'/main.js'] = `import App from './App.svelte';\n\nconst app = new App({ target: document.getElementById('app') });\nexport default app;`;
+    generatedFiles[srcDir+'/App.svelte'] = `<script>\n  let name = '${name}';\n</script>\n\n<main>\n  <h1>{name}</h1>\n  <p>Welcome to your Svelte app.</p>\n</main>`;
+    tree.push('    main.js','    App.svelte');
+  } else if(fw === 'express') {
+    generatedFiles[srcDir+'/index.js'] = `const express = require('express');\nconst app = express();\nconst PORT = process.env.PORT || 3000;\n\napp.use(express.json());\n\napp.get('/', (req, res) => {\n  res.json({ message: 'Welcome to ${name}' });\n});\n\napp.listen(PORT, () => {\n  console.log(\`Server running on port \${PORT}\`);\n});`;
+    generatedFiles[srcDir+'/routes/index.js'] = `const router = require('express').Router();\n\nrouter.get('/health', (req, res) => res.json({ status: 'ok' }));\n\nmodule.exports = router;`;
+    tree.push('    index.js','    routes/','      index.js');
+  } else if(fw === 'fastapi') {
+    generatedFiles[srcDir+'/main.py'] = `from fastapi import FastAPI\n\napp = FastAPI(title="${name}")\n\n@app.get("/")\ndef root():\n    return {"message": "Welcome to ${name}"}\n\n@app.get("/health")\ndef health():\n    return {"status": "ok"}`;
+    generatedFiles[srcDir+'/__init__.py'] = '';
+    tree.push('    main.py','    __init__.py');
+  } else if(fw === 'flask') {
+    generatedFiles[srcDir+'/main.py'] = `from flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route("/")\ndef index():\n    return jsonify(message="Welcome to ${name}")\n\n@app.route("/health")\ndef health():\n    return jsonify(status="ok")\n\nif __name__ == "__main__":\n    app.run(debug=True)`;
+    generatedFiles[srcDir+'/__init__.py'] = '';
+    tree.push('    main.py','    __init__.py');
+  }
+
+  // Features
+  if(feats.includes('auth')) {
+    if(isJS) {
+      generatedFiles[srcDir+'/middleware/auth.js'] = `const jwt = require('jsonwebtoken');\n\nfunction authMiddleware(req, res, next) {\n  const token = req.headers.authorization?.split(' ')[1];\n  if (!token) return res.status(401).json({ error: 'No token provided' });\n  try {\n    const decoded = jwt.verify(token, process.env.SECRET_KEY);\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ error: 'Invalid token' });\n  }\n}\n\nmodule.exports = authMiddleware;`;
+      tree.push('    middleware/','      auth.js');
+    } else {
+      generatedFiles[srcDir+'/auth.py'] = `from datetime import datetime, timedelta\nimport os\n\ndef create_token(data: dict):\n    """Create JWT token."""\n    from jose import jwt\n    expire = datetime.utcnow() + timedelta(hours=24)\n    to_encode = {**data, "exp": expire}\n    return jwt.encode(to_encode, os.getenv("SECRET_KEY"), algorithm="HS256")\n\ndef verify_token(token: str):\n    """Verify JWT token."""\n    from jose import jwt\n    return jwt.decode(token, os.getenv("SECRET_KEY"), algorithms=["HS256"])`;
+      tree.push('    auth.py');
+    }
+  }
+
+  if(feats.includes('db')) {
+    if(isJS) {
+      generatedFiles[srcDir+'/db/index.js'] = `// Database connection\nconst { Pool } = require('pg');\n\nconst pool = new Pool({\n  connectionString: process.env.DATABASE_URL,\n});\n\nmodule.exports = { query: (text, params) => pool.query(text, params) };`;
+      tree.push('    db/','      index.js');
+    } else {
+      generatedFiles[srcDir+'/database.py'] = `from sqlalchemy import create_engine\nfrom sqlalchemy.ext.declarative import declarative_base\nfrom sqlalchemy.orm import sessionmaker\nimport os\n\nDATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./app.db")\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()`;
+      generatedFiles[srcDir+'/models.py'] = `from sqlalchemy import Column, Integer, String, DateTime\nfrom datetime import datetime\nfrom .database import Base\n\nclass User(Base):\n    __tablename__ = "users"\n    id = Column(Integer, primary_key=True, index=True)\n    email = Column(String, unique=True, index=True)\n    created_at = Column(DateTime, default=datetime.utcnow)`;
+      tree.push('    database.py','    models.py');
+    }
+  }
+
+  if(feats.includes('tests')) {
+    const testDir = isPy ? 'tests' : 'tests';
+    if(isJS) {
+      generatedFiles[testDir+'/app.test.js'] = `import { describe, it, expect } from 'vitest';\n\ndescribe('App', () => {\n  it('should pass basic test', () => {\n    expect(1 + 1).toBe(2);\n  });\n});`;
+    } else {
+      generatedFiles[testDir+'/test_main.py'] = `from fastapi.testclient import TestClient\nfrom app.main import app\n\nclient = TestClient(app)\n\ndef test_root():\n    response = client.get("/")\n    assert response.status_code == 200\n\ndef test_health():\n    response = client.get("/health")\n    assert response.json()["status"] == "ok"`;
+    }
+    tree.push('  '+testDir+'/');
+    tree.push('    '+(isJS?'app.test.js':'test_main.py'));
+  }
+
+  if(feats.includes('docker')) {
+    generatedFiles['Dockerfile'] = isJS ?
+      `FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --production\nCOPY . .\nEXPOSE 3000\nCMD ["node", "src/index.js"]` :
+      `FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]`;
+    generatedFiles['docker-compose.yml'] = `version: '3.8'\nservices:\n  app:\n    build: .\n    ports:\n      - "${isJS?'3000:3000':'8000:8000'}"\n    env_file:\n      - .env\n    volumes:\n      - .:/app`;
+    generatedFiles['.dockerignore'] = 'node_modules\n.git\n.env\n__pycache__\nvenv\ndist';
+    tree.push('  Dockerfile','  docker-compose.yml','  .dockerignore');
+  }
+
+  if(feats.includes('cicd')) {
+    generatedFiles['.github/workflows/ci.yml'] = `name: CI\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - ${isJS?'name: Setup Node\n        uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: npm ci\n      - run: npm run build':'name: Setup Python\n        uses: actions/setup-python@v5\n        with:\n          python-version: "3.12"\n      - run: pip install -r requirements.txt'}${feats.includes('tests')?(isJS?'\n      - run: npm test':'\n      - run: pytest'):''}${feats.includes('lint')?(isJS?'\n      - run: npm run lint':''):''}`;
+    tree.push('  .github/','    workflows/','      ci.yml');
+  }
+
+  if(feats.includes('lint') && isJS) {
+    generatedFiles['.eslintrc.json'] = JSON.stringify({env:{browser:true,es2021:true,node:true},extends:['eslint:recommended'],parserOptions:{ecmaVersion:'latest',sourceType:'module'},rules:{}},null,2);
+    tree.push('  .eslintrc.json');
+  }
+
+  // Render
+  document.getElementById('treeOutput').textContent = tree.join('\n');
+  const tabs = document.getElementById('fileTabs');
+  tabs.innerHTML = Object.keys(generatedFiles).map((f,i) => `<button class="${i===0?'active':''}" onclick="showFile(this,'${f}')">${f}</button>`).join('');
+  const firstFile = Object.keys(generatedFiles)[0];
+  document.getElementById('fileCode').textContent = generatedFiles[firstFile];
+  document.getElementById('outputSection').style.display = 'block';
+  gtag('event','generate_scaffold',{event_category:'tool_use',framework:fw,features:feats.join(',')});
+}
+
+function showFile(el, filename) {
+  document.querySelectorAll('.file-tab button').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('fileCode').textContent = generatedFiles[filename] || '(empty file)';
+}
+
+function copyTree() {
+  navigator.clipboard.writeText(document.getElementById('treeOutput').textContent);
+  showToast('Tree copied!');
+}
+
+function copyAll() {
+  let output = '';
+  for(const [file, content] of Object.entries(generatedFiles)) {
+    output += `\n// ===== ${file} =====\n${content}\n`;
+  }
+  navigator.clipboard.writeText(output);
+  showToast('All files copied!');
+  gtag('event','copy_scaffold',{event_category:'tool_use'});
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

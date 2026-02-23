@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SpunkArt Tools — 100+ Free Tools for Founders, Developers & Vibe Coders</title>
-<meta name="description" content="100+ free browser-based tools for developers, designers, founders, and vibe coders. No signup. No ads. Plus premium Cloudflare Workers and ebooks.">
-<meta property="og:title" content="SpunkArt — 100+ Free Tools for Founders & Developers">
-<meta property="og:description" content="100+ free tools, premium Cloudflare Workers, and ebooks. Built by 1 dev running 120+ sites.">
+<title>SpunkArt Tools — 110+ Free Tools for Founders, Developers & Vibe Coders</title>
+<meta name="description" content="110+ free browser-based tools for developers, designers, founders, and vibe coders. No signup. No ads. Plus premium Cloudflare Workers and ebooks.">
+<meta property="og:title" content="SpunkArt — 110+ Free Tools for Founders & Developers">
+<meta property="og:description" content="110+ free tools, premium Cloudflare Workers, and ebooks. Built by 1 dev running 120+ sites.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://spunkart.com/store">
 <meta name="twitter:card" content="summary_large_image">
@@ -68,6 +68,9 @@ a{color:inherit;text-decoration:none}
 .badge-security{background:#ef444420;color:#ef4444;border:1px solid #ef444433}
 .badge-analytics{background:#06b6d420;color:#06b6d4;border:1px solid #06b6d433}
 .badge-ai{background:#8b5cf620;color:#8b5cf6;border:1px solid #8b5cf633}
+.badge-automation{background:#f9731620;color:#f97316;border:1px solid #f9731633}
+.badge-artist{background:#e879f920;color:#e879f9;border:1px solid #e879f933}
+.badge-creator{background:#22d3ee20;color:#22d3ee;border:1px solid #22d3ee33}
 .tool-usage{font-size:0.65rem;color:#555}
 .tool-try-btn{display:inline-block;padding:0.35rem 0.8rem;background:#ff5f1f;color:#fff;border-radius:6px;font-size:0.75rem;font-weight:600;transition:all 0.2s}
 .tool-try-btn:hover{background:#e5541b;transform:scale(1.04)}
@@ -221,7 +224,7 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<div class="announce">100+ free tools live now. New tools added weekly. Get Lifetime Access and never miss one.</div>
+<div class="announce">110+ free tools live now. New tools added weekly. Get Lifetime Access and never miss one.</div>
 
 <nav class="nav">
   <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
@@ -236,10 +239,10 @@ a{color:inherit;text-decoration:none}
 </nav>
 
 <section class="hero">
-  <h1>100+ Free Tools for Founders, Developers & Vibe Coders</h1>
+  <h1>110+ Free Tools for Founders, Developers & Vibe Coders</h1>
   <p>Every tool runs in your browser. No signup. No tracking. No BS. Plus premium Cloudflare Workers and ebooks for builders who want to ship fast.</p>
   <div class="hero-stats">
-    <span><strong id="totalToolCount">98</strong> Free Tools</span>
+    <span><strong id="totalToolCount">0</strong> Free Tools</span>
     <span><strong>18</strong> Premium Workers</span>
     <span><strong>120+</strong> Sites Built</span>
     <span><strong>8</strong> Ebooks</span>
@@ -255,7 +258,7 @@ a{color:inherit;text-decoration:none}
   </div>
 
   <div class="filter-section">
-    <input type="text" class="search-box" id="toolSearch" placeholder="Search 98 tools... (e.g. JSON, color, SEO, PDF)">
+    <input type="text" class="search-box" id="toolSearch" placeholder="Search tools... (e.g. JSON, color, SEO, PDF)">
     <div class="filter-buttons" id="filterButtons">
       <button class="filter-btn active" data-cat="all">All</button>
       <button class="filter-btn" data-cat="Dev" style="--c:#3b82f6">Dev</button>
@@ -266,8 +269,11 @@ a{color:inherit;text-decoration:none}
       <button class="filter-btn" data-cat="Security" style="--c:#ef4444">Security</button>
       <button class="filter-btn" data-cat="Analytics" style="--c:#06b6d4">Analytics</button>
       <button class="filter-btn" data-cat="AI" style="--c:#8b5cf6">AI</button>
+      <button class="filter-btn" data-cat="Automation" style="--c:#f97316">Automation</button>
+      <button class="filter-btn" data-cat="Artist" style="--c:#e879f9">Artist</button>
+      <button class="filter-btn" data-cat="Creator" style="--c:#22d3ee">Creator</button>
     </div>
-    <div class="tool-count-display" id="toolCountDisplay">Showing all 98 tools</div>
+    <div class="tool-count-display" id="toolCountDisplay">Loading tools...</div>
   </div>
 
   <div class="tool-grid" id="toolGrid"></div>

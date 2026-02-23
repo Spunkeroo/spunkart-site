@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Store Generator - Free Online Store Page Builder for Artists | SPUNKART.COM</title>
+<meta name="description" content="Create a beautiful online store page for your art, prints, and digital products. Add products, pick a theme, and download ready-to-deploy store HTML.">
+<meta name="keywords" content="store generator, online store builder, artist store creator, shop page generator, free store template">
+<meta property="og:title" content="Store Generator — Free Online Store Builder | SPUNKART.COM">
+<meta property="og:description" content="Build a stunning store page for your art and products. Add items, pick colors, download HTML. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/store-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Store Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Free online store page builder for artists and creators.">
+<link rel="canonical" href="https://spunkart.com/store-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+input[type="text"],input[type="url"],input[type="number"],textarea,select{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,textarea:focus,select:focus{border-color:#ff5f1f}
+input::placeholder,textarea::placeholder{color:#444}
+textarea{min-height:60px;resize:vertical;line-height:1.6}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.product-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-bottom:12px;position:relative}
+.product-card .remove-btn{position:absolute;top:8px;right:8px;background:#ff5f1f33;border:none;color:#ff5f1f;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.product-card .remove-btn:hover{background:#ff5f1f;color:#fff}
+.inline-row{display:flex;gap:12px}
+.inline-row>*{flex:1}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.preview-frame{width:100%;min-height:400px;background:#fff;border-radius:8px;border:none;margin-top:12px}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .inline-row{flex-direction:column;gap:0}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Store Generator","description":"Create a beautiful online store page for artists. Add products, pick a theme, download ready HTML.","url":"https://spunkart.com/store-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Store <span>Generator</span></h1>
+  <p class="subtitle">Build an online store page for your art, prints, and digital products. Download ready-to-deploy HTML.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Store Info</h2>
+    <label>Store Name</label>
+    <input type="text" id="storeName" placeholder="e.g. Art by Jane">
+    <label>Store Description</label>
+    <textarea id="storeDesc" placeholder="Welcome to my shop. Browse prints, originals, and digital downloads."></textarea>
+    <label>Banner Image URL (optional)</label>
+    <input type="url" id="bannerImg" placeholder="https://example.com/banner.jpg">
+    <div class="inline-row">
+      <div>
+        <label>Primary Color</label>
+        <input type="color" id="primaryColor" value="#ff5f1f" style="width:100%;height:44px;border:1px solid #2a2a2a;background:#0d0d0d;border-radius:8px;cursor:pointer">
+      </div>
+      <div>
+        <label>Background</label>
+        <select id="bgStyle"><option value="dark">Dark</option><option value="light">Light</option><option value="cream">Cream</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Payment Link</h2>
+    <label>Payment Platform</label>
+    <select id="payPlatform">
+      <option value="gumroad">Gumroad</option>
+      <option value="stripe">Stripe Payment Link</option>
+      <option value="paypal">PayPal.me</option>
+      <option value="custom">Custom URL</option>
+    </select>
+    <label>Base Payment URL</label>
+    <input type="url" id="payUrl" placeholder="e.g. https://yourname.gumroad.com">
+    <p style="color:#555;font-size:0.8rem">Each product can also have its own buy link. This is the fallback.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Products</h2>
+    <div id="productsList"></div>
+    <button class="btn btn-secondary" onclick="addProduct()" style="margin-top:8px">+ Add Product</button>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="generateStore()">Generate Store</button>
+    <button class="btn btn-green" onclick="downloadStore()">Download HTML</button>
+    <button class="btn btn-secondary" onclick="copyStore()">Copy HTML</button>
+  </div>
+
+  <div class="section" id="previewSection" style="display:none">
+    <h2>Preview</h2>
+    <iframe id="previewFrame" class="preview-frame"></iframe>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/portfolio-builder">Portfolio Builder</a>
+      <a href="/commission-calculator">Commission Calculator</a>
+      <a href="/merch-mockup-generator">Merch Mockups</a>
+      <a href="/link-in-bio">Link in Bio</a>
+      <a href="/invoice-generator">Invoice Generator</a>
+      <a href="/press-kit-generator">Press Kit</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let generatedHTML='';
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg||'Copied!';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+function addProduct(){
+  const id='prod_'+Date.now()+'_'+Math.random().toString(36).substr(2,5);
+  const div=document.createElement('div');
+  div.className='product-card';
+  div.id=id;
+  div.innerHTML=`
+    <button class="remove-btn" onclick="this.parentElement.remove()">&times;</button>
+    <label>Product Name</label>
+    <input type="text" class="prodName" placeholder="e.g. Mountain Sunset Print">
+    <label>Description</label>
+    <textarea class="prodDesc" placeholder="A3 giclée print on archival paper..."></textarea>
+    <div class="inline-row">
+      <div><label>Price</label><input type="text" class="prodPrice" placeholder="$29.99"></div>
+      <div><label>Image URL</label><input type="url" class="prodImg" placeholder="https://..."></div>
+    </div>
+    <label>Buy Link (optional, overrides default)</label>
+    <input type="url" class="prodLink" placeholder="https://gumroad.com/l/...">`;
+  document.getElementById('productsList').appendChild(div);
+}
+
+addProduct();addProduct();addProduct();
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function generateStore(){
+  const name=document.getElementById('storeName').value.trim()||'My Store';
+  const desc=document.getElementById('storeDesc').value.trim();
+  const banner=document.getElementById('bannerImg').value.trim();
+  const primary=document.getElementById('primaryColor').value;
+  const bgStyle=document.getElementById('bgStyle').value;
+  const payUrl=document.getElementById('payUrl').value.trim();
+
+  const bgMap={dark:{bg:'#0a0a0a',card:'#111',text:'#e8e8e8',sub:'#888',border:'#222'},light:{bg:'#f5f5f5',card:'#fff',text:'#1a1a1a',sub:'#666',border:'#ddd'},cream:{bg:'#faf8f0',card:'#fff',text:'#2a2a2a',sub:'#777',border:'#e0d8c0'}};
+  const theme=bgMap[bgStyle];
+
+  const cards=document.querySelectorAll('.product-card');
+  let productsHTML='';
+  cards.forEach(c=>{
+    const pName=c.querySelector('.prodName').value.trim();
+    const pDesc=c.querySelector('.prodDesc').value.trim();
+    const pPrice=c.querySelector('.prodPrice').value.trim();
+    const pImg=c.querySelector('.prodImg').value.trim();
+    const pLink=c.querySelector('.prodLink').value.trim()||payUrl;
+    if(!pName) return;
+    productsHTML+=`<div class="product">
+${pImg?`<img src="${esc(pImg)}" alt="${esc(pName)}" loading="lazy">`:`<div class="placeholder-img">${esc(pName.charAt(0))}</div>`}
+<div class="product-details">
+<h3>${esc(pName)}</h3>
+${pDesc?`<p class="desc">${esc(pDesc)}</p>`:''}
+<div class="price-row">
+<span class="price">${esc(pPrice||'Price TBD')}</span>
+${pLink?`<a href="${esc(pLink)}" target="_blank" class="buy-btn">Buy Now</a>`:''}
+</div>
+</div>
+</div>`;
+  });
+
+  generatedHTML=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(name)}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:${theme.bg};color:${theme.text};line-height:1.6}
+a{color:${primary};text-decoration:none}
+.banner{width:100%;height:300px;object-fit:cover;display:block}
+header{text-align:center;padding:40px 20px 20px}
+header h1{font-size:2.2rem;margin-bottom:8px}
+header p{color:${theme.sub};font-size:1rem;max-width:600px;margin:0 auto}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1100px;margin:30px auto;padding:0 20px}
+.product{background:${theme.card};border:1px solid ${theme.border};border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.product:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.product img{width:100%;height:240px;object-fit:cover}
+.placeholder-img{width:100%;height:240px;background:${primary}22;display:flex;align-items:center;justify-content:center;font-size:3rem;color:${primary};font-weight:700}
+.product-details{padding:16px}
+.product-details h3{font-size:1.05rem;margin-bottom:6px}
+.product-details .desc{color:${theme.sub};font-size:0.85rem;margin-bottom:12px;line-height:1.5}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.price{font-size:1.2rem;font-weight:700;color:${primary}}
+.buy-btn{display:inline-block;padding:8px 20px;background:${primary};color:#fff;border-radius:8px;font-weight:600;font-size:0.85rem;transition:opacity .2s}
+.buy-btn:hover{opacity:.85}
+footer{text-align:center;padding:30px;color:${theme.sub};font-size:0.8rem;border-top:1px solid ${theme.border};margin-top:40px}
+</style>
+</head>
+<body>
+${banner?`<img class="banner" src="${esc(banner)}" alt="${esc(name)}">`:''}
+<header>
+<h1>${esc(name)}</h1>
+${desc?`<p>${esc(desc)}</p>`:''}
+</header>
+<div class="products">
+${productsHTML}
+</div>
+<footer>&copy; ${new Date().getFullYear()} ${esc(name)}</footer>
+</body>
+</html>`;
+
+  document.getElementById('previewSection').style.display='block';
+  document.getElementById('previewFrame').srcdoc=generatedHTML;
+  showToast('Store generated!');
+  gtag('event','generate_store',{event_category:'tool_use'});
+}
+
+function copyStore(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  navigator.clipboard.writeText(generatedHTML);
+  showToast('HTML copied!');
+  gtag('event','copy_store',{event_category:'tool_use'});
+}
+
+function downloadStore(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  const blob=new Blob([generatedHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='store.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event','download_store',{event_category:'tool_use'});
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
