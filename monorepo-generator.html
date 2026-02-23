@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Monorepo Generator - Workspace Structure Builder | SPUNKART.COM</title>
+<meta name="description" content="Generate monorepo structures for Turborepo, Nx, or Lerna. Add packages and apps, configure shared deps, generate full workspace config files.">
+<meta name="keywords" content="monorepo generator, turborepo setup, nx workspace, lerna config, workspace generator, monorepo boilerplate">
+<meta property="og:title" content="Monorepo Generator — Workspace Builder | SPUNKART.COM">
+<meta property="og:description" content="Generate monorepo structures for Turborepo, Nx, or Lerna. Free workspace config generator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/monorepo-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monorepo Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Generate monorepo structures for Turborepo, Nx, or Lerna. Free tool.">
+<link rel="canonical" href="https://spunkart.com/monorepo-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.fw-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.fw-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.fw-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.fw-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.field-input{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;margin-bottom:12px}
+.field-input:focus{border-color:#ff5f1f}
+.pkg-list{margin-bottom:12px}
+.pkg-item{display:flex;gap:8px;margin-bottom:8px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#0d0d0d;border:1px solid #222;border-radius:8px}
+.pkg-item input,.pkg-item select{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none}
+.pkg-item input:focus{border-color:#ff5f1f}
+.pkg-type{font-size:0.75rem;padding:2px 8px;border-radius:4px;font-weight:600}
+.type-app{background:#ff5f1f22;color:#ff5f1f}
+.type-package{background:#3b82f622;color:#3b82f6}
+.feat-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.feat-check{display:flex;align-items:center;gap:6px;padding:8px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:0.85rem;color:#ccc;transition:all .2s}
+.feat-check:hover{border-color:#ff5f1f}
+.feat-check.checked{border-color:#10b981;color:#10b981;background:#10b98112}
+.feat-check input{display:none}
+.tree-output{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.82rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;line-height:1.5}
+.file-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.file-tab-btn{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-size:0.78rem;cursor:pointer;font-family:'Courier New',monospace}
+.file-tab-btn.active{border-color:#ff5f1f;color:#ff5f1f;background:#ff5f1f11}
+.file-code{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.82rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;line-height:1.5}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .fw-btn{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Monorepo Generator","description":"Generate monorepo structures for Turborepo, Nx, or Lerna. Add packages, apps, and shared dependencies.","url":"https://spunkart.com/monorepo-generator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Monorepo <span>Generator</span></h1>
+  <p class="subtitle">Generate monorepo workspace structures. Pick your tool, add packages and apps, generate config files.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Workspace Name</h3>
+    <input type="text" class="field-input" id="wsName" placeholder="my-monorepo" value="my-monorepo">
+
+    <h3>Monorepo Tool</h3>
+    <div class="fw-grid" id="toolGrid">
+      <button class="fw-btn active" onclick="setTool(this,'turborepo')">Turborepo</button>
+      <button class="fw-btn" onclick="setTool(this,'nx')">Nx</button>
+      <button class="fw-btn" onclick="setTool(this,'lerna')">Lerna</button>
+    </div>
+
+    <h3>Package Manager</h3>
+    <div class="fw-grid" id="pmGrid">
+      <button class="fw-btn active" onclick="setPM(this,'pnpm')">pnpm</button>
+      <button class="fw-btn" onclick="setPM(this,'npm')">npm</button>
+      <button class="fw-btn" onclick="setPM(this,'yarn')">yarn</button>
+    </div>
+
+    <h3>Features</h3>
+    <div class="feat-grid">
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="typescript" checked>TypeScript</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="eslint">ESLint</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="prettier">Prettier</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="jest">Jest/Vitest</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="docker">Docker</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="cicd">CI/CD</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="husky">Husky + lint-staged</label>
+      <label class="feat-check" onclick="this.classList.toggle('checked')"><input type="checkbox" value="changeset">Changesets</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Apps & Packages</h3>
+    <div class="pkg-list" id="pkgList"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary btn-sm" onclick="addPkg('app')">+ Add App</button>
+      <button class="btn btn-secondary btn-sm" onclick="addPkg('package')">+ Add Package</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="btn-row" style="margin-top:0;margin-bottom:16px">
+      <button class="btn btn-primary" onclick="generate()">Generate Monorepo</button>
+    </div>
+    <div id="outputArea" style="display:none">
+      <h3>Directory Structure</h3>
+      <div class="tree-output" id="treeOutput"></div>
+      <h3 style="margin-top:16px">Config Files</h3>
+      <div class="file-tabs" id="fileTabs"></div>
+      <div class="file-code" id="fileCode">Select a file above to view contents.</div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="copyTree()">Copy Tree</button>
+        <button class="btn btn-primary" onclick="copyAll()">Copy All Files</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/package-json-builder">Package.json Builder</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/changelog-generator">Changelog Generator</a>
+      <a href="/automation-builder">Automation Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let selectedTool = 'turborepo';
+let selectedPM = 'pnpm';
+let packages = [
+  {id:1,name:'web',type:'app',framework:'next'},
+  {id:2,name:'api',type:'app',framework:'express'},
+  {id:3,name:'ui',type:'package',framework:'react'},
+  {id:4,name:'utils',type:'package',framework:'typescript'}
+];
+let pkgCounter = 4;
+let generatedFiles = {};
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function setTool(el, tool){document.querySelectorAll('#toolGrid .fw-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedTool=tool;}
+function setPM(el, pm){document.querySelectorAll('#pmGrid .fw-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedPM=pm;}
+
+function getFeatures(){return [...document.querySelectorAll('.feat-check input:checked')].map(i=>i.value);}
+
+function addPkg(type) {
+  pkgCounter++;
+  packages.push({id:pkgCounter, name:'', type, framework:type==='app'?'next':'typescript'});
+  renderPkgs();
+}
+
+function removePkg(id) {
+  packages = packages.filter(p=>p.id!==id);
+  renderPkgs();
+}
+
+function updatePkg(id, field, val) {
+  const p = packages.find(p=>p.id===id);
+  if(p) p[field] = val;
+}
+
+function renderPkgs() {
+  const list = document.getElementById('pkgList');
+  list.innerHTML = packages.map(p => `
+    <div class="pkg-item">
+      <span class="pkg-type ${p.type==='app'?'type-app':'type-package'}">${p.type}</span>
+      <input placeholder="name" value="${p.name}" oninput="updatePkg(${p.id},'name',this.value)" style="flex:1;min-width:120px">
+      <select onchange="updatePkg(${p.id},'framework',this.value)">
+        ${p.type==='app'?
+          ['next','react','vue','svelte','express','fastify'].map(f=>`<option ${f===p.framework?'selected':''}>${f}</option>`).join(''):
+          ['typescript','react','utils'].map(f=>`<option ${f===p.framework?'selected':''}>${f}</option>`).join('')}
+      </select>
+      <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 10px" onclick="removePkg(${p.id})">x</button>
+    </div>
+  `).join('');
+}
+
+function generate() {
+  const name = document.getElementById('wsName').value.trim() || 'my-monorepo';
+  const feats = getFeatures();
+  generatedFiles = {};
+  let tree = [name + '/'];
+
+  const apps = packages.filter(p=>p.type==='app'&&p.name);
+  const pkgs = packages.filter(p=>p.type==='package'&&p.name);
+
+  // Root package.json
+  const rootPkg = {
+    name,
+    private: true,
+    ...(selectedPM==='pnpm'?{packageManager:'pnpm@8.15.0'}:{}),
+    scripts: {
+      dev: selectedTool==='turborepo'?'turbo dev':selectedTool==='nx'?'nx run-many --target=dev':'lerna run dev --parallel',
+      build: selectedTool==='turborepo'?'turbo build':selectedTool==='nx'?'nx run-many --target=build':'lerna run build',
+      ...(feats.includes('eslint')?{lint:selectedTool==='turborepo'?'turbo lint':'eslint .'}:{}),
+      ...(feats.includes('jest')?{test:selectedTool==='turborepo'?'turbo test':'vitest'}:{}),
+      clean: selectedTool==='turborepo'?'turbo clean':'rm -rf node_modules **/node_modules'
+    },
+    devDependencies: {
+      ...(selectedTool==='turborepo'?{turbo:'latest'}:{}),
+      ...(selectedTool==='nx'?{nx:'latest','@nx/workspace':'latest'}:{}),
+      ...(selectedTool==='lerna'?{lerna:'latest'}:{}),
+      ...(feats.includes('typescript')?{typescript:'^5.3.0'}:{}),
+      ...(feats.includes('eslint')?{eslint:'^8.56.0'}:{}),
+      ...(feats.includes('prettier')?{prettier:'^3.1.0'}:{}),
+      ...(feats.includes('husky')?{husky:'^9.0.0','lint-staged':'^15.2.0'}:{}),
+      ...(feats.includes('changeset')?{'@changesets/cli':'^2.27.0'}:{})
+    }
+  };
+  if(selectedPM==='pnpm') {
+    rootPkg.workspaces = undefined;
+  } else {
+    rootPkg.workspaces = [...apps.map(a=>'apps/'+a.name), ...pkgs.map(p=>'packages/'+p.name)];
+  }
+  generatedFiles['package.json'] = JSON.stringify(rootPkg, null, 2);
+  tree.push('  package.json');
+
+  // pnpm-workspace.yaml
+  if(selectedPM==='pnpm') {
+    generatedFiles['pnpm-workspace.yaml'] = `packages:\n  - "apps/*"\n  - "packages/*"`;
+    tree.push('  pnpm-workspace.yaml');
+  }
+
+  // Tool-specific config
+  if(selectedTool==='turborepo') {
+    generatedFiles['turbo.json'] = JSON.stringify({$schema:'https://turbo.build/schema.json',globalDependencies:['**/.env.*local'],pipeline:{build:{dependsOn:['^build'],outputs:['dist/**','.next/**','!.next/cache/**']},lint:{},dev:{cache:false,persistent:true},test:{}}},null,2);
+    tree.push('  turbo.json');
+  } else if(selectedTool==='nx') {
+    generatedFiles['nx.json'] = JSON.stringify({$schema:'./node_modules/nx/schemas/nx-schema.json',targetDefaults:{build:{dependsOn:['^build'],cache:true},lint:{cache:true},test:{cache:true}},defaultBase:'main'},null,2);
+    tree.push('  nx.json');
+  } else if(selectedTool==='lerna') {
+    generatedFiles['lerna.json'] = JSON.stringify({$schema:'node_modules/lerna/schemas/lerna-schema.json',version:'independent',npmClient:selectedPM,packages:['apps/*','packages/*'],command:{publish:{conventionalCommits:true}}},null,2);
+    tree.push('  lerna.json');
+  }
+
+  // TypeScript config
+  if(feats.includes('typescript')) {
+    generatedFiles['tsconfig.json'] = JSON.stringify({compilerOptions:{target:'ES2020',module:'ESNext',moduleResolution:'bundler',strict:true,esModuleInterop:true,skipLibCheck:true,forceConsistentCasingInFileNames:true,resolveJsonModule:true,declaration:true,declarationMap:true,sourceMap:true}},null,2);
+    tree.push('  tsconfig.json');
+  }
+
+  // .gitignore
+  generatedFiles['.gitignore'] = 'node_modules/\ndist/\n.next/\n.turbo/\n.env\n.env.local\ncoverage/\n*.log\n.DS_Store';
+  tree.push('  .gitignore');
+
+  // ESLint
+  if(feats.includes('eslint')) {
+    generatedFiles['.eslintrc.json'] = JSON.stringify({root:true,extends:['eslint:recommended'],env:{node:true,es2021:true},ignorePatterns:['node_modules','dist','.next','.turbo']},null,2);
+    tree.push('  .eslintrc.json');
+  }
+
+  // Prettier
+  if(feats.includes('prettier')) {
+    generatedFiles['.prettierrc'] = JSON.stringify({semi:true,singleQuote:true,trailingComma:'es5',tabWidth:2,printWidth:100},null,2);
+    tree.push('  .prettierrc');
+  }
+
+  // CI/CD
+  if(feats.includes('cicd')) {
+    generatedFiles['.github/workflows/ci.yml'] = `name: CI\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: ${selectedPM==='pnpm'?'pnpm/action-setup@v2\n        with:\n          version: 8':'actions/setup-node@v4\n        with:\n          node-version: 20'}\n      - run: ${selectedPM} install\n      - run: ${selectedPM} ${selectedPM==='npm'?'run ':''} build\n      - run: ${selectedPM} ${selectedPM==='npm'?'run ':''}lint\n      - run: ${selectedPM} ${selectedPM==='npm'?'run ':''}test`;
+    tree.push('  .github/','    workflows/','      ci.yml');
+  }
+
+  // Docker
+  if(feats.includes('docker')) {
+    generatedFiles['Dockerfile'] = `FROM node:20-alpine AS base\n\nFROM base AS builder\nWORKDIR /app\n${selectedPM==='pnpm'?'RUN corepack enable && corepack prepare pnpm@latest --activate\n':''}COPY . .\nRUN ${selectedPM} install\nRUN ${selectedPM} ${selectedPM==='npm'?'run ':''}build\n\nFROM base AS runner\nWORKDIR /app\nCOPY --from=builder /app .\nEXPOSE 3000\nCMD ["node", "apps/web/.next/standalone/server.js"]`;
+    tree.push('  Dockerfile');
+  }
+
+  // Changesets
+  if(feats.includes('changeset')) {
+    generatedFiles['.changeset/config.json'] = JSON.stringify({$schema:'https://unpkg.com/@changesets/config@3.0.0/schema.json',changelog:'@changesets/cli/changelog',commit:false,fixed:[],linked:[],access:'restricted',baseBranch:'main',updateInternalDependencies:'patch',ignore:[]},null,2);
+    tree.push('  .changeset/','    config.json');
+  }
+
+  // Apps
+  tree.push('  apps/');
+  apps.forEach(app => {
+    tree.push('    ' + app.name + '/');
+    const appPkg = {name:'@'+name+'/'+app.name,version:'0.0.0',private:true,scripts:{dev:app.framework==='next'?'next dev':'node --watch src/index.js',build:app.framework==='next'?'next build':'tsc',start:app.framework==='next'?'next start':'node dist/index.js'},dependencies:{...(pkgs.map(p=>({['@'+name+'/'+p.name]:'workspace:*'}))).reduce((a,b)=>({...a,...b}),{})}};
+    generatedFiles['apps/'+app.name+'/package.json'] = JSON.stringify(appPkg,null,2);
+    generatedFiles['apps/'+app.name+'/src/index.'+(feats.includes('typescript')?'ts':'js')] = app.framework==='next'?`export default function Home() {\n  return <h1>${app.name}</h1>;\n}`:`console.log("${app.name} starting...");\n`;
+    tree.push('      package.json','      src/','        index.'+(feats.includes('typescript')?'ts':'js'));
+  });
+
+  // Packages
+  tree.push('  packages/');
+  pkgs.forEach(pkg => {
+    tree.push('    ' + pkg.name + '/');
+    const pkgPkg = {name:'@'+name+'/'+pkg.name,version:'0.0.0',main:'./dist/index.js',types:'./dist/index.d.ts',scripts:{build:'tsc',dev:'tsc --watch'},devDependencies:{...(feats.includes('typescript')?{typescript:'^5.3.0'}:{})}};
+    generatedFiles['packages/'+pkg.name+'/package.json'] = JSON.stringify(pkgPkg,null,2);
+    generatedFiles['packages/'+pkg.name+'/src/index.ts'] = `export function hello(name: string): string {\n  return \`Hello from ${pkg.name}, \${name}!\`;\n}`;
+    if(feats.includes('typescript')){
+      generatedFiles['packages/'+pkg.name+'/tsconfig.json'] = JSON.stringify({extends:'../../tsconfig.json',compilerOptions:{outDir:'./dist',rootDir:'./src'},include:['src']},null,2);
+      tree.push('      tsconfig.json');
+    }
+    tree.push('      package.json','      src/','        index.ts');
+  });
+
+  // Render output
+  document.getElementById('treeOutput').textContent = tree.join('\n');
+  const fileTabs = document.getElementById('fileTabs');
+  const fileNames = Object.keys(generatedFiles);
+  fileTabs.innerHTML = fileNames.map((f,i)=>`<button class="file-tab-btn${i===0?' active':''}" onclick="showFile(this,'${f}')">${f}</button>`).join('');
+  document.getElementById('fileCode').textContent = generatedFiles[fileNames[0]];
+  document.getElementById('outputArea').style.display = 'block';
+  gtag('event','generate_monorepo',{event_category:'tool_use',tool:selectedTool,pm:selectedPM});
+}
+
+function showFile(el,name){
+  document.querySelectorAll('.file-tab-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('fileCode').textContent = generatedFiles[name]||'(empty)';
+}
+
+function copyTree(){navigator.clipboard.writeText(document.getElementById('treeOutput').textContent);showToast('Tree copied!')}
+
+function copyAll(){
+  let out='';
+  for(const [f,c] of Object.entries(generatedFiles)) out+=`\n// ===== ${f} =====\n${c}\n`;
+  navigator.clipboard.writeText(out);
+  showToast('All files copied!');
+}
+
+renderPkgs();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
