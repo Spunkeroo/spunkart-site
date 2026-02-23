@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Database Schema Designer - Visual SQL Generator | SPUNKART.COM</title>
+<meta name="description" content="Visual database schema designer. Add tables, columns with types and constraints, define relationships. Generate CREATE TABLE SQL for PostgreSQL, MySQL, SQLite.">
+<meta name="keywords" content="database schema designer, sql generator, create table generator, database design tool, erd tool, schema builder">
+<meta property="og:title" content="Database Schema Designer — SQL Generator | SPUNKART.COM">
+<meta property="og:description" content="Design database schemas visually. Generate SQL for PostgreSQL, MySQL, SQLite. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/database-schema-designer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Database Schema Designer | SPUNKART.COM">
+<meta name="twitter:description" content="Visual database schema designer with SQL generation. Free tool.">
+<link rel="canonical" href="https://spunkart.com/database-schema-designer">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.db-select{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.db-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.db-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.db-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.table-card{background:#0d0d0d;border:2px solid #222;border-radius:10px;padding:16px;margin-bottom:16px;transition:border-color .2s}
+.table-card:hover{border-color:#333}
+.table-header{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.table-header input{padding:10px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ff5f1f;font-size:0.95rem;font-weight:700;outline:none;flex:1;min-width:200px}
+.table-header input:focus{border-color:#ff5f1f}
+.col-row{display:flex;gap:6px;margin-bottom:6px;align-items:center;flex-wrap:wrap}
+.col-row input,.col-row select{padding:6px 10px;background:#1a1a1a;border:1px solid #333;border-radius:4px;color:#e8e8e8;font-size:0.82rem;outline:none}
+.col-row input:focus,.col-row select:focus{border-color:#ff5f1f}
+.col-row select{cursor:pointer}
+.constraint-checks{display:flex;gap:6px;flex-wrap:wrap}
+.constraint-check{display:flex;align-items:center;gap:4px;font-size:0.75rem;color:#888;cursor:pointer}
+.constraint-check input{cursor:pointer}
+.constraint-check.active{color:#10b981}
+.fk-section{margin-top:8px;padding:8px;background:#111;border:1px solid #222;border-radius:6px}
+.fk-row{display:flex;gap:6px;margin-bottom:6px;align-items:center;flex-wrap:wrap;font-size:0.82rem}
+.fk-row select,.fk-row input{padding:6px 8px;background:#1a1a1a;border:1px solid #333;border-radius:4px;color:#e8e8e8;font-size:0.8rem;outline:none}
+.sql-output{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.85rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;line-height:1.5}
+.table-summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.table-badge{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;font-size:0.82rem;font-weight:600;color:#ff5f1f}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .col-row{gap:4px}
+  .col-row input,.col-row select{font-size:0.78rem;padding:5px 6px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Database Schema Designer","description":"Visual database schema designer. Add tables, columns, constraints, and relationships. Generate SQL for PostgreSQL, MySQL, SQLite.","url":"https://spunkart.com/database-schema-designer.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Database Schema <span>Designer</span></h1>
+  <p class="subtitle">Design database schemas visually. Add tables, columns, constraints, and relationships. Generate SQL.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Target Database</h3>
+    <div class="db-select" id="dbSelect">
+      <button class="db-btn active" onclick="setDB(this,'postgresql')">PostgreSQL</button>
+      <button class="db-btn" onclick="setDB(this,'mysql')">MySQL</button>
+      <button class="db-btn" onclick="setDB(this,'sqlite')">SQLite</button>
+    </div>
+
+    <h3>Tables</h3>
+    <div class="table-summary" id="tableSummary"></div>
+    <div id="tablesContainer"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addTable()">+ Add Table</button>
+      <button class="btn btn-secondary" onclick="addTemplateTable('users')">+ Users Table</button>
+      <button class="btn btn-secondary" onclick="addTemplateTable('posts')">+ Posts Table</button>
+      <button class="btn btn-secondary" onclick="addTemplateTable('orders')">+ Orders Table</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Generated SQL</h3>
+    <div class="btn-row" style="margin-top:0;margin-bottom:12px">
+      <button class="btn btn-primary" onclick="generateSQL()">Generate SQL</button>
+    </div>
+    <div class="sql-output" id="sqlOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copySQL()">Copy SQL</button>
+      <button class="btn btn-secondary" onclick="downloadSQL()">Download .sql</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/api-mock-server">API Mock Server</a>
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/automation-builder">Automation Builder</a>
+      <a href="/cli-command-builder">CLI Command Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let selectedDB = 'postgresql';
+let tables = [];
+let tableCounter = 0;
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function setDB(el,db){
+  document.querySelectorAll('.db-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  selectedDB = db;
+}
+
+const typesByDB = {
+  postgresql: ['SERIAL','BIGSERIAL','INTEGER','BIGINT','SMALLINT','REAL','DOUBLE PRECISION','NUMERIC','BOOLEAN','VARCHAR(255)','TEXT','CHAR(1)','UUID','DATE','TIMESTAMP','TIMESTAMPTZ','TIME','JSON','JSONB','BYTEA','INET','CIDR','MACADDR','ARRAY'],
+  mysql: ['INT AUTO_INCREMENT','INT','BIGINT','SMALLINT','TINYINT','FLOAT','DOUBLE','DECIMAL(10,2)','BOOLEAN','VARCHAR(255)','TEXT','LONGTEXT','MEDIUMTEXT','CHAR(1)','ENUM','DATE','DATETIME','TIMESTAMP','TIME','JSON','BLOB','BINARY'],
+  sqlite: ['INTEGER','REAL','TEXT','BLOB','NUMERIC','BOOLEAN','DATE','DATETIME','TIMESTAMP','VARCHAR(255)']
+};
+
+function getTypes() { return typesByDB[selectedDB]; }
+
+function addTable(name, columns) {
+  const id = ++tableCounter;
+  const tbl = {
+    id,
+    name: name || 'new_table',
+    columns: columns || [{id:Date.now(), name:'id', type:selectedDB==='postgresql'?'SERIAL':'INTEGER', pk:true, nn:true, uq:false, def:'', fkTable:'', fkCol:''}]
+  };
+  tables.push(tbl);
+  renderTables();
+  gtag('event','add_table',{event_category:'tool_use'});
+}
+
+function addTemplateTable(template) {
+  const templates = {
+    users: {
+      name: 'users',
+      columns: [
+        {id:Date.now(), name:'id', type:selectedDB==='postgresql'?'SERIAL':'INTEGER', pk:true, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+1, name:'email', type:'VARCHAR(255)', pk:false, nn:true, uq:true, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+2, name:'username', type:'VARCHAR(255)', pk:false, nn:true, uq:true, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+3, name:'password_hash', type:'VARCHAR(255)', pk:false, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+4, name:'is_active', type:'BOOLEAN', pk:false, nn:true, uq:false, def:selectedDB==='postgresql'?'TRUE':'1', fkTable:'', fkCol:''},
+        {id:Date.now()+5, name:'created_at', type:selectedDB==='postgresql'?'TIMESTAMPTZ':selectedDB==='mysql'?'DATETIME':'TIMESTAMP', pk:false, nn:true, uq:false, def:selectedDB==='postgresql'?'NOW()':selectedDB==='mysql'?'CURRENT_TIMESTAMP':'CURRENT_TIMESTAMP', fkTable:'', fkCol:''},
+        {id:Date.now()+6, name:'updated_at', type:selectedDB==='postgresql'?'TIMESTAMPTZ':selectedDB==='mysql'?'DATETIME':'TIMESTAMP', pk:false, nn:false, uq:false, def:'', fkTable:'', fkCol:''}
+      ]
+    },
+    posts: {
+      name: 'posts',
+      columns: [
+        {id:Date.now(), name:'id', type:selectedDB==='postgresql'?'SERIAL':'INTEGER', pk:true, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+1, name:'title', type:'VARCHAR(255)', pk:false, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+2, name:'slug', type:'VARCHAR(255)', pk:false, nn:true, uq:true, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+3, name:'body', type:'TEXT', pk:false, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+4, name:'author_id', type:'INTEGER', pk:false, nn:true, uq:false, def:'', fkTable:'users', fkCol:'id'},
+        {id:Date.now()+5, name:'published', type:'BOOLEAN', pk:false, nn:true, uq:false, def:selectedDB==='postgresql'?'FALSE':'0', fkTable:'', fkCol:''},
+        {id:Date.now()+6, name:'created_at', type:selectedDB==='postgresql'?'TIMESTAMPTZ':'TIMESTAMP', pk:false, nn:true, uq:false, def:selectedDB==='postgresql'?'NOW()':'CURRENT_TIMESTAMP', fkTable:'', fkCol:''}
+      ]
+    },
+    orders: {
+      name: 'orders',
+      columns: [
+        {id:Date.now(), name:'id', type:selectedDB==='postgresql'?'SERIAL':'INTEGER', pk:true, nn:true, uq:false, def:'', fkTable:'', fkCol:''},
+        {id:Date.now()+1, name:'user_id', type:'INTEGER', pk:false, nn:true, uq:false, def:'', fkTable:'users', fkCol:'id'},
+        {id:Date.now()+2, name:'total', type:selectedDB==='postgresql'?'NUMERIC':'DECIMAL(10,2)', pk:false, nn:true, uq:false, def:'0', fkTable:'', fkCol:''},
+        {id:Date.now()+3, name:'status', type:'VARCHAR(255)', pk:false, nn:true, uq:false, def:"'pending'", fkTable:'', fkCol:''},
+        {id:Date.now()+4, name:'created_at', type:selectedDB==='postgresql'?'TIMESTAMPTZ':'TIMESTAMP', pk:false, nn:true, uq:false, def:selectedDB==='postgresql'?'NOW()':'CURRENT_TIMESTAMP', fkTable:'', fkCol:''}
+      ]
+    }
+  };
+  const tpl = templates[template];
+  if(tpl) addTable(tpl.name, tpl.columns);
+}
+
+function removeTable(id) {
+  tables = tables.filter(t=>t.id!==id);
+  renderTables();
+}
+
+function updateTableName(id, name) {
+  const t = tables.find(t=>t.id===id);
+  if(t) t.name = name;
+  renderSummary();
+}
+
+function addColumn(tableId) {
+  const t = tables.find(t=>t.id===tableId);
+  if(!t) return;
+  t.columns.push({id:Date.now()+Math.random(), name:'', type:'VARCHAR(255)', pk:false, nn:false, uq:false, def:'', fkTable:'', fkCol:''});
+  renderTables();
+}
+
+function removeColumn(tableId, colId) {
+  const t = tables.find(t=>t.id===tableId);
+  if(!t) return;
+  t.columns = t.columns.filter(c=>c.id!==colId);
+  renderTables();
+}
+
+function updateColumn(tableId, colId, field, val) {
+  const t = tables.find(t=>t.id===tableId);
+  if(!t) return;
+  const c = t.columns.find(c=>c.id===colId);
+  if(c) c[field] = val;
+}
+
+function renderSummary() {
+  document.getElementById('tableSummary').innerHTML = tables.map(t =>
+    `<span class="table-badge">${t.name} (${t.columns.length} cols)</span>`
+  ).join('');
+}
+
+function renderTables() {
+  renderSummary();
+  const container = document.getElementById('tablesContainer');
+  const types = getTypes();
+  const tableNames = tables.map(t=>t.name);
+
+  container.innerHTML = tables.map(tbl => `
+    <div class="table-card">
+      <div class="table-header">
+        <input value="${tbl.name}" oninput="updateTableName(${tbl.id},this.value)" placeholder="table_name">
+        <button class="btn btn-secondary btn-sm" onclick="addColumn(${tbl.id})">+ Column</button>
+        <button class="btn btn-secondary btn-sm" style="color:#ef4444" onclick="removeTable(${tbl.id})">Remove Table</button>
+      </div>
+      ${tbl.columns.map(col => `
+        <div class="col-row">
+          <input value="${col.name}" oninput="updateColumn(${tbl.id},${col.id},'name',this.value)" placeholder="column_name" style="min-width:120px;flex:1">
+          <select onchange="updateColumn(${tbl.id},${col.id},'type',this.value)" style="min-width:140px">
+            ${types.map(tp=>`<option ${tp===col.type?'selected':''}>${tp}</option>`).join('')}
+          </select>
+          <div class="constraint-checks">
+            <label class="constraint-check ${col.pk?'active':''}"><input type="checkbox" ${col.pk?'checked':''} onchange="updateColumn(${tbl.id},${col.id},'pk',this.checked)">PK</label>
+            <label class="constraint-check ${col.nn?'active':''}"><input type="checkbox" ${col.nn?'checked':''} onchange="updateColumn(${tbl.id},${col.id},'nn',this.checked)">NN</label>
+            <label class="constraint-check ${col.uq?'active':''}"><input type="checkbox" ${col.uq?'checked':''} onchange="updateColumn(${tbl.id},${col.id},'uq',this.checked)">UQ</label>
+          </div>
+          <input value="${col.def}" oninput="updateColumn(${tbl.id},${col.id},'def',this.value)" placeholder="default" style="width:100px">
+          <select onchange="updateColumn(${tbl.id},${col.id},'fkTable',this.value)" title="FK Table" style="width:90px">
+            <option value="">FK...</option>
+            ${tableNames.filter(n=>n!==tbl.name).map(n=>`<option ${n===col.fkTable?'selected':''}>${n}</option>`).join('')}
+          </select>
+          <input value="${col.fkCol}" oninput="updateColumn(${tbl.id},${col.id},'fkCol',this.value)" placeholder="FK col" style="width:70px" ${col.fkTable?'':'disabled'}>
+          <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 8px" onclick="removeColumn(${tbl.id},${col.id})">x</button>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function generateSQL() {
+  if(!tables.length){showToast('Add tables first');return;}
+  let sql = `-- Generated by SPUNKART.COM Database Schema Designer\n-- Target: ${selectedDB.toUpperCase()}\n-- Date: ${new Date().toISOString().split('T')[0]}\n\n`;
+
+  tables.forEach(tbl => {
+    sql += `CREATE TABLE ${tbl.name} (\n`;
+    const lines = [];
+    const pks = [];
+    const fks = [];
+
+    tbl.columns.forEach(col => {
+      if(!col.name) return;
+      let line = `  ${col.name} ${col.type}`;
+
+      // Auto increment for MySQL/SQLite
+      if(selectedDB === 'mysql' && col.pk && col.type === 'INT AUTO_INCREMENT') {
+        line = `  ${col.name} INT AUTO_INCREMENT`;
+      } else if(selectedDB === 'sqlite' && col.pk && col.type === 'INTEGER') {
+        // SQLite autoincrement handled via PRIMARY KEY
+      }
+
+      if(col.nn) line += ' NOT NULL';
+      if(col.uq) line += ' UNIQUE';
+      if(col.def) line += ` DEFAULT ${col.def}`;
+      lines.push(line);
+      if(col.pk) pks.push(col.name);
+      if(col.fkTable && col.fkCol) {
+        fks.push({col:col.name, table:col.fkTable, refCol:col.fkCol});
+      }
+    });
+
+    if(pks.length) {
+      lines.push(`  PRIMARY KEY (${pks.join(', ')})`);
+    }
+
+    fks.forEach(fk => {
+      lines.push(`  FOREIGN KEY (${fk.col}) REFERENCES ${fk.table}(${fk.refCol})`);
+    });
+
+    sql += lines.join(',\n');
+    sql += `\n);\n\n`;
+
+    // Add indexes for unique columns and foreign keys
+    tbl.columns.forEach(col => {
+      if(col.fkTable && col.fkCol) {
+        sql += `CREATE INDEX idx_${tbl.name}_${col.name} ON ${tbl.name}(${col.name});\n`;
+      }
+    });
+    if(fks.length) sql += '\n';
+  });
+
+  document.getElementById('sqlOutput').textContent = sql;
+  gtag('event','generate_sql',{event_category:'tool_use',db:selectedDB});
+}
+
+function copySQL() {
+  const sql = document.getElementById('sqlOutput').textContent;
+  if(!sql){showToast('Generate SQL first');return;}
+  navigator.clipboard.writeText(sql);
+  showToast('SQL copied!');
+}
+
+function downloadSQL() {
+  const sql = document.getElementById('sqlOutput').textContent;
+  if(!sql){showToast('Generate SQL first');return;}
+  const blob = new Blob([sql],{type:'text/sql'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');a.href=url;a.download='schema.sql';a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded!');
+}
+
+// Start with users table
+addTemplateTable('users');
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
