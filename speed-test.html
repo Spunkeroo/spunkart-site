@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Speed Test — SpunkArt</title>
+<meta name="description" content="Free website speed test with Core Web Vitals, performance scores, and improvement suggestions. Test mobile and desktop speed instantly.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://spunkart.com/speed-test">
+<meta property="og:title" content="Website Speed Test — SpunkArt">
+<meta property="og:description" content="Free website speed test with Core Web Vitals, performance scores, and improvement suggestions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/speed-test">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Website Speed Test — SpunkArt">
+<meta name="twitter:description" content="Free website speed test with Core Web Vitals and improvement suggestions.">
+<meta name="copyright" content="© 2025 SpunkArt. All rights reserved.">
+<meta name="author" content="SpunkArt">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Website Speed Test",
+  "url":"https://spunkart.com/speed-test",
+  "description":"Free website speed test with Core Web Vitals, performance scores, and improvement suggestions.",
+  "applicationCategory":"UtilityApplication",
+  "operatingSystem":"All",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
+a{color:#ff5f1f;text-decoration:none}
+.container{max-width:960px;margin:0 auto;padding:20px;position:relative}
+h1{font-size:1.8rem;font-weight:700;margin-bottom:6px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;font-size:.95rem;margin-bottom:28px}
+.input-row{display:flex;gap:10px;margin-bottom:20px}
+.input-row input{flex:1;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:14px 16px;border-radius:8px;font-size:1rem;outline:none;transition:border-color .2s}
+.input-row input:focus{border-color:#ff5f1f}
+.input-row input::placeholder{color:#555}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:filter .2s;white-space:nowrap}
+.btn:hover{filter:brightness(1.15)}
+.btn:disabled{opacity:.5;cursor:not-allowed;filter:none}
+.btn-sm{padding:8px 16px;font-size:.85rem}
+.btn-outline{background:transparent;border:1px solid #333;color:#e8e8e8}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f}
+.btn-outline.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.controls-row{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.toggle-wrap{display:flex;align-items:center;gap:8px;font-size:.85rem;color:#888}
+.toggle{position:relative;width:44px;height:24px;cursor:pointer}
+.toggle input{opacity:0;width:0;height:0}
+.toggle .slider{position:absolute;inset:0;background:#333;border-radius:12px;transition:.3s}
+.toggle .slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:#888;border-radius:50%;transition:.3s}
+.toggle input:checked+.slider{background:#ff5f1f}
+.toggle input:checked+.slider:before{transform:translateX(20px);background:#fff}
+.countdown{color:#ff5f1f;font-size:.85rem;font-weight:600;min-width:60px}
+.tabs{display:flex;gap:4px;margin-bottom:24px}
+.tab{padding:10px 24px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;background:#1a1a1a;border:1px solid #222;color:#888;transition:all .2s}
+.tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.tab:hover:not(.active){border-color:#444;color:#e8e8e8}
+.card{background:#141414;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:16px}
+.card h2{font-size:1.1rem;font-weight:600;margin-bottom:16px;color:#e8e8e8}
+.card h3{font-size:.95rem;font-weight:600;margin-bottom:12px;color:#ccc}
+.score-section{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.score-circle-wrap{position:relative;width:160px;height:160px;flex-shrink:0}
+.score-circle-wrap svg{transform:rotate(-90deg)}
+.score-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-number{font-size:2.8rem;font-weight:700;line-height:1}
+.score-text{font-size:.75rem;color:#888;margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.score-meta{flex:1;min-width:200px}
+.score-meta p{color:#888;font-size:.9rem;line-height:1.6}
+.score-meta .rating-badge{display:inline-block;padding:4px 12px;border-radius:6px;font-size:.8rem;font-weight:600;margin-top:8px}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.metric-card{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:16px}
+.metric-card .metric-name{font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.metric-card .metric-value{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.metric-card .metric-rating{font-size:.75rem;font-weight:600;padding:2px 8px;border-radius:4px;display:inline-block}
+.rating-good{background:rgba(16,185,129,.15);color:#10b981}
+.rating-needs-improvement{background:rgba(255,165,0,.15);color:#ffa500}
+.rating-poor{background:rgba(239,68,68,.15);color:#ef4444}
+.opportunity-item{border-bottom:1px solid #1a1a1a;padding:14px 0}
+.opportunity-item:last-child{border-bottom:none}
+.opp-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px}
+.opp-title{font-size:.9rem;font-weight:500;flex:1}
+.opp-savings{font-size:.8rem;color:#ff5f1f;font-weight:600;white-space:nowrap}
+.opp-toggle{color:#555;font-size:.8rem;transition:transform .2s;flex-shrink:0}
+.opp-toggle.open{transform:rotate(180deg)}
+.opp-details{display:none;padding:10px 0 4px;color:#888;font-size:.85rem;line-height:1.6}
+.opp-details.show{display:block}
+.progress-wrap{background:#1a1a1a;border-radius:8px;height:6px;overflow:hidden;margin-bottom:8px}
+.progress-bar{height:100%;background:linear-gradient(90deg,#ff5f1f,#ff8f5f);border-radius:8px;transition:width .3s;width:0}
+.loading-section{text-align:center;padding:40px 20px}
+.loading-section p{color:#888;font-size:.9rem;margin-top:12px}
+.loading-dots{display:inline-flex;gap:6px;margin-top:8px}
+.loading-dots span{width:8px;height:8px;background:#ff5f1f;border-radius:50%;animation:bounce 1.2s infinite}
+.loading-dots span:nth-child(2){animation-delay:.2s}
+.loading-dots span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}}
+.error-msg{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:10px;padding:16px 20px;color:#ef4444;font-size:.9rem;margin-bottom:16px}
+.history-section{margin-top:24px}
+.history-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#1a1a1a;border-radius:8px;margin-bottom:6px;font-size:.85rem;cursor:pointer;transition:border-color .2s;border:1px solid transparent}
+.history-item:hover{border-color:#333}
+.history-item .h-url{color:#e8e8e8;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:12px}
+.history-item .h-score{font-weight:700;min-width:36px;text-align:center}
+.history-item .h-time{color:#555;font-size:.75rem;min-width:80px;text-align:right}
+.share-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.hidden{display:none}
+.fade-in{animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+  .container{padding:14px}
+  h1{font-size:1.4rem}
+  .input-row{flex-direction:column}
+  .score-section{flex-direction:column;align-items:center;text-align:center}
+  .score-circle-wrap{width:140px;height:140px}
+  .score-number{font-size:2.4rem}
+  .metrics-grid{grid-template-columns:1fr}
+  .tabs{flex-wrap:wrap}
+  .controls-row{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav style="background:#111;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222">
+  <a href="/" style="color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.2rem">SpunkArt</a>
+  <a href="/store" style="color:#e8e8e8;text-decoration:none;font-size:.9rem">&larr; All Tools</a>
+</nav>
+
+<div class="container">
+  <div id="usage-badge" style="position:absolute;top:16px;right:16px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:.75rem;color:#888">
+    Used <span id="use-count">0</span> times
+  </div>
+
+  <h1>Website <span>Speed Test</span></h1>
+  <p class="subtitle">Test your site's performance with Google PageSpeed Insights. Free, instant, no sign-up.</p>
+
+  <div class="input-row">
+    <input type="text" id="url-input" placeholder="Enter website URL (e.g. https://example.com)" spellcheck="false" autocomplete="url">
+    <button class="btn" id="test-btn" onclick="runTest()">Test Speed</button>
+  </div>
+
+  <div class="controls-row">
+    <div class="tabs" id="strategy-tabs">
+      <div class="tab active" data-strategy="mobile" onclick="switchStrategy('mobile')">Mobile</div>
+      <div class="tab" data-strategy="desktop" onclick="switchStrategy('desktop')">Desktop</div>
+    </div>
+    <div class="toggle-wrap">
+      <label class="toggle">
+        <input type="checkbox" id="auto-toggle" onchange="toggleAutoRefresh()">
+        <span class="slider"></span>
+      </label>
+      <span>Auto-Refresh</span>
+      <span class="countdown" id="countdown"></span>
+    </div>
+  </div>
+
+  <div id="error-area"></div>
+  <div id="loading-area" class="hidden">
+    <div class="card">
+      <div class="loading-section">
+        <div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+        <p id="loading-text">Analyzing website performance...</p>
+        <div class="loading-dots"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="results-area" class="hidden">
+    <div class="card fade-in" id="score-card">
+      <h2>Performance Score</h2>
+      <div class="score-section">
+        <div class="score-circle-wrap" id="score-circle-wrap">
+          <svg width="100%" height="100%" viewBox="0 0 160 160">
+            <circle cx="80" cy="80" r="70" fill="none" stroke="#222" stroke-width="8"/>
+            <circle id="score-ring" cx="80" cy="80" r="70" fill="none" stroke="#ff5f1f" stroke-width="8" stroke-linecap="round" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+          </svg>
+          <div class="score-label">
+            <div class="score-number" id="score-number">--</div>
+            <div class="score-text">Performance</div>
+          </div>
+        </div>
+        <div class="score-meta">
+          <p id="score-desc">Run a test to see your performance score and detailed metrics.</p>
+          <div class="rating-badge" id="score-badge" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card fade-in" id="metrics-card">
+      <h2>Core Web Vitals</h2>
+      <div class="metrics-grid" id="metrics-grid"></div>
+    </div>
+
+    <div class="card fade-in" id="opportunities-card" style="display:none">
+      <h2>Improvement Opportunities</h2>
+      <div id="opportunities-list"></div>
+    </div>
+
+    <div class="card fade-in" id="diagnostics-card" style="display:none">
+      <h2>Diagnostics</h2>
+      <div id="diagnostics-list"></div>
+    </div>
+
+    <div class="share-row">
+      <button class="btn btn-sm btn-outline" onclick="copyResults()">Copy Results</button>
+      <button class="btn btn-sm btn-outline" onclick="shareToX()">Share on X</button>
+    </div>
+  </div>
+
+  <div class="history-section" id="history-section" style="display:none">
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h3 style="margin-bottom:0">Recent Tests</h3>
+        <button class="btn btn-sm btn-outline" onclick="clearHistory()" style="font-size:.75rem;padding:4px 10px">Clear</button>
+      </div>
+      <div id="history-list"></div>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:30px 20px;color:#555;font-size:.8rem;border-top:1px solid #1a1a1a;margin-top:40px">
+  <p>&copy; 2025 <a href="https://spunkart.com" style="color:#ff5f1f;text-decoration:none">SpunkArt</a>. All rights reserved.</p>
+  <p style="margin-top:8px"><a href="https://x.com/SpunkArt13" target="_blank" style="color:#888;text-decoration:none">Follow @SpunkArt13</a></p>
+</footer>
+
+<script>
+/* Usage counter */
+(function(){
+  var k='spunkart_speed_test_uses',c=parseInt(localStorage.getItem(k)||'0');
+  document.getElementById('use-count').textContent=c;
+  window._spunkCountUse=function(){
+    c++;localStorage.setItem(k,String(c));
+    document.getElementById('use-count').textContent=c;
+  };
+})();
+
+/* Email collection */
+(function(){
+  var ek='spunkart_email_collected',uk='spunkart_speed_test_uses';
+  if(localStorage.getItem(ek))return;
+  var check=setInterval(function(){
+    if(parseInt(localStorage.getItem(uk)||'0')>=2){
+      clearInterval(check);
+      var bar=document.createElement('div');
+      bar.innerHTML='<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools &amp; updates — </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
+      document.body.appendChild(bar);
+    }
+  },1000);
+})();
+
+/* State */
+var currentStrategy = 'mobile';
+var results = { mobile: null, desktop: null };
+var autoRefreshEnabled = false;
+var autoRefreshTimer = null;
+var countdownVal = 0;
+var countdownTimer = null;
+var isTesting = false;
+var abortController = null;
+
+var HISTORY_KEY = 'spunkart_speed_history';
+var API_BASE = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+
+/* URL Input enter key */
+document.getElementById('url-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') runTest();
+});
+
+/* Strategy tabs */
+function switchStrategy(s) {
+  currentStrategy = s;
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.classList.toggle('active', t.dataset.strategy === s);
+  });
+  if (results[s]) {
+    renderResults(results[s], s);
+  }
+}
+
+/* Validate URL */
+function normalizeUrl(raw) {
+  var u = raw.trim();
+  if (!u) return null;
+  if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+  try {
+    var obj = new URL(u);
+    if (!obj.hostname.includes('.')) return null;
+    return obj.href;
+  } catch(e) {
+    return null;
+  }
+}
+
+/* Run test */
+function runTest() {
+  var raw = document.getElementById('url-input').value;
+  var url = normalizeUrl(raw);
+  if (!url) {
+    showError('Please enter a valid URL (e.g. https://example.com)');
+    return;
+  }
+  document.getElementById('url-input').value = url;
+  clearError();
+  showLoading();
+  hideResults();
+  isTesting = true;
+  document.getElementById('test-btn').disabled = true;
+  document.getElementById('test-btn').textContent = 'Testing...';
+  window._spunkCountUse();
+
+  results = { mobile: null, desktop: null };
+
+  /* Fetch both strategies in parallel */
+  var mobilePromise = fetchPageSpeed(url, 'mobile');
+  var desktopPromise = fetchPageSpeed(url, 'desktop');
+
+  /* Show results as they arrive */
+  mobilePromise.then(function(data) {
+    results.mobile = data;
+    if (currentStrategy === 'mobile') renderResults(data, 'mobile');
+  }).catch(function(err) {
+    if (currentStrategy === 'mobile') showError('Mobile test failed: ' + err.message);
+  });
+
+  desktopPromise.then(function(data) {
+    results.desktop = data;
+    if (currentStrategy === 'desktop') renderResults(data, 'desktop');
+  }).catch(function(err) {
+    if (currentStrategy === 'desktop') showError('Desktop test failed: ' + err.message);
+  });
+
+  Promise.allSettled([mobilePromise, desktopPromise]).then(function(settled) {
+    hideLoading();
+    isTesting = false;
+    document.getElementById('test-btn').disabled = false;
+    document.getElementById('test-btn').textContent = 'Test Speed';
+    var hasResult = settled.some(function(s) { return s.status === 'fulfilled'; });
+    if (hasResult) {
+      showResults();
+      var active = results[currentStrategy];
+      if (active) {
+        renderResults(active, currentStrategy);
+        saveHistory(url, results);
+      }
+    } else {
+      showError('Could not reach the PageSpeed Insights API. The URL may be unreachable or the API may be rate-limited. Please try again.');
+    }
+    renderHistory();
+  });
+}
+
+/* Fetch from PageSpeed API */
+function fetchPageSpeed(url, strategy) {
+  var endpoint = API_BASE + '?url=' + encodeURIComponent(url) + '&strategy=' + strategy +
+    '&category=performance';
+  abortController = new AbortController();
+  var timeoutId = setTimeout(function() { abortController.abort(); }, 60000);
+
+  return fetch(endpoint, { signal: abortController.signal }).then(function(res) {
+    clearTimeout(timeoutId);
+    if (!res.ok) {
+      return res.json().then(function(body) {
+        var msg = (body.error && body.error.message) ? body.error.message : 'API returned status ' + res.status;
+        throw new Error(msg);
+      }).catch(function(e) {
+        if (e.message && e.message !== 'API returned status ' + res.status) throw e;
+        throw new Error('API returned status ' + res.status);
+      });
+    }
+    return res.json();
+  }).catch(function(err) {
+    clearTimeout(timeoutId);
+    if (err.name === 'AbortError') throw new Error('Request timed out after 60 seconds. Please try again.');
+    throw err;
+  });
+}
+
+/* Progress simulation */
+var progressInterval = null;
+function showLoading() {
+  document.getElementById('loading-area').classList.remove('hidden');
+  var bar = document.getElementById('progress-bar');
+  var text = document.getElementById('loading-text');
+  bar.style.width = '0%';
+  var pct = 0;
+  var msgs = [
+    [0, 'Connecting to Google PageSpeed Insights...'],
+    [15, 'Fetching mobile performance data...'],
+    [35, 'Analyzing Core Web Vitals...'],
+    [55, 'Fetching desktop performance data...'],
+    [70, 'Processing improvement opportunities...'],
+    [85, 'Compiling diagnostics...'],
+    [95, 'Almost done...']
+  ];
+  clearInterval(progressInterval);
+  progressInterval = setInterval(function() {
+    if (pct < 95) {
+      pct += Math.random() * 3 + 0.5;
+      if (pct > 95) pct = 95;
+      bar.style.width = pct + '%';
+      for (var i = msgs.length - 1; i >= 0; i--) {
+        if (pct >= msgs[i][0]) { text.textContent = msgs[i][1]; break; }
+      }
+    }
+  }, 400);
+}
+function hideLoading() {
+  var bar = document.getElementById('progress-bar');
+  bar.style.width = '100%';
+  clearInterval(progressInterval);
+  setTimeout(function() {
+    document.getElementById('loading-area').classList.add('hidden');
+  }, 300);
+}
+
+/* Error */
+function showError(msg) {
+  document.getElementById('error-area').innerHTML = '<div class="error-msg">' + escapeHtml(msg) + '</div>';
+}
+function clearError() {
+  document.getElementById('error-area').innerHTML = '';
+}
+
+/* Show / hide results */
+function showResults() {
+  document.getElementById('results-area').classList.remove('hidden');
+}
+function hideResults() {
+  document.getElementById('results-area').classList.add('hidden');
+}
+
+/* Render results */
+function renderResults(data, strategy) {
+  if (!data || !data.lighthouseResult) return;
+  var lr = data.lighthouseResult;
+  var perfScore = lr.categories && lr.categories.performance ? Math.round(lr.categories.performance.score * 100) : null;
+
+  /* Score circle */
+  renderScoreCircle(perfScore);
+
+  /* Score description */
+  var desc = document.getElementById('score-desc');
+  var badge = document.getElementById('score-badge');
+  if (perfScore !== null) {
+    var ratingInfo = getScoreRating(perfScore);
+    desc.textContent = strategy.charAt(0).toUpperCase() + strategy.slice(1) + ' performance score for ' + (data.id || 'this site') + '.';
+    badge.style.display = 'inline-block';
+    badge.textContent = ratingInfo.label;
+    badge.className = 'rating-badge ' + ratingInfo.class;
+  }
+
+  /* Core Web Vitals */
+  var metricsGrid = document.getElementById('metrics-grid');
+  metricsGrid.innerHTML = '';
+  var metricKeys = [
+    { key: 'first-contentful-paint', name: 'First Contentful Paint', short: 'FCP' },
+    { key: 'largest-contentful-paint', name: 'Largest Contentful Paint', short: 'LCP' },
+    { key: 'total-blocking-time', name: 'Total Blocking Time', short: 'TBT' },
+    { key: 'cumulative-layout-shift', name: 'Cumulative Layout Shift', short: 'CLS' },
+    { key: 'speed-index', name: 'Speed Index', short: 'SI' },
+    { key: 'interactive', name: 'Time to Interactive', short: 'TTI' }
+  ];
+  metricKeys.forEach(function(m) {
+    var audit = lr.audits[m.key];
+    if (!audit) return;
+    var ratingInfo = getAuditRating(audit.score);
+    var card = document.createElement('div');
+    card.className = 'metric-card';
+    card.innerHTML =
+      '<div class="metric-name">' + escapeHtml(m.short) + ' &mdash; ' + escapeHtml(m.name) + '</div>' +
+      '<div class="metric-value" style="color:' + ratingInfo.color + '">' + escapeHtml(audit.displayValue || '--') + '</div>' +
+      '<span class="metric-rating ' + ratingInfo.class + '">' + ratingInfo.label + '</span>';
+    metricsGrid.appendChild(card);
+  });
+
+  /* Opportunities */
+  var oppCard = document.getElementById('opportunities-card');
+  var oppList = document.getElementById('opportunities-list');
+  oppList.innerHTML = '';
+  var opportunities = [];
+  var auditRefs = (lr.categories && lr.categories.performance && lr.categories.performance.auditRefs) || [];
+  auditRefs.forEach(function(ref) {
+    var a = lr.audits[ref.id];
+    if (!a) return;
+    if (a.details && a.details.type === 'opportunity' && a.score !== null && a.score < 1) {
+      opportunities.push(a);
+    }
+  });
+  /* Also scan audits directly for opportunities */
+  Object.keys(lr.audits).forEach(function(k) {
+    var a = lr.audits[k];
+    if (a.details && a.details.type === 'opportunity' && a.score !== null && a.score < 1) {
+      if (!opportunities.find(function(o) { return o.id === a.id; })) {
+        opportunities.push(a);
+      }
+    }
+  });
+  opportunities.sort(function(a, b) {
+    return ((b.details && b.details.overallSavingsMs) || 0) - ((a.details && a.details.overallSavingsMs) || 0);
+  });
+
+  if (opportunities.length > 0) {
+    oppCard.style.display = 'block';
+    opportunities.forEach(function(opp) {
+      var savings = '';
+      if (opp.details && opp.details.overallSavingsMs) {
+        savings = formatMs(opp.details.overallSavingsMs);
+      } else if (opp.details && opp.details.overallSavingsBytes) {
+        savings = formatBytes(opp.details.overallSavingsBytes);
+      }
+      var item = document.createElement('div');
+      item.className = 'opportunity-item';
+      var detailText = opp.description || '';
+      item.innerHTML =
+        '<div class="opp-header" onclick="toggleOppDetail(this)">' +
+          '<div class="opp-title">' + escapeHtml(opp.title || opp.id) + '</div>' +
+          (savings ? '<div class="opp-savings">Save ' + escapeHtml(savings) + '</div>' : '') +
+          '<div class="opp-toggle">&#9660;</div>' +
+        '</div>' +
+        '<div class="opp-details">' + escapeHtml(detailText) + '</div>';
+      oppList.appendChild(item);
+    });
+  } else {
+    oppCard.style.display = 'none';
+  }
+
+  /* Diagnostics */
+  var diagCard = document.getElementById('diagnostics-card');
+  var diagList = document.getElementById('diagnostics-list');
+  diagList.innerHTML = '';
+  var diagnostics = [];
+  Object.keys(lr.audits).forEach(function(k) {
+    var a = lr.audits[k];
+    if (a.details && a.details.type === 'table' && a.score !== null && a.score < 1) {
+      if (!opportunities.find(function(o) { return o.id === a.id; })) {
+        diagnostics.push(a);
+      }
+    }
+  });
+  /* Also include informative audits */
+  auditRefs.forEach(function(ref) {
+    if (ref.group === 'diagnostics') {
+      var a = lr.audits[ref.id];
+      if (a && !diagnostics.find(function(d) { return d.id === a.id; })) {
+        diagnostics.push(a);
+      }
+    }
+  });
+
+  if (diagnostics.length > 0) {
+    diagCard.style.display = 'block';
+    diagnostics.forEach(function(diag) {
+      var item = document.createElement('div');
+      item.className = 'opportunity-item';
+      var ratingInfo = getAuditRating(diag.score);
+      item.innerHTML =
+        '<div class="opp-header" onclick="toggleOppDetail(this)">' +
+          '<div class="opp-title"><span class="metric-rating ' + ratingInfo.class + '" style="margin-right:8px;font-size:.7rem">' + ratingInfo.label + '</span>' + escapeHtml(diag.title || diag.id) + '</div>' +
+          (diag.displayValue ? '<div style="color:#888;font-size:.8rem">' + escapeHtml(diag.displayValue) + '</div>' : '') +
+          '<div class="opp-toggle">&#9660;</div>' +
+        '</div>' +
+        '<div class="opp-details">' + escapeHtml(diag.description || '') + '</div>';
+      diagList.appendChild(item);
+    });
+  } else {
+    diagCard.style.display = 'none';
+  }
+
+  showResults();
+}
+
+/* Toggle opportunity detail */
+function toggleOppDetail(header) {
+  var details = header.nextElementSibling;
+  var arrow = header.querySelector('.opp-toggle');
+  details.classList.toggle('show');
+  arrow.classList.toggle('open');
+}
+
+/* Score circle rendering */
+function renderScoreCircle(score) {
+  var ring = document.getElementById('score-ring');
+  var num = document.getElementById('score-number');
+  var circumference = 2 * Math.PI * 70; /* r=70 */
+
+  if (score === null || score === undefined) {
+    ring.style.strokeDashoffset = circumference;
+    num.textContent = '--';
+    num.style.color = '#888';
+    ring.style.stroke = '#333';
+    return;
+  }
+
+  var offset = circumference - (score / 100) * circumference;
+  var color = getScoreColor(score);
+
+  /* Animate */
+  ring.style.transition = 'stroke-dashoffset 1s ease, stroke .5s ease';
+  ring.style.strokeDashoffset = offset;
+  ring.style.stroke = color;
+
+  /* Animate number */
+  num.style.color = color;
+  animateNumber(num, 0, score, 1000);
+}
+
+function animateNumber(el, from, to, duration) {
+  var start = performance.now();
+  function update(now) {
+    var elapsed = now - start;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(from + (to - from) * eased);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+/* Color helpers */
+function getScoreColor(score) {
+  if (score >= 90) return '#10b981';
+  if (score >= 50) return '#ffa500';
+  return '#ef4444';
+}
+
+function getScoreRating(score) {
+  if (score >= 90) return { label: 'Good', class: 'rating-good', color: '#10b981' };
+  if (score >= 50) return { label: 'Needs Improvement', class: 'rating-needs-improvement', color: '#ffa500' };
+  return { label: 'Poor', class: 'rating-poor', color: '#ef4444' };
+}
+
+function getAuditRating(score) {
+  if (score === null || score === undefined) return { label: 'N/A', class: '', color: '#888' };
+  if (score >= 0.9) return { label: 'Good', class: 'rating-good', color: '#10b981' };
+  if (score >= 0.5) return { label: 'Needs Work', class: 'rating-needs-improvement', color: '#ffa500' };
+  return { label: 'Poor', class: 'rating-poor', color: '#ef4444' };
+}
+
+/* Format helpers */
+function formatMs(ms) {
+  if (ms >= 1000) return (ms / 1000).toFixed(1) + ' s';
+  return Math.round(ms) + ' ms';
+}
+function formatBytes(bytes) {
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+  if (bytes >= 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return bytes + ' B';
+}
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* Auto-refresh */
+function toggleAutoRefresh() {
+  autoRefreshEnabled = document.getElementById('auto-toggle').checked;
+  if (autoRefreshEnabled) {
+    startCountdown();
+  } else {
+    stopCountdown();
+  }
+}
+
+function startCountdown() {
+  stopCountdown();
+  countdownVal = 30;
+  updateCountdownDisplay();
+  countdownTimer = setInterval(function() {
+    countdownVal--;
+    updateCountdownDisplay();
+    if (countdownVal <= 0) {
+      stopCountdown();
+      if (autoRefreshEnabled && !isTesting) {
+        runTest();
+        /* Restart countdown after test starts */
+        setTimeout(function() {
+          if (autoRefreshEnabled) startCountdown();
+        }, 2000);
+      }
+    }
+  }, 1000);
+}
+
+function stopCountdown() {
+  clearInterval(countdownTimer);
+  countdownTimer = null;
+  document.getElementById('countdown').textContent = '';
+}
+
+function updateCountdownDisplay() {
+  document.getElementById('countdown').textContent = countdownVal + 's';
+}
+
+/* History */
+function getHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+  } catch(e) { return []; }
+}
+
+function saveHistory(url, res) {
+  var history = getHistory();
+  var entry = {
+    url: url,
+    mobileScore: res.mobile && res.mobile.lighthouseResult && res.mobile.lighthouseResult.categories && res.mobile.lighthouseResult.categories.performance ? Math.round(res.mobile.lighthouseResult.categories.performance.score * 100) : null,
+    desktopScore: res.desktop && res.desktop.lighthouseResult && res.desktop.lighthouseResult.categories && res.desktop.lighthouseResult.categories.performance ? Math.round(res.desktop.lighthouseResult.categories.performance.score * 100) : null,
+    time: new Date().toISOString()
+  };
+  history.unshift(entry);
+  if (history.length > 5) history = history.slice(0, 5);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+}
+
+function renderHistory() {
+  var history = getHistory();
+  var section = document.getElementById('history-section');
+  var list = document.getElementById('history-list');
+  if (history.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = 'block';
+  list.innerHTML = '';
+  history.forEach(function(h) {
+    var score = currentStrategy === 'desktop' ? h.desktopScore : h.mobileScore;
+    var color = score !== null ? getScoreColor(score) : '#555';
+    var timeStr = formatTimeAgo(h.time);
+    var item = document.createElement('div');
+    item.className = 'history-item';
+    item.onclick = function() {
+      document.getElementById('url-input').value = h.url;
+      runTest();
+    };
+    item.innerHTML =
+      '<div class="h-url">' + escapeHtml(h.url) + '</div>' +
+      '<div class="h-score" style="color:' + color + '">' + (score !== null ? score : '--') + '</div>' +
+      '<div class="h-time">' + escapeHtml(timeStr) + '</div>';
+    list.appendChild(item);
+  });
+}
+
+function clearHistory() {
+  localStorage.removeItem(HISTORY_KEY);
+  renderHistory();
+}
+
+function formatTimeAgo(iso) {
+  var d = new Date(iso);
+  var now = new Date();
+  var diff = Math.floor((now - d) / 1000);
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+  return d.toLocaleDateString();
+}
+
+/* Share / copy */
+function copyResults() {
+  var data = results[currentStrategy];
+  if (!data || !data.lighthouseResult) {
+    showError('No results to copy. Run a test first.');
+    return;
+  }
+  var lr = data.lighthouseResult;
+  var score = lr.categories && lr.categories.performance ? Math.round(lr.categories.performance.score * 100) : 'N/A';
+  var url = document.getElementById('url-input').value;
+  var lines = [
+    'Website Speed Test Results',
+    'URL: ' + url,
+    'Strategy: ' + currentStrategy.charAt(0).toUpperCase() + currentStrategy.slice(1),
+    'Performance Score: ' + score + '/100',
+    ''
+  ];
+  var metricKeys = [
+    { key: 'first-contentful-paint', name: 'FCP' },
+    { key: 'largest-contentful-paint', name: 'LCP' },
+    { key: 'total-blocking-time', name: 'TBT' },
+    { key: 'cumulative-layout-shift', name: 'CLS' },
+    { key: 'speed-index', name: 'Speed Index' },
+    { key: 'interactive', name: 'TTI' }
+  ];
+  metricKeys.forEach(function(m) {
+    var audit = lr.audits[m.key];
+    if (audit) lines.push(m.name + ': ' + (audit.displayValue || 'N/A'));
+  });
+  lines.push('');
+  lines.push('Tested with SpunkArt Speed Test - https://spunkart.com/speed-test');
+
+  navigator.clipboard.writeText(lines.join('\n')).then(function() {
+    showCopiedFeedback();
+  }).catch(function() {
+    /* Fallback */
+    var ta = document.createElement('textarea');
+    ta.value = lines.join('\n');
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    showCopiedFeedback();
+  });
+}
+
+function showCopiedFeedback() {
+  var btn = document.querySelector('.share-row button');
+  var orig = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.style.borderColor = '#10b981';
+  btn.style.color = '#10b981';
+  setTimeout(function() {
+    btn.textContent = orig;
+    btn.style.borderColor = '#333';
+    btn.style.color = '#e8e8e8';
+  }, 2000);
+}
+
+function shareToX() {
+  var data = results[currentStrategy];
+  if (!data || !data.lighthouseResult) {
+    showError('No results to share. Run a test first.');
+    return;
+  }
+  var lr = data.lighthouseResult;
+  var score = lr.categories && lr.categories.performance ? Math.round(lr.categories.performance.score * 100) : '??';
+  var url = document.getElementById('url-input').value;
+  var emoji = score >= 90 ? '🟢' : (score >= 50 ? '🟠' : '🔴');
+  var text = emoji + ' ' + url + ' scored ' + score + '/100 on ' + currentStrategy + ' speed test!\n\nFree tool: https://spunkart.com/speed-test\n\n@SpunkArt13';
+  window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+}
+
+/* Init: render history on load */
+renderHistory();
+</script>
+
+<!-- Code protection -->
+<script>
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault()});
+console.log('%c\u26A0 SpunkArt Protected','font-size:20px;color:#ff5f1f;font-weight:bold');
+console.log('%cUnauthorized copying or redistribution of this tool is prohibited.','font-size:12px;color:#e8e8e8');
+</script>
+
+<!-- Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</body>
+</html>
