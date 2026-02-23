@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLI Command Builder - Visual Terminal Command Generator | SPUNKART.COM</title>
+<meta name="description" content="Build complex CLI commands visually. Support for git, docker, npm, curl, ffmpeg, rsync, tar. Select options via checkboxes, preview and copy commands.">
+<meta name="keywords" content="cli command builder, command generator, git command builder, docker command builder, curl builder, terminal command helper">
+<meta property="og:title" content="CLI Command Builder — Terminal Command Generator | SPUNKART.COM">
+<meta property="og:description" content="Build complex CLI commands visually for git, docker, npm, curl, ffmpeg, rsync, tar. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/cli-command-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CLI Command Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Visual CLI command builder for git, docker, npm, curl, ffmpeg, rsync, tar.">
+<link rel="canonical" href="https://spunkart.com/cli-command-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.tool-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tool-tab{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.tool-tab:hover{border-color:#ff5f1f;color:#ff5f1f}
+.tool-tab.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.subcmd-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.subcmd-tab{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-size:0.8rem;cursor:pointer;transition:all .2s}
+.subcmd-tab:hover{border-color:#ff5f1f;color:#ff5f1f}
+.subcmd-tab.active{border-color:#10b981;color:#10b981;background:#10b98112}
+.options-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.opt-check{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;cursor:pointer;font-size:0.82rem;color:#ccc;transition:all .2s}
+.opt-check:hover{border-color:#ff5f1f}
+.opt-check.checked{border-color:#10b981;color:#10b981;background:#10b98112}
+.opt-check input[type="checkbox"]{display:none}
+.param-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;align-items:center}
+.param-row label{font-size:0.82rem;color:#888;min-width:100px}
+.param-input{flex:1;min-width:200px;padding:8px 12px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;font-family:'Courier New',monospace}
+.param-input:focus{border-color:#ff5f1f}
+.cmd-preview{width:100%;padding:20px;background:#0d0d0d;border:2px solid #ff5f1f33;border-radius:10px;color:#10b981;font-size:1rem;font-family:'Courier New',monospace;word-break:break-all;min-height:60px;line-height:1.6;margin-top:16px;position:relative}
+.cmd-prefix{color:#ff5f1f;user-select:none}
+.history-list{margin-top:12px}
+.history-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#0d0d0d;border:1px solid #222;border-radius:6px;margin-bottom:6px;font-family:'Courier New',monospace;font-size:0.8rem;color:#ccc;cursor:pointer}
+.history-item:hover{border-color:#ff5f1f;color:#ff5f1f}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .tool-tab{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CLI Command Builder","description":"Build complex CLI commands visually for git, docker, npm, curl, ffmpeg, rsync, tar. Select options via checkboxes and preview commands.","url":"https://spunkart.com/cli-command-builder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>CLI Command <span>Builder</span></h1>
+  <p class="subtitle">Build complex terminal commands visually. Select a tool, pick options, and copy the command.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Select Tool</h3>
+    <div class="tool-tabs" id="toolTabs"></div>
+    <div id="subcmdArea"></div>
+    <div id="optionsArea"></div>
+    <div id="paramsArea"></div>
+    <div class="cmd-preview" id="cmdPreview"><span class="cmd-prefix">$ </span><span id="cmdText"></span></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyCmd()">Copy Command</button>
+      <button class="btn btn-secondary" onclick="saveToHistory()">Save to History</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Command History</h3>
+    <div class="history-list" id="historyList"><p style="color:#555;font-size:0.85rem">No saved commands yet.</p></div>
+    <div class="btn-row"><button class="btn btn-secondary" onclick="clearHistory()">Clear History</button></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/api-mock-server">API Mock Server</a>
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/automation-builder">Automation Builder</a>
+      <a href="/database-schema-designer">DB Schema Designer</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+const tools = {
+  git: {
+    subcmds: {
+      clone: {opts:['--depth 1','--branch','--recursive','--shallow-submodules','--bare'],params:[{name:'repository',placeholder:'https://github.com/user/repo.git'},{name:'directory',placeholder:'my-project'}]},
+      commit: {opts:['-m','-a','--amend','--no-edit','--allow-empty','-S'],params:[{name:'message',placeholder:'feat: add new feature'}]},
+      push: {opts:['--force','--force-with-lease','--tags','--set-upstream','-u','--dry-run'],params:[{name:'remote',placeholder:'origin'},{name:'branch',placeholder:'main'}]},
+      pull: {opts:['--rebase','--no-rebase','--ff-only','--no-ff','--autostash'],params:[{name:'remote',placeholder:'origin'},{name:'branch',placeholder:'main'}]},
+      branch: {opts:['-a','-d','-D','-r','--list','-m','--show-current'],params:[{name:'name',placeholder:'feature-branch'}]},
+      checkout: {opts:['-b','-B','--track','--orphan'],params:[{name:'branch',placeholder:'feature-branch'}]},
+      merge: {opts:['--no-ff','--squash','--abort','--continue','--strategy=ours'],params:[{name:'branch',placeholder:'feature-branch'}]},
+      stash: {opts:['push','pop','list','drop','apply','--keep-index','-u'],params:[{name:'message',placeholder:'WIP: work in progress'}]},
+      log: {opts:['--oneline','--graph','--all','--decorate','-n','--author','--since','--pretty=format:"%h %s"'],params:[{name:'count',placeholder:'10'}]},
+      reset: {opts:['--soft','--hard','--mixed','HEAD~1'],params:[{name:'ref',placeholder:'HEAD~1'}]},
+      rebase: {opts:['--onto','--abort','--continue','--skip'],params:[{name:'branch',placeholder:'main'}]},
+      diff: {opts:['--staged','--cached','--stat','--name-only','--word-diff'],params:[{name:'ref',placeholder:'HEAD'}]}
+    }
+  },
+  docker: {
+    subcmds: {
+      run: {opts:['-d','--rm','-it','-p','--name','-v','-e','--network','--restart always','--memory','--cpus'],params:[{name:'image',placeholder:'nginx:latest'},{name:'port',placeholder:'8080:80'},{name:'name',placeholder:'my-container'},{name:'volume',placeholder:'./data:/data'},{name:'env',placeholder:'NODE_ENV=production'}]},
+      build: {opts:['-t','--no-cache','--pull','-f','--target','--platform linux/amd64'],params:[{name:'tag',placeholder:'myapp:latest'},{name:'file',placeholder:'Dockerfile'},{name:'context',placeholder:'.'}]},
+      compose: {opts:['up','down','build','logs','ps','exec','-d','--build','-f','--force-recreate'],params:[{name:'service',placeholder:'app'},{name:'file',placeholder:'docker-compose.yml'}]},
+      exec: {opts:['-it','--user','-w','-e'],params:[{name:'container',placeholder:'my-container'},{name:'command',placeholder:'/bin/bash'}]},
+      ps: {opts:['-a','--format','--filter','-q'],params:[]},
+      images: {opts:['-a','--format','-q','--filter'],params:[]},
+      logs: {opts:['-f','--tail','-t','--since'],params:[{name:'container',placeholder:'my-container'},{name:'tail',placeholder:'100'}]}
+    }
+  },
+  npm: {
+    subcmds: {
+      install: {opts:['--save-dev','-D','--save-exact','-E','--global','-g','--legacy-peer-deps','--force','--no-optional'],params:[{name:'package',placeholder:'express@latest'}]},
+      run: {opts:['--','--watch','--verbose'],params:[{name:'script',placeholder:'dev'}]},
+      init: {opts:['-y','--scope'],params:[]},
+      publish: {opts:['--access public','--tag','--dry-run','--otp'],params:[{name:'tag',placeholder:'latest'}]},
+      audit: {opts:['fix','--force','--production','--json'],params:[]},
+      outdated: {opts:['--global','--long','--json'],params:[]},
+      uninstall: {opts:['--save-dev','-D','--global','-g'],params:[{name:'package',placeholder:'lodash'}]}
+    }
+  },
+  curl: {
+    subcmds: {
+      request: {opts:['-X GET','-X POST','-X PUT','-X DELETE','-X PATCH','-H','-d','-F','-o','-L','-s','-v','-k','--compressed','-u','-b','-c'],params:[{name:'url',placeholder:'https://api.example.com/data'},{name:'header',placeholder:'Content-Type: application/json'},{name:'data',placeholder:'{"key":"value"}'},{name:'output',placeholder:'response.json'},{name:'user',placeholder:'user:password'}]}
+    }
+  },
+  ffmpeg: {
+    subcmds: {
+      convert: {opts:['-i','-c:v libx264','-c:v libx265','-c:a aac','-c:a copy','-c:v copy','-crf','-preset ultrafast','-preset medium','-preset slow','-vf scale=','-ss','-t','-an','-vn','-y','-hide_banner'],params:[{name:'input',placeholder:'input.mp4'},{name:'output',placeholder:'output.mp4'},{name:'crf',placeholder:'23'},{name:'scale',placeholder:'1920:1080'},{name:'start',placeholder:'00:00:10'},{name:'duration',placeholder:'00:01:00'}]}
+    }
+  },
+  rsync: {
+    subcmds: {
+      sync: {opts:['-a','-v','-z','--progress','--delete','--dry-run','-n','--exclude','-e ssh','-r','--compress','--partial','--bwlimit'],params:[{name:'source',placeholder:'/path/to/source/'},{name:'destination',placeholder:'user@host:/path/to/dest/'},{name:'exclude',placeholder:'*.log'},{name:'bwlimit',placeholder:'1000'}]}
+    }
+  },
+  tar: {
+    subcmds: {
+      create: {opts:['-c','-z','-j','-J','-v','-f','--exclude'],params:[{name:'archive',placeholder:'archive.tar.gz'},{name:'files',placeholder:'./directory'},{name:'exclude',placeholder:'*.log'}]},
+      extract: {opts:['-x','-z','-j','-J','-v','-f','-C'],params:[{name:'archive',placeholder:'archive.tar.gz'},{name:'directory',placeholder:'./output'}]}
+    }
+  }
+};
+
+let activeTool = 'git';
+let activeSubcmd = '';
+let activeOpts = new Set();
+let paramValues = {};
+
+function renderToolTabs() {
+  document.getElementById('toolTabs').innerHTML = Object.keys(tools).map(t =>
+    `<button class="tool-tab${t===activeTool?' active':''}" onclick="selectTool('${t}')">${t}</button>`
+  ).join('');
+}
+
+function selectTool(tool) {
+  activeTool = tool;
+  activeOpts.clear();
+  paramValues = {};
+  const subcmds = Object.keys(tools[tool].subcmds);
+  activeSubcmd = subcmds[0];
+  renderToolTabs();
+  renderSubcmds();
+  renderOptions();
+  renderParams();
+  updatePreview();
+}
+
+function renderSubcmds() {
+  const subcmds = Object.keys(tools[activeTool].subcmds);
+  document.getElementById('subcmdArea').innerHTML = `
+    <h3 style="font-size:0.9rem;color:#888;margin-bottom:8px">Subcommand</h3>
+    <div class="subcmd-tabs">${subcmds.map(s =>
+      `<button class="subcmd-tab${s===activeSubcmd?' active':''}" onclick="selectSubcmd('${s}')">${s}</button>`
+    ).join('')}</div>`;
+}
+
+function selectSubcmd(sub) {
+  activeSubcmd = sub;
+  activeOpts.clear();
+  paramValues = {};
+  renderSubcmds();
+  renderOptions();
+  renderParams();
+  updatePreview();
+}
+
+function renderOptions() {
+  const opts = tools[activeTool].subcmds[activeSubcmd].opts;
+  document.getElementById('optionsArea').innerHTML = `
+    <h3 style="font-size:0.9rem;color:#888;margin-bottom:8px">Options</h3>
+    <div class="options-grid">${opts.map(o => `
+      <label class="opt-check${activeOpts.has(o)?' checked':''}" onclick="toggleOpt(this,'${o.replace(/'/g,"\\'")}')">
+        <input type="checkbox" ${activeOpts.has(o)?'checked':''}>
+        <code>${o}</code>
+      </label>`).join('')}
+    </div>`;
+}
+
+function toggleOpt(el, opt) {
+  if(activeOpts.has(opt)) activeOpts.delete(opt);
+  else activeOpts.add(opt);
+  el.classList.toggle('checked');
+  updatePreview();
+}
+
+function renderParams() {
+  const params = tools[activeTool].subcmds[activeSubcmd].params;
+  if(!params.length){document.getElementById('paramsArea').innerHTML='';updatePreview();return;}
+  document.getElementById('paramsArea').innerHTML = `
+    <h3 style="font-size:0.9rem;color:#888;margin-bottom:8px">Parameters</h3>
+    ${params.map(p => `
+      <div class="param-row">
+        <label>${p.name}</label>
+        <input class="param-input" placeholder="${p.placeholder}" value="${paramValues[p.name]||''}" oninput="paramValues['${p.name}']=this.value;updatePreview()">
+      </div>`).join('')}`;
+}
+
+function updatePreview() {
+  let cmd = activeTool;
+  const sub = tools[activeTool].subcmds[activeSubcmd];
+
+  // Special handling for different tools
+  if(activeTool === 'curl') {
+    cmd = 'curl';
+    const opts = [...activeOpts];
+    const method = opts.find(o=>o.startsWith('-X '));
+    if(method){cmd += ' ' + method;opts.splice(opts.indexOf(method),1);}
+    opts.forEach(o => {
+      if(o==='-H' && paramValues.header) cmd += ` -H "${paramValues.header}"`;
+      else if(o==='-d' && paramValues.data) cmd += ` -d '${paramValues.data}'`;
+      else if(o==='-o' && paramValues.output) cmd += ` -o ${paramValues.output}`;
+      else if(o==='-u' && paramValues.user) cmd += ` -u ${paramValues.user}`;
+      else if(o==='-F') cmd += ' -F';
+      else cmd += ' ' + o;
+    });
+    if(paramValues.url) cmd += ' "' + paramValues.url + '"';
+  } else if(activeTool === 'ffmpeg') {
+    cmd = 'ffmpeg';
+    if(activeOpts.has('-hide_banner')) cmd += ' -hide_banner';
+    if(paramValues.input) cmd += ` -i ${paramValues.input}`;
+    if(activeOpts.has('-ss') && paramValues.start) cmd += ` -ss ${paramValues.start}`;
+    if(activeOpts.has('-t') && paramValues.duration) cmd += ` -t ${paramValues.duration}`;
+    [...activeOpts].filter(o=>!o.startsWith('-i')&&o!=='-ss'&&o!=='-t'&&o!=='-y'&&o!=='-hide_banner'&&!o.startsWith('-vf')&&!o.startsWith('-crf')).forEach(o=>cmd+=' '+o);
+    if(activeOpts.has('-crf') && paramValues.crf) cmd += ` -crf ${paramValues.crf}`;
+    if(activeOpts.has('-vf scale=') && paramValues.scale) cmd += ` -vf scale=${paramValues.scale}`;
+    if(activeOpts.has('-y')) cmd += ' -y';
+    if(paramValues.output) cmd += ` ${paramValues.output}`;
+  } else if(activeTool === 'tar') {
+    cmd = 'tar';
+    const opts = [...activeOpts].join('').replace(/-/g,'');
+    cmd += ' -' + opts;
+    if(paramValues.archive) cmd += ` ${paramValues.archive}`;
+    if(activeSubcmd==='extract' && activeOpts.has('-C') && paramValues.directory) cmd += ` -C ${paramValues.directory}`;
+    if(activeSubcmd==='create') {
+      if(activeOpts.has('--exclude') && paramValues.exclude) cmd += ` --exclude="${paramValues.exclude}"`;
+      if(paramValues.files) cmd += ` ${paramValues.files}`;
+    }
+  } else if(activeTool === 'rsync') {
+    cmd = 'rsync';
+    [...activeOpts].forEach(o => {
+      if(o==='--exclude' && paramValues.exclude) cmd += ` --exclude="${paramValues.exclude}"`;
+      else if(o==='--bwlimit' && paramValues.bwlimit) cmd += ` --bwlimit=${paramValues.bwlimit}`;
+      else cmd += ' ' + o;
+    });
+    if(paramValues.source) cmd += ` ${paramValues.source}`;
+    if(paramValues.destination) cmd += ` ${paramValues.destination}`;
+  } else if(activeTool === 'docker' && activeSubcmd === 'run') {
+    cmd = 'docker run';
+    if(activeOpts.has('-d')) cmd += ' -d';
+    if(activeOpts.has('--rm')) cmd += ' --rm';
+    if(activeOpts.has('-it')) cmd += ' -it';
+    if(activeOpts.has('--name') && paramValues.name) cmd += ` --name ${paramValues.name}`;
+    if(activeOpts.has('-p') && paramValues.port) cmd += ` -p ${paramValues.port}`;
+    if(activeOpts.has('-v') && paramValues.volume) cmd += ` -v ${paramValues.volume}`;
+    if(activeOpts.has('-e') && paramValues.env) cmd += ` -e ${paramValues.env}`;
+    [...activeOpts].filter(o=>!['-d','--rm','-it','-p','--name','-v','-e'].includes(o)).forEach(o=>cmd+=' '+o);
+    if(paramValues.image) cmd += ` ${paramValues.image}`;
+  } else if(activeTool === 'docker' && activeSubcmd === 'compose') {
+    cmd = 'docker compose';
+    if(activeOpts.has('-f') && paramValues.file) cmd += ` -f ${paramValues.file}`;
+    const subcmds = ['up','down','build','logs','ps','exec'];
+    const sub2 = [...activeOpts].find(o=>subcmds.includes(o));
+    if(sub2) cmd += ' ' + sub2;
+    [...activeOpts].filter(o=>!subcmds.includes(o)&&o!=='-f').forEach(o=>cmd+=' '+o);
+    if(paramValues.service) cmd += ` ${paramValues.service}`;
+  } else {
+    cmd += ' ' + activeSubcmd;
+    const opts = [...activeOpts];
+    // For git commit -m
+    if(activeTool==='git'&&activeSubcmd==='commit'&&activeOpts.has('-m')&&paramValues.message) {
+      opts.splice(opts.indexOf('-m'),1);
+      const otherOpts = opts.filter(o=>o!=='-m');
+      otherOpts.forEach(o=>cmd+=' '+o);
+      cmd += ` -m "${paramValues.message}"`;
+    } else if(activeTool==='git'&&activeSubcmd==='log'&&activeOpts.has('-n')&&paramValues.count) {
+      opts.splice(opts.indexOf('-n'),1);
+      opts.forEach(o=>cmd+=' '+o);
+      cmd += ` -n ${paramValues.count}`;
+    } else {
+      opts.forEach(o=>cmd+=' '+o);
+      sub.params.forEach(p => {if(paramValues[p.name]) cmd += ' ' + paramValues[p.name];});
+    }
+  }
+
+  document.getElementById('cmdText').textContent = cmd;
+}
+
+function copyCmd() {
+  const cmd = document.getElementById('cmdText').textContent;
+  if(!cmd){showToast('Build a command first');return;}
+  navigator.clipboard.writeText(cmd);
+  showToast('Command copied!');
+  gtag('event','copy_command',{event_category:'tool_use',tool:activeTool});
+}
+
+function saveToHistory() {
+  const cmd = document.getElementById('cmdText').textContent;
+  if(!cmd) return;
+  let history = JSON.parse(localStorage.getItem('spunkart_cli_history')||'[]');
+  history.unshift({cmd, tool:activeTool, date:new Date().toISOString()});
+  if(history.length>20) history = history.slice(0,20);
+  localStorage.setItem('spunkart_cli_history', JSON.stringify(history));
+  renderHistory();
+  showToast('Saved to history!');
+}
+
+function renderHistory() {
+  const history = JSON.parse(localStorage.getItem('spunkart_cli_history')||'[]');
+  const list = document.getElementById('historyList');
+  if(!history.length){list.innerHTML='<p style="color:#555;font-size:0.85rem">No saved commands yet.</p>';return;}
+  list.innerHTML = history.map(h => `
+    <div class="history-item" onclick="navigator.clipboard.writeText('${h.cmd.replace(/'/g,"\\'")}');showToast('Copied!')">
+      <span>$ ${h.cmd}</span>
+      <span style="color:#555;font-size:0.7rem">${new Date(h.date).toLocaleDateString()}</span>
+    </div>
+  `).join('');
+}
+
+function clearHistory() {
+  localStorage.removeItem('spunkart_cli_history');
+  renderHistory();
+  showToast('History cleared');
+}
+
+// Init
+renderToolTabs();
+selectTool('git');
+renderHistory();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

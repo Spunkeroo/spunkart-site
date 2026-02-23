@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Watermark Generator - Free Image Watermark Tool | SPUNKART.COM</title>
+<meta name="description" content="Add text watermarks to your images. Custom font, size, opacity, position, rotation, and tiling options. Client-side processing, nothing uploaded. Free.">
+<meta name="keywords" content="watermark generator, image watermark tool, photo watermark, add watermark online, free watermark maker">
+<meta property="og:title" content="Watermark Generator — Free Image Watermark Tool | SPUNKART.COM">
+<meta property="og:description" content="Add professional watermarks to images. Custom text, opacity, position, tiling. 100% client-side. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/watermark-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Watermark Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Free client-side image watermark tool. Add text watermarks with custom styling.">
+<link rel="canonical" href="https://spunkart.com/watermark-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.mode-btn{padding:8px 16px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+input[type="text"],input[type="number"],select{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,select:focus{border-color:#ff5f1f}
+input::placeholder{color:#444}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.inline-row{display:flex;gap:12px;align-items:end}
+.inline-row>*{flex:1}
+.range-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.range-row input[type="range"]{flex:1;accent-color:#ff5f1f}
+.range-row .range-val{min-width:40px;text-align:right;font-size:0.85rem;color:#ff5f1f;font-weight:600}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+input[type="file"]{display:none}
+.upload-area{border:2px dashed #2a2a2a;border-radius:8px;padding:30px;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:12px}
+.upload-area:hover{border-color:#ff5f1f}
+.upload-area p{color:#555;font-size:0.85rem}
+.upload-area.has-image{border-color:#10b981;border-style:solid}
+.upload-area.has-image p{color:#10b981}
+.canvas-wrap{background:#1a1a1a;border-radius:12px;padding:16px;display:flex;justify-content:center;overflow:auto}
+canvas#previewCanvas{max-width:100%;border-radius:4px}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .inline-row{flex-direction:column;gap:0}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Watermark Generator","description":"Add text watermarks to images with custom font, size, opacity, position, rotation, and tiling. 100% client-side.","url":"https://spunkart.com/watermark-generator.html","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Watermark <span>Generator</span></h1>
+  <p class="subtitle">Add professional text watermarks to your images. Fully client-side — your images never leave your device.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Upload Image</h2>
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('imgInput').click()">
+      <p id="uploadLabel">Click to upload or drag &amp; drop an image (PNG, JPG, WebP)</p>
+    </div>
+    <input type="file" id="imgInput" accept="image/*">
+  </div>
+
+  <div class="section">
+    <h2>2. Watermark Settings</h2>
+    <label>Watermark Text</label>
+    <input type="text" id="wmText" value="© Your Name" placeholder="e.g. © Jane Doe Photography">
+
+    <div class="inline-row">
+      <div><label>Font</label>
+        <select id="wmFont">
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Impact">Impact</option>
+          <option value="Trebuchet MS">Trebuchet MS</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Times New Roman">Times New Roman</option>
+        </select>
+      </div>
+      <div><label>Text Color</label>
+        <input type="color" id="wmColor" value="#ffffff" style="width:100%;height:44px;border:1px solid #2a2a2a;background:#0d0d0d;border-radius:8px;cursor:pointer">
+      </div>
+    </div>
+
+    <label>Font Size: <span id="sizeVal">48</span>px</label>
+    <div class="range-row">
+      <input type="range" id="wmSize" min="10" max="200" value="48">
+    </div>
+
+    <label>Opacity: <span id="opacityVal">30</span>%</label>
+    <div class="range-row">
+      <input type="range" id="wmOpacity" min="5" max="100" value="30">
+    </div>
+
+    <label>Rotation: <span id="rotationVal">-30</span>&deg;</label>
+    <div class="range-row">
+      <input type="range" id="wmRotation" min="-90" max="90" value="-30">
+    </div>
+
+    <h2 style="margin-top:16px">Position</h2>
+    <div class="mode-grid">
+      <button class="mode-btn" onclick="setPosition(this,'topleft')">Top Left</button>
+      <button class="mode-btn" onclick="setPosition(this,'top')">Top Center</button>
+      <button class="mode-btn" onclick="setPosition(this,'topright')">Top Right</button>
+      <button class="mode-btn" onclick="setPosition(this,'center')">Center</button>
+      <button class="mode-btn" onclick="setPosition(this,'bottomleft')">Bottom Left</button>
+      <button class="mode-btn" onclick="setPosition(this,'bottom')">Bottom Center</button>
+      <button class="mode-btn" onclick="setPosition(this,'bottomright')">Bottom Right</button>
+      <button class="mode-btn active" onclick="setPosition(this,'tile')">Tile (Repeat)</button>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="applyWatermark()">Apply Watermark</button>
+    <button class="btn btn-green" onclick="downloadImage()">Download Image</button>
+  </div>
+
+  <div class="section">
+    <h2>Preview</h2>
+    <div class="canvas-wrap">
+      <canvas id="previewCanvas" width="600" height="400"></canvas>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/image-compressor">Image Compressor</a>
+      <a href="/merch-mockup-generator">Merch Mockups</a>
+      <a href="/pixel-art-maker">Pixel Art Maker</a>
+      <a href="/art-palette-generator">Art Palette</a>
+      <a href="/favicon-generator">Favicon Generator</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let sourceImg=null;
+let wmPosition='tile';
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+
+function setPosition(el,pos){
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  wmPosition=pos;
+  if(sourceImg) applyWatermark();
+}
+
+// Range value displays
+document.getElementById('wmSize').addEventListener('input',function(){document.getElementById('sizeVal').textContent=this.value;if(sourceImg) applyWatermark();});
+document.getElementById('wmOpacity').addEventListener('input',function(){document.getElementById('opacityVal').textContent=this.value;if(sourceImg) applyWatermark();});
+document.getElementById('wmRotation').addEventListener('input',function(){document.getElementById('rotationVal').textContent=this.value;if(sourceImg) applyWatermark();});
+['wmText','wmFont','wmColor'].forEach(id=>{document.getElementById(id).addEventListener('input',function(){if(sourceImg) applyWatermark();});});
+
+// File upload
+document.getElementById('imgInput').addEventListener('change',function(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  loadImageFile(file);
+});
+
+// Drag and drop
+const uploadArea=document.getElementById('uploadArea');
+uploadArea.addEventListener('dragover',e=>{e.preventDefault();uploadArea.style.borderColor='#ff5f1f';});
+uploadArea.addEventListener('dragleave',()=>{uploadArea.style.borderColor='#2a2a2a';});
+uploadArea.addEventListener('drop',e=>{
+  e.preventDefault();uploadArea.style.borderColor='#2a2a2a';
+  const file=e.dataTransfer.files[0];
+  if(file&&file.type.startsWith('image/')) loadImageFile(file);
+});
+
+function loadImageFile(file){
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const img=new Image();
+    img.onload=function(){
+      sourceImg=img;
+      document.getElementById('uploadArea').classList.add('has-image');
+      document.getElementById('uploadLabel').textContent=file.name+' ('+img.width+'x'+img.height+')';
+      applyWatermark();
+      showToast('Image loaded!');
+    };
+    img.src=ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyWatermark(){
+  if(!sourceImg){showToast('Upload an image first');return;}
+
+  const canvas=document.getElementById('previewCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=sourceImg.width;
+  canvas.height=sourceImg.height;
+
+  // Draw source image
+  ctx.drawImage(sourceImg,0,0);
+
+  // Watermark settings
+  const text=document.getElementById('wmText').value||'Watermark';
+  const font=document.getElementById('wmFont').value;
+  const color=document.getElementById('wmColor').value;
+  const size=parseInt(document.getElementById('wmSize').value);
+  const opacity=parseInt(document.getElementById('wmOpacity').value)/100;
+  const rotation=(parseInt(document.getElementById('wmRotation').value)*Math.PI)/180;
+
+  ctx.globalAlpha=opacity;
+  ctx.font=`bold ${size}px "${font}"`;
+  ctx.fillStyle=color;
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+
+  if(wmPosition==='tile'){
+    // Tiling watermark
+    const tw=ctx.measureText(text).width+80;
+    const th=size*2.5;
+    for(let y=-canvas.height;y<canvas.height*2;y+=th){
+      for(let x=-canvas.width;x<canvas.width*2;x+=tw){
+        ctx.save();
+        ctx.translate(x,y);
+        ctx.rotate(rotation);
+        ctx.fillText(text,0,0);
+        ctx.restore();
+      }
+    }
+  } else {
+    let x,y;
+    const pad=size;
+    switch(wmPosition){
+      case 'topleft':x=pad+ctx.measureText(text).width/2;y=pad;break;
+      case 'top':x=canvas.width/2;y=pad;break;
+      case 'topright':x=canvas.width-pad-ctx.measureText(text).width/2;y=pad;break;
+      case 'center':x=canvas.width/2;y=canvas.height/2;break;
+      case 'bottomleft':x=pad+ctx.measureText(text).width/2;y=canvas.height-pad;break;
+      case 'bottom':x=canvas.width/2;y=canvas.height-pad;break;
+      case 'bottomright':x=canvas.width-pad-ctx.measureText(text).width/2;y=canvas.height-pad;break;
+      default:x=canvas.width/2;y=canvas.height/2;
+    }
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(rotation);
+    ctx.fillText(text,0,0);
+    ctx.restore();
+  }
+
+  ctx.globalAlpha=1;
+  gtag('event','apply_watermark',{event_category:'tool_use',position:wmPosition});
+}
+
+function downloadImage(){
+  if(!sourceImg){showToast('Upload and watermark an image first');return;}
+  const canvas=document.getElementById('previewCanvas');
+  const a=document.createElement('a');
+  a.href=canvas.toDataURL('image/png');
+  a.download='watermarked-image.png';
+  a.click();
+  showToast('Downloaded!');
+  gtag('event','download_watermark',{event_category:'tool_use'});
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
