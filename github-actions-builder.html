@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GitHub Actions Builder - Visual Workflow YAML Generator | SPUNKART.COM</title>
+<meta name="description" content="Build GitHub Actions workflows visually. Pick triggers, add jobs and steps from templates, set environment variables, generate YAML. Free CI/CD builder.">
+<meta name="keywords" content="github actions builder, ci cd builder, github workflow generator, yaml generator, github actions templates, ci pipeline builder">
+<meta property="og:title" content="GitHub Actions Builder — CI/CD YAML Generator | SPUNKART.COM">
+<meta property="og:description" content="Build GitHub Actions workflows visually. Pick triggers, add jobs, generate YAML. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/github-actions-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GitHub Actions Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Visual GitHub Actions workflow builder. Generate CI/CD YAML easily.">
+<link rel="canonical" href="https://spunkart.com/github-actions-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.field-input{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;margin-bottom:12px}
+.field-input:focus{border-color:#ff5f1f}
+.check-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.check-item-opt{display:flex;align-items:center;gap:6px;padding:8px 14px;background:#1a1a1a;border:1px solid #333;border-radius:8px;cursor:pointer;font-size:0.85rem;color:#ccc;transition:all .2s}
+.check-item-opt:hover{border-color:#ff5f1f}
+.check-item-opt.checked{border-color:#10b981;color:#10b981;background:#10b98112}
+.check-item-opt input{display:none}
+.job-card{background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:16px;margin-bottom:12px}
+.job-header{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.job-header input{flex:1;padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none}
+.job-header input:focus{border-color:#ff5f1f}
+.step-list{margin-left:16px}
+.step-item{display:flex;gap:8px;align-items:center;padding:8px 0;flex-wrap:wrap}
+.step-item input{padding:6px 10px;background:#1a1a1a;border:1px solid #333;border-radius:4px;color:#e8e8e8;font-size:0.82rem;outline:none;font-family:'Courier New',monospace}
+.step-item input:focus{border-color:#ff5f1f}
+.step-type{font-size:0.72rem;padding:2px 6px;border-radius:4px;font-weight:600}
+.type-uses{background:#3b82f622;color:#3b82f6}
+.type-run{background:#10b98122;color:#10b981}
+.step-templates{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.step-tpl{padding:4px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-size:0.75rem;cursor:pointer;transition:all .2s}
+.step-tpl:hover{border-color:#ff5f1f;color:#ff5f1f}
+.env-list{margin-bottom:12px}
+.env-row{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.env-row input{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;font-family:'Courier New',monospace}
+.env-row input:focus{border-color:#ff5f1f}
+.yaml-output{width:100%;min-height:400px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.85rem;font-family:'Courier New',monospace;white-space:pre;overflow-x:auto;line-height:1.5}
+.runner-select{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub Actions Builder","description":"Visual GitHub Actions workflow builder. Pick triggers, add jobs and steps, set env vars, generate YAML.","url":"https://spunkart.com/github-actions-builder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>GitHub Actions <span>Builder</span></h1>
+  <p class="subtitle">Build CI/CD workflows visually. Pick triggers, add jobs and steps, generate YAML.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Workflow Name</h3>
+    <input type="text" class="field-input" id="wfName" placeholder="CI/CD Pipeline" value="CI">
+
+    <h3>Triggers</h3>
+    <div class="check-grid" id="triggers">
+      <label class="check-item-opt checked" onclick="this.classList.toggle('checked')"><input type="checkbox" value="push" checked>push</label>
+      <label class="check-item-opt checked" onclick="this.classList.toggle('checked')"><input type="checkbox" value="pull_request" checked>pull_request</label>
+      <label class="check-item-opt" onclick="this.classList.toggle('checked')"><input type="checkbox" value="schedule">schedule (cron)</label>
+      <label class="check-item-opt" onclick="this.classList.toggle('checked')"><input type="checkbox" value="workflow_dispatch">workflow_dispatch</label>
+      <label class="check-item-opt" onclick="this.classList.toggle('checked')"><input type="checkbox" value="release">release</label>
+    </div>
+
+    <div id="triggerConfig">
+      <div class="field-input" style="display:flex;gap:8px;align-items:center;padding:8px 12px">
+        <label style="font-size:0.82rem;color:#888;white-space:nowrap">Branches:</label>
+        <input type="text" id="triggerBranches" value="main" style="flex:1;background:transparent;border:none;color:#e8e8e8;outline:none;font-size:0.85rem" placeholder="main, develop">
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Environment Variables</h3>
+    <div class="env-list" id="envList"></div>
+    <button class="btn btn-secondary btn-sm" onclick="addEnv()">+ Add Env Variable</button>
+  </div>
+
+  <div class="section">
+    <h3>Jobs</h3>
+    <div id="jobsList"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="addJob()">+ Add Job</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Generated YAML</h3>
+    <div class="btn-row" style="margin-top:0;margin-bottom:12px">
+      <button class="btn btn-primary" onclick="generateYAML()">Generate YAML</button>
+    </div>
+    <div class="yaml-output" id="yamlOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyYAML()">Copy YAML</button>
+      <button class="btn btn-secondary" onclick="downloadYAML()">Download .yml</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/deployment-checklist">Deployment Checklist</a>
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/automation-builder">Automation Builder</a>
+      <a href="/monorepo-generator">Monorepo Generator</a>
+      <a href="/cli-command-builder">CLI Command Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let jobs = [];
+let jobCounter = 0;
+let envVars = [];
+let envCounter = 0;
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+const stepTemplates = [
+  {label:'Checkout',type:'uses',value:'actions/checkout@v4'},
+  {label:'Setup Node',type:'uses',value:'actions/setup-node@v4',with:{nodeVersion:'20'}},
+  {label:'Setup Python',type:'uses',value:'actions/setup-python@v5',with:{pythonVersion:'3.12'}},
+  {label:'Setup pnpm',type:'uses',value:'pnpm/action-setup@v2',with:{version:'8'}},
+  {label:'Cache',type:'uses',value:'actions/cache@v4'},
+  {label:'npm install',type:'run',value:'npm ci'},
+  {label:'npm build',type:'run',value:'npm run build'},
+  {label:'npm test',type:'run',value:'npm run test'},
+  {label:'npm lint',type:'run',value:'npm run lint'},
+  {label:'pnpm install',type:'run',value:'pnpm install --frozen-lockfile'},
+  {label:'Deploy Pages',type:'uses',value:'actions/deploy-pages@v4'},
+  {label:'Docker Build',type:'run',value:'docker build -t ${{ github.repository }}:latest .'},
+  {label:'Docker Push',type:'run',value:'docker push ${{ github.repository }}:latest'},
+  {label:'Upload Artifact',type:'uses',value:'actions/upload-artifact@v4'},
+  {label:'AWS Deploy',type:'uses',value:'aws-actions/configure-aws-credentials@v4'},
+  {label:'Custom Run',type:'run',value:'echo "Hello"'}
+];
+
+function addEnv() {
+  envVars.push({id:++envCounter, key:'', value:''});
+  renderEnvVars();
+}
+
+function removeEnv(id) {
+  envVars = envVars.filter(e=>e.id!==id);
+  renderEnvVars();
+}
+
+function renderEnvVars() {
+  const list = document.getElementById('envList');
+  list.innerHTML = envVars.map(e => `
+    <div class="env-row">
+      <input placeholder="KEY" value="${e.key}" oninput="envVars.find(v=>v.id===${e.id}).key=this.value" style="flex:1">
+      <input placeholder="value or ${{ secrets.KEY }}" value="${e.value}" oninput="envVars.find(v=>v.id===${e.id}).value=this.value" style="flex:2">
+      <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 10px" onclick="removeEnv(${e.id})">x</button>
+    </div>
+  `).join('');
+}
+
+function addJob() {
+  const id = ++jobCounter;
+  jobs.push({id, name:'build', runner:'ubuntu-latest', steps:[
+    {id:Date.now(), type:'uses', value:'actions/checkout@v4', name:'Checkout'}
+  ]});
+  renderJobs();
+}
+
+function removeJob(id) {
+  jobs = jobs.filter(j=>j.id!==id);
+  renderJobs();
+}
+
+function addStepFromTemplate(jobId, tplIdx) {
+  const tpl = stepTemplates[tplIdx];
+  const job = jobs.find(j=>j.id===jobId);
+  if(!job) return;
+  job.steps.push({id:Date.now()+Math.random(), type:tpl.type, value:tpl.value, name:tpl.label, with:tpl.with});
+  renderJobs();
+}
+
+function removeStep(jobId, stepId) {
+  const job = jobs.find(j=>j.id===jobId);
+  if(!job) return;
+  job.steps = job.steps.filter(s=>s.id!==stepId);
+  renderJobs();
+}
+
+function updateJobField(id, field, val) {
+  const job = jobs.find(j=>j.id===id);
+  if(job) job[field] = val;
+}
+
+function updateStep(jobId, stepId, field, val) {
+  const job = jobs.find(j=>j.id===jobId);
+  if(!job) return;
+  const step = job.steps.find(s=>s.id===stepId);
+  if(step) step[field] = val;
+}
+
+function renderJobs() {
+  const list = document.getElementById('jobsList');
+  list.innerHTML = jobs.map(job => `
+    <div class="job-card">
+      <div class="job-header">
+        <label style="font-size:0.82rem;color:#888">Job:</label>
+        <input value="${job.name}" oninput="updateJobField(${job.id},'name',this.value)" placeholder="build" style="width:150px">
+        <label style="font-size:0.82rem;color:#888">Runner:</label>
+        <select class="runner-select" onchange="updateJobField(${job.id},'runner',this.value)">
+          <option ${job.runner==='ubuntu-latest'?'selected':''}>ubuntu-latest</option>
+          <option ${job.runner==='ubuntu-22.04'?'selected':''}>ubuntu-22.04</option>
+          <option ${job.runner==='macos-latest'?'selected':''}>macos-latest</option>
+          <option ${job.runner==='windows-latest'?'selected':''}>windows-latest</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" style="color:#ef4444" onclick="removeJob(${job.id})">Remove Job</button>
+      </div>
+      <div class="step-list">
+        <label style="font-size:0.82rem;color:#888;display:block;margin-bottom:6px">Steps:</label>
+        ${job.steps.map(step => `
+          <div class="step-item">
+            <span class="step-type ${step.type==='uses'?'type-uses':'type-run'}">${step.type}</span>
+            <input value="${step.name||''}" oninput="updateStep(${job.id},${step.id},'name',this.value)" placeholder="Step name" style="width:120px">
+            <input value="${step.value}" oninput="updateStep(${job.id},${step.id},'value',this.value)" placeholder="${step.type==='uses'?'actions/checkout@v4':'npm run build'}" style="flex:1;min-width:200px">
+            <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 8px" onclick="removeStep(${job.id},${step.id})">x</button>
+          </div>
+        `).join('')}
+        <div class="step-templates">
+          ${stepTemplates.map((tpl,i) => `<span class="step-tpl" onclick="addStepFromTemplate(${job.id},${i})">${tpl.label}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function generateYAML() {
+  const name = document.getElementById('wfName').value.trim() || 'CI';
+  const triggers = [...document.querySelectorAll('#triggers input:checked')].map(i=>i.value);
+  const branches = document.getElementById('triggerBranches').value.split(',').map(b=>b.trim()).filter(Boolean);
+
+  let yaml = `name: ${name}\n\non:\n`;
+
+  triggers.forEach(t => {
+    if(t==='push'||t==='pull_request') {
+      yaml += `  ${t}:\n    branches: [${branches.join(', ')}]\n`;
+    } else if(t==='schedule') {
+      yaml += `  schedule:\n    - cron: '0 0 * * *'\n`;
+    } else if(t==='workflow_dispatch') {
+      yaml += `  workflow_dispatch:\n`;
+    } else if(t==='release') {
+      yaml += `  release:\n    types: [published]\n`;
+    }
+  });
+
+  if(envVars.some(e=>e.key)) {
+    yaml += `\nenv:\n`;
+    envVars.filter(e=>e.key).forEach(e => {
+      yaml += `  ${e.key}: ${e.value||'""'}\n`;
+    });
+  }
+
+  yaml += `\njobs:\n`;
+
+  jobs.forEach(job => {
+    yaml += `  ${job.name}:\n`;
+    yaml += `    runs-on: ${job.runner}\n`;
+    if(job.steps.length) {
+      yaml += `    steps:\n`;
+      job.steps.forEach(step => {
+        if(step.name) yaml += `      - name: ${step.name}\n`;
+        else yaml += `      -\n`;
+        if(step.type==='uses') {
+          yaml += `        uses: ${step.value}\n`;
+          if(step.with) {
+            yaml += `        with:\n`;
+            if(step.with.nodeVersion) yaml += `          node-version: ${step.with.nodeVersion}\n`;
+            if(step.with.pythonVersion) yaml += `          python-version: "${step.with.pythonVersion}"\n`;
+            if(step.with.version) yaml += `          version: ${step.with.version}\n`;
+          }
+        } else {
+          yaml += `        run: ${step.value}\n`;
+        }
+      });
+    }
+  });
+
+  document.getElementById('yamlOutput').textContent = yaml;
+  gtag('event','generate_yaml',{event_category:'tool_use'});
+}
+
+function copyYAML() {
+  const yaml = document.getElementById('yamlOutput').textContent;
+  if(!yaml){showToast('Generate YAML first');return;}
+  navigator.clipboard.writeText(yaml);
+  showToast('YAML copied!');
+}
+
+function downloadYAML() {
+  const yaml = document.getElementById('yamlOutput').textContent;
+  if(!yaml){showToast('Generate YAML first');return;}
+  const name = document.getElementById('wfName').value.trim().toLowerCase().replace(/\s+/g,'-')||'ci';
+  const blob = new Blob([yaml],{type:'text/yaml'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');a.href=url;a.download=name+'.yml';a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded!');
+}
+
+// Init with a default job
+addJob();
+addEnv();
+envVars[0].key = 'NODE_ENV';
+envVars[0].value = 'production';
+renderEnvVars();
+generateYAML();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

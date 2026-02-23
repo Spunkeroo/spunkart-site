@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Press Kit Generator - Free Electronic Press Kit (EPK) Builder | SPUNKART.COM</title>
+<meta name="description" content="Create a professional electronic press kit (EPK) for your band, artist, or creative project. Bio, photos, press quotes, discography, tech rider, contact info.">
+<meta name="keywords" content="press kit generator, EPK builder, electronic press kit, band press kit, artist press kit, free EPK">
+<meta property="og:title" content="Press Kit Generator — Free EPK Builder | SPUNKART.COM">
+<meta property="og:description" content="Build a professional press kit page with bio, photos, quotes, discography, and contact info. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/press-kit-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Press Kit Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Free electronic press kit (EPK) builder for artists and bands.">
+<link rel="canonical" href="https://spunkart.com/press-kit-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+input[type="text"],input[type="url"],input[type="email"],textarea{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,textarea:focus{border-color:#ff5f1f}
+input::placeholder,textarea::placeholder{color:#444}
+textarea{min-height:80px;resize:vertical;line-height:1.6}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.inline-row{display:flex;gap:12px}
+.inline-row>*{flex:1}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.item-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-bottom:12px;position:relative}
+.item-card .remove-btn{position:absolute;top:8px;right:8px;background:#ff5f1f33;border:none;color:#ff5f1f;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.item-card .remove-btn:hover{background:#ff5f1f;color:#fff}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.preview-frame{width:100%;min-height:500px;background:#fff;border-radius:8px;border:none;margin-top:12px}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .inline-row{flex-direction:column;gap:0}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Press Kit Generator","description":"Create a professional electronic press kit (EPK). Bio, photos, quotes, discography, tech rider, contact.","url":"https://spunkart.com/press-kit-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Press Kit <span>Generator</span></h1>
+  <p class="subtitle">Build a professional electronic press kit (EPK) for your band, artist, or creative project.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Basic Info</h2>
+    <label>Artist / Band Name</label>
+    <input type="text" id="artistName" placeholder="e.g. The Voltage">
+    <label>Genre / Discipline</label>
+    <input type="text" id="genre" placeholder="e.g. Indie Rock / Digital Art">
+    <label>Location</label>
+    <input type="text" id="location" placeholder="e.g. Brooklyn, NY">
+    <label>Formed / Active Since</label>
+    <input type="text" id="formed" placeholder="e.g. 2019">
+    <label>Hero/Banner Image URL</label>
+    <input type="url" id="heroImg" placeholder="https://example.com/hero.jpg">
+  </div>
+
+  <div class="section">
+    <h2>2. Bio</h2>
+    <label>Short Bio (1-2 paragraphs)</label>
+    <textarea id="shortBio" style="min-height:100px" placeholder="A concise bio for quick reference..."></textarea>
+    <label>Full Bio (detailed)</label>
+    <textarea id="fullBio" style="min-height:120px" placeholder="The full story — origin, influences, achievements, future plans..."></textarea>
+  </div>
+
+  <div class="section">
+    <h2>3. Press Photos</h2>
+    <p style="color:#555;font-size:0.8rem;margin-bottom:12px">Add URLs to high-res press photos.</p>
+    <div id="photosList"></div>
+    <button class="btn btn-secondary" onclick="addPhoto()">+ Add Photo</button>
+  </div>
+
+  <div class="section">
+    <h2>4. Press Quotes</h2>
+    <div id="quotesList"></div>
+    <button class="btn btn-secondary" onclick="addQuote()">+ Add Quote</button>
+  </div>
+
+  <div class="section">
+    <h2>5. Discography / Releases</h2>
+    <div id="releasesList"></div>
+    <button class="btn btn-secondary" onclick="addRelease()">+ Add Release</button>
+  </div>
+
+  <div class="section">
+    <h2>6. Tech Rider (optional)</h2>
+    <textarea id="techRider" placeholder="Stage requirements, equipment list, sound needs, stage plot notes..."></textarea>
+  </div>
+
+  <div class="section">
+    <h2>7. Contact &amp; Links</h2>
+    <div class="inline-row">
+      <div><label>Booking Email</label><input type="email" id="bookingEmail" placeholder="booking@yourband.com"></div>
+      <div><label>Management Email</label><input type="email" id="mgmtEmail" placeholder="mgmt@yourband.com"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Press Contact</label><input type="email" id="pressEmail" placeholder="press@yourband.com"></div>
+      <div><label>Phone</label><input type="text" id="phone" placeholder="+1 (555) 000-0000"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Website</label><input type="url" id="website" placeholder="https://yourband.com"></div>
+      <div><label>Spotify</label><input type="url" id="spotify" placeholder="https://open.spotify.com/artist/..."></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Instagram</label><input type="text" id="instagram" placeholder="@yourband"></div>
+      <div><label>Twitter/X</label><input type="text" id="twitter" placeholder="@yourband"></div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="generateEPK()">Generate Press Kit</button>
+    <button class="btn btn-green" onclick="downloadEPK()">Download HTML</button>
+    <button class="btn btn-secondary" onclick="copyEPK()">Copy HTML</button>
+  </div>
+
+  <div class="section" id="previewSection" style="display:none">
+    <h2>Preview</h2>
+    <iframe id="previewFrame" class="preview-frame"></iframe>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/band-website-builder">Band Website Builder</a>
+      <a href="/link-in-bio">Link in Bio</a>
+      <a href="/portfolio-builder">Portfolio Builder</a>
+      <a href="/merch-mockup-generator">Merch Mockups</a>
+      <a href="/commission-calculator">Commission Calculator</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let generatedHTML='';
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+
+function addPhoto(){
+  const id='ph_'+Date.now();
+  const div=document.createElement('div');div.className='item-card';div.id=id;
+  div.innerHTML=`<button class="remove-btn" onclick="document.getElementById('${id}').remove()">&times;</button>
+    <div class="inline-row"><div style="flex:2"><label>Photo URL</label><input type="url" class="photoUrl" placeholder="https://..."></div><div><label>Caption</label><input type="text" class="photoCaption" placeholder="e.g. Live at SXSW 2025"></div></div>`;
+  document.getElementById('photosList').appendChild(div);
+}
+
+function addQuote(){
+  const id='qt_'+Date.now();
+  const div=document.createElement('div');div.className='item-card';div.id=id;
+  div.innerHTML=`<button class="remove-btn" onclick="document.getElementById('${id}').remove()">&times;</button>
+    <label>Quote</label><textarea class="quoteText" placeholder="&quot;An electrifying performance that left the crowd wanting more.&quot;"></textarea>
+    <label>Source</label><input type="text" class="quoteSource" placeholder="e.g. Rolling Stone, March 2025">`;
+  document.getElementById('quotesList').appendChild(div);
+}
+
+function addRelease(){
+  const id='rel_'+Date.now();
+  const div=document.createElement('div');div.className='item-card';div.id=id;
+  div.innerHTML=`<button class="remove-btn" onclick="document.getElementById('${id}').remove()">&times;</button>
+    <div class="inline-row"><div><label>Title</label><input type="text" class="relTitle" placeholder="Album / Single title"></div><div><label>Year</label><input type="text" class="relYear" placeholder="2025"></div></div>
+    <div class="inline-row"><div><label>Cover Art URL</label><input type="url" class="relCover" placeholder="https://..."></div><div><label>Listen Link</label><input type="url" class="relLink" placeholder="https://open.spotify.com/..."></div></div>`;
+  document.getElementById('releasesList').appendChild(div);
+}
+
+addPhoto();addQuote();addRelease();
+
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function generateEPK(){
+  const name=document.getElementById('artistName').value.trim()||'Artist Name';
+  const genre=document.getElementById('genre').value.trim();
+  const location=document.getElementById('location').value.trim();
+  const formed=document.getElementById('formed').value.trim();
+  const hero=document.getElementById('heroImg').value.trim();
+  const shortBio=document.getElementById('shortBio').value.trim();
+  const fullBio=document.getElementById('fullBio').value.trim();
+  const techRider=document.getElementById('techRider').value.trim();
+  const bookingEmail=document.getElementById('bookingEmail').value.trim();
+  const mgmtEmail=document.getElementById('mgmtEmail').value.trim();
+  const pressEmail=document.getElementById('pressEmail').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const website=document.getElementById('website').value.trim();
+  const spotify=document.getElementById('spotify').value.trim();
+  const ig=document.getElementById('instagram').value.trim();
+  const tw=document.getElementById('twitter').value.trim();
+
+  let photosHTML='';
+  document.querySelectorAll('#photosList .item-card').forEach(c=>{
+    const url=c.querySelector('.photoUrl').value.trim();
+    const cap=c.querySelector('.photoCaption').value.trim();
+    if(url) photosHTML+=`<div class="photo"><img src="${esc(url)}" alt="${esc(cap||name)}" loading="lazy">${cap?`<p>${esc(cap)}</p>`:''}</div>`;
+  });
+
+  let quotesHTML='';
+  document.querySelectorAll('#quotesList .item-card').forEach(c=>{
+    const text=c.querySelector('.quoteText').value.trim();
+    const src=c.querySelector('.quoteSource').value.trim();
+    if(text) quotesHTML+=`<blockquote><p>"${esc(text)}"</p>${src?`<cite>— ${esc(src)}</cite>`:''}</blockquote>`;
+  });
+
+  let releasesHTML='';
+  document.querySelectorAll('#releasesList .item-card').forEach(c=>{
+    const title=c.querySelector('.relTitle').value.trim();
+    const year=c.querySelector('.relYear').value.trim();
+    const cover=c.querySelector('.relCover').value.trim();
+    const link=c.querySelector('.relLink').value.trim();
+    if(title) releasesHTML+=`<div class="release">${cover?`<img src="${esc(cover)}" alt="${esc(title)}">`:`<div class="release-placeholder">${esc(title.charAt(0))}</div>`}<div class="release-info"><h4>${link?`<a href="${esc(link)}" target="_blank">${esc(title)}</a>`:esc(title)}</h4><p>${esc(year)}</p></div></div>`;
+  });
+
+  let contactHTML='';
+  if(bookingEmail) contactHTML+=`<div class="contact-row"><strong>Booking:</strong> <a href="mailto:${esc(bookingEmail)}">${esc(bookingEmail)}</a></div>`;
+  if(mgmtEmail) contactHTML+=`<div class="contact-row"><strong>Management:</strong> <a href="mailto:${esc(mgmtEmail)}">${esc(mgmtEmail)}</a></div>`;
+  if(pressEmail) contactHTML+=`<div class="contact-row"><strong>Press:</strong> <a href="mailto:${esc(pressEmail)}">${esc(pressEmail)}</a></div>`;
+  if(phone) contactHTML+=`<div class="contact-row"><strong>Phone:</strong> ${esc(phone)}</div>`;
+
+  let linksHTML='';
+  if(website) linksHTML+=`<a href="${esc(website)}" target="_blank">Website</a>`;
+  if(spotify) linksHTML+=`<a href="${esc(spotify)}" target="_blank">Spotify</a>`;
+  if(ig) linksHTML+=`<a href="https://instagram.com/${esc(ig.replace('@',''))}" target="_blank">Instagram</a>`;
+  if(tw) linksHTML+=`<a href="https://twitter.com/${esc(tw.replace('@',''))}" target="_blank">Twitter</a>`;
+
+  generatedHTML=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(name)} — Press Kit</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.7}
+a{color:#ff5f1f;text-decoration:none}a:hover{opacity:.8}
+.hero{position:relative;min-height:50vh;display:flex;align-items:center;justify-content:center;background:${hero?`url('${esc(hero)}') center/cover`:'#111'};text-align:center}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,rgba(10,10,10,.9))}
+.hero-content{position:relative;z-index:1;padding:40px 20px}
+.hero h1{font-size:3rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.hero .meta{color:#888;font-size:1rem}
+.hero .meta span{margin:0 8px}
+.container{max-width:800px;margin:0 auto;padding:0 20px}
+section{padding:40px 0;border-bottom:1px solid #1a1a1a}
+section h2{font-size:1.4rem;color:#ff5f1f;margin-bottom:16px;text-transform:uppercase;letter-spacing:2px}
+.bio-text{color:#ccc;font-size:0.95rem;white-space:pre-wrap}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.photo img{width:100%;border-radius:8px;display:block}
+.photo p{font-size:0.8rem;color:#666;margin-top:4px;text-align:center}
+blockquote{background:#111;border-left:4px solid #ff5f1f;padding:20px 24px;margin-bottom:16px;border-radius:0 8px 8px 0}
+blockquote p{font-size:1rem;font-style:italic;color:#ccc}
+blockquote cite{display:block;margin-top:8px;color:#888;font-size:0.85rem;font-style:normal}
+.releases{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.release{background:#111;border-radius:8px;overflow:hidden}
+.release img{width:100%;height:180px;object-fit:cover}
+.release-placeholder{width:100%;height:180px;background:#ff5f1f22;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#ff5f1f}
+.release-info{padding:12px}
+.release-info h4{font-size:0.95rem;margin-bottom:2px}
+.release-info p{color:#888;font-size:0.8rem}
+.tech-rider{background:#111;padding:20px;border-radius:8px;color:#ccc;font-size:0.9rem;white-space:pre-wrap}
+.contact-row{padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.9rem}
+.links-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.links-row a{padding:8px 20px;border:1px solid #333;border-radius:8px;font-size:0.85rem;color:#ccc;transition:all .2s}
+.links-row a:hover{border-color:#ff5f1f;color:#ff5f1f}
+footer{text-align:center;padding:30px;color:#444;font-size:0.8rem}
+@media(max-width:600px){.hero h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="hero-content">
+<h1>${esc(name)}</h1>
+<div class="meta">${genre?`<span>${esc(genre)}</span>`:''} ${location?`<span>${esc(location)}</span>`:''} ${formed?`<span>Est. ${esc(formed)}</span>`:''}</div>
+</div>
+</div>
+<div class="container">
+${shortBio||fullBio?`<section><h2>Bio</h2>${shortBio?`<p class="bio-text" style="margin-bottom:16px"><strong>${esc(shortBio)}</strong></p>`:''}${fullBio?`<p class="bio-text">${esc(fullBio)}</p>`:''}</section>`:''}
+${photosHTML?`<section><h2>Press Photos</h2><div class="photos">${photosHTML}</div></section>`:''}
+${quotesHTML?`<section><h2>Press</h2>${quotesHTML}</section>`:''}
+${releasesHTML?`<section><h2>Discography</h2><div class="releases">${releasesHTML}</div></section>`:''}
+${techRider?`<section><h2>Tech Rider</h2><div class="tech-rider">${esc(techRider)}</div></section>`:''}
+<section>
+<h2>Contact</h2>
+${contactHTML}
+${linksHTML?`<div class="links-row">${linksHTML}</div>`:''}
+</section>
+</div>
+<footer>&copy; ${new Date().getFullYear()} ${esc(name)} — Press Kit</footer>
+</body>
+</html>`;
+
+  document.getElementById('previewSection').style.display='block';
+  document.getElementById('previewFrame').srcdoc=generatedHTML;
+  showToast('Press kit generated!');
+  gtag('event','generate_epk',{event_category:'tool_use'});
+}
+
+function copyEPK(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  navigator.clipboard.writeText(generatedHTML);
+  showToast('HTML copied!');
+}
+
+function downloadEPK(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  const blob=new Blob([generatedHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='press-kit.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
