@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Automation Builder - Visual Workflow Builder | SPUNKART.COM</title>
+<meta name="description" content="Build visual workflow automations with drag-and-drop blocks. Trigger, Action, Output chains. Export as JSON. Free automation builder tool.">
+<meta name="keywords" content="automation builder, workflow builder, visual automation, drag and drop workflow, automation tool, workflow JSON">
+<meta property="og:title" content="Automation Builder — Visual Workflow Builder | SPUNKART.COM">
+<meta property="og:description" content="Build visual workflow automations with drag-and-drop blocks. Export as JSON. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/automation-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automation Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Visual workflow automation builder. Drag-and-drop blocks, export JSON.">
+<link rel="canonical" href="https://spunkart.com/automation-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}.btn-green:hover{background:#0ea572}
+.btn-danger{background:#ef4444;color:#fff}.btn-danger:hover{background:#dc2626}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+/* Tool-specific */
+.workflow-name-row{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.workflow-name-row input{flex:1;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none}
+.workflow-name-row input:focus{border-color:#ff5f1f}
+.palette{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.palette-block{padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:600;cursor:grab;user-select:none;border:2px dashed}
+.palette-block.trigger{background:#ff5f1f22;border-color:#ff5f1f;color:#ff5f1f}
+.palette-block.action{background:#3b82f622;border-color:#3b82f6;color:#3b82f6}
+.palette-block.output{background:#10b98122;border-color:#10b981;color:#10b981}
+.canvas{min-height:300px;background:#080808;border:2px dashed #222;border-radius:10px;padding:20px;position:relative;transition:border-color .2s}
+.canvas.drag-over{border-color:#ff5f1f}
+.canvas-block{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;margin:6px;font-weight:600;font-size:0.85rem;position:relative;cursor:move;border:2px solid}
+.canvas-block.trigger{background:#ff5f1f22;border-color:#ff5f1f;color:#ff5f1f}
+.canvas-block.action{background:#3b82f622;border-color:#3b82f6;color:#3b82f6}
+.canvas-block.output{background:#10b98122;border-color:#10b981;color:#10b981}
+.canvas-block .remove-block{background:none;border:none;color:#ef4444;cursor:pointer;font-size:1rem;padding:0 4px;line-height:1}
+.canvas-block select,.canvas-block input{background:#0a0a0a;border:1px solid #333;color:#e8e8e8;border-radius:4px;padding:4px 8px;font-size:0.8rem;outline:none}
+.arrow{color:#555;font-size:1.4rem;margin:6px 4px;display:inline-flex;align-items:center}
+.saved-list{margin-top:16px}
+.saved-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#0d0d0d;border:1px solid #222;border-radius:8px;margin-bottom:8px}
+.saved-item .name{color:#e8e8e8;font-weight:600;font-size:0.9rem}
+.saved-item .actions{display:flex;gap:6px}
+.saved-item .actions button{padding:4px 10px;font-size:0.78rem}
+.flow-display{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.output-area{width:100%;min-height:150px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.85rem;font-family:'Courier New',monospace;white-space:pre-wrap;overflow-x:auto;margin-top:12px}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .canvas-block{font-size:0.78rem;padding:8px 12px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Automation Builder","description":"Visual workflow automation builder with drag-and-drop blocks. Build Trigger-Action-Output chains and export as JSON.","url":"https://spunkart.com/automation-builder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Automation <span>Builder</span></h1>
+  <p class="subtitle">Build visual workflow automations. Drag blocks to the canvas, configure, and export as JSON.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="workflow-name-row">
+      <input type="text" id="workflowName" placeholder="Workflow name (e.g. Deploy Pipeline)">
+      <button class="btn btn-primary" onclick="saveWorkflow()">Save Workflow</button>
+    </div>
+    <p style="font-size:0.82rem;color:#888;margin-bottom:10px">Drag blocks below into the canvas to build your workflow:</p>
+    <div class="palette">
+      <div class="palette-block trigger" draggable="true" data-type="trigger" data-label="New File">New File</div>
+      <div class="palette-block trigger" draggable="true" data-type="trigger" data-label="Webhook">Webhook</div>
+      <div class="palette-block trigger" draggable="true" data-type="trigger" data-label="Schedule">Schedule</div>
+      <div class="palette-block trigger" draggable="true" data-type="trigger" data-label="API Call">API Call</div>
+      <div class="palette-block trigger" draggable="true" data-type="trigger" data-label="Git Push">Git Push</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Process Data">Process Data</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Transform">Transform</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Filter">Filter</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="API Request">API Request</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Run Script">Run Script</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Delay">Delay</div>
+      <div class="palette-block action" draggable="true" data-type="action" data-label="Condition">Condition</div>
+      <div class="palette-block output" draggable="true" data-type="output" data-label="Save File">Save File</div>
+      <div class="palette-block output" draggable="true" data-type="output" data-label="Send Email">Send Email</div>
+      <div class="palette-block output" draggable="true" data-type="output" data-label="Slack Notify">Slack Notify</div>
+      <div class="palette-block output" draggable="true" data-type="output" data-label="Database">Database</div>
+      <div class="palette-block output" draggable="true" data-type="output" data-label="Log">Log</div>
+    </div>
+    <div class="canvas" id="canvas">
+      <p style="color:#444;text-align:center;margin-top:100px" id="canvasHint">Drop blocks here to build your workflow</p>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="clearCanvas()">Clear Canvas</button>
+      <button class="btn btn-green" onclick="exportJSON()">Export JSON</button>
+    </div>
+    <div id="jsonOutput" class="output-area" style="display:none"></div>
+  </div>
+
+  <div class="section">
+    <h3 style="font-size:1rem;margin-bottom:12px">Saved Workflows</h3>
+    <div id="savedList" class="saved-list"><p style="color:#555;font-size:0.85rem">No saved workflows yet.</p></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/api-mock-server">API Mock Server</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/database-schema-designer">DB Schema Designer</a>
+      <a href="/cli-command-builder">CLI Command Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let canvasBlocks = [];
+const configOptions = {
+  trigger: {
+    'New File': {field:'path',placeholder:'/watch/folder'},
+    'Webhook': {field:'url',placeholder:'https://hook.example.com'},
+    'Schedule': {field:'cron',placeholder:'*/5 * * * *'},
+    'API Call': {field:'endpoint',placeholder:'/api/trigger'},
+    'Git Push': {field:'branch',placeholder:'main'}
+  },
+  action: {
+    'Process Data': {field:'script',placeholder:'transform.js'},
+    'Transform': {field:'format',placeholder:'JSON/CSV/XML'},
+    'Filter': {field:'condition',placeholder:'status == 200'},
+    'API Request': {field:'url',placeholder:'https://api.example.com'},
+    'Run Script': {field:'command',placeholder:'node build.js'},
+    'Delay': {field:'seconds',placeholder:'5'},
+    'Condition': {field:'if',placeholder:'data.length > 0'}
+  },
+  output: {
+    'Save File': {field:'path',placeholder:'/output/result.json'},
+    'Send Email': {field:'to',placeholder:'team@example.com'},
+    'Slack Notify': {field:'channel',placeholder:'#deployments'},
+    'Database': {field:'table',placeholder:'results'},
+    'Log': {field:'level',placeholder:'info'}
+  }
+};
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+// Drag and drop
+document.querySelectorAll('.palette-block').forEach(block => {
+  block.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('text/plain', JSON.stringify({type:block.dataset.type, label:block.dataset.label}));
+  });
+});
+const canvas = document.getElementById('canvas');
+canvas.addEventListener('dragover', e => {e.preventDefault();canvas.classList.add('drag-over');});
+canvas.addEventListener('dragleave', () => canvas.classList.remove('drag-over'));
+canvas.addEventListener('drop', e => {
+  e.preventDefault();
+  canvas.classList.remove('drag-over');
+  try {
+    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+    addBlock(data.type, data.label);
+  } catch(err){}
+});
+
+function addBlock(type, label) {
+  const id = Date.now() + Math.random();
+  canvasBlocks.push({id, type, label, config:''});
+  renderCanvas();
+  gtag('event','add_block',{event_category:'tool_use',block_type:type,block_label:label});
+}
+
+function removeBlock(id) {
+  canvasBlocks = canvasBlocks.filter(b => b.id !== id);
+  renderCanvas();
+}
+
+function updateConfig(id, val) {
+  const b = canvasBlocks.find(b => b.id === id);
+  if(b) b.config = val;
+}
+
+function renderCanvas() {
+  const hint = document.getElementById('canvasHint');
+  if(hint) hint.style.display = canvasBlocks.length ? 'none' : 'block';
+  // Remove old blocks and arrows
+  canvas.querySelectorAll('.canvas-block,.arrow').forEach(el => el.remove());
+  canvasBlocks.forEach((block, i) => {
+    if(i > 0) {
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.innerHTML = '&#8594;';
+      canvas.appendChild(arrow);
+    }
+    const el = document.createElement('div');
+    el.className = 'canvas-block ' + block.type;
+    el.draggable = true;
+    const cfg = configOptions[block.type]?.[block.label];
+    el.innerHTML = `
+      <strong>${block.label}</strong>
+      <input type="text" placeholder="${cfg?cfg.placeholder:''}" value="${block.config}" oninput="updateConfig(${block.id},this.value)" style="width:120px">
+      <button class="remove-block" onclick="removeBlock(${block.id})">&times;</button>
+    `;
+    canvas.appendChild(el);
+  });
+}
+
+function clearCanvas() {
+  canvasBlocks = [];
+  renderCanvas();
+  document.getElementById('jsonOutput').style.display = 'none';
+}
+
+function buildWorkflowJSON() {
+  const name = document.getElementById('workflowName').value.trim() || 'Untitled Workflow';
+  return {
+    name,
+    version: '1.0',
+    created: new Date().toISOString(),
+    steps: canvasBlocks.map((b, i) => ({
+      step: i + 1,
+      type: b.type,
+      label: b.label,
+      config: b.config || null
+    }))
+  };
+}
+
+function exportJSON() {
+  if(!canvasBlocks.length){showToast('Add blocks first');return;}
+  const json = JSON.stringify(buildWorkflowJSON(), null, 2);
+  const out = document.getElementById('jsonOutput');
+  out.textContent = json;
+  out.style.display = 'block';
+  navigator.clipboard.writeText(json).then(()=>showToast('JSON copied!')).catch(()=>{});
+  gtag('event','export_json',{event_category:'tool_use'});
+}
+
+function saveWorkflow() {
+  if(!canvasBlocks.length){showToast('Add blocks first');return;}
+  const wf = buildWorkflowJSON();
+  let saved = JSON.parse(localStorage.getItem('spunkart_workflows')||'[]');
+  saved.push(wf);
+  localStorage.setItem('spunkart_workflows', JSON.stringify(saved));
+  showToast('Workflow saved!');
+  renderSaved();
+  gtag('event','save_workflow',{event_category:'tool_use'});
+}
+
+function renderSaved() {
+  const saved = JSON.parse(localStorage.getItem('spunkart_workflows')||'[]');
+  const list = document.getElementById('savedList');
+  if(!saved.length){list.innerHTML='<p style="color:#555;font-size:0.85rem">No saved workflows yet.</p>';return;}
+  list.innerHTML = saved.map((w,i) => `
+    <div class="saved-item">
+      <div>
+        <div class="name">${w.name}</div>
+        <div style="color:#555;font-size:0.75rem">${w.steps.length} steps &middot; ${new Date(w.created).toLocaleDateString()}</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-secondary" style="padding:4px 10px;font-size:0.78rem" onclick="loadWorkflow(${i})">Load</button>
+        <button class="btn btn-danger" style="padding:4px 10px;font-size:0.78rem" onclick="deleteWorkflow(${i})">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadWorkflow(index) {
+  const saved = JSON.parse(localStorage.getItem('spunkart_workflows')||'[]');
+  const wf = saved[index];
+  if(!wf) return;
+  document.getElementById('workflowName').value = wf.name;
+  canvasBlocks = wf.steps.map(s => ({id:Date.now()+Math.random(), type:s.type, label:s.label, config:s.config||''}));
+  renderCanvas();
+  showToast('Workflow loaded!');
+}
+
+function deleteWorkflow(index) {
+  let saved = JSON.parse(localStorage.getItem('spunkart_workflows')||'[]');
+  saved.splice(index, 1);
+  localStorage.setItem('spunkart_workflows', JSON.stringify(saved));
+  renderSaved();
+  showToast('Workflow deleted');
+}
+
+renderSaved();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

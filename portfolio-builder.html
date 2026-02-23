@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio Builder - Free Artist Portfolio Website Generator | SPUNKART.COM</title>
+<meta name="description" content="Build a stunning artist portfolio website in minutes. Pick a layout, add your projects, and download a complete HTML portfolio. Free, no signup required.">
+<meta name="keywords" content="portfolio builder, artist portfolio generator, portfolio website maker, free portfolio creator, art portfolio template">
+<meta property="og:title" content="Portfolio Builder — Free Artist Portfolio Generator | SPUNKART.COM">
+<meta property="og:description" content="Create a beautiful artist portfolio website instantly. Multiple layouts, fully customizable. No signup needed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/portfolio-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Free artist portfolio website generator. Pick a layout, add projects, download ready HTML.">
+<link rel="canonical" href="https://spunkart.com/portfolio-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.mode-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+input[type="text"],input[type="url"],textarea{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,textarea:focus{border-color:#ff5f1f}
+input::placeholder,textarea::placeholder{color:#444}
+textarea{min-height:80px;resize:vertical;line-height:1.6}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.project-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-bottom:12px;position:relative}
+.project-card .remove-btn{position:absolute;top:8px;right:8px;background:#ff5f1f33;border:none;color:#ff5f1f;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.project-card .remove-btn:hover{background:#ff5f1f;color:#fff}
+.inline-row{display:flex;gap:12px}
+.inline-row>*{flex:1}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.preview-frame{width:100%;min-height:400px;background:#fff;border-radius:8px;border:none;margin-top:12px}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .mode-btn{padding:8px 12px;font-size:0.8rem}
+  .inline-row{flex-direction:column;gap:0}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Portfolio Builder","description":"Build a stunning artist portfolio website in minutes. Pick a layout, add projects, download complete HTML.","url":"https://spunkart.com/portfolio-builder.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Portfolio <span>Builder</span></h1>
+  <p class="subtitle">Create a beautiful artist portfolio website. Pick a layout, add your work, and download ready-to-deploy HTML.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Choose Layout</h2>
+    <div class="mode-grid">
+      <button class="mode-btn active" onclick="setLayout(this,'grid')">Grid</button>
+      <button class="mode-btn" onclick="setLayout(this,'masonry')">Masonry</button>
+      <button class="mode-btn" onclick="setLayout(this,'minimal')">Minimal</button>
+      <button class="mode-btn" onclick="setLayout(this,'gallery')">Gallery</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Artist Info</h2>
+    <label>Artist / Studio Name</label>
+    <input type="text" id="artistName" placeholder="e.g. Jane Doe Studio">
+    <label>Tagline</label>
+    <input type="text" id="tagline" placeholder="e.g. Digital Artist & Illustrator">
+    <label>Bio</label>
+    <textarea id="bio" placeholder="Write a short bio about yourself and your work..."></textarea>
+    <label>Profile Image URL (optional)</label>
+    <input type="url" id="profileImg" placeholder="https://example.com/photo.jpg">
+    <div class="inline-row">
+      <div><label>Website URL</label><input type="url" id="website" placeholder="https://yoursite.com"></div>
+      <div><label>Email</label><input type="text" id="email" placeholder="hello@example.com"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Twitter/X</label><input type="text" id="twitter" placeholder="@username"></div>
+      <div><label>Instagram</label><input type="text" id="instagram" placeholder="@username"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Behance</label><input type="url" id="behance" placeholder="https://behance.net/..."></div>
+      <div><label>Dribbble</label><input type="url" id="dribbble" placeholder="https://dribbble.com/..."></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Projects</h2>
+    <div id="projectsList"></div>
+    <button class="btn btn-secondary" onclick="addProject()" style="margin-top:8px">+ Add Project</button>
+  </div>
+
+  <div class="section">
+    <h2>4. Accent Color</h2>
+    <div style="display:flex;align-items:center;gap:12px">
+      <input type="color" id="accentColor" value="#ff5f1f" style="width:50px;height:40px;border:none;background:none;cursor:pointer">
+      <span style="color:#888;font-size:0.85rem">Pick your portfolio accent color</span>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="generatePortfolio()">Generate Portfolio</button>
+    <button class="btn btn-green" onclick="downloadPortfolio()">Download HTML</button>
+    <button class="btn btn-secondary" onclick="copyPortfolio()">Copy HTML</button>
+  </div>
+
+  <div class="section" id="previewSection" style="display:none">
+    <h2>Preview</h2>
+    <iframe id="previewFrame" class="preview-frame"></iframe>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/store-generator">Store Generator</a>
+      <a href="/band-website-builder">Band Website Builder</a>
+      <a href="/link-in-bio">Link in Bio</a>
+      <a href="/press-kit-generator">Press Kit Generator</a>
+      <a href="/commission-calculator">Commission Calculator</a>
+      <a href="/merch-mockup-generator">Merch Mockups</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentLayout='grid';
+let projects=[];
+let generatedHTML='';
+
+function setLayout(el,layout){
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentLayout=layout;
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg||'Copied!';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+function addProject(title,desc,img,link){
+  const id='proj_'+Date.now()+'_'+Math.random().toString(36).substr(2,5);
+  projects.push({id});
+  const div=document.createElement('div');
+  div.className='project-card';
+  div.id=id;
+  div.innerHTML=`
+    <button class="remove-btn" onclick="removeProject('${id}')">&times;</button>
+    <label>Project Title</label>
+    <input type="text" class="pTitle" placeholder="e.g. Brand Identity for XYZ" value="${title||''}">
+    <label>Description</label>
+    <textarea class="pDesc" placeholder="Brief description of this project...">${desc||''}</textarea>
+    <div class="inline-row">
+      <div><label>Image URL</label><input type="url" class="pImg" placeholder="https://example.com/project.jpg" value="${img||''}"></div>
+      <div><label>Project Link (optional)</label><input type="url" class="pLink" placeholder="https://..." value="${link||''}"></div>
+    </div>`;
+  document.getElementById('projectsList').appendChild(div);
+}
+
+function removeProject(id){
+  projects=projects.filter(p=>p.id!==id);
+  const el=document.getElementById(id);
+  if(el)el.remove();
+}
+
+// Start with 2 empty project slots
+addProject();addProject();
+
+function gatherProjects(){
+  const cards=document.querySelectorAll('.project-card');
+  const result=[];
+  cards.forEach(c=>{
+    const title=c.querySelector('.pTitle').value.trim();
+    const desc=c.querySelector('.pDesc').value.trim();
+    const img=c.querySelector('.pImg').value.trim();
+    const link=c.querySelector('.pLink').value.trim();
+    if(title||img) result.push({title,desc,img,link});
+  });
+  return result;
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function generatePortfolio(){
+  const name=document.getElementById('artistName').value.trim()||'My Portfolio';
+  const tagline=document.getElementById('tagline').value.trim();
+  const bio=document.getElementById('bio').value.trim();
+  const profileImg=document.getElementById('profileImg').value.trim();
+  const website=document.getElementById('website').value.trim();
+  const emailVal=document.getElementById('email').value.trim();
+  const tw=document.getElementById('twitter').value.trim();
+  const ig=document.getElementById('instagram').value.trim();
+  const be=document.getElementById('behance').value.trim();
+  const dr=document.getElementById('dribbble').value.trim();
+  const accent=document.getElementById('accentColor').value;
+  const projs=gatherProjects();
+
+  let socialHTML='';
+  if(tw) socialHTML+=`<a href="https://twitter.com/${esc(tw.replace('@',''))}" target="_blank">Twitter</a> `;
+  if(ig) socialHTML+=`<a href="https://instagram.com/${esc(ig.replace('@',''))}" target="_blank">Instagram</a> `;
+  if(be) socialHTML+=`<a href="${esc(be)}" target="_blank">Behance</a> `;
+  if(dr) socialHTML+=`<a href="${esc(dr)}" target="_blank">Dribbble</a> `;
+  if(website) socialHTML+=`<a href="${esc(website)}" target="_blank">Website</a> `;
+  if(emailVal) socialHTML+=`<a href="mailto:${esc(emailVal)}">Email</a> `;
+
+  let layoutCSS='';
+  let projectsHTML='';
+
+  if(currentLayout==='grid'){
+    layoutCSS=`.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;padding:40px 20px;max-width:1200px;margin:0 auto}
+    .project{background:#111;border-radius:12px;overflow:hidden;transition:transform .3s}
+    .project:hover{transform:translateY(-4px)}
+    .project img{width:100%;height:220px;object-fit:cover}
+    .project-info{padding:16px}
+    .project-info h3{font-size:1rem;margin-bottom:6px}
+    .project-info p{color:#888;font-size:0.85rem;line-height:1.5}`;
+  } else if(currentLayout==='masonry'){
+    layoutCSS=`.projects{columns:3;column-gap:20px;padding:40px 20px;max-width:1200px;margin:0 auto}
+    .project{break-inside:avoid;background:#111;border-radius:12px;overflow:hidden;margin-bottom:20px;transition:transform .3s}
+    .project:hover{transform:translateY(-4px)}
+    .project img{width:100%;display:block}
+    .project-info{padding:16px}
+    .project-info h3{font-size:1rem;margin-bottom:6px}
+    .project-info p{color:#888;font-size:0.85rem;line-height:1.5}
+    @media(max-width:768px){.projects{columns:2}}@media(max-width:480px){.projects{columns:1}}`;
+  } else if(currentLayout==='minimal'){
+    layoutCSS=`.projects{max-width:800px;margin:0 auto;padding:40px 20px}
+    .project{margin-bottom:60px}
+    .project img{width:100%;border-radius:8px;margin-bottom:16px}
+    .project-info h3{font-size:1.3rem;margin-bottom:8px}
+    .project-info p{color:#888;font-size:0.95rem;line-height:1.7}`;
+  } else {
+    layoutCSS=`.projects{max-width:1200px;margin:0 auto;padding:40px 20px}
+    .project{margin-bottom:20px;position:relative;overflow:hidden;border-radius:12px}
+    .project img{width:100%;display:block;transition:transform .5s}
+    .project:hover img{transform:scale(1.03)}
+    .project-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:24px}
+    .project-info h3{font-size:1.2rem;margin-bottom:4px}
+    .project-info p{color:#ccc;font-size:0.85rem}`;
+  }
+
+  projs.forEach(p=>{
+    const imgTag=p.img?`<img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy">`:'';
+    const wrap=p.link?[`<a href="${esc(p.link)}" target="_blank" style="text-decoration:none;color:inherit">`,`</a>`]:['',''];
+    projectsHTML+=`${wrap[0]}<div class="project">${imgTag}<div class="project-info"><h3>${esc(p.title)}</h3>${p.desc?`<p>${esc(p.desc)}</p>`:''}</div></div>${wrap[1]}`;
+  });
+
+  generatedHTML=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(name)}</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;line-height:1.6}
+a{color:${accent};text-decoration:none}a:hover{opacity:.8}
+header{text-align:center;padding:60px 20px 40px}
+${profileImg?'header img.avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid '+accent+';margin-bottom:16px}':''}
+header h1{font-size:2.2rem;margin-bottom:4px}
+header .tagline{color:#888;font-size:1.1rem;margin-bottom:12px}
+header .bio{max-width:600px;margin:0 auto 16px;color:#aaa;font-size:0.95rem}
+header .socials{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+header .socials a{padding:6px 16px;border:1px solid #333;border-radius:6px;font-size:0.85rem;color:#ccc;transition:all .2s}
+header .socials a:hover{border-color:${accent};color:${accent}}
+${layoutCSS}
+footer{text-align:center;padding:30px;color:#555;font-size:0.8rem;border-top:1px solid #1a1a1a;margin-top:40px}
+</style>
+</head>
+<body>
+<header>
+${profileImg?`<img class="avatar" src="${esc(profileImg)}" alt="${esc(name)}">`:''}
+<h1>${esc(name)}</h1>
+${tagline?`<p class="tagline">${esc(tagline)}</p>`:''}
+${bio?`<p class="bio">${esc(bio)}</p>`:''}
+${socialHTML?`<div class="socials">${socialHTML}</div>`:''}
+</header>
+<div class="projects">
+${projectsHTML}
+</div>
+<footer>&copy; ${new Date().getFullYear()} ${esc(name)}</footer>
+</body>
+</html>`;
+
+  const frame=document.getElementById('previewFrame');
+  document.getElementById('previewSection').style.display='block';
+  frame.srcdoc=generatedHTML;
+  showToast('Portfolio generated!');
+  gtag('event','generate_portfolio',{event_category:'tool_use',layout:currentLayout});
+}
+
+function copyPortfolio(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  navigator.clipboard.writeText(generatedHTML);
+  showToast('HTML copied!');
+  gtag('event','copy_portfolio',{event_category:'tool_use'});
+}
+
+function downloadPortfolio(){
+  if(!generatedHTML){showToast('Generate first');return;}
+  const blob=new Blob([generatedHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='portfolio.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event','download_portfolio',{event_category:'tool_use'});
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
