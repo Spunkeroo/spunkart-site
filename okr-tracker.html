@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OKR Tracker - Free Objectives & Key Results Tracker | SPUNKART.COM</title>
+<meta name="description" content="Track OKRs (Objectives and Key Results) with progress bars. Add objectives, key results, track progress 0-100%. Save to browser. Export as markdown.">
+<meta name="keywords" content="OKR tracker, objectives key results, goal tracking tool, OKR template, team goals tracker">
+<meta property="og:title" content="OKR Tracker | SPUNKART.COM">
+<meta property="og:description" content="Track objectives and key results with progress tracking. Free tool for founders and teams.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/okr-tracker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OKR Tracker | SPUNKART.COM">
+<meta name="twitter:description" content="Track OKRs with progress bars. Free goal tracking tool.">
+<link rel="canonical" href="https://spunkart.com/okr-tracker">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input,select,textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus{border-color:#ff5f1f}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-danger{background:#dc2626;color:#fff;font-size:0.8rem;padding:6px 14px}.btn-danger:hover{background:#b91c1c}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.overall-score{text-align:center;padding:30px;background:#1a1a1a;border-radius:12px;margin-bottom:20px}
+.overall-score .big{font-size:3.5rem;font-weight:800}
+.overall-score .label{color:#888;font-size:0.9rem;margin-top:4px}
+.objective-card{background:#1a1a1a;border:1px solid #333;border-radius:12px;margin-bottom:16px;overflow:hidden}
+.obj-header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;cursor:pointer}
+.obj-header h3{font-size:1rem;display:flex;align-items:center;gap:10px}
+.obj-header .score{font-weight:700;font-size:0.9rem;padding:4px 12px;border-radius:6px}
+.obj-body{padding:16px 20px}
+.kr-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #1a1a1a}
+.kr-item:last-child{border:none}
+.kr-item .kr-text{flex:1;font-size:0.9rem}
+.kr-item .kr-progress{width:120px;display:flex;align-items:center;gap:8px}
+.kr-item input[type="range"]{width:80px;accent-color:#ff5f1f}
+.kr-item .kr-val{font-size:0.85rem;font-weight:700;min-width:36px;text-align:right}
+.progress-bar{height:6px;background:#222;border-radius:3px;overflow:hidden;flex:1}
+.progress-bar .fill{height:100%;border-radius:3px;transition:width .3s}
+.kr-item .remove-kr{background:none;border:none;color:#666;cursor:pointer;font-size:1rem;padding:0 4px}.kr-item .remove-kr:hover{color:#dc2626}
+.add-kr{display:flex;gap:8px;margin-top:12px}
+.add-kr input{flex:1}
+.obj-actions{display:flex;gap:8px;padding:0 20px 16px}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .grid-2{grid-template-columns:1fr}
+  .kr-item{flex-wrap:wrap}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"OKR Tracker","description":"Track OKRs (Objectives and Key Results) with progress bars, save to browser, and export as markdown.","url":"https://spunkart.com/okr-tracker.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>OKR <span>Tracker</span></h1>
+  <p class="subtitle">Track Objectives and Key Results. Add objectives with 3-5 key results each, track progress, and export as markdown.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="overall-score" id="overallArea">
+    <div class="big" id="overallScore" style="color:#ff5f1f">0%</div>
+    <div class="label">Overall OKR Score</div>
+    <div style="width:200px;margin:12px auto 0"><div class="progress-bar" style="height:8px"><div class="fill" id="overallBar" style="width:0%;background:#ff5f1f"></div></div></div>
+  </div>
+
+  <div id="objectivesList"></div>
+
+  <div class="section">
+    <h2>Add New Objective</h2>
+    <label>Objective</label>
+    <input type="text" id="newObjText" placeholder="e.g. Increase product-market fit">
+    <button class="btn btn-primary" onclick="addObjective()" style="margin-top:12px">Add Objective</button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-secondary" onclick="saveOKRs()">Save to Browser</button>
+    <button class="btn btn-secondary" onclick="exportMarkdown()">Export as Markdown</button>
+    <button class="btn btn-secondary" onclick="resetAll()">Reset All</button>
+  </div>
+
+  <div class="newsletter" style="margin-top:24px">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/lean-canvas-builder">Lean Canvas</a>
+      <a href="/mrr-calculator">MRR Calculator</a>
+      <a href="/feature-voting-board">Feature Voting</a>
+      <a href="/pitch-deck-builder">Pitch Deck</a>
+      <a href="/customer-persona-builder">Persona Builder</a>
+      <a href="/pomodoro">Pomodoro Timer</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Saved!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+let okrs=[];
+
+const defaultOKRs=[
+  {objective:'Increase product-market fit',keyResults:[
+    {text:'Achieve NPS score of 50+',progress:65},
+    {text:'Reduce churn to under 3%',progress:40},
+    {text:'Get 100 customer interviews completed',progress:80}
+  ]},
+  {objective:'Scale revenue to $50K MRR',keyResults:[
+    {text:'Close 50 new enterprise deals',progress:30},
+    {text:'Launch annual pricing tier',progress:100},
+    {text:'Increase ARPC to $200/mo',progress:55},
+    {text:'Build referral program with 20% contribution',progress:20}
+  ]},
+  {objective:'Build a world-class engineering team',keyResults:[
+    {text:'Hire 3 senior engineers',progress:33},
+    {text:'Reduce deploy time to under 10 minutes',progress:70},
+    {text:'Achieve 95% test coverage on core modules',progress:50}
+  ]}
+];
+
+function getColor(p){
+  if(p>=70)return '#10b981';
+  if(p>=40)return '#f59e0b';
+  return '#ef4444';
+}
+
+function render(){
+  const list=document.getElementById('objectivesList');
+  list.innerHTML='';
+
+  okrs.forEach((obj,oi)=>{
+    const avgProgress=obj.keyResults.length?Math.round(obj.keyResults.reduce((s,kr)=>s+kr.progress,0)/obj.keyResults.length):0;
+    const color=getColor(avgProgress);
+
+    let html=`<div class="objective-card">
+      <div class="obj-header">
+        <h3><span style="color:${color};font-size:1.2rem">O${oi+1}</span> ${obj.objective}</h3>
+        <span class="score" style="background:${color}22;color:${color}">${avgProgress}%</span>
+      </div>
+      <div class="obj-body">`;
+
+    obj.keyResults.forEach((kr,ki)=>{
+      const kColor=getColor(kr.progress);
+      html+=`<div class="kr-item">
+        <span class="kr-text">${kr.text}</span>
+        <div class="kr-progress">
+          <input type="range" min="0" max="100" value="${kr.progress}" oninput="updateKR(${oi},${ki},Number(this.value))">
+          <span class="kr-val" style="color:${kColor}">${kr.progress}%</span>
+        </div>
+        <button class="remove-kr" onclick="removeKR(${oi},${ki})" title="Remove">&times;</button>
+      </div>`;
+    });
+
+    html+=`<div class="add-kr">
+        <input type="text" id="newKR_${oi}" placeholder="Add key result..." onkeydown="if(event.key==='Enter')addKR(${oi})">
+        <button class="btn btn-secondary btn-sm" onclick="addKR(${oi})">Add KR</button>
+      </div>
+      </div>
+      <div class="obj-actions">
+        <button class="btn-danger" onclick="removeObjective(${oi})">Delete Objective</button>
+      </div>
+    </div>`;
+    list.innerHTML+=html;
+  });
+
+  updateOverall();
+}
+
+function updateKR(oi,ki,val){
+  okrs[oi].keyResults[ki].progress=val;
+  render();
+  autoSave();
+}
+
+function addKR(oi){
+  const inp=document.getElementById('newKR_'+oi);
+  if(!inp.value.trim())return;
+  if(okrs[oi].keyResults.length>=5){showToast('Max 5 key results per objective');return}
+  okrs[oi].keyResults.push({text:inp.value.trim(),progress:0});
+  inp.value='';
+  render();
+  autoSave();
+}
+
+function removeKR(oi,ki){
+  okrs[oi].keyResults.splice(ki,1);
+  render();
+  autoSave();
+}
+
+function addObjective(){
+  const inp=document.getElementById('newObjText');
+  if(!inp.value.trim()){showToast('Enter an objective');return}
+  okrs.push({objective:inp.value.trim(),keyResults:[]});
+  inp.value='';
+  render();
+  autoSave();
+  gtag('event','add_objective',{event_category:'tool_use'});
+}
+
+function removeObjective(i){
+  okrs.splice(i,1);
+  render();
+  autoSave();
+}
+
+function updateOverall(){
+  let total=0,count=0;
+  okrs.forEach(o=>o.keyResults.forEach(kr=>{total+=kr.progress;count++}));
+  const avg=count?Math.round(total/count):0;
+  const color=getColor(avg);
+  document.getElementById('overallScore').textContent=avg+'%';
+  document.getElementById('overallScore').style.color=color;
+  document.getElementById('overallBar').style.width=avg+'%';
+  document.getElementById('overallBar').style.background=color;
+}
+
+function saveOKRs(){
+  localStorage.setItem('spunkart_okrs',JSON.stringify(okrs));
+  showToast('OKRs saved to browser!');
+  gtag('event','save_okrs',{event_category:'tool_use'});
+}
+
+function autoSave(){
+  localStorage.setItem('spunkart_okrs',JSON.stringify(okrs));
+}
+
+function loadOKRs(){
+  const saved=localStorage.getItem('spunkart_okrs');
+  if(saved){try{okrs=JSON.parse(saved)}catch(e){okrs=[...defaultOKRs]}}
+  else{okrs=JSON.parse(JSON.stringify(defaultOKRs))}
+  render();
+}
+
+function resetAll(){
+  if(!confirm('Reset all OKRs to defaults?'))return;
+  okrs=JSON.parse(JSON.stringify(defaultOKRs));
+  localStorage.removeItem('spunkart_okrs');
+  render();
+  showToast('Reset to defaults');
+}
+
+function exportMarkdown(){
+  let md='# OKR Tracker\n\n';
+  let total=0,count=0;
+  okrs.forEach(o=>o.keyResults.forEach(kr=>{total+=kr.progress;count++}));
+  const avg=count?Math.round(total/count):0;
+  md+=`**Overall Score: ${avg}%**\n\n---\n\n`;
+  okrs.forEach((o,i)=>{
+    const oAvg=o.keyResults.length?Math.round(o.keyResults.reduce((s,kr)=>s+kr.progress,0)/o.keyResults.length):0;
+    md+=`## O${i+1}: ${o.objective} (${oAvg}%)\n\n`;
+    o.keyResults.forEach((kr,ki)=>{
+      const bar='='.repeat(Math.round(kr.progress/5))+'-'.repeat(20-Math.round(kr.progress/5));
+      md+=`- **KR${ki+1}:** ${kr.text} [${bar}] ${kr.progress}%\n`;
+    });
+    md+='\n';
+  });
+  navigator.clipboard.writeText(md);
+  showToast('Markdown copied to clipboard!');
+  gtag('event','export_okrs',{event_category:'tool_use'});
+}
+
+loadOKRs();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

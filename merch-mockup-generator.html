@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Merch Mockup Generator - Free T-Shirt & Product Mockups | SPUNKART.COM</title>
+<meta name="description" content="Create merch mockups with CSS and Canvas. T-shirts, hoodies, mugs, posters, stickers. Upload your design, pick colors, download mockup images. Free.">
+<meta name="keywords" content="merch mockup generator, t-shirt mockup, hoodie mockup, product mockup creator, free mockup tool">
+<meta property="og:title" content="Merch Mockup Generator — Free Product Mockups | SPUNKART.COM">
+<meta property="og:description" content="Create t-shirt, hoodie, mug, poster, and sticker mockups. Upload design, pick colors, download. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/merch-mockup-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Merch Mockup Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Free merch mockup creator. T-shirts, hoodies, mugs, posters, stickers.">
+<link rel="canonical" href="https://spunkart.com/merch-mockup-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.mode-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+input[type="text"],input[type="url"],input[type="number"],input[type="range"],textarea,select{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,textarea:focus{border-color:#ff5f1f}
+input::placeholder,textarea::placeholder{color:#444}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.inline-row{display:flex;gap:12px;align-items:end}
+.inline-row>*{flex:1}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.mockup-canvas-wrap{display:flex;justify-content:center;align-items:center;padding:20px;background:#1a1a1a;border-radius:12px;min-height:400px;position:relative}
+canvas#mockupCanvas{max-width:100%;border-radius:8px}
+.color-swatches{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.color-swatch{width:36px;height:36px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all .2s}
+.color-swatch:hover,.color-swatch.active{border-color:#ff5f1f;transform:scale(1.1)}
+input[type="file"]{display:none}
+.upload-area{border:2px dashed #2a2a2a;border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:12px}
+.upload-area:hover{border-color:#ff5f1f}
+.upload-area p{color:#555;font-size:0.85rem}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .mode-btn{padding:8px 12px;font-size:0.8rem}
+  .inline-row{flex-direction:column;gap:0}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Merch Mockup Generator","description":"Create merch mockups for t-shirts, hoodies, mugs, posters, and stickers. CSS-rendered with canvas export.","url":"https://spunkart.com/merch-mockup-generator.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Merch Mockup <span>Generator</span></h1>
+  <p class="subtitle">Create product mockups with your design. T-shirts, hoodies, mugs, posters, and stickers. Download as PNG.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Choose Product</h2>
+    <div class="mode-grid">
+      <button class="mode-btn active" onclick="setProduct(this,'tshirt')">T-Shirt</button>
+      <button class="mode-btn" onclick="setProduct(this,'hoodie')">Hoodie</button>
+      <button class="mode-btn" onclick="setProduct(this,'mug')">Mug</button>
+      <button class="mode-btn" onclick="setProduct(this,'poster')">Poster</button>
+      <button class="mode-btn" onclick="setProduct(this,'sticker')">Sticker</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Product Color</h2>
+    <div class="color-swatches" id="colorSwatches"></div>
+    <label>Custom Color</label>
+    <input type="color" id="customColor" value="#1a1a1a" style="width:60px;height:40px;border:none;background:none;cursor:pointer">
+  </div>
+
+  <div class="section">
+    <h2>3. Your Design</h2>
+    <div class="upload-area" onclick="document.getElementById('designInput').click()">
+      <p>Click to upload your design image (PNG, JPG)</p>
+    </div>
+    <input type="file" id="designInput" accept="image/*">
+    <label>Or enter design text</label>
+    <input type="text" id="designText" placeholder="e.g. YOUR BRAND NAME">
+    <div class="inline-row">
+      <div><label>Text Size</label><input type="range" id="textSize" min="16" max="80" value="36" style="padding:8px"></div>
+      <div><label>Text Color</label><input type="color" id="textColor" value="#ffffff" style="width:60px;height:40px;border:none;background:none;cursor:pointer"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Design Scale (%)</label><input type="range" id="designScale" min="20" max="100" value="60" style="padding:8px"></div>
+      <div><label><span id="scaleVal">60</span>%</label></div>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="renderMockup()">Generate Mockup</button>
+    <button class="btn btn-green" onclick="downloadMockup()">Download PNG</button>
+  </div>
+
+  <div class="section">
+    <h2>Preview</h2>
+    <div class="mockup-canvas-wrap">
+      <canvas id="mockupCanvas" width="600" height="700"></canvas>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/watermark-generator">Watermark Generator</a>
+      <a href="/art-palette-generator">Art Palette</a>
+      <a href="/portfolio-builder">Portfolio Builder</a>
+      <a href="/store-generator">Store Generator</a>
+      <a href="/pixel-art-maker">Pixel Art Maker</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentProduct='tshirt';
+let productColor='#1a1a1a';
+let designImg=null;
+
+const productColors=['#1a1a1a','#ffffff','#1c3d5a','#8b0000','#2d5a27','#4a2c6a','#f5a623','#e8d5b7','#ff6b6b','#333333'];
+const swatchContainer=document.getElementById('colorSwatches');
+productColors.forEach((c,i)=>{
+  const div=document.createElement('div');
+  div.className='color-swatch'+(i===0?' active':'');
+  div.style.background=c;
+  div.onclick=()=>{
+    document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));
+    div.classList.add('active');
+    productColor=c;
+    document.getElementById('customColor').value=c;
+    renderMockup();
+  };
+  swatchContainer.appendChild(div);
+});
+
+document.getElementById('customColor').addEventListener('input',function(){
+  productColor=this.value;
+  document.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));
+  renderMockup();
+});
+
+document.getElementById('designScale').addEventListener('input',function(){
+  document.getElementById('scaleVal').textContent=this.value;
+});
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+
+function setProduct(el,prod){
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentProduct=prod;
+  renderMockup();
+}
+
+document.getElementById('designInput').addEventListener('change',function(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    const img=new Image();
+    img.onload=function(){designImg=img;renderMockup();showToast('Design loaded!');};
+    img.src=ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+function hexToRGBA(hex,a){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+function darken(hex,amt){
+  let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  r=Math.max(0,r-amt);g=Math.max(0,g-amt);b=Math.max(0,b-amt);
+  return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+}
+
+function renderMockup(){
+  const canvas=document.getElementById('mockupCanvas');
+  const ctx=canvas.getContext('2d');
+  const W=600,H=700;
+  canvas.width=W;canvas.height=H;
+  const scale=parseInt(document.getElementById('designScale').value)/100;
+
+  // Background
+  ctx.fillStyle='#f0f0f0';
+  ctx.fillRect(0,0,W,H);
+
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.08)';
+  ctx.beginPath();
+  ctx.ellipse(W/2,H-40,200,20,0,0,Math.PI*2);
+  ctx.fill();
+
+  const dark=darken(productColor,30);
+
+  if(currentProduct==='tshirt'){
+    // T-shirt shape
+    ctx.fillStyle=productColor;
+    ctx.beginPath();
+    ctx.moveTo(150,120);ctx.lineTo(100,180);ctx.lineTo(60,175);ctx.lineTo(40,280);ctx.lineTo(100,290);
+    ctx.lineTo(120,200);ctx.lineTo(150,220);ctx.lineTo(150,620);ctx.lineTo(450,620);ctx.lineTo(450,220);
+    ctx.lineTo(480,200);ctx.lineTo(500,290);ctx.lineTo(560,280);ctx.lineTo(540,175);ctx.lineTo(500,180);
+    ctx.lineTo(450,120);ctx.quadraticCurveTo(300,80,150,120);
+    ctx.closePath();ctx.fill();
+    // Collar
+    ctx.strokeStyle=dark;ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(200,115);ctx.quadraticCurveTo(300,145,400,115);ctx.stroke();
+    // Sleeve shadows
+    ctx.fillStyle=hexToRGBA(productColor,0.7);
+    ctx.beginPath();ctx.moveTo(100,180);ctx.lineTo(120,200);ctx.lineTo(150,220);ctx.lineTo(150,180);ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.moveTo(500,180);ctx.lineTo(480,200);ctx.lineTo(450,220);ctx.lineTo(450,180);ctx.closePath();ctx.fill();
+    // Design area
+    drawDesign(ctx,200,200,200,250,scale);
+  } else if(currentProduct==='hoodie'){
+    ctx.fillStyle=productColor;
+    // Body
+    ctx.beginPath();
+    ctx.moveTo(140,150);ctx.lineTo(80,210);ctx.lineTo(30,200);ctx.lineTo(10,340);ctx.lineTo(80,350);
+    ctx.lineTo(110,240);ctx.lineTo(130,260);ctx.lineTo(130,620);ctx.lineTo(470,620);ctx.lineTo(470,260);
+    ctx.lineTo(490,240);ctx.lineTo(520,350);ctx.lineTo(590,340);ctx.lineTo(570,200);ctx.lineTo(520,210);
+    ctx.lineTo(460,150);ctx.quadraticCurveTo(300,100,140,150);
+    ctx.closePath();ctx.fill();
+    // Hood
+    ctx.fillStyle=dark;
+    ctx.beginPath();ctx.moveTo(190,150);ctx.quadraticCurveTo(210,60,300,50);ctx.quadraticCurveTo(390,60,410,150);ctx.quadraticCurveTo(300,170,190,150);ctx.closePath();ctx.fill();
+    // Pocket
+    ctx.strokeStyle=hexToRGBA('#000',0.15);ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(200,460);ctx.lineTo(200,520);ctx.lineTo(400,520);ctx.lineTo(400,460);ctx.stroke();
+    drawDesign(ctx,200,240,200,200,scale);
+  } else if(currentProduct==='mug'){
+    // Mug body
+    ctx.fillStyle=productColor;
+    ctx.beginPath();
+    ctx.moveTo(150,180);ctx.lineTo(140,520);ctx.quadraticCurveTo(300,580,460,520);ctx.lineTo(450,180);ctx.closePath();ctx.fill();
+    // Handle
+    ctx.strokeStyle=productColor;ctx.lineWidth=22;
+    ctx.beginPath();ctx.moveTo(450,260);ctx.quadraticCurveTo(550,260,550,370);ctx.quadraticCurveTo(550,470,450,470);ctx.stroke();
+    ctx.strokeStyle=dark;ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(150,180);ctx.lineTo(140,520);ctx.quadraticCurveTo(300,580,460,520);ctx.lineTo(450,180);ctx.closePath();ctx.stroke();
+    // Rim
+    ctx.fillStyle=dark;
+    ctx.beginPath();ctx.ellipse(300,180,150,20,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=hexToRGBA(productColor,0.8);
+    ctx.beginPath();ctx.ellipse(300,180,140,16,0,0,Math.PI*2);ctx.fill();
+    drawDesign(ctx,200,260,200,220,scale);
+  } else if(currentProduct==='poster'){
+    // Poster frame
+    ctx.fillStyle='#333';
+    ctx.fillRect(90,60,420,580);
+    ctx.fillStyle=productColor;
+    ctx.fillRect(100,70,400,560);
+    // Shadow
+    ctx.fillStyle='rgba(0,0,0,0.1)';
+    ctx.fillRect(510,75,6,560);
+    ctx.fillRect(105,630,405,6);
+    drawDesign(ctx,150,140,300,400,scale);
+  } else if(currentProduct==='sticker'){
+    // Sticker circle
+    ctx.fillStyle='rgba(0,0,0,0.05)';
+    ctx.beginPath();ctx.ellipse(305,355,218,218,0,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=productColor;
+    ctx.beginPath();ctx.ellipse(300,350,210,210,0,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle=darken(productColor,20);ctx.lineWidth=3;
+    ctx.beginPath();ctx.ellipse(300,350,210,210,0,0,Math.PI*2);ctx.stroke();
+    drawDesign(ctx,170,220,260,260,scale);
+  }
+
+  gtag('event','render_mockup',{event_category:'tool_use',product:currentProduct});
+}
+
+function drawDesign(ctx,x,y,w,h,scale){
+  const sw=w*scale;
+  const sh=h*scale;
+  const sx=x+(w-sw)/2;
+  const sy=y+(h-sh)/2;
+
+  if(designImg){
+    const ratio=Math.min(sw/designImg.width,sh/designImg.height);
+    const dw=designImg.width*ratio;
+    const dh=designImg.height*ratio;
+    ctx.drawImage(designImg,sx+(sw-dw)/2,sy+(sh-dh)/2,dw,dh);
+  } else {
+    const text=document.getElementById('designText').value.trim();
+    if(text){
+      const size=parseInt(document.getElementById('textSize').value);
+      const color=document.getElementById('textColor').value;
+      ctx.fillStyle=color;
+      ctx.font=`bold ${Math.round(size*scale)}px -apple-system,BlinkMacSystemFont,sans-serif`;
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      // Word wrap
+      const words=text.split(' ');
+      const maxW=sw-20;
+      const lines=[];
+      let line='';
+      words.forEach(word=>{
+        const test=line?line+' '+word:word;
+        if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=word;}
+        else line=test;
+      });
+      if(line) lines.push(line);
+      const lineH=Math.round(size*scale*1.2);
+      const startY=sy+sh/2-(lines.length-1)*lineH/2;
+      lines.forEach((l,i)=>{
+        ctx.fillText(l,sx+sw/2,startY+i*lineH);
+      });
+    } else {
+      // Placeholder
+      ctx.fillStyle='rgba(255,255,255,0.15)';
+      ctx.font='bold 14px sans-serif';
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.fillText('Your Design Here',sx+sw/2,sy+sh/2);
+    }
+  }
+}
+
+function downloadMockup(){
+  const canvas=document.getElementById('mockupCanvas');
+  const a=document.createElement('a');
+  a.href=canvas.toDataURL('image/png');
+  a.download=`${currentProduct}-mockup.png`;
+  a.click();
+  showToast('Downloaded!');
+  gtag('event','download_mockup',{event_category:'tool_use',product:currentProduct});
+}
+
+// Initial render
+renderMockup();
+
+['designText','textSize','textColor','designScale'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',renderMockup);
+});
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
