@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Are MCP Servers? The Complete Guide for 2026 | SpunkArt</title>
+<meta name="description" content="The definitive guide to Model Context Protocol (MCP) servers in 2026. Learn what MCP is, how to build MCP servers, connect AI models to real-world tools, and the best resources for getting started.">
+<meta name="keywords" content="MCP servers, model context protocol, MCP server guide, build MCP server, MCP tools, claude MCP, AI tool integration, MCP 2026, model context protocol tutorial, MCP server examples">
+<meta name="author" content="SpunkArt">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://spunkart.com/blog/mcp-servers-guide-2026">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Are MCP Servers? The Complete Guide for 2026">
+<meta property="og:description" content="The definitive guide to Model Context Protocol (MCP) servers in 2026. Learn what MCP is, how to build MCP servers, and connect AI to real-world tools.">
+<meta property="og:url" content="https://spunkart.com/blog/mcp-servers-guide-2026">
+<meta property="og:site_name" content="SpunkArt">
+<meta property="og:image" content="https://spunkart.com/images/mcp-servers-og.png">
+<meta property="article:published_time" content="2026-02-23T00:00:00Z">
+<meta property="article:author" content="SpunkArt">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:creator" content="@SpunkArt13">
+<meta name="twitter:title" content="What Are MCP Servers? The Complete Guide for 2026">
+<meta name="twitter:description" content="The definitive guide to MCP servers in 2026. Learn what Model Context Protocol is, how to build servers, and connect AI to real-world tools.">
+<meta name="twitter:image" content="https://spunkart.com/images/mcp-servers-og.png">
+
+<!-- JSON-LD BlogPosting -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Are MCP Servers? The Complete Guide for 2026",
+  "description": "The definitive guide to Model Context Protocol (MCP) servers in 2026. Learn what MCP is, how to build MCP servers, connect AI models to real-world tools, and the best resources for getting started.",
+  "datePublished": "2026-02-23",
+  "dateModified": "2026-02-23",
+  "author": {
+    "@type": "Organization",
+    "name": "SpunkArt",
+    "url": "https://spunkart.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SpunkArt",
+    "url": "https://spunkart.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://spunkart.com/blog/mcp-servers-guide-2026"
+  },
+  "keywords": ["MCP servers", "model context protocol", "MCP server guide", "build MCP server", "claude MCP", "AI tool integration", "MCP 2026"],
+  "wordCount": 3800
+}
+</script>
+
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7}
+a{color:#ff5f1f;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+h1{font-size:2.2rem;line-height:1.2;margin-bottom:10px;color:#fff}
+h2{font-size:1.6rem;color:#fff;margin-top:40px;margin-bottom:15px;padding-bottom:8px;border-bottom:1px solid #1a1a1a}
+h3{font-size:1.2rem;color:#ff5f1f;margin-top:25px;margin-bottom:8px}
+p{margin-bottom:16px;color:#ccc}
+.date{color:#666;font-size:.85rem;margin-bottom:25px}
+.highlight{color:#ff5f1f;font-weight:700}
+.green{color:#10b981}
+.tool-card{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:20px 24px;margin:18px 0;transition:border-color .2s}
+.tool-card:hover{border-color:#ff5f1f}
+.tool-card h3{margin-top:0;font-size:1.15rem}
+.tool-card p{margin-bottom:8px;font-size:.95rem}
+.tool-card .try-link{display:inline-block;margin-top:6px;background:#ff5f1f;color:#fff;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;text-decoration:none}
+.tool-card .try-link:hover{background:#e5551b;text-decoration:none}
+.prompt-card{background:#0d1117;border:1px solid #1e2d3d;border-radius:10px;padding:16px 20px;margin:12px 0;font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:.9rem;color:#c9d1d9;line-height:1.6;white-space:pre-wrap}
+.prompt-card .label{display:block;color:#ff5f1f;font-weight:700;margin-bottom:6px;font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.checklist{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:24px 28px;margin:20px 0}
+.checklist ol{padding-left:20px}
+.checklist li{margin-bottom:10px;color:#ccc}
+.checklist li strong{color:#10b981}
+.tip-box{background:#0d1f17;border:1px solid #10b981;border-radius:10px;padding:20px 24px;margin:20px 0}
+.tip-box h3{color:#10b981;margin-top:0}
+.warn-box{background:#1f1a0d;border:1px solid #f59e0b;border-radius:10px;padding:20px 24px;margin:20px 0}
+.warn-box h3{color:#f59e0b;margin-top:0}
+.cta-box{background:linear-gradient(135deg,#1a0a00,#1a1100);border:2px solid #ff5f1f;border-radius:12px;padding:30px;margin:30px 0;text-align:center}
+.cta-box h3{color:#ff5f1f;font-size:1.4rem;margin:0 0 10px}
+.cta-box p{color:#ccc;margin-bottom:15px}
+.cta-box .btn{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 30px;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;margin:5px}
+.cta-box .btn:hover{background:#e5551b;text-decoration:none}
+.cta-box .btn-outline{background:transparent;border:1px solid #ff5f1f;color:#ff5f1f}
+.cta-box .btn-outline:hover{background:#ff5f1f;color:#fff}
+.comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+.comparison-table th{background:#1a1a1a;color:#fff;padding:12px 16px;text-align:left;border:1px solid #222;font-weight:700}
+.comparison-table td{padding:10px 16px;border:1px solid #1a1a1a;color:#ccc}
+.comparison-table tr:hover td{background:#111}
+.toc{background:#111;border:1px solid #1a1a1a;border-radius:10px;padding:20px 24px;margin:25px 0}
+.toc h3{color:#fff;margin:0 0 12px;font-size:1rem}
+.toc ol{padding-left:20px}
+.toc li{margin-bottom:6px}
+.toc a{color:#ccc;font-size:.9rem}
+.toc a:hover{color:#ff5f1f}
+.network-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:20px 0}
+.network-card{background:#111;border:1px solid #1a1a1a;border-radius:8px;padding:14px 18px;text-align:center;transition:border-color .2s}
+.network-card:hover{border-color:#ff5f1f}
+.network-card a{color:#ff5f1f;font-weight:600;font-size:.95rem}
+.network-card p{font-size:.8rem;color:#666;margin:4px 0 0}
+blockquote{border-left:3px solid #ff5f1f;padding:12px 20px;margin:20px 0;background:#111;border-radius:0 8px 8px 0}
+blockquote p{margin:0;color:#ccc;font-style:italic}
+ul,ol{padding-left:20px;margin-bottom:16px}
+li{margin-bottom:6px;color:#ccc}
+code{background:#1a1a2e;color:#c9d1d9;padding:2px 6px;border-radius:4px;font-size:.9rem}
+pre{background:#0d1117;border:1px solid #1e2d3d;border-radius:10px;padding:16px 20px;margin:12px 0;overflow-x:auto;font-size:.85rem;line-height:1.6;color:#c9d1d9}
+@media(max-width:600px){h1{font-size:1.6rem}h2{font-size:1.3rem}.container{padding:20px 15px}.network-grid{grid-template-columns:1fr}.comparison-table{font-size:.75rem}.comparison-table th,.comparison-table td{padding:8px 10px}}
+</style>
+</head>
+<body>
+
+<nav style="background:#111;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222">
+  <a href="/" style="color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.2rem">SpunkArt</a>
+  <div><a href="/blog" style="color:#e8e8e8;text-decoration:none;font-size:.9rem;margin-right:15px">Blog</a><a href="/store" style="color:#e8e8e8;text-decoration:none;font-size:.9rem">Store</a></div>
+</nav>
+
+<div class="container">
+
+<p class="date">Published February 23, 2026 &middot; 20 min read</p>
+<h1>What Are MCP Servers? The Complete Guide for 2026</h1>
+
+<p>Model Context Protocol (MCP) has quietly become one of the most important technologies in the AI ecosystem. If you have used Claude Code, Cursor, or any agentic AI tool that connects to external services, you have likely interacted with an MCP server without knowing it. MCP is the open standard that lets AI models talk to databases, APIs, file systems, and any other tool or data source through a unified interface.</p>
+
+<p>In 2026, MCP adoption has reached a tipping point. Thousands of MCP servers exist for everything from GitHub and Slack to Postgres databases and Kubernetes clusters. Understanding MCP is no longer optional for developers working with AI &mdash; it is a core skill. This guide covers everything from the fundamentals to building your own MCP server from scratch.</p>
+
+<div class="toc">
+<h3>Table of Contents</h3>
+<ol>
+<li><a href="#what-is-mcp">What Is MCP (Model Context Protocol)?</a></li>
+<li><a href="#why-mcp-matters">Why MCP Matters</a></li>
+<li><a href="#how-mcp-works">How MCP Works: Architecture Deep Dive</a></li>
+<li><a href="#core-concepts">Core Concepts: Tools, Resources, and Prompts</a></li>
+<li><a href="#mcp-vs-alternatives">MCP vs. Function Calling vs. Plugins</a></li>
+<li><a href="#popular-servers">The Most Popular MCP Servers in 2026</a></li>
+<li><a href="#build-your-own">How to Build an MCP Server (Step by Step)</a></li>
+<li><a href="#python-example">Python MCP Server Example</a></li>
+<li><a href="#typescript-example">TypeScript MCP Server Example</a></li>
+<li><a href="#testing">Testing and Debugging MCP Servers</a></li>
+<li><a href="#security">Security Considerations</a></li>
+<li><a href="#best-practices">Best Practices for Production MCP Servers</a></li>
+<li><a href="#tools-resources">Tools and Resources</a></li>
+<li><a href="#future">The Future of MCP</a></li>
+</ol>
+</div>
+
+<!-- ==================== SECTION 1 ==================== -->
+<h2 id="what-is-mcp">What Is MCP (Model Context Protocol)?</h2>
+
+<p>Model Context Protocol (MCP) is an open standard, originally created by Anthropic and released in late 2024, that defines how AI applications communicate with external tools and data sources. Think of MCP as a universal adapter between AI models and the rest of the software world. Before MCP, every AI tool had to build custom integrations for every service it wanted to connect to. MCP replaces that N-times-M problem with a single standardized protocol.</p>
+
+<p>The analogy most people use is USB. Before USB, every peripheral device had its own proprietary connector. USB created a universal standard, and suddenly any device could connect to any computer. MCP does the same thing for AI: any AI application that supports MCP can connect to any MCP server, and any MCP server can serve any MCP-compatible AI application.</p>
+
+<p>The protocol follows a client-server architecture. The <strong>MCP client</strong> is the AI application &mdash; Claude Code, Cursor, or your custom AI agent. The <strong>MCP server</strong> is a lightweight program that exposes specific capabilities (tools, data, prompts) through the standardized protocol. The client discovers what the server offers, and the AI model can then use those capabilities as needed.</p>
+
+<blockquote><p>"MCP is to AI tools what HTTP is to the web. It's the plumbing that makes everything work together." &mdash; Developer community consensus</p></blockquote>
+
+<!-- ==================== SECTION 2 ==================== -->
+<h2 id="why-mcp-matters">Why MCP Matters</h2>
+
+<p>MCP solves several critical problems that have limited AI tool adoption:</p>
+
+<p><strong>The integration problem.</strong> Before MCP, if you wanted your AI assistant to access your company's Jira, Slack, GitHub, and database, someone had to build four separate custom integrations. With MCP, each service has a single MCP server, and any MCP-compatible AI client can connect to all of them. Build once, use everywhere.</p>
+
+<p><strong>The context problem.</strong> AI models are only as useful as the context they have. A model that cannot access your codebase, documentation, or databases is limited to general knowledge. MCP lets AI models pull in exactly the context they need, when they need it, from any connected data source.</p>
+
+<p><strong>The vendor lock-in problem.</strong> Custom integrations tied you to specific AI providers. If you built a Claude integration with your tools, switching to GPT meant rebuilding everything. MCP is provider-agnostic. Your MCP servers work with any client that supports the protocol.</p>
+
+<p><strong>The security problem.</strong> MCP provides a structured way to control what AI models can access. Instead of giving an AI model raw API keys and hoping for the best, MCP servers expose only specific, well-defined operations with clear permission boundaries. The human stays in control of what the AI can do.</p>
+
+<p><strong>The ecosystem problem.</strong> Because MCP is an open standard with a growing community, thousands of pre-built servers already exist. Need your AI to access a Postgres database? There is an MCP server for that. Need it to manage Docker containers? There is an MCP server for that. The ecosystem effect means you rarely need to build from scratch.</p>
+
+<!-- ==================== SECTION 3 ==================== -->
+<h2 id="how-mcp-works">How MCP Works: Architecture Deep Dive</h2>
+
+<p>MCP uses a JSON-RPC 2.0-based message protocol over two primary transport mechanisms:</p>
+
+<p><strong>stdio (Standard I/O):</strong> The most common transport for local MCP servers. The client spawns the server as a child process and communicates through stdin and stdout. This is how Claude Code connects to local MCP servers &mdash; fast, secure, and requires no network configuration.</p>
+
+<p><strong>SSE (Server-Sent Events) over HTTP:</strong> Used for remote MCP servers. The client connects to the server via HTTP, and the server pushes messages back through an SSE stream. This enables MCP servers running on remote machines, in containers, or as cloud services.</p>
+
+<p>The lifecycle of an MCP connection follows these steps:</p>
+
+<div class="checklist">
+<ol>
+<li><strong>Initialization.</strong> The client sends an <code>initialize</code> request with its capabilities and protocol version. The server responds with its own capabilities.</li>
+<li><strong>Discovery.</strong> The client calls <code>tools/list</code>, <code>resources/list</code>, and <code>prompts/list</code> to discover what the server offers.</li>
+<li><strong>Usage.</strong> When the AI model decides to use a tool, the client sends a <code>tools/call</code> request with the tool name and arguments. The server executes the operation and returns the result.</li>
+<li><strong>Context.</strong> The client can request resources using <code>resources/read</code> to pull in data as context for the AI model. Resources are read-only data like file contents, database records, or API responses.</li>
+<li><strong>Shutdown.</strong> Either side can close the connection gracefully.</li>
+</ol>
+</div>
+
+<p>What makes MCP elegant is that the AI model itself decides when and how to use the available tools. The model receives the list of available tools with descriptions and schemas, and then during conversation it can invoke them as needed. The human-in-the-loop can approve or deny tool calls depending on the client's configuration.</p>
+
+<!-- ==================== SECTION 4 ==================== -->
+<h2 id="core-concepts">Core Concepts: Tools, Resources, and Prompts</h2>
+
+<p>MCP servers expose three types of capabilities:</p>
+
+<h3>Tools</h3>
+<p>Tools are executable operations. They are functions the AI model can invoke to perform actions. Examples: querying a database, creating a GitHub issue, sending a Slack message, running a shell command. Each tool has a name, description, and a JSON Schema defining its input parameters. Tools are the most commonly used MCP primitive.</p>
+
+<h3>Resources</h3>
+<p>Resources are data sources the AI can read. They provide context rather than performing actions. Examples: the contents of a file, a database table schema, documentation, configuration files. Resources have URIs (like <code>file:///path/to/file</code> or <code>postgres://db/schema</code>) and return content in text or binary format. Resources can be static or dynamic.</p>
+
+<h3>Prompts</h3>
+<p>Prompts are reusable prompt templates that the server provides. They let the server offer pre-built workflows or interaction patterns. Examples: a "code review" prompt that takes a file path and returns a structured review template, or a "SQL query builder" prompt that guides the AI through building a safe database query. Prompts are less commonly used than tools and resources but powerful for standardizing workflows.</p>
+
+<div class="tip-box">
+<h3>The Key Distinction</h3>
+<p>Tools perform actions (write, create, delete, send). Resources provide data (read, list, describe). Prompts provide templates (guide, structure, format). A well-designed MCP server uses the right primitive for each capability. Do not expose a read-only operation as a tool when it should be a resource.</p>
+</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<h2 id="mcp-vs-alternatives">MCP vs. Function Calling vs. Plugins</h2>
+
+<table class="comparison-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>MCP</th>
+<th>OpenAI Function Calling</th>
+<th>ChatGPT Plugins (deprecated)</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Open standard</td><td>Yes</td><td>No (OpenAI-specific)</td><td>No (deprecated)</td></tr>
+<tr><td>Provider-agnostic</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Dynamic tool discovery</td><td>Yes</td><td>No (defined at call time)</td><td>Limited</td></tr>
+<tr><td>Resources (read context)</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Local + remote support</td><td>Yes (stdio + SSE)</td><td>Remote only</td><td>Remote only</td></tr>
+<tr><td>Community ecosystem</td><td>Thousands of servers</td><td>N/A</td><td>Deprecated</td></tr>
+<tr><td>Human-in-the-loop</td><td>Built-in approval flow</td><td>Application-dependent</td><td>No</td></tr>
+<tr><td>Prompt templates</td><td>Yes</td><td>No</td><td>No</td></tr>
+</tbody>
+</table>
+
+<p>The short version: MCP is the open, universal standard. Function calling is a provider-specific feature. MCP servers can be used by any MCP-compatible client regardless of which AI model it uses, making it the clear choice for building reusable tool integrations.</p>
+
+<!-- ==================== SECTION 6 ==================== -->
+<h2 id="popular-servers">The Most Popular MCP Servers in 2026</h2>
+
+<div class="tool-card">
+<h3>Filesystem MCP Server</h3>
+<p><strong>What it does:</strong> Provides controlled read and write access to the local filesystem. The AI can read files, list directories, create and edit files, and search for content &mdash; all within configured permission boundaries.</p>
+<p><strong>Why it matters:</strong> This is the foundation for any coding-related AI workflow. Nearly every agentic coding tool uses a filesystem MCP server internally.</p>
+</div>
+
+<div class="tool-card">
+<h3>GitHub MCP Server</h3>
+<p><strong>What it does:</strong> Full GitHub integration &mdash; create issues, manage PRs, search repositories, read code, manage branches, and interact with GitHub Actions. Supports both personal and organization repos.</p>
+<p><strong>Why it matters:</strong> Enables AI agents to participate in the full software development lifecycle directly through GitHub.</p>
+</div>
+
+<div class="tool-card">
+<h3>PostgreSQL MCP Server</h3>
+<p><strong>What it does:</strong> Connects AI models to Postgres databases. Read-only queries by default (safety first), with optional write support. Exposes table schemas as resources so the AI understands your data model.</p>
+<p><strong>Why it matters:</strong> Turns your AI assistant into a data analyst that understands your actual production data.</p>
+</div>
+
+<div class="tool-card">
+<h3>Slack MCP Server</h3>
+<p><strong>What it does:</strong> Read and send Slack messages, search channels, manage threads, and react to messages. Respects Slack's permission model and rate limits.</p>
+<p><strong>Why it matters:</strong> Lets AI agents participate in team communication, summarize threads, and respond to questions using context from other connected tools.</p>
+</div>
+
+<div class="tool-card">
+<h3>Brave Search MCP Server</h3>
+<p><strong>What it does:</strong> Gives AI models web search capabilities through the Brave Search API. Search the web, get results with snippets, and access current information beyond the model's training data.</p>
+<p><strong>Why it matters:</strong> Bridges the gap between the AI's static knowledge and real-time web information.</p>
+</div>
+
+<div class="tool-card">
+<h3>Docker MCP Server</h3>
+<p><strong>What it does:</strong> Manage Docker containers, images, networks, and volumes. Start and stop containers, view logs, execute commands inside containers, and manage Docker Compose stacks.</p>
+<p><strong>Why it matters:</strong> Enables AI-driven DevOps workflows and infrastructure management.</p>
+</div>
+
+<div class="cta-box">
+<h3>Build AI-Powered Tools Faster</h3>
+<p>Our digital toolkit includes MCP server templates, prompt libraries, and workflow guides for AI development.</p>
+<a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="btn" target="_blank" rel="noopener">Get the Toolkit</a>
+<a href="https://spunkart.com/blog" class="btn btn-outline">Read More Guides</a>
+</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<h2 id="build-your-own">How to Build an MCP Server (Step by Step)</h2>
+
+<p>Building an MCP server is surprisingly straightforward. The official SDKs handle the protocol plumbing, so you focus on defining your tools and implementing their logic. Here is the process:</p>
+
+<div class="checklist">
+<ol>
+<li><strong>Choose your language.</strong> Official SDKs exist for Python and TypeScript. Community SDKs are available for Go, Rust, Java, C#, and Ruby. Python and TypeScript are the most mature and well-documented.</li>
+<li><strong>Install the SDK.</strong> <code>pip install mcp</code> for Python or <code>npm install @modelcontextprotocol/sdk</code> for TypeScript.</li>
+<li><strong>Define your tools.</strong> Each tool needs a name, description, input schema (JSON Schema), and a handler function that executes the operation and returns a result.</li>
+<li><strong>Define your resources (optional).</strong> If your server provides read-only data, define resources with URIs and read handlers.</li>
+<li><strong>Set up the server.</strong> Initialize the MCP server, register your tools and resources, and configure the transport (stdio for local, SSE for remote).</li>
+<li><strong>Test with the MCP Inspector.</strong> The official MCP Inspector tool lets you connect to your server, discover its capabilities, and test tool calls interactively.</li>
+<li><strong>Connect to a client.</strong> Configure Claude Code, Cursor, or your custom client to connect to your server.</li>
+</ol>
+</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<h2 id="python-example">Python MCP Server Example</h2>
+
+<p>Here is a complete, minimal MCP server in Python that provides a weather lookup tool:</p>
+
+<pre>
+# weather_server.py
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
+from mcp.types import Tool, TextContent
+import httpx
+import json
+
+server = Server("weather-server")
+
+@server.list_tools()
+async def list_tools():
+    return [
+        Tool(
+            name="get_weather",
+            description="Get current weather for a city",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "description": "City name, e.g. San Francisco"
+                    }
+                },
+                "required": ["city"]
+            }
+        )
+    ]
+
+@server.call_tool()
+async def call_tool(name: str, arguments: dict):
+    if name == "get_weather":
+        city = arguments["city"]
+        async with httpx.AsyncClient() as client:
+            resp = await client.get(
+                f"https://wttr.in/{city}?format=j1"
+            )
+            data = resp.json()
+            current = data["current_condition"][0]
+            result = {
+                "city": city,
+                "temp_c": current["temp_C"],
+                "temp_f": current["temp_F"],
+                "condition": current["weatherDesc"][0]["value"],
+                "humidity": current["humidity"],
+                "wind_mph": current["windspeedMiles"]
+            }
+            return [TextContent(
+                type="text",
+                text=json.dumps(result, indent=2)
+            )]
+
+async def main():
+    async with stdio_server() as (read, write):
+        await server.run(read, write)
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())
+</pre>
+
+<p>That is a complete, working MCP server in under 50 lines. Install it with <code>pip install mcp httpx</code> and connect it to Claude Code by adding it to your <code>claude_desktop_config.json</code> or your project's <code>.claude/settings.json</code>.</p>
+
+<!-- ==================== SECTION 9 ==================== -->
+<h2 id="typescript-example">TypeScript MCP Server Example</h2>
+
+<p>The same weather server in TypeScript:</p>
+
+<pre>
+// weather-server.ts
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
+import { StdioServerTransport } from
+  "@modelcontextprotocol/sdk/server/stdio.js";
+import {
+  CallToolRequestSchema,
+  ListToolsRequestSchema
+} from "@modelcontextprotocol/sdk/types.js";
+
+const server = new Server(
+  { name: "weather-server", version: "1.0.0" },
+  { capabilities: { tools: {} } }
+);
+
+server.setRequestHandler(ListToolsRequestSchema, async () =&gt; ({
+  tools: [{
+    name: "get_weather",
+    description: "Get current weather for a city",
+    inputSchema: {
+      type: "object",
+      properties: {
+        city: {
+          type: "string",
+          description: "City name, e.g. San Francisco"
+        }
+      },
+      required: ["city"]
+    }
+  }]
+}));
+
+server.setRequestHandler(CallToolRequestSchema, async (req) =&gt; {
+  if (req.params.name === "get_weather") {
+    const city = req.params.arguments?.city as string;
+    const resp = await fetch(
+      `https://wttr.in/${city}?format=j1`
+    );
+    const data = await resp.json();
+    const current = data.current_condition[0];
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          city,
+          temp_c: current.temp_C,
+          temp_f: current.temp_F,
+          condition: current.weatherDesc[0].value,
+          humidity: current.humidity,
+          wind_mph: current.windspeedMiles
+        }, null, 2)
+      }]
+    };
+  }
+  throw new Error(`Unknown tool: ${req.params.name}`);
+});
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+</pre>
+
+<div class="tip-box">
+<h3>Pro Tip: Use the create-mcp-server Tool</h3>
+<p>Anthropic provides a project scaffolding tool: <code>npx create-mcp-server</code> for TypeScript or <code>uvx create-mcp-server</code> for Python. This generates a complete project structure with configuration, type definitions, and example tools. It is the fastest way to start a new MCP server project.</p>
+</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<h2 id="testing">Testing and Debugging MCP Servers</h2>
+
+<p>Testing MCP servers is critical because bugs in a tool that an AI model uses can lead to incorrect actions with real consequences. Here is a testing strategy:</p>
+
+<p><strong>MCP Inspector.</strong> The official testing tool. Run <code>npx @modelcontextprotocol/inspector</code> and point it at your server. You can browse tools, resources, and prompts, test individual tool calls with custom arguments, and see the raw JSON-RPC messages. This is your primary debugging tool during development.</p>
+
+<p><strong>Unit tests for tool handlers.</strong> Test your tool handler functions in isolation, independent of the MCP protocol. Pass in test arguments, verify the output. This catches logic bugs before they reach the protocol layer.</p>
+
+<p><strong>Integration tests with a test client.</strong> The MCP SDKs provide client libraries you can use in tests. Write a test that connects to your server, calls a tool, and asserts on the response. This verifies the full protocol round-trip.</p>
+
+<p><strong>Error handling tests.</strong> Test what happens when tools receive invalid arguments, when external APIs are down, when permissions are insufficient. A robust MCP server returns clear error messages rather than crashing, because the AI model needs to understand what went wrong and try a different approach.</p>
+
+<p><strong>Logging.</strong> Add structured logging to your server. Log every tool call with its arguments and result. Log errors with full context. When something goes wrong in production, logs are your primary debugging resource. Use stderr for logging (stdout is reserved for MCP protocol messages when using stdio transport).</p>
+
+<!-- ==================== SECTION 11 ==================== -->
+<h2 id="security">Security Considerations</h2>
+
+<p>MCP servers are a security surface that deserves careful attention. An MCP server that connects to your database or filesystem is granting an AI model access to sensitive systems. Here are the key security principles:</p>
+
+<div class="warn-box">
+<h3>Principle of Least Privilege</h3>
+<p>Every MCP server should expose the minimum capabilities needed. If your use case only requires reading database records, do not expose write operations. If the AI only needs access to one directory, do not expose the entire filesystem. Define narrow permissions and stick to them.</p>
+</div>
+
+<p><strong>Input validation.</strong> Validate every argument that comes into a tool handler. The AI model can send unexpected inputs, and downstream systems (databases, APIs, shell commands) can be vulnerable to injection attacks. Use the JSON Schema input validation that MCP provides, and add application-level validation on top.</p>
+
+<p><strong>Authentication and authorization.</strong> For remote MCP servers (SSE transport), implement proper authentication. Use API keys, OAuth tokens, or mTLS to verify that only authorized clients can connect. Do not expose MCP servers to the public internet without authentication.</p>
+
+<p><strong>Sandboxing.</strong> Run MCP servers with limited system permissions. Use containers, restricted file system access, and network policies to limit the blast radius if something goes wrong. A filesystem MCP server should run in a sandbox that can only access designated directories.</p>
+
+<p><strong>Audit logging.</strong> Log every tool invocation with the client identity, timestamp, arguments, and result. This creates an audit trail that is essential for debugging, compliance, and security incident investigation.</p>
+
+<p><strong>Rate limiting.</strong> Prevent runaway AI agents from overwhelming your systems. Implement rate limits on tool calls, especially for operations that are expensive or have side effects.</p>
+
+<!-- ==================== SECTION 12 ==================== -->
+<h2 id="best-practices">Best Practices for Production MCP Servers</h2>
+
+<ol>
+<li><strong>Write clear tool descriptions.</strong> The AI model uses your tool descriptions to decide when and how to use each tool. Vague descriptions lead to incorrect usage. Be specific: "Search for GitHub issues by title, label, or assignee in a given repository" is better than "Search issues."</li>
+<li><strong>Define strict input schemas.</strong> Use JSON Schema to define exactly what arguments each tool accepts. Include descriptions for every property, mark required fields, and use enums for constrained values. The stricter your schema, the more reliably the AI will provide correct arguments.</li>
+<li><strong>Return structured results.</strong> Return data in consistent, predictable formats. JSON is ideal because the AI model can parse and reason about structured data more effectively than unstructured text.</li>
+<li><strong>Handle errors gracefully.</strong> Return error messages that help the AI model understand what went wrong. "Query failed: table 'users' does not exist" is useful. A raw stack trace is not. The AI needs to understand the error to recover from it.</li>
+<li><strong>Keep servers focused.</strong> A server that does one thing well is better than a server that does twenty things poorly. Build separate servers for separate domains: one for GitHub, one for your database, one for your deployment pipeline.</li>
+<li><strong>Version your server.</strong> Use semantic versioning and include the version in the server's initialization response. This lets clients handle backward compatibility when you add or change tools.</li>
+<li><strong>Document with examples.</strong> Include example inputs and outputs in your tool descriptions. The AI model uses these examples to understand the expected format and behavior.</li>
+<li><strong>Implement timeouts.</strong> External API calls and database queries can hang. Set timeouts on all external operations so a single slow tool call does not block the entire server.</li>
+</ol>
+
+<div class="cta-box">
+<h3>Ready to Build with MCP?</h3>
+<p>Our digital toolkit includes MCP server templates, configuration examples, and step-by-step project guides.</p>
+<a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="btn" target="_blank" rel="noopener">Get the Toolkit</a>
+<a href="https://spunkart.com/blog/best-free-developer-tools-2026" class="btn btn-outline">Free Developer Tools</a>
+</div>
+
+<!-- ==================== SECTION 13 ==================== -->
+<h2 id="tools-resources">Tools and Resources</h2>
+
+<p>Here are the essential resources for MCP development in 2026:</p>
+
+<div class="tool-card">
+<h3>Official MCP Specification</h3>
+<p>The complete protocol specification at <a href="https://spec.modelcontextprotocol.io" target="_blank" rel="noopener">spec.modelcontextprotocol.io</a>. The authoritative reference for the protocol, message formats, and capabilities.</p>
+</div>
+
+<div class="tool-card">
+<h3>MCP Documentation</h3>
+<p>Tutorials, guides, and API reference at <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a>. Start here if you are new to MCP.</p>
+</div>
+
+<div class="tool-card">
+<h3>MCP Server Registry</h3>
+<p>Browse thousands of community-built MCP servers. Find pre-built integrations for most popular services before building your own.</p>
+</div>
+
+<div class="tool-card">
+<h3>MCP Inspector</h3>
+<p>The official testing and debugging tool. Essential for development. Install with <code>npx @modelcontextprotocol/inspector</code>.</p>
+</div>
+
+<div class="tool-card">
+<h3>Python SDK</h3>
+<p><code>pip install mcp</code> &mdash; The official Python SDK with async support, type hints, and decorators for clean server definitions.</p>
+</div>
+
+<div class="tool-card">
+<h3>TypeScript SDK</h3>
+<p><code>npm install @modelcontextprotocol/sdk</code> &mdash; The official TypeScript SDK with full type safety and both stdio and SSE transport support.</p>
+</div>
+
+<p><strong>Related SpunkArt guides:</strong></p>
+<ul>
+<li><a href="/blog/claude-code-tips-2026">25 Claude Code Tips and Tricks for 2026</a> &mdash; power user workflows including MCP integration</li>
+<li><a href="/blog/vibe-coding-guide-2026">The Complete Vibe Coding Guide for 2026</a> &mdash; full vibe coding workflow and tools</li>
+<li><a href="/blog/best-free-developer-tools-2026">Best Free Developer Tools in 2026</a> &mdash; comprehensive tool directory</li>
+<li><a href="/blog/best-ai-tools-free-2026">Best Free AI Tools in 2026</a> &mdash; AI tool roundup</li>
+</ul>
+
+<!-- ==================== SECTION 14 ==================== -->
+<h2 id="future">The Future of MCP</h2>
+
+<p>MCP is still early, and the roadmap includes several significant developments:</p>
+
+<p><strong>Streamable HTTP transport.</strong> The next generation of the remote transport protocol, replacing SSE with a more efficient bidirectional streaming mechanism. This will enable better performance for high-throughput MCP servers and support for server-initiated notifications.</p>
+
+<p><strong>OAuth 2.0 integration.</strong> Built-in authentication support in the protocol itself, making it easier to build secure remote MCP servers without rolling your own auth layer.</p>
+
+<p><strong>Agent-to-agent communication.</strong> MCP is evolving to support not just human-AI-tool interactions but also AI-agent-to-AI-agent communication. One agent's MCP server could expose capabilities that other agents consume, enabling hierarchical agent architectures.</p>
+
+<p><strong>Composable servers.</strong> The ability to chain MCP servers together, where one server's output feeds into another server's input. This enables complex workflows without requiring monolithic servers that do everything.</p>
+
+<p><strong>Enterprise features.</strong> Better support for auditing, compliance, role-based access control, and centralized server management. As MCP moves into enterprise environments, these features become essential.</p>
+
+<p>The trajectory is clear: MCP is becoming the standard protocol for AI-tool integration. Learning it now puts you ahead of the curve. The developers who understand MCP deeply &mdash; who can build custom servers, debug protocol issues, and architect MCP-based systems &mdash; will be among the most valuable engineers in the AI era.</p>
+
+<div class="cta-box">
+<h3>Get the Complete Digital Toolkit</h3>
+<p>Templates, MCP server starters, prompt libraries, and workflow guides for building with AI. Everything you need to start shipping.</p>
+<a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="btn" target="_blank" rel="noopener">Get It on Gumroad</a>
+<a href="https://spunkart.com" class="btn btn-outline">Explore SpunkArt Tools</a>
+</div>
+
+<div class="network-grid">
+<div class="network-card"><a href="https://spunkart.com">SpunkArt.com</a><p>Free tools &amp; resources</p></div>
+<div class="network-card"><a href="https://spunk.bet">Spunk.Bet</a><p>Free crypto casino</p></div>
+<div class="network-card"><a href="https://predict.codes">predict.codes</a><p>Code &amp; tech predictions</p></div>
+<div class="network-card"><a href="https://predict.pics">predict.pics</a><p>Visual prediction markets</p></div>
+</div>
+
+<p style="text-align:center;color:#444;font-size:.8rem;margin-top:30px">&copy; 2026 SpunkArt &middot; Follow us on <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">X @SpunkArt13</a></p>
+
+</div>
+</body>
+</html>
