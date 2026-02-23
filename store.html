@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SpunkArt Tools — 18 Cloudflare Workers & Digital Products</title>
-<meta name="description" content="18 premium Cloudflare Workers, free tools, and ebooks. Deploy in 60 seconds. Built by the solo founder behind 120+ websites. From $4.99.">
-<meta property="og:title" content="SpunkArt Tools — Ship Faster with Edge Tools">
-<meta property="og:description" content="18 Cloudflare Workers, ebooks, and templates. Built by 1 dev running 120+ sites. Deploy in seconds.">
+<title>SpunkArt Tools — 100+ Free Tools for Founders, Developers & Vibe Coders</title>
+<meta name="description" content="100+ free browser-based tools for developers, designers, founders, and vibe coders. No signup. No ads. Plus premium Cloudflare Workers and ebooks.">
+<meta property="og:title" content="SpunkArt — 100+ Free Tools for Founders & Developers">
+<meta property="og:description" content="100+ free tools, premium Cloudflare Workers, and ebooks. Built by 1 dev running 120+ sites.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://spunkart.com/store">
 <meta name="twitter:card" content="summary_large_image">
@@ -31,15 +31,46 @@ a{color:inherit;text-decoration:none}
 
 /* Announcement bar */
 .announce{background:linear-gradient(90deg,#ff5f1f,#f59e0b);text-align:center;padding:0.5rem;font-size:0.8rem;font-weight:700;color:#000}
-.countdown-bar{background:#111;border-bottom:1px solid #1a1a1a;text-align:center;padding:0.5rem;font-size:0.8rem;color:#888}
-.countdown-bar .time{font-family:monospace;color:#ef4444;font-weight:700;font-size:0.95rem;margin:0 0.3rem}
 
 /* Hero */
-.hero{text-align:center;padding:4rem 2rem 3rem;max-width:800px;margin:0 auto}
-.hero h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1.1}
-.hero p{color:#888;font-size:1.15rem;max-width:600px;margin:0 auto 1.5rem}
-.hero-stats{display:flex;justify-content:center;gap:2rem;font-size:0.85rem;color:#666}
+.hero{text-align:center;padding:4rem 2rem 3rem;max-width:900px;margin:0 auto}
+.hero h1{font-size:2.8rem;font-weight:800;background:linear-gradient(135deg,#ff5f1f,#ff9f43,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.8rem;line-height:1.1}
+.hero p{color:#888;font-size:1.15rem;max-width:650px;margin:0 auto 1.5rem}
+.hero-stats{display:flex;justify-content:center;gap:2rem;font-size:0.85rem;color:#666;flex-wrap:wrap}
 .hero-stats span strong{color:#ff5f1f}
+
+/* Search & Filter */
+.filter-section{max-width:1200px;margin:0 auto;padding:0 2rem 1.5rem}
+.search-box{width:100%;max-width:500px;margin:0 auto 1.2rem;display:block;padding:0.8rem 1.2rem;background:#111;border:1px solid #333;border-radius:10px;color:#fff;font-size:1rem;outline:none;transition:border-color 0.2s}
+.search-box:focus{border-color:#ff5f1f}
+.filter-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;margin-bottom:0.5rem}
+.filter-btn{padding:0.4rem 1rem;background:#111;border:1px solid #222;border-radius:20px;color:#888;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.filter-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.filter-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.tool-count-display{text-align:center;font-size:0.8rem;color:#666;margin-top:0.5rem}
+
+/* Tool Grid */
+.tool-grid{max-width:1200px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.tool-card{background:#111;border:1px solid #1a1a1a;border-radius:14px;padding:1.2rem;transition:all 0.3s;display:flex;flex-direction:column}
+.tool-card:hover{border-color:#ff5f1f44;transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,95,31,0.08)}
+.tool-card.hidden{display:none}
+.tool-card-header{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.5rem}
+.tool-icon{font-size:1.5rem;flex-shrink:0}
+.tool-name{font-weight:700;font-size:0.9rem;line-height:1.2}
+.tool-desc{color:#888;font-size:0.75rem;margin-bottom:0.8rem;line-height:1.5;flex:1}
+.tool-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.tool-badge{padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-dev{background:#3b82f620;color:#3b82f6;border:1px solid #3b82f633}
+.badge-design{background:#a855f720;color:#a855f7;border:1px solid #a855f733}
+.badge-seo{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b33}
+.badge-business{background:#10b98120;color:#10b981;border:1px solid #10b98133}
+.badge-content{background:#ec489920;color:#ec4899;border:1px solid #ec489933}
+.badge-security{background:#ef444420;color:#ef4444;border:1px solid #ef444433}
+.badge-analytics{background:#06b6d420;color:#06b6d4;border:1px solid #06b6d433}
+.badge-ai{background:#8b5cf620;color:#8b5cf6;border:1px solid #8b5cf633}
+.tool-usage{font-size:0.65rem;color:#555}
+.tool-try-btn{display:inline-block;padding:0.35rem 0.8rem;background:#ff5f1f;color:#fff;border-radius:6px;font-size:0.75rem;font-weight:600;transition:all 0.2s}
+.tool-try-btn:hover{background:#e5541b;transform:scale(1.04)}
 
 /* Bundles */
 .bundles{max-width:1100px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
@@ -53,7 +84,7 @@ a{color:inherit;text-decoration:none}
 .bundle-desc{color:#666;font-size:0.8rem;margin-bottom:1rem;min-height:40px}
 .bundle-items{text-align:left;font-size:0.75rem;color:#888;margin-bottom:1.2rem}
 .bundle-items div{padding:0.2rem 0}
-.bundle-items div::before{content:"✓ ";color:#10b981}
+.bundle-items div::before{content:"\2713 ";color:#10b981}
 .bundle-btn{display:block;padding:0.7rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s;cursor:pointer;border:none;width:100%}
 .bundle-btn:hover{background:#e5541b;transform:scale(1.02)}
 .bundle-free .bundle-btn{background:#10b981}
@@ -76,16 +107,6 @@ a{color:inherit;text-decoration:none}
 .product-buy{padding:0.4rem 1rem;background:#222;border-radius:6px;font-size:0.8rem;font-weight:600;color:#fff;transition:background 0.2s;cursor:pointer;border:none}
 .product-buy:hover{background:#ff5f1f}
 
-/* Free Tools */
-.free-tools{max-width:1000px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
-.free-tool{background:linear-gradient(145deg,#0d1f0d,#0d0d0d);border:1px solid #10b98133;border-radius:14px;padding:1.3rem;text-align:center;transition:all 0.3s}
-.free-tool:hover{border-color:#10b981;transform:translateY(-2px)}
-.free-tool-icon{font-size:2rem;margin-bottom:0.5rem}
-.free-tool-name{font-weight:700;margin-bottom:0.3rem}
-.free-tool-desc{color:#888;font-size:0.8rem;margin-bottom:1rem}
-.free-tool-btn{display:inline-block;padding:0.5rem 1.5rem;background:#10b981;color:#fff;border-radius:8px;font-weight:600;font-size:0.85rem;transition:all 0.2s}
-.free-tool-btn:hover{background:#0d9668;transform:scale(1.03)}
-
 /* Ebook */
 .ebook{max-width:800px;margin:0 auto;padding:0 2rem 3rem}
 .ebook-card{background:linear-gradient(145deg,#1a0a00,#111);border:1px solid #ff5f1f33;border-radius:20px;padding:2.5rem;display:flex;gap:2rem;align-items:center}
@@ -94,7 +115,7 @@ a{color:inherit;text-decoration:none}
 .ebook-info p{color:#888;font-size:0.85rem;margin-bottom:1rem}
 .ebook-info ul{list-style:none;font-size:0.8rem;color:#aaa;margin-bottom:1.2rem}
 .ebook-info ul li{padding:0.2rem 0}
-.ebook-info ul li::before{content:"📖 "}
+.ebook-info ul li::before{content:">> "}
 .ebook-price{font-size:1.8rem;font-weight:800;color:#ff5f1f;margin-bottom:1rem}
 .ebook-btn{display:inline-block;padding:0.8rem 2rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;transition:all 0.2s;cursor:pointer;border:none;font-size:1rem}
 .ebook-btn:hover{background:#e5541b;transform:scale(1.03)}
@@ -116,10 +137,9 @@ a{color:inherit;text-decoration:none}
 .ebook-grid-card .eg-price{font-size:1.4rem;font-weight:800;color:#ff5f1f;margin-bottom:0.7rem}
 .ebook-grid-card ul{list-style:none;font-size:0.75rem;color:#aaa;margin-bottom:1rem;flex:1}
 .ebook-grid-card ul li{padding:0.2rem 0}
-.ebook-grid-card ul li::before{content:"✓ ";color:#10b981;font-weight:700}
+.ebook-grid-card ul li::before{content:"\2713 ";color:#10b981;font-weight:700}
 .ebook-grid-btn{display:inline-block;padding:0.6rem 1.2rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s;cursor:pointer;border:none;text-align:center;width:100%}
 .ebook-grid-btn:hover{background:#e5541b;transform:scale(1.03)}
-
 
 /* Email Capture */
 .email-section{max-width:600px;margin:0 auto;padding:2rem;text-align:center}
@@ -182,76 +202,33 @@ a{color:inherit;text-decoration:none}
 .network-link{padding:0.3rem 0.8rem;background:#111;border:1px solid #1a1a1a;border-radius:6px;font-size:0.7rem;color:#888;transition:all 0.2s}
 .network-link:hover{border-color:#ff5f1f;color:#ff5f1f}
 
+@media(max-width:1024px){
+  .tool-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:768px){
   .hero h1{font-size:2rem}
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
   .ebook-card{flex-direction:column;text-align:center}
   .ebook-grid{grid-template-columns:repeat(2,1fr)}
   .bundles{grid-template-columns:1fr 1fr}
   .email-form{flex-direction:column}
 }
-/* Pricing Math Section */
-.math-section{max-width:1100px;margin:0 auto;padding:0 2rem 3rem}
-.math-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
-.math-card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem 1.5rem;text-align:center;position:relative;transition:all 0.3s}
-.math-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
-.math-card-highlight{border:2px solid #ff5f1f;background:linear-gradient(145deg,#1a0a00,#111)}
-.math-card-highlight::before{content:"BEST VALUE";position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-50%);background:#ff5f1f;color:#fff;font-size:0.65rem;font-weight:800;padding:0.25rem 1rem;border-radius:20px;letter-spacing:1px;white-space:nowrap}
-.math-card-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#888;margin-bottom:0.8rem}
-.math-card-price{font-size:3rem;font-weight:800;color:#fff;line-height:1}
-.math-card-price small{font-size:1rem;color:#666}
-.math-card-was{font-size:0.8rem;color:#ef4444;text-decoration:line-through;margin:0.3rem 0 0.8rem;min-height:1.2rem}
-.math-card-list{text-align:left;list-style:none;font-size:0.8rem;color:#aaa;margin-bottom:1.2rem}
-.math-card-list li{padding:0.3rem 0;padding-left:1.4rem;position:relative}
-.math-card-list li::before{content:"\2713";color:#10b981;position:absolute;left:0;font-weight:700}
-.math-card-note{font-size:0.8rem;color:#888;font-style:italic;margin-bottom:1rem}
-.math-card-savings{display:inline-block;background:#10b98120;border:1px solid #10b98133;color:#10b981;font-weight:700;font-size:0.85rem;padding:0.4rem 1rem;border-radius:8px;margin-bottom:1rem}
-.math-card-value{background:#ff5f1f15;border:1px solid #ff5f1f33;color:#ff5f1f;font-weight:700;font-size:0.85rem;padding:0.4rem 1rem;border-radius:8px;display:inline-block;margin-bottom:1rem}
-.math-card-btn{display:block;padding:0.7rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;border:none;cursor:pointer;transition:all 0.2s;width:100%}
-.math-card-btn:hover{background:#e5541b;transform:scale(1.02)}
-.math-competitors{background:linear-gradient(145deg,#0d0d0d,#111);border:1px solid #222;border-radius:16px;padding:2rem;overflow-x:auto}
-.math-competitors h3{font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;text-align:center;color:#fff}
-.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
-.comp-item{text-align:center;padding:1rem;background:#0a0a0a;border-radius:12px;border:1px solid #1a1a1a}
-.comp-item-name{font-size:0.75rem;color:#888;margin-bottom:0.3rem;font-weight:600}
-.comp-item-monthly{font-size:1.2rem;font-weight:800;color:#ef4444}
-.comp-item-yearly{font-size:0.75rem;color:#666;margin-top:0.2rem}
-.comp-total{text-align:center;padding:1rem;background:#ef444415;border:1px solid #ef444433;border-radius:12px;margin-bottom:1.5rem}
-.comp-total-label{font-size:0.85rem;color:#ef4444;margin-bottom:0.3rem}
-.comp-total-amount{font-size:2rem;font-weight:800;color:#ef4444}
-.comp-total-note{font-size:0.75rem;color:#666;margin-top:0.2rem}
-.comp-vs{display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:1.5rem;background:#10b98110;border:1px solid #10b98122;border-radius:12px}
-.comp-vs-them{text-align:center}
-.comp-vs-them .amount{font-size:1.5rem;font-weight:800;color:#ef4444}
-.comp-vs-them .label{font-size:0.75rem;color:#888}
-.comp-vs-arrow{font-size:1.5rem;color:#10b981;font-weight:800}
-.comp-vs-us{text-align:center}
-.comp-vs-us .amount{font-size:2rem;font-weight:800;color:#10b981}
-.comp-vs-us .label{font-size:0.75rem;color:#10b981;font-weight:600}
-.comp-vs-us .tag{font-size:0.7rem;background:#10b981;color:#fff;padding:0.15rem 0.6rem;border-radius:4px;display:inline-block;margin-top:0.3rem;font-weight:700}
-
-@media(max-width:768px){
-  .math-cards{grid-template-columns:1fr}
-  .comp-grid{grid-template-columns:repeat(2,1fr)}
-  .comp-vs{flex-direction:column;gap:1rem}
-}
-
 @media(max-width:480px){
+  .tool-grid{grid-template-columns:1fr}
   .bundles{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<div class="announce">Growing toolkit — more tools coming soon. Get Lifetime Access and never miss one.</div>
-<div class="countdown-bar">Launch pricing</div>
+<div class="announce">100+ free tools live now. New tools added weekly. Get Lifetime Access and never miss one.</div>
 
 <nav class="nav">
   <a href="https://spunkart.com" class="nav-brand">SpunkArt</a>
   <div class="nav-links">
     <a href="#tools">Tools</a>
-    <a href="#free-tools">Free</a>
-    <a href="#ebook">Ebook</a>
     <a href="#bundles">Bundles</a>
+    <a href="#ebook">Ebook</a>
     <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
     <a href="/blog">Blog</a>
     <a href="https://twitter.com/SpunkArt13" target="_blank">@SpunkArt13</a>
@@ -259,35 +236,62 @@ a{color:inherit;text-decoration:none}
 </nav>
 
 <section class="hero">
-  <h1>Edge Tools That Actually Work</h1>
-  <p>18 Cloudflare Workers + free tools + ebook. New tools added regularly. Built by one person running 120+ live websites. Deploy in 60 seconds. Own forever.</p>
+  <h1>100+ Free Tools for Founders, Developers & Vibe Coders</h1>
+  <p>Every tool runs in your browser. No signup. No tracking. No BS. Plus premium Cloudflare Workers and ebooks for builders who want to ship fast.</p>
   <div class="hero-stats">
-    <span><strong>18</strong> Tools</span>
+    <span><strong id="totalToolCount">98</strong> Free Tools</span>
+    <span><strong>18</strong> Premium Workers</span>
     <span><strong>120+</strong> Sites Built</span>
-    <span><strong>7</strong> Networks</span>
-    <span><strong>&lt;50ms</strong> Global</span>
+    <span><strong>8</strong> Ebooks</span>
+    <span><strong id="totalUsageCount">0</strong> Total Uses</span>
   </div>
-<div style="text-align:center;margin:1rem auto;padding:0.8rem;max-width:500px;background:#ff5f1f12;border:1px solid #ff5f1f33;border-radius:12px">
-  <p style="font-size:0.9rem;color:#ff5f1f;font-weight:700;margin-bottom:0.2rem">Growing Toolkit — More Tools Coming Soon</p>
-  <p style="font-size:0.75rem;color:#888">New tools added regularly. Buy Lifetime and get every future tool free.</p>
-</div>
+</section>
+
+<!-- Tools Section -->
+<section id="tools">
+  <div class="section-title">
+    <h2>All Tools -- Free, No Signup</h2>
+    <p>Click any tool to use it instantly. Every tool runs 100% in your browser.</p>
+  </div>
+
+  <div class="filter-section">
+    <input type="text" class="search-box" id="toolSearch" placeholder="Search 98 tools... (e.g. JSON, color, SEO, PDF)">
+    <div class="filter-buttons" id="filterButtons">
+      <button class="filter-btn active" data-cat="all">All</button>
+      <button class="filter-btn" data-cat="Dev" style="--c:#3b82f6">Dev</button>
+      <button class="filter-btn" data-cat="Design" style="--c:#a855f7">Design</button>
+      <button class="filter-btn" data-cat="SEO" style="--c:#f59e0b">SEO</button>
+      <button class="filter-btn" data-cat="Business" style="--c:#10b981">Business</button>
+      <button class="filter-btn" data-cat="Content" style="--c:#ec4899">Content</button>
+      <button class="filter-btn" data-cat="Security" style="--c:#ef4444">Security</button>
+      <button class="filter-btn" data-cat="Analytics" style="--c:#06b6d4">Analytics</button>
+      <button class="filter-btn" data-cat="AI" style="--c:#8b5cf6">AI</button>
+    </div>
+    <div class="tool-count-display" id="toolCountDisplay">Showing all 98 tools</div>
+  </div>
+
+  <div class="tool-grid" id="toolGrid"></div>
 </section>
 
 <!-- Bundles -->
 <section id="bundles">
+  <div class="section-title">
+    <h2>Premium Cloudflare Workers</h2>
+    <p>18 production-ready Workers. Single .js files. Deploy with <code>wrangler deploy</code>. Done.</p>
+  </div>
   <div class="bundles">
     <div class="bundle bundle-free">
       <div class="bundle-name">Free</div>
       <div class="bundle-price">$0</div>
-      <div class="bundle-desc">Try our free tools — no signup</div>
+      <div class="bundle-desc">Try our 98 free tools -- no signup</div>
       <div class="bundle-items">
-        <div>Password Generator</div>
+        <div>98 browser-based tools</div>
         <div>PDF Merge/Split/Compress</div>
         <div>Budget Tracker</div>
         <div>Scam Checker</div>
-        <div>Affiliate link included</div>
+        <div>All tools free forever</div>
       </div>
-      <a href="#free-tools" class="bundle-btn" style="background:#10b981">Try Free Tools</a>
+      <a href="#tools" class="bundle-btn" style="background:#10b981">Browse Free Tools</a>
     </div>
     <div class="bundle">
       <div class="bundle-name">Starter</div>
@@ -301,7 +305,7 @@ a{color:inherit;text-decoration:none}
         <div>6 months updates</div>
         <div>Earn 25% per referral</div>
       </div>
-      <button class="bundle-btn" onclick="buy('starter')">Buy Starter — $9.99</button>
+      <button class="bundle-btn" onclick="buy('starter')">Buy Starter -- $9.99</button>
     </div>
     <div class="bundle bundle-pop">
       <div class="bundle-name">Pro Bundle</div>
@@ -315,12 +319,12 @@ a{color:inherit;text-decoration:none}
         <div>Priority support</div>
         <div>Earn 25% cash per referral</div>
       </div>
-      <button class="bundle-btn" onclick="buy('pro')">Buy Pro — $19.99</button>
+      <button class="bundle-btn" onclick="buy('pro')">Buy Pro -- $19.99</button>
     </div>
     <div class="bundle">
       <div class="bundle-name">Empire</div>
       <div class="bundle-price">$49<small>.99</small></div>
-      <div class="bundle-desc">Everything + ebook — best value bundle</div>
+      <div class="bundle-desc">Everything + ebook -- best value bundle</div>
       <div class="bundle-items">
         <div>All 18 Workers</div>
         <div>AI Website Empire Ebook</div>
@@ -330,12 +334,12 @@ a{color:inherit;text-decoration:none}
         <div>1-on-1 setup help</div>
         <div>Earn 30% cash per referral</div>
       </div>
-      <button class="bundle-btn" onclick="buy('empire')">Buy Empire — $49.99</button>
+      <button class="bundle-btn" onclick="buy('empire')">Buy Empire -- $49.99</button>
     </div>
     <div class="bundle">
       <div class="bundle-name">Lifetime</div>
       <div class="bundle-price">$99<small>.99</small></div>
-      <div class="bundle-desc">Every tool forever — 50 new tools coming</div>
+      <div class="bundle-desc">Every tool forever -- new tools added weekly</div>
       <div class="bundle-items">
         <div>All 18 Workers + every future tool</div>
         <div>Ebook + AI Prompts + Templates</div>
@@ -345,7 +349,7 @@ a{color:inherit;text-decoration:none}
         <div>1-on-1 strategy call</div>
         <div>Earn 35% cash per referral + bonuses</div>
       </div>
-      <button class="bundle-btn" onclick="buy('lifetime')">Buy Lifetime — $99.99</button>
+      <button class="bundle-btn" onclick="buy('lifetime')">Buy Lifetime -- $99.99</button>
     </div>
   </div>
   <!-- Reseller upsell strip -->
@@ -354,413 +358,6 @@ a{color:inherit;text-decoration:none}
       <span style="color:#10b981;font-weight:700;font-size:0.9rem">Want to RESELL these tools? </span>
       <span style="color:#888;font-size:0.85rem">Buy once from $99, rebrand as your own, sell unlimited copies, keep 100% profit &rarr;</span>
     </a>
-  </div>
-</section>
-
-<!-- RESELLER MEGA CTA -->
-<section style="max-width:1100px;margin:0 auto;padding:2rem">
-  <div style="background:linear-gradient(145deg,#0a1f12,#0d0d0d);border:2px solid #10b981;border-radius:20px;padding:2.5rem;position:relative;overflow:hidden">
-    <div style="position:absolute;top:0;right:0;background:#10b981;color:#fff;font-size:0.7rem;font-weight:800;padding:0.4rem 2rem;border-radius:0 0 0 12px;letter-spacing:1px">HIGHEST PROFIT</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center">
-      <div>
-        <h2 style="font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:0.5rem">Resell Our Tools = <span style="color:#10b981">Keep 100%</span></h2>
-        <p style="color:#888;margin-bottom:1.2rem">Buy the reseller license once. Rebrand all 18 tools as your own. Sell to your customers at any price. We take zero cut. Ever.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem">
-          <div style="background:#111;border:1px solid #10b98133;border-radius:10px;padding:1rem;text-align:center">
-            <div style="font-size:1.8rem;font-weight:800;color:#10b981">$99</div>
-            <div style="font-size:0.7rem;color:#888">Starter · 5 tools</div>
-          </div>
-          <div style="background:#111;border:2px solid #10b981;border-radius:10px;padding:1rem;text-align:center">
-            <div style="font-size:1.8rem;font-weight:800;color:#10b981">$199</div>
-            <div style="font-size:0.7rem;color:#10b981;font-weight:700">All 18 · Most Popular</div>
-          </div>
-          <div style="background:#111;border:1px solid #10b98133;border-radius:10px;padding:1rem;text-align:center">
-            <div style="font-size:1.8rem;font-weight:800;color:#10b981">$499</div>
-            <div style="font-size:0.7rem;color:#888">Agency · Everything</div>
-          </div>
-        </div>
-        <a href="/reseller" style="display:inline-block;padding:0.9rem 2.5rem;background:#10b981;color:#fff;border-radius:50px;font-weight:700;font-size:1rem;transition:all 0.2s">Start Reselling Today &rarr;</a>
-      </div>
-      <div style="background:#0a0a0a;border:1px solid #1a1a1a;border-radius:14px;padding:1.5rem">
-        <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:#10b981;font-weight:700;margin-bottom:1rem">Revenue Calculator</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid #1a1a1a">
-          <span style="color:#888;font-size:0.85rem">Your investment</span>
-          <span style="color:#fff;font-weight:700">$199</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid #1a1a1a">
-          <span style="color:#888;font-size:0.85rem">Sell each tool at</span>
-          <span style="color:#fff;font-weight:700">$9.99</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid #1a1a1a">
-          <span style="color:#888;font-size:0.85rem">Break even after</span>
-          <span style="color:#10b981;font-weight:700">20 sales</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid #1a1a1a">
-          <span style="color:#888;font-size:0.85rem">100 sales revenue</span>
-          <span style="color:#10b981;font-weight:700">$999</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0;border-bottom:1px solid #1a1a1a">
-          <span style="color:#888;font-size:0.85rem">500 sales revenue</span>
-          <span style="color:#10b981;font-weight:700">$4,995</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.8rem 0;margin-top:0.3rem">
-          <span style="color:#fff;font-weight:700">Your profit margin</span>
-          <span style="color:#10b981;font-weight:800;font-size:1.3rem">100%</span>
-        </div>
-        <p style="font-size:0.7rem;color:#555;margin-top:0.5rem;text-align:center">No royalties. No revenue share. No monthly fees. Ever.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Individual Tools -->
-<section id="tools">
-  <div class="section-title">
-    <h2>18 Cloudflare Workers</h2>
-    <p>Each tool is a single .js file. Deploy with <code>wrangler deploy</code>. Done. No frameworks, no dependencies.</p>
-  </div>
-
-  <div class="products">
-    <div class="product">
-      <div class="product-icon">🛡️</div>
-      <div class="product-name">Bot Blocker Pro</div>
-      <div class="product-desc">Stop scrapers, spam bots, and bad crawlers. Rate limiting, honeypots, real-time dashboard.</div>
-      <div class="product-tags"><span class="tag">Security</span><span class="tag">Protection</span><span class="tag">Anti-Spam</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('botblock')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📊</div>
-      <div class="product-name">Uptime Monitor</div>
-      <div class="product-desc">Monitor any website from Cloudflare's edge. Public status page, webhook alerts, 90-day history.</div>
-      <div class="product-tags"><span class="tag">Monitoring</span><span class="tag">Status Page</span><span class="tag">Alerts</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('uptime')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📈</div>
-      <div class="product-name">Privacy Analytics</div>
-      <div class="product-desc">Cookie-free, GDPR-compliant analytics. Page views, visitors, referrers. One script tag. Own your data.</div>
-      <div class="product-tags"><span class="tag">Analytics</span><span class="tag">Privacy</span><span class="tag">GDPR</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('analytics')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🔗</div>
-      <div class="product-name">Link Shortener</div>
-      <div class="product-desc">Custom branded short links with click analytics, QR codes, referrer tracking, and admin dashboard.</div>
-      <div class="product-tags"><span class="tag">Links</span><span class="tag">Analytics</span><span class="tag">Marketing</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('links')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🧪</div>
-      <div class="product-name">A/B Testing Engine</div>
-      <div class="product-desc">Split test anything at the edge. Zero latency, cookie-based sticky sessions, conversion tracking dashboard.</div>
-      <div class="product-tags"><span class="tag">Testing</span><span class="tag">CRO</span><span class="tag">Optimization</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('abtest')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🖼️</div>
-      <div class="product-name">Image Optimizer</div>
-      <div class="product-desc">Auto-convert images to WebP/AVIF on the fly. Resize via URL params. Cache at the edge. Zero config.</div>
-      <div class="product-tags"><span class="tag">Performance</span><span class="tag">Images</span><span class="tag">Speed</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('images')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">↪️</div>
-      <div class="product-name">Redirect Manager</div>
-      <div class="product-desc">Manage bulk URL redirects from a dashboard. Wildcard patterns, click tracking, CSV import/export.</div>
-      <div class="product-tags"><span class="tag">SEO</span><span class="tag">Redirects</span><span class="tag">Migration</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('redirect')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📧</div>
-      <div class="product-name">Email Forwarder</div>
-      <div class="product-desc">Custom domain email forwarding. Catch-all, spam filtering, auto-reply, email log dashboard.</div>
-      <div class="product-tags"><span class="tag">Email</span><span class="tag">Domain</span><span class="tag">Forwarding</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('email')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🤖</div>
-      <div class="product-name">Discord Bot</div>
-      <div class="product-desc">Serverless Discord slash commands. Polls, dice, reminders, custom commands. No server needed.</div>
-      <div class="product-tags"><span class="tag">Discord</span><span class="tag">Bot</span><span class="tag">Serverless</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('discord')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🔒</div>
-      <div class="product-name">Auto-SSL Monitor</div>
-      <div class="product-desc">Monitor SSL certificates across all domains. Auto-alerts via Slack/Discord before expiry. Never go down.</div>
-      <div class="product-tags"><span class="tag">Security</span><span class="tag">Monitoring</span><span class="tag">SSL</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('ssl')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🔍</div>
-      <div class="product-name">API Monitor</div>
-      <div class="product-desc">Monitor API endpoints health from the edge. Custom headers, auth, Cron checks, webhook alerts, dashboard.</div>
-      <div class="product-tags"><span class="tag">API</span><span class="tag">Monitoring</span><span class="tag">DevOps</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('apimon')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">📋</div>
-      <div class="product-name">Log Analyzer</div>
-      <div class="product-desc">Collect, search, and tail logs in real time. Full-text search, level filtering, retention policies.</div>
-      <div class="product-tags"><span class="tag">Logging</span><span class="tag">Search</span><span class="tag">DevOps</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('logs')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🗑️</div>
-      <div class="product-name">Cache Purger</div>
-      <div class="product-desc">One-click cache management dashboard. Purge by URL, tag, or everything. Cache status checker.</div>
-      <div class="product-tags"><span class="tag">Cache</span><span class="tag">Performance</span><span class="tag">DevOps</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('cache')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🎵</div>
-      <div class="product-name">Spotify Connect Widget</div>
-      <div class="product-desc">Show your Now Playing track on any website. Embeddable widget, auto-refresh, privacy-first.</div>
-      <div class="product-tags"><span class="tag">Widget</span><span class="tag">Music</span><span class="tag">Social</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('spotify')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🦀</div>
-      <div class="product-name">OpenClaw Game</div>
-      <div class="product-desc">Full claw machine game running on the edge. Provably fair, mobile responsive, built-in analytics.</div>
-      <div class="product-tags"><span class="tag">Game</span><span class="tag">Interactive</span><span class="tag">Engagement</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('openclaw')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">💳</div>
-      <div class="product-name">Edge Checkout</div>
-      <div class="product-desc">Accept crypto + card payments with zero platform fees. Product catalog, coupons, order tracking, download delivery.</div>
-      <div class="product-tags"><span class="tag">Payments</span><span class="tag">Crypto</span><span class="tag">E-Commerce</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('checkout')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">🔑</div>
-      <div class="product-name">License Server</div>
-      <div class="product-desc">Generate, validate, and revoke license keys. Domain binding, activation limits, admin dashboard.</div>
-      <div class="product-tags"><span class="tag">Licensing</span><span class="tag">Protection</span><span class="tag">SaaS</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('license')">Buy</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-icon">💾</div>
-      <div class="product-name">Database Backup</div>
-      <div class="product-desc">Automated KV/D1 backups on a schedule. Restore with one click. Never lose data. Webhook notifications.</div>
-      <div class="product-tags"><span class="tag">Backup</span><span class="tag">Database</span><span class="tag">Recovery</span></div>
-      <div class="product-footer">
-        <span class="product-price">$4.99</span>
-        <button class="product-buy" onclick="buy('backup')">Buy</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Free Tools -->
-<section id="free-tools">
-  <div class="section-title">
-    <h2>23 Free Tools — No Signup Required</h2>
-    <p>100% browser-based. No data leaves your device. No accounts. Just use them.</p>
-  </div>
-
-  <div class="free-tools">
-    <div class="free-tool">
-      <div class="free-tool-icon">🔐</div>
-      <div class="free-tool-name">Password Generator</div>
-      <div class="free-tool-desc">Cryptographically secure passwords. Custom length, character sets, strength meter.</div>
-      <a href="/password-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📄</div>
-      <div class="free-tool-name">PDF Tools</div>
-      <div class="free-tool-desc">Merge, split, compress PDFs. Convert images to PDF. Everything stays in your browser.</div>
-      <a href="/pdf-tools" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">💰</div>
-      <div class="free-tool-name">Budget Tracker</div>
-      <div class="free-tool-desc">Track income and expenses. Categories, charts, CSV export. Data in localStorage only.</div>
-      <a href="/budget-tracker" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🕵️</div>
-      <div class="free-tool-name">Scam Checker</div>
-      <div class="free-tool-desc">Paste any URL and get an instant safety score. SSL, domain reputation, TLD risk analysis.</div>
-      <a href="https://scam.ink/scam-checker" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🏷️</div>
-      <div class="free-tool-name">Meta Tag Generator</div>
-      <div class="free-tool-desc">Generate perfect SEO meta tags, Open Graph, and Twitter Card tags with character validation.</div>
-      <a href="/meta-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🎨</div>
-      <div class="free-tool-name">Color Palette</div>
-      <div class="free-tool-desc">Generate harmonious 5-color palettes. Complementary, analogous, triadic modes with export.</div>
-      <a href="/color-palette" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📱</div>
-      <div class="free-tool-name">QR Code Generator</div>
-      <div class="free-tool-desc">Generate custom QR codes with brand colors. Download as PNG. No watermark.</div>
-      <a href="/qr-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🛡️</div>
-      <div class="free-tool-name">Headers Checker</div>
-      <div class="free-tool-desc">Check any website's HTTP security headers. Get a grade A-F with fix recommendations.</div>
-      <a href="/headers-checker" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📋</div>
-      <div class="free-tool-name">JSON Formatter</div>
-      <div class="free-tool-desc">Paste messy JSON, get it formatted with syntax highlighting, validation, and tree view.</div>
-      <a href="/json-formatter" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🤖</div>
-      <div class="free-tool-name">Robots.txt Generator</div>
-      <div class="free-tool-desc">Generate perfect robots.txt files with toggles for 16 bots. Copy-paste ready.</div>
-      <a href="/robots-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">✍️</div>
-      <div class="free-tool-name">Social Bio Generator</div>
-      <div class="free-tool-desc">Generate bios for X, LinkedIn, Instagram, TikTok, and GitHub. 10 bios with character counts.</div>
-      <a href="/social-bio" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🌈</div>
-      <div class="free-tool-name">CSS Gradient Generator</div>
-      <div class="free-tool-desc">Design gradients visually. Linear, radial, conic. Presets gallery. Copy CSS code.</div>
-      <a href="/css-gradient" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🖼️</div>
-      <div class="free-tool-name">Favicon Generator</div>
-      <div class="free-tool-desc">Upload any image, get all favicon sizes. ICO, PNG, Apple Touch. Download as ZIP.</div>
-      <a href="/favicon-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">✏️</div>
-      <div class="free-tool-name">Markdown Editor</div>
-      <div class="free-tool-desc">Live preview markdown editor. Toolbar, export to HTML, autosave. Split-pane layout.</div>
-      <a href="/markdown-editor" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🧾</div>
-      <div class="free-tool-name">Invoice Generator</div>
-      <div class="free-tool-desc">Create professional invoices in seconds. Add line items, tax, notes. Export to PDF.</div>
-      <a href="/invoice-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🗺️</div>
-      <div class="free-tool-name">Sitemap Generator</div>
-      <div class="free-tool-desc">Generate XML sitemaps for any site. Crawl pages, set priorities, download ready-to-upload files.</div>
-      <a href="/sitemap-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">✉️</div>
-      <div class="free-tool-name">Email Signature Generator</div>
-      <div class="free-tool-desc">Design HTML email signatures with logo, links, and social icons. Copy-paste into any email client.</div>
-      <a href="/email-signature" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">💡</div>
-      <div class="free-tool-name">Business Name Generator</div>
-      <div class="free-tool-desc">Generate creative business names instantly. Check domain availability. Save your favorites.</div>
-      <a href="/business-name" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📜</div>
-      <div class="free-tool-name">Privacy Policy Generator</div>
-      <div class="free-tool-desc">Generate a GDPR/CCPA-compliant privacy policy for your site. Customize and download as HTML.</div>
-      <a href="/privacy-policy-generator" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">🗜️</div>
-      <div class="free-tool-name">Image Compressor</div>
-      <div class="free-tool-desc">Compress images in your browser. Adjust quality, resize, convert formats. No uploads needed.</div>
-      <a href="/image-compressor" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📝</div>
-      <div class="free-tool-name">Landing Page Copy Generator</div>
-      <div class="free-tool-desc">Generate high-converting landing page copy. Headlines, CTAs, features sections. Ready to use.</div>
-      <a href="/landing-page-copy" class="free-tool-btn">Use Free</a>
-    </div>
-    <div class="free-tool">
-      <div class="free-tool-icon">📊</div>
-      <div class="free-tool-name">Uptime Monitor</div>
-      <div class="free-tool-desc">Monitor your websites from the browser. Check status, response times, and uptime history.</div>
-      <a href="/uptime-monitor" class="free-tool-btn">Use Free</a>
-    </div>
   </div>
 </section>
 
@@ -774,11 +371,11 @@ a{color:inherit;text-decoration:none}
   <!-- Bundle Deal -->
   <div class="ebook-bundle">
     <h3>Complete Ebook Library</h3>
-    <div class="bundle-save">Save 61% — Get all 8 ebooks</div>
+    <div class="bundle-save">Save 61% -- Get all 8 ebooks</div>
     <div class="bundle-orig">Normally $203.93</div>
     <div class="bundle-price">$79.99</div>
     <div class="bundle-desc">Every ebook in the collection. One price. Instant delivery.</div>
-    <button class="ebook-bundle-btn" onclick="buy('ebook-bundle')">Get All 8 Ebooks — $79.99</button>
+    <button class="ebook-bundle-btn" onclick="buy('ebook-bundle')">Get All 8 Ebooks -- $79.99</button>
   </div>
 
   <!-- Original Ebook (featured) -->
@@ -789,7 +386,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="ebook-info">
         <h3>The AI Website Empire Blueprint</h3>
-        <p>The exact system, prompts, and strategies used to build a network of 120+ live websites in less than one week — with zero coding experience required.</p>
+        <p>The exact system, prompts, and strategies used to build a network of 120+ live websites in less than one week -- with zero coding experience required.</p>
         <ul>
           <li>Python generators that output 20+ sites at once</li>
           <li>Free hosting on GitHub Pages with custom domains</li>
@@ -800,7 +397,7 @@ a{color:inherit;text-decoration:none}
           <li>Source code for every generator</li>
         </ul>
         <div class="ebook-price">$14.99</div>
-        <button class="ebook-btn" onclick="buy('ebook')">Buy the Ebook — $14.99</button>
+        <button class="ebook-btn" onclick="buy('ebook')">Buy the Ebook -- $14.99</button>
       </div>
     </div>
   </div>
@@ -816,7 +413,7 @@ a{color:inherit;text-decoration:none}
         <li>Real workflows, not theory</li>
         <li>Copy-paste prompt templates</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-automation')">Buy — $29.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-automation')">Buy -- $29.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>The 120-Site Empire Blueprint</h4>
@@ -827,7 +424,7 @@ a{color:inherit;text-decoration:none}
         <li>Generator scripts included</li>
         <li>SEO cross-linking strategy</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-empire')">Buy — $39.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-empire')">Buy -- $39.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>Vibe Coding Mastery</h4>
@@ -838,7 +435,7 @@ a{color:inherit;text-decoration:none}
         <li>Prompt-first development</li>
         <li>From idea to deploy in hours</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-vibe')">Buy — $24.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-vibe')">Buy -- $24.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>Free Tools That Print Money</h4>
@@ -849,7 +446,7 @@ a{color:inherit;text-decoration:none}
         <li>Traffic without ad spend</li>
         <li>Real case studies included</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-tools')">Buy — $19.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-tools')">Buy -- $19.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>Building AI Agents</h4>
@@ -860,7 +457,7 @@ a{color:inherit;text-decoration:none}
         <li>Multi-agent architectures</li>
         <li>Production-ready patterns</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-agents')">Buy — $29.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-agents')">Buy -- $29.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>The Passive Income Machine</h4>
@@ -871,7 +468,7 @@ a{color:inherit;text-decoration:none}
         <li>Set up once, earn forever</li>
         <li>Step-by-step blueprints</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-passive')">Buy — $24.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-passive')">Buy -- $24.99</button>
     </div>
     <div class="ebook-grid-card">
       <h4>The No-Code Empire</h4>
@@ -882,7 +479,7 @@ a{color:inherit;text-decoration:none}
         <li>Automation without devs</li>
         <li>Launch in days, not months</li>
       </ul>
-      <button class="ebook-grid-btn" onclick="buy('ebook-nocode')">Buy — $19.99</button>
+      <button class="ebook-grid-btn" onclick="buy('ebook-nocode')">Buy -- $19.99</button>
     </div>
   </div>
 </section>
@@ -919,156 +516,25 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- Competitor Comparison -->
-<section>
-  <div class="section-title">
-    <h2>Why SpunkArt vs The Competition</h2>
-    <p>Stop paying monthly. Own your tools forever.</p>
-  </div>
-  <div style="max-width:800px;margin:0 auto;padding:0 2rem 3rem">
-    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
-      <thead>
-        <tr style="border-bottom:2px solid #ff5f1f">
-          <th style="text-align:left;padding:0.8rem;color:#888">Feature</th>
-          <th style="text-align:center;padding:0.8rem;color:#ff5f1f;font-weight:800">SpunkArt</th>
-          <th style="text-align:center;padding:0.8rem;color:#666">UptimeRobot</th>
-          <th style="text-align:center;padding:0.8rem;color:#666">Plausible</th>
-          <th style="text-align:center;padding:0.8rem;color:#666">Bitly</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Uptime Monitoring</td><td style="text-align:center;color:#10b981;font-weight:700">$4.99 once</td><td style="text-align:center;color:#ef4444">$7/mo</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Privacy Analytics</td><td style="text-align:center;color:#10b981;font-weight:700">$4.99 once</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#ef4444">$9/mo</td><td style="text-align:center;color:#666">—</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Link Shortener</td><td style="text-align:center;color:#10b981;font-weight:700">$4.99 once</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#ef4444">$35/mo</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">A/B Testing</td><td style="text-align:center;color:#10b981;font-weight:700">$4.99 once</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Bot Protection</td><td style="text-align:center;color:#10b981;font-weight:700">$4.99 once</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td><td style="text-align:center;color:#666">—</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Own Your Data</td><td style="text-align:center;color:#10b981;font-weight:700">Yes</td><td style="text-align:center;color:#ef4444">No</td><td style="text-align:center;color:#ef4444">No</td><td style="text-align:center;color:#ef4444">No</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Source Code</td><td style="text-align:center;color:#10b981;font-weight:700">Yes</td><td style="text-align:center;color:#ef4444">No</td><td style="text-align:center;color:#ef4444">No</td><td style="text-align:center;color:#ef4444">No</td></tr>
-        <tr style="border-bottom:1px solid #1a1a1a"><td style="padding:0.7rem">Monthly Cost</td><td style="text-align:center;color:#10b981;font-weight:700">$0 forever</td><td style="text-align:center;color:#ef4444">$7-57/mo</td><td style="text-align:center;color:#ef4444">$9-99/mo</td><td style="text-align:center;color:#ef4444">$35-300/mo</td></tr>
-        <tr><td style="padding:0.7rem;font-weight:700">Yearly Cost</td><td style="text-align:center;color:#10b981;font-weight:800;font-size:1.1rem">$19.99 once</td><td style="text-align:center;color:#ef4444">$84/yr</td><td style="text-align:center;color:#ef4444">$108/yr</td><td style="text-align:center;color:#ef4444">$420/yr</td></tr>
-      </tbody>
-    </table>
-    <p style="text-align:center;margin-top:1.5rem;color:#888;font-size:0.85rem">Comparable tools cost <span style="color:#10b981;font-weight:800">$51+/month</span> combined. SpunkArt: one payment, own forever.</p>
-    <div style="text-align:center;margin-top:1rem"><a href="#bundles" style="display:inline-block;padding:0.8rem 2rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700">Own All 18 Tools — $19.99 Once</a></div>
-  </div>
-</section>
-
-<!-- The Math: Why Bundles Win -->
-<section>
-  <div class="section-title">
-    <h2 style="background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent">The Math: Why Bundles Win</h2>
-    <p>Stop overpaying. Here's what you actually get.</p>
-  </div>
-  <div class="math-section">
-    <div class="math-cards">
-
-      <!-- Card 1: 1 Tool -->
-      <div class="math-card">
-        <div class="math-card-label">1 Tool</div>
-        <div class="math-card-price">$4<small>.99</small></div>
-        <div class="math-card-was">&nbsp;</div>
-        <ul class="math-card-list">
-          <li>1 Cloudflare Worker</li>
-          <li>Source code</li>
-          <li>6 months updates</li>
-        </ul>
-        <div class="math-card-note">Good for trying us out</div>
-        <button class="math-card-btn" onclick="buy('botblock')" style="background:#333">Buy 1 Tool — $4.99</button>
-      </div>
-
-      <!-- Card 2: All 18 Tools (highlighted) -->
-      <div class="math-card math-card-highlight">
-        <div class="math-card-label" style="color:#ff5f1f">All 18 Tools</div>
-        <div class="math-card-price">$19<small>.99</small></div>
-        <div class="math-card-was">$89.82 if bought separately</div>
-        <ul class="math-card-list">
-          <li>ALL 18 Cloudflare Workers</li>
-          <li>Source code + wrangler configs</li>
-          <li>1 year updates</li>
-          <li>Priority support</li>
-        </ul>
-        <div class="math-card-savings">Save 78% vs buying individually</div>
-        <div class="math-card-value">$89.82 value for $19.99</div>
-        <button class="math-card-btn" onclick="buy('pro')">Buy All 18 — $19.99</button>
-      </div>
-
-      <!-- Card 3: Empire + Lifetime -->
-      <div class="math-card" style="border-color:#10b98144">
-        <div class="math-card-label" style="color:#10b981">Empire + Lifetime</div>
-        <div class="math-card-price">$49<small>.99</small> <span style="font-size:0.9rem;color:#666">/ $99.99</span></div>
-        <div class="math-card-was">&nbsp;</div>
-        <ul class="math-card-list">
-          <li>All 18 Workers + every future tool</li>
-          <li>Ebook ($14.99 value)</li>
-          <li>50 AI Prompts ($29.99 value)</li>
-          <li>Firebase Templates ($19.99 value)</li>
-          <li>Lifetime updates forever</li>
-          <li>1-on-1 setup help</li>
-        </ul>
-        <div class="math-card-savings">Total value: $250+ for $49.99</div>
-        <div class="math-card-value">You save $200+</div>
-        <button class="math-card-btn" onclick="buy('empire')" style="background:#10b981">Buy Empire — $49.99</button>
-      </div>
-
-    </div>
-
-    <!-- What Others Charge Monthly -->
-    <div class="math-competitors">
-      <h3>What Others Charge <span style="color:#ef4444">Monthly</span> (Starting Prices)</h3>
-      <div class="comp-grid">
-        <div class="comp-item">
-          <div class="comp-item-name">UptimeRobot Pro</div>
-          <div class="comp-item-monthly">$7/mo</div>
-          <div class="comp-item-yearly">= $84/yr</div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-item-name">Plausible Analytics</div>
-          <div class="comp-item-monthly">$9/mo</div>
-          <div class="comp-item-yearly">= $108/yr</div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-item-name">Bitly Pro</div>
-          <div class="comp-item-monthly">$35/mo</div>
-          <div class="comp-item-yearly">= $420/yr</div>
-        </div>
-        <div class="comp-item" style="border-color:#ef444433;background:#ef444408">
-          <div class="comp-item-name" style="color:#ef4444">TOTAL (3 tools)</div>
-          <div class="comp-item-monthly">$51/mo</div>
-          <div class="comp-item-yearly">= $612/yr</div>
-        </div>
-      </div>
-      <div class="comp-vs">
-        <div class="comp-vs-them">
-          <div class="amount">$612/yr</div>
-          <div class="label">3 comparable tools (entry-level monthly)</div>
-        </div>
-        <div class="comp-vs-arrow">vs</div>
-        <div class="comp-vs-us">
-          <div class="amount">$19.99</div>
-          <div class="label">ALL 18 SpunkArt tools</div>
-          <div class="tag">ONE-TIME PAYMENT</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- FAQ -->
 <section>
   <div class="section-title"><h2>FAQ</h2></div>
   <div class="faq">
     <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Do I need coding experience? <span>+</span></div>
-      <div class="faq-a">No. Each Worker is a single JavaScript file. Copy it, run <code>wrangler deploy</code>, done. The ebook walks through everything step-by-step.</div>
+      <div class="faq-q">Are the 98 tools really free? <span>+</span></div>
+      <div class="faq-a">Yes. Every tool runs 100% in your browser with no signup, no account, and no data leaving your device. Free forever.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What do I need to use these? <span>+</span></div>
-      <div class="faq-a">A free Cloudflare account. Workers have a generous free tier (100,000 requests/day). Most tools work entirely within the free tier.</div>
+      <div class="faq-q">What are the premium Cloudflare Workers? <span>+</span></div>
+      <div class="faq-a">18 production-ready server-side tools you deploy to Cloudflare. Each is a single .js file. Run <code>wrangler deploy</code> and you're live. Uptime monitors, analytics, bot blockers, and more.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Do I need coding experience? <span>+</span></div>
+      <div class="faq-a">No. Free tools work instantly in the browser. For premium Workers, each is a single JavaScript file. Copy it, run <code>wrangler deploy</code>, done. The ebook walks through everything step-by-step.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">Can I modify the source code? <span>+</span></div>
-      <div class="faq-a">Yes! You get full, unminified source code. Customize colors, branding, features — it's yours.</div>
+      <div class="faq-a">Yes! You get full, unminified source code. Customize colors, branding, features -- it's yours.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">Do I get updates? <span>+</span></div>
@@ -1079,45 +545,13 @@ a{color:inherit;text-decoration:none}
       <div class="faq-a">Yes, 30-day money-back guarantee. If it doesn't work for you, full refund, no questions asked.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What payment methods do you accept? <span>+</span></div>
-      <div class="faq-a">We accept all major credit/debit cards via Gumroad's secure checkout.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">Can I resell these tools? <span>+</span></div>
-      <div class="faq-a">Yes! Check out our <a href="/reseller" style="color:#ff5f1f">Reseller Program</a> — white-label all tools, rebrand them, keep 100% of profits. From $99.</div>
+      <div class="faq-a">Yes! Check out our <a href="/reseller" style="color:#ff5f1f">Reseller Program</a> -- white-label all tools, rebrand them, keep 100% of profits. From $99.</div>
     </div>
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">How do I get support? <span>+</span></div>
       <div class="faq-a">DM us on X <a href="https://twitter.com/SpunkArt13" style="color:#ff5f1f">@SpunkArt13</a> or email hello@spunkart.com. Pro and Empire get priority responses.</div>
     </div>
-  </div>
-</section>
-
-<!-- Reseller CTA -->
-<section style="max-width:900px;margin:0 auto 2rem;padding:0 2rem">
-  <div style="background:linear-gradient(145deg,#0a1f12,#111);border:2px solid #10b981;border-radius:20px;padding:2.5rem;text-align:center">
-    <div style="display:inline-block;padding:0.3rem 1rem;background:#10b98115;border:1px solid #10b98133;border-radius:20px;font-size:0.75rem;color:#10b981;font-weight:600;margin-bottom:1rem">BIGGEST MONEY MAKER</div>
-    <h2 style="font-size:2rem;margin-bottom:0.5rem;color:#fff">Why Buy 1 When You Can <span style="color:#10b981">Sell 1,000?</span></h2>
-    <p style="color:#888;margin-bottom:1.5rem;font-size:1rem;max-width:600px;margin-left:auto;margin-right:auto">Get the reseller license. Rebrand everything. Sell under your name. Keep 100% of every dollar. No royalties. No rev share. No monthly fees.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:650px;margin:0 auto 1.5rem;text-align:center">
-      <div style="background:#0a0a0a;border-radius:12px;padding:1.2rem">
-        <div style="font-size:2rem;font-weight:800;color:#10b981">$99</div>
-        <div style="font-size:0.8rem;color:#888">5 Tools</div>
-        <div style="font-size:0.7rem;color:#555">Starter Reseller</div>
-      </div>
-      <div style="background:#0a0a0a;border:2px solid #10b981;border-radius:12px;padding:1.2rem">
-        <div style="font-size:2rem;font-weight:800;color:#10b981">$199</div>
-        <div style="font-size:0.8rem;color:#10b981;font-weight:700">All 18 Tools</div>
-        <div style="font-size:0.7rem;color:#10b981">Most Popular</div>
-      </div>
-      <div style="background:#0a0a0a;border-radius:12px;padding:1.2rem">
-        <div style="font-size:2rem;font-weight:800;color:#10b981">$499</div>
-        <div style="font-size:0.8rem;color:#888">Agency + Future</div>
-        <div style="font-size:0.7rem;color:#555">Everything Forever</div>
-      </div>
-    </div>
-    <a href="/reseller" style="display:inline-block;padding:1rem 3rem;background:#10b981;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s">Start Your Reseller Business &rarr;</a>
-    <p style="font-size:0.8rem;color:#666;margin-top:0.8rem">Most resellers break even in 20 sales. After that it's pure profit.</p>
   </div>
 </section>
 
@@ -1133,48 +567,17 @@ a{color:inherit;text-decoration:none}
   <div id="emailSuccess" style="display:none;color:#10b981;font-weight:700;margin-top:1rem">Welcome! Check your inbox for your free template + discount code.</div>
 </section>
 
-<!-- Why Buy Direct -->
-<section style="text-align:center;padding:2rem;max-width:700px;margin:0 auto">
-  <h2 style="font-size:1.5rem;margin-bottom:0.5rem">Why Buy Direct?</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;font-size:0.85rem">
-    <div style="background:#0d1f0d;border:1px solid #10b98133;border-radius:12px;padding:1.2rem;text-align:left">
-      <div style="color:#10b981;font-weight:700;margin-bottom:0.5rem">Buy from SpunkArt</div>
-      <div style="color:#888;line-height:1.8">
-        <div>&#10003; 0% platform fees</div>
-        <div>&#10003; Secure card checkout via Gumroad</div>
-        <div>&#10003; Instant delivery</div>
-        <div>&#10003; 25% cash commission on referrals</div>
-        <div>&#10003; Direct support from the builder</div>
-        <div>&#10003; Lifetime updates included</div>
-        <div>&#10003; 30-day money-back guarantee</div>
-      </div>
-    </div>
-    <div style="background:#1f0d0d;border:1px solid #ef444433;border-radius:12px;padding:1.2rem;text-align:left">
-      <div style="color:#ef4444;font-weight:700;margin-bottom:0.5rem">Buy from Marketplaces</div>
-      <div style="color:#888;line-height:1.8">
-        <div>&#10007; 10-30% platform fees</div>
-        <div>&#10007; Higher processing fees</div>
-        <div>&#10007; Delayed delivery</div>
-        <div>&#10007; No referral commissions</div>
-        <div>&#10007; Generic support tickets</div>
-        <div>&#10007; Updates may cost extra</div>
-        <div>&#10007; Platform can pull product anytime</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Final CTA -->
 <section style="text-align:center;padding:3rem 2rem;max-width:600px;margin:0 auto">
   <h2 style="font-size:1.8rem;margin-bottom:0.5rem">Ready to Ship?</h2>
-  <p style="color:#888;margin-bottom:1rem">Join developers building on the edge with SpunkArt tools.</p>
-  <p style="color:#666;font-size:0.85rem;margin-bottom:1.5rem">All major cards accepted · Secure checkout · Instant delivery</p>
-  <a href="#bundles" style="display:inline-block;padding:1rem 3rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s">Get Started — From $4.99</a>
+  <p style="color:#888;margin-bottom:1rem">Join developers building with SpunkArt tools.</p>
+  <p style="color:#666;font-size:0.85rem;margin-bottom:1.5rem">All major cards accepted. Secure checkout. Instant delivery.</p>
+  <a href="#bundles" style="display:inline-block;padding:1rem 3rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:1.1rem;transition:all 0.2s">Get Started -- From $4.99</a>
 </section>
 
 <!-- Affiliate Banner -->
 <div class="affiliate-bar" id="affiliateBar" style="display:none">
-  Referred by a friend? You both save 10%! <a href="#newsletter">Join our affiliate program →</a>
+  Referred by a friend? You both save 10%! <a href="#newsletter">Join our affiliate program &rarr;</a>
 </div>
 
 <footer class="footer">
@@ -1203,7 +606,7 @@ a{color:inherit;text-decoration:none}
 
     <div id="checkoutForm">
       <h2>Checkout</h2>
-      <div class="modal-product" id="modalProduct">Bot Blocker Pro — $4.99</div>
+      <div class="modal-product" id="modalProduct">Bot Blocker Pro -- $4.99</div>
 
       <!-- Coupon -->
       <div class="modal-section">
@@ -1224,7 +627,7 @@ a{color:inherit;text-decoration:none}
       <!-- Payment -->
       <div class="modal-section">
         <h3>Pay Now</h3>
-        <button class="modal-btn" id="payBtn" onclick="payNow()">Pay Now — Secure Checkout</button>
+        <button class="modal-btn" id="payBtn" onclick="payNow()">Pay Now -- Secure Checkout</button>
         <p style="font-size:0.7rem;color:#666;margin-top:0.5rem">Secure checkout powered by Gumroad. We never see your card details.</p>
       </div>
     </div>
@@ -1233,13 +636,12 @@ a{color:inherit;text-decoration:none}
     <div class="modal-success" id="checkoutSuccess">
       <h2>Order Received!</h2>
       <p>We'll verify your payment and deliver to your email within 1 hour.</p>
-      <p style="margin-top:1rem;font-size:0.85rem">Order ref: <strong id="orderRef">—</strong></p>
+      <p style="margin-top:1rem;font-size:0.85rem">Order ref: <strong id="orderRef">--</strong></p>
       <p style="margin-top:0.5rem;font-size:0.8rem;color:#666">Questions? DM <a href="https://twitter.com/SpunkArt13" style="color:#ff5f1f">@SpunkArt13</a></p>
-      <!-- Reseller Upsell -->
       <div style="margin-top:1.5rem;padding:1.2rem;background:#10b98110;border:1px solid #10b98133;border-radius:12px;text-align:center">
         <p style="font-size:0.9rem;font-weight:700;color:#10b981;margin-bottom:0.3rem">Want to SELL this tool?</p>
-        <p style="font-size:0.8rem;color:#888;margin-bottom:0.8rem">Get the reseller license — rebrand all 18 tools, sell under your name, keep 100% profit.</p>
-        <a href="/reseller" style="display:inline-block;padding:0.5rem 1.5rem;background:#10b981;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none">Become a Reseller — From $99</a>
+        <p style="font-size:0.8rem;color:#888;margin-bottom:0.8rem">Get the reseller license -- rebrand all 18 tools, sell under your name, keep 100% profit.</p>
+        <a href="/reseller" style="display:inline-block;padding:0.5rem 1.5rem;background:#10b981;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none">Become a Reseller -- From $99</a>
       </div>
       <button class="modal-btn" style="margin-top:1rem" onclick="closeModal()">Done</button>
     </div>
@@ -1247,6 +649,185 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script>
+// ========================
+// TOOL DATABASE (98 tools)
+// ========================
+var TOOLS = [
+  {file:'ab-test-calculator',name:'A/B Test Calculator',desc:'Calculate statistical significance for your split tests with sample size and conversion rates.',icon:'\uD83E\uDDEA',cat:'Analytics'},
+  {file:'age-calculator',name:'Age Calculator',desc:'Calculate exact age in years, months, days, hours, and minutes from any date.',icon:'\uD83C\uDF82',cat:'Business'},
+  {file:'affiliate-tracker',name:'Affiliate Tracker',desc:'Track affiliate links, clicks, conversions, and commissions in one dashboard.',icon:'\uD83D\uDCB0',cat:'Analytics'},
+  {file:'ai-image-prompt',name:'AI Image Prompt Generator',desc:'Generate detailed prompts for Midjourney, DALL-E, and Stable Diffusion from simple ideas.',icon:'\uD83C\uDFA8',cat:'AI'},
+  {file:'ai-prompt-vault',name:'AI Prompt Vault',desc:'Browse, save, and organize your best AI prompts. Categorized library with copy-paste.',icon:'\uD83E\uDDE0',cat:'AI'},
+  {file:'analytics-dashboard',name:'Analytics Dashboard',desc:'Visualize your website traffic, page views, and user behavior with clean charts.',icon:'\uD83D\uDCCA',cat:'Analytics'},
+  {file:'api-key-generator',name:'API Key Generator',desc:'Generate secure random API keys and tokens in various formats and lengths.',icon:'\uD83D\uDD11',cat:'Dev'},
+  {file:'api-tester',name:'API Tester',desc:'Test REST API endpoints with GET, POST, PUT, DELETE. Custom headers, body, and response viewer.',icon:'\u26A1',cat:'Dev'},
+  {file:'base64-tool',name:'Base64 Encoder/Decoder',desc:'Encode and decode Base64 strings instantly. Supports text and file encoding.',icon:'\uD83D\uDD04',cat:'Dev'},
+  {file:'budget-tracker',name:'Budget Tracker',desc:'Track income and expenses with categories, charts, and CSV export. Data stays local.',icon:'\uD83D\uDCB5',cat:'Business'},
+  {file:'business-name',name:'Business Name Generator',desc:'Generate creative business names instantly. Check domain availability and save favorites.',icon:'\uD83D\uDCA1',cat:'Business'},
+  {file:'business-plan',name:'Business Plan Generator',desc:'Create a structured business plan with market analysis, financials, and strategy sections.',icon:'\uD83D\uDCCB',cat:'Business'},
+  {file:'chmod-calculator',name:'Chmod Calculator',desc:'Calculate Unix file permissions with visual toggles. Shows numeric and symbolic notation.',icon:'\uD83D\uDD12',cat:'Dev'},
+  {file:'code-playground',name:'Code Playground',desc:'Write and run HTML, CSS, and JavaScript live in the browser with instant preview.',icon:'\uD83D\uDCBB',cat:'Dev'},
+  {file:'color-contrast',name:'Color Contrast Checker',desc:'Check WCAG accessibility compliance between text and background colors with AA/AAA ratings.',icon:'\uD83D\uDC41\uFE0F',cat:'Design'},
+  {file:'color-converter',name:'Color Converter',desc:'Convert between HEX, RGB, HSL, and CMYK color formats instantly.',icon:'\uD83C\uDFA8',cat:'Design'},
+  {file:'color-palette',name:'Color Palette Generator',desc:'Generate harmonious 5-color palettes. Complementary, analogous, triadic modes with export.',icon:'\uD83C\uDF08',cat:'Design'},
+  {file:'color-scheme',name:'Color Scheme Generator',desc:'Create complete color schemes for websites with primary, secondary, and accent colors.',icon:'\uD83D\uDD8C\uFE0F',cat:'Design'},
+  {file:'competitor-analysis',name:'Competitor Analysis',desc:'Analyze competitor websites, traffic, keywords, and social presence in one view.',icon:'\uD83D\uDD0D',cat:'Business'},
+  {file:'content-planner',name:'Content Planner',desc:'Plan and schedule your content calendar with topics, deadlines, and status tracking.',icon:'\uD83D\uDCC5',cat:'Content'},
+  {file:'contract-generator',name:'Contract Generator',desc:'Generate freelancer contracts, NDAs, and service agreements. Customize and download as PDF.',icon:'\uD83D\uDCDC',cat:'Business'},
+  {file:'countdown-generator',name:'Countdown Generator',desc:'Create beautiful countdown timers for events, launches, and deadlines. Embed anywhere.',icon:'\u23F3',cat:'Content'},
+  {file:'cron-generator',name:'Cron Expression Generator',desc:'Build cron expressions visually with plain-English explanations of the schedule.',icon:'\u23F0',cat:'Dev'},
+  {file:'crontab-generator',name:'Crontab Generator',desc:'Generate and validate crontab entries with a visual scheduler and next-run preview.',icon:'\uD83D\uDCC6',cat:'Dev'},
+  {file:'css-animation-generator',name:'CSS Animation Generator',desc:'Create keyframe animations visually with easing curves, timing, and live preview.',icon:'\uD83C\uDFAC',cat:'Design'},
+  {file:'css-gradient',name:'CSS Gradient Generator',desc:'Design gradients visually. Linear, radial, conic. Presets gallery. Copy CSS code.',icon:'\uD83C\uDF08',cat:'Design'},
+  {file:'css-minifier',name:'CSS Minifier',desc:'Minify CSS code to reduce file size. Removes comments, whitespace, and redundant rules.',icon:'\uD83D\uDDDC\uFE0F',cat:'Dev'},
+  {file:'diff-checker',name:'Diff Checker',desc:'Compare two texts side by side with highlighted additions, deletions, and changes.',icon:'\uD83D\uDD0D',cat:'Dev'},
+  {file:'dns-lookup',name:'DNS Lookup',desc:'Query DNS records for any domain. A, AAAA, MX, CNAME, TXT, NS, and more.',icon:'\uD83C\uDF10',cat:'Dev'},
+  {file:'domain-generator',name:'Domain Name Generator',desc:'Generate available domain names with keywords. Check TLD availability and pricing.',icon:'\uD83C\uDF10',cat:'Business'},
+  {file:'domain-portfolio',name:'Domain Portfolio Manager',desc:'Track and manage your domain portfolio with expiry dates, registrars, and valuations.',icon:'\uD83D\uDCC1',cat:'Business'},
+  {file:'email-sequence-builder',name:'Email Sequence Builder',desc:'Plan and build email drip campaigns with templates, timing, and follow-up sequences.',icon:'\uD83D\uDCE7',cat:'Content'},
+  {file:'email-signature',name:'Email Signature Generator',desc:'Design HTML email signatures with logo, links, and social icons. Copy-paste ready.',icon:'\u2709\uFE0F',cat:'Business'},
+  {file:'email-templates',name:'Email Templates',desc:'Browse and customize professional email templates for outreach, sales, and support.',icon:'\uD83D\uDCE8',cat:'Content'},
+  {file:'emoji-picker',name:'Emoji Picker',desc:'Browse, search, and copy emojis by category. Shows Unicode values and shortcodes.',icon:'\uD83D\uDE00',cat:'Content'},
+  {file:'favicon-generator',name:'Favicon Generator',desc:'Upload any image, get all favicon sizes. ICO, PNG, Apple Touch. Download as ZIP.',icon:'\uD83D\uDDBC\uFE0F',cat:'Design'},
+  {file:'flexbox-generator',name:'Flexbox Generator',desc:'Build CSS flexbox layouts visually with drag-and-drop items and property controls.',icon:'\uD83D\uDCD0',cat:'Design'},
+  {file:'font-pairing',name:'Font Pairing Tool',desc:'Find beautiful Google Font pairings with live preview and CSS import code.',icon:'\uD83D\uDD24',cat:'Design'},
+  {file:'git-cheatsheet',name:'Git Cheatsheet',desc:'Quick reference for Git commands with search, categories, and copy-paste examples.',icon:'\uD83D\uDCDA',cat:'Dev'},
+  {file:'grid-generator',name:'CSS Grid Generator',desc:'Build CSS Grid layouts visually. Define columns, rows, gaps, and areas with code export.',icon:'\uD83D\uDD33',cat:'Design'},
+  {file:'hashtag-generator',name:'Hashtag Generator',desc:'Generate trending hashtags for Instagram, TikTok, X, and LinkedIn by topic or niche.',icon:'#\uFE0F\u20E3',cat:'Content'},
+  {file:'headers-checker',name:'HTTP Headers Checker',desc:'Check any website\'s HTTP security headers. Get a grade A-F with fix recommendations.',icon:'\uD83D\uDEE1\uFE0F',cat:'Security'},
+  {file:'htaccess-generator',name:'.htaccess Generator',desc:'Generate Apache .htaccess rules for redirects, caching, compression, and security headers.',icon:'\u2699\uFE0F',cat:'Dev'},
+  {file:'html-entity-encoder',name:'HTML Entity Encoder',desc:'Encode and decode HTML entities. Convert special characters for safe HTML embedding.',icon:'\uD83D\uDD20',cat:'Dev'},
+  {file:'html-minifier',name:'HTML Minifier',desc:'Minify HTML code to reduce page size. Strips comments, whitespace, and optional tags.',icon:'\uD83D\uDCC4',cat:'Dev'},
+  {file:'image-compressor',name:'Image Compressor',desc:'Compress images in your browser. Adjust quality, resize, convert formats. No uploads.',icon:'\uD83D\uDDDC\uFE0F',cat:'Design'},
+  {file:'invoice-generator',name:'Invoice Generator',desc:'Create professional invoices in seconds. Add line items, tax, notes. Export to PDF.',icon:'\uD83E\uDDFE',cat:'Business'},
+  {file:'ip-lookup',name:'IP Lookup',desc:'Look up IP address details including geolocation, ISP, timezone, and network info.',icon:'\uD83D\uDCCD',cat:'Dev'},
+  {file:'json-formatter',name:'JSON Formatter',desc:'Paste messy JSON, get it formatted with syntax highlighting, validation, and tree view.',icon:'\uD83D\uDCCB',cat:'Dev'},
+  {file:'json-to-csv',name:'JSON to CSV Converter',desc:'Convert JSON data to CSV format and vice versa. Handles nested objects and arrays.',icon:'\uD83D\uDD04',cat:'Dev'},
+  {file:'json-validator',name:'JSON Validator',desc:'Validate JSON syntax with detailed error messages, line numbers, and auto-fix suggestions.',icon:'\u2705',cat:'Dev'},
+  {file:'jwt-decoder',name:'JWT Decoder',desc:'Decode and inspect JSON Web Tokens. View header, payload, and verify expiration.',icon:'\uD83D\uDD13',cat:'Security'},
+  {file:'keyboard-tester',name:'Keyboard Tester',desc:'Test every key on your keyboard. Visual layout shows key codes, events, and press status.',icon:'\u2328\uFE0F',cat:'Dev'},
+  {file:'landing-page-copy',name:'Landing Page Copy Generator',desc:'Generate high-converting landing page copy. Headlines, CTAs, and feature sections ready to use.',icon:'\uD83D\uDCDD',cat:'Content'},
+  {file:'launch-checklist',name:'Launch Checklist',desc:'Complete checklist for launching a website or product. SEO, legal, performance, and more.',icon:'\uD83D\uDE80',cat:'Business'},
+  {file:'lorem-ipsum',name:'Lorem Ipsum Generator',desc:'Generate placeholder text in paragraphs, sentences, or words. Multiple styles available.',icon:'\uD83D\uDCDD',cat:'Content'},
+  {file:'markdown-editor',name:'Markdown Editor',desc:'Live preview markdown editor. Toolbar, export to HTML, autosave. Split-pane layout.',icon:'\u270F\uFE0F',cat:'Dev'},
+  {file:'meta-generator',name:'Meta Tag Generator',desc:'Generate perfect SEO meta tags, Open Graph, and Twitter Card tags with character validation.',icon:'\uD83C\uDFF7\uFE0F',cat:'SEO'},
+  {file:'mortgage-calculator',name:'Mortgage Calculator',desc:'Calculate monthly payments, total interest, and amortization schedule for any loan.',icon:'\uD83C\uDFE0',cat:'Business'},
+  {file:'og-image-maker',name:'OG Image Maker',desc:'Create Open Graph images for social sharing with text, branding, and gradient backgrounds.',icon:'\uD83D\uDDBC\uFE0F',cat:'Content'},
+  {file:'og-preview',name:'OG Tag Preview',desc:'Preview how your site looks when shared on X, Facebook, LinkedIn, and Discord.',icon:'\uD83D\uDC41\uFE0F',cat:'SEO'},
+  {file:'password-generator',name:'Password Generator',desc:'Cryptographically secure passwords. Custom length, character sets, and strength meter.',icon:'\uD83D\uDD10',cat:'Security'},
+  {file:'pdf-tools',name:'PDF Tools',desc:'Merge, split, compress PDFs. Convert images to PDF. Everything stays in your browser.',icon:'\uD83D\uDCC4',cat:'Business'},
+  {file:'placeholder-image',name:'Placeholder Image Generator',desc:'Generate placeholder images of any size with custom colors, text, and formats.',icon:'\uD83D\uDDBC\uFE0F',cat:'Design'},
+  {file:'pomodoro',name:'Pomodoro Timer',desc:'Focus timer with work/break intervals. Tracks sessions, plays sounds, and logs productivity.',icon:'\uD83C\uDF45',cat:'Business'},
+  {file:'pricing-calculator',name:'Pricing Calculator',desc:'Calculate optimal pricing for your products with cost, margin, and competitor analysis.',icon:'\uD83D\uDCB2',cat:'Business'},
+  {file:'privacy-policy-generator',name:'Privacy Policy Generator',desc:'Generate a GDPR/CCPA-compliant privacy policy. Customize for your site and download as HTML.',icon:'\uD83D\uDCDC',cat:'Business'},
+  {file:'qr-generator',name:'QR Code Generator',desc:'Generate custom QR codes with brand colors. Download as PNG. No watermark.',icon:'\uD83D\uDCF1',cat:'Business'},
+  {file:'readme-builder',name:'README Builder',desc:'Build beautiful GitHub README files with drag-and-drop sections and live markdown preview.',icon:'\uD83D\uDCD6',cat:'Dev'},
+  {file:'readme-generator',name:'README Generator',desc:'Generate professional README.md files for your projects with badges, install steps, and API docs.',icon:'\uD83D\uDCC3',cat:'Dev'},
+  {file:'regex-cheatsheet',name:'Regex Cheatsheet',desc:'Quick reference for regular expressions with patterns, examples, and explanations.',icon:'\uD83D\uDCDA',cat:'Dev'},
+  {file:'regex-tester',name:'Regex Tester',desc:'Test regular expressions live with match highlighting, capture groups, and flag toggles.',icon:'\uD83E\uDDE9',cat:'Dev'},
+  {file:'revenue-calculator',name:'Revenue Calculator',desc:'Project revenue, costs, and profit over time with charts and scenario modeling.',icon:'\uD83D\uDCB0',cat:'Business'},
+  {file:'robots-generator',name:'Robots.txt Generator',desc:'Generate perfect robots.txt files with toggles for 16 bots. Copy-paste ready.',icon:'\uD83E\uDD16',cat:'SEO'},
+  {file:'schema-generator',name:'Schema Markup Generator',desc:'Generate JSON-LD structured data for articles, products, FAQs, and organizations.',icon:'\uD83C\uDFF7\uFE0F',cat:'SEO'},
+  {file:'screen-size',name:'Screen Size Detector',desc:'Detect your screen resolution, viewport size, pixel ratio, and device orientation.',icon:'\uD83D\uDCBB',cat:'Dev'},
+  {file:'seo-checklist',name:'SEO Checklist',desc:'Complete on-page and technical SEO checklist with scoring. Track your optimization progress.',icon:'\u2705',cat:'SEO'},
+  {file:'sitemap-generator',name:'Sitemap Generator',desc:'Generate XML sitemaps for any site. Set priorities and frequencies for each page.',icon:'\uD83D\uDDFA\uFE0F',cat:'SEO'},
+  {file:'slug-generator',name:'URL Slug Generator',desc:'Convert any text to a clean URL-friendly slug. Handles unicode, accents, and special chars.',icon:'\uD83D\uDD17',cat:'Dev'},
+  {file:'social-bio',name:'Social Bio Generator',desc:'Generate bios for X, LinkedIn, Instagram, TikTok, and GitHub with character counts.',icon:'\u270D\uFE0F',cat:'Content'},
+  {file:'social-calendar',name:'Social Media Calendar',desc:'Plan and schedule social media posts across platforms with a visual calendar view.',icon:'\uD83D\uDCC5',cat:'Content'},
+  {file:'social-cards',name:'Social Card Previewer',desc:'Preview your social sharing cards for Twitter, Facebook, and LinkedIn before publishing.',icon:'\uD83C\uDFF4',cat:'SEO'},
+  {file:'social-post-generator',name:'Social Post Generator',desc:'Generate engaging social media posts for any platform with hashtags and CTAs.',icon:'\uD83D\uDCF1',cat:'Content'},
+  {file:'speed-test',name:'Page Speed Test',desc:'Test your website\'s loading speed with performance metrics and optimization tips.',icon:'\u26A1',cat:'Analytics'},
+  {file:'sql-formatter',name:'SQL Formatter',desc:'Format and beautify SQL queries with syntax highlighting and indentation options.',icon:'\uD83D\uDDC3\uFE0F',cat:'Dev'},
+  {file:'startup-costs',name:'Startup Costs Calculator',desc:'Estimate startup costs with categories for legal, hosting, marketing, tools, and operations.',icon:'\uD83D\uDCB8',cat:'Business'},
+  {file:'svg-editor',name:'SVG Editor',desc:'Edit SVG code with live visual preview. Optimize, transform, and export SVG files.',icon:'\u270F\uFE0F',cat:'Design'},
+  {file:'tech-stack',name:'Tech Stack Recommender',desc:'Get tech stack recommendations based on your project type, scale, and budget.',icon:'\uD83E\uDDF1',cat:'Dev'},
+  {file:'terms-of-service',name:'Terms of Service Generator',desc:'Generate terms of service for your website or app. Customizable clauses and legal language.',icon:'\uD83D\uDCDC',cat:'Business'},
+  {file:'timestamp-converter',name:'Timestamp Converter',desc:'Convert between Unix timestamps, ISO 8601, and human-readable date formats.',icon:'\uD83D\uDD52',cat:'Dev'},
+  {file:'tip-calculator',name:'Tip Calculator',desc:'Calculate tips and split bills between people. Supports custom percentages and rounding.',icon:'\uD83D\uDCB5',cat:'Business'},
+  {file:'tweet-generator',name:'Tweet Generator',desc:'Craft tweets with character count, thread builder, and engagement optimization tips.',icon:'\uD83D\uDC26',cat:'Content'},
+  {file:'uptime-monitor',name:'Uptime Monitor',desc:'Monitor your websites from the browser. Check status, response times, and uptime history.',icon:'\uD83D\uDCCA',cat:'Analytics'},
+  {file:'url-encoder',name:'URL Encoder/Decoder',desc:'Encode and decode URLs and query parameters. Handles special characters and Unicode.',icon:'\uD83D\uDD17',cat:'Dev'},
+  {file:'uuid-generator',name:'UUID Generator',desc:'Generate v4 UUIDs instantly. Bulk generation, copy-paste, and format options.',icon:'\uD83C\uDFB2',cat:'Dev'},
+  {file:'webhook-tester',name:'Webhook Tester',desc:'Test webhook endpoints with custom payloads, headers, and methods. View responses live.',icon:'\uD83D\uDD14',cat:'Dev'},
+  {file:'word-counter',name:'Word Counter',desc:'Count words, characters, sentences, and paragraphs. Reading time estimate included.',icon:'\uD83D\uDD22',cat:'Content'},
+  {file:'youtube-embed',name:'YouTube Embed Generator',desc:'Generate responsive YouTube embed code with custom player options and lazy loading.',icon:'\u25B6\uFE0F',cat:'Content'}
+];
+
+// ========================
+// RENDER TOOL GRID
+// ========================
+var badgeClass = {Dev:'badge-dev',Design:'badge-design',SEO:'badge-seo',Business:'badge-business',Content:'badge-content',Security:'badge-security',Analytics:'badge-analytics',AI:'badge-ai'};
+
+function getUsageCount(file) {
+  var k = 'tool_usage_' + file;
+  return parseInt(localStorage.getItem(k) || '0', 10);
+}
+
+function renderTools() {
+  var grid = document.getElementById('toolGrid');
+  var html = '';
+  var totalUsage = 0;
+  for (var i = 0; i < TOOLS.length; i++) {
+    var t = TOOLS[i];
+    var usage = getUsageCount(t.file);
+    totalUsage += usage;
+    html += '<a href="/' + t.file + '" class="tool-card" data-cat="' + t.cat + '" data-name="' + t.name.toLowerCase() + '" data-desc="' + t.desc.toLowerCase() + '">' +
+      '<div class="tool-card-header"><span class="tool-icon">' + t.icon + '</span><span class="tool-name">' + t.name + '</span></div>' +
+      '<div class="tool-desc">' + t.desc + '</div>' +
+      '<div class="tool-footer">' +
+        '<span class="tool-badge ' + (badgeClass[t.cat] || 'badge-dev') + '">' + t.cat + '</span>' +
+        '<span class="tool-usage">' + (usage > 0 ? usage.toLocaleString() + ' uses' : '') + '</span>' +
+        '<span class="tool-try-btn">Try Free</span>' +
+      '</div>' +
+    '</a>';
+  }
+  grid.innerHTML = html;
+  var el = document.getElementById('totalUsageCount');
+  if (el) el.textContent = totalUsage.toLocaleString();
+}
+
+renderTools();
+
+// ========================
+// SEARCH & FILTER
+// ========================
+var activeFilter = 'all';
+
+document.getElementById('filterButtons').addEventListener('click', function(e) {
+  var btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  var btns = document.querySelectorAll('.filter-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  activeFilter = btn.getAttribute('data-cat');
+  applyFilters();
+});
+
+document.getElementById('toolSearch').addEventListener('input', function() {
+  applyFilters();
+});
+
+function applyFilters() {
+  var q = document.getElementById('toolSearch').value.toLowerCase().trim();
+  var cards = document.querySelectorAll('.tool-card');
+  var shown = 0;
+  for (var i = 0; i < cards.length; i++) {
+    var c = cards[i];
+    var cat = c.getAttribute('data-cat');
+    var name = c.getAttribute('data-name');
+    var desc = c.getAttribute('data-desc');
+    var matchCat = (activeFilter === 'all' || cat === activeFilter);
+    var matchSearch = (!q || name.indexOf(q) !== -1 || desc.indexOf(q) !== -1 || cat.toLowerCase().indexOf(q) !== -1);
+    if (matchCat && matchSearch) {
+      c.classList.remove('hidden');
+      shown++;
+    } else {
+      c.classList.add('hidden');
+    }
+  }
+  document.getElementById('toolCountDisplay').textContent = 'Showing ' + shown + ' of ' + TOOLS.length + ' tools';
+}
+
 // ========================
 // PRODUCT CATALOG
 // ========================
@@ -1306,7 +887,6 @@ var currentDiscount = null;
     localStorage.setItem('spunkart_ref', ref);
     localStorage.setItem('spunkart_ref_time', Date.now());
     document.getElementById('affiliateBar').style.display = 'block';
-    // Track referral in GA4
     if (typeof gtag === 'function') {
       gtag('event', 'referral_visit', { ref_code: ref });
     }
@@ -1321,7 +901,7 @@ function buy(productId) {
   if (!currentProduct) return;
   currentDiscount = null;
 
-  document.getElementById('modalProduct').textContent = currentProduct.name + ' — ' + currentProduct.price;
+  document.getElementById('modalProduct').textContent = currentProduct.name + ' -- ' + currentProduct.price;
   document.getElementById('checkoutForm').style.display = 'block';
   document.getElementById('checkoutSuccess').style.display = 'none';
   document.getElementById('couponMsg').textContent = '';
@@ -1329,7 +909,6 @@ function buy(productId) {
   document.getElementById('checkoutModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 
-  // Track checkout open in GA4
   if (typeof gtag === 'function') {
     gtag('event', 'begin_checkout', {
       currency: 'USD',
@@ -1344,12 +923,10 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// Close on overlay click
 document.getElementById('checkoutModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
 
-// Close on Escape
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
@@ -1371,7 +948,7 @@ function applyCoupon() {
     }
     msg.textContent = currentDiscount.label + ' applied! New price: $' + newAmount.toFixed(2);
     msg.style.color = '#10b981';
-    document.getElementById('modalProduct').textContent = currentProduct.name + ' — $' + newAmount.toFixed(2) + ' (was ' + currentProduct.price + ')';
+    document.getElementById('modalProduct').textContent = currentProduct.name + ' -- $' + newAmount.toFixed(2) + ' (was ' + currentProduct.price + ')';
 
     if (typeof gtag === 'function') {
       gtag('event', 'coupon_applied', { coupon: code, discount: currentDiscount.label });
@@ -1429,7 +1006,6 @@ function payNow() {
     document.getElementById('buyerEmail').focus();
     return;
   }
-  // Find the current product key
   var productKey = '';
   for (var key in PRODUCTS) {
     if (PRODUCTS[key] === currentProduct) { productKey = key; break; }
@@ -1439,7 +1015,6 @@ function payNow() {
     alert('Payment links are being set up. Please DM @SpunkArt13 on X or email hello@spunkart.com to complete your purchase.');
     return;
   }
-  // Add email as prefill and referral tracking
   var ref = localStorage.getItem('spunkart_ref') || '';
   var url = link + '?email=' + encodeURIComponent(email);
   if (ref) url += '&ref=' + encodeURIComponent(ref);
@@ -1486,7 +1061,6 @@ function saveEmail(email) {
 // ========================
 // VIEW EMAILS & ORDERS (admin helper)
 // ========================
-// Type in console: viewEmails() or viewOrders()
 window.viewEmails = function() { console.table(JSON.parse(localStorage.getItem('spunkart_emails') || '[]')); };
 window.viewOrders = function() { console.table(JSON.parse(localStorage.getItem('spunkart_orders') || '[]')); };
 
@@ -1514,11 +1088,16 @@ document.addEventListener('copy', function(e) {
 })();
 </script>
 
+<!-- Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");
+</script>
+
 <!-- Legal -->
 <div style="max-width:700px;margin:2rem auto;padding:0 2rem 2rem;font-size:0.65rem;color:#333;line-height:1.6">
-  <p><strong>Terms of Use:</strong> All digital products are sold "as-is" under a personal/commercial use license. By purchasing, you agree that: (1) Products are delivered digitally and all sales are final after download, except within the 30-day money-back guarantee period; (2) You receive a license to use, modify, and deploy the code for your own projects or client work; (3) Reseller license holders may rebrand and resell under their own brand per the reseller agreement; (4) SpunkArt is not responsible for any damages, data loss, or issues arising from deployment or modification of purchased tools; (5) No warranty is provided beyond the product functioning as described at the time of purchase; (6) Purchased tools run on YOUR infrastructure (Cloudflare account) — we do not host or maintain them after purchase; (7) Support is provided on a best-effort basis via X (@SpunkArt13) or email (hello@spunkart.com). By completing a purchase you acknowledge and accept these terms.</p>
+  <p><strong>Terms of Use:</strong> All digital products are sold "as-is" under a personal/commercial use license. By purchasing, you agree that: (1) Products are delivered digitally and all sales are final after download, except within the 30-day money-back guarantee period; (2) You receive a license to use, modify, and deploy the code for your own projects or client work; (3) Reseller license holders may rebrand and resell under their own brand per the reseller agreement; (4) SpunkArt is not responsible for any damages, data loss, or issues arising from deployment or modification of purchased tools; (5) No warranty is provided beyond the product functioning as described at the time of purchase; (6) Purchased tools run on YOUR infrastructure (Cloudflare account) -- we do not host or maintain them after purchase; (7) Support is provided on a best-effort basis via X (@SpunkArt13) or email (hello@spunkart.com). By completing a purchase you acknowledge and accept these terms.</p>
   <p style="margin-top:0.5rem"><strong>Affiliate Program:</strong> Affiliates earn 25% commission on referred sales. Commissions are tracked via referral links (?ref=CODE) and paid monthly via crypto (BTC/ETH/SOL) or PayPal. Minimum payout: $25. Cookie duration: 90 days. SpunkArt reserves the right to modify commission rates with 30 days notice. Fraudulent or self-referral activity will result in account termination.</p>
-  <p style="margin-top:0.5rem"><strong>Privacy:</strong> We collect email addresses for product delivery and newsletter (with consent). We do not sell or share personal data. Analytics are collected via Google Analytics (GA4). Payments are processed securely via Gumroad — we never store your card details.</p>
+  <p style="margin-top:0.5rem"><strong>Privacy:</strong> We collect email addresses for product delivery and newsletter (with consent). We do not sell or share personal data. Analytics are collected via Google Analytics (GA4). Payments are processed securely via Gumroad -- we never store your card details.</p>
   <p style="margin-top:0.5rem">&copy; 2026 SpunkArt. All rights reserved. Operated by SpunkArt (@SpunkArt13). Contact: hello@spunkart.com</p>
 </div>
 
