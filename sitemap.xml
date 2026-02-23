@@ -1,179 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- SpunkArt.com Sitemap — 156 URLs total (6 main + 4 supporting + 7 ebooks + 42 blog posts + 97 tools) — Updated 2026-02-23 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Pages -->
-  <url><loc>https://spunkart.com/</loc><lastmod>2026-02-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spunkart.com/store</loc><lastmod>2026-02-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spunkart.com/spunk</loc><lastmod>2026-02-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spunkart.com/ebook</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/reseller</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog</loc><lastmod>2026-02-22</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/join</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/affiliates</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://spunkart.com/install</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
-  <!-- Blog Posts -->
-  <url><loc>https://spunkart.com/blog/free-online-tools-no-signup</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-free-seo-tools</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-speed-up-your-website</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-make-money-reselling-digital-products</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/free-crypto-casino-games-no-deposit</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/prediction-markets-explained</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/protect-yourself-online-security-guide</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-tips-solo-founders</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-marketing-tips-zero-budget</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-seo-tips-rank-fast</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-productivity-tips-founders</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-ways-save-money-startup</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-ways-get-first-customers</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-website-design-tips-convert</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-best-industries-2026</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/llc-guide-solo-founders</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-ai-tools-free-2026</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/passive-income-ideas-2026</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-side-hustles-2026</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-build-email-list</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/github-pages-free-website</loc><lastmod>2026-02-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-start-online-business-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-ai-prompts-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/make-money-with-free-tools</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/chatgpt-alternatives-free</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-make-money-online-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-no-code-tools-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/social-media-marketing-guide-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-vibe-coding-tips</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/regex-cheatsheet</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Main Pages (6) -->
+  <url><loc>https://spunkart.com/</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spunkart.com/store</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spunkart.com/blog</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spunkart.com/ebook</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spunkart.com/reseller</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://spunkart.com/spunk</loc><lastmod>2026-02-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+
+  <!-- Supporting Pages (4) -->
+  <url><loc>https://spunkart.com/join</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/affiliates</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/install</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/social-cards</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Ebooks (7) -->
+  <url><loc>https://spunkart.com/ebook-ai-agents</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-ai-automation</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-free-tools-money</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-no-code-empire</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-passive-income</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-site-empire</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://spunkart.com/ebook-vibe-coding</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Blog Posts (42) -->
+  <url><loc>https://spunkart.com/blog/50-best-chrome-extensions</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-best-industries-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-free-apis-developers</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-marketing-tips-zero-budget</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-productivity-tips-founders</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-seo-tips-rank-fast</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-tips-solo-founders</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-vibe-coding-tips</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-ways-get-first-customers</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-ways-save-money-startup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/50-website-design-tips-convert</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/affiliate-marketing-beginners-guide</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-ai-prompts-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-ai-tools-free-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-color-palette-generators-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-free-developer-tools-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-free-online-tools-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-free-seo-tools</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-no-code-tools-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-password-managers-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/best-side-hustles-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/chatgpt-alternatives-free</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/cloudflare-workers-tutorial-beginners</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/free-crypto-casino-games-no-deposit</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/free-online-tools-no-signup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/free-website-builders-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/github-pages-free-website</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-build-120-websites-in-7-days</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-build-email-list</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-create-invoice-free</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-make-money-online-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-make-money-reselling-digital-products</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-make-money-selling-digital-products</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-speed-up-your-website</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-start-online-business-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/how-to-start-saas-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/llc-guide-solo-founders</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/make-money-with-free-tools</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/passive-income-ideas-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/prediction-markets-explained</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/protect-yourself-online-security-guide</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://spunkart.com/blog/social-media-marketing-guide-2026</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Free Tools (97) -->
+  <url><loc>https://spunkart.com/ab-test-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/affiliate-tracker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/age-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/ai-image-prompt</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/ai-prompt-vault</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/analytics-dashboard</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/api-key-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/api-tester</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/svg-editor</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/base64-tool</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/budget-tracker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/business-name</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/business-plan</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/chmod-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/code-playground</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/color-contrast</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/color-converter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/color-palette</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/color-scheme</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/competitor-analysis</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/content-planner</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/contract-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/countdown-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/cron-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/crontab-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/css-animation-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/css-gradient</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/css-minifier</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/diff-checker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/dns-lookup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/domain-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/domain-portfolio</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/email-sequence-builder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/email-signature</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/email-templates</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/emoji-picker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/favicon-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/flexbox-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/font-pairing</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/git-cheatsheet</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/startup-costs</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/color-scheme</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-build-120-websites-in-7-days</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/blog/cloudflare-workers-tutorial-beginners</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/blog/best-free-online-tools-2026</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-make-money-selling-digital-products</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- Free Tools (100+) -->
-  <url><loc>https://spunkart.com/password-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/pdf-tools</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/budget-tracker</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/invoice-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/qr-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/business-name</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/email-signature</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/privacy-policy-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/social-bio</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/meta-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/color-palette</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/json-formatter</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/markdown-editor</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/css-gradient</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/image-compressor</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/landing-page-copy</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/uptime-monitor</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/sitemap-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/headers-checker</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/robots-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/favicon-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/speed-test</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/youtube-embed</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/terms-of-service</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/hashtag-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/tweet-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/color-contrast</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/word-counter</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/lorem-ipsum</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/base64-tool</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/url-encoder</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/regex-tester</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/cron-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/uuid-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/timestamp-converter</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/tip-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/mortgage-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/age-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/og-preview</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/readme-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/htaccess-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/slug-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/css-minifier</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/html-minifier</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/json-to-csv</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/emoji-picker</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/placeholder-image</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/screen-size</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/pomodoro</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/color-converter</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/diff-checker</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/keyboard-tester</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/countdown-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/business-plan</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/pricing-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/email-templates</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/launch-checklist</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/revenue-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/contract-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/domain-generator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/social-calendar</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/ab-test-calculator</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/competitor-analysis</loc><lastmod>2026-02-22</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- New Tools (Feb 23) -->
-  <url><loc>https://spunkart.com/json-validator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/grid-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/code-playground</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/seo-checklist</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/tech-stack</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- New Blog Posts (Feb 23) -->
-  <url><loc>https://spunkart.com/blog/50-free-apis-developers</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/50-best-chrome-extensions</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/affiliate-marketing-beginners-guide</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- More New Tools (Feb 23) -->
-  <url><loc>https://spunkart.com/webhook-tester</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/chmod-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/sql-formatter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/dns-lookup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/jwt-decoder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/ip-lookup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- More Blog Posts (Feb 23 Wave 3) -->
-  <url><loc>https://spunkart.com/blog/best-free-developer-tools-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spunkart.com/blog/free-website-builders-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-color-palette-generators-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/best-password-managers-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-create-invoice-free</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/blog/how-to-start-saas-2026</loc><lastmod>2026-02-23</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- Latest Tools (Feb 23 Wave 4) -->
-  <url><loc>https://spunkart.com/crontab-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/hashtag-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/headers-checker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/htaccess-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/html-entity-encoder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/css-animation-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- Ebooks (Feb 23) -->
-  <url><loc>https://spunkart.com/ebook-ai-automation</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-site-empire</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-vibe-coding</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-free-tools-money</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-ai-agents</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-passive-income</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://spunkart.com/ebook-no-code-empire</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- New Tools (Feb 23 Wave 5) -->
-  <url><loc>https://spunkart.com/content-planner</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/ai-prompt-vault</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/social-post-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/analytics-dashboard</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/affiliate-tracker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/domain-portfolio</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/email-sequence-builder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- Additional Tools (Feb 23 Wave 6) -->
+  <url><loc>https://spunkart.com/html-minifier</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/image-compressor</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/invoice-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/ip-lookup</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/json-formatter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/json-to-csv</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/json-validator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/jwt-decoder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/keyboard-tester</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/landing-page-copy</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/launch-checklist</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/lorem-ipsum</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/markdown-editor</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/meta-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/mortgage-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/og-image-maker</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/og-preview</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/password-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/pdf-tools</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/placeholder-image</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/pomodoro</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/pricing-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/privacy-policy-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/qr-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/readme-builder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/ai-image-prompt</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://spunkart.com/api-key-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/readme-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/regex-cheatsheet</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/regex-tester</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/revenue-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/robots-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://spunkart.com/schema-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/screen-size</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/seo-checklist</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/sitemap-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/slug-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/social-bio</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/social-calendar</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/social-post-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/speed-test</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/sql-formatter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/startup-costs</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/svg-editor</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/tech-stack</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/terms-of-service</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/timestamp-converter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/tip-calculator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/tweet-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/uptime-monitor</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/url-encoder</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/uuid-generator</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/webhook-tester</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/word-counter</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://spunkart.com/youtube-embed</loc><lastmod>2026-02-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
