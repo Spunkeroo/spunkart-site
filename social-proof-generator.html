@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Social Proof Generator - Free Testimonial & Trust Badge Builder | SPUNKART.COM</title>
+<meta name="description" content="Generate social proof widgets: testimonial cards, trust badges, 'as seen in' bars, user count widgets, star ratings. Customize colors. Copy HTML/CSS.">
+<meta name="keywords" content="social proof generator, testimonial card generator, trust badge builder, as seen in bar, user count widget, star rating widget">
+<meta property="og:title" content="Social Proof Generator | SPUNKART.COM">
+<meta property="og:description" content="Generate testimonial cards, trust badges, star ratings, and more. Copy HTML/CSS. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/social-proof-generator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Social Proof Generator | SPUNKART.COM">
+<meta name="twitter:description" content="Build social proof widgets for your website. Free tool.">
+<link rel="canonical" href="https://spunkart.com/social-proof-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input,select,textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:#ff5f1f}
+textarea{min-height:80px;resize:vertical;line-height:1.6}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+input[type="color"]{height:40px;padding:4px;cursor:pointer}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.mode-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.preview-area{background:#fff;border-radius:10px;padding:30px;min-height:100px;display:flex;align-items:center;justify-content:center}
+.output-box{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.8rem;font-family:'Courier New',monospace;line-height:1.5;resize:vertical;white-space:pre;overflow-x:auto}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .mode-btn{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Social Proof Generator","description":"Generate social proof widgets: testimonial cards, trust badges, as seen in bars, user count widgets, and star ratings.","url":"https://spunkart.com/social-proof-generator.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Social Proof <span>Generator</span></h1>
+  <p class="subtitle">Generate testimonial cards, trust badges, "as seen in" bars, user count widgets, and star ratings. Customize and copy the HTML/CSS.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>Widget Type</h2>
+    <div class="mode-grid">
+      <button class="mode-btn active" data-type="testimonial" onclick="setType(this,'testimonial')">Testimonial Card</button>
+      <button class="mode-btn" data-type="trust" onclick="setType(this,'trust')">Trust Badges</button>
+      <button class="mode-btn" data-type="aseenin" onclick="setType(this,'aseenin')">"As Seen In" Bar</button>
+      <button class="mode-btn" data-type="usercount" onclick="setType(this,'usercount')">User Count</button>
+      <button class="mode-btn" data-type="starrating" onclick="setType(this,'starrating')">Star Rating</button>
+    </div>
+  </div>
+
+  <!-- Testimonial Config -->
+  <div class="section config-panel" id="cfg_testimonial">
+    <h2>Testimonial Card</h2>
+    <div class="grid-2">
+      <div><label>Name</label><input type="text" id="t_name" value="Sarah Chen" oninput="generate()"></div>
+      <div><label>Title / Company</label><input type="text" id="t_title" value="CTO at LaunchKit" oninput="generate()"></div>
+    </div>
+    <label>Testimonial Text</label>
+    <textarea id="t_text" oninput="generate()">This tool saved us 20 hours per week on deployments. The ROI was immediate. Our engineering team actually enjoys shipping now.</textarea>
+    <div class="grid-3">
+      <div><label>Stars (1-5)</label><input type="number" id="t_stars" value="5" min="1" max="5" oninput="generate()"></div>
+      <div><label>Card Background</label><input type="color" id="t_bg" value="#ffffff" oninput="generate()"></div>
+      <div><label>Accent Color</label><input type="color" id="t_accent" value="#6366f1" oninput="generate()"></div>
+    </div>
+  </div>
+
+  <!-- Trust Badges Config -->
+  <div class="section config-panel" id="cfg_trust" style="display:none">
+    <h2>Trust Badges</h2>
+    <label>Badge Labels (one per line)</label>
+    <textarea id="tb_labels" oninput="generate()">SOC 2 Compliant
+256-bit SSL Encrypted
+99.9% Uptime SLA
+GDPR Compliant
+24/7 Support</textarea>
+    <div class="grid-2">
+      <div><label>Badge Color</label><input type="color" id="tb_color" value="#10b981" oninput="generate()"></div>
+      <div><label>Style</label><select id="tb_style" onchange="generate()"><option value="pill">Pill</option><option value="card">Card</option><option value="minimal">Minimal</option></select></div>
+    </div>
+  </div>
+
+  <!-- As Seen In Config -->
+  <div class="section config-panel" id="cfg_aseenin" style="display:none">
+    <h2>"As Seen In" Bar</h2>
+    <label>Publication Names (one per line)</label>
+    <textarea id="ai_names" oninput="generate()">TechCrunch
+Product Hunt
+Hacker News
+Forbes
+The Verge</textarea>
+    <div class="grid-2">
+      <div><label>Heading</label><input type="text" id="ai_heading" value="As Seen In" oninput="generate()"></div>
+      <div><label>Text Color</label><input type="color" id="ai_color" value="#999999" oninput="generate()"></div>
+    </div>
+  </div>
+
+  <!-- User Count Config -->
+  <div class="section config-panel" id="cfg_usercount" style="display:none">
+    <h2>User Count Widget</h2>
+    <div class="grid-2">
+      <div><label>User Count</label><input type="text" id="uc_count" value="12,847" oninput="generate()"></div>
+      <div><label>Label</label><input type="text" id="uc_label" value="founders trust our tools" oninput="generate()"></div>
+    </div>
+    <div class="grid-3">
+      <div><label>Accent Color</label><input type="color" id="uc_color" value="#6366f1" oninput="generate()"></div>
+      <div><label>Background</label><input type="color" id="uc_bg" value="#f8f8f8" oninput="generate()"></div>
+      <div><label>Show Avatars</label><select id="uc_avatars" onchange="generate()"><option value="yes">Yes</option><option value="no">No</option></select></div>
+    </div>
+  </div>
+
+  <!-- Star Rating Config -->
+  <div class="section config-panel" id="cfg_starrating" style="display:none">
+    <h2>Star Rating Widget</h2>
+    <div class="grid-3">
+      <div><label>Rating (e.g. 4.8)</label><input type="number" id="sr_rating" value="4.8" min="0" max="5" step="0.1" oninput="generate()"></div>
+      <div><label>Total Reviews</label><input type="text" id="sr_reviews" value="2,847" oninput="generate()"></div>
+      <div><label>Platform</label><input type="text" id="sr_platform" value="Product Hunt" oninput="generate()"></div>
+    </div>
+    <div class="grid-2">
+      <div><label>Star Color</label><input type="color" id="sr_starcolor" value="#f59e0b" oninput="generate()"></div>
+      <div><label>Background</label><input type="color" id="sr_bg" value="#ffffff" oninput="generate()"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Preview</h2>
+    <div class="preview-area" id="previewArea"></div>
+  </div>
+
+  <div class="section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h2 style="margin-bottom:0">Generated HTML/CSS</h2>
+      <span style="font-size:0.8rem;color:#555" id="charCount">0 chars</span>
+    </div>
+    <textarea class="output-box" id="outputCode" readonly></textarea>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyCode()">Copy HTML/CSS</button>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/saas-pricing-generator">SaaS Pricing</a>
+      <a href="/waitlist-page-builder">Waitlist Builder</a>
+      <a href="/landing-page-copy">Landing Page Copy</a>
+      <a href="/customer-persona-builder">Persona Builder</a>
+      <a href="/tweet-generator">Tweet Generator</a>
+      <a href="/email-templates">Email Templates</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+let currentType='testimonial';
+
+function setType(el,type){
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentType=type;
+  document.querySelectorAll('.config-panel').forEach(p=>p.style.display='none');
+  document.getElementById('cfg_'+type).style.display='block';
+  generate();
+}
+
+function v(id){return document.getElementById(id).value}
+function stars(n){let s='';for(let i=0;i<5;i++)s+=i<n?'&#9733;':'&#9734;';return s}
+
+function generate(){
+  let html='',preview='';
+
+  if(currentType==='testimonial'){
+    const name=v('t_name'),title=v('t_title'),text=v('t_text'),st=Number(v('t_stars')),bg=v('t_bg'),accent=v('t_accent');
+    const initials=name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    html=`<div style="max-width:400px;background:${bg};border-radius:12px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);font-family:-apple-system,sans-serif">
+  <div style="color:${accent};font-size:1.2rem;margin-bottom:12px">${stars(st)}</div>
+  <p style="color:#1a1a1a;font-size:0.95rem;line-height:1.7;margin-bottom:20px">"${text}"</p>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="width:44px;height:44px;border-radius:50%;background:${accent};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem">${initials}</div>
+    <div>
+      <div style="font-weight:700;color:#1a1a1a;font-size:0.9rem">${name}</div>
+      <div style="color:#888;font-size:0.8rem">${title}</div>
+    </div>
+  </div>
+</div>`;
+  }
+
+  else if(currentType==='trust'){
+    const labels=v('tb_labels').split('\n').filter(l=>l.trim());
+    const color=v('tb_color'),style=v('tb_style');
+    let itemStyle='';
+    if(style==='pill')itemStyle=`display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:20px;background:${color}11;border:1px solid ${color}33;color:${color};font-size:0.85rem;font-weight:600`;
+    else if(style==='card')itemStyle=`display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:10px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.06);color:#1a1a1a;font-size:0.85rem;font-weight:600;border:1px solid #eee`;
+    else itemStyle=`display:inline-flex;align-items:center;gap:6px;color:${color};font-size:0.85rem;font-weight:600`;
+    html=`<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-family:-apple-system,sans-serif">\n`;
+    labels.forEach(l=>{
+      html+=`  <div style="${itemStyle}"><span style="font-size:1.1rem">&#10003;</span> ${l.trim()}</div>\n`;
+    });
+    html+=`</div>`;
+  }
+
+  else if(currentType==='aseenin'){
+    const names=v('ai_names').split('\n').filter(l=>l.trim());
+    const heading=v('ai_heading'),color=v('ai_color');
+    html=`<div style="text-align:center;padding:30px 20px;font-family:-apple-system,sans-serif">
+  <p style="color:${color};font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;font-weight:600">${heading}</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px">\n`;
+    names.forEach(n=>{
+      html+=`    <span style="color:${color};font-size:1.2rem;font-weight:700;opacity:0.6">${n.trim()}</span>\n`;
+    });
+    html+=`  </div>\n</div>`;
+  }
+
+  else if(currentType==='usercount'){
+    const count=v('uc_count'),label=v('uc_label'),color=v('uc_color'),bg=v('uc_bg'),showAv=v('uc_avatars')==='yes';
+    const avatarColors=['#6366f1','#ec4899','#f59e0b','#10b981','#3b82f6'];
+    let avatarsHTML='';
+    if(showAv){
+      avatarsHTML=`<div style="display:flex;margin-bottom:12px">\n`;
+      avatarColors.forEach((c,i)=>{
+        avatarsHTML+=`    <div style="width:36px;height:36px;border-radius:50%;background:${c};border:3px solid ${bg};margin-left:${i>0?'-10px':'0'};position:relative;z-index:${5-i}"></div>\n`;
+      });
+      avatarsHTML+=`  </div>\n`;
+    }
+    html=`<div style="display:inline-flex;flex-direction:column;align-items:center;padding:24px 40px;background:${bg};border-radius:12px;font-family:-apple-system,sans-serif">
+  ${avatarsHTML}  <div style="font-size:2rem;font-weight:800;color:${color}">${count}+</div>
+  <div style="color:#888;font-size:0.9rem;margin-top:4px">${label}</div>
+</div>`;
+  }
+
+  else if(currentType==='starrating'){
+    const rating=Number(v('sr_rating')),reviews=v('sr_reviews'),platform=v('sr_platform'),starC=v('sr_starcolor'),bg=v('sr_bg');
+    const full=Math.floor(rating),half=rating-full>=0.5?1:0,empty=5-full-half;
+    let starsHTML='';
+    for(let i=0;i<full;i++)starsHTML+=`<span style="color:${starC}">&#9733;</span>`;
+    if(half)starsHTML+=`<span style="color:${starC}">&#9733;</span>`;
+    for(let i=0;i<empty;i++)starsHTML+=`<span style="color:#ddd">&#9733;</span>`;
+    html=`<div style="display:inline-flex;align-items:center;gap:12px;padding:16px 28px;background:${bg};border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.06);font-family:-apple-system,sans-serif">
+  <div style="font-size:1.6rem">${starsHTML}</div>
+  <div>
+    <div style="font-weight:700;color:#1a1a1a;font-size:1rem">${rating} out of 5</div>
+    <div style="color:#888;font-size:0.8rem">${reviews} reviews on ${platform}</div>
+  </div>
+</div>`;
+  }
+
+  document.getElementById('previewArea').innerHTML=html;
+  document.getElementById('outputCode').value=html;
+  document.getElementById('charCount').textContent=html.length+' chars';
+}
+
+function copyCode(){
+  const code=document.getElementById('outputCode').value;
+  if(!code){showToast('Nothing to copy');return}
+  navigator.clipboard.writeText(code);
+  showToast('HTML/CSS Copied!');
+  gtag('event','copy_social_proof',{event_category:'tool_use',type:currentType});
+}
+
+generate();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
