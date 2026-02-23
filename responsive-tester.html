@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Design Tester — Preview Any URL on All Devices | SPUNKART.COM</title>
+<meta name="description" content="Free responsive design tester. Enter any URL and preview it on iPhone, iPad, Desktop, and custom screen sizes side by side. Test mobile responsiveness instantly.">
+<meta property="og:title" content="Responsive Design Tester — Preview on All Devices | SPUNKART.COM">
+<meta property="og:description" content="Preview any website on iPhone, iPad, Desktop side by side. Test responsive design instantly. Free online tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/responsive-tester.html">
+<meta property="og:image" content="https://spunkart.com/og-responsive-tester.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Responsive Design Tester | SPUNKART.COM">
+<meta name="twitter:description" content="Test responsive design on all devices. Preview any URL on iPhone, iPad, Desktop. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/responsive-tester.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+.toolbar{background:#111;border-bottom:1px solid #222;padding:14px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.url-input{flex:1;min-width:200px;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.url-input:focus{border-color:#ff5f1f;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+
+.device-bar{background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:10px 20px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.device-btn{padding:8px 16px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.device-btn:hover{border-color:#444;color:#ccc;}
+.device-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700;}
+.device-btn .size{font-size:0.7rem;color:#666;margin-left:4px;}
+.device-btn.active .size{color:rgba(255,255,255,0.7);}
+
+.view-modes{margin-left:auto;display:flex;gap:6px;}
+.view-btn{padding:8px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;}
+.view-btn:hover{border-color:#444;color:#ccc;}
+.view-btn.active{background:#10b981;border-color:#10b981;color:#fff;font-weight:600;}
+
+.custom-size{display:flex;gap:6px;align-items:center;margin-left:8px;padding-left:8px;border-left:1px solid #2a2a2a;}
+.custom-size input{width:70px;padding:6px 10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.82rem;outline:none;text-align:center;}
+.custom-size input:focus{border-color:#ff5f1f;}
+.custom-size span{color:#555;font-size:0.82rem;}
+
+main{flex:1;padding:20px;overflow:auto;}
+
+.preview-area{display:flex;gap:20px;justify-content:center;align-items:flex-start;flex-wrap:wrap;padding-bottom:20px;}
+.preview-area.side-by-side{flex-direction:row;}
+.preview-area.stacked{flex-direction:column;align-items:center;}
+
+.device-frame{background:#151515;border:1px solid #2a2a2a;border-radius:16px;overflow:hidden;flex-shrink:0;position:relative;}
+.device-header{background:#1a1a1a;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a2a2a;}
+.device-name{font-size:0.8rem;font-weight:600;color:#ccc;}
+.device-dims{font-size:0.7rem;color:#555;font-family:monospace;}
+.device-notch{width:100px;height:4px;background:#2a2a2a;border-radius:2px;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:1;}
+.device-frame iframe{border:none;width:100%;background:#fff;display:block;}
+
+.rotate-btn{padding:4px 10px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:4px;color:#888;font-size:0.75rem;cursor:pointer;transition:all .2s;}
+.rotate-btn:hover{border-color:#ff5f1f;color:#ff5f1f;}
+
+.empty-state{text-align:center;padding:80px 20px;color:#444;max-width:600px;margin:0 auto;}
+.empty-state h2{font-size:1.4rem;color:#666;margin-bottom:12px;}
+.empty-state p{font-size:0.95rem;margin-bottom:8px;}
+
+.quick-urls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+.quick-url{padding:8px 16px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;}
+.quick-url:hover{border-color:#ff5f1f;color:#ff5f1f;}
+
+.info-bar{background:#111;border-top:1px solid #222;padding:10px 20px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;}
+.info-item{font-size:0.8rem;color:#555;}
+.info-item span{color:#ff5f1f;font-weight:600;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;max-width:700px;margin:40px auto 20px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+@media(max-width:768px){
+  .toolbar{flex-direction:column;align-items:stretch;}
+  .url-input{min-width:100%;}
+  .device-bar{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+  .custom-size{border-left:none;padding-left:0;margin-left:0;margin-top:8px;}
+  .preview-area{flex-direction:column;align-items:center;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Responsive Design Tester","description":"Free responsive design tester. Enter any URL and preview it on iPhone, iPad, Desktop, and custom screen sizes side by side.","url":"https://spunkart.com/responsive-tester.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<!-- URL Toolbar -->
+<div class="toolbar">
+  <input type="text" class="url-input" id="urlInput" placeholder="Enter URL to test (e.g., https://example.com)" value="">
+  <button class="btn btn-primary" onclick="loadUrl()">Test URL</button>
+  <div class="usage-badge" id="usageBadge"></div>
+</div>
+
+<!-- Device Bar -->
+<div class="device-bar" id="deviceBar">
+  <div class="device-btn active" data-device="iphone-se" data-w="375" data-h="667">iPhone SE <span class="size">375x667</span></div>
+  <div class="device-btn" data-device="iphone-14" data-w="390" data-h="844">iPhone 14 <span class="size">390x844</span></div>
+  <div class="device-btn" data-device="iphone-14-pro-max" data-w="430" data-h="932">iPhone 14 Pro Max <span class="size">430x932</span></div>
+  <div class="device-btn" data-device="pixel-7" data-w="412" data-h="915">Pixel 7 <span class="size">412x915</span></div>
+  <div class="device-btn" data-device="galaxy-s23" data-w="360" data-h="780">Galaxy S23 <span class="size">360x780</span></div>
+  <div class="device-btn" data-device="ipad-mini" data-w="768" data-h="1024">iPad Mini <span class="size">768x1024</span></div>
+  <div class="device-btn" data-device="ipad-pro" data-w="1024" data-h="1366">iPad Pro <span class="size">1024x1366</span></div>
+  <div class="device-btn" data-device="laptop" data-w="1366" data-h="768">Laptop <span class="size">1366x768</span></div>
+  <div class="device-btn" data-device="desktop" data-w="1920" data-h="1080">Desktop <span class="size">1920x1080</span></div>
+
+  <div class="custom-size">
+    <input type="number" id="customW" placeholder="W" min="100" max="3840" value="1440">
+    <span>x</span>
+    <input type="number" id="customH" placeholder="H" min="100" max="2160" value="900">
+    <button class="btn btn-secondary" style="padding:6px 12px;font-size:0.8rem;" onclick="addCustomDevice()">Add Custom</button>
+  </div>
+
+  <div class="view-modes">
+    <div class="view-btn active" data-mode="single" onclick="setViewMode('single')">Single</div>
+    <div class="view-btn" data-mode="side-by-side" onclick="setViewMode('side-by-side')">Side by Side</div>
+    <div class="view-btn" data-mode="all" onclick="setViewMode('all')">All Devices</div>
+  </div>
+</div>
+
+<main>
+  <div class="preview-area" id="previewArea">
+    <div class="empty-state" id="emptyState">
+      <h2>Responsive Design Tester</h2>
+      <p>Enter a URL above and preview it on any device.</p>
+      <p style="font-size:0.85rem;color:#555;margin-top:12px;">Select devices from the toolbar, or switch to "All Devices" view to see them all at once.</p>
+      <div class="quick-urls">
+        <div class="quick-url" data-url="https://example.com">example.com</div>
+        <div class="quick-url" data-url="https://google.com">google.com</div>
+        <div class="quick-url" data-url="https://github.com">github.com</div>
+        <div class="quick-url" data-url="https://wikipedia.org">wikipedia.org</div>
+        <div class="quick-url" data-url="https://css-tricks.com">css-tricks.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<!-- Info Bar -->
+<div class="info-bar">
+  <div class="info-item">Active Devices: <span id="deviceCountInfo">1</span></div>
+  <div class="info-item">Current URL: <span id="currentUrlInfo">None</span></div>
+  <div class="info-item">View: <span id="viewModeInfo">Single</span></div>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var devices = [
+    { id:'iphone-se', name:'iPhone SE', w:375, h:667, type:'phone' },
+    { id:'iphone-14', name:'iPhone 14', w:390, h:844, type:'phone' },
+    { id:'iphone-14-pro-max', name:'iPhone 14 Pro Max', w:430, h:932, type:'phone' },
+    { id:'pixel-7', name:'Pixel 7', w:412, h:915, type:'phone' },
+    { id:'galaxy-s23', name:'Galaxy S23', w:360, h:780, type:'phone' },
+    { id:'ipad-mini', name:'iPad Mini', w:768, h:1024, type:'tablet' },
+    { id:'ipad-pro', name:'iPad Pro', w:1024, h:1366, type:'tablet' },
+    { id:'laptop', name:'Laptop', w:1366, h:768, type:'desktop' },
+    { id:'desktop', name:'Desktop', w:1920, h:1080, type:'desktop' }
+  ];
+
+  var activeDevices = ['iphone-se'];
+  var currentUrl = '';
+  var viewMode = 'single'; // single, side-by-side, all
+  var rotated = {};
+
+  /* ─── Device Bar ─── */
+  document.getElementById('deviceBar').addEventListener('click', function(e){
+    var btn = e.target.closest('.device-btn');
+    if(!btn || btn.classList.contains('view-btn')) return;
+    var deviceId = btn.dataset.device;
+
+    if(viewMode === 'single'){
+      activeDevices = [deviceId];
+    } else {
+      var idx = activeDevices.indexOf(deviceId);
+      if(idx !== -1){
+        if(activeDevices.length > 1) activeDevices.splice(idx, 1);
+      } else {
+        activeDevices.push(deviceId);
+      }
+    }
+    updateDeviceBar();
+    renderPreview();
+    bumpUsage();
+  });
+
+  function updateDeviceBar(){
+    document.querySelectorAll('#deviceBar .device-btn').forEach(function(btn){
+      if(btn.classList.contains('view-btn')) return;
+      btn.classList.toggle('active', activeDevices.indexOf(btn.dataset.device) !== -1);
+    });
+    document.getElementById('deviceCountInfo').textContent = activeDevices.length;
+  }
+
+  /* ─── View Mode ─── */
+  window.setViewMode = function(mode){
+    viewMode = mode;
+    document.querySelectorAll('.view-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.mode === mode); });
+    document.getElementById('viewModeInfo').textContent = mode === 'single' ? 'Single' : mode === 'side-by-side' ? 'Side by Side' : 'All Devices';
+
+    if(mode === 'all'){
+      activeDevices = devices.map(function(d){ return d.id; });
+    } else if(mode === 'single' && activeDevices.length > 1){
+      activeDevices = [activeDevices[0]];
+    }
+    updateDeviceBar();
+    renderPreview();
+  };
+
+  /* ─── Custom Device ─── */
+  window.addCustomDevice = function(){
+    var w = parseInt(document.getElementById('customW').value) || 1440;
+    var h = parseInt(document.getElementById('customH').value) || 900;
+    var id = 'custom-' + w + 'x' + h;
+    // Check if already exists
+    var exists = devices.some(function(d){ return d.id === id; });
+    if(!exists){
+      devices.push({ id:id, name:'Custom ' + w + 'x' + h, w:w, h:h, type:'custom' });
+      // Add button to device bar
+      var bar = document.getElementById('deviceBar');
+      var viewModes = bar.querySelector('.view-modes');
+      var btn = document.createElement('div');
+      btn.className = 'device-btn active';
+      btn.dataset.device = id;
+      btn.dataset.w = w;
+      btn.dataset.h = h;
+      btn.innerHTML = 'Custom <span class="size">' + w + 'x' + h + '</span>';
+      bar.insertBefore(btn, viewModes.previousElementSibling);
+    }
+    activeDevices.push(id);
+    updateDeviceBar();
+    renderPreview();
+    bumpUsage();
+  };
+
+  /* ─── Quick URLs ─── */
+  document.addEventListener('click', function(e){
+    if(e.target.classList.contains('quick-url')){
+      document.getElementById('urlInput').value = e.target.dataset.url;
+      loadUrl();
+    }
+  });
+
+  /* ─── Load URL ─── */
+  window.loadUrl = function(){
+    var url = document.getElementById('urlInput').value.trim();
+    if(!url) return;
+    if(!url.startsWith('http://') && !url.startsWith('https://')){
+      url = 'https://' + url;
+      document.getElementById('urlInput').value = url;
+    }
+    currentUrl = url;
+    document.getElementById('currentUrlInfo').textContent = url.replace(/^https?:\/\//, '').substring(0, 40);
+    renderPreview();
+    bumpUsage();
+    gtag('event', 'test_responsive', { event_category: 'tool_use', url: url });
+  };
+
+  // Enter key to load
+  document.getElementById('urlInput').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') loadUrl();
+  });
+
+  /* ─── Render Preview ─── */
+  function renderPreview(){
+    var area = document.getElementById('previewArea');
+
+    if(!currentUrl){
+      area.innerHTML = '<div class="empty-state" id="emptyState"><h2>Responsive Design Tester</h2><p>Enter a URL above and preview it on any device.</p><p style="font-size:0.85rem;color:#555;margin-top:12px;">Select devices from the toolbar, or switch to "All Devices" view to see them all at once.</p><div class="quick-urls"><div class="quick-url" data-url="https://example.com">example.com</div><div class="quick-url" data-url="https://google.com">google.com</div><div class="quick-url" data-url="https://github.com">github.com</div><div class="quick-url" data-url="https://wikipedia.org">wikipedia.org</div><div class="quick-url" data-url="https://css-tricks.com">css-tricks.com</div></div></div>';
+      return;
+    }
+
+    area.innerHTML = '';
+    area.className = 'preview-area' + (viewMode === 'side-by-side' || viewMode === 'all' ? ' side-by-side' : '');
+
+    activeDevices.forEach(function(deviceId){
+      var device = devices.find(function(d){ return d.id === deviceId; });
+      if(!device) return;
+
+      var isRotated = rotated[deviceId] || false;
+      var displayW = isRotated ? device.h : device.w;
+      var displayH = isRotated ? device.w : device.h;
+
+      // Scale to fit viewport
+      var maxW = viewMode === 'all' ? 320 : viewMode === 'side-by-side' ? 500 : Math.min(displayW, window.innerWidth - 60);
+      var scale = displayW > maxW ? maxW / displayW : 1;
+      var frameW = Math.round(displayW * scale);
+      var frameH = Math.round(Math.min(displayH, 800) * scale);
+
+      var frame = document.createElement('div');
+      frame.className = 'device-frame';
+      frame.style.width = frameW + 'px';
+
+      var header = document.createElement('div');
+      header.className = 'device-header';
+      header.innerHTML = '<span class="device-name">' + device.name + '</span><span class="device-dims">' + displayW + ' x ' + displayH + '</span><button class="rotate-btn" data-device="' + deviceId + '">Rotate</button>';
+      frame.appendChild(header);
+
+      var iframe = document.createElement('iframe');
+      iframe.src = currentUrl;
+      iframe.style.width = displayW + 'px';
+      iframe.style.height = Math.min(displayH, 800) + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+      iframe.style.transformOrigin = 'top left';
+      iframe.style.display = 'block';
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups');
+      iframe.setAttribute('loading', 'lazy');
+
+      var iframeWrap = document.createElement('div');
+      iframeWrap.style.width = frameW + 'px';
+      iframeWrap.style.height = frameH + 'px';
+      iframeWrap.style.overflow = 'hidden';
+      iframeWrap.style.position = 'relative';
+      iframeWrap.appendChild(iframe);
+      frame.appendChild(iframeWrap);
+
+      area.appendChild(frame);
+    });
+
+    // Rotate button handlers
+    area.querySelectorAll('.rotate-btn').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var id = btn.dataset.device;
+        rotated[id] = !rotated[id];
+        renderPreview();
+      });
+    });
+  }
+
+  /* ─── Usage Counter ─── */
+  var TOOL_KEY = 'spunkart_responsive_uses';
+  var BAR_KEY = 'sa_bar_dismissed_responsive';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+
+  function updateBadge(){
+    badge.textContent = usageCount + ' test' + (usageCount !== 1 ? 's' : '') + ' run';
+  }
+  updateBadge();
+
+  function bumpUsage(){
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    if(usageCount >= 3 && !localStorage.getItem(BAR_KEY)){
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  /* ─── Email Bar ─── */
+  window.saDismissBar = function(){
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+  window.saSubmitEmail = function(){
+    var email = document.getElementById('saBarEmail').value;
+    if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+  /* ─── Init ─── */
+  updateDeviceBar();
+
+})();
+</script>
+
+<!-- Email collection bar -->
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<!-- Code Protection -->
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

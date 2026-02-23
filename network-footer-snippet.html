@@ -1,0 +1,217 @@
+<!--
+  SpunkArt Cross-Promotion Network Footer
+  ========================================
+  Self-contained HTML/CSS snippet for all tool pages on spunkart.com.
+
+  USAGE: Copy everything below and paste it BEFORE your existing </footer> or
+  at the bottom of <main>, right before the closing </body> tag.
+
+  All CSS is inline/scoped via the .sa-network-footer class to avoid conflicts.
+  No external dependencies. Fully responsive.
+
+  Last updated: 2026-02-23
+-->
+
+<!-- ===== SPUNKART CROSS-PROMOTION NETWORK FOOTER ===== -->
+<div class="sa-network-footer">
+<style>
+.sa-network-footer{background:#0a0a0a;border-top:2px solid #1a1a1a;padding:0;margin-top:3rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#e8e8e8;line-height:1.6;-webkit-font-smoothing:antialiased}
+.sa-network-footer *{box-sizing:border-box;margin:0;padding:0}
+.sa-network-footer a{text-decoration:none;transition:all 0.2s ease}
+.sa-network-footer a:hover{text-decoration:none}
+
+/* Section wrapper */
+.sa-nf-inner{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem 1rem}
+
+/* Section titles */
+.sa-nf-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem}
+.sa-nf-title::after{content:'';flex:1;height:1px;background:#1a1a1a}
+.sa-nf-title.sa-orange{color:#ff5f1f}
+.sa-nf-title.sa-green{color:#10b981}
+.sa-nf-title.sa-blue{color:#3b82f6}
+
+/* ---- MORE FREE TOOLS GRID ---- */
+.sa-nf-tools{display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem;margin-bottom:2.5rem}
+.sa-nf-tool{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.8rem;background:#111;border:1px solid #1a1a1a;border-radius:8px;color:#ccc;font-size:0.8rem;font-weight:500;transition:all 0.2s}
+.sa-nf-tool:hover{border-color:#ff5f1f44;background:#161616;color:#fff;transform:translateY(-1px)}
+.sa-nf-tool-icon{font-size:1rem;flex-shrink:0;width:20px;text-align:center}
+
+/* ---- MIDDLE ROW: EBOOKS + NEWSLETTER + AFFILIATES ---- */
+.sa-nf-mid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem}
+
+/* Ebooks */
+.sa-nf-ebooks{display:flex;flex-direction:column;gap:0.6rem}
+.sa-nf-ebook{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 0.9rem;background:#111;border:1px solid #1a1a1a;border-radius:8px;transition:all 0.2s}
+.sa-nf-ebook:hover{border-color:#10b98144;background:#161616;transform:translateY(-1px)}
+.sa-nf-ebook-badge{background:#10b981;color:#000;font-size:0.55rem;font-weight:800;padding:0.15rem 0.45rem;border-radius:3px;text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0}
+.sa-nf-ebook-info{flex:1;min-width:0}
+.sa-nf-ebook-name{font-size:0.8rem;font-weight:600;color:#e8e8e8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sa-nf-ebook-sub{font-size:0.65rem;color:#666}
+
+/* Newsletter CTA */
+.sa-nf-newsletter{background:linear-gradient(145deg,#111,#0d0d0d);border:1px solid #1a1a1a;border-radius:12px;padding:1.5rem;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.sa-nf-newsletter h3{font-size:1.1rem;font-weight:800;margin-bottom:0.4rem;background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sa-nf-newsletter p{color:#888;font-size:0.78rem;margin-bottom:1rem;line-height:1.5}
+.sa-nf-newsletter .sa-nf-nl-btn{display:inline-block;padding:0.7rem 1.8rem;background:#ff5f1f;color:#fff;border-radius:50px;font-weight:700;font-size:0.85rem;transition:all 0.2s}
+.sa-nf-newsletter .sa-nf-nl-btn:hover{background:#e5541b;transform:scale(1.03);box-shadow:0 6px 25px rgba(255,95,31,0.25)}
+.sa-nf-newsletter .sa-nf-nl-sub{display:block;font-size:0.65rem;color:#555;margin-top:0.6rem}
+
+/* Affiliates */
+.sa-nf-affiliates{display:flex;flex-direction:column;gap:0.6rem}
+.sa-nf-aff{display:flex;align-items:center;gap:0.7rem;padding:0.65rem 0.9rem;background:#111;border:1px solid #1a1a1a;border-radius:8px;transition:all 0.2s}
+.sa-nf-aff:hover{background:#161616;transform:translateY(-1px)}
+.sa-nf-aff-icon{font-size:1rem;flex-shrink:0;width:22px;text-align:center}
+.sa-nf-aff-name{font-size:0.8rem;font-weight:600;flex:1}
+.sa-nf-aff-tag{font-size:0.55rem;font-weight:700;padding:0.15rem 0.4rem;border-radius:3px;text-transform:uppercase;letter-spacing:0.5px}
+
+/* ---- BOTTOM BAR ---- */
+.sa-nf-bottom{border-top:1px solid #1a1a1a;padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.sa-nf-bottom-left{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.sa-nf-brand{font-weight:800;font-size:0.85rem;color:#ff5f1f;letter-spacing:1px}
+.sa-nf-bottom-links{display:flex;gap:1.2rem;flex-wrap:wrap}
+.sa-nf-bottom-links a{color:#555;font-size:0.72rem;font-weight:500}
+.sa-nf-bottom-links a:hover{color:#fff}
+.sa-nf-social{display:flex;align-items:center;gap:1rem}
+.sa-nf-social a{color:#888;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.4rem}
+.sa-nf-social a:hover{color:#fff}
+.sa-nf-social .sa-x-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#222;border-radius:50%;font-size:0.7rem;font-weight:800;transition:all 0.2s}
+.sa-nf-social a:hover .sa-x-icon{background:#ff5f1f;color:#fff}
+.sa-nf-copy{color:#333;font-size:0.65rem;text-align:center;padding:1rem 0 0.5rem;letter-spacing:0.1em}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:900px){
+  .sa-nf-tools{grid-template-columns:repeat(3,1fr)}
+  .sa-nf-mid{grid-template-columns:1fr}
+  .sa-nf-mid>*{max-width:100%}
+}
+@media(max-width:600px){
+  .sa-nf-inner{padding:2rem 1rem 0.5rem}
+  .sa-nf-tools{grid-template-columns:repeat(2,1fr);gap:0.5rem}
+  .sa-nf-tool{font-size:0.75rem;padding:0.5rem 0.6rem}
+  .sa-nf-bottom{flex-direction:column;text-align:center}
+  .sa-nf-bottom-left{flex-direction:column;gap:0.8rem}
+  .sa-nf-bottom-links{justify-content:center}
+  .sa-nf-social{justify-content:center}
+}
+</style>
+
+<div class="sa-nf-inner">
+
+  <!-- MORE FREE TOOLS -->
+  <div class="sa-nf-title sa-orange">More Free Tools<span></span></div>
+  <div class="sa-nf-tools">
+    <a href="/password-generator" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128274;</span> Password Generator</a>
+    <a href="/image-compressor" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128248;</span> Image Compressor</a>
+    <a href="/pdf-tools" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128196;</span> PDF Tools</a>
+    <a href="/invoice-generator" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128179;</span> Invoice Generator</a>
+    <a href="/privacy-policy-generator" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128220;</span> Privacy Policy</a>
+    <a href="/budget-tracker" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128176;</span> Budget Tracker</a>
+    <a href="/meta-generator" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#127760;</span> Meta Tag Generator</a>
+    <a href="/color-palette" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#127912;</span> Color Palette</a>
+    <a href="/regex-tester" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#128269;</span> Regex Tester</a>
+    <a href="/mortgage-calculator" class="sa-nf-tool"><span class="sa-nf-tool-icon">&#127968;</span> Mortgage Calculator</a>
+  </div>
+
+  <!-- MIDDLE ROW: EBOOKS + NEWSLETTER + AFFILIATES -->
+  <div class="sa-nf-mid">
+
+    <!-- EBOOKS -->
+    <div>
+      <div class="sa-nf-title sa-green">Popular Ebooks<span></span></div>
+      <div class="sa-nf-ebooks">
+        <a href="/ebook" class="sa-nf-ebook">
+          <span class="sa-nf-ebook-badge">$14.99</span>
+          <div class="sa-nf-ebook-info">
+            <div class="sa-nf-ebook-name">Zero to 120+ Websites in 7 Days</div>
+            <div class="sa-nf-ebook-sub">The AI Website Empire Blueprint</div>
+          </div>
+        </a>
+        <a href="/ebook-ai-agents" class="sa-nf-ebook">
+          <span class="sa-nf-ebook-badge" style="background:#ff5f1f">FREE</span>
+          <div class="sa-nf-ebook-info">
+            <div class="sa-nf-ebook-name">Building AI Agents</div>
+            <div class="sa-nf-ebook-sub">Solo Founder's Guide to Autonomous Workflows</div>
+          </div>
+        </a>
+        <a href="/ebook-passive-income" class="sa-nf-ebook">
+          <span class="sa-nf-ebook-badge" style="background:#ff5f1f">FREE</span>
+          <div class="sa-nf-ebook-info">
+            <div class="sa-nf-ebook-name">The Passive Income Machine</div>
+            <div class="sa-nf-ebook-sub">50 Automated Revenue Streams for 2026</div>
+          </div>
+        </a>
+        <a href="/ebook-vibe-coding" class="sa-nf-ebook">
+          <span class="sa-nf-ebook-badge" style="background:#ff5f1f">FREE</span>
+          <div class="sa-nf-ebook-info">
+            <div class="sa-nf-ebook-name">Vibe Coding Mastery</div>
+            <div class="sa-nf-ebook-sub">Ship 100 Projects with AI</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER CTA -->
+    <div class="sa-nf-newsletter">
+      <h3>Join the Network</h3>
+      <p>Free tools, ebooks, and behind-the-scenes content from one developer running 120+ sites. No spam. Unsubscribe anytime.</p>
+      <a href="https://spunkart.beehiiv.com/subscribe" target="_blank" rel="noopener" class="sa-nf-nl-btn">Subscribe Free</a>
+      <span class="sa-nf-nl-sub">Join 1,000+ builders and founders</span>
+    </div>
+
+    <!-- AFFILIATES & PARTNERS -->
+    <div>
+      <div class="sa-nf-title sa-blue">Recommended<span></span></div>
+      <div class="sa-nf-affiliates">
+        <a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" class="sa-nf-aff">
+          <span class="sa-nf-aff-icon">&#9899;</span>
+          <span class="sa-nf-aff-name" style="color:#0052ff">Buy Crypto on Coinbase</span>
+          <span class="sa-nf-aff-tag" style="background:#0052ff22;color:#0052ff">Partner</span>
+        </a>
+        <a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" class="sa-nf-aff">
+          <span class="sa-nf-aff-icon">&#128737;</span>
+          <span class="sa-nf-aff-name" style="color:#ff5500">Ledger Hardware Wallet</span>
+          <span class="sa-nf-aff-tag" style="background:#ff550022;color:#ff5500">Partner</span>
+        </a>
+        <a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" class="sa-nf-aff">
+          <span class="sa-nf-aff-icon">&#128200;</span>
+          <span class="sa-nf-aff-name" style="color:#00d084">Trade on Kalshi</span>
+          <span class="sa-nf-aff-tag" style="background:#00d08422;color:#00d084">Partner</span>
+        </a>
+        <a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" class="sa-nf-aff">
+          <span class="sa-nf-aff-icon">&#127920;</span>
+          <span class="sa-nf-aff-name" style="color:#ff5f1f">Play on Winna.com</span>
+          <span class="sa-nf-aff-tag" style="background:#ff5f1f22;color:#ff5f1f">Partner</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="sa-nf-bottom">
+    <div class="sa-nf-bottom-left">
+      <a href="/" class="sa-nf-brand">SPUNKART</a>
+      <div class="sa-nf-bottom-links">
+        <a href="/">Home</a>
+        <a href="/store">Store</a>
+        <a href="/ebook">Ebook</a>
+        <a href="/reseller">Reseller</a>
+        <a href="/blog">Blog</a>
+        <a href="https://spunk.bet" target="_blank" rel="noopener">Spunk.Bet</a>
+        <a href="https://predict.pics" target="_blank" rel="noopener">Predict Network</a>
+        <a href="https://stimulant.wiki" target="_blank" rel="noopener">Stimulant Wiki</a>
+        <a href="https://scam.video" target="_blank" rel="noopener">Scam.Video</a>
+      </div>
+    </div>
+    <div class="sa-nf-social">
+      <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">
+        <span class="sa-x-icon">X</span> @SpunkArt13
+      </a>
+    </div>
+  </div>
+
+  <div class="sa-nf-copy">&copy; 2026 SPUNKART.COM &mdash; All rights reserved.</div>
+
+</div>
+</div>
+<!-- ===== END CROSS-PROMOTION NETWORK FOOTER ===== -->
