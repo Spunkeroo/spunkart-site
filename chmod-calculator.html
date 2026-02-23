@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chmod Calculator — Unix File Permission Generator Free</title>
+<meta name="description" content="Visual chmod calculator for Unix/Linux file permissions. Generate numeric (755) and symbolic (rwxr-xr-x) permissions with checkbox grid, presets, and copy-ready commands.">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:800px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:1.5rem;text-align:center}
+.badge-wrap{text-align:center}
+
+/* Permission Grid */
+.perm-grid{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:1.5rem}
+.grid-table{width:100%;border-collapse:collapse}
+.grid-table th{font-size:0.8rem;color:#666;font-weight:600;padding:8px 12px;text-align:center;text-transform:uppercase;letter-spacing:1px}
+.grid-table th:first-child{text-align:left}
+.grid-table td{padding:10px 12px;text-align:center;border-top:1px solid #1a1a1a}
+.grid-table td:first-child{text-align:left;font-weight:700;font-size:0.9rem}
+.grid-table .role-owner{color:#ff5f1f}
+.grid-table .role-group{color:#3b82f6}
+.grid-table .role-other{color:#a855f7}
+
+/* Custom checkbox */
+.perm-check{appearance:none;-webkit-appearance:none;width:32px;height:32px;background:#1a1a1a;border:2px solid #333;border-radius:8px;cursor:pointer;transition:all 0.2s;position:relative;vertical-align:middle}
+.perm-check:hover{border-color:#555}
+.perm-check:checked{background:#ff5f1f;border-color:#ff5f1f}
+.perm-check:checked::after{content:'\2713';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:1.1rem;font-weight:900}
+.perm-check.green:checked{background:#10b981;border-color:#10b981}
+
+/* Octal value per column */
+.octal-row td{text-align:center;font-family:'Courier New',monospace;font-size:0.75rem;color:#555;padding-top:4px;border:none}
+
+/* Output Section */
+.output-section{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:1.5rem;text-align:center}
+.output-big{display:flex;justify-content:center;align-items:center;gap:30px;margin-bottom:16px;flex-wrap:wrap}
+.output-block{text-align:center}
+.output-label{font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.output-value{font-family:'Courier New',monospace;font-size:2.5rem;font-weight:900;letter-spacing:4px}
+.output-numeric{color:#ff5f1f}
+.output-symbolic{color:#10b981;font-size:1.6rem}
+.cmd-box{display:flex;align-items:center;justify-content:center;gap:8px;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px 20px;font-family:'Courier New',monospace;font-size:0.95rem;color:#e8e8e8;margin-top:12px;flex-wrap:wrap;cursor:pointer;transition:all 0.2s}
+.cmd-box:hover{border-color:#ff5f1f}
+.cmd-box .kw{color:#ff5f1f}
+.cmd-box .val{color:#10b981}
+.cmd-box .file{color:#888}
+.btn{padding:10px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-sm{padding:8px 14px;font-size:0.8rem}
+.btn-secondary{background:#222;color:#ccc}.btn-secondary:hover{background:#333;transform:scale(1.02)}
+.copy-row{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+
+/* Presets */
+.presets-section{margin-bottom:1.5rem}
+.presets-section h3{font-size:0.95rem;color:#aaa;margin-bottom:10px;font-weight:600}
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.preset-card{background:#111;border:1px solid #222;border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s}
+.preset-card:hover{border-color:#ff5f1f;background:#1a1a1a}
+.preset-card.active{border-color:#ff5f1f;background:#1a1a1a}
+.preset-num{font-family:'Courier New',monospace;font-size:1.1rem;font-weight:900;color:#ff5f1f}
+.preset-sym{font-family:'Courier New',monospace;font-size:0.75rem;color:#10b981;margin-top:2px}
+.preset-desc{font-size:0.75rem;color:#888;margin-top:4px}
+
+/* Explanation */
+.explain-section{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:1.5rem}
+.explain-section h3{font-size:0.95rem;color:#aaa;margin-bottom:12px;font-weight:600}
+.explain-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.explain-card{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:14px}
+.explain-card h4{font-size:0.85rem;margin-bottom:6px}
+.explain-card .perm-letter{font-family:'Courier New',monospace;font-weight:900;font-size:1.2rem}
+.explain-card .r{color:#10b981}.explain-card .w{color:#ff5f1f}.explain-card .x{color:#3b82f6}
+.explain-card p{font-size:0.78rem;color:#888;line-height:1.5}
+.explain-card .octal-val{font-family:'Courier New',monospace;color:#ff5f1f;font-weight:700}
+
+/* Breakdown */
+.breakdown{margin-top:16px;font-size:0.85rem;color:#999;line-height:1.8}
+.breakdown .seg{display:inline-block;padding:2px 6px;border-radius:4px;font-family:'Courier New',monospace;font-weight:700;margin:0 2px}
+.breakdown .seg-owner{background:rgba(255,95,31,0.15);color:#ff5f1f}
+.breakdown .seg-group{background:rgba(59,130,246,0.15);color:#3b82f6}
+.breakdown .seg-other{background:rgba(168,85,247,0.15);color:#a855f7}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:14px 24px;display:none;justify-content:center;align-items:center;gap:12px;z-index:100;flex-wrap:wrap;animation:slideUp 0.4s ease}
+.newsletter.show{display:flex}
+.newsletter h3{color:#ff5f1f;font-size:0.9rem;white-space:nowrap}
+.newsletter .close-nl{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:4px 8px}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+footer a{margin:0 6px}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:200}
+.copied.show{opacity:1}
+@media(max-width:700px){.container{padding:0 1rem}h1{font-size:1.5rem}.output-value{font-size:1.8rem}.output-symbolic{font-size:1.2rem}.explain-grid{grid-template-columns:1fr}.output-big{gap:16px}.preset-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Chmod Calculator","description":"Visual chmod calculator for Unix/Linux file permissions. Generate numeric and symbolic permissions with checkbox grid, presets, and copy-ready commands.","url":"https://spunkart.com/chmod-calculator.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Chmod Calculator</h1>
+  <div class="sub">Visual Unix file permission generator — numeric &amp; symbolic modes</div>
+  <div class="badge-wrap"><span class="badge" id="usageBadge">0 permissions calculated</span></div>
+
+  <!-- Permission Grid -->
+  <div class="perm-grid">
+    <table class="grid-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Read (r)</th>
+          <th>Write (w)</th>
+          <th>Execute (x)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="role-owner">Owner</td>
+          <td><input type="checkbox" class="perm-check" data-role="owner" data-perm="r" checked onchange="calculate()"></td>
+          <td><input type="checkbox" class="perm-check" data-role="owner" data-perm="w" checked onchange="calculate()"></td>
+          <td><input type="checkbox" class="perm-check" data-role="owner" data-perm="x" checked onchange="calculate()"></td>
+        </tr>
+        <tr>
+          <td class="role-group">Group</td>
+          <td><input type="checkbox" class="perm-check green" data-role="group" data-perm="r" checked onchange="calculate()"></td>
+          <td><input type="checkbox" class="perm-check green" data-role="group" data-perm="w" onchange="calculate()"></td>
+          <td><input type="checkbox" class="perm-check green" data-role="group" data-perm="x" checked onchange="calculate()"></td>
+        </tr>
+        <tr>
+          <td class="role-other">Other</td>
+          <td><input type="checkbox" class="perm-check" data-role="other" data-perm="r" checked onchange="calculate()" style="--check-bg:#a855f7"></td>
+          <td><input type="checkbox" class="perm-check" data-role="other" data-perm="w" onchange="calculate()"></td>
+          <td><input type="checkbox" class="perm-check" data-role="other" data-perm="x" checked onchange="calculate()"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Output -->
+  <div class="output-section">
+    <div class="output-big">
+      <div class="output-block">
+        <div class="output-label">Numeric</div>
+        <div class="output-value output-numeric" id="numericOutput">755</div>
+      </div>
+      <div class="output-block">
+        <div class="output-label">Symbolic</div>
+        <div class="output-value output-symbolic" id="symbolicOutput">rwxr-xr-x</div>
+      </div>
+    </div>
+
+    <div class="cmd-box" onclick="copyCommand()" title="Click to copy">
+      <span class="kw">chmod</span>
+      <span class="val" id="cmdNumeric">755</span>
+      <span class="file">filename</span>
+    </div>
+
+    <div class="breakdown" id="breakdown"></div>
+
+    <div class="copy-row">
+      <button class="btn btn-sm" onclick="copyNumeric()">Copy Numeric</button>
+      <button class="btn btn-sm btn-secondary" onclick="copySymbolic()">Copy Symbolic</button>
+      <button class="btn btn-sm btn-secondary" onclick="copyCommand()">Copy Command</button>
+    </div>
+  </div>
+
+  <!-- Presets -->
+  <div class="presets-section">
+    <h3>Common Presets</h3>
+    <div class="preset-grid">
+      <div class="preset-card" onclick="applyPreset(644)">
+        <div class="preset-num">644</div>
+        <div class="preset-sym">rw-r--r--</div>
+        <div class="preset-desc">Default files</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(755)">
+        <div class="preset-num">755</div>
+        <div class="preset-sym">rwxr-xr-x</div>
+        <div class="preset-desc">Default directories / scripts</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(777)">
+        <div class="preset-num">777</div>
+        <div class="preset-sym">rwxrwxrwx</div>
+        <div class="preset-desc">Full access (dangerous)</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(600)">
+        <div class="preset-num">600</div>
+        <div class="preset-sym">rw-------</div>
+        <div class="preset-desc">SSH keys / secrets</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(700)">
+        <div class="preset-num">700</div>
+        <div class="preset-sym">rwx------</div>
+        <div class="preset-desc">Private directories</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(750)">
+        <div class="preset-num">750</div>
+        <div class="preset-sym">rwxr-x---</div>
+        <div class="preset-desc">Group-accessible dir</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(664)">
+        <div class="preset-num">664</div>
+        <div class="preset-sym">rw-rw-r--</div>
+        <div class="preset-desc">Group-writable files</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(444)">
+        <div class="preset-num">444</div>
+        <div class="preset-sym">r--r--r--</div>
+        <div class="preset-desc">Read-only for everyone</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(400)">
+        <div class="preset-num">400</div>
+        <div class="preset-sym">r--------</div>
+        <div class="preset-desc">Owner read-only (PEM keys)</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(666)">
+        <div class="preset-num">666</div>
+        <div class="preset-sym">rw-rw-rw-</div>
+        <div class="preset-desc">Read/write all (dev only)</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(775)">
+        <div class="preset-num">775</div>
+        <div class="preset-sym">rwxrwxr-x</div>
+        <div class="preset-desc">Shared group directories</div>
+      </div>
+      <div class="preset-card" onclick="applyPreset(555)">
+        <div class="preset-num">555</div>
+        <div class="preset-sym">r-xr-xr-x</div>
+        <div class="preset-desc">Read &amp; execute only</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Permission Explanation -->
+  <div class="explain-section">
+    <h3>Permission Reference</h3>
+    <div class="explain-grid">
+      <div class="explain-card">
+        <h4><span class="perm-letter r">r</span> Read</h4>
+        <p>View file contents or list directory entries. Octal value: <span class="octal-val">4</span></p>
+      </div>
+      <div class="explain-card">
+        <h4><span class="perm-letter w">w</span> Write</h4>
+        <p>Modify file contents or add/remove files in a directory. Octal value: <span class="octal-val">2</span></p>
+      </div>
+      <div class="explain-card">
+        <h4><span class="perm-letter x">x</span> Execute</h4>
+        <p>Run the file as a program or enter the directory (cd). Octal value: <span class="octal-val">1</span></p>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-size:0.82rem;color:#888;line-height:1.6;text-align:center">
+      <strong style="color:#ff5f1f">Owner</strong> = the file creator &nbsp;|&nbsp;
+      <strong style="color:#3b82f6">Group</strong> = users in the same group &nbsp;|&nbsp;
+      <strong style="color:#a855f7">Other</strong> = everyone else<br>
+      Each digit = <span style="color:#10b981">r(4)</span> + <span style="color:#ff5f1f">w(2)</span> + <span style="color:#3b82f6">x(1)</span>. Example: 7 = 4+2+1 = rwx, 5 = 4+0+1 = r-x
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Developer Tools</h3>
+    <div class="tool-links">
+      <a href="/webhook-tester.html">Webhook Tester</a>
+      <a href="/sql-formatter.html">SQL Formatter</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/password-generator.html">Password Gen</a>
+      <a href="/url-encoder.html">URL Encoder</a>
+    </div>
+    <h3>Get All 40+ Tools — $9.99</h3>
+    <p>Instant access to every premium tool. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="cta">Get the Bundle — $9.99</a>
+  </div>
+</div>
+</main>
+
+<div class="newsletter" id="newsletter">
+  <h3>Get New Tools First</h3>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:400px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  <button class="close-nl" onclick="document.getElementById('newsletter').classList.remove('show')">&times;</button>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/" style="color:#ff5f1f">SpunkArt</a> <a href="/store" style="color:#ff5f1f">Store</a> <a href="/blog" style="color:#888">Blog</a> <a href="/store#ebook" style="color:#888">Ebook</a> <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> <a href="https://predict.codes" style="color:#888">Predict</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+/* ===== STATE ===== */
+var usageCount = parseInt(localStorage.getItem('spunkart_chmod_count') || '0');
+updateBadge();
+
+/* ===== CALCULATE ===== */
+function calculate() {
+  var checks = document.querySelectorAll('.perm-check');
+  var perms = { owner: { r: false, w: false, x: false }, group: { r: false, w: false, x: false }, other: { r: false, w: false, x: false } };
+
+  checks.forEach(function(cb) {
+    perms[cb.dataset.role][cb.dataset.perm] = cb.checked;
+  });
+
+  var ownerVal = (perms.owner.r ? 4 : 0) + (perms.owner.w ? 2 : 0) + (perms.owner.x ? 1 : 0);
+  var groupVal = (perms.group.r ? 4 : 0) + (perms.group.w ? 2 : 0) + (perms.group.x ? 1 : 0);
+  var otherVal = (perms.other.r ? 4 : 0) + (perms.other.w ? 2 : 0) + (perms.other.x ? 1 : 0);
+
+  var numeric = '' + ownerVal + groupVal + otherVal;
+  var symbolic = '';
+  ['owner', 'group', 'other'].forEach(function(role) {
+    symbolic += perms[role].r ? 'r' : '-';
+    symbolic += perms[role].w ? 'w' : '-';
+    symbolic += perms[role].x ? 'x' : '-';
+  });
+
+  document.getElementById('numericOutput').textContent = numeric;
+  document.getElementById('symbolicOutput').textContent = symbolic;
+  document.getElementById('cmdNumeric').textContent = numeric;
+
+  // Breakdown
+  var ownerSym = symbolic.substring(0, 3);
+  var groupSym = symbolic.substring(3, 6);
+  var otherSym = symbolic.substring(6, 9);
+  document.getElementById('breakdown').innerHTML =
+    '<span class="seg seg-owner">' + ownerVal + ' (' + ownerSym + ')</span> Owner can ' + describePerms(perms.owner) + ' &mdash; ' +
+    '<span class="seg seg-group">' + groupVal + ' (' + groupSym + ')</span> Group can ' + describePerms(perms.group) + ' &mdash; ' +
+    '<span class="seg seg-other">' + otherVal + ' (' + otherSym + ')</span> Others can ' + describePerms(perms.other);
+
+  // Highlight active preset
+  document.querySelectorAll('.preset-card').forEach(function(card) { card.classList.remove('active'); });
+  var match = document.querySelector('.preset-card .preset-num');
+  document.querySelectorAll('.preset-card').forEach(function(card) {
+    if (card.querySelector('.preset-num').textContent === numeric) card.classList.add('active');
+  });
+
+  // Track usage
+  usageCount++;
+  localStorage.setItem('spunkart_chmod_count', usageCount.toString());
+  updateBadge();
+  checkNewsletter();
+}
+
+function describePerms(p) {
+  var actions = [];
+  if (p.r) actions.push('read');
+  if (p.w) actions.push('write');
+  if (p.x) actions.push('execute');
+  if (actions.length === 0) return 'do nothing';
+  return actions.join(', ');
+}
+
+/* ===== PRESETS ===== */
+function applyPreset(num) {
+  var digits = num.toString().padStart(3, '0').split('').map(Number);
+  var roles = ['owner', 'group', 'other'];
+  var checks = document.querySelectorAll('.perm-check');
+
+  roles.forEach(function(role, i) {
+    var val = digits[i];
+    checks.forEach(function(cb) {
+      if (cb.dataset.role !== role) return;
+      if (cb.dataset.perm === 'r') cb.checked = !!(val & 4);
+      if (cb.dataset.perm === 'w') cb.checked = !!(val & 2);
+      if (cb.dataset.perm === 'x') cb.checked = !!(val & 1);
+    });
+  });
+
+  calculate();
+}
+
+/* ===== COPY ===== */
+function copyNumeric() {
+  navigator.clipboard.writeText(document.getElementById('numericOutput').textContent);
+  showToast('Numeric copied!');
+}
+function copySymbolic() {
+  navigator.clipboard.writeText(document.getElementById('symbolicOutput').textContent);
+  showToast('Symbolic copied!');
+}
+function copyCommand() {
+  var cmd = 'chmod ' + document.getElementById('cmdNumeric').textContent + ' filename';
+  navigator.clipboard.writeText(cmd);
+  showToast('Command copied!');
+}
+
+/* ===== BADGE ===== */
+function updateBadge() {
+  document.getElementById('usageBadge').textContent = usageCount + ' permission' + (usageCount !== 1 ? 's' : '') + ' calculated';
+}
+
+/* ===== NEWSLETTER ===== */
+function checkNewsletter() {
+  if (usageCount >= 3 && !localStorage.getItem('spunkart_nl_chmod_dismissed')) {
+    document.getElementById('newsletter').classList.add('show');
+  }
+}
+document.querySelector('.close-nl').addEventListener('click', function() {
+  localStorage.setItem('spunkart_nl_chmod_dismissed', '1');
+});
+
+/* ===== TOAST ===== */
+function showToast(msg) {
+  var el = document.getElementById('copied');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(function() { el.classList.remove('show'); }, 1800);
+}
+
+/* Initial calculation */
+calculate();
+</script>
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.className='watermark';
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
