@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Writing Assistant - Free Text Rewriter & Improver | SPUNKART.COM</title>
+<meta name="description" content="Rewrite, improve, simplify, or make your text more professional instantly. Free AI writing assistant with multiple transformation modes. No API key needed.">
+<meta name="keywords" content="AI writing assistant, text rewriter, paraphrasing tool, text improver, writing tool, free rewriter">
+<meta property="og:title" content="AI Writing Assistant — Free Text Rewriter | SPUNKART.COM">
+<meta property="og:description" content="Rewrite, improve, simplify, or formalize your text instantly. No signup, no API key.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/ai-writing-assistant">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Writing Assistant | SPUNKART.COM">
+<meta name="twitter:description" content="Free text rewriter and improver. Multiple transformation modes.">
+<link rel="canonical" href="https://spunkart.com/ai-writing-assistant">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.mode-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.mode-btn{padding:10px 18px;background:#1a1a1a;border:2px solid #333;border-radius:8px;color:#ccc;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.mode-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.mode-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.text-area{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.95rem;font-family:inherit;line-height:1.7;outline:none;resize:vertical;transition:border-color .2s}
+.text-area:focus{border-color:#ff5f1f}
+.text-area::placeholder{color:#444}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.output-label{font-size:0.85rem;color:#888;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.word-count{font-size:0.8rem;color:#555}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .mode-btn{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AI Writing Assistant","description":"Rewrite, improve, simplify, or formalize your text instantly. Free tool with multiple transformation modes.","url":"https://spunkart.com/ai-writing-assistant.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>AI Writing <span>Assistant</span></h1>
+  <p class="subtitle">Transform your text instantly. Choose a mode and paste your text below.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <div class="mode-grid">
+      <button class="mode-btn active" data-mode="professional" onclick="setMode(this,'professional')">Professional</button>
+      <button class="mode-btn" data-mode="casual" onclick="setMode(this,'casual')">Casual</button>
+      <button class="mode-btn" data-mode="simplify" onclick="setMode(this,'simplify')">Simplify</button>
+      <button class="mode-btn" data-mode="expand" onclick="setMode(this,'expand')">Expand</button>
+      <button class="mode-btn" data-mode="shorten" onclick="setMode(this,'shorten')">Shorten</button>
+      <button class="mode-btn" data-mode="persuasive" onclick="setMode(this,'persuasive')">Persuasive</button>
+      <button class="mode-btn" data-mode="active" onclick="setMode(this,'active')">Active Voice</button>
+      <button class="mode-btn" data-mode="fixgrammar" onclick="setMode(this,'fixgrammar')">Fix Grammar</button>
+    </div>
+
+    <label style="font-size:0.85rem;color:#888;display:block;margin-bottom:8px">Input Text</label>
+    <textarea class="text-area" id="inputText" placeholder="Paste or type your text here..."></textarea>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="transformText()">Transform Text</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('inputText').value='';document.getElementById('outputText').value='';">Clear</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="output-label">
+      <span>Output</span>
+      <span class="word-count" id="outputCount">0 words</span>
+    </div>
+    <textarea class="text-area" id="outputText" placeholder="Transformed text will appear here..." readonly></textarea>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyOutput()">Copy Output</button>
+      <button class="btn btn-secondary" onclick="useAsInput()">Use as Input</button>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/word-counter">Word Counter</a>
+      <a href="/lorem-ipsum">Lorem Ipsum</a>
+      <a href="/markdown-editor">Markdown Editor</a>
+      <a href="/meta-generator">Meta Tag Generator</a>
+      <a href="/slug-generator">Slug Generator</a>
+      <a href="/tweet-generator">Tweet Generator</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let currentMode = 'professional';
+
+function setMode(el, mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  currentMode = mode;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg || 'Copied!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+// Synonym maps for transformations
+const formalWords = {
+  'get':'obtain','got':'obtained','getting':'obtaining','big':'significant','small':'minor','bad':'adverse','good':'excellent','nice':'commendable','show':'demonstrate','tell':'inform','ask':'inquire','help':'assist','need':'require','use':'utilize','make':'create','start':'initiate','end':'conclude','give':'provide','find':'identify','think':'consider','buy':'purchase','try':'attempt','fix':'resolve','keep':'maintain','let':'allow','seem':'appear','pick':'select','kind':'type','lots':'numerous','stuff':'materials','things':'items','pretty':'quite','really':'considerably','very':'highly','a lot':'substantially','maybe':'perhaps','right now':'currently','set up':'establish','look into':'investigate','come up with':'develop','deal with':'address','go through':'undergo','point out':'indicate'
+};
+
+const casualWords = {
+  'obtain':'get','significant':'big','adverse':'bad','excellent':'great','demonstrate':'show','inform':'tell','inquire':'ask','assist':'help','require':'need','utilize':'use','initiate':'start','conclude':'wrap up','provide':'give','identify':'find','consider':'think about','purchase':'buy','attempt':'try','resolve':'fix','maintain':'keep','perhaps':'maybe','currently':'right now','establish':'set up','investigate':'look into','develop':'come up with','address':'deal with','undergo':'go through','indicate':'point out','regarding':'about','however':'but','therefore':'so','furthermore':'also','subsequently':'then','approximately':'about','sufficient':'enough','commence':'kick off','terminate':'end','endeavor':'try','facilitate':'help','implement':'do','prior to':'before','subsequent to':'after','in the event that':'if','at this point in time':'now'
+};
+
+function replaceWords(text, wordMap) {
+  let result = text;
+  for (const [from, to] of Object.entries(wordMap)) {
+    const regex = new RegExp('\\b' + from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    result = result.replace(regex, match => {
+      if (match[0] === match[0].toUpperCase()) return to.charAt(0).toUpperCase() + to.slice(1);
+      return to;
+    });
+  }
+  return result;
+}
+
+function fixGrammar(text) {
+  let r = text;
+  // Capitalize first letter of sentences
+  r = r.replace(/(^|[.!?]\s+)([a-z])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+  // Fix double spaces
+  r = r.replace(/  +/g, ' ');
+  // Fix missing space after punctuation
+  r = r.replace(/([.!?,;:])([A-Za-z])/g, '$1 $2');
+  // Fix common typos
+  const typos = {'teh':'the','recieve':'receive','seperate':'separate','occured':'occurred','definately':'definitely','accomodate':'accommodate','occurence':'occurrence','neccessary':'necessary','wierd':'weird','acheive':'achieve','beleive':'believe','calender':'calendar','colum':'column','comming':'coming','doesnt':'doesn\'t','dont':'don\'t','cant':'can\'t','wont':'won\'t','shouldnt':'shouldn\'t','wouldnt':'wouldn\'t','couldnt':'couldn\'t','isnt':'isn\'t','wasnt':'wasn\'t','havent':'haven\'t','hasnt':'hasn\'t','didnt':'didn\'t','thier':'their','alot':'a lot','untill':'until','begining':'beginning','occassion':'occasion','tommorrow':'tomorrow','goverment':'government'};
+  for (const [wrong, right] of Object.entries(typos)) {
+    r = r.replace(new RegExp('\\b' + wrong + '\\b', 'gi'), m => m[0] === m[0].toUpperCase() ? right.charAt(0).toUpperCase() + right.slice(1) : right);
+  }
+  // Capitalize I
+  r = r.replace(/\bi\b/g, 'I');
+  // Fix multiple punctuation
+  r = r.replace(/([.!?]){2,}/g, '$1');
+  return r;
+}
+
+function toActiveVoice(text) {
+  let r = text;
+  // Replace common passive constructions
+  r = r.replace(/\b(was|were|is|are|been|being)\s+([\w]+ed)\s+by\s+/gi, (match, be, verb, offset) => {
+    return '';
+  });
+  // Simpler: just flag and rewrite common patterns
+  r = r.replace(/\bIt (was|is|has been) (decided|determined|found|discovered|noted|observed|concluded|recommended|suggested|agreed|expected|believed|reported|estimated|understood|assumed)\b/gi, (m, aux, verb) => {
+    const rewrite = {'decided':'We decided','determined':'We determined','found':'We found','discovered':'We discovered','noted':'We noted','observed':'We observed','concluded':'We concluded','recommended':'We recommend','suggested':'We suggest','agreed':'We agreed','expected':'We expect','believed':'We believe','reported':'Reports indicate','estimated':'We estimate','understood':'We understand','assumed':'We assume'};
+    return rewrite[verb.toLowerCase()] || m;
+  });
+  return r;
+}
+
+function expandText(text) {
+  const sentences = text.split(/(?<=[.!?])\s+/);
+  return sentences.map(s => {
+    if (s.length < 30 && !s.match(/[.!?]$/)) return s;
+    const trimmed = s.trim();
+    if (!trimmed) return s;
+    // Add clarifying phrases
+    if (trimmed.match(/^(This|That|It) (is|was)/i)) {
+      return trimmed.replace(/\.$/, '') + ', which is worth noting.';
+    }
+    if (trimmed.match(/^(We|They|I|You) (should|must|need)/i)) {
+      return 'Importantly, ' + trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+    }
+    return trimmed;
+  }).join(' ');
+}
+
+function shortenText(text) {
+  let r = text;
+  const fillers = ['actually','basically','literally','honestly','obviously','clearly','simply','just','really','very','quite','rather','somewhat','fairly','pretty much','in order to','due to the fact that','in the event that','at this point in time','for the purpose of','in spite of the fact that','it is important to note that','it should be noted that','as a matter of fact','the fact that','in terms of','with regard to','with respect to','in light of','on the other hand','at the end of the day','when all is said and done','needless to say','it goes without saying'];
+  fillers.forEach(f => {
+    r = r.replace(new RegExp('\\b' + f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b\\s*', 'gi'), '');
+  });
+  r = r.replace(/\bin order to\b/gi, 'to');
+  r = r.replace(/\bdue to the fact that\b/gi, 'because');
+  r = r.replace(/\bin the event that\b/gi, 'if');
+  r = r.replace(/\bat this point in time\b/gi, 'now');
+  r = r.replace(/\bfor the purpose of\b/gi, 'to');
+  // Clean up double spaces
+  r = r.replace(/  +/g, ' ').trim();
+  return r;
+}
+
+function makePersuasive(text) {
+  let r = text;
+  // Add power words
+  r = r.replace(/\bgood\b/gi, m => m[0] === m[0].toUpperCase() ? 'Proven' : 'proven');
+  r = r.replace(/\bimportant\b/gi, m => m[0] === m[0].toUpperCase() ? 'Essential' : 'essential');
+  r = r.replace(/\bcan\b/gi, 'will');
+  r = r.replace(/\bmight\b/gi, 'will');
+  r = r.replace(/\bprobably\b/gi, 'certainly');
+  r = r.replace(/\bI think\b/gi, 'I\'m confident');
+  r = r.replace(/\bwe think\b/gi, 'we\'re confident');
+  r = r.replace(/\bmaybe\b/gi, 'undoubtedly');
+  r = r.replace(/\bnice\b/gi, 'remarkable');
+  r = r.replace(/\bhelp\b/gi, 'empower');
+  r = r.replace(/\bchange\b/gi, 'transform');
+  return r;
+}
+
+function transformText() {
+  const input = document.getElementById('inputText').value.trim();
+  if (!input) { showToast('Enter some text first'); return; }
+
+  let output = input;
+
+  switch (currentMode) {
+    case 'professional':
+      output = replaceWords(input, formalWords);
+      output = fixGrammar(output);
+      break;
+    case 'casual':
+      output = replaceWords(input, casualWords);
+      break;
+    case 'simplify':
+      output = replaceWords(input, casualWords);
+      output = shortenText(output);
+      break;
+    case 'expand':
+      output = expandText(input);
+      break;
+    case 'shorten':
+      output = shortenText(input);
+      break;
+    case 'persuasive':
+      output = makePersuasive(input);
+      break;
+    case 'active':
+      output = toActiveVoice(input);
+      break;
+    case 'fixgrammar':
+      output = fixGrammar(input);
+      break;
+  }
+
+  document.getElementById('outputText').value = output;
+  const wc = output.trim().split(/\s+/).filter(w => w).length;
+  document.getElementById('outputCount').textContent = wc + ' words';
+  gtag('event', 'transform_text', { event_category: 'tool_use', mode: currentMode });
+}
+
+function copyOutput() {
+  const text = document.getElementById('outputText').value;
+  if (!text) { showToast('Nothing to copy'); return; }
+  navigator.clipboard.writeText(text);
+  showToast('Copied!');
+  gtag('event', 'copy_output', { event_category: 'tool_use' });
+}
+
+function useAsInput() {
+  const text = document.getElementById('outputText').value;
+  if (!text) return;
+  document.getElementById('inputText').value = text;
+  document.getElementById('outputText').value = '';
+  document.getElementById('outputCount').textContent = '0 words';
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
