@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Webhook Tester — Test & Debug Webhooks Free</title>
+<meta name="description" content="Generate unique webhook URLs, inspect payloads, debug headers, and test with sample templates from Stripe, GitHub, Slack, and Discord. Free, no sign-up required.">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:960px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:1.5rem;text-align:center}
+.badge-wrap{text-align:center}
+
+/* URL Section */
+.url-section{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:1.5rem}
+.url-section label{font-size:0.85rem;color:#aaa;font-weight:600;margin-bottom:8px;display:block}
+.url-row{display:flex;gap:8px;align-items:center}
+.url-display{flex:1;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:10px 14px;font-family:'Courier New',monospace;font-size:0.85rem;color:#10b981;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all}
+.btn{padding:10px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-sm{padding:8px 14px;font-size:0.8rem}
+.btn-secondary{background:#222;color:#ccc}.btn-secondary:hover{background:#333;transform:scale(1.02)}
+.btn-green{background:#10b981}.btn-green:hover{background:#0d9668}
+
+/* Templates */
+.template-section{margin-bottom:1.5rem}
+.template-section h3{font-size:0.95rem;color:#aaa;margin-bottom:10px;font-weight:600}
+.template-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.template-card{background:#111;border:1px solid #222;border-radius:8px;padding:12px;cursor:pointer;transition:all 0.2s;text-align:center}
+.template-card:hover{border-color:#ff5f1f;background:#1a1a1a}
+.template-card .icon{font-size:1.5rem;margin-bottom:4px}
+.template-card .name{font-size:0.8rem;font-weight:600;color:#ccc}
+.template-card .desc{font-size:0.7rem;color:#666;margin-top:2px}
+
+/* Payload Editor */
+.editor-section{margin-bottom:1.5rem}
+.editor-section h3{font-size:0.95rem;color:#aaa;margin-bottom:10px;font-weight:600}
+.tabs{display:flex;gap:0;margin-bottom:0}
+.tab{padding:8px 16px;background:#1a1a1a;color:#888;border:1px solid #222;cursor:pointer;font-size:0.8rem;font-weight:600;transition:all 0.2s}
+.tab:first-child{border-radius:8px 0 0 0}
+.tab:last-child{border-radius:0 8px 0 0}
+.tab.active{background:#222;color:#ff5f1f;border-bottom-color:#222}
+.editor-box{background:#111;border:1px solid #222;border-top:none;border-radius:0 0 12px 12px;padding:0;position:relative}
+textarea.code{width:100%;height:200px;background:transparent;color:#e8e8e8;border:none;padding:14px;font-family:'Courier New',monospace;font-size:0.82rem;resize:vertical;outline:none;line-height:1.5}
+.method-row{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+.method-select{background:#111;color:#10b981;border:1px solid #333;border-radius:8px;padding:8px 12px;font-size:0.85rem;font-weight:700;cursor:pointer;outline:none}
+.method-select option{background:#111;color:#e8e8e8}
+.send-row{display:flex;gap:8px;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+
+/* Request Log */
+.log-section{margin-bottom:2rem}
+.log-section h3{font-size:0.95rem;color:#aaa;margin-bottom:10px;font-weight:600;display:flex;align-items:center;justify-content:space-between}
+.log-empty{text-align:center;padding:40px;color:#444;font-size:0.9rem;background:#111;border:1px solid #222;border-radius:12px}
+.log-list{display:flex;flex-direction:column;gap:8px}
+.log-entry{background:#111;border:1px solid #222;border-radius:10px;overflow:hidden;transition:all 0.2s}
+.log-entry:hover{border-color:#333}
+.log-header{display:flex;align-items:center;gap:10px;padding:12px 16px;cursor:pointer;user-select:none}
+.log-method{font-size:0.75rem;font-weight:800;padding:3px 8px;border-radius:4px;color:#fff}
+.log-method.POST{background:#ff5f1f}.log-method.GET{background:#10b981}.log-method.PUT{background:#3b82f6}.log-method.DELETE{background:#ef4444}.log-method.PATCH{background:#a855f7}
+.log-time{font-size:0.75rem;color:#555;margin-left:auto;white-space:nowrap}
+.log-id{font-size:0.8rem;color:#888;font-family:'Courier New',monospace}
+.log-body{display:none;border-top:1px solid #222;padding:14px 16px}
+.log-body.open{display:block}
+.log-body pre{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px;font-size:0.78rem;overflow-x:auto;line-height:1.5;max-height:300px;overflow-y:auto}
+.log-body .section-label{font-size:0.75rem;color:#ff5f1f;font-weight:700;margin-bottom:6px;margin-top:10px;text-transform:uppercase}
+.log-body .section-label:first-child{margin-top:0}
+
+/* JSON syntax highlighting */
+.json-key{color:#ff5f1f}.json-str{color:#10b981}.json-num{color:#3b82f6}.json-bool{color:#a855f7}.json-null{color:#666}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:14px 24px;display:none;justify-content:center;align-items:center;gap:12px;z-index:100;flex-wrap:wrap;animation:slideUp 0.4s ease}
+.newsletter.show{display:flex}
+.newsletter h3{color:#ff5f1f;font-size:0.9rem;white-space:nowrap}
+.newsletter .close-nl{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:4px 8px}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+footer a{margin:0 6px}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:200}
+.copied.show{opacity:1}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+@media(max-width:700px){.container{padding:0 1rem}h1{font-size:1.5rem}.url-row{flex-direction:column}.template-grid{grid-template-columns:repeat(2,1fr)}.method-row{flex-direction:column}.tabs{flex-wrap:wrap}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Webhook Tester","description":"Generate unique webhook URLs, inspect payloads, debug headers, and test with sample templates from Stripe, GitHub, Slack, and Discord.","url":"https://spunkart.com/webhook-tester.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Webhook Tester</h1>
+  <div class="sub">Generate endpoints, send test payloads, and inspect results — all in your browser</div>
+  <div class="badge-wrap"><span class="badge" id="usageBadge">0 webhooks tested</span></div>
+
+  <!-- Webhook URL -->
+  <div class="url-section">
+    <label><span class="status-dot"></span> Your Webhook Endpoint</label>
+    <div class="url-row" style="margin-top:8px">
+      <div class="url-display" id="webhookUrl">Click "Generate" to create a webhook URL</div>
+      <button class="btn btn-sm btn-secondary" onclick="copyUrl()">Copy</button>
+      <button class="btn btn-sm btn-green" onclick="generateUrl()">Generate</button>
+    </div>
+  </div>
+
+  <!-- Templates -->
+  <div class="template-section">
+    <h3>Webhook Templates</h3>
+    <div class="template-grid">
+      <div class="template-card" onclick="loadTemplate('stripe')">
+        <div class="icon">&#128179;</div>
+        <div class="name">Stripe</div>
+        <div class="desc">payment_intent.succeeded</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('github')">
+        <div class="icon">&#128025;</div>
+        <div class="name">GitHub</div>
+        <div class="desc">push event</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('slack')">
+        <div class="icon">&#128172;</div>
+        <div class="name">Slack</div>
+        <div class="desc">slash command</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('discord')">
+        <div class="icon">&#127918;</div>
+        <div class="name">Discord</div>
+        <div class="desc">message create</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('shopify')">
+        <div class="icon">&#128722;</div>
+        <div class="name">Shopify</div>
+        <div class="desc">orders/create</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('twilio')">
+        <div class="icon">&#128222;</div>
+        <div class="name">Twilio</div>
+        <div class="desc">SMS received</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('sendgrid')">
+        <div class="icon">&#9993;</div>
+        <div class="name">SendGrid</div>
+        <div class="desc">email event</div>
+      </div>
+      <div class="template-card" onclick="loadTemplate('custom')">
+        <div class="icon">&#9998;</div>
+        <div class="name">Custom</div>
+        <div class="desc">blank payload</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payload Editor -->
+  <div class="editor-section">
+    <h3>Request Builder</h3>
+    <div class="method-row">
+      <select class="method-select" id="methodSelect">
+        <option value="POST">POST</option>
+        <option value="GET">GET</option>
+        <option value="PUT">PUT</option>
+        <option value="PATCH">PATCH</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+      <div class="url-display" id="targetUrlDisplay" style="flex:1;font-size:0.8rem;color:#888">Generate a webhook URL first</div>
+    </div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('body',this)">Body</div>
+      <div class="tab" onclick="switchTab('headers',this)">Headers</div>
+    </div>
+    <div class="editor-box">
+      <textarea class="code" id="bodyEditor" placeholder='{\n  "event": "test",\n  "data": {}\n}'>{
+  "event": "test",
+  "timestamp": "",
+  "data": {
+    "message": "Hello from SpunkArt Webhook Tester"
+  }
+}</textarea>
+      <textarea class="code" id="headersEditor" style="display:none" placeholder="Header-Name: value">{
+  "Content-Type": "application/json",
+  "User-Agent": "SpunkArt-Webhook-Tester/1.0",
+  "X-Webhook-Id": "",
+  "X-Webhook-Timestamp": ""
+}</textarea>
+    </div>
+  </div>
+
+  <div class="send-row">
+    <button class="btn" onclick="sendWebhook()">Send Webhook</button>
+    <button class="btn btn-secondary" onclick="formatPayload()">Format JSON</button>
+    <button class="btn btn-secondary" onclick="clearLog()">Clear Log</button>
+  </div>
+
+  <!-- Request Log -->
+  <div class="log-section">
+    <h3>Request Log <span style="font-size:0.75rem;color:#555;font-weight:400" id="logCount"></span></h3>
+    <div id="logContainer">
+      <div class="log-empty" id="logEmpty">No webhooks sent yet. Choose a template and hit "Send Webhook".</div>
+    </div>
+    <div class="log-list" id="logList"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Developer Tools</h3>
+    <div class="tool-links">
+      <a href="/api-tester.html">API Tester</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/sql-formatter.html">SQL Formatter</a>
+      <a href="/chmod-calculator.html">Chmod Calculator</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/password-generator.html">Password Gen</a>
+    </div>
+    <h3>Get All 40+ Tools — $9.99</h3>
+    <p>Instant access to every premium tool. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="cta">Get the Bundle — $9.99</a>
+  </div>
+</div>
+</main>
+
+<div class="newsletter" id="newsletter">
+  <h3>Get New Tools First</h3>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:400px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  <button class="close-nl" onclick="document.getElementById('newsletter').classList.remove('show')">&times;</button>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/" style="color:#ff5f1f">SpunkArt</a> <a href="/store" style="color:#ff5f1f">Store</a> <a href="/blog" style="color:#888">Blog</a> <a href="/store#ebook" style="color:#888">Ebook</a> <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> <a href="https://predict.codes" style="color:#888">Predict</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+/* ===== TEMPLATES ===== */
+const templates = {
+  stripe: {
+    body: {
+      id: "evt_1OqY6x2eZvKYlo2C0F1VGkMH",
+      object: "event",
+      api_version: "2024-12-18",
+      created: 1709145600,
+      type: "payment_intent.succeeded",
+      data: {
+        object: {
+          id: "pi_3OqY6x2eZvKYlo2C1a2b3c4d",
+          object: "payment_intent",
+          amount: 2000,
+          currency: "usd",
+          status: "succeeded",
+          payment_method: "pm_card_visa",
+          description: "Order #12345",
+          metadata: { order_id: "12345", customer_email: "user@example.com" }
+        }
+      }
+    },
+    headers: {
+      "Content-Type": "application/json",
+      "Stripe-Signature": "t=1709145600,v1=abc123def456...",
+      "User-Agent": "Stripe/1.0 (+https://stripe.com/docs/webhooks)"
+    }
+  },
+  github: {
+    body: {
+      ref: "refs/heads/main",
+      before: "abc123def456789",
+      after: "def456abc789012",
+      repository: {
+        id: 123456789,
+        full_name: "octocat/Hello-World",
+        html_url: "https://github.com/octocat/Hello-World",
+        private: false
+      },
+      pusher: { name: "octocat", email: "octocat@github.com" },
+      sender: { login: "octocat", id: 1, type: "User" },
+      commits: [{
+        id: "def456abc789012",
+        message: "Fix all the bugs",
+        timestamp: "2024-02-28T12:00:00Z",
+        author: { name: "Octocat", email: "octocat@github.com" }
+      }]
+    },
+    headers: {
+      "Content-Type": "application/json",
+      "X-GitHub-Event": "push",
+      "X-GitHub-Delivery": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "X-Hub-Signature-256": "sha256=abc123...",
+      "User-Agent": "GitHub-Hookshot/abc1234"
+    }
+  },
+  slack: {
+    body: {
+      token: "xxxxxxxxxxxxxxxxxxx",
+      team_id: "T0001",
+      team_domain: "example",
+      channel_id: "C2147483705",
+      channel_name: "general",
+      user_id: "U2147483697",
+      user_name: "johndoe",
+      command: "/deploy",
+      text: "production v2.1.0",
+      response_url: "https://hooks.slack.com/commands/T0001/1234/abcd",
+      trigger_id: "13345224609.738474920.8088930838d88f008e0"
+    },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Slack-Signature": "v0=a1b2c3d4e5f6...",
+      "X-Slack-Request-Timestamp": "1709145600",
+      "User-Agent": "Slackbot 1.0 (+https://api.slack.com/robots)"
+    }
+  },
+  discord: {
+    body: {
+      type: 1,
+      id: "123456789012345678",
+      channel_id: "987654321098765432",
+      guild_id: "111222333444555666",
+      author: {
+        id: "444555666777888999",
+        username: "SpunkBot",
+        discriminator: "1234",
+        bot: false
+      },
+      content: "Hello from Discord webhook!",
+      timestamp: "2024-02-28T12:00:00.000000+00:00",
+      embeds: [],
+      attachments: []
+    },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Signature-Ed25519": "abc123...",
+      "X-Signature-Timestamp": "1709145600",
+      "User-Agent": "DiscordBot (https://discord.com, 1)"
+    }
+  },
+  shopify: {
+    body: {
+      id: 820982911946154500,
+      admin_graphql_api_id: "gid://shopify/Order/820982911946154500",
+      email: "customer@example.com",
+      created_at: "2024-02-28T12:00:00-05:00",
+      financial_status: "paid",
+      fulfillment_status: null,
+      total_price: "59.99",
+      currency: "USD",
+      order_number: 1001,
+      line_items: [{
+        id: 866550311766439000,
+        title: "SpunkArt Premium Bundle",
+        quantity: 1,
+        price: "59.99"
+      }],
+      shipping_address: { city: "New York", province: "NY", country: "US" }
+    },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Topic": "orders/create",
+      "X-Shopify-Hmac-Sha256": "abc123def456...",
+      "X-Shopify-Shop-Domain": "example.myshopify.com",
+      "X-Shopify-API-Version": "2024-01"
+    }
+  },
+  twilio: {
+    body: {
+      MessageSid: "SM1234567890abcdef",
+      AccountSid: "AC1234567890abcdef",
+      From: "+15551234567",
+      To: "+15559876543",
+      Body: "Hello from Twilio webhook test!",
+      NumMedia: "0",
+      FromCity: "San Francisco",
+      FromState: "CA",
+      FromCountry: "US",
+      SmsStatus: "received"
+    },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-Twilio-Signature": "abc123...",
+      "User-Agent": "TwilioProxy/1.1"
+    }
+  },
+  sendgrid: {
+    body: [
+      {
+        email: "user@example.com",
+        timestamp: 1709145600,
+        event: "delivered",
+        sg_event_id: "abc123def456",
+        sg_message_id: "14c5d75ce93.dfd.64b469.filter0001",
+        category: ["transactional"],
+        marketing_campaign_name: "Welcome Series",
+        response: "250 OK"
+      }
+    ],
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent": "SendGrid Event API",
+      "X-Twilio-Email-Event-Webhook-Signature": "abc123...",
+      "X-Twilio-Email-Event-Webhook-Timestamp": "1709145600"
+    }
+  },
+  custom: {
+    body: {
+      event: "custom_event",
+      timestamp: "",
+      data: {}
+    },
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+};
+
+/* ===== STATE ===== */
+let webhookId = null;
+let requestLog = [];
+let usageCount = parseInt(localStorage.getItem('spunkart_webhook_count') || '0');
+
+/* ===== INIT ===== */
+updateBadge();
+
+/* ===== URL GENERATION ===== */
+function generateUrl() {
+  webhookId = crypto.randomUUID ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  });
+  var url = 'https://webhook.spunkart.com/hook/' + webhookId;
+  document.getElementById('webhookUrl').textContent = url;
+  document.getElementById('targetUrlDisplay').textContent = url;
+  showToast('Webhook URL generated');
+}
+
+function copyUrl() {
+  var text = document.getElementById('webhookUrl').textContent;
+  if (text.indexOf('Click') === 0) return;
+  navigator.clipboard.writeText(text);
+  showToast('Copied!');
+}
+
+/* ===== TEMPLATES ===== */
+function loadTemplate(name) {
+  var t = templates[name];
+  if (!t) return;
+  var now = new Date().toISOString();
+  var bodyStr = JSON.stringify(t.body, null, 2);
+  bodyStr = bodyStr.replace(/"timestamp":\s*""/, '"timestamp": "' + now + '"');
+  document.getElementById('bodyEditor').value = bodyStr;
+  var hdr = Object.assign({}, t.headers);
+  if (webhookId) {
+    hdr['X-Webhook-Id'] = webhookId;
+    hdr['X-Webhook-Timestamp'] = Math.floor(Date.now() / 1000).toString();
+  }
+  document.getElementById('headersEditor').value = JSON.stringify(hdr, null, 2);
+  showToast(name.charAt(0).toUpperCase() + name.slice(1) + ' template loaded');
+}
+
+/* ===== TABS ===== */
+function switchTab(tab, el) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  el.classList.add('active');
+  document.getElementById('bodyEditor').style.display = tab === 'body' ? 'block' : 'none';
+  document.getElementById('headersEditor').style.display = tab === 'headers' ? 'block' : 'none';
+}
+
+/* ===== FORMAT ===== */
+function formatPayload() {
+  var el = document.getElementById('bodyEditor');
+  try {
+    var parsed = JSON.parse(el.value);
+    el.value = JSON.stringify(parsed, null, 2);
+    showToast('JSON formatted');
+  } catch (e) {
+    showToast('Invalid JSON: ' + e.message);
+  }
+}
+
+/* ===== SEND WEBHOOK (simulated) ===== */
+function sendWebhook() {
+  if (!webhookId) {
+    generateUrl();
+  }
+
+  var method = document.getElementById('methodSelect').value;
+  var bodyRaw = document.getElementById('bodyEditor').value;
+  var headersRaw = document.getElementById('headersEditor').value;
+
+  var parsedBody = null;
+  try {
+    parsedBody = JSON.parse(bodyRaw);
+  } catch (e) {
+    parsedBody = bodyRaw;
+  }
+
+  var parsedHeaders = {};
+  try {
+    parsedHeaders = JSON.parse(headersRaw);
+  } catch (e) {
+    headersRaw.split('\n').forEach(function(line) {
+      var idx = line.indexOf(':');
+      if (idx > 0) parsedHeaders[line.substring(0, idx).trim()] = line.substring(idx + 1).trim();
+    });
+  }
+
+  // Simulate response
+  var statusCode = 200;
+  var responseTime = Math.floor(Math.random() * 150) + 20;
+  var responseBody = {
+    status: "received",
+    webhook_id: webhookId,
+    method: method,
+    timestamp: new Date().toISOString(),
+    payload_size: bodyRaw.length + ' bytes',
+    message: "Webhook processed successfully"
+  };
+
+  var entry = {
+    id: 'req_' + Date.now().toString(36),
+    method: method,
+    url: 'https://webhook.spunkart.com/hook/' + webhookId,
+    timestamp: new Date(),
+    status: statusCode,
+    responseTime: responseTime,
+    requestHeaders: parsedHeaders,
+    requestBody: parsedBody,
+    responseHeaders: {
+      "Content-Type": "application/json",
+      "X-Request-Id": crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36),
+      "X-Response-Time": responseTime + "ms",
+      "Server": "SpunkArt-Webhook/1.0"
+    },
+    responseBody: responseBody
+  };
+
+  requestLog.unshift(entry);
+  renderLog();
+
+  // Usage tracking
+  usageCount++;
+  localStorage.setItem('spunkart_webhook_count', usageCount.toString());
+  updateBadge();
+  checkNewsletter();
+
+  showToast(method + ' ' + statusCode + ' — ' + responseTime + 'ms');
+}
+
+/* ===== RENDER LOG ===== */
+function renderLog() {
+  document.getElementById('logEmpty').style.display = requestLog.length ? 'none' : 'block';
+  document.getElementById('logCount').textContent = requestLog.length + ' request' + (requestLog.length !== 1 ? 's' : '');
+
+  var html = '';
+  requestLog.forEach(function(entry, i) {
+    var time = entry.timestamp.toLocaleTimeString();
+    html += '<div class="log-entry">' +
+      '<div class="log-header" onclick="toggleLog(' + i + ')">' +
+        '<span class="log-method ' + entry.method + '">' + entry.method + '</span>' +
+        '<span class="log-id">' + entry.id + '</span>' +
+        '<span style="color:#10b981;font-size:0.8rem;font-weight:700">' + entry.status + '</span>' +
+        '<span style="color:#666;font-size:0.75rem">' + entry.responseTime + 'ms</span>' +
+        '<span class="log-time">' + time + '</span>' +
+      '</div>' +
+      '<div class="log-body" id="logBody' + i + '">' +
+        '<div class="section-label">Request Headers</div>' +
+        '<pre>' + syntaxHighlight(JSON.stringify(entry.requestHeaders, null, 2)) + '</pre>' +
+        '<div class="section-label">Request Body</div>' +
+        '<pre>' + syntaxHighlight(JSON.stringify(entry.requestBody, null, 2)) + '</pre>' +
+        '<div class="section-label">Response Headers</div>' +
+        '<pre>' + syntaxHighlight(JSON.stringify(entry.responseHeaders, null, 2)) + '</pre>' +
+        '<div class="section-label">Response Body</div>' +
+        '<pre>' + syntaxHighlight(JSON.stringify(entry.responseBody, null, 2)) + '</pre>' +
+        '<div style="margin-top:10px;display:flex;gap:6px">' +
+          '<button class="btn btn-sm btn-secondary" onclick="copyEntry(' + i + ',\'request\')">Copy Request</button>' +
+          '<button class="btn btn-sm btn-secondary" onclick="copyEntry(' + i + ',\'response\')">Copy Response</button>' +
+          '<button class="btn btn-sm btn-secondary" onclick="copyEntry(' + i + ',\'curl\')">Copy as cURL</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  document.getElementById('logList').innerHTML = html;
+}
+
+function toggleLog(i) {
+  var el = document.getElementById('logBody' + i);
+  el.classList.toggle('open');
+}
+
+function copyEntry(i, type) {
+  var entry = requestLog[i];
+  var text = '';
+  if (type === 'request') {
+    text = JSON.stringify({ method: entry.method, url: entry.url, headers: entry.requestHeaders, body: entry.requestBody }, null, 2);
+  } else if (type === 'response') {
+    text = JSON.stringify({ status: entry.status, headers: entry.responseHeaders, body: entry.responseBody }, null, 2);
+  } else if (type === 'curl') {
+    text = 'curl -X ' + entry.method + ' \\\n  "' + entry.url + '"';
+    Object.keys(entry.requestHeaders).forEach(function(k) {
+      text += ' \\\n  -H "' + k + ': ' + entry.requestHeaders[k] + '"';
+    });
+    if (entry.method !== 'GET' && entry.method !== 'DELETE') {
+      text += " \\\n  -d '" + JSON.stringify(entry.requestBody) + "'";
+    }
+  }
+  navigator.clipboard.writeText(text);
+  showToast('Copied!');
+}
+
+function clearLog() {
+  requestLog = [];
+  renderLog();
+  showToast('Log cleared');
+}
+
+/* ===== JSON SYNTAX HIGHLIGHTING ===== */
+function syntaxHighlight(json) {
+  if (!json) return '';
+  json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+    var cls = 'json-num';
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) {
+        cls = 'json-key';
+      } else {
+        cls = 'json-str';
+      }
+    } else if (/true|false/.test(match)) {
+      cls = 'json-bool';
+    } else if (/null/.test(match)) {
+      cls = 'json-null';
+    }
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
+}
+
+/* ===== USAGE BADGE ===== */
+function updateBadge() {
+  document.getElementById('usageBadge').textContent = usageCount + ' webhook' + (usageCount !== 1 ? 's' : '') + ' tested';
+}
+
+/* ===== NEWSLETTER (after 3rd use) ===== */
+function checkNewsletter() {
+  if (usageCount >= 3 && !localStorage.getItem('spunkart_nl_webhook_dismissed')) {
+    document.getElementById('newsletter').classList.add('show');
+  }
+}
+document.querySelector('.close-nl').addEventListener('click', function() {
+  localStorage.setItem('spunkart_nl_webhook_dismissed', '1');
+});
+
+/* ===== TOAST ===== */
+function showToast(msg) {
+  var el = document.getElementById('copied');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(function() { el.classList.remove('show'); }, 1800);
+}
+</script>
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.className='watermark';
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
