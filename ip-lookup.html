@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IP Address Lookup — Find IP Location & Details | SPUNKART.COM</title>
+<meta name="description" content="Free IP address lookup tool. Find any IP's location, ISP, timezone, and coordinates instantly. No signup required.">
+<meta name="keywords" content="IP lookup, IP address finder, IP location, geolocation, ISP lookup, IP tracker">
+<link rel="canonical" href="https://spunkart.com/ip-lookup.html">
+<meta property="og:title" content="IP Address Lookup — Find IP Location & Details">
+<meta property="og:description" content="Free IP address lookup tool. Find any IP's location, ISP, timezone, and coordinates instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/ip-lookup.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IP Address Lookup — Find IP Location & Details">
+<meta name="twitter:description" content="Free IP address lookup tool. Find any IP's location, ISP, timezone, and coordinates instantly.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "IP Address Lookup",
+  "description": "Free IP address lookup tool. Find any IP's location, ISP, timezone, and coordinates instantly.",
+  "url": "https://spunkart.com/ip-lookup.html",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "SPUNKART.COM",
+    "url": "https://spunkart.com"
+  }
+}
+</script>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-user-select:none;user-select:none;}
+::selection{background:#ff5f1f;color:#fff;}
+a{color:#ff5f1f;text-decoration:none;transition:color .2s;}
+a:hover{color:#ff8c5a;}
+
+/* NAV */
+nav{background:#111;border-bottom:1px solid #222;padding:0 20px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-brand{font-size:1.25rem;font-weight:800;color:#ff5f1f;letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:#e8e8e8;font-size:.9rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.nav-toggle{display:none;background:none;border:none;color:#e8e8e8;font-size:1.5rem;cursor:pointer;}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:#111;flex-direction:column;padding:16px 20px;gap:16px;border-bottom:1px solid #222;}
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:block;}
+}
+
+/* MAIN */
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:40px 20px;}
+h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:32px;font-size:1.05rem;}
+h2{font-size:1.3rem;font-weight:700;margin:32px 0 16px;color:#e8e8e8;}
+
+/* LOOKUP */
+.lookup-box{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:24px;}
+.input-row{display:flex;gap:12px;margin-bottom:16px;}
+.input-row input{flex:1;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:12px 16px;color:#e8e8e8;font-size:1rem;outline:none;transition:border-color .2s;}
+.input-row input:focus{border-color:#ff5f1f;}
+.input-row input::placeholder{color:#555;}
+.btn{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;white-space:nowrap;}
+.btn:hover{background:#e8520f;}
+.btn:active{transform:scale(.97);}
+.btn-secondary{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;}
+.btn-secondary:hover{background:#252525;border-color:#ff5f1f;}
+.btn-green{background:#10b981;}
+.btn-green:hover{background:#0d9668;}
+.btn-small{padding:8px 16px;font-size:.85rem;}
+.or-text{color:#555;font-size:.85rem;text-align:center;margin-bottom:16px;}
+
+/* RESULTS */
+.results{display:none;}
+.results.show{display:block;}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-bottom:20px;}
+.result-card{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:16px;}
+.result-card .label{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:4px;}
+.result-card .value{font-size:1.1rem;font-weight:600;color:#e8e8e8;word-break:break-all;}
+.result-card .value.accent{color:#ff5f1f;}
+.result-card .value.green{color:#10b981;}
+.map-placeholder{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-bottom:20px;}
+.map-placeholder .coords{font-size:1.2rem;font-weight:700;color:#ff5f1f;margin:12px 0;}
+.map-placeholder a{display:inline-block;margin-top:8px;}
+.copy-all-row{display:flex;gap:12px;flex-wrap:wrap;}
+.status-msg{font-size:.85rem;color:#10b981;margin-left:8px;opacity:0;transition:opacity .3s;}
+.status-msg.show{opacity:1;}
+.loading{text-align:center;padding:40px;color:#888;}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #333;border-top-color:#ff5f1f;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.error-msg{background:#2a1010;border:1px solid #ff4444;border-radius:8px;padding:16px;color:#ff6b6b;display:none;}
+.error-msg.show{display:block;}
+
+/* EMAIL BAR */
+.email-bar{display:none;background:linear-gradient(135deg,#1a0a00,#111);border:1px solid #ff5f1f;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.email-bar.show{display:block;animation:slideDown .4s ease;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.email-bar h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.email-bar p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.email-bar form{display:flex;gap:8px;max-width:450px;margin:0 auto;}
+.email-bar form input{flex:1;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#e8e8e8;font-size:.95rem;}
+.email-bar form button{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-weight:600;cursor:pointer;}
+
+/* CROSS-SELL */
+.cross-sell{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}
+.cross-sell p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.cross-sell .price{font-size:1.5rem;font-weight:800;color:#10b981;margin-bottom:16px;}
+
+/* HOW-TO / SEO */
+.seo-content{margin-top:48px;}
+.seo-content h2{font-size:1.2rem;color:#ff5f1f;}
+.seo-content p,.seo-content ul{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.seo-content ul{padding-left:20px;}
+.seo-content li{margin-bottom:6px;}
+
+/* FOOTER */
+footer{background:#111;border-top:1px solid #222;padding:32px 20px;margin-top:auto;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner p{color:#555;font-size:.85rem;}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{color:#888;font-size:.85rem;}
+
+/* WATERMARK */
+.watermark{position:fixed;bottom:12px;right:16px;font-size:.7rem;color:rgba(255,95,31,.25);font-weight:800;letter-spacing:1px;pointer-events:none;z-index:9999;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://spunkart.com" class="nav-brand">SPUNKART.COM</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="https://spunkart.com/#store">Store</a></li>
+      <li><a href="https://spunkart.com/#tools">Free Tools</a></li>
+      <li><a href="https://spunkart.com/#resell">Resell</a></li>
+      <li><a href="https://spunkart.com/#blog">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <h1>IP Address <span>Lookup</span></h1>
+  <p class="subtitle">Find the location, ISP, timezone, and coordinates for any IP address. Free and instant.</p>
+
+  <div class="lookup-box">
+    <div class="input-row">
+      <input type="text" id="ipInput" placeholder="Enter an IP address (e.g. 8.8.8.8)" autocomplete="off">
+      <button class="btn" id="lookupBtn" onclick="lookupIP()">Lookup</button>
+    </div>
+    <p class="or-text">or</p>
+    <button class="btn btn-secondary" style="width:100%;" onclick="lookupMyIP()">Show My IP Address</button>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <div class="loading" id="loading" style="display:none;">
+    <div class="spinner"></div>
+    <div>Looking up IP details...</div>
+  </div>
+
+  <div class="results" id="results">
+    <h2>Results</h2>
+    <div class="result-grid" id="resultGrid"></div>
+    <div class="map-placeholder" id="mapPlaceholder" style="display:none;">
+      <div style="color:#888;font-size:.85rem;">MAP COORDINATES</div>
+      <div class="coords" id="coordsDisplay"></div>
+      <a id="mapsLink" href="#" target="_blank" rel="noopener" class="btn btn-small btn-secondary">Open in Google Maps</a>
+    </div>
+    <div class="copy-all-row">
+      <button class="btn btn-green btn-small" onclick="copyResults()">Copy All Results</button>
+      <span class="status-msg" id="copyStatus">Copied!</span>
+    </div>
+  </div>
+
+  <!-- EMAIL BAR (after 3rd use) -->
+  <div class="email-bar" id="emailBar">
+    <h3>Like This Tool?</h3>
+    <p>Get free tools, templates, and digital product drops delivered to your inbox.</p>
+    <form onsubmit="return submitEmail(event)">
+      <input type="email" placeholder="you@email.com" required id="emailInput">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- CROSS-SELL -->
+  <div class="cross-sell">
+    <h3>Want All 50+ Tools Offline?</h3>
+    <p>Get the full SPUNKART digital tools bundle. Use them offline, forever. No limits.</p>
+    <div class="price">$9.99</div>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" target="_blank" rel="noopener" class="btn">Get the Bundle</a>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-content">
+    <h2>How to Use the IP Address Lookup Tool</h2>
+    <p>Enter any public IP address into the search box and click "Lookup" to instantly see detailed geolocation information. You can also click "Show My IP Address" to discover your own public-facing IP and its associated data.</p>
+
+    <h2>What Information Does the IP Lookup Show?</h2>
+    <ul>
+      <li><strong>IP Address</strong> — The IPv4 or IPv6 address being queried</li>
+      <li><strong>Country &amp; City</strong> — The approximate geographic location of the IP</li>
+      <li><strong>Region</strong> — The state, province, or administrative region</li>
+      <li><strong>ISP / Organization</strong> — The internet service provider or hosting company</li>
+      <li><strong>Timezone</strong> — The local timezone associated with the IP's location</li>
+      <li><strong>Coordinates</strong> — Latitude and longitude with a link to Google Maps</li>
+      <li><strong>ASN</strong> — The Autonomous System Number of the network</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>Is this tool free?</strong> Yes, the IP Address Lookup tool is completely free with no signup required.</p>
+    <p><strong>Is the location exact?</strong> IP geolocation provides an approximate location, typically accurate to the city level. It does not reveal a precise street address.</p>
+    <p><strong>Can I look up IPv6 addresses?</strong> Yes, both IPv4 and IPv6 addresses are supported.</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 SPUNKART.COM — All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://spunkart.com">Home</a>
+      <a href="https://spunkart.com/#tools">Tools</a>
+      <a href="https://spunkart.com/#store">Store</a>
+    </div>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  // Code protection
+  const _0x=['contextmenu','keydown'];
+  _0x.forEach(function(e){document.addEventListener(e,function(ev){
+    if(e==='contextmenu')ev.preventDefault();
+    if(e==='keydown'&&(ev.key==='F12'||(ev.ctrlKey&&ev.shiftKey&&['I','J','C'].includes(ev.key))||(ev.ctrlKey&&ev.key==='u')))ev.preventDefault();
+  });});
+})();
+
+var lastResult = null;
+var USAGE_KEY = 'spunkart_ip_lookup_uses';
+
+function getUses(){ return parseInt(localStorage.getItem(USAGE_KEY)||'0',10); }
+function addUse(){
+  var n = getUses()+1;
+  localStorage.setItem(USAGE_KEY, n.toString());
+  if(n >= 3) showEmailBar();
+}
+function showEmailBar(){
+  var bar = document.getElementById('emailBar');
+  if(bar && !localStorage.getItem('spunkart_email_subscribed')) bar.classList.add('show');
+}
+
+function submitEmail(e){
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value;
+  if(!email) return false;
+  var iframe = document.createElement('iframe');
+  iframe.style.display='none';
+  iframe.src='https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email='+encodeURIComponent(email);
+  document.body.appendChild(iframe);
+  localStorage.setItem('spunkart_email_subscribed','1');
+  document.getElementById('emailBar').innerHTML='<h3 style="color:#10b981;">You\'re in! Check your inbox.</h3>';
+  return false;
+}
+
+function lookupMyIP(){
+  document.getElementById('ipInput').value = '';
+  doLookup('');
+}
+function lookupIP(){
+  var ip = document.getElementById('ipInput').value.trim();
+  if(!ip){
+    showError('Please enter an IP address or click "Show My IP Address".');
+    return;
+  }
+  doLookup(ip);
+}
+
+document.getElementById('ipInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') lookupIP();
+});
+
+function doLookup(ip){
+  hideError();
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('loading').style.display = 'block';
+  var url = ip ? 'https://ipapi.co/'+encodeURIComponent(ip)+'/json/' : 'https://ipapi.co/json/';
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      document.getElementById('loading').style.display = 'none';
+      if(data.error){
+        showError(data.reason || 'Could not look up that IP address. Please check and try again.');
+        return;
+      }
+      lastResult = data;
+      renderResults(data);
+      addUse();
+      if(typeof gtag==='function') gtag('event','ip_lookup',{ip: ip||'self'});
+    })
+    .catch(function(){
+      document.getElementById('loading').style.display = 'none';
+      showError('Network error. Please check your connection and try again.');
+    });
+}
+
+function renderResults(d){
+  var grid = document.getElementById('resultGrid');
+  var fields = [
+    {label:'IP Address', value:d.ip, cls:'accent'},
+    {label:'Country', value:(d.country_name||'—')+(d.country_code?' ('+d.country_code+')':''), cls:''},
+    {label:'City', value:d.city||'—', cls:''},
+    {label:'Region', value:d.region||'—', cls:''},
+    {label:'Postal Code', value:d.postal||'—', cls:''},
+    {label:'ISP / Org', value:d.org||'—', cls:'green'},
+    {label:'ASN', value:d.asn||'—', cls:''},
+    {label:'Timezone', value:d.timezone||'—', cls:''},
+    {label:'UTC Offset', value:d.utc_offset||'—', cls:''},
+    {label:'Network', value:d.network||'—', cls:''}
+  ];
+  grid.innerHTML = '';
+  fields.forEach(function(f){
+    var card = document.createElement('div');
+    card.className = 'result-card';
+    card.innerHTML = '<div class="label">'+f.label+'</div><div class="value'+(f.cls?' '+f.cls:'')+'">'+escapeHtml(f.value)+'</div>';
+    grid.appendChild(card);
+  });
+  var mp = document.getElementById('mapPlaceholder');
+  if(d.latitude && d.longitude){
+    mp.style.display = 'block';
+    document.getElementById('coordsDisplay').textContent = d.latitude+', '+d.longitude;
+    document.getElementById('mapsLink').href = 'https://www.google.com/maps?q='+d.latitude+','+d.longitude;
+  } else {
+    mp.style.display = 'none';
+  }
+  document.getElementById('results').classList.add('show');
+}
+
+function copyResults(){
+  if(!lastResult) return;
+  var d = lastResult;
+  var text = 'IP Address Lookup Results\n';
+  text += '========================\n';
+  text += 'IP: '+d.ip+'\n';
+  text += 'Country: '+(d.country_name||'—')+' ('+(d.country_code||'')+')'+'\n';
+  text += 'City: '+(d.city||'—')+'\n';
+  text += 'Region: '+(d.region||'—')+'\n';
+  text += 'Postal: '+(d.postal||'—')+'\n';
+  text += 'ISP/Org: '+(d.org||'—')+'\n';
+  text += 'ASN: '+(d.asn||'—')+'\n';
+  text += 'Timezone: '+(d.timezone||'—')+'\n';
+  text += 'Coordinates: '+(d.latitude||'')+', '+(d.longitude||'')+'\n';
+  text += 'Network: '+(d.network||'—')+'\n';
+  text += '\nGenerated at spunkart.com/ip-lookup.html';
+  navigator.clipboard.writeText(text).then(function(){
+    var st = document.getElementById('copyStatus');
+    st.classList.add('show');
+    setTimeout(function(){ st.classList.remove('show'); }, 2000);
+  });
+}
+
+function showError(msg){
+  var el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function hideError(){
+  document.getElementById('errorMsg').classList.remove('show');
+}
+
+function escapeHtml(s){
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Show email bar on load if threshold met
+if(getUses() >= 3) showEmailBar();
+</script>
+</body>
+</html>
