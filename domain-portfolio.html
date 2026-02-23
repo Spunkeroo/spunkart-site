@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain Portfolio Manager — Track Domains, Renewals & Costs Free</title>
+<meta name="description" content="Free domain portfolio manager. Track domains, registrars, expiry dates, renewal costs, and status. Calendar view, CSV export, cost calculator. No signup required.">
+<meta property="og:title" content="Domain Portfolio Manager — Track Domains, Renewals & Costs">
+<meta property="og:description" content="Manage your domain portfolio with expiry tracking, renewal calendar, cost calculator, and CSV export. Free forever.">
+<meta property="og:url" content="https://spunkart.com/domain-portfolio">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Domain Portfolio Manager">
+<meta name="twitter:description" content="Track domains, renewals, and costs in one dashboard. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/domain-portfolio">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Domain Portfolio Manager","description":"Manage your domain portfolio with expiry tracking, renewal calendar, cost calculator, categories, and CSV export.","url":"https://spunkart.com/domain-portfolio","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:1000px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field select,.field textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus,.field select:focus{outline:none;border-color:#ff5f1f}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.row4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
+.btn:hover{background:#e8540f;transform:translateY(-1px)}
+.btn-sm{padding:10px 20px;font-size:0.85rem;width:auto;border-radius:8px}
+.btn-outline{background:transparent;border:2px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;background:transparent}
+.btn-green{background:#10b981}.btn-green:hover{background:#0ea572}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;text-align:center}
+.stat .stat-label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.stat .stat-val{font-size:1.6rem;font-weight:800;font-family:'Courier New',monospace}
+.stat .stat-val.orange{color:#ff5f1f}
+.stat .stat-val.green{color:#10b981}
+.stat .stat-val.red{color:#ef4444}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.filter-chip{padding:6px 14px;border-radius:20px;border:1px solid #333;background:#1a1a1a;color:#ccc;cursor:pointer;font-size:0.8rem;transition:all .2s}
+.filter-chip:hover{border-color:#ff5f1f}
+.filter-chip.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.domain-table{width:100%;border-collapse:collapse}
+.domain-table th,.domain-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #1a1a1a;font-size:0.85rem}
+.domain-table th{color:#888;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;background:#111}
+.domain-table td{color:#ccc}
+.domain-name{color:#ff5f1f;font-weight:600}
+.status-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:600}
+.status-active{background:#10b981;color:#fff}
+.status-parked{background:#f59e0b;color:#fff}
+.status-for-sale{background:#6366f1;color:#fff}
+.status-expired{background:#ef4444;color:#fff}
+.tag{display:inline-block;padding:2px 6px;border-radius:3px;font-size:0.65rem;background:#222;color:#888;margin-right:4px}
+.expiry-warn{color:#f59e0b;font-weight:600}
+.expiry-danger{color:#ef4444;font-weight:600}
+.expiry-ok{color:#10b981}
+.calendar{margin-bottom:1.5rem}
+.cal-month{font-size:1rem;font-weight:700;color:#ff5f1f;margin-bottom:0.8rem}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day{background:#141414;border:1px solid #1a1a1a;border-radius:6px;padding:6px;font-size:0.75rem;min-height:38px;position:relative}
+.cal-day.empty{background:transparent;border:none}
+.cal-day.today{border-color:#ff5f1f}
+.cal-day .day-num{color:#888;font-size:0.65rem}
+.cal-day .renewal-dot{width:6px;height:6px;border-radius:50%;background:#ef4444;position:absolute;top:4px;right:4px}
+.cal-day .renewal-name{font-size:0.55rem;color:#ff5f1f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-header{font-size:0.65rem;text-align:center;color:#555;padding:4px;font-weight:600}
+.actions-bar{display:flex;gap:8px;flex-wrap:wrap}
+.d-actions button{background:#222;border:1px solid #333;color:#ccc;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:0.75rem;transition:all .2s}
+.d-actions button:hover{border-color:#ff5f1f;color:#ff5f1f}
+.cta-bar{text-align:center;padding:1.5rem;margin-top:1rem}
+.cta-bar a{color:#ff5f1f;font-weight:700;font-size:1rem}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.8rem;font-weight:800;color:#e8e8e8;opacity:0.1;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{background:#111;border-top:1px solid #222;padding:1.5rem;text-align:center;font-size:0.75rem;color:#555}
+@media(max-width:768px){.row2,.row3,.row4,.stats-row{grid-template-columns:1fr}h1{font-size:1.5rem}.card{padding:1.2rem}.cal-grid{grid-template-columns:repeat(7,1fr)}.cal-day{padding:3px;min-height:30px}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SPUNKART.COM</div><div class="links"><a href="/">Home</a><a href="/store">Free Tools</a></div></nav>
+<main><div class="container">
+<h1>Domain Portfolio Manager</h1>
+<p class="sub">Track your domains, renewals, costs, and status. All data stored locally.</p>
+<div class="use-badge">Used <span id="useCount">0</span> times</div>
+
+<div class="stats-row">
+<div class="stat"><div class="stat-label">Total Domains</div><div class="stat-val orange" id="statTotal">0</div></div>
+<div class="stat"><div class="stat-label">Annual Cost</div><div class="stat-val green" id="statCost">$0</div></div>
+<div class="stat"><div class="stat-label">Expiring Soon</div><div class="stat-val red" id="statExpiring">0</div></div>
+<div class="stat"><div class="stat-label">Active</div><div class="stat-val green" id="statActive">0</div></div>
+</div>
+
+<div class="card">
+<h2>Add Domain</h2>
+<div class="row3">
+<div class="field"><label>Domain Name</label><input id="domName" placeholder="example.com"></div>
+<div class="field"><label>Registrar</label><input id="domRegistrar" placeholder="Namecheap, GoDaddy, etc."></div>
+<div class="field"><label>Expiry Date</label><input type="date" id="domExpiry"></div>
+</div>
+<div class="row4">
+<div class="field"><label>Annual Cost ($)</label><input type="number" id="domCost" placeholder="12" step="0.01"></div>
+<div class="field"><label>Status</label>
+<select id="domStatus"><option value="active">Active</option><option value="parked">Parked</option><option value="for-sale">For Sale</option><option value="expired">Expired</option></select>
+</div>
+<div class="field"><label>Purpose / Notes</label><input id="domPurpose" placeholder="Main website, redirect, etc."></div>
+<div class="field"><label>Tags (comma-separated)</label><input id="domTags" placeholder="business, blog, tool"></div>
+</div>
+<button class="btn" onclick="addDomain()">Add Domain</button>
+</div>
+
+<div class="card">
+<h2>Renewal Calendar</h2>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+<button class="btn btn-sm btn-outline" onclick="changeMonth(-1)">&larr; Prev</button>
+<span id="calTitle" style="font-weight:700;color:#ff5f1f"></span>
+<button class="btn btn-sm btn-outline" onclick="changeMonth(1)">Next &rarr;</button>
+</div>
+<div class="cal-grid" id="calGrid"></div>
+</div>
+
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:1rem">
+<h2 style="margin:0">Your Domains</h2>
+<div class="actions-bar">
+<button class="btn btn-sm btn-outline" onclick="exportDomainsCSV()">Export CSV</button>
+<button class="btn btn-sm btn-outline" onclick="loadDemo()">Load Demo</button>
+</div>
+</div>
+<div class="filter-bar">
+<div class="filter-chip active" onclick="filterDomains('all',this)">All</div>
+<div class="filter-chip" onclick="filterDomains('active',this)">Active</div>
+<div class="filter-chip" onclick="filterDomains('parked',this)">Parked</div>
+<div class="filter-chip" onclick="filterDomains('for-sale',this)">For Sale</div>
+<div class="filter-chip" onclick="filterDomains('expired',this)">Expired</div>
+</div>
+<div style="overflow-x:auto">
+<table class="domain-table">
+<thead><tr><th>Domain</th><th>Registrar</th><th>Expiry</th><th>Status</th><th>Cost/yr</th><th>Tags</th><th>Actions</th></tr></thead>
+<tbody id="domainBody"></tbody>
+</table>
+</div>
+</div>
+
+<div class="cta-bar"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div></main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2025 SpunkArt.com &mdash; All rights reserved.</footer>
+
+<script>
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+let useCount=parseInt(localStorage.getItem('spk_domain_mgr_uses')||'0');
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+
+let domains=JSON.parse(localStorage.getItem('spk_domains')||'[]');
+let currentFilter='all';
+let calDate=new Date();
+
+function save(){localStorage.setItem('spk_domains',JSON.stringify(domains));}
+
+function addDomain(){
+const name=document.getElementById('domName').value.trim();
+const registrar=document.getElementById('domRegistrar').value.trim();
+const expiry=document.getElementById('domExpiry').value;
+const cost=parseFloat(document.getElementById('domCost').value)||0;
+const status=document.getElementById('domStatus').value;
+const purpose=document.getElementById('domPurpose').value.trim();
+const tags=document.getElementById('domTags').value.trim().split(',').map(s=>s.trim()).filter(Boolean);
+if(!name){alert('Enter a domain name');return;}
+
+domains.push({id:Date.now(),name,registrar,expiry,cost,status,purpose,tags,created:new Date().toISOString().split('T')[0]});
+save();render();renderCalendar();updateStats();
+
+['domName','domRegistrar','domExpiry','domCost','domPurpose','domTags'].forEach(id=>{const el=document.getElementById(id);if(el.type==='number')el.value='';else if(el.type==='date')el.value='';else el.value='';});
+
+useCount++;localStorage.setItem('spk_domain_mgr_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+
+function deleteDomain(id){
+if(!confirm('Delete this domain?'))return;
+domains=domains.filter(d=>d.id!==id);
+save();render();renderCalendar();updateStats();
+}
+
+function filterDomains(status,el){
+currentFilter=status;
+document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+el.classList.add('active');
+render();
+}
+
+function daysUntil(dateStr){
+if(!dateStr)return 9999;
+const d=new Date(dateStr);const now=new Date();
+return Math.ceil((d-now)/(1000*60*60*24));
+}
+
+function expiryClass(dateStr){
+const d=daysUntil(dateStr);
+if(d<0)return'expiry-danger';
+if(d<=30)return'expiry-danger';
+if(d<=90)return'expiry-warn';
+return'expiry-ok';
+}
+
+function expiryText(dateStr){
+if(!dateStr)return'-';
+const d=daysUntil(dateStr);
+if(d<0)return dateStr+' (EXPIRED)';
+if(d===0)return dateStr+' (TODAY)';
+if(d<=30)return dateStr+` (${d}d)`;
+if(d<=90)return dateStr+` (${d}d)`;
+return dateStr;
+}
+
+function render(){
+const body=document.getElementById('domainBody');
+const filtered=currentFilter==='all'?domains:domains.filter(d=>d.status===currentFilter);
+if(filtered.length===0){body.innerHTML='<tr><td colspan="7" style="text-align:center;color:#555;padding:2rem">No domains. Add one above or load demo data.</td></tr>';return;}
+
+body.innerHTML=filtered.map(d=>{
+const statusClass='status-'+d.status;
+const tagHtml=(d.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+return `<tr>
+<td><span class="domain-name">${d.name}</span>${d.purpose?'<br><span style="font-size:0.7rem;color:#555">'+d.purpose+'</span>':''}</td>
+<td>${d.registrar||'-'}</td>
+<td class="${expiryClass(d.expiry)}">${expiryText(d.expiry)}</td>
+<td><span class="status-badge ${statusClass}">${d.status}</span></td>
+<td>$${d.cost.toFixed(2)}</td>
+<td>${tagHtml||'-'}</td>
+<td><div class="d-actions"><button onclick="deleteDomain(${d.id})">Delete</button></div></td>
+</tr>`;
+}).join('');
+}
+
+function updateStats(){
+const total=domains.length;
+const cost=domains.reduce((s,d)=>s+d.cost,0);
+const expiring=domains.filter(d=>daysUntil(d.expiry)<=90&&daysUntil(d.expiry)>=0).length;
+const active=domains.filter(d=>d.status==='active').length;
+document.getElementById('statTotal').textContent=total;
+document.getElementById('statCost').textContent='$'+cost.toFixed(2);
+document.getElementById('statExpiring').textContent=expiring;
+document.getElementById('statActive').textContent=active;
+}
+
+function renderCalendar(){
+const year=calDate.getFullYear(),month=calDate.getMonth();
+const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+document.getElementById('calTitle').textContent=months[month]+' '+year;
+
+const firstDay=new Date(year,month,1).getDay();
+const daysInMonth=new Date(year,month+1,0).getDate();
+const today=new Date();
+
+const renewals={};
+domains.forEach(d=>{
+if(!d.expiry)return;
+const ed=new Date(d.expiry);
+if(ed.getFullYear()===year&&ed.getMonth()===month){
+const day=ed.getDate();
+if(!renewals[day])renewals[day]=[];
+renewals[day].push(d.name);
+}
+});
+
+let html=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<div class="cal-header">${d}</div>`).join('');
+for(let i=0;i<firstDay;i++)html+='<div class="cal-day empty"></div>';
+for(let d=1;d<=daysInMonth;d++){
+const isToday=today.getFullYear()===year&&today.getMonth()===month&&today.getDate()===d;
+const hasRenewal=renewals[d];
+html+=`<div class="cal-day${isToday?' today':''}"><div class="day-num">${d}</div>${hasRenewal?'<div class="renewal-dot"></div><div class="renewal-name">'+hasRenewal[0]+'</div>':''}</div>`;
+}
+document.getElementById('calGrid').innerHTML=html;
+}
+
+function changeMonth(dir){
+calDate.setMonth(calDate.getMonth()+dir);
+renderCalendar();
+}
+
+function exportDomainsCSV(){
+let csv='Domain,Registrar,Expiry,Status,Annual Cost,Purpose,Tags\n';
+domains.forEach(d=>{csv+=`"${d.name}","${d.registrar}","${d.expiry}","${d.status}",${d.cost},"${d.purpose}","${(d.tags||[]).join(', ')}"\n`;});
+const blob=new Blob([csv],{type:'text/csv'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='domain-portfolio.csv';a.click();
+}
+
+function loadDemo(){
+if(domains.length>0&&!confirm('This will add demo domains. Continue?'))return;
+const demo=[
+{id:1,name:'spunkart.com',registrar:'Namecheap',expiry:'2026-11-15',cost:12.99,status:'active',purpose:'Main website',tags:['business','primary']},
+{id:2,name:'spunk.bet',registrar:'GoDaddy',expiry:'2026-06-20',cost:29.99,status:'active',purpose:'Casino platform',tags:['gaming','product']},
+{id:3,name:'myproject.dev',registrar:'Cloudflare',expiry:'2026-03-10',cost:10.00,status:'active',purpose:'Developer docs',tags:['dev','docs']},
+{id:4,name:'coolstartup.io',registrar:'Namecheap',expiry:'2026-04-05',cost:35.00,status:'parked',purpose:'Future project',tags:['startup']},
+{id:5,name:'brandname.co',registrar:'Google Domains',expiry:'2026-08-12',cost:25.00,status:'for-sale',purpose:'Available for purchase',tags:['premium']},
+{id:6,name:'oldsite.net',registrar:'GoDaddy',expiry:'2026-02-28',cost:9.99,status:'expired',purpose:'Deprecated',tags:['legacy']},
+{id:7,name:'toolshub.app',registrar:'Cloudflare',expiry:'2026-12-01',cost:15.00,status:'active',purpose:'Tool aggregator',tags:['tools','saas']},
+{id:8,name:'predict.tattoo',registrar:'Namecheap',expiry:'2026-09-18',cost:4.99,status:'active',purpose:'Prediction market',tags:['predict','niche']}
+];
+demo.forEach(d=>{d.id=Date.now()+Math.random()*1000;d.created=new Date().toISOString().split('T')[0];});
+domains=[...domains,...demo];
+save();render();renderCalendar();updateStats();
+}
+
+render();renderCalendar();updateStats();
+</script>
+</body>
+</html>

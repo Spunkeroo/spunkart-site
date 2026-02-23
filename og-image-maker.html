@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OG Image Creator - Free Open Graph Image Generator | SpunkArt.com</title>
+<meta name="description" content="Create stunning Open Graph images for Twitter, Facebook & LinkedIn. Canvas-based generator with templates, gradients, and instant download. Free online tool.">
+<meta name="keywords" content="og image generator, open graph image creator, social media image maker, twitter card image, facebook share image, free og image tool">
+<meta property="og:title" content="OG Image Creator - Free Open Graph Image Generator">
+<meta property="og:description" content="Create stunning OG images for social media sharing. Templates, gradients, instant PNG download.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/og-image-maker.html">
+<meta property="og:image" content="https://spunkart.com/art/og-og-image-maker.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="OG Image Creator - Free Open Graph Image Generator">
+<meta name="twitter:description" content="Create stunning OG images for social media. Templates, gradients, instant PNG download.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"OG Image Creator","url":"https://spunkart.com/og-image-maker.html","description":"Create Open Graph images for social media sharing with templates and instant download.","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+h1{font-size:2rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#ff5f1f,#ff8f5f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:20px;font-size:.95rem}
+.usage-badge{text-align:center;margin-bottom:20px;font-size:.8rem;color:#666}
+.usage-badge span{color:#ff5f1f;font-weight:700}
+.layout{display:grid;grid-template-columns:360px 1fr;gap:20px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.controls{display:flex;flex-direction:column;gap:12px}
+.control-group{background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:14px}
+.control-group h3{font-size:.85rem;color:#aaa;margin-bottom:10px;font-weight:700}
+.field{margin-bottom:10px}
+.field label{font-size:.75rem;color:#888;display:block;margin-bottom:4px}
+.field input,.field select,.field textarea{width:100%;background:#141414;border:1px solid #2a2a2a;color:#e8e8e8;padding:8px 10px;border-radius:6px;font-size:.85rem;font-family:inherit}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#ff5f1f}
+.field textarea{resize:vertical;min-height:50px}
+.field input[type="color"]{height:36px;padding:2px 4px;cursor:pointer}
+.field input[type="range"]{-webkit-appearance:none;background:#2a2a2a;height:6px;border-radius:3px;border:none;padding:0}
+.field input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#ff5f1f;cursor:pointer}
+.range-val{font-size:.75rem;color:#666;text-align:right}
+.row{display:flex;gap:10px}
+.row .field{flex:1}
+.templates{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+.tmpl-btn{background:#1a1a1a;border:1px solid #2a2a2a;color:#aaa;padding:6px;border-radius:6px;font-size:.7rem;cursor:pointer;text-align:center;transition:all .2s}
+.tmpl-btn:hover,.tmpl-btn.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.btn{background:linear-gradient(135deg,#ff5f1f,#e04500);color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s;width:100%}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,95,31,.35)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669)}
+.right-panel{display:flex;flex-direction:column;gap:15px}
+.canvas-wrap{background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:15px;text-align:center}
+.canvas-wrap canvas{max-width:100%;border-radius:6px;display:block;margin:0 auto}
+.previews{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:600px){.previews{grid-template-columns:1fr}}
+.preview-card{background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:12px;text-align:center}
+.preview-card h4{font-size:.75rem;color:#888;margin-bottom:8px}
+.preview-card .mock{background:#1a1a1a;border-radius:6px;overflow:hidden}
+.preview-card .mock img{width:100%;display:block}
+.preview-card .mock-text{padding:8px;text-align:left}
+.preview-card .mock-title{font-size:.75rem;font-weight:700;color:#e8e8e8;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-card .mock-url{font-size:.6rem;color:#555}
+.history-section{background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:14px}
+.history-section h3{font-size:.85rem;color:#aaa;margin-bottom:10px}
+.history-grid{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px}
+.history-thumb{width:120px;min-width:120px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+.history-thumb:hover{border-color:#ff5f1f}
+.cta{text-align:center;margin:30px 0 20px;padding:20px;background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid #2a2a2a;border-radius:12px}
+.cta a{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.1rem}
+.cta a:hover{text-decoration:underline}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:.75rem;color:rgba(255,255,255,.1);pointer-events:none;z-index:9999;font-weight:700}
+.align-btns{display:flex;gap:4px}
+.align-btn{background:#1a1a1a;border:1px solid #2a2a2a;color:#aaa;padding:4px 10px;border-radius:4px;font-size:.7rem;cursor:pointer}
+.align-btn.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>OG Image Creator</h1>
+<p class="subtitle">Create Open Graph images for Twitter, Facebook & LinkedIn (1200x630)</p>
+<div class="usage-badge">Images created: <span id="counter">0</span></div>
+
+<div class="layout">
+<div class="controls">
+<div class="control-group">
+<h3>Template</h3>
+<div class="templates" id="templates"></div>
+</div>
+<div class="control-group">
+<h3>Background</h3>
+<div class="field"><label>Type</label>
+<select id="bgType" onchange="drawCanvas()">
+<option value="gradient">Gradient</option>
+<option value="solid">Solid Color</option>
+<option value="pattern">Pattern</option>
+</select></div>
+<div class="row">
+<div class="field"><label>Color 1</label><input type="color" id="bgColor1" value="#1a1a2e" onchange="drawCanvas()"></div>
+<div class="field"><label>Color 2</label><input type="color" id="bgColor2" value="#16213e" onchange="drawCanvas()"></div>
+</div>
+<div class="field"><label>Gradient Angle</label>
+<input type="range" id="gradAngle" min="0" max="360" value="135" oninput="drawCanvas();document.getElementById('gradAngleVal').textContent=this.value+'deg'">
+<div class="range-val" id="gradAngleVal">135deg</div></div>
+<div class="field" id="patternField" style="display:none"><label>Pattern</label>
+<select id="patternType" onchange="drawCanvas()">
+<option value="dots">Dots</option>
+<option value="grid">Grid</option>
+<option value="diagonal">Diagonal Lines</option>
+<option value="circles">Circles</option>
+</select></div>
+</div>
+<div class="control-group">
+<h3>Title Text</h3>
+<div class="field"><textarea id="titleText" rows="2" oninput="drawCanvas()" placeholder="Your title here">How to Build Amazing Things</textarea></div>
+<div class="row">
+<div class="field"><label>Size</label><input type="range" id="titleSize" min="24" max="80" value="52" oninput="drawCanvas();document.getElementById('titleSizeVal').textContent=this.value+'px'"><div class="range-val" id="titleSizeVal">52px</div></div>
+<div class="field"><label>Color</label><input type="color" id="titleColor" value="#ffffff" onchange="drawCanvas()"></div>
+</div>
+<div class="row">
+<div class="field"><label>Weight</label><select id="titleWeight" onchange="drawCanvas()"><option value="800">Bold</option><option value="600">Semi-Bold</option><option value="400">Normal</option></select></div>
+<div class="field"><label>Align</label><div class="align-btns"><button class="align-btn active" onclick="setAlign('title','left',this)">Left</button><button class="align-btn" onclick="setAlign('title','center',this)">Center</button><button class="align-btn" onclick="setAlign('title','right',this)">Right</button></div></div>
+</div>
+</div>
+<div class="control-group">
+<h3>Subtitle</h3>
+<div class="field"><input type="text" id="subtitleText" oninput="drawCanvas()" placeholder="A short subtitle" value="A complete guide for developers"></div>
+<div class="row">
+<div class="field"><label>Size</label><input type="range" id="subSize" min="14" max="40" value="24" oninput="drawCanvas();document.getElementById('subSizeVal').textContent=this.value+'px'"><div class="range-val" id="subSizeVal">24px</div></div>
+<div class="field"><label>Color</label><input type="color" id="subColor" value="#aaaaaa" onchange="drawCanvas()"></div>
+</div>
+</div>
+<div class="control-group">
+<h3>Author / Brand</h3>
+<div class="field"><input type="text" id="authorText" oninput="drawCanvas()" placeholder="Author name or brand" value="SpunkArt.com"></div>
+<div class="row">
+<div class="field"><label>Size</label><input type="range" id="authorSize" min="12" max="30" value="18" oninput="drawCanvas()"></div>
+<div class="field"><label>Color</label><input type="color" id="authorColor" value="#ff5f1f" onchange="drawCanvas()"></div>
+</div>
+</div>
+<div class="control-group">
+<h3>Decorations</h3>
+<div class="field"><label>Accent Bar</label><select id="accentBar" onchange="drawCanvas()"><option value="top">Top</option><option value="left">Left</option><option value="bottom">Bottom</option><option value="none">None</option></select></div>
+<div class="field"><label>Accent Color</label><input type="color" id="accentColor" value="#ff5f1f" onchange="drawCanvas()"></div>
+<div class="field"><label><input type="checkbox" id="showLogo" onchange="drawCanvas()" checked> Show circle logo mark</label></div>
+</div>
+<button class="btn btn-green" onclick="downloadImage()">Download PNG (1200x630)</button>
+<div style="display:flex;gap:6px;margin-top:8px">
+<button class="btn btn-secondary" onclick="duplicateAsTwitter()" style="flex:1;font-size:.75rem;padding:8px;background:#1a1a1a;border:1px solid #333">Twitter 1200x675</button>
+<button class="btn btn-secondary" onclick="downloadAs2x()" style="flex:1;font-size:.75rem;padding:8px;background:#1a1a1a;border:1px solid #333">2x Hi-Res</button>
+</div>
+<div style="display:flex;gap:6px;margin-top:6px">
+<button class="btn btn-secondary" onclick="randomizeDesign()" style="flex:1;font-size:.75rem;padding:8px;background:#1a1a1a;border:1px solid #333">Randomize</button>
+<button class="btn btn-secondary" onclick="copyAsDataUrl()" style="flex:1;font-size:.75rem;padding:8px;background:#1a1a1a;border:1px solid #333">Copy Data URL</button>
+</div>
+</div>
+
+<div class="right-panel">
+<div class="canvas-wrap">
+<canvas id="ogCanvas" width="1200" height="630"></canvas>
+</div>
+<div class="previews">
+<div class="preview-card"><h4>Twitter</h4><div class="mock"><canvas id="twitterPreview" width="506" height="265" style="width:100%"></canvas><div class="mock-text"><div class="mock-title" id="twTitle">How to Build Amazing Things</div><div class="mock-url">spunkart.com</div></div></div></div>
+<div class="preview-card"><h4>Facebook</h4><div class="mock"><canvas id="facebookPreview" width="500" height="261" style="width:100%"></canvas><div class="mock-text"><div class="mock-url" style="margin-bottom:2px">SPUNKART.COM</div><div class="mock-title" id="fbTitle">How to Build Amazing Things</div></div></div></div>
+<div class="preview-card"><h4>LinkedIn</h4><div class="mock"><canvas id="linkedinPreview" width="520" height="272" style="width:100%"></canvas><div class="mock-text"><div class="mock-title" id="liTitle">How to Build Amazing Things</div><div class="mock-url">spunkart.com</div></div></div></div>
+</div>
+<div class="history-section"><h3>Recent Creations</h3><div class="history-grid" id="historyGrid"></div></div>
+</div>
+</div>
+
+<div class="cta"><a href="https://spunkart.com/store">100+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const TEMPLATES=[
+{name:'Blog Post',bg1:'#1a1a2e',bg2:'#16213e',accent:'#e94560',titleColor:'#ffffff'},
+{name:'Product',bg1:'#0f0f0f',bg2:'#1a1a1a',accent:'#ff5f1f',titleColor:'#ffffff'},
+{name:'Announce',bg1:'#0d1117',bg2:'#161b22',accent:'#58a6ff',titleColor:'#ffffff'},
+{name:'Event',bg1:'#2d1b69',bg2:'#11001c',accent:'#a855f7',titleColor:'#f0e6ff'},
+{name:'Tutorial',bg1:'#064e3b',bg2:'#022c22',accent:'#10b981',titleColor:'#ecfdf5'},
+{name:'Dark Pro',bg1:'#000000',bg2:'#111111',accent:'#fbbf24',titleColor:'#fbbf24'}
+];
+let titleAlign='left';
+let subAlign='left';
+
+function init(){
+  let c=localStorage.getItem('ogimg_count')||0;
+  document.getElementById('counter').textContent=c;
+  renderTemplates();
+  drawCanvas();
+  renderHistory();
+}
+
+function renderTemplates(){
+  const el=document.getElementById('templates');
+  el.innerHTML=TEMPLATES.map((t,i)=>`<div class="tmpl-btn" onclick="applyTemplate(${i})">${t.name}</div>`).join('');
+}
+
+function applyTemplate(i){
+  const t=TEMPLATES[i];
+  document.getElementById('bgColor1').value=t.bg1;
+  document.getElementById('bgColor2').value=t.bg2;
+  document.getElementById('accentColor').value=t.accent;
+  document.getElementById('titleColor').value=t.titleColor;
+  document.querySelectorAll('.tmpl-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
+  drawCanvas();
+}
+
+function setAlign(type,align,btn){
+  if(type==='title')titleAlign=align;
+  btn.parentElement.querySelectorAll('.align-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  drawCanvas();
+}
+
+function drawCanvas(){
+  const c=document.getElementById('ogCanvas');
+  const ctx=c.getContext('2d');
+  const W=1200,H=630;
+  ctx.clearRect(0,0,W,H);
+  // Background
+  const bgType=document.getElementById('bgType').value;
+  const c1=document.getElementById('bgColor1').value;
+  const c2=document.getElementById('bgColor2').value;
+  document.getElementById('patternField').style.display=bgType==='pattern'?'block':'none';
+
+  if(bgType==='solid'){
+    ctx.fillStyle=c1;ctx.fillRect(0,0,W,H);
+  } else if(bgType==='gradient'){
+    const angle=parseInt(document.getElementById('gradAngle').value)*Math.PI/180;
+    const cx=W/2,cy=H/2,len=Math.sqrt(W*W+H*H)/2;
+    const x1=cx-Math.cos(angle)*len,y1=cy-Math.sin(angle)*len;
+    const x2=cx+Math.cos(angle)*len,y2=cy+Math.sin(angle)*len;
+    const grad=ctx.createLinearGradient(x1,y1,x2,y2);
+    grad.addColorStop(0,c1);grad.addColorStop(1,c2);
+    ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+  } else {
+    ctx.fillStyle=c1;ctx.fillRect(0,0,W,H);
+    const pt=document.getElementById('patternType').value;
+    ctx.strokeStyle=c2;ctx.fillStyle=c2;ctx.globalAlpha=0.15;
+    if(pt==='dots'){for(let x=20;x<W;x+=30)for(let y=20;y<H;y+=30){ctx.beginPath();ctx.arc(x,y,2,0,Math.PI*2);ctx.fill();}}
+    else if(pt==='grid'){ctx.lineWidth=1;for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}}
+    else if(pt==='diagonal'){ctx.lineWidth=1;for(let i=-H;i<W+H;i+=25){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+H,H);ctx.stroke();}}
+    else if(pt==='circles'){for(let i=0;i<6;i++){ctx.beginPath();ctx.arc(W/2,H/2,80+i*80,0,Math.PI*2);ctx.stroke();}}
+    ctx.globalAlpha=1;
+  }
+  // Accent bar
+  const accentBar=document.getElementById('accentBar').value;
+  const accentColor=document.getElementById('accentColor').value;
+  if(accentBar!=='none'){
+    ctx.fillStyle=accentColor;
+    if(accentBar==='top')ctx.fillRect(0,0,W,6);
+    else if(accentBar==='bottom')ctx.fillRect(0,H-6,W,6);
+    else if(accentBar==='left')ctx.fillRect(0,0,6,H);
+  }
+  // Logo circle
+  if(document.getElementById('showLogo').checked){
+    ctx.fillStyle=accentColor;ctx.globalAlpha=0.9;
+    ctx.beginPath();ctx.arc(W-80,80,30,0,Math.PI*2);ctx.fill();
+    ctx.globalAlpha=1;ctx.fillStyle='#fff';ctx.font='bold 22px -apple-system,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    const authorInit=(document.getElementById('authorText').value||'A')[0].toUpperCase();
+    ctx.fillText(authorInit,W-80,80);
+  }
+  // Text
+  const pad=80;
+  const titleText=document.getElementById('titleText').value;
+  const titleSize=parseInt(document.getElementById('titleSize').value);
+  const titleColor=document.getElementById('titleColor').value;
+  const titleWeight=document.getElementById('titleWeight').value;
+  ctx.textAlign=titleAlign;
+  const tx=titleAlign==='center'?W/2:titleAlign==='right'?W-pad:pad;
+  ctx.fillStyle=titleColor;
+  ctx.font=`${titleWeight} ${titleSize}px -apple-system,BlinkMacSystemFont,sans-serif`;
+  wrapText(ctx,titleText,tx,220,W-pad*2,titleSize*1.2);
+  // Subtitle
+  const subText=document.getElementById('subtitleText').value;
+  const subSize=parseInt(document.getElementById('subSize').value);
+  const subColor=document.getElementById('subColor').value;
+  ctx.fillStyle=subColor;
+  ctx.font=`400 ${subSize}px -apple-system,BlinkMacSystemFont,sans-serif`;
+  const titleLines=getLines(ctx,titleText,W-pad*2);
+  // Recalc font for title to get line count
+  ctx.font=`${titleWeight} ${titleSize}px -apple-system,BlinkMacSystemFont,sans-serif`;
+  const tLines=getLines(ctx,titleText,W-pad*2);
+  const subY=220+tLines.length*titleSize*1.2+20;
+  ctx.font=`400 ${subSize}px -apple-system,BlinkMacSystemFont,sans-serif`;
+  ctx.fillText(subText,tx,subY);
+  // Author
+  const authorText=document.getElementById('authorText').value;
+  const authorSize=parseInt(document.getElementById('authorSize').value);
+  const authorColor=document.getElementById('authorColor').value;
+  ctx.fillStyle=authorColor;
+  ctx.font=`600 ${authorSize}px -apple-system,BlinkMacSystemFont,sans-serif`;
+  ctx.textAlign=titleAlign;
+  ctx.fillText(authorText,tx,H-60);
+  // Social previews
+  updatePreviews();
+  // Update mock titles
+  const shortTitle=titleText.substring(0,60);
+  document.getElementById('twTitle').textContent=shortTitle;
+  document.getElementById('fbTitle').textContent=shortTitle;
+  document.getElementById('liTitle').textContent=shortTitle;
+}
+
+function getLines(ctx,text,maxW){
+  const words=text.split(' ');
+  const lines=[];let line='';
+  words.forEach(w=>{
+    const test=line?line+' '+w:w;
+    if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=w;}
+    else line=test;
+  });
+  if(line)lines.push(line);
+  return lines;
+}
+
+function wrapText(ctx,text,x,y,maxW,lineH){
+  const lines=getLines(ctx,text,maxW);
+  lines.forEach((line,i)=>ctx.fillText(line,x,y+i*lineH));
+}
+
+function updatePreviews(){
+  ['twitterPreview','facebookPreview','linkedinPreview'].forEach(id=>{
+    const pc=document.getElementById(id);
+    const pctx=pc.getContext('2d');
+    pctx.drawImage(document.getElementById('ogCanvas'),0,0,pc.width,pc.height);
+  });
+}
+
+function downloadImage(){
+  const c=document.getElementById('ogCanvas');
+  c.toBlob(blob=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='og-image-1200x630.png';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    saveToHistory(c.toDataURL('image/jpeg',0.5));
+    let count=parseInt(localStorage.getItem('ogimg_count')||0)+1;
+    localStorage.setItem('ogimg_count',count);
+    document.getElementById('counter').textContent=count;
+  },'image/png');
+}
+
+function saveToHistory(dataUrl){
+  let hist=JSON.parse(localStorage.getItem('ogimg_history')||'[]');
+  hist.unshift(dataUrl);
+  if(hist.length>10)hist=hist.slice(0,10);
+  localStorage.setItem('ogimg_history',JSON.stringify(hist));
+  renderHistory();
+}
+
+function renderHistory(){
+  const hist=JSON.parse(localStorage.getItem('ogimg_history')||'[]');
+  const el=document.getElementById('historyGrid');
+  if(!hist.length){el.innerHTML='<div style="color:#555;font-size:.8rem">No images yet. Download an image to save it here.</div>';return;}
+  el.innerHTML=hist.map(h=>`<img class="history-thumb" src="${h}" alt="Previous OG image">`).join('');
+}
+
+function clearHistory(){
+  localStorage.removeItem('ogimg_history');
+  renderHistory();
+}
+
+function randomizeDesign(){
+  // Random template
+  const idx=Math.floor(Math.random()*TEMPLATES.length);
+  applyTemplate(idx);
+  // Random gradient angle
+  const angle=Math.floor(Math.random()*360);
+  document.getElementById('gradAngle').value=angle;
+  document.getElementById('gradAngleVal').textContent=angle+'deg';
+  // Random accent bar position
+  const positions=['top','left','bottom'];
+  document.getElementById('accentBar').value=positions[Math.floor(Math.random()*positions.length)];
+  drawCanvas();
+}
+
+function duplicateAsTwitter(){
+  // Create 1200x675 version for Twitter
+  const src=document.getElementById('ogCanvas');
+  const tw=document.createElement('canvas');
+  tw.width=1200;tw.height=675;
+  const ctx=tw.getContext('2d');
+  ctx.drawImage(src,0,0,1200,630,0,22,1200,630);
+  // Fill top and bottom bars
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,1200,22);
+  ctx.fillRect(0,652,1200,23);
+  tw.toBlob(blob=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='twitter-card-1200x675.png';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  },'image/png');
+}
+
+function downloadAs2x(){
+  // Create 2400x1260 high-res version
+  const src=document.getElementById('ogCanvas');
+  const hires=document.createElement('canvas');
+  hires.width=2400;hires.height=1260;
+  const ctx=hires.getContext('2d');
+  ctx.scale(2,2);
+  // Redraw at 2x - just scale up for now
+  ctx.drawImage(src,0,0);
+  hires.toBlob(blob=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='og-image-2400x1260-2x.png';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  },'image/png');
+}
+
+function copyAsDataUrl(){
+  const c=document.getElementById('ogCanvas');
+  const dataUrl=c.toDataURL('image/png');
+  navigator.clipboard.writeText(dataUrl).then(()=>alert('Data URL copied to clipboard! Paste it as an image src.'));
+}
+
+// Keyboard shortcut: Ctrl+Enter to download
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&e.key==='Enter'){e.preventDefault();downloadImage();}
+});
+
+// Auto-redraw on window resize for responsive preview
+let resizeTimeout;
+window.addEventListener('resize',()=>{
+  clearTimeout(resizeTimeout);
+  resizeTimeout=setTimeout(drawCanvas,200);
+});
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+init();
+</script>
+</body>
+</html>

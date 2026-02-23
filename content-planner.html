@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Calendar Planner | SpunkArt.com</title>
+<meta name="description" content="Free AI content calendar planner for solo founders. Schedule blog posts, tools, social media, and email campaigns with a visual calendar.">
+<meta name="keywords" content="content calendar, content planner, editorial calendar, content schedule, blog planner">
+<meta property="og:title" content="AI Content Calendar Planner | SpunkArt.com">
+<meta property="og:description" content="Plan and schedule your content across blogs, tools, social, and email with a visual calendar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/content-planner.html">
+<meta property="og:image" content="https://spunkart.com/art/og-content-planner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="AI Content Calendar Planner">
+<meta name="twitter:description" content="Plan and schedule your content across blogs, tools, social, and email.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI Content Calendar Planner",
+  "description": "Plan and schedule content across blogs, tools, social media, and email campaigns.",
+  "url": "https://spunkart.com/content-planner.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+.cta-banner{background:linear-gradient(135deg,#ff5f1f,#e04500);text-align:center;padding:10px 16px;font-size:14px;font-weight:600;color:#fff;position:sticky;top:0;z-index:100;}
+.cta-banner a{color:#fff;text-decoration:underline;}
+.container{max-width:1100px;margin:0 auto;padding:24px 16px 80px;}
+h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;margin-bottom:6px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;font-size:14px;margin-bottom:20px;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:20px;}
+.usage-badge strong{color:#ff5f1f;}
+.top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+.month-nav{display:flex;align-items:center;gap:12px;}
+.month-nav button{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;border-radius:8px;padding:8px 14px;cursor:pointer;font-size:14px;transition:all .2s;}
+.month-nav button:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.month-nav h2{font-size:1.2rem;min-width:180px;text-align:center;}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 16px;color:#e8e8e8;font-size:13px;cursor:pointer;transition:all .2s;font-weight:500;}
+.btn:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.btn-primary{background:#ff5f1f;border-color:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e04500;}
+.type-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#888;}
+.legend-dot{width:10px;height:10px;border-radius:50%;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:#222;border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.cal-header{background:#151515;padding:10px 4px;text-align:center;font-size:12px;font-weight:600;color:#666;text-transform:uppercase;}
+.cal-day{background:#111;min-height:100px;padding:6px;cursor:pointer;transition:background .2s;position:relative;}
+.cal-day:hover{background:#1a1a1a;}
+.cal-day.other-month{opacity:.3;}
+.cal-day.today{background:#1a1508;border:1px solid #ff5f1f33;}
+.day-num{font-size:12px;color:#666;margin-bottom:4px;font-weight:600;}
+.cal-day.today .day-num{color:#ff5f1f;}
+.cal-item{font-size:10px;padding:3px 6px;border-radius:4px;margin-bottom:2px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-weight:500;}
+.cal-item.blog{background:#2563eb;}
+.cal-item.tool{background:#10b981;}
+.cal-item.social{background:#a855f7;}
+.cal-item.email{background:#f59e0b;}
+.cal-item .status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:3px;}
+.cal-item .status-dot.planned{background:#666;}
+.cal-item .status-dot.in-progress{background:#f59e0b;}
+.cal-item .status-dot.done{background:#10b981;}
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:200;display:none;justify-content:center;align-items:center;padding:16px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#151515;border:1px solid #333;border-radius:16px;padding:28px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.modal h3{font-size:1.1rem;margin-bottom:20px;}
+.modal .input-group{margin-bottom:14px;}
+.modal label{display:block;font-size:13px;color:#aaa;margin-bottom:4px;}
+.modal input,.modal select,.modal textarea{width:100%;background:#0a0a0a;border:1px solid #333;border-radius:8px;padding:10px 12px;color:#e8e8e8;font-size:14px;}
+.modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:#ff5f1f;}
+.modal textarea{resize:vertical;min-height:60px;}
+.modal-actions{display:flex;gap:10px;margin-top:20px;}
+.btn-danger{background:#1a1a1a;border:1px solid #dc2626;color:#dc2626;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:13px;}
+.btn-danger:hover{background:#dc2626;color:#fff;}
+/* Ideas panel */
+.ideas-panel{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:24px;display:none;}
+.ideas-panel.show{display:block;}
+.ideas-panel h3{margin-bottom:12px;font-size:1rem;}
+.idea-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;max-height:300px;overflow-y:auto;}
+.idea-card{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:10px 12px;font-size:13px;cursor:pointer;transition:all .2s;}
+.idea-card:hover{border-color:#ff5f1f;background:#1f1008;}
+.idea-card .idea-type{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.5px;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:300;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@media(max-width:700px){.cal-day{min-height:70px;}.cal-item{font-size:9px;padding:2px 4px;}}
+</style>
+</head>
+<body>
+<div class="cta-banner"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+<div class="container">
+  <h1><span>Content Calendar</span> Planner</h1>
+  <p class="subtitle">Plan, schedule, and organize your content across all channels</p>
+  <div class="usage-badge">Used <strong id="usageCount">0</strong> times</div>
+
+  <div class="top-bar">
+    <div class="month-nav">
+      <button onclick="changeMonth(-1)">&larr;</button>
+      <h2 id="monthTitle">February 2026</h2>
+      <button onclick="changeMonth(1)">&rarr;</button>
+    </div>
+    <div class="top-actions">
+      <button class="btn" onclick="toggleIdeas()">Content Ideas</button>
+      <button class="btn" onclick="exportCSV()">Export CSV</button>
+      <button class="btn btn-primary" onclick="openModal()">+ Add Content</button>
+    </div>
+  </div>
+
+  <div class="type-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>Blog</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Tool</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>Social</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Email</div>
+  </div>
+
+  <div class="ideas-panel" id="ideasPanel">
+    <h3>Content Ideas for Solo Founders <button class="btn" onclick="shuffleIdeas()" style="float:right;font-size:11px;padding:4px 12px;">Shuffle</button></h3>
+    <div class="idea-list" id="ideaList"></div>
+  </div>
+
+  <div class="cal-grid" id="calGrid"></div>
+
+  <div style="color:#666;font-size:12px;text-align:center;">Click any day to add content. Click an item to edit or delete.</div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h3 id="modalTitle">Add Content</h3>
+    <div class="input-group"><label>Title</label><input type="text" id="itemTitle" placeholder="e.g. SEO Guide for Indie Hackers"></div>
+    <div class="input-group"><label>Type</label><select id="itemType"><option value="blog">Blog Post</option><option value="tool">Tool / Feature</option><option value="social">Social Media</option><option value="email">Email Campaign</option></select></div>
+    <div class="input-group"><label>Target Site</label><input type="text" id="itemSite" placeholder="e.g. spunkart.com"></div>
+    <div class="input-group"><label>Status</label><select id="itemStatus"><option value="planned">Planned</option><option value="in-progress">In Progress</option><option value="done">Done</option></select></div>
+    <div class="input-group"><label>Date</label><input type="date" id="itemDate"></div>
+    <div class="input-group"><label>Notes</label><textarea id="itemNotes" placeholder="Optional notes..."></textarea></div>
+    <input type="hidden" id="editingId" value="">
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveItem()" style="flex:1;">Save</button>
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn-danger" id="deleteBtn" onclick="deleteItem()" style="display:none;">Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let currentDate = new Date(2026, 1, 1); // Feb 2026
+let items = JSON.parse(localStorage.getItem('cp_items')||'[]');
+let usage = parseInt(localStorage.getItem('cp_usage')||'0');
+document.getElementById('usageCount').textContent = usage;
+
+const IDEAS = [
+  {type:'blog',text:'How I Built 10 Micro-SaaS Sites in 30 Days'},
+  {type:'blog',text:'The Solo Founder Tech Stack: Tools That Scale'},
+  {type:'blog',text:'SEO for One-Person Startups: A Practical Guide'},
+  {type:'blog',text:'Why I Stopped Chasing VC and Built Profitably'},
+  {type:'blog',text:'$10K MRR as a Solo Dev: Lessons Learned'},
+  {type:'blog',text:'Landing Page Teardown: What Actually Converts'},
+  {type:'blog',text:'The 80/20 of Content Marketing for Devs'},
+  {type:'blog',text:'Building in Public: A 90-Day Retrospective'},
+  {type:'blog',text:'How to Price Your Digital Product (With Data)'},
+  {type:'blog',text:'From Side Project to Full-Time: The Transition Guide'},
+  {type:'blog',text:'Automating Everything: My No-Code Workflow'},
+  {type:'blog',text:'The Truth About Passive Income Sites'},
+  {type:'tool',text:'Free Keyword Research Tool'},
+  {type:'tool',text:'Meta Tag Generator for All Platforms'},
+  {type:'tool',text:'Revenue Projection Calculator'},
+  {type:'tool',text:'Domain Name Availability Checker'},
+  {type:'tool',text:'JSON Formatter and Validator'},
+  {type:'tool',text:'Color Palette Generator for Dark Themes'},
+  {type:'tool',text:'Website Speed Test Dashboard'},
+  {type:'tool',text:'Competitor Feature Comparison Matrix'},
+  {type:'tool',text:'AI Writing Prompt Library'},
+  {type:'tool',text:'Social Media Bio Generator'},
+  {type:'tool',text:'Pricing Page Layout Builder'},
+  {type:'tool',text:'Email Subject Line Tester'},
+  {type:'social',text:'Share your build progress thread'},
+  {type:'social',text:'Poll: What tool should we build next?'},
+  {type:'social',text:'Before/after screenshots of redesign'},
+  {type:'social',text:'Revenue milestone celebration post'},
+  {type:'social',text:'Hot take on indie hacker trends'},
+  {type:'social',text:'Tool comparison infographic'},
+  {type:'social',text:'Day-in-the-life solo founder content'},
+  {type:'social',text:'Community question: biggest blocker?'},
+  {type:'social',text:'Launch announcement for new feature'},
+  {type:'social',text:'User testimonial spotlight'},
+  {type:'social',text:'Quick tip video: productivity hack'},
+  {type:'social',text:'Meme about startup life'},
+  {type:'email',text:'Welcome sequence email #1: Your journey starts'},
+  {type:'email',text:'Weekly digest: top tools and tips'},
+  {type:'email',text:'New feature announcement blast'},
+  {type:'email',text:'Case study: user success story'},
+  {type:'email',text:'Seasonal promotion: bundle deal'},
+  {type:'email',text:'Re-engagement: we miss you sequence'},
+  {type:'email',text:'Survey: what should we build next?'},
+  {type:'email',text:'Free resource giveaway campaign'},
+  {type:'email',text:'Year in review: your stats'},
+  {type:'email',text:'Early access invite for beta testers'},
+  {type:'blog',text:'How to Validate a SaaS Idea in 48 Hours'},
+  {type:'blog',text:'Zero-Budget Marketing Tactics That Work'},
+  {type:'blog',text:'API Monetization for Solo Developers'},
+  {type:'blog',text:'Building a Personal Brand While Shipping Code'},
+  {type:'tool',text:'Changelog Generator from Git Commits'},
+  {type:'tool',text:'Invoice Template Generator'},
+  {type:'social',text:'Share your workspace setup'},
+  {type:'social',text:'AMA: ask me about solo founding'},
+  {type:'email',text:'Monthly metrics recap newsletter'},
+];
+
+function renderCalendar(){
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  days.forEach(d=> grid.innerHTML += `<div class="cal-header">${d}</div>`);
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const prevDays = new Date(year, month, 0).getDate();
+  const today = new Date();
+
+  // Previous month padding
+  for(let i = firstDay-1; i >= 0; i--){
+    const d = prevDays - i;
+    grid.innerHTML += `<div class="cal-day other-month"><div class="day-num">${d}</div></div>`;
+  }
+
+  // Current month
+  for(let d = 1; d <= daysInMonth; d++){
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday = today.getFullYear()===year && today.getMonth()===month && today.getDate()===d;
+    const dayItems = items.filter(it=>it.date===dateStr);
+    let itemsHTML = '';
+    dayItems.forEach(it=>{
+      itemsHTML += `<div class="cal-item ${it.type}" onclick="event.stopPropagation();editItem('${it.id}')"><span class="status-dot ${it.status}"></span>${it.title}</div>`;
+    });
+    grid.innerHTML += `<div class="cal-day${isToday?' today':''}" onclick="openModal('${dateStr}')"><div class="day-num">${d}</div>${itemsHTML}</div>`;
+  }
+
+  // Next month padding
+  const totalCells = firstDay + daysInMonth;
+  const remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+  for(let d = 1; d <= remaining; d++){
+    grid.innerHTML += `<div class="cal-day other-month"><div class="day-num">${d}</div></div>`;
+  }
+
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('monthTitle').textContent = `${monthNames[month]} ${year}`;
+}
+
+function changeMonth(dir){
+  currentDate.setMonth(currentDate.getMonth()+dir);
+  renderCalendar();
+}
+
+function openModal(dateStr){
+  document.getElementById('modalOverlay').classList.add('show');
+  document.getElementById('modalTitle').textContent = 'Add Content';
+  document.getElementById('itemTitle').value = '';
+  document.getElementById('itemType').value = 'blog';
+  document.getElementById('itemSite').value = '';
+  document.getElementById('itemStatus').value = 'planned';
+  document.getElementById('itemNotes').value = '';
+  document.getElementById('editingId').value = '';
+  document.getElementById('deleteBtn').style.display = 'none';
+  if(dateStr) document.getElementById('itemDate').value = dateStr;
+  else document.getElementById('itemDate').value = '';
+}
+
+function editItem(id){
+  const item = items.find(i=>i.id===id);
+  if(!item) return;
+  document.getElementById('modalOverlay').classList.add('show');
+  document.getElementById('modalTitle').textContent = 'Edit Content';
+  document.getElementById('itemTitle').value = item.title;
+  document.getElementById('itemType').value = item.type;
+  document.getElementById('itemSite').value = item.site||'';
+  document.getElementById('itemStatus').value = item.status;
+  document.getElementById('itemDate').value = item.date;
+  document.getElementById('itemNotes').value = item.notes||'';
+  document.getElementById('editingId').value = id;
+  document.getElementById('deleteBtn').style.display = 'block';
+}
+
+function closeModal(){document.getElementById('modalOverlay').classList.remove('show');}
+
+function saveItem(){
+  const title = document.getElementById('itemTitle').value.trim();
+  if(!title){showToast('Title is required');return;}
+  const date = document.getElementById('itemDate').value;
+  if(!date){showToast('Date is required');return;}
+
+  usage++;localStorage.setItem('cp_usage',usage);document.getElementById('usageCount').textContent=usage;
+
+  const editId = document.getElementById('editingId').value;
+  const obj = {
+    id: editId || 'cp_'+Date.now()+'_'+Math.random().toString(36).substr(2,5),
+    title,
+    type: document.getElementById('itemType').value,
+    site: document.getElementById('itemSite').value.trim(),
+    status: document.getElementById('itemStatus').value,
+    date,
+    notes: document.getElementById('itemNotes').value.trim()
+  };
+
+  if(editId){
+    const idx = items.findIndex(i=>i.id===editId);
+    if(idx>=0) items[idx] = obj;
+  } else {
+    items.push(obj);
+  }
+
+  localStorage.setItem('cp_items', JSON.stringify(items));
+  closeModal();
+  renderCalendar();
+  showToast(editId ? 'Updated!' : 'Added!');
+}
+
+function deleteItem(){
+  const editId = document.getElementById('editingId').value;
+  items = items.filter(i=>i.id!==editId);
+  localStorage.setItem('cp_items', JSON.stringify(items));
+  closeModal();
+  renderCalendar();
+  showToast('Deleted');
+}
+
+function toggleIdeas(){
+  const panel = document.getElementById('ideasPanel');
+  panel.classList.toggle('show');
+  if(panel.classList.contains('show')) renderIdeas();
+}
+
+function renderIdeas(){
+  const list = document.getElementById('ideaList');
+  list.innerHTML = '';
+  const shuffled = [...IDEAS].sort(()=>Math.random()-0.5).slice(0,20);
+  shuffled.forEach(idea=>{
+    list.innerHTML += `<div class="idea-card" onclick="addIdea('${idea.type}','${idea.text.replace(/'/g,"\\'")}')"><div class="idea-type">${idea.type}</div>${idea.text}</div>`;
+  });
+}
+function shuffleIdeas(){renderIdeas();}
+
+function addIdea(type, text){
+  document.getElementById('itemTitle').value = text;
+  document.getElementById('itemType').value = type;
+  openModal();
+  document.getElementById('itemTitle').value = text;
+  document.getElementById('itemType').value = type;
+}
+
+function exportCSV(){
+  let csv = 'Date,Title,Type,Site,Status,Notes\n';
+  items.sort((a,b)=>a.date.localeCompare(b.date)).forEach(it=>{
+    csv += `"${it.date}","${it.title}","${it.type}","${it.site||''}","${it.status}","${(it.notes||'').replace(/"/g,'""')}"\n`;
+  });
+  const blob = new Blob([csv],{type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'content-calendar.csv'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('CSV exported!');
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2000);}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+renderCalendar();
+</script>
+</body>
+</html>

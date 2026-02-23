@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quick Analytics Dashboard Builder — Create Beautiful Metric Dashboards Instantly</title>
+<meta name="description" content="Free analytics dashboard builder. Input your metrics and generate beautiful dashboards with KPI cards, charts, traffic breakdowns and conversion funnels. Export as self-contained HTML. No signup required.">
+<meta property="og:title" content="Quick Analytics Dashboard Builder — Beautiful Dashboards Instantly">
+<meta property="og:description" content="Generate beautiful analytics dashboards with KPI cards, CSS charts, and conversion funnels. Export as HTML. Free forever.">
+<meta property="og:url" content="https://spunkart.com/analytics-dashboard">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Quick Analytics Dashboard Builder">
+<meta name="twitter:description" content="Generate beautiful analytics dashboards with KPI cards, charts, and funnels. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/analytics-dashboard">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Quick Analytics Dashboard Builder","description":"Create beautiful analytics dashboards with KPI cards, CSS charts, traffic breakdowns, and conversion funnels. Export as self-contained HTML.","url":"https://spunkart.com/analytics-dashboard","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:1000px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field select{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus,.field select:focus{outline:none;border-color:#ff5f1f}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.row5{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
+.btn:hover{background:#e8540f;transform:translateY(-1px)}
+.btn-sm{padding:10px 20px;font-size:0.85rem;width:auto;border-radius:8px}
+.btn-outline{background:transparent;border:2px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;background:transparent}
+.btn-green{background:#10b981}.btn-green:hover{background:#0ea572}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem}
+#dashPreview{display:none}
+.dash{background:#0f0f0f;border:2px solid #222;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.dash h2{text-align:center;margin-bottom:1.5rem}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem}
+.kpi{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;text-align:center}
+.kpi .kpi-label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.kpi .kpi-val{font-size:1.8rem;font-weight:800;color:#ff5f1f;font-family:'Courier New',monospace}
+.kpi .kpi-change{font-size:0.75rem;margin-top:4px}
+.kpi .kpi-change.up{color:#10b981}
+.kpi .kpi-change.down{color:#ef4444}
+.kpi .sparkline{height:30px;display:flex;align-items:flex-end;gap:2px;justify-content:center;margin-top:8px}
+.kpi .sparkline .bar{width:4px;background:#ff5f1f;border-radius:2px;opacity:0.7}
+.chart-section{margin-bottom:1.5rem}
+.chart-section h3{font-size:0.9rem;color:#888;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding:0 10px}
+.bar-chart .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bar-chart .bar-col .bar-fill{width:100%;border-radius:4px 4px 0 0;transition:height .5s}
+.bar-chart .bar-col .bar-label{font-size:0.65rem;color:#888}
+.bar-chart .bar-col .bar-val{font-size:0.7rem;color:#ccc;font-weight:600}
+.pie-chart{width:160px;height:160px;border-radius:50%;margin:0 auto 1rem;position:relative}
+.pie-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.pie-legend span{font-size:0.75rem;color:#ccc;display:flex;align-items:center;gap:4px}
+.pie-legend span::before{content:'';width:10px;height:10px;border-radius:2px;display:inline-block}
+.traffic-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.traffic-table th,.traffic-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #1a1a1a;font-size:0.85rem}
+.traffic-table th{color:#888;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px}
+.traffic-table td{color:#ccc}
+.funnel{display:flex;flex-direction:column;align-items:center;gap:4px;margin:1rem 0}
+.funnel-step{display:flex;align-items:center;gap:12px;width:100%}
+.funnel-bar{height:36px;border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:0.8rem;font-weight:600;color:#fff;transition:width .5s}
+.funnel-label{font-size:0.75rem;color:#888;white-space:nowrap;min-width:100px;text-align:right}
+.funnel-val{font-size:0.75rem;color:#ccc;min-width:60px}
+.row2-dash{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.cta-bar{text-align:center;padding:1.5rem;margin-top:1rem}
+.cta-bar a{color:#ff5f1f;font-weight:700;font-size:1rem}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.8rem;font-weight:800;color:#e8e8e8;opacity:0.1;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{background:#111;border-top:1px solid #222;padding:1.5rem;text-align:center;font-size:0.75rem;color:#555}
+@media(max-width:768px){.row2,.row3,.row5,.row2-dash{grid-template-columns:1fr}h1{font-size:1.5rem}.card,.dash{padding:1.2rem}.kpi-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SPUNKART.COM</div><div class="links"><a href="/">Home</a><a href="/store">Free Tools</a></div></nav>
+<main><div class="container">
+<h1>Quick Analytics Dashboard Builder</h1>
+<p class="sub">Input your metrics. Get a beautiful dashboard. Export as HTML.</p>
+<div class="use-badge">Used <span id="useCount">0</span> times</div>
+
+<div class="card">
+<h2>Site Name & Period</h2>
+<div class="row3">
+<div class="field"><label>Site / Business Name</label><input id="siteName" value="My Website"></div>
+<div class="field"><label>Current Period</label><input id="periodCur" value="Feb 2026"></div>
+<div class="field"><label>Previous Period</label><input id="periodPrev" value="Jan 2026"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Current Period Metrics</h2>
+<div class="row5">
+<div class="field"><label>Visitors</label><input type="number" id="curVisitors" value="12450"></div>
+<div class="field"><label>Page Views</label><input type="number" id="curPageviews" value="38200"></div>
+<div class="field"><label>Bounce Rate %</label><input type="number" id="curBounce" value="42" step="0.1"></div>
+<div class="field"><label>Conv. Rate %</label><input type="number" id="curConv" value="3.2" step="0.1"></div>
+<div class="field"><label>Revenue $</label><input type="number" id="curRevenue" value="4850" step="0.01"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Previous Period Metrics (for comparison)</h2>
+<div class="row5">
+<div class="field"><label>Visitors</label><input type="number" id="prevVisitors" value="10200"></div>
+<div class="field"><label>Page Views</label><input type="number" id="prevPageviews" value="31500"></div>
+<div class="field"><label>Bounce Rate %</label><input type="number" id="prevBounce" value="47" step="0.1"></div>
+<div class="field"><label>Conv. Rate %</label><input type="number" id="prevConv" value="2.8" step="0.1"></div>
+<div class="field"><label>Revenue $</label><input type="number" id="prevRevenue" value="3900" step="0.01"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Traffic Sources (% of visitors)</h2>
+<div class="row5">
+<div class="field"><label>Organic</label><input type="number" id="srcOrganic" value="40"></div>
+<div class="field"><label>Direct</label><input type="number" id="srcDirect" value="25"></div>
+<div class="field"><label>Social</label><input type="number" id="srcSocial" value="18"></div>
+<div class="field"><label>Referral</label><input type="number" id="srcReferral" value="12"></div>
+<div class="field"><label>Paid</label><input type="number" id="srcPaid" value="5"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Top Pages</h2>
+<div id="topPages">
+<div class="row3 top-page-row" style="margin-bottom:8px"><div class="field"><input placeholder="Page path" value="/"></div><div class="field"><input type="number" placeholder="Views" value="8500"></div><div class="field"><input type="number" placeholder="Bounce %" value="35"></div></div>
+<div class="row3 top-page-row" style="margin-bottom:8px"><div class="field"><input placeholder="Page path" value="/pricing"></div><div class="field"><input type="number" placeholder="Views" value="5200"></div><div class="field"><input type="number" placeholder="Bounce %" value="28"></div></div>
+<div class="row3 top-page-row" style="margin-bottom:8px"><div class="field"><input placeholder="Page path" value="/blog"></div><div class="field"><input type="number" placeholder="Views" value="4100"></div><div class="field"><input type="number" placeholder="Bounce %" value="55"></div></div>
+<div class="row3 top-page-row" style="margin-bottom:8px"><div class="field"><input placeholder="Page path" value="/features"></div><div class="field"><input type="number" placeholder="Views" value="3800"></div><div class="field"><input type="number" placeholder="Bounce %" value="40"></div></div>
+<div class="row3 top-page-row" style="margin-bottom:8px"><div class="field"><input placeholder="Page path" value="/signup"></div><div class="field"><input type="number" placeholder="Views" value="2900"></div><div class="field"><input type="number" placeholder="Bounce %" value="20"></div></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Conversion Funnel</h2>
+<div id="funnelSteps">
+<div class="row2 funnel-row" style="margin-bottom:8px"><div class="field"><input placeholder="Step name" value="Visitors"></div><div class="field"><input type="number" placeholder="Count" value="12450"></div></div>
+<div class="row2 funnel-row" style="margin-bottom:8px"><div class="field"><input placeholder="Step name" value="Signups"></div><div class="field"><input type="number" placeholder="Count" value="1870"></div></div>
+<div class="row2 funnel-row" style="margin-bottom:8px"><div class="field"><input placeholder="Step name" value="Activated"></div><div class="field"><input type="number" placeholder="Count" value="748"></div></div>
+<div class="row2 funnel-row" style="margin-bottom:8px"><div class="field"><input placeholder="Step name" value="Paying"></div><div class="field"><input type="number" placeholder="Count" value="399"></div></div>
+</div>
+</div>
+
+<button class="btn" onclick="buildDashboard()" style="margin-bottom:1.5rem">Build Dashboard</button>
+
+<div id="dashPreview">
+<div class="actions">
+<button class="btn btn-sm btn-green" onclick="exportDashboard()">Export as HTML</button>
+<button class="btn btn-sm btn-outline" onclick="buildDashboard()">Rebuild</button>
+</div>
+<div class="dash" id="dashOutput"></div>
+</div>
+
+<div class="cta-bar"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div></main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2025 SpunkArt.com &mdash; All rights reserved.</footer>
+
+<script>
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+let useCount=parseInt(localStorage.getItem('spk_analytics_dash_uses')||'0');
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+
+function gv(id){return document.getElementById(id).value}
+function gn(id){return parseFloat(document.getElementById(id).value)||0}
+function pctChange(cur,prev){if(!prev)return 0;return((cur-prev)/prev*100);}
+function fmtPct(v){return(v>=0?'+':'')+v.toFixed(1)+'%';}
+function fmtNum(v){return v.toLocaleString();}
+function sparkBars(){const bars=[];for(let i=0;i<8;i++){const h=15+Math.random()*25;bars.push(`<div class="bar" style="height:${h}px"></div>`);}return bars.join('');}
+
+function buildDashboard(){
+const siteName=gv('siteName'),periodCur=gv('periodCur'),periodPrev=gv('periodPrev');
+const cur={visitors:gn('curVisitors'),pageviews:gn('curPageviews'),bounce:gn('curBounce'),conv:gn('curConv'),revenue:gn('curRevenue')};
+const prev={visitors:gn('prevVisitors'),pageviews:gn('prevPageviews'),bounce:gn('prevBounce'),conv:gn('prevConv'),revenue:gn('prevRevenue')};
+
+const changes={
+visitors:pctChange(cur.visitors,prev.visitors),
+pageviews:pctChange(cur.pageviews,prev.pageviews),
+bounce:pctChange(cur.bounce,prev.bounce),
+conv:pctChange(cur.conv,prev.conv),
+revenue:pctChange(cur.revenue,prev.revenue)
+};
+
+const kpis=[
+{label:'Visitors',val:fmtNum(cur.visitors),change:changes.visitors,invert:false},
+{label:'Page Views',val:fmtNum(cur.pageviews),change:changes.pageviews,invert:false},
+{label:'Bounce Rate',val:cur.bounce+'%',change:changes.bounce,invert:true},
+{label:'Conv. Rate',val:cur.conv+'%',change:changes.conv,invert:false},
+{label:'Revenue',val:'$'+fmtNum(cur.revenue),change:changes.revenue,invert:false}
+];
+
+let kpiHtml=kpis.map(k=>{
+const isGood=k.invert?(k.change<=0):(k.change>=0);
+return `<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val">${k.val}</div><div class="kpi-change ${isGood?'up':'down'}">${fmtPct(k.change)} vs ${periodPrev}</div><div class="sparkline">${sparkBars()}</div></div>`;
+}).join('');
+
+const sources=[
+{name:'Organic',pct:gn('srcOrganic'),color:'#10b981'},
+{name:'Direct',pct:gn('srcDirect'),color:'#ff5f1f'},
+{name:'Social',pct:gn('srcSocial'),color:'#6366f1'},
+{name:'Referral',pct:gn('srcReferral'),color:'#f59e0b'},
+{name:'Paid',pct:gn('srcPaid'),color:'#ef4444'}
+];
+
+const maxPct=Math.max(...sources.map(s=>s.pct));
+let barChartHtml=sources.map(s=>`<div class="bar-col"><div class="bar-val">${s.pct}%</div><div class="bar-fill" style="height:${(s.pct/maxPct)*120}px;background:${s.color}"></div><div class="bar-label">${s.name}</div></div>`).join('');
+
+let conicGrad='',offset=0;
+sources.forEach(s=>{conicGrad+=`${s.color} ${offset}deg ${offset+s.pct*3.6}deg,`;offset+=s.pct*3.6;});
+conicGrad=conicGrad.slice(0,-1);
+let pieHtml=`<div class="pie-chart" style="background:conic-gradient(${conicGrad})"></div>`;
+pieHtml+=`<div class="pie-legend">${sources.map(s=>`<span style="--c:${s.color}"><span style="background:${s.color};width:10px;height:10px;border-radius:2px;display:inline-block"></span> ${s.name} (${s.pct}%)</span>`).join('')}</div>`;
+
+const pageRows=document.querySelectorAll('.top-page-row');
+let tableHtml='<table class="traffic-table"><thead><tr><th>#</th><th>Page</th><th>Views</th><th>Bounce</th></tr></thead><tbody>';
+pageRows.forEach((r,i)=>{
+const inputs=r.querySelectorAll('input');
+const path=inputs[0].value||'-',views=inputs[1].value||'0',bounce=inputs[2].value||'0';
+tableHtml+=`<tr><td>${i+1}</td><td style="color:#ff5f1f">${path}</td><td>${parseInt(views).toLocaleString()}</td><td>${bounce}%</td></tr>`;
+});
+tableHtml+='</tbody></table>';
+
+const funnelRows=document.querySelectorAll('.funnel-row');
+let funnelData=[];
+funnelRows.forEach(r=>{const inputs=r.querySelectorAll('input');funnelData.push({name:inputs[0].value,count:parseInt(inputs[1].value)||0});});
+const maxFunnel=Math.max(...funnelData.map(f=>f.count));
+const funnelColors=['#ff5f1f','#f59e0b','#6366f1','#10b981','#ef4444'];
+let funnelHtml=funnelData.map((f,i)=>{
+const w=Math.max(20,(f.count/maxFunnel)*100);
+return `<div class="funnel-step"><div class="funnel-label">${f.name}</div><div class="funnel-bar" style="width:${w}%;background:${funnelColors[i%5]}">${fmtNum(f.count)}</div><div class="funnel-val">${maxFunnel>0?(f.count/funnelData[0].count*100).toFixed(1)+'%':'-'}</div></div>`;
+}).join('');
+
+const output=document.getElementById('dashOutput');
+output.innerHTML=`
+<h2 style="color:#ff5f1f">${siteName} Dashboard — ${periodCur}</h2>
+<div class="kpi-row">${kpiHtml}</div>
+<div class="row2-dash">
+<div class="chart-section"><h3>Traffic Sources (Bar Chart)</h3><div class="bar-chart">${barChartHtml}</div></div>
+<div class="chart-section"><h3>Traffic Sources (Pie Chart)</h3>${pieHtml}</div>
+</div>
+<div class="chart-section"><h3>Top Pages</h3>${tableHtml}</div>
+<div class="chart-section"><h3>Conversion Funnel</h3><div class="funnel">${funnelHtml}</div></div>`;
+
+document.getElementById('dashPreview').style.display='block';
+document.getElementById('dashPreview').scrollIntoView({behavior:'smooth'});
+
+useCount++;localStorage.setItem('spk_analytics_dash_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+
+function exportDashboard(){
+const dashHtml=document.getElementById('dashOutput').innerHTML;
+const full=`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${gv('siteName')} Dashboard</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8e8e8;padding:2rem;line-height:1.6}h2{font-size:1.5rem;text-align:center;margin-bottom:1.5rem}h3{font-size:0.9rem;color:#888;margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem}.kpi{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;text-align:center}.kpi .kpi-label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.kpi .kpi-val{font-size:1.8rem;font-weight:800;color:#ff5f1f;font-family:monospace}.kpi .kpi-change{font-size:0.75rem;margin-top:4px}.kpi .kpi-change.up{color:#10b981}.kpi .kpi-change.down{color:#ef4444}.kpi .sparkline{height:30px;display:flex;align-items:flex-end;gap:2px;justify-content:center;margin-top:8px}.kpi .sparkline .bar{width:4px;background:#ff5f1f;border-radius:2px;opacity:0.7}.chart-section{margin-bottom:1.5rem}.bar-chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding:0 10px}.bar-chart .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}.bar-chart .bar-col .bar-fill{width:100%;border-radius:4px 4px 0 0}.bar-chart .bar-col .bar-label{font-size:0.65rem;color:#888}.bar-chart .bar-col .bar-val{font-size:0.7rem;color:#ccc;font-weight:600}.pie-chart{width:160px;height:160px;border-radius:50%;margin:0 auto 1rem}.pie-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}.pie-legend span{font-size:0.75rem;color:#ccc;display:flex;align-items:center;gap:4px}.traffic-table{width:100%;border-collapse:collapse;margin-top:1rem}.traffic-table th,.traffic-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #1a1a1a;font-size:0.85rem}.traffic-table th{color:#888;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px}.traffic-table td{color:#ccc}.funnel{display:flex;flex-direction:column;align-items:center;gap:4px;margin:1rem 0}.funnel-step{display:flex;align-items:center;gap:12px;width:100%}.funnel-bar{height:36px;border-radius:6px;display:flex;align-items:center;padding:0 12px;font-size:0.8rem;font-weight:600;color:#fff}.funnel-label{font-size:0.75rem;color:#888;white-space:nowrap;min-width:100px;text-align:right}.funnel-val{font-size:0.75rem;color:#ccc;min-width:60px}.row2-dash{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}@media(max-width:768px){.row2-dash{grid-template-columns:1fr}}</style></head><body>${dashHtml}<p style="text-align:center;margin-top:2rem;color:#555;font-size:0.75rem">Generated by SpunkArt.com Analytics Dashboard Builder</p></body></html>`;
+const blob=new Blob([full],{type:'text/html'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+a.download=gv('siteName').replace(/\s+/g,'-').toLowerCase()+'-dashboard.html';a.click();
+}
+</script>
+</body>
+</html>

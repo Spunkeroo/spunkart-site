@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub README Builder - Free Visual Editor | SpunkArt.com</title>
+<meta name="description" content="Build beautiful GitHub README files with a visual editor. Live preview, badge generator, tech stack icons, templates & more. Free online tool.">
+<meta name="keywords" content="github readme generator, readme builder, markdown editor, github profile readme, readme template, badge generator">
+<meta property="og:title" content="GitHub README Builder - Free Visual Editor">
+<meta property="og:description" content="Build beautiful GitHub README files with live preview, badges, templates & more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/readme-builder.html">
+<meta property="og:image" content="https://spunkart.com/art/og-readme-builder.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="GitHub README Builder - Free Visual Editor">
+<meta name="twitter:description" content="Build beautiful GitHub README files with live preview, badges, templates & more.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"GitHub README Builder","url":"https://spunkart.com/readme-builder.html","description":"Build beautiful GitHub README files with a visual editor and live preview.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+h1{font-size:2rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#ff5f1f,#ff8f5f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:20px;font-size:.95rem}
+.usage-badge{text-align:center;margin-bottom:20px;font-size:.8rem;color:#666}
+.usage-badge span{color:#ff5f1f;font-weight:700}
+.top-bar{display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap;align-items:center}
+.template-select{background:#141414;border:1px solid #2a2a2a;color:#e8e8e8;padding:8px 12px;border-radius:6px;font-size:.85rem;flex:1;min-width:200px}
+.template-select:focus{outline:none;border-color:#ff5f1f}
+.btn{background:linear-gradient(135deg,#ff5f1f,#e04500);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:.85rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(255,95,31,.3)}
+.btn-secondary{background:#1a1a1a;border:1px solid #333}
+.btn-secondary:hover{border-color:#ff5f1f;box-shadow:none}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669)}
+.editor-wrap{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px}
+@media(max-width:900px){.editor-wrap{grid-template-columns:1fr}}
+.panel{background:#111;border:1px solid #2a2a2a;border-radius:10px;overflow:hidden}
+.panel-header{background:#161616;padding:10px 16px;font-size:.85rem;font-weight:700;color:#aaa;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #2a2a2a}
+.sections{padding:12px;display:flex;flex-direction:column;gap:10px;max-height:70vh;overflow-y:auto}
+.section-block{background:#0e0e0e;border:1px solid #222;border-radius:8px;overflow:hidden}
+.section-header{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:600;color:#ccc;transition:background .2s}
+.section-header:hover{background:#1a1a1a}
+.section-header .arrow{transition:transform .2s;color:#555}
+.section-header .arrow.open{transform:rotate(90deg)}
+.section-body{padding:0 14px 14px;display:none}
+.section-body.open{display:block}
+.section-body textarea{width:100%;background:#141414;border:1px solid #2a2a2a;color:#e8e8e8;padding:10px;border-radius:6px;font-family:'Fira Code',monospace,sans-serif;font-size:.82rem;resize:vertical;min-height:60px;line-height:1.5}
+.section-body textarea:focus{outline:none;border-color:#ff5f1f}
+.section-body label{font-size:.75rem;color:#888;display:block;margin:8px 0 4px}
+.section-body input[type="text"]{width:100%;background:#141414;border:1px solid #2a2a2a;color:#e8e8e8;padding:8px 10px;border-radius:6px;font-size:.82rem}
+.section-body input[type="text"]:focus{outline:none;border-color:#ff5f1f}
+.preview-area{padding:16px;max-height:70vh;overflow-y:auto;font-size:.9rem;line-height:1.7}
+.preview-area h1,.preview-area h2,.preview-area h3{color:#e8e8e8;margin:16px 0 8px}
+.preview-area h1{font-size:1.6rem;border-bottom:1px solid #2a2a2a;padding-bottom:8px}
+.preview-area h2{font-size:1.25rem;border-bottom:1px solid #222;padding-bottom:6px}
+.preview-area h3{font-size:1.05rem}
+.preview-area p{margin:8px 0;color:#bbb}
+.preview-area code{background:#1a1a1a;padding:2px 6px;border-radius:4px;font-size:.82rem;color:#ff5f1f}
+.preview-area pre{background:#141414;border:1px solid #2a2a2a;padding:12px;border-radius:6px;overflow-x:auto;margin:10px 0}
+.preview-area pre code{background:none;padding:0;color:#ccc}
+.preview-area ul,.preview-area ol{margin:8px 0 8px 20px;color:#bbb}
+.preview-area li{margin:4px 0}
+.preview-area img{max-width:100%;border-radius:4px}
+.preview-area a{color:#ff5f1f}
+.preview-area blockquote{border-left:3px solid #ff5f1f;padding-left:12px;color:#888;margin:10px 0}
+.preview-area table{width:100%;border-collapse:collapse;margin:10px 0}
+.preview-area th,.preview-area td{border:1px solid #2a2a2a;padding:8px 12px;text-align:left;font-size:.82rem}
+.preview-area th{background:#1a1a1a}
+.badge-bar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.badge-item{cursor:pointer;opacity:.7;transition:opacity .2s}
+.badge-item:hover{opacity:1}
+.tech-grid{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tech-chip{background:#1a1a1a;border:1px solid #2a2a2a;color:#aaa;padding:4px 10px;border-radius:4px;font-size:.75rem;cursor:pointer;transition:all .2s}
+.tech-chip:hover,.tech-chip.selected{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.cta{text-align:center;margin:30px 0 20px;padding:20px;background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid #2a2a2a;border-radius:12px}
+.cta a{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.1rem}
+.cta a:hover{text-decoration:underline}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:.75rem;color:rgba(255,255,255,.1);pointer-events:none;z-index:9999;font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>GitHub README Builder</h1>
+<p class="subtitle">Visual editor with live preview, badges, tech stack icons & templates</p>
+<div class="usage-badge">READMEs built: <span id="counter">0</span></div>
+
+<div class="top-bar">
+<select class="template-select" id="templateSelect" onchange="loadTemplate()">
+<option value="">Load a template...</option>
+<option value="opensource">Open Source Project</option>
+<option value="npm">NPM Package</option>
+<option value="cli">CLI Tool</option>
+<option value="api">API Documentation</option>
+<option value="profile">Personal Profile README</option>
+</select>
+<button class="btn" onclick="copyMarkdown()">Copy Markdown</button>
+<button class="btn btn-green" onclick="downloadMd()">Download .md</button>
+<button class="btn btn-secondary" onclick="addCustomBadge()">+ Badge</button>
+<button class="btn btn-secondary" onclick="resetAll()">Reset</button>
+</div>
+
+<div class="editor-wrap">
+<div class="panel">
+<div class="panel-header"><span>Editor</span><span style="font-size:.7rem;color:#555">Click sections to expand</span></div>
+<div class="sections" id="sections"></div>
+</div>
+<div class="panel">
+<div class="panel-header"><span>Live Preview</span><span style="font-size:.7rem;color:#555">Updates in real-time</span></div>
+<div class="preview-area" id="preview"></div>
+</div>
+</div>
+
+<div class="section-block" style="margin-bottom:15px;background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:16px">
+<div style="font-size:.9rem;font-weight:700;margin-bottom:10px;color:#ccc">Add Badges</div>
+<div class="badge-bar" id="badgeBar"></div>
+<div style="font-size:.9rem;font-weight:700;margin:14px 0 10px;color:#ccc">Tech Stack Icons (click to toggle)</div>
+<div class="tech-grid" id="techGrid"></div>
+</div>
+
+<div class="cta"><a href="https://spunkart.com/store">100+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const SECTIONS=[
+{id:'title',label:'Title',emoji:'\ud83d\udccc',default:'# My Awesome Project\n'},
+{id:'badges',label:'Badges',emoji:'\ud83c\udfc5',default:''},
+{id:'description',label:'Description',emoji:'\ud83d\udcdd',default:'> A brief description of what this project does and who it\'s for.\n'},
+{id:'features',label:'Features',emoji:'\u2728',default:'## Features\n\n- Feature 1\n- Feature 2\n- Feature 3\n'},
+{id:'techstack',label:'Tech Stack',emoji:'\ud83d\udee0\ufe0f',default:''},
+{id:'installation',label:'Installation',emoji:'\ud83d\ude80',default:'## Installation\n\n```bash\nnpm install my-project\n```\n'},
+{id:'usage',label:'Usage',emoji:'\ud83d\udca1',default:'## Usage\n\n```javascript\nimport myProject from \'my-project\';\n\nmyProject.init();\n```\n'},
+{id:'api',label:'API Reference',emoji:'\ud83d\udcda',default:'## API Reference\n\n| Parameter | Type     | Description                |\n| :-------- | :------- | :------------------------- |\n| `api_key` | `string` | **Required**. Your API key |\n'},
+{id:'contributing',label:'Contributing',emoji:'\ud83e\udd1d',default:'## Contributing\n\nContributions are always welcome!\n\n1. Fork the project\n2. Create your feature branch (`git checkout -b feature/amazing`)\n3. Commit your changes (`git commit -m \'Add amazing feature\'`)\n4. Push to the branch (`git push origin feature/amazing`)\n5. Open a Pull Request\n'},
+{id:'license',label:'License',emoji:'\ud83d\udcc4',default:'## License\n\n[MIT](https://choosealicense.com/licenses/mit/)\n'},
+{id:'credits',label:'Credits & Acknowledgements',emoji:'\ud83d\ude4f',default:'## Acknowledgements\n\n- [Awesome README](https://github.com/matiassingers/awesome-readme)\n'}
+];
+
+const BADGES=[
+{label:'Build Passing',md:'![Build](https://img.shields.io/badge/build-passing-brightgreen)'},
+{label:'Version 1.0',md:'![Version](https://img.shields.io/badge/version-1.0.0-blue)'},
+{label:'MIT License',md:'![License](https://img.shields.io/badge/license-MIT-green)'},
+{label:'Downloads 10k',md:'![Downloads](https://img.shields.io/badge/downloads-10k-orange)'},
+{label:'PRs Welcome',md:'![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)'},
+{label:'Node 18+',md:'![Node](https://img.shields.io/badge/node-18%2B-green)'},
+{label:'TypeScript',md:'![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)'},
+{label:'Coverage 95%',md:'![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)'}
+];
+
+const TECHS=[
+'JavaScript','TypeScript','Python','React','Vue','Angular','Node.js','Express','Next.js','Svelte',
+'Go','Rust','Ruby','PHP','Java','Swift','Kotlin','Docker','Kubernetes','PostgreSQL',
+'MongoDB','Redis','GraphQL','TailwindCSS','AWS','Firebase','Vercel','Supabase'
+];
+
+let sectionData={};
+let selectedBadges=new Set();
+let selectedTechs=new Set();
+
+function init(){
+  let c=localStorage.getItem('readme_count')||0;
+  document.getElementById('counter').textContent=c;
+  SECTIONS.forEach(s=>sectionData[s.id]=s.default);
+  renderSections();
+  renderBadges();
+  renderTechs();
+  updatePreview();
+}
+
+function renderSections(){
+  const el=document.getElementById('sections');
+  el.innerHTML=SECTIONS.map(s=>`
+<div class="section-block">
+<div class="section-header" onclick="toggleSection('${s.id}')">
+<span>${s.emoji} ${s.label}</span>
+<span class="arrow" id="arrow-${s.id}">\u25b6</span>
+</div>
+<div class="section-body" id="body-${s.id}">
+<textarea id="ta-${s.id}" oninput="updateSection('${s.id}',this.value)" rows="6">${sectionData[s.id]||''}</textarea>
+</div>
+</div>`).join('');
+}
+
+function toggleSection(id){
+  const body=document.getElementById('body-'+id);
+  const arrow=document.getElementById('arrow-'+id);
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function updateSection(id,val){
+  sectionData[id]=val;
+  updatePreview();
+}
+
+function renderBadges(){
+  const el=document.getElementById('badgeBar');
+  el.innerHTML=BADGES.map((b,i)=>`<div class="badge-item${selectedBadges.has(i)?' selected':''}" onclick="toggleBadge(${i})" title="${b.label}"><img src="https://img.shields.io/badge/${encodeURIComponent(b.label).replace(/%20/g,'-')}-blue" alt="${b.label}" style="height:22px"></div>`).join('');
+}
+
+function toggleBadge(i){
+  if(selectedBadges.has(i))selectedBadges.delete(i);else selectedBadges.add(i);
+  let md=[...selectedBadges].map(idx=>BADGES[idx].md).join(' ');
+  sectionData.badges=md+'\n';
+  document.getElementById('ta-badges').value=sectionData.badges;
+  renderBadges();
+  updatePreview();
+}
+
+function renderTechs(){
+  const el=document.getElementById('techGrid');
+  el.innerHTML=TECHS.map(t=>`<div class="tech-chip${selectedTechs.has(t)?' selected':''}" onclick="toggleTech('${t}')">${t}</div>`).join('');
+}
+
+function toggleTech(t){
+  if(selectedTechs.has(t))selectedTechs.delete(t);else selectedTechs.add(t);
+  let md='## Tech Stack\n\n';
+  [...selectedTechs].forEach(tech=>{
+    const slug=tech.toLowerCase().replace(/[.\s]/g,'');
+    md+=`![${tech}](https://img.shields.io/badge/${encodeURIComponent(tech)}-333?style=for-the-badge&logo=${slug}&logoColor=white) `;
+  });
+  md+='\n';
+  sectionData.techstack=md;
+  document.getElementById('ta-techstack').value=sectionData.techstack;
+  renderTechs();
+  updatePreview();
+}
+
+function getFullMarkdown(){
+  let toc='## Table of Contents\n\n';
+  let body='';
+  let tocItems=[];
+  SECTIONS.forEach(s=>{
+    if(!sectionData[s.id]||!sectionData[s.id].trim())return;
+    body+=sectionData[s.id]+'\n';
+    const headingMatch=sectionData[s.id].match(/^##\s+(.+)/m);
+    if(headingMatch){
+      const anchor=headingMatch[1].toLowerCase().replace(/[^\w\s-]/g,'').replace(/\s+/g,'-');
+      tocItems.push(`- [${headingMatch[1]}](#${anchor})`);
+    }
+  });
+  if(tocItems.length>2)body=body.replace(/(^#[^#].*\n)/,`$1\n${toc}${tocItems.join('\n')}\n\n`);
+  return body;
+}
+
+function updatePreview(){
+  const md=getFullMarkdown();
+  document.getElementById('preview').innerHTML=renderMarkdown(md);
+}
+
+function renderMarkdown(md){
+  let html=md
+    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+    .replace(/^> (.+)$/gm,'<blockquote><p>$1</p></blockquote>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" style="height:24px;margin:2px">')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+  // Code blocks
+  html=html.replace(/```(\w*)\n([\s\S]*?)```/g,(m,lang,code)=>`<pre><code>${code.replace(/</g,'&lt;')}</code></pre>`);
+  // Tables
+  html=html.replace(/^\|(.+)\|\s*\n\|[-:\s|]+\|\s*\n((?:\|.+\|\s*\n?)*)/gm,(m,header,rows)=>{
+    const ths=header.split('|').map(h=>h.trim()).filter(Boolean).map(h=>`<th>${h}</th>`).join('');
+    const trs=rows.trim().split('\n').map(r=>{
+      const tds=r.split('|').map(c=>c.trim()).filter(Boolean).map(c=>`<td>${c}</td>`).join('');
+      return `<tr>${tds}</tr>`;
+    }).join('');
+    return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+  });
+  // Lists
+  html=html.replace(/^(\d+)\. (.+)$/gm,'<li>$2</li>');
+  html=html.replace(/^- (.+)$/gm,'<li>$1</li>');
+  html=html.replace(/(<li>.*<\/li>)/s,m=>`<ul>${m}</ul>`);
+  html=html.replace(/\n\n+/g,'<br><br>');
+  return html;
+}
+
+function copyMarkdown(){
+  navigator.clipboard.writeText(getFullMarkdown()).then(()=>{
+    incrementCounter();
+    alert('Markdown copied to clipboard!');
+  });
+}
+
+function downloadMd(){
+  const blob=new Blob([getFullMarkdown()],{type:'text/markdown'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='README.md';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  incrementCounter();
+}
+
+function incrementCounter(){
+  let c=parseInt(localStorage.getItem('readme_count')||0)+1;
+  localStorage.setItem('readme_count',c);
+  document.getElementById('counter').textContent=c;
+}
+
+function resetAll(){
+  SECTIONS.forEach(s=>sectionData[s.id]=s.default);
+  selectedBadges.clear();selectedTechs.clear();
+  renderSections();renderBadges();renderTechs();updatePreview();
+}
+
+const TEMPLATES={
+opensource:{
+title:'# Project Name\n\n![Logo](https://via.placeholder.com/120)\n',
+description:'> A powerful open-source tool that solves X problem for Y developers.\n',
+features:'## Features\n\n- Blazing fast performance\n- Zero dependencies\n- TypeScript support out of the box\n- Extensive plugin system\n- 95%+ test coverage\n',
+installation:'## Installation\n\n```bash\nnpm install project-name\n# or\nyarn add project-name\n# or\npnpm add project-name\n```\n',
+usage:'## Quick Start\n\n```javascript\nimport { init } from \'project-name\';\n\nconst app = init({\n  debug: true,\n  output: \'./dist\'\n});\n\napp.run();\n```\n',
+contributing:'## Contributing\n\nWe love contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.\n\n1. Fork it\n2. Create your feature branch\n3. Commit your changes\n4. Push and open a PR\n',
+license:'## License\n\nMIT - see [LICENSE](LICENSE) for details.\n'
+},
+npm:{
+title:'# my-package\n',
+description:'> A lightweight npm package for handling X.\n',
+features:'## Features\n\n- Tree-shakeable ESM exports\n- CommonJS backward compatible\n- Full TypeScript typings\n- < 2kb gzipped\n',
+installation:'## Installation\n\n```bash\nnpm install my-package\n```\n',
+usage:'## Usage\n\n```javascript\nconst { transform } = require(\'my-package\');\n\nconst result = transform(input, {\n  format: \'json\',\n  minify: true\n});\n\nconsole.log(result);\n```\n',
+api:'## API Reference\n\n### `transform(input, options)`\n\n| Parameter | Type | Default | Description |\n|-----------|------|---------|-------------|\n| `input` | `string` | - | Input data to transform |\n| `options.format` | `string` | `"json"` | Output format |\n| `options.minify` | `boolean` | `false` | Minify output |\n\n**Returns:** `TransformResult`\n',
+license:'## License\n\nMIT\n'
+},
+cli:{
+title:'# my-cli\n',
+description:'> A command-line tool for automating X workflows.\n',
+installation:'## Installation\n\n```bash\nnpm install -g my-cli\n```\n',
+usage:'## Usage\n\n```bash\n# Basic usage\nmy-cli init\n\n# With options\nmy-cli build --output ./dist --minify\n\n# Help\nmy-cli --help\n```\n\n## Commands\n\n| Command | Description |\n|---------|-------------|\n| `init` | Initialize a new project |\n| `build` | Build the project |\n| `serve` | Start dev server |\n| `deploy` | Deploy to production |\n',
+license:'## License\n\nMIT\n'
+},
+api:{
+title:'# API Name\n',
+description:'> RESTful API for managing X resources.\n\nBase URL: `https://api.example.com/v1`\n',
+usage:'## Authentication\n\nAll requests require an API key in the header:\n\n```\nAuthorization: Bearer YOUR_API_KEY\n```\n',
+api:'## Endpoints\n\n### Get All Items\n\n```\nGET /items\n```\n\n| Parameter | Type | Description |\n|-----------|------|-------------|\n| `page` | `int` | Page number |\n| `limit` | `int` | Items per page |\n\n**Response:**\n\n```json\n{\n  "data": [...],\n  "total": 100,\n  "page": 1\n}\n```\n\n### Create Item\n\n```\nPOST /items\n```\n\n**Body:**\n\n```json\n{\n  "name": "Item name",\n  "type": "widget"\n}\n```\n',
+license:'## Rate Limiting\n\n- 100 requests per minute per API key\n- 429 status code when exceeded\n\n## License\n\nMIT\n'
+},
+profile:{
+title:'# Hi there, I\'m [Your Name] \ud83d\udc4b\n',
+description:'> Full-stack developer passionate about open source and building tools.\n',
+features:'## About Me\n\n- Currently working on **Project X**\n- Learning **Rust** and **WebAssembly**\n- Ask me about **JavaScript, TypeScript, React**\n- Fun fact: I automate everything I do more than twice\n',
+usage:'## Connect\n\n- Twitter: [@yourhandle](https://twitter.com/yourhandle)\n- LinkedIn: [Your Name](https://linkedin.com/in/yourname)\n- Blog: [yourblog.dev](https://yourblog.dev)\n',
+credits:'## GitHub Stats\n\n![GitHub Stats](https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&theme=dark)\n'
+}
+};
+
+function loadTemplate(){
+  const t=document.getElementById('templateSelect').value;
+  if(!t)return;
+  const tmpl=TEMPLATES[t];
+  SECTIONS.forEach(s=>sectionData[s.id]=tmpl[s.id]||'');
+  renderSections();updatePreview();
+}
+
+function insertEmoji(emoji){
+  const el=document.activeElement;
+  if(el&&el.tagName==='TEXTAREA'){
+    const start=el.selectionStart;
+    const end=el.selectionEnd;
+    el.value=el.value.substring(0,start)+emoji+el.value.substring(end);
+    el.selectionStart=el.selectionEnd=start+emoji.length;
+    el.dispatchEvent(new Event('input'));
+    el.focus();
+  }
+}
+
+function countStats(){
+  const md=getFullMarkdown();
+  const words=md.split(/\s+/).filter(Boolean).length;
+  const chars=md.length;
+  const lines=md.split('\n').length;
+  const headings=(md.match(/^#+\s/gm)||[]).length;
+  const links=(md.match(/\[.*?\]\(.*?\)/g)||[]).length;
+  const codeBlocks=(md.match(/```/g)||[]).length/2;
+  return{words,chars,lines,headings,links,codeBlocks:Math.floor(codeBlocks)};
+}
+
+function addCustomBadge(){
+  const label=prompt('Badge label (e.g. "v2.0"):');
+  if(!label)return;
+  const color=prompt('Color (e.g. blue, green, red, orange):')||'blue';
+  const md=`![${label}](https://img.shields.io/badge/${encodeURIComponent(label).replace(/%20/g,'-')}-${color})`;
+  sectionData.badges=(sectionData.badges||'')+' '+md+'\n';
+  document.getElementById('ta-badges').value=sectionData.badges;
+  updatePreview();
+}
+
+function insertScreenshot(){
+  const url=prompt('Screenshot/image URL:');
+  if(!url)return;
+  const alt=prompt('Alt text:')||'Screenshot';
+  const md=`\n\n![${alt}](${url})\n\n`;
+  const el=document.activeElement;
+  if(el&&el.tagName==='TEXTAREA'){
+    el.value+=md;
+    el.dispatchEvent(new Event('input'));
+  }
+}
+
+function autoSave(){
+  const data={sections:sectionData,badges:[...selectedBadges],techs:[...selectedTechs]};
+  localStorage.setItem('readme_autosave',JSON.stringify(data));
+}
+
+function loadAutoSave(){
+  const saved=localStorage.getItem('readme_autosave');
+  if(!saved)return false;
+  try{
+    const data=JSON.parse(saved);
+    if(data.sections)Object.assign(sectionData,data.sections);
+    if(data.badges)data.badges.forEach(b=>selectedBadges.add(b));
+    if(data.techs)data.techs.forEach(t=>selectedTechs.add(t));
+    return true;
+  }catch(e){return false;}
+}
+
+// Auto-save every 10 seconds
+setInterval(autoSave,10000);
+
+// Try to load previous work
+if(loadAutoSave()){
+  renderSections();renderBadges();renderTechs();updatePreview();
+}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schema.org JSON-LD Generator - Free Structured Data Tool | SpunkArt.com</title>
+<meta name="description" content="Generate Schema.org JSON-LD structured data for articles, products, FAQ, how-to, events, recipes & more. Validation, Google Rich Results preview. Free online tool.">
+<meta name="keywords" content="schema.org generator, JSON-LD generator, structured data generator, rich snippets, SEO schema markup, FAQ schema, product schema, article schema">
+<meta property="og:title" content="Schema.org JSON-LD Generator - Free Structured Data Tool">
+<meta property="og:description" content="Generate Schema.org JSON-LD for articles, products, FAQ, events & more with live preview and validation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/schema-generator.html">
+<meta property="og:image" content="https://spunkart.com/art/og-schema-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Schema.org JSON-LD Generator - Free Structured Data Tool">
+<meta name="twitter:description" content="Generate Schema.org JSON-LD for articles, products, FAQ, events & more.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Schema.org JSON-LD Generator","url":"https://spunkart.com/schema-generator.html","description":"Generate Schema.org JSON-LD structured data markup for SEO with validation and preview.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+h1{font-size:2rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#ff5f1f,#ff8f5f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:20px;font-size:.95rem}
+.usage-badge{text-align:center;margin-bottom:20px;font-size:.8rem;color:#666}
+.usage-badge span{color:#ff5f1f;font-weight:700}
+.schema-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.schema-tab{background:#141414;border:1px solid #2a2a2a;color:#888;padding:9px 16px;border-radius:8px;font-size:.8rem;cursor:pointer;transition:all .2s;font-weight:600}
+.schema-tab:hover{border-color:#444}
+.schema-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+.panel{background:#111;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden}
+.panel-header{background:#161616;padding:12px 18px;font-weight:700;font-size:.9rem;color:#ccc;border-bottom:1px solid #2a2a2a;display:flex;justify-content:space-between;align-items:center}
+.form-area{padding:18px;max-height:75vh;overflow-y:auto}
+.field{margin-bottom:14px}
+.field label{font-size:.78rem;color:#888;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.field label .req{color:#ff5f1f;font-size:.65rem}
+.field input,.field select,.field textarea{width:100%;background:#0e0e0e;border:1px solid #2a2a2a;color:#e8e8e8;padding:9px 12px;border-radius:6px;font-size:.85rem;font-family:inherit}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#ff5f1f}
+.field textarea{resize:vertical;min-height:60px}
+.field .hint{font-size:.7rem;color:#555;margin-top:3px}
+.field.error input,.field.error textarea,.field.error select{border-color:#ef4444}
+.field .error-msg{font-size:.7rem;color:#ef4444;margin-top:2px}
+.repeater{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px;margin-bottom:8px;position:relative}
+.repeater .remove-btn{position:absolute;top:8px;right:8px;background:none;border:none;color:#555;cursor:pointer;font-size:1rem}
+.repeater .remove-btn:hover{color:#ef4444}
+.add-btn{background:#1a1a1a;border:1px dashed #333;color:#888;padding:8px;border-radius:6px;width:100%;cursor:pointer;font-size:.8rem;text-align:center;transition:all .2s;margin-bottom:14px}
+.add-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.code-area{padding:18px;max-height:75vh;overflow-y:auto}
+.code-block{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:14px;font-family:'Fira Code',monospace,sans-serif;font-size:.8rem;line-height:1.6;color:#10b981;overflow-x:auto;white-space:pre-wrap;word-break:break-word;max-height:400px;overflow-y:auto}
+.actions{display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap}
+.btn{background:linear-gradient(135deg,#ff5f1f,#e04500);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:.82rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(255,95,31,.3)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669)}
+.btn-secondary{background:#1a1a1a;border:1px solid #333}
+.btn-secondary:hover{border-color:#ff5f1f;box-shadow:none}
+.validation{margin-top:15px;padding:14px;border-radius:8px;font-size:.82rem}
+.validation.valid{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:#10b981}
+.validation.invalid{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444}
+.validation ul{margin:8px 0 0 16px}
+.validation li{margin:3px 0}
+.rich-preview{background:#fff;border-radius:8px;padding:16px;margin-top:15px;color:#222;font-size:.85rem}
+.rich-preview .rp-title{font-size:1.1rem;color:#1a0dab;margin-bottom:2px;cursor:pointer}
+.rich-preview .rp-url{font-size:.78rem;color:#006621;margin-bottom:4px}
+.rich-preview .rp-desc{font-size:.82rem;color:#545454;line-height:1.4}
+.rich-preview .rp-extra{margin-top:8px;font-size:.78rem;color:#70757a}
+.rich-preview .rp-faq{margin-top:10px;border-top:1px solid #e0e0e0;padding-top:8px}
+.rich-preview .rp-faq-q{font-weight:700;color:#1a0dab;cursor:pointer;font-size:.82rem;margin:6px 0 2px}
+.rich-preview .rp-faq-a{color:#545454;font-size:.78rem;margin-bottom:6px}
+.rich-preview .rp-stars{color:#fbbc04;font-size:1rem;letter-spacing:1px}
+.rich-preview .rp-price{color:#222;font-weight:700}
+.test-link{display:inline-block;margin-top:10px;color:#ff5f1f;font-size:.82rem;text-decoration:none}
+.test-link:hover{text-decoration:underline}
+.cta{text-align:center;margin:30px 0 20px;padding:20px;background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid #2a2a2a;border-radius:12px}
+.cta a{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.1rem}
+.cta a:hover{text-decoration:underline}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:.75rem;color:rgba(255,255,255,.1);pointer-events:none;z-index:9999;font-weight:700}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Schema.org JSON-LD Generator</h1>
+<p class="subtitle">Generate structured data markup for Google Rich Results with validation</p>
+<div class="usage-badge">Schemas generated: <span id="counter">0</span></div>
+
+<div class="schema-tabs" id="schemaTabs"></div>
+
+<div class="layout">
+<div class="panel">
+<div class="panel-header"><span id="formTitle">Article / Blog Post</span><span style="font-size:.7rem;color:#555">Fill in fields below</span></div>
+<div class="form-area" id="formArea"></div>
+</div>
+<div class="panel">
+<div class="panel-header"><span>JSON-LD Output</span></div>
+<div class="code-area">
+<div class="actions">
+<button class="btn" onclick="generateSchema()">Generate</button>
+<button class="btn btn-green" onclick="copySchema()">Copy to Clipboard</button>
+<button class="btn btn-secondary" onclick="validateSchema()">Validate</button>
+</div>
+<div class="code-block" id="codeOutput">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  ...
+}</div>
+<div id="validationResult"></div>
+<div id="richPreview"></div>
+<a class="test-link" href="https://search.google.com/test/rich-results" target="_blank" rel="noopener">Test with Google Rich Results Test &rarr;</a>
+</div>
+</div>
+</div>
+
+<div class="cta"><a href="https://spunkart.com/store">100+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const SCHEMAS={
+article:{name:'Article / BlogPosting',fields:[
+{id:'headline',label:'Headline',type:'text',required:true,hint:'Title of the article (max 110 chars)'},
+{id:'description',label:'Description',type:'textarea',required:true,hint:'Short summary of the article'},
+{id:'image',label:'Image URL',type:'text',required:true,hint:'URL of the main image'},
+{id:'datePublished',label:'Date Published',type:'date',required:true},
+{id:'dateModified',label:'Date Modified',type:'date',required:false},
+{id:'authorName',label:'Author Name',type:'text',required:true},
+{id:'authorUrl',label:'Author URL',type:'text',required:false},
+{id:'publisherName',label:'Publisher Name',type:'text',required:true},
+{id:'publisherLogo',label:'Publisher Logo URL',type:'text',required:true},
+{id:'url',label:'Article URL',type:'text',required:false}
+]},
+product:{name:'Product',fields:[
+{id:'name',label:'Product Name',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:true},
+{id:'image',label:'Image URL',type:'text',required:true},
+{id:'brand',label:'Brand',type:'text',required:false},
+{id:'sku',label:'SKU',type:'text',required:false},
+{id:'price',label:'Price',type:'text',required:true,hint:'e.g. 29.99'},
+{id:'currency',label:'Currency',type:'select',required:true,options:['USD','EUR','GBP','CAD','AUD','JPY']},
+{id:'availability',label:'Availability',type:'select',required:true,options:['InStock','OutOfStock','PreOrder','BackOrder']},
+{id:'ratingValue',label:'Rating (1-5)',type:'text',required:false},
+{id:'reviewCount',label:'Review Count',type:'text',required:false},
+{id:'url',label:'Product URL',type:'text',required:false}
+]},
+faq:{name:'FAQ Page',fields:[
+{id:'faqs',label:'FAQ Items',type:'repeater',required:true,subfields:[
+{id:'question',label:'Question',type:'text',required:true},
+{id:'answer',label:'Answer',type:'textarea',required:true}
+]}
+]},
+howto:{name:'How-To',fields:[
+{id:'name',label:'How-To Title',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:true},
+{id:'image',label:'Image URL',type:'text',required:false},
+{id:'totalTime',label:'Total Time (ISO 8601)',type:'text',required:false,hint:'e.g. PT30M for 30 minutes'},
+{id:'estimatedCost',label:'Estimated Cost',type:'text',required:false},
+{id:'steps',label:'Steps',type:'repeater',required:true,subfields:[
+{id:'name',label:'Step Name',type:'text',required:true},
+{id:'text',label:'Step Description',type:'textarea',required:true},
+{id:'image',label:'Step Image URL',type:'text',required:false}
+]}
+]},
+organization:{name:'Organization',fields:[
+{id:'name',label:'Organization Name',type:'text',required:true},
+{id:'url',label:'Website URL',type:'text',required:true},
+{id:'logo',label:'Logo URL',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:false},
+{id:'email',label:'Contact Email',type:'text',required:false},
+{id:'phone',label:'Phone',type:'text',required:false},
+{id:'address',label:'Street Address',type:'text',required:false},
+{id:'city',label:'City',type:'text',required:false},
+{id:'state',label:'State/Region',type:'text',required:false},
+{id:'zip',label:'Postal Code',type:'text',required:false},
+{id:'country',label:'Country',type:'text',required:false},
+{id:'sameAs',label:'Social Media URLs (comma-separated)',type:'textarea',required:false,hint:'Comma-separated list of social profile URLs'}
+]},
+person:{name:'Person',fields:[
+{id:'name',label:'Full Name',type:'text',required:true},
+{id:'jobTitle',label:'Job Title',type:'text',required:false},
+{id:'url',label:'Website URL',type:'text',required:false},
+{id:'image',label:'Photo URL',type:'text',required:false},
+{id:'email',label:'Email',type:'text',required:false},
+{id:'worksFor',label:'Works For (Organization)',type:'text',required:false},
+{id:'sameAs',label:'Social Media URLs (comma-separated)',type:'textarea',required:false}
+]},
+webapp:{name:'WebApplication',fields:[
+{id:'name',label:'App Name',type:'text',required:true},
+{id:'url',label:'App URL',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:true},
+{id:'applicationCategory',label:'Category',type:'select',required:false,options:['BusinessApplication','DeveloperApplication','DesignApplication','EducationalApplication','GameApplication','UtilitiesApplication']},
+{id:'operatingSystem',label:'Operating System',type:'text',required:false,hint:'e.g. Any, Windows, macOS'},
+{id:'price',label:'Price',type:'text',required:false,hint:'0 for free'},
+{id:'currency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+{id:'ratingValue',label:'Rating (1-5)',type:'text',required:false},
+{id:'reviewCount',label:'Review Count',type:'text',required:false}
+]},
+event:{name:'Event',fields:[
+{id:'name',label:'Event Name',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:true},
+{id:'startDate',label:'Start Date',type:'datetime-local',required:true},
+{id:'endDate',label:'End Date',type:'datetime-local',required:false},
+{id:'location',label:'Location Name',type:'text',required:true},
+{id:'address',label:'Address',type:'text',required:false},
+{id:'image',label:'Image URL',type:'text',required:false},
+{id:'url',label:'Event URL',type:'text',required:false},
+{id:'price',label:'Ticket Price',type:'text',required:false},
+{id:'currency',label:'Currency',type:'select',required:false,options:['USD','EUR','GBP']},
+{id:'availability',label:'Ticket Availability',type:'select',required:false,options:['InStock','SoldOut','PreOrder']},
+{id:'performerName',label:'Performer/Speaker Name',type:'text',required:false},
+{id:'organizerName',label:'Organizer Name',type:'text',required:false}
+]},
+recipe:{name:'Recipe',fields:[
+{id:'name',label:'Recipe Name',type:'text',required:true},
+{id:'description',label:'Description',type:'textarea',required:true},
+{id:'image',label:'Image URL',type:'text',required:true},
+{id:'authorName',label:'Author Name',type:'text',required:true},
+{id:'prepTime',label:'Prep Time (ISO 8601)',type:'text',required:false,hint:'e.g. PT15M'},
+{id:'cookTime',label:'Cook Time (ISO 8601)',type:'text',required:false,hint:'e.g. PT1H'},
+{id:'totalTime',label:'Total Time (ISO 8601)',type:'text',required:false,hint:'e.g. PT1H15M'},
+{id:'recipeYield',label:'Yield/Servings',type:'text',required:false,hint:'e.g. 4 servings'},
+{id:'recipeCategory',label:'Category',type:'text',required:false,hint:'e.g. Dessert, Main Course'},
+{id:'recipeCuisine',label:'Cuisine',type:'text',required:false,hint:'e.g. Italian, Mexican'},
+{id:'calories',label:'Calories',type:'text',required:false},
+{id:'ingredients',label:'Ingredients (one per line)',type:'textarea',required:true},
+{id:'instructions',label:'Instructions',type:'repeater',required:true,subfields:[
+{id:'text',label:'Step',type:'textarea',required:true}
+]},
+{id:'ratingValue',label:'Rating (1-5)',type:'text',required:false},
+{id:'reviewCount',label:'Review Count',type:'text',required:false}
+]},
+review:{name:'Review',fields:[
+{id:'itemName',label:'Reviewed Item Name',type:'text',required:true},
+{id:'itemType',label:'Item Type',type:'select',required:true,options:['Product','Movie','Book','Restaurant','LocalBusiness','SoftwareApplication']},
+{id:'reviewBody',label:'Review Text',type:'textarea',required:true},
+{id:'ratingValue',label:'Rating (1-5)',type:'text',required:true},
+{id:'bestRating',label:'Best Rating',type:'text',required:false,hint:'Default: 5'},
+{id:'authorName',label:'Reviewer Name',type:'text',required:true},
+{id:'datePublished',label:'Date Published',type:'date',required:false},
+{id:'publisherName',label:'Publisher Name',type:'text',required:false}
+]}
+};
+
+let activeSchema='article';
+let repeaterData={};
+
+function init(){
+  let c=localStorage.getItem('schema_count')||0;
+  document.getElementById('counter').textContent=c;
+  renderTabs();
+  renderForm();
+}
+
+function renderTabs(){
+  const el=document.getElementById('schemaTabs');
+  el.innerHTML=Object.entries(SCHEMAS).map(([k,v])=>`<div class="schema-tab${k===activeSchema?' active':''}" onclick="switchSchema('${k}')">${v.name}</div>`).join('');
+}
+
+function switchSchema(id){activeSchema=id;repeaterData={};renderTabs();renderForm();
+  document.getElementById('codeOutput').textContent='{\n  "@context": "https://schema.org",\n  "@type": "'+SCHEMAS[id].name.split('/')[0].trim()+'",\n  ...\n}';
+  document.getElementById('validationResult').innerHTML='';
+  document.getElementById('richPreview').innerHTML='';
+  document.getElementById('formTitle').textContent=SCHEMAS[id].name;
+}
+
+function renderForm(){
+  const schema=SCHEMAS[activeSchema];
+  document.getElementById('formTitle').textContent=schema.name;
+  const el=document.getElementById('formArea');
+  el.innerHTML=schema.fields.map(f=>renderField(f)).join('');
+}
+
+function renderField(f){
+  if(f.type==='repeater'){
+    if(!repeaterData[f.id])repeaterData[f.id]=[{}];
+    const items=repeaterData[f.id].map((item,i)=>{
+      const inner=f.subfields.map(sf=>`
+<div class="field"><label>${sf.label}${sf.required?'<span class="req">Required</span>':''}</label>
+${sf.type==='textarea'?`<textarea id="rep_${f.id}_${i}_${sf.id}" rows="2">${item[sf.id]||''}</textarea>`:`<input type="text" id="rep_${f.id}_${i}_${sf.id}" value="${item[sf.id]||''}">`}
+</div>`).join('');
+      return`<div class="repeater">${repeaterData[f.id].length>1?`<button class="remove-btn" onclick="removeRepeaterItem('${f.id}',${i})">&times;</button>`:''}<div style="font-size:.7rem;color:#555;margin-bottom:6px">#${i+1}</div>${inner}</div>`;
+    }).join('');
+    return`<div class="field"><label>${f.label}${f.required?'<span class="req">Required</span>':''}</label></div>${items}<div class="add-btn" onclick="addRepeaterItem('${f.id}')">+ Add Another</div>`;
+  }
+  const req=f.required?'<span class="req">Required</span>':'';
+  const hint=f.hint?`<div class="hint">${f.hint}</div>`:'';
+  if(f.type==='textarea')return`<div class="field"><label>${f.label}${req}</label><textarea id="f_${f.id}" rows="3"></textarea>${hint}</div>`;
+  if(f.type==='select')return`<div class="field"><label>${f.label}${req}</label><select id="f_${f.id}">${f.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>${hint}</div>`;
+  return`<div class="field"><label>${f.label}${req}</label><input type="${f.type||'text'}" id="f_${f.id}">${hint}</div>`;
+}
+
+function addRepeaterItem(id){
+  if(!repeaterData[id])repeaterData[id]=[];
+  repeaterData[id].push({});
+  renderForm();
+}
+
+function removeRepeaterItem(id,i){
+  repeaterData[id].splice(i,1);
+  renderForm();
+}
+
+function getFieldVal(id){const el=document.getElementById('f_'+id);return el?el.value.trim():'';}
+
+function getRepeaterData(fieldId,subfields){
+  const items=repeaterData[fieldId]||[{}];
+  return items.map((item,i)=>{
+    const obj={};
+    subfields.forEach(sf=>{
+      const el=document.getElementById(`rep_${fieldId}_${i}_${sf.id}`);
+      obj[sf.id]=el?el.value.trim():'';
+    });
+    return obj;
+  }).filter(obj=>Object.values(obj).some(v=>v));
+}
+
+function generateSchema(){
+  let json;
+  switch(activeSchema){
+    case 'article':
+      json={"@context":"https://schema.org","@type":"Article"};
+      if(getFieldVal('headline'))json.headline=getFieldVal('headline');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('image'))json.image=[getFieldVal('image')];
+      if(getFieldVal('datePublished'))json.datePublished=getFieldVal('datePublished');
+      if(getFieldVal('dateModified'))json.dateModified=getFieldVal('dateModified');
+      if(getFieldVal('authorName'))json.author={"@type":"Person",name:getFieldVal('authorName')};
+      if(getFieldVal('authorUrl')&&json.author)json.author.url=getFieldVal('authorUrl');
+      if(getFieldVal('publisherName'))json.publisher={"@type":"Organization",name:getFieldVal('publisherName')};
+      if(getFieldVal('publisherLogo')&&json.publisher)json.publisher.logo={"@type":"ImageObject",url:getFieldVal('publisherLogo')};
+      if(getFieldVal('url'))json.url=getFieldVal('url');
+      break;
+    case 'product':
+      json={"@context":"https://schema.org","@type":"Product"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('image'))json.image=[getFieldVal('image')];
+      if(getFieldVal('brand'))json.brand={"@type":"Brand",name:getFieldVal('brand')};
+      if(getFieldVal('sku'))json.sku=getFieldVal('sku');
+      json.offers={"@type":"Offer"};
+      if(getFieldVal('price'))json.offers.price=getFieldVal('price');
+      if(getFieldVal('currency'))json.offers.priceCurrency=getFieldVal('currency');
+      if(getFieldVal('availability'))json.offers.availability="https://schema.org/"+getFieldVal('availability');
+      if(getFieldVal('url'))json.offers.url=getFieldVal('url');
+      if(getFieldVal('ratingValue'))json.aggregateRating={"@type":"AggregateRating",ratingValue:getFieldVal('ratingValue'),reviewCount:getFieldVal('reviewCount')||'1'};
+      break;
+    case 'faq':
+      const faqField=SCHEMAS.faq.fields[0];
+      const faqItems=getRepeaterData('faqs',faqField.subfields);
+      json={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqItems.map(f=>({"@type":"Question",name:f.question,acceptedAnswer:{"@type":"Answer",text:f.answer}}))};
+      break;
+    case 'howto':
+      const stepsField=SCHEMAS.howto.fields.find(f=>f.id==='steps');
+      const steps=getRepeaterData('steps',stepsField.subfields);
+      json={"@context":"https://schema.org","@type":"HowTo"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('image'))json.image=getFieldVal('image');
+      if(getFieldVal('totalTime'))json.totalTime=getFieldVal('totalTime');
+      if(getFieldVal('estimatedCost'))json.estimatedCost={"@type":"MonetaryAmount",currency:"USD",value:getFieldVal('estimatedCost')};
+      json.step=steps.map((s,i)=>{const step={"@type":"HowToStep",name:s.name||`Step ${i+1}`,text:s.text};if(s.image)step.image=s.image;return step;});
+      break;
+    case 'organization':
+      json={"@context":"https://schema.org","@type":"Organization"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('url'))json.url=getFieldVal('url');
+      if(getFieldVal('logo'))json.logo=getFieldVal('logo');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('email')||getFieldVal('phone'))json.contactPoint={"@type":"ContactPoint"};
+      if(getFieldVal('email'))json.contactPoint.email=getFieldVal('email');
+      if(getFieldVal('phone'))json.contactPoint.telephone=getFieldVal('phone');
+      if(getFieldVal('address'))json.address={"@type":"PostalAddress",streetAddress:getFieldVal('address'),addressLocality:getFieldVal('city'),addressRegion:getFieldVal('state'),postalCode:getFieldVal('zip'),addressCountry:getFieldVal('country')};
+      if(getFieldVal('sameAs'))json.sameAs=getFieldVal('sameAs').split(',').map(s=>s.trim()).filter(Boolean);
+      break;
+    case 'person':
+      json={"@context":"https://schema.org","@type":"Person"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('jobTitle'))json.jobTitle=getFieldVal('jobTitle');
+      if(getFieldVal('url'))json.url=getFieldVal('url');
+      if(getFieldVal('image'))json.image=getFieldVal('image');
+      if(getFieldVal('email'))json.email=getFieldVal('email');
+      if(getFieldVal('worksFor'))json.worksFor={"@type":"Organization",name:getFieldVal('worksFor')};
+      if(getFieldVal('sameAs'))json.sameAs=getFieldVal('sameAs').split(',').map(s=>s.trim()).filter(Boolean);
+      break;
+    case 'webapp':
+      json={"@context":"https://schema.org","@type":"WebApplication"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('url'))json.url=getFieldVal('url');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('applicationCategory'))json.applicationCategory=getFieldVal('applicationCategory');
+      if(getFieldVal('operatingSystem'))json.operatingSystem=getFieldVal('operatingSystem');
+      if(getFieldVal('price'))json.offers={"@type":"Offer",price:getFieldVal('price'),priceCurrency:getFieldVal('currency')||'USD'};
+      if(getFieldVal('ratingValue'))json.aggregateRating={"@type":"AggregateRating",ratingValue:getFieldVal('ratingValue'),reviewCount:getFieldVal('reviewCount')||'1'};
+      break;
+    case 'event':
+      json={"@context":"https://schema.org","@type":"Event"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('startDate'))json.startDate=getFieldVal('startDate');
+      if(getFieldVal('endDate'))json.endDate=getFieldVal('endDate');
+      if(getFieldVal('image'))json.image=[getFieldVal('image')];
+      if(getFieldVal('url'))json.url=getFieldVal('url');
+      json.location={"@type":"Place",name:getFieldVal('location')||'TBD'};
+      if(getFieldVal('address'))json.location.address={"@type":"PostalAddress",streetAddress:getFieldVal('address')};
+      if(getFieldVal('price'))json.offers={"@type":"Offer",price:getFieldVal('price'),priceCurrency:getFieldVal('currency')||'USD',availability:getFieldVal('availability')?'https://schema.org/'+getFieldVal('availability'):undefined};
+      if(getFieldVal('performerName'))json.performer={"@type":"Person",name:getFieldVal('performerName')};
+      if(getFieldVal('organizerName'))json.organizer={"@type":"Organization",name:getFieldVal('organizerName')};
+      break;
+    case 'recipe':
+      const instrField=SCHEMAS.recipe.fields.find(f=>f.id==='instructions');
+      const instrs=getRepeaterData('instructions',instrField.subfields);
+      json={"@context":"https://schema.org","@type":"Recipe"};
+      if(getFieldVal('name'))json.name=getFieldVal('name');
+      if(getFieldVal('description'))json.description=getFieldVal('description');
+      if(getFieldVal('image'))json.image=[getFieldVal('image')];
+      if(getFieldVal('authorName'))json.author={"@type":"Person",name:getFieldVal('authorName')};
+      if(getFieldVal('prepTime'))json.prepTime=getFieldVal('prepTime');
+      if(getFieldVal('cookTime'))json.cookTime=getFieldVal('cookTime');
+      if(getFieldVal('totalTime'))json.totalTime=getFieldVal('totalTime');
+      if(getFieldVal('recipeYield'))json.recipeYield=getFieldVal('recipeYield');
+      if(getFieldVal('recipeCategory'))json.recipeCategory=getFieldVal('recipeCategory');
+      if(getFieldVal('recipeCuisine'))json.recipeCuisine=getFieldVal('recipeCuisine');
+      if(getFieldVal('calories'))json.nutrition={"@type":"NutritionInformation",calories:getFieldVal('calories')+" calories"};
+      if(getFieldVal('ingredients'))json.recipeIngredient=getFieldVal('ingredients').split('\n').map(s=>s.trim()).filter(Boolean);
+      json.recipeInstructions=instrs.map(s=>({"@type":"HowToStep",text:s.text}));
+      if(getFieldVal('ratingValue'))json.aggregateRating={"@type":"AggregateRating",ratingValue:getFieldVal('ratingValue'),reviewCount:getFieldVal('reviewCount')||'1'};
+      break;
+    case 'review':
+      json={"@context":"https://schema.org","@type":"Review"};
+      json.itemReviewed={"@type":getFieldVal('itemType')||'Product',name:getFieldVal('itemName')};
+      if(getFieldVal('reviewBody'))json.reviewBody=getFieldVal('reviewBody');
+      json.reviewRating={"@type":"Rating",ratingValue:getFieldVal('ratingValue')||'5',bestRating:getFieldVal('bestRating')||'5'};
+      if(getFieldVal('authorName'))json.author={"@type":"Person",name:getFieldVal('authorName')};
+      if(getFieldVal('datePublished'))json.datePublished=getFieldVal('datePublished');
+      if(getFieldVal('publisherName'))json.publisher={"@type":"Organization",name:getFieldVal('publisherName')};
+      break;
+  }
+  // Clean undefined values
+  json=JSON.parse(JSON.stringify(json));
+  const output=JSON.stringify(json,null,2);
+  document.getElementById('codeOutput').textContent=`<script type="application/ld+json">\n${output}\n<\/script>`;
+  let c=parseInt(localStorage.getItem('schema_count')||0)+1;
+  localStorage.setItem('schema_count',c);
+  document.getElementById('counter').textContent=c;
+  renderRichPreview(json);
+}
+
+function validateSchema(){
+  generateSchema();
+  const schema=SCHEMAS[activeSchema];
+  const errors=[];
+  schema.fields.forEach(f=>{
+    if(f.required&&f.type!=='repeater'){
+      if(!getFieldVal(f.id))errors.push(`"${f.label}" is required`);
+    }
+    if(f.required&&f.type==='repeater'){
+      const items=getRepeaterData(f.id,f.subfields);
+      if(!items.length)errors.push(`At least one "${f.label}" item is required`);
+      items.forEach((item,i)=>{
+        f.subfields.forEach(sf=>{
+          if(sf.required&&!item[sf.id])errors.push(`${f.label} #${i+1}: "${sf.label}" is required`);
+        });
+      });
+    }
+  });
+  const el=document.getElementById('validationResult');
+  if(errors.length){
+    el.innerHTML=`<div class="validation invalid"><strong>Validation failed:</strong><ul>${errors.map(e=>`<li>${e}</li>`).join('')}</ul></div>`;
+  } else {
+    el.innerHTML=`<div class="validation valid"><strong>Valid!</strong> All required fields are present. Your schema is ready for Google Rich Results.</div>`;
+  }
+}
+
+function renderRichPreview(json){
+  const el=document.getElementById('richPreview');
+  let html='<div class="rich-preview"><div style="font-size:.65rem;color:#70757a;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">Google Rich Results Preview</div>';
+  switch(activeSchema){
+    case 'article':
+      html+=`<div class="rp-title">${json.headline||'Article Title'}</div><div class="rp-url">${json.url||'example.com'} &rsaquo; article</div><div class="rp-desc">${json.description||'Article description...'}</div>`;
+      if(json.datePublished)html+=`<div class="rp-extra">${json.datePublished} &mdash; ${json.author?.name||'Author'}</div>`;
+      break;
+    case 'product':
+      html+=`<div class="rp-title">${json.name||'Product Name'}</div><div class="rp-url">example.com &rsaquo; product</div>`;
+      if(json.aggregateRating)html+=`<div class="rp-stars">${'&#9733;'.repeat(Math.round(parseFloat(json.aggregateRating.ratingValue)))}${'&#9734;'.repeat(5-Math.round(parseFloat(json.aggregateRating.ratingValue)))}</div><span style="font-size:.78rem;color:#70757a">${json.aggregateRating.ratingValue}/5 (${json.aggregateRating.reviewCount} reviews)</span>`;
+      if(json.offers)html+=`<div class="rp-price" style="margin-top:4px">${json.offers.priceCurrency||'$'} ${json.offers.price}</div>`;
+      html+=`<div class="rp-desc">${json.description||''}</div>`;
+      break;
+    case 'faq':
+      html+=`<div class="rp-title">Page Title - FAQ</div><div class="rp-url">example.com &rsaquo; faq</div><div class="rp-faq">`;
+      (json.mainEntity||[]).slice(0,3).forEach(q=>{
+        html+=`<div class="rp-faq-q">${q.name}</div><div class="rp-faq-a">${q.acceptedAnswer?.text?.substring(0,120)||''}</div>`;
+      });
+      html+=`</div>`;
+      break;
+    case 'recipe':
+      html+=`<div class="rp-title">${json.name||'Recipe Name'}</div><div class="rp-url">example.com &rsaquo; recipe</div>`;
+      if(json.aggregateRating)html+=`<div class="rp-stars">${'&#9733;'.repeat(Math.round(parseFloat(json.aggregateRating.ratingValue)))}</div>`;
+      html+=`<div class="rp-extra">${json.totalTime?'Time: '+json.totalTime.replace('PT',''):''} ${json.nutrition?'| '+json.nutrition.calories:''}</div>`;
+      html+=`<div class="rp-desc">${json.description||''}</div>`;
+      break;
+    default:
+      html+=`<div class="rp-title">${json.name||json.headline||'Title'}</div><div class="rp-url">example.com</div><div class="rp-desc">${json.description||'Description...'}</div>`;
+  }
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+function copySchema(){
+  const text=document.getElementById('codeOutput').textContent;
+  navigator.clipboard.writeText(text).then(()=>alert('JSON-LD copied to clipboard!'));
+}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+init();
+</script>
+</body>
+</html>

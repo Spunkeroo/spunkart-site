@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Social Media Post Generator — Create Viral Posts for X, LinkedIn, Instagram & Facebook</title>
+<meta name="description" content="Free social media post generator. Create 10 optimized post variations for X/Twitter, LinkedIn, Instagram & Facebook. Character counts, hashtags, templates for launches, promos & more. No signup required.">
+<meta property="og:title" content="Social Media Post Generator — Create Viral Posts Instantly">
+<meta property="og:description" content="Generate 10 optimized post variations for any platform. Character counts, hashtags, and templates included. Free forever.">
+<meta property="og:url" content="https://spunkart.com/social-post-generator">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Social Media Post Generator — Create Viral Posts">
+<meta name="twitter:description" content="Generate 10 optimized post variations for X, LinkedIn, Instagram & Facebook. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/social-post-generator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Social Media Post Generator","description":"Generate optimized social media posts for X/Twitter, LinkedIn, Instagram and Facebook with character counts, hashtags, and templates.","url":"https://spunkart.com/social-post-generator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:900px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field textarea,.field select{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:#ff5f1f}
+.field textarea{resize:vertical;min-height:80px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+.chip{padding:8px 16px;border-radius:20px;border:2px solid #333;background:#1a1a1a;color:#ccc;cursor:pointer;font-size:0.85rem;transition:all .2s}
+.chip:hover{border-color:#ff5f1f;color:#ff5f1f}
+.chip.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
+.btn:hover{background:#e8540f;transform:translateY(-1px)}
+.btn-sm{padding:8px 16px;font-size:0.8rem;width:auto;border-radius:8px}
+.btn-outline{background:transparent;border:2px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;background:transparent}
+.btn-green{background:#10b981}.btn-green:hover{background:#0ea572}
+.results{display:none}
+.post-card{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;margin-bottom:1rem;position:relative}
+.post-card .post-num{font-size:0.7rem;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.post-card .post-text{font-size:0.95rem;line-height:1.7;white-space:pre-wrap;margin-bottom:10px}
+.post-card .post-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.char-count{font-size:0.75rem;font-family:'Courier New',monospace}
+.char-count.ok{color:#10b981}
+.char-count.warn{color:#f59e0b}
+.char-count.over{color:#ef4444}
+.copy-btn{background:#222;border:1px solid #333;color:#ccc;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:0.8rem;transition:all .2s}
+.copy-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.copy-btn.copied{background:#10b981;border-color:#10b981;color:#fff}
+.hashtag-box{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;margin-bottom:1.5rem}
+.hashtag-box h3{font-size:0.9rem;color:#888;margin-bottom:8px}
+.hashtag-list{display:flex;flex-wrap:wrap;gap:6px}
+.hashtag{background:#1a1a1a;border:1px solid #333;padding:4px 10px;border-radius:6px;font-size:0.8rem;color:#ff5f1f;cursor:pointer}
+.hashtag:hover{background:#ff5f1f;color:#fff}
+.template-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+.cta-bar{text-align:center;padding:1.5rem;margin-top:1rem}
+.cta-bar a{color:#ff5f1f;font-weight:700;font-size:1rem}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.8rem;font-weight:800;color:#e8e8e8;opacity:0.1;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{background:#111;border-top:1px solid #222;padding:1.5rem;text-align:center;font-size:0.75rem;color:#555}
+@media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:1.5rem}.card{padding:1.2rem}.chips{gap:6px}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SPUNKART.COM</div><div class="links"><a href="/">Home</a><a href="/store">Free Tools</a></div></nav>
+<main><div class="container">
+<h1>Social Media Post Generator</h1>
+<p class="sub">Generate 10 optimized post variations for any platform. Free forever.</p>
+<div class="use-badge">Used <span id="useCount">0</span> times</div>
+
+<div class="card">
+<h2>1. Choose Platform</h2>
+<div class="chips" id="platformChips">
+<div class="chip active" data-val="twitter" data-limit="280">X / Twitter</div>
+<div class="chip" data-val="linkedin" data-limit="3000">LinkedIn</div>
+<div class="chip" data-val="instagram" data-limit="2200">Instagram</div>
+<div class="chip" data-val="facebook" data-limit="63206">Facebook</div>
+</div>
+
+<h2>2. Choose Tone</h2>
+<div class="chips" id="toneChips">
+<div class="chip active" data-val="professional">Professional</div>
+<div class="chip" data-val="casual">Casual</div>
+<div class="chip" data-val="hype">Hype</div>
+<div class="chip" data-val="informative">Informative</div>
+</div>
+
+<h2>3. Choose Template</h2>
+<div class="chips" id="templateChips">
+<div class="chip active" data-val="product-launch">Product Launch</div>
+<div class="chip" data-val="tool-announcement">Tool Announcement</div>
+<div class="chip" data-val="blog-promo">Blog Promo</div>
+<div class="chip" data-val="milestone">Milestone</div>
+<div class="chip" data-val="behind-scenes">Behind-the-Scenes</div>
+</div>
+</div>
+
+<div class="card">
+<h2>4. Enter Details</h2>
+<div class="row">
+<div class="field"><label>Product / Tool Name</label><input type="text" id="prodName" placeholder="e.g. SpunkArt Social Post Generator"></div>
+<div class="field"><label>Target Audience</label><input type="text" id="audience" placeholder="e.g. indie makers, marketers"></div>
+</div>
+<div class="field"><label>Key Features (comma-separated)</label><input type="text" id="features" placeholder="e.g. 10 variations, hashtag suggestions, multi-platform"></div>
+<div class="field"><label>URL (optional)</label><input type="text" id="prodUrl" placeholder="https://spunkart.com/social-post-generator"></div>
+<div class="field"><label>Extra Context (optional)</label><textarea id="extraCtx" rows="3" placeholder="Any additional info, stats, or unique selling points..."></textarea></div>
+<button class="btn" onclick="generatePosts()">Generate 10 Posts</button>
+</div>
+
+<div class="results" id="results">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:8px">
+<h2 style="margin:0">Generated Posts</h2>
+<div style="display:flex;gap:8px">
+<button class="btn btn-sm btn-outline" onclick="copyAll()">Copy All</button>
+<button class="btn btn-sm btn-green" onclick="generatePosts()">Regenerate</button>
+</div>
+</div>
+<div class="hashtag-box">
+<h3>Suggested Hashtags (click to copy)</h3>
+<div class="hashtag-list" id="hashtagList"></div>
+</div>
+<div id="postsContainer"></div>
+</div>
+
+<div class="cta-bar"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div></main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2025 SpunkArt.com &mdash; All rights reserved.</footer>
+
+<script>
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+let useCount=parseInt(localStorage.getItem('spk_social_gen_uses')||'0');
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+
+let selectedPlatform='twitter',selectedTone='professional',selectedTemplate='product-launch',charLimit=280;
+
+function initChips(containerId,callback){
+document.querySelectorAll('#'+containerId+' .chip').forEach(chip=>{
+chip.addEventListener('click',()=>{
+document.querySelectorAll('#'+containerId+' .chip').forEach(c=>c.classList.remove('active'));
+chip.classList.add('active');
+callback(chip);
+});
+});
+}
+initChips('platformChips',c=>{selectedPlatform=c.dataset.val;charLimit=parseInt(c.dataset.limit);});
+initChips('toneChips',c=>{selectedTone=c.dataset.val;});
+initChips('templateChips',c=>{selectedTemplate=c.dataset.val;});
+
+const hashtagSets={
+'product-launch':['#ProductLaunch','#NewProduct','#JustLaunched','#LaunchDay','#Startup','#Innovation','#TechTools','#BuildInPublic','#SaaS','#IndieHackers'],
+'tool-announcement':['#FreeTools','#WebTools','#DevTools','#NoCode','#Productivity','#TechStack','#ToolsOfTheTrade','#WebDev','#Automation','#Maker'],
+'blog-promo':['#BlogPost','#ContentMarketing','#ReadThis','#NewBlog','#Writing','#SEO','#ContentCreator','#Blogging','#DigitalMarketing','#Growth'],
+'milestone':['#Milestone','#Achievement','#Growth','#Celebration','#BuildInPublic','#Numbers','#Progress','#Community','#Goals','#Grateful'],
+'behind-scenes':['#BTS','#BehindTheScenes','#BuildInPublic','#MakerLife','#IndieDev','#DayInTheLife','#Process','#RealTalk','#Journey','#Hustle']
+};
+
+const templates={
+twitter:{
+'product-launch':{
+professional:[
+(n,f,a,u)=>`Introducing ${n} — built for ${a}.\n\n${f[0]}, ${f[1]}, and ${f[2]}.\n\nTry it free${u?' '+u:''}`,
+(n,f,a,u)=>`${n} is live.\n\nDesigned for ${a} who need:\n${f.map(x=>'- '+x).join('\n')}\n\nFree to use${u?' '+u:''}`,
+(n,f,a,u)=>`After months of building, ${n} is ready.\n\nKey features:\n${f.slice(0,3).map(x=>'- '+x).join('\n')}\n\nBuilt for ${a}${u?'\n'+u:''}`,
+(n,f,a,u)=>`We just launched ${n}.\n\nHere's what it does for ${a}:\n${f.map(x=>'- '+x).join('\n')}${u?'\n\n'+u:''}`,
+(n,f,a,u)=>`${n} — the tool ${a} have been waiting for.\n\n${f[0]} + ${f[1]}.\n\nCompletely free${u?': '+u:''}`,
+(n,f,a,u)=>`New tool drop: ${n}\n\nPerfect for ${a}.\n\n${f.slice(0,2).join('. ')}.\n\nNo signup needed${u?' '+u:''}`,
+(n,f,a,u)=>`Launching ${n} today.\n\nWhy ${a} will love it:\n${f.map(x=>'- '+x).join('\n')}${u?'\n\n'+u:''}`,
+(n,f,a,u)=>`${n} is here. Built for ${a}.\n\nFeatures: ${f.join(', ')}.\n\nFree forever${u?' — '+u:''}`,
+(n,f,a,u)=>`Excited to share ${n} with ${a}.\n\n${f[0]}.\n${f[1]}.\n${f.length>2?f[2]+'.':''}\n\nTry it now${u?' '+u:''}`,
+(n,f,a,u)=>`${n} just launched.\n\nBuilt with ${a} in mind.\n\n${f.slice(0,3).join(' / ')}\n\n100% free${u?' '+u:''}`
+],
+casual:[
+(n,f,a,u)=>`just shipped ${n} and i'm hyped\n\n${f.slice(0,3).join(', ')}\n\nmade this for ${a}${u?'\n'+u:''}`,
+(n,f,a,u)=>`yo ${a} — ${n} is live now\n\nit does:\n${f.map(x=>'- '+x).join('\n')}\n\nfree ofc${u?' '+u:''}`,
+(n,f,a,u)=>`new thing alert: ${n}\n\nperfect if you're into ${a.toLowerCase()} stuff\n\n${f[0]} + ${f[1]}${u?'\n'+u:''}`,
+(n,f,a,u)=>`built ${n} over the weekend. ${f[0]}, ${f[1]}, and more.\n\nfree for ${a}${u?' '+u:''}`,
+(n,f,a,u)=>`${n} is finally done\n\n${f.map(x=>'- '+x).join('\n')}\n\nmade for ${a}. go try it${u?' '+u:''}`,
+(n,f,a,u)=>`dropped ${n} today\n\nyou get: ${f.join(', ')}\n\nall free, no signup${u?'\n'+u:''}`,
+(n,f,a,u)=>`${a} — check out ${n}\n\n${f[0]} is the main thing\n\nalso: ${f.slice(1).join(', ')}${u?'\n'+u:''}`,
+(n,f,a,u)=>`made ${n} because ${a} needed it\n\nfeatures:\n${f.map(x=>'- '+x).join('\n')}${u?'\n\n'+u:''}`,
+(n,f,a,u)=>`${n} = ${f.slice(0,2).join(' + ')}\n\nfree for all ${a}${u?'\n'+u:''}`,
+(n,f,a,u)=>`say hello to ${n}\n\n${f.join('. ')}.\n\nbuilt for ${a}. 100% free${u?' '+u:''}`
+],
+hype:[
+(n,f,a,u)=>`${n} JUST DROPPED\n\n${f.map(x=>'- '+x).join('\n')}\n\nBuilt for ${a}. Completely FREE${u?'\n'+u:''}`,
+(n,f,a,u)=>`THIS IS BIG.\n\n${n} is live.\n\n${f[0]} + ${f[1]} + ${f.length>2?f[2]:'more'}.\n\n${a} — you need this${u?'\n'+u:''}`,
+(n,f,a,u)=>`We just changed the game for ${a}.\n\n${n} is here:\n${f.map(x=>'- '+x).join('\n')}\n\nAnd it's FREE${u?' '+u:''}`,
+(n,f,a,u)=>`STOP scrolling. ${n} just launched.\n\n${f.join('. ')}.\n\nPerfect for ${a}${u?'\n\n'+u:''}`,
+(n,f,a,u)=>`${n} is LIVE and it's absolutely FREE\n\nFeatures:\n${f.map(x=>'- '+x).join('\n')}\n\n${a} — go try it NOW${u?' '+u:''}`,
+(n,f,a,u)=>`The wait is OVER. ${n} is here.\n\n${f.slice(0,3).join(' / ')}\n\nBuilt for ${a}${u?'\n'+u:''}`,
+(n,f,a,u)=>`JUST SHIPPED: ${n}\n\n${f[0]}? YES.\n${f[1]}? YES.\n\nFree for ${a}${u?'\n'+u:''}`,
+(n,f,a,u)=>`${a} — we built ${n} JUST for you\n\n${f.map(x=>'- '+x).join('\n')}\n\n$0. Forever.${u?'\n'+u:''}`,
+(n,f,a,u)=>`NOT A DRILL: ${n} just went live\n\n${f.join(', ')}\n\n${a}, this one's for you${u?'\n'+u:''}`,
+(n,f,a,u)=>`${n} IS HERE.\n\nAnd it's everything ${a} asked for:\n${f.map(x=>'- '+x).join('\n')}\n\nFREE${u?' '+u:''}`
+],
+informative:[
+(n,f,a,u)=>`New tool: ${n}\n\nWhat it does for ${a}:\n${f.map(x=>'- '+x).join('\n')}\n\nFree to use${u?' — '+u:''}`,
+(n,f,a,u)=>`${n} helps ${a} with:\n\n${f.map((x,i)=>(i+1)+'. '+x).join('\n')}\n\nNo cost, no signup${u?'\n'+u:''}`,
+(n,f,a,u)=>`Breakdown of ${n}:\n\nTarget: ${a}\nFeatures: ${f.join(', ')}\nPrice: Free\n\n${u||'Try it today'}`,
+(n,f,a,u)=>`For ${a} looking for ${f[0].toLowerCase()}:\n\n${n} offers:\n${f.map(x=>'- '+x).join('\n')}\n\nFree${u?' at '+u:''}`,
+(n,f,a,u)=>`Tool spotlight: ${n}\n\nBuilt for: ${a}\nKey features:\n${f.map(x=>'- '+x).join('\n')}\n\nCost: $0${u?'\n'+u:''}`,
+(n,f,a,u)=>`What is ${n}?\n\nA free tool for ${a} featuring:\n${f.map(x=>'- '+x).join('\n')}${u?'\n\nLearn more: '+u:''}`,
+(n,f,a,u)=>`Problem: ${a} need ${f[0].toLowerCase()}\nSolution: ${n}\n\nAlso includes: ${f.slice(1).join(', ')}${u?'\n\n'+u:''}`,
+(n,f,a,u)=>`${n} — a free tool for ${a}\n\nCapabilities:\n${f.map(x=>'- '+x).join('\n')}\n\nNo account required${u?'\n'+u:''}`,
+(n,f,a,u)=>`Quick overview of ${n}:\n\n- For: ${a}\n- Features: ${f.join(', ')}\n- Price: Free forever${u?'\n- Link: '+u:''}`,
+(n,f,a,u)=>`${n} solves ${f[0].toLowerCase()} for ${a}.\n\nAdditional features:\n${f.slice(1).map(x=>'- '+x).join('\n')}\n\nFree to use${u?' '+u:''}`
+]
+}
+};
+
+function getTemplatesForConfig(platform,template,tone){
+if(templates[platform]&&templates[platform][template]&&templates[platform][template][tone]){
+return templates[platform][template][tone];
+}
+return templates.twitter['product-launch'][tone]||templates.twitter['product-launch'].professional;
+}
+
+function adaptForPlatform(text,platform){
+if(platform==='linkedin')return text+'\n\n---\nWhat tools are you using this week? Drop them below.';
+if(platform==='instagram')return text+'\n\n.\n.\n.';
+if(platform==='facebook')return text+'\n\nDrop a comment if you find this useful!';
+return text;
+}
+
+function generatePosts(){
+const name=document.getElementById('prodName').value.trim();
+const features=document.getElementById('features').value.trim().split(',').map(s=>s.trim()).filter(Boolean);
+const audience=document.getElementById('audience').value.trim();
+const url=document.getElementById('prodUrl').value.trim();
+if(!name){alert('Please enter a product/tool name');return;}
+if(features.length===0){alert('Please enter at least one feature');return;}
+if(!audience){alert('Please enter a target audience');return;}
+
+const fPadded=[...features];
+while(fPadded.length<3)fPadded.push(fPadded[fPadded.length-1]);
+
+const tpls=getTemplatesForConfig('twitter',selectedTemplate,selectedTone);
+const container=document.getElementById('postsContainer');
+container.innerHTML='';
+
+for(let i=0;i<10;i++){
+let text=tpls[i](name,fPadded,audience,url);
+text=adaptForPlatform(text,selectedPlatform);
+const len=text.length;
+let cls='ok';
+if(len>charLimit*0.9&&len<=charLimit)cls='warn';
+if(len>charLimit)cls='over';
+
+const div=document.createElement('div');
+div.className='post-card';
+div.innerHTML=`
+<div class="post-num">Post ${i+1} of 10</div>
+<div class="post-text">${escHtml(text)}</div>
+<div class="post-meta">
+<span class="char-count ${cls}">${len} / ${charLimit.toLocaleString()} chars${len>charLimit?' (OVER LIMIT)':''}</span>
+<button class="copy-btn" onclick="copyPost(this,'${escAttr(text)}')">Copy</button>
+</div>`;
+container.appendChild(div);
+}
+
+const tags=hashtagSets[selectedTemplate]||hashtagSets['product-launch'];
+const hl=document.getElementById('hashtagList');
+hl.innerHTML=tags.map(t=>`<span class="hashtag" onclick="copyTag(this,'${t}')">${t}</span>`).join('');
+
+document.getElementById('results').style.display='block';
+document.getElementById('results').scrollIntoView({behavior:'smooth'});
+
+useCount++;
+localStorage.setItem('spk_social_gen_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escAttr(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n');}
+
+function copyPost(btn,text){
+const decoded=text.replace(/\\n/g,'\n').replace(/\\'/g,"'").replace(/\\\\/g,'\\');
+navigator.clipboard.writeText(decoded).then(()=>{
+btn.textContent='Copied!';btn.classList.add('copied');
+setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);
+});
+}
+
+function copyTag(el,tag){
+navigator.clipboard.writeText(tag).then(()=>{
+el.style.background='#10b981';el.style.color='#fff';
+setTimeout(()=>{el.style.background='';el.style.color='';},1000);
+});
+}
+
+function copyAll(){
+const posts=document.querySelectorAll('.post-text');
+const all=Array.from(posts).map((p,i)=>`--- Post ${i+1} ---\n${p.textContent}`).join('\n\n');
+const tags=(hashtagSets[selectedTemplate]||[]).join(' ');
+navigator.clipboard.writeText(all+'\n\n--- Hashtags ---\n'+tags).then(()=>{
+const btn=document.querySelector('.btn-outline');
+btn.textContent='All Copied!';
+setTimeout(()=>{btn.textContent='Copy All';},1500);
+});
+}
+</script>
+</body>
+</html>

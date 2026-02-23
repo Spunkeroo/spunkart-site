@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Image Prompt Generator - Free Tool | SpunkArt.com</title>
+<meta name="description" content="Generate optimized AI image prompts for Midjourney, DALL-E, Stable Diffusion & Leonardo. Free prompt builder with 50+ examples and multiple art styles.">
+<meta name="keywords" content="AI image prompt generator, midjourney prompts, dall-e prompts, stable diffusion prompts, AI art generator, free prompt builder">
+<meta property="og:title" content="AI Image Prompt Generator - Free Tool">
+<meta property="og:description" content="Generate optimized AI image prompts for Midjourney, DALL-E, Stable Diffusion & Leonardo. 50+ examples included.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/ai-image-prompt.html">
+<meta property="og:image" content="https://spunkart.com/art/og-ai-image-prompt.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="AI Image Prompt Generator - Free Tool">
+<meta name="twitter:description" content="Generate optimized AI image prompts for Midjourney, DALL-E, Stable Diffusion & Leonardo.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"AI Image Prompt Generator","url":"https://spunkart.com/ai-image-prompt.html","description":"Generate optimized AI image prompts for Midjourney, DALL-E, Stable Diffusion & Leonardo.","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+h1{font-size:2rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#ff5f1f,#ff8f5f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:25px;font-size:.95rem}
+.usage-badge{text-align:center;margin-bottom:20px;font-size:.8rem;color:#666}
+.usage-badge span{color:#ff5f1f;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.85rem;color:#aaa;font-weight:600}
+.field select,.field input,.field textarea{background:#141414;border:1px solid #2a2a2a;color:#e8e8e8;padding:10px 12px;border-radius:8px;font-size:.95rem;font-family:inherit;transition:border-color .2s}
+.field select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:#ff5f1f}
+.field textarea{resize:vertical;min-height:80px}
+.modifiers{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+@media(max-width:768px){.modifiers{grid-template-columns:1fr 1fr}}
+.btn{background:linear-gradient(135deg,#ff5f1f,#e04500);color:#fff;border:none;padding:14px 28px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s;display:block;width:100%;margin-bottom:20px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,95,31,.35)}
+.btn:active{transform:translateY(0)}
+.results{display:flex;flex-direction:column;gap:15px;margin-bottom:20px}
+.prompt-card{background:#141414;border:1px solid #2a2a2a;border-radius:10px;padding:16px;position:relative}
+.prompt-card .platform{font-size:.75rem;color:#ff5f1f;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.prompt-card .text{font-size:.9rem;line-height:1.7;color:#ccc;word-break:break-word;white-space:pre-wrap}
+.copy-btn{position:absolute;top:12px;right:12px;background:#222;border:1px solid #333;color:#aaa;padding:6px 14px;border-radius:6px;font-size:.75rem;cursor:pointer;transition:all .2s}
+.copy-btn:hover{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.copy-btn.copied{background:#10b981;border-color:#10b981;color:#fff}
+.section-title{font-size:1.1rem;font-weight:700;margin:25px 0 12px;color:#e8e8e8;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:4px;height:20px;background:#ff5f1f;border-radius:2px;display:inline-block}
+.examples-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+@media(max-width:768px){.examples-grid{grid-template-columns:1fr}}
+.example-item{background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:12px;cursor:pointer;transition:border-color .2s;font-size:.85rem;color:#aaa}
+.example-item:hover{border-color:#ff5f1f;color:#e8e8e8}
+.example-item .tag{font-size:.65rem;color:#ff5f1f;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.history-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto}
+.history-item{background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px;font-size:.8rem;color:#aaa;cursor:pointer;transition:border-color .2s;display:flex;justify-content:space-between;align-items:center}
+.history-item:hover{border-color:#ff5f1f;color:#e8e8e8}
+.history-item .time{font-size:.7rem;color:#555}
+.del-btn{background:none;border:none;color:#555;cursor:pointer;font-size:.9rem;padding:0 4px}
+.del-btn:hover{color:#ff5f1f}
+.tabs{display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap}
+.tab{background:#141414;border:1px solid #2a2a2a;color:#888;padding:8px 16px;border-radius:6px;font-size:.8rem;cursor:pointer;transition:all .2s}
+.tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.cta{text-align:center;margin:30px 0 20px;padding:20px;background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid #2a2a2a;border-radius:12px}
+.cta a{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.1rem}
+.cta a:hover{text-decoration:underline}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:.75rem;color:rgba(255,255,255,.1);pointer-events:none;z-index:9999;font-weight:700}
+.clear-hist{background:#1a1a1a;border:1px solid #333;color:#888;padding:6px 14px;border-radius:6px;font-size:.75rem;cursor:pointer;margin-top:8px}
+.clear-hist:hover{border-color:#ff5f1f;color:#ff5f1f}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>AI Image Prompt Generator</h1>
+<p class="subtitle">Generate optimized prompts for Midjourney, DALL-E, Stable Diffusion & Leonardo</p>
+<div class="usage-badge">Prompts generated: <span id="counter">0</span></div>
+
+<div class="grid">
+<div class="field">
+<label>Art Style</label>
+<select id="artStyle">
+<option value="">Select style...</option>
+<option value="Realistic">Realistic / Photorealistic</option>
+<option value="Anime">Anime / Manga</option>
+<option value="Oil Painting">Oil Painting</option>
+<option value="Watercolor">Watercolor</option>
+<option value="3D Render">3D Render</option>
+<option value="Pixel Art">Pixel Art</option>
+<option value="Comic">Comic Book / Graphic Novel</option>
+<option value="Cinematic">Cinematic / Film Still</option>
+</select>
+</div>
+<div class="field">
+<label>Subject Type</label>
+<select id="subject">
+<option value="">Select subject...</option>
+<option value="Portrait">Portrait</option>
+<option value="Landscape">Landscape / Environment</option>
+<option value="Product">Product Shot</option>
+<option value="Architecture">Architecture / Interior</option>
+<option value="Food">Food / Culinary</option>
+<option value="Animal">Animal / Wildlife</option>
+<option value="Abstract">Abstract / Conceptual</option>
+<option value="Character">Character Design</option>
+</select>
+</div>
+</div>
+
+<div class="field" style="margin-bottom:20px">
+<label>Describe what you want to see</label>
+<textarea id="description" placeholder="e.g. A lone samurai standing on a cliff overlooking a misty valley at sunrise"></textarea>
+</div>
+
+<div class="modifiers">
+<div class="field">
+<label>Lighting</label>
+<select id="lighting">
+<option value="">Any</option>
+<option value="golden hour">Golden Hour</option>
+<option value="dramatic rim lighting">Rim Lighting</option>
+<option value="soft diffused light">Soft Diffused</option>
+<option value="neon glow">Neon Glow</option>
+<option value="volumetric lighting">Volumetric</option>
+<option value="studio lighting">Studio</option>
+<option value="natural sunlight">Natural Sunlight</option>
+<option value="moonlight">Moonlight</option>
+</select>
+</div>
+<div class="field">
+<label>Camera Angle</label>
+<select id="camera">
+<option value="">Any</option>
+<option value="close-up shot">Close-up</option>
+<option value="wide-angle shot">Wide Angle</option>
+<option value="bird's eye view">Bird's Eye</option>
+<option value="low angle shot">Low Angle</option>
+<option value="dutch angle">Dutch Angle</option>
+<option value="macro shot">Macro</option>
+<option value="aerial view">Aerial</option>
+<option value="eye-level shot">Eye Level</option>
+</select>
+</div>
+<div class="field">
+<label>Mood</label>
+<select id="mood">
+<option value="">Any</option>
+<option value="ethereal and dreamy">Ethereal</option>
+<option value="dark and moody">Dark / Moody</option>
+<option value="vibrant and energetic">Vibrant</option>
+<option value="serene and peaceful">Serene</option>
+<option value="mysterious and ominous">Mysterious</option>
+<option value="warm and nostalgic">Nostalgic</option>
+<option value="futuristic and sleek">Futuristic</option>
+<option value="gritty and raw">Gritty</option>
+</select>
+</div>
+<div class="field">
+<label>Color Palette</label>
+<select id="palette">
+<option value="">Any</option>
+<option value="warm tones, amber and gold">Warm / Amber</option>
+<option value="cool blues and teals">Cool Blues</option>
+<option value="monochrome, black and white">Monochrome</option>
+<option value="neon colors, cyberpunk palette">Neon / Cyberpunk</option>
+<option value="pastel colors, soft hues">Pastel</option>
+<option value="earth tones, muted greens and browns">Earth Tones</option>
+<option value="high contrast, bold primaries">Bold Primary</option>
+<option value="desaturated, muted colors">Desaturated</option>
+</select>
+</div>
+</div>
+
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<button class="btn" style="flex:1;min-width:200px" onclick="generatePrompts()">Generate 5 Prompt Variations</button>
+<button class="btn" style="flex:0;background:#1a1a1a;border:1px solid #333;min-width:150px" onclick="shuffleModifiers()">Shuffle Modifiers</button>
+<button class="btn" style="flex:0;background:linear-gradient(135deg,#10b981,#059669);min-width:150px" onclick="randomExample()">Random Idea</button>
+</div>
+
+<div id="results" class="results"></div>
+
+<div style="text-align:right;margin-bottom:10px"><button class="btn" style="width:auto;padding:8px 18px;font-size:.8rem;background:#1a1a1a;border:1px solid #333;display:inline-block" onclick="copyAllPrompts()">Copy All Prompts</button></div>
+
+<div class="section-title">Prompt Writing Tips</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:25px">
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:14px">
+<div style="color:#ff5f1f;font-weight:700;font-size:.8rem;margin-bottom:6px">Midjourney Tips</div>
+<ul style="color:#888;font-size:.8rem;padding-left:16px">
+<li>Use --v 6.1 for the latest model</li>
+<li>--stylize 750-1000 for artistic results</li>
+<li>--chaos 10-30 for variety</li>
+<li>Aspect ratios: --ar 16:9, 3:2, 1:1</li>
+<li>Use --style raw for photorealism</li>
+</ul>
+</div>
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:14px">
+<div style="color:#ff5f1f;font-weight:700;font-size:.8rem;margin-bottom:6px">DALL-E 3 Tips</div>
+<ul style="color:#888;font-size:.8rem;padding-left:16px">
+<li>Be descriptive and specific</li>
+<li>Include artistic medium references</li>
+<li>Mention composition and framing</li>
+<li>Specify resolution: HD, 4K, 8K</li>
+<li>Include emotion and atmosphere</li>
+</ul>
+</div>
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:14px">
+<div style="color:#ff5f1f;font-weight:700;font-size:.8rem;margin-bottom:6px">Stable Diffusion Tips</div>
+<ul style="color:#888;font-size:.8rem;padding-left:16px">
+<li>Use quality tags: masterpiece, best quality</li>
+<li>Add negative prompts to exclude unwanted elements</li>
+<li>CFG scale 7-12 for balanced results</li>
+<li>Steps 20-50 for detail control</li>
+<li>Specify sampler: DPM++ 2M Karras</li>
+</ul>
+</div>
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:8px;padding:14px">
+<div style="color:#ff5f1f;font-weight:700;font-size:.8rem;margin-bottom:6px">Leonardo AI Tips</div>
+<ul style="color:#888;font-size:.8rem;padding-left:16px">
+<li>Reference trending platforms: artstation, behance</li>
+<li>Include render engine: octane, unreal engine</li>
+<li>Specify resolution: 8K UHD</li>
+<li>Use artistic references for style</li>
+<li>Include lighting keywords for mood</li>
+</ul>
+</div>
+</div>
+
+<div class="section-title">Example Prompts (click to use)</div>
+<div class="tabs" id="exampleTabs"></div>
+<div class="examples-grid" id="examplesGrid"></div>
+
+<div class="section-title">Prompt History</div>
+<div class="history-list" id="historyList"></div>
+<button class="clear-hist" onclick="clearHistory()">Clear History</button>
+
+<div class="cta"><a href="https://spunkart.com/store">100+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const EXAMPLES=[
+{cat:"Portrait",text:"A weathered fisherman with deep wrinkles and piercing blue eyes, close-up portrait"},
+{cat:"Portrait",text:"Young woman with flowers growing from her hair, surreal double exposure"},
+{cat:"Portrait",text:"Cyberpunk hacker with neon tattoos and augmented reality glasses"},
+{cat:"Portrait",text:"Renaissance-style portrait of a modern CEO in a tailored suit"},
+{cat:"Portrait",text:"Elderly Indigenous elder with traditional face paint and headdress"},
+{cat:"Landscape",text:"Bioluminescent forest with glowing mushrooms and floating fireflies at midnight"},
+{cat:"Landscape",text:"Volcanic island erupting at sunset with lightning in the ash cloud"},
+{cat:"Landscape",text:"Crystal clear lake reflecting snow-capped mountains in autumn"},
+{cat:"Landscape",text:"Abandoned overgrown highway being reclaimed by nature, post-apocalyptic"},
+{cat:"Landscape",text:"Floating islands connected by rope bridges above a sea of clouds"},
+{cat:"Product",text:"Luxury perfume bottle on black marble with rose petals and gold dust"},
+{cat:"Product",text:"Minimalist smartwatch on a concrete pedestal with dramatic shadows"},
+{cat:"Product",text:"Artisan coffee mug with steam rising, rustic wooden table background"},
+{cat:"Product",text:"Premium headphones floating in mid-air with colorful sound wave visualizations"},
+{cat:"Product",text:"Craft beer can with water droplets, studio lighting on dark background"},
+{cat:"Architecture",text:"Solarpunk skyscraper covered in vertical gardens and wind turbines"},
+{cat:"Architecture",text:"Ancient temple ruins overtaken by a massive banyan tree"},
+{cat:"Architecture",text:"Futuristic glass treehouse suspended between giant redwood trees"},
+{cat:"Architecture",text:"Underground library carved into a crystal cave with glowing minerals"},
+{cat:"Architecture",text:"Art deco hotel lobby with geometric patterns and gold accents"},
+{cat:"Food",text:"Deconstructed sushi platter arranged as art on a slate board"},
+{cat:"Food",text:"Molten chocolate lava cake with gold leaf and raspberry coulis"},
+{cat:"Food",text:"Rainbow smoothie bowl topped with edible flowers and dragon fruit"},
+{cat:"Food",text:"Wood-fired pizza being pulled from a brick oven, cheese stretching"},
+{cat:"Food",text:"French macaron tower in pastel colors with scattered rose petals"},
+{cat:"Animal",text:"Arctic fox in a snowstorm, ice crystals on its fur, survival instinct"},
+{cat:"Animal",text:"Hummingbird frozen in flight drinking from a tropical flower"},
+{cat:"Animal",text:"Deep sea anglerfish with bioluminescent lure in the abyss"},
+{cat:"Animal",text:"Pack of wolves howling at a blood moon on a snowy ridge"},
+{cat:"Animal",text:"Chameleon on a branch with skin shifting through rainbow colors"},
+{cat:"Abstract",text:"Emotions visualized as swirling galaxies of color and light"},
+{cat:"Abstract",text:"Time and space folding like origami in a cosmic void"},
+{cat:"Abstract",text:"Music visualized as geometric fractals expanding infinitely"},
+{cat:"Abstract",text:"The concept of consciousness as an infinite mirror recursion"},
+{cat:"Abstract",text:"Entropy and order battling in a marble-like fluid simulation"},
+{cat:"Character",text:"Steampunk inventor with brass prosthetic arm and goggles"},
+{cat:"Character",text:"Space bounty hunter in worn armor at a cantina bar"},
+{cat:"Character",text:"Forest witch with antler crown and a cloak of living moss"},
+{cat:"Character",text:"Samurai robot with cherry blossom patterns on titanium armor"},
+{cat:"Character",text:"Deep sea diver from the 1920s encountering an ancient leviathan"},
+{cat:"Cinematic",text:"Car chase through neon-lit Tokyo streets in the rain at night"},
+{cat:"Cinematic",text:"Astronaut standing alone on Mars watching Earth rise on the horizon"},
+{cat:"Cinematic",text:"Medieval battle scene with cavalry charge at dawn, fog of war"},
+{cat:"Cinematic",text:"Film noir detective in a smoky jazz club, 1940s aesthetic"},
+{cat:"Cinematic",text:"Submarine crew discovering a sunken alien spacecraft on the ocean floor"},
+{cat:"3D",text:"Isometric miniature city inside a glass terrarium"},
+{cat:"3D",text:"Cute robot character learning to paint on a tiny easel"},
+{cat:"3D",text:"Low-poly mountain landscape with geometric clouds and pixel sun"},
+{cat:"3D",text:"Claymation-style monster emerging from a portal in a living room"},
+{cat:"3D",text:"Crystal chess set with pieces that emit colored light on a mirror board"}
+];
+const CATS=[...new Set(EXAMPLES.map(e=>e.cat))];
+let activeTab=CATS[0];
+const MJ_SUFFIXES=["--ar 16:9 --v 6.1 --style raw","--ar 3:2 --v 6.1 --stylize 750","--ar 1:1 --v 6.1 --chaos 20","--ar 16:9 --v 6.1 --stylize 1000 --chaos 10"];
+const DALLE_PREFIX=["Create an image of","Generate a detailed image showing","Produce a high-quality image depicting"];
+const SD_NEGATIVES=["blurry, low quality, distorted, deformed","text, watermark, signature, low resolution","bad anatomy, extra limbs, poorly drawn, artifacts"];
+
+function init(){
+  let c=localStorage.getItem('aiprompt_count')||0;
+  document.getElementById('counter').textContent=c;
+  renderExampleTabs();
+  renderExamples();
+  renderHistory();
+}
+
+function renderExampleTabs(){
+  const el=document.getElementById('exampleTabs');
+  el.innerHTML=CATS.map(c=>`<div class="tab${c===activeTab?' active':''}" onclick="switchTab('${c}')">${c}</div>`).join('');
+}
+
+function switchTab(cat){activeTab=cat;renderExampleTabs();renderExamples();}
+
+function renderExamples(){
+  const el=document.getElementById('examplesGrid');
+  const filtered=EXAMPLES.filter(e=>e.cat===activeTab);
+  el.innerHTML=filtered.map(e=>`<div class="example-item" onclick="useExample('${e.text.replace(/'/g,"\\'")}')"><div class="tag">${e.cat}</div>${e.text}</div>`).join('');
+}
+
+function useExample(text){
+  document.getElementById('description').value=text;
+  document.getElementById('description').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function generatePrompts(){
+  const style=document.getElementById('artStyle').value;
+  const subj=document.getElementById('subject').value;
+  const desc=document.getElementById('description').value.trim();
+  const light=document.getElementById('lighting').value;
+  const cam=document.getElementById('camera').value;
+  const mood=document.getElementById('mood').value;
+  const pal=document.getElementById('palette').value;
+  if(!desc){alert('Please enter a description of what you want to see.');return;}
+  const base=[desc];
+  if(style)base.push(style+" style");
+  if(subj)base.push(subj.toLowerCase());
+  if(light)base.push(light);
+  if(cam)base.push(cam);
+  if(mood)base.push(mood);
+  if(pal)base.push(pal);
+  const core=base.join(", ");
+  const prompts=[];
+  // Midjourney
+  const mjSuffix=MJ_SUFFIXES[Math.floor(Math.random()*MJ_SUFFIXES.length)];
+  prompts.push({platform:"Midjourney",text:`${core}, highly detailed, professional quality ${mjSuffix}`});
+  // Midjourney v2
+  prompts.push({platform:"Midjourney (Cinematic)",text:`${core}, cinematic composition, award-winning photography, 8k resolution --ar 21:9 --v 6.1 --stylize 900`});
+  // DALL-E
+  const dp=DALLE_PREFIX[Math.floor(Math.random()*DALLE_PREFIX.length)];
+  prompts.push({platform:"DALL-E 3",text:`${dp} ${core}. The image should be highly detailed with professional composition and lighting. Render in high resolution with photographic quality.`});
+  // Stable Diffusion
+  const neg=SD_NEGATIVES[Math.floor(Math.random()*SD_NEGATIVES.length)];
+  prompts.push({platform:"Stable Diffusion (SDXL)",text:`masterpiece, best quality, ${core}, intricate details, sharp focus, professional\n\nNegative: ${neg}`});
+  // Leonardo
+  prompts.push({platform:"Leonardo AI",text:`${core}, ultra-detailed, professional quality, trending on artstation, octane render, 8k UHD`});
+
+  const el=document.getElementById('results');
+  el.innerHTML=prompts.map((p,i)=>`<div class="prompt-card"><div class="platform">${p.platform}</div><div class="text">${p.text}</div><button class="copy-btn" onclick="copyPrompt(this,'${i}')">Copy</button></div>`).join('');
+  // Save to history
+  saveToHistory(desc,style,subj);
+  // Increment counter
+  let c=parseInt(localStorage.getItem('aiprompt_count')||0)+1;
+  localStorage.setItem('aiprompt_count',c);
+  document.getElementById('counter').textContent=c;
+  el.scrollIntoView({behavior:'smooth'});
+}
+
+function copyPrompt(btn,idx){
+  const card=btn.parentElement;
+  const text=card.querySelector('.text').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);
+  });
+}
+
+function saveToHistory(desc,style,subj){
+  let hist=JSON.parse(localStorage.getItem('aiprompt_history')||'[]');
+  hist.unshift({desc,style,subj,time:new Date().toLocaleString()});
+  if(hist.length>50)hist=hist.slice(0,50);
+  localStorage.setItem('aiprompt_history',JSON.stringify(hist));
+  renderHistory();
+}
+
+function renderHistory(){
+  const hist=JSON.parse(localStorage.getItem('aiprompt_history')||'[]');
+  const el=document.getElementById('historyList');
+  if(!hist.length){el.innerHTML='<div style="color:#555;font-size:.85rem;padding:10px">No history yet. Generate some prompts!</div>';return;}
+  el.innerHTML=hist.map((h,i)=>`<div class="history-item" onclick="useExample('${h.desc.replace(/'/g,"\\'")}')"><div><strong>${h.desc.substring(0,60)}${h.desc.length>60?'...':''}</strong><br><span class="time">${h.style||'Any style'} | ${h.subj||'Any subject'} | ${h.time}</span></div><button class="del-btn" onclick="event.stopPropagation();deleteHistory(${i})">&#x2715;</button></div>`).join('');
+}
+
+function deleteHistory(idx){
+  let hist=JSON.parse(localStorage.getItem('aiprompt_history')||'[]');
+  hist.splice(idx,1);
+  localStorage.setItem('aiprompt_history',JSON.stringify(hist));
+  renderHistory();
+}
+
+function clearHistory(){
+  localStorage.removeItem('aiprompt_history');
+  renderHistory();
+}
+
+function copyAllPrompts(){
+  const cards=document.querySelectorAll('.prompt-card');
+  if(!cards.length){alert('Generate prompts first!');return;}
+  let all='';
+  cards.forEach(card=>{
+    const platform=card.querySelector('.platform').textContent;
+    const text=card.querySelector('.text').textContent;
+    all+=`=== ${platform} ===\n${text}\n\n`;
+  });
+  navigator.clipboard.writeText(all.trim()).then(()=>alert('All prompts copied!'));
+}
+
+function shuffleModifiers(){
+  const lightOpts=document.getElementById('lighting').options;
+  const camOpts=document.getElementById('camera').options;
+  const moodOpts=document.getElementById('mood').options;
+  const palOpts=document.getElementById('palette').options;
+  document.getElementById('lighting').selectedIndex=Math.floor(Math.random()*(lightOpts.length-1))+1;
+  document.getElementById('camera').selectedIndex=Math.floor(Math.random()*(camOpts.length-1))+1;
+  document.getElementById('mood').selectedIndex=Math.floor(Math.random()*(moodOpts.length-1))+1;
+  document.getElementById('palette').selectedIndex=Math.floor(Math.random()*(palOpts.length-1))+1;
+}
+
+function randomExample(){
+  const ex=EXAMPLES[Math.floor(Math.random()*EXAMPLES.length)];
+  document.getElementById('description').value=ex.text;
+  // Try to match art style
+  const styleMap={'Portrait':'Realistic','Landscape':'Cinematic','Product':'3D Render','Architecture':'Realistic','Food':'Realistic','Animal':'Cinematic','Abstract':'Watercolor','Character':'Anime','Cinematic':'Cinematic','3D':'3D Render'};
+  const styleEl=document.getElementById('artStyle');
+  const matchStyle=styleMap[ex.cat]||'';
+  for(let i=0;i<styleEl.options.length;i++){
+    if(styleEl.options[i].value===matchStyle){styleEl.selectedIndex=i;break;}
+  }
+  // Set subject
+  const subjMap={'Portrait':'Portrait','Landscape':'Landscape','Product':'Product','Architecture':'Architecture','Food':'Food','Animal':'Animal','Abstract':'Abstract','Character':'Character','Cinematic':'Landscape','3D':'Product'};
+  const subjEl=document.getElementById('subject');
+  const matchSubj=subjMap[ex.cat]||'';
+  for(let i=0;i<subjEl.options.length;i++){
+    if(subjEl.options[i].value===matchSubj){subjEl.selectedIndex=i;break;}
+  }
+  shuffleModifiers();
+  document.getElementById('description').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// Code protection
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+init();
+</script>
+</body>
+</html>

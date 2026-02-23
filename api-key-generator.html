@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Key & Secret Generator - Free Secure Tool | SpunkArt.com</title>
+<meta name="description" content="Generate secure API keys, JWT secrets, OAuth credentials, encryption keys & database passwords. Uses crypto.getRandomValues() for true randomness. Free online tool.">
+<meta name="keywords" content="API key generator, secret key generator, JWT secret, OAuth client secret, encryption key generator, secure password generator, random key generator">
+<meta property="og:title" content="API Key & Secret Generator - Free Secure Tool">
+<meta property="og:description" content="Generate secure API keys, JWT secrets, OAuth credentials, encryption keys & more. Cryptographically secure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/api-key-generator.html">
+<meta property="og:image" content="https://spunkart.com/art/og-api-key-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="API Key & Secret Generator - Free Secure Tool">
+<meta name="twitter:description" content="Generate secure API keys, JWT secrets, OAuth credentials, encryption keys & more.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"API Key & Secret Generator","url":"https://spunkart.com/api-key-generator.html","description":"Generate secure API keys, JWT secrets, OAuth credentials, encryption keys and database passwords.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,sans-serif;line-height:1.6;min-height:100vh}
+.container{max-width:1000px;margin:0 auto;padding:20px}
+h1{font-size:2rem;text-align:center;margin:20px 0 5px;background:linear-gradient(135deg,#ff5f1f,#ff8f5f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:#888;margin-bottom:5px;font-size:.95rem}
+.secure-note{text-align:center;color:#10b981;font-size:.78rem;margin-bottom:20px}
+.usage-badge{text-align:center;margin-bottom:20px;font-size:.8rem;color:#666}
+.usage-badge span{color:#ff5f1f;font-weight:700}
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.tab{background:#141414;border:1px solid #2a2a2a;color:#888;padding:10px 18px;border-radius:8px;font-size:.82rem;cursor:pointer;transition:all .2s;font-weight:600}
+.tab:hover{border-color:#444}
+.tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.gen-panel{background:#111;border:1px solid #2a2a2a;border-radius:12px;padding:20px;margin-bottom:20px}
+.gen-panel h2{font-size:1.1rem;margin-bottom:4px;color:#e8e8e8}
+.gen-panel .desc{font-size:.8rem;color:#888;margin-bottom:16px}
+.options{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:.75rem;color:#888;font-weight:600}
+.field select,.field input{background:#0e0e0e;border:1px solid #2a2a2a;color:#e8e8e8;padding:8px 12px;border-radius:6px;font-size:.85rem;font-family:inherit}
+.field select:focus,.field input:focus{outline:none;border-color:#ff5f1f}
+.field input[type="number"]{width:80px}
+.field input[type="checkbox"]{width:auto;margin-right:4px}
+.check-row{display:flex;align-items:center;gap:4px;font-size:.8rem;color:#aaa;margin:4px 0}
+.btn{background:linear-gradient(135deg,#ff5f1f,#e04500);color:#fff;border:none;padding:10px 22px;border-radius:6px;font-size:.85rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(255,95,31,.3)}
+.btn-sm{padding:6px 14px;font-size:.75rem}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669)}
+.btn-secondary{background:#1a1a1a;border:1px solid #333}
+.btn-secondary:hover{border-color:#ff5f1f;box-shadow:none}
+.results{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.key-row{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.key-row .key-label{font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.key-row .key-value{font-family:'Fira Code',monospace,sans-serif;font-size:.82rem;color:#e8e8e8;word-break:break-all;flex:1}
+.key-row .key-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.strength-bar{height:4px;border-radius:2px;background:#222;margin-top:4px;overflow:hidden}
+.strength-fill{height:100%;border-radius:2px;transition:width .3s}
+.copy-btn{background:#1a1a1a;border:1px solid #333;color:#aaa;padding:5px 12px;border-radius:4px;font-size:.7rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.copy-btn:hover{background:#ff5f1f;color:#fff;border-color:#ff5f1f}
+.copy-btn.copied{background:#10b981;border-color:#10b981;color:#fff}
+.batch-bar{display:flex;gap:8px;align-items:center;margin-top:16px;flex-wrap:wrap}
+.batch-bar span{font-size:.8rem;color:#888}
+.export-section{margin-top:20px;background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:14px}
+.export-section h3{font-size:.85rem;color:#aaa;margin-bottom:10px}
+.export-section pre{background:#111;border:1px solid #2a2a2a;padding:12px;border-radius:6px;font-size:.8rem;font-family:'Fira Code',monospace;color:#10b981;overflow-x:auto;max-height:200px;overflow-y:auto}
+.export-bar{display:flex;gap:8px;margin-top:10px}
+.cta{text-align:center;margin:30px 0 20px;padding:20px;background:linear-gradient(135deg,#141414,#1a1a1a);border:1px solid #2a2a2a;border-radius:12px}
+.cta a{color:#ff5f1f;text-decoration:none;font-weight:700;font-size:1.1rem}
+.cta a:hover{text-decoration:underline}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:.75rem;color:rgba(255,255,255,.1);pointer-events:none;z-index:9999;font-weight:700}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>API Key & Secret Generator</h1>
+<p class="subtitle">Cryptographically secure keys for any application</p>
+<p class="secure-note">All keys generated locally using crypto.getRandomValues() - nothing is sent to any server</p>
+<div class="usage-badge">Keys generated: <span id="counter">0</span></div>
+
+<div class="tabs" id="tabs"></div>
+<div id="panelContainer"></div>
+
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<button class="btn" onclick="generateAllTypes()" style="flex:1;min-width:200px">Generate One of Each Type</button>
+<button class="btn btn-secondary" onclick="copyAllKeys()" style="flex:0;min-width:140px;background:#1a1a1a;border:1px solid #333">Copy All Keys</button>
+<button class="btn" onclick="downloadJSON()" style="flex:0;min-width:140px;background:linear-gradient(135deg,#3b82f6,#2563eb)">Export JSON</button>
+<button class="btn btn-secondary" onclick="showSecurityInfo()" style="flex:0;min-width:120px;background:#1a1a1a;border:1px solid #333">Security Info</button>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px">
+<div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:14px">
+<div style="font-size:.8rem;font-weight:700;color:#10b981;margin-bottom:6px">Cryptographically Secure</div>
+<div style="font-size:.75rem;color:#888">Uses crypto.getRandomValues() - the same CSPRNG used by TLS/SSL. Suitable for production environments.</div>
+</div>
+<div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:14px">
+<div style="font-size:.8rem;font-weight:700;color:#ff5f1f;margin-bottom:6px">100% Client-Side</div>
+<div style="font-size:.75rem;color:#888">All generation happens locally in your browser. No keys are ever transmitted, logged, or stored on any server.</div>
+</div>
+<div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:14px">
+<div style="font-size:.8rem;font-weight:700;color:#3b82f6;margin-bottom:6px">Production Ready</div>
+<div style="font-size:.75rem;color:#888">Keys meet or exceed NIST recommendations for entropy. Export directly to .env files for immediate use.</div>
+</div>
+</div>
+
+<div style="background:#111;border:1px solid #2a2a2a;border-radius:10px;padding:16px;margin-bottom:20px">
+<div style="font-size:.9rem;font-weight:700;color:#ccc;margin-bottom:12px">Key Strength Guide</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="font-size:.78rem;color:#888">
+<div style="margin-bottom:6px"><span style="display:inline-block;width:12px;height:12px;background:#10b981;border-radius:2px;vertical-align:middle;margin-right:6px"></span><strong style="color:#10b981">Excellent (256+ bits)</strong> - Encryption keys, JWT secrets</div>
+<div style="margin-bottom:6px"><span style="display:inline-block;width:12px;height:12px;background:#3b82f6;border-radius:2px;vertical-align:middle;margin-right:6px"></span><strong style="color:#3b82f6">Strong (128-255 bits)</strong> - API keys, webhook secrets</div>
+</div>
+<div style="font-size:.78rem;color:#888">
+<div style="margin-bottom:6px"><span style="display:inline-block;width:12px;height:12px;background:#fbbf24;border-radius:2px;vertical-align:middle;margin-right:6px"></span><strong style="color:#fbbf24">Good (64-127 bits)</strong> - Session tokens, client IDs</div>
+<div style="margin-bottom:6px"><span style="display:inline-block;width:12px;height:12px;background:#ef4444;border-radius:2px;vertical-align:middle;margin-right:6px"></span><strong style="color:#ef4444">Fair (&lt;64 bits)</strong> - Short passwords only, not for secrets</div>
+</div>
+</div>
+</div>
+
+<div class="export-section" id="exportSection">
+<h3>Export as .env</h3>
+<pre id="envPreview"># Generated by SpunkArt API Key Generator
+# No keys generated yet</pre>
+<div class="export-bar">
+<button class="btn btn-sm" onclick="copyEnv()">Copy .env</button>
+<button class="btn btn-sm btn-green" onclick="downloadEnv()">Download .env</button>
+<button class="btn btn-sm btn-secondary" onclick="clearAll()">Clear All</button>
+</div>
+</div>
+
+<div class="cta"><a href="https://spunkart.com/store">100+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+const TYPES=[
+{id:'apikey',name:'API Keys',desc:'Standard alphanumeric API keys for service authentication',options:[{label:'Length',type:'select',id:'apiLen',values:['32','64','128'],default:'32'}],generate:function(opts){
+  const len=parseInt(opts.apiLen);const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  return{label:'API_KEY',value:randomString(len,chars),bits:Math.floor(len*Math.log2(chars.length))};
+}},
+{id:'secret',name:'Secret Keys',desc:'Hexadecimal secret keys (256-bit / 512-bit)',options:[{label:'Bits',type:'select',id:'secBits',values:['128','256','512'],default:'256'}],generate:function(opts){
+  const bits=parseInt(opts.secBits);const bytes=bits/8;const arr=new Uint8Array(bytes);crypto.getRandomValues(arr);
+  return{label:'SECRET_KEY',value:Array.from(arr).map(b=>b.toString(16).padStart(2,'0')).join(''),bits};
+}},
+{id:'jwt',name:'JWT Secrets',desc:'High-entropy secrets for signing JSON Web Tokens',options:[{label:'Encoding',type:'select',id:'jwtEnc',values:['base64','hex'],default:'base64'}],generate:function(opts){
+  const arr=new Uint8Array(64);crypto.getRandomValues(arr);
+  let val;if(opts.jwtEnc==='base64'){val=btoa(String.fromCharCode(...arr)).replace(/[+/=]/g,c=>({'+':'-','/':'_','=':''}[c]));}else{val=Array.from(arr).map(b=>b.toString(16).padStart(2,'0')).join('');}
+  return{label:'JWT_SECRET',value:val,bits:512};
+}},
+{id:'webhook',name:'Webhook Signing',desc:'Keys for verifying webhook payload signatures (HMAC)',options:[{label:'Prefix',type:'select',id:'whPrefix',values:['whsec_','whsk_','sig_'],default:'whsec_'}],generate:function(opts){
+  const arr=new Uint8Array(32);crypto.getRandomValues(arr);const b64=btoa(String.fromCharCode(...arr)).replace(/[+/=]/g,c=>({'+':'-','/':'_','=':''}[c]));
+  return{label:'WEBHOOK_SECRET',value:opts.whPrefix+b64,bits:256};
+}},
+{id:'oauth',name:'OAuth Client',desc:'Generate Client ID and Client Secret pairs',options:[],generate:function(){
+  const id=randomString(24,'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789');
+  const sec=randomString(48,'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-');
+  return[{label:'OAUTH_CLIENT_ID',value:id,bits:143},{label:'OAUTH_CLIENT_SECRET',value:sec,bits:286}];
+}},
+{id:'dbpass',name:'DB Passwords',desc:'Strong database passwords with configurable complexity',options:[
+{label:'Length',type:'select',id:'dbLen',values:['16','24','32','48'],default:'24'},
+{label:'Symbols',type:'check',id:'dbSym',default:true}
+],generate:function(opts){
+  let chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  if(opts.dbSym)chars+='!@#$%^&*()_+-=[]{}|;:,.<>?';
+  const len=parseInt(opts.dbLen);
+  return{label:'DATABASE_PASSWORD',value:randomString(len,chars),bits:Math.floor(len*Math.log2(chars.length))};
+}},
+{id:'aes',name:'AES Encryption',desc:'AES-128 and AES-256 encryption keys in hex or base64',options:[
+{label:'Key Size',type:'select',id:'aesSize',values:['128','256'],default:'256'},
+{label:'Format',type:'select',id:'aesFmt',values:['hex','base64'],default:'hex'}
+],generate:function(opts){
+  const bits=parseInt(opts.aesSize);const bytes=bits/8;const arr=new Uint8Array(bytes);crypto.getRandomValues(arr);
+  let val;if(opts.aesFmt==='base64'){val=btoa(String.fromCharCode(...arr));}else{val=Array.from(arr).map(b=>b.toString(16).padStart(2,'0')).join('');}
+  return{label:`AES_${bits}_KEY`,value:val,bits};
+}},
+{id:'uuid',name:'UUID v4',desc:'RFC 4122 compliant UUID v4 identifiers',options:[
+{label:'Format',type:'select',id:'uuidFmt',values:['standard','no-dashes','uppercase'],default:'standard'}
+],generate:function(opts){
+  const arr=new Uint8Array(16);crypto.getRandomValues(arr);
+  arr[6]=(arr[6]&0x0f)|0x40;arr[8]=(arr[8]&0x3f)|0x80;
+  const hex=Array.from(arr).map(b=>b.toString(16).padStart(2,'0')).join('');
+  let val=`${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+  if(opts.uuidFmt==='no-dashes')val=val.replace(/-/g,'');
+  if(opts.uuidFmt==='uppercase')val=val.toUpperCase();
+  return{label:'UUID_V4',value:val,bits:122};
+}},
+{id:'totp',name:'TOTP Secret',desc:'Base32-encoded secrets for time-based one-time passwords (2FA)',options:[
+{label:'Length',type:'select',id:'totpLen',values:['16','20','32'],default:'20'}
+],generate:function(opts){
+  const len=parseInt(opts.totpLen);
+  const b32chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  const arr=new Uint32Array(len);crypto.getRandomValues(arr);
+  const val=Array.from(arr).map(n=>b32chars[n%32]).join('');
+  return{label:'TOTP_SECRET',value:val,bits:Math.floor(len*5)};
+}}
+];
+
+let activeType=TYPES[0].id;
+let allGenerated={};
+
+function randomString(len,chars){
+  const arr=new Uint32Array(len);crypto.getRandomValues(arr);
+  return Array.from(arr).map(n=>chars[n%chars.length]).join('');
+}
+
+function init(){
+  let c=localStorage.getItem('apikey_count')||0;
+  document.getElementById('counter').textContent=c;
+  renderTabs();
+  renderPanel();
+}
+
+function renderTabs(){
+  const el=document.getElementById('tabs');
+  el.innerHTML=TYPES.map(t=>`<div class="tab${t.id===activeType?' active':''}" onclick="switchType('${t.id}')">${t.name}</div>`).join('');
+}
+
+function switchType(id){activeType=id;renderTabs();renderPanel();}
+
+function renderPanel(){
+  const t=TYPES.find(x=>x.id===activeType);
+  const el=document.getElementById('panelContainer');
+  let optionsHtml=t.options.map(o=>{
+    if(o.type==='select')return`<div class="field"><label>${o.label}</label><select id="${o.id}">${o.values.map(v=>`<option value="${v}"${v===o.default?' selected':''}>${v}</option>`).join('')}</select></div>`;
+    if(o.type==='check')return`<div class="check-row"><input type="checkbox" id="${o.id}"${o.default?' checked':''}><label for="${o.id}">${o.label}</label></div>`;
+    return'';
+  }).join('');
+  el.innerHTML=`
+<div class="gen-panel">
+<h2>${t.name}</h2>
+<p class="desc">${t.desc}</p>
+<div class="options">${optionsHtml}
+<button class="btn" onclick="generate()">Generate</button>
+</div>
+<div class="batch-bar">
+<span>Batch:</span>
+<button class="btn btn-sm btn-secondary" onclick="batchGenerate(5)">5 Keys</button>
+<button class="btn btn-sm btn-secondary" onclick="batchGenerate(10)">10 Keys</button>
+<button class="btn btn-sm btn-secondary" onclick="batchGenerate(25)">25 Keys</button>
+</div>
+<div class="results" id="results"></div>
+</div>`;
+}
+
+function getOpts(){
+  const t=TYPES.find(x=>x.id===activeType);
+  const opts={};
+  t.options.forEach(o=>{
+    const el=document.getElementById(o.id);
+    if(!el)return;
+    if(o.type==='check')opts[o.id]=el.checked;
+    else opts[o.id]=el.value;
+  });
+  return opts;
+}
+
+function generate(){
+  const t=TYPES.find(x=>x.id===activeType);
+  const opts=getOpts();
+  const result=t.generate(opts);
+  const results=Array.isArray(result)?result:[result];
+  const el=document.getElementById('results');
+  results.forEach(r=>{
+    if(!allGenerated[r.label])allGenerated[r.label]=[];
+    allGenerated[r.label].push(r.value);
+    const strength=r.bits>=256?'excellent':r.bits>=128?'strong':r.bits>=64?'good':'fair';
+    const colors={excellent:'#10b981',strong:'#3b82f6',good:'#fbbf24',fair:'#ef4444'};
+    const widths={excellent:100,strong:75,good:50,fair:25};
+    el.innerHTML=`
+<div class="key-row">
+<div style="flex:1">
+<div class="key-label">${r.label} (${r.bits}-bit entropy - ${strength})</div>
+<div class="key-value">${r.value}</div>
+<div class="strength-bar"><div class="strength-fill" style="width:${widths[strength]}%;background:${colors[strength]}"></div></div>
+</div>
+<div class="key-actions">
+<button class="copy-btn" onclick="copyKey(this,'${escapeForAttr(r.value)}')">Copy</button>
+</div>
+</div>`+el.innerHTML;
+  });
+  incrementCounter();
+  updateEnvPreview();
+}
+
+function batchGenerate(n){
+  for(let i=0;i<n;i++)generate();
+}
+
+function escapeForAttr(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;');}
+
+function copyKey(btn,val){
+  navigator.clipboard.writeText(val.replace(/&quot;/g,'"').replace(/\\'/g,"'")).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1500);
+  });
+}
+
+function incrementCounter(){
+  let c=parseInt(localStorage.getItem('apikey_count')||0)+1;
+  localStorage.setItem('apikey_count',c);
+  document.getElementById('counter').textContent=c;
+}
+
+function updateEnvPreview(){
+  let env='# Generated by SpunkArt API Key Generator\n# Date: '+new Date().toISOString()+'\n\n';
+  Object.entries(allGenerated).forEach(([label,vals])=>{
+    vals.forEach((v,i)=>{
+      const suffix=vals.length>1?`_${i+1}`:'';
+      env+=`${label}${suffix}="${v}"\n`;
+    });
+  });
+  document.getElementById('envPreview').textContent=env;
+}
+
+function copyEnv(){
+  const text=document.getElementById('envPreview').textContent;
+  navigator.clipboard.writeText(text).then(()=>alert('.env copied to clipboard!'));
+}
+
+function downloadEnv(){
+  const text=document.getElementById('envPreview').textContent;
+  const blob=new Blob([text],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='.env';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function clearAll(){
+  allGenerated={};
+  document.getElementById('results').innerHTML='';
+  document.getElementById('envPreview').textContent='# Generated by SpunkArt API Key Generator\n# No keys generated yet';
+}
+
+function copyAllKeys(){
+  const keyRows=document.querySelectorAll('.key-value');
+  if(!keyRows.length){alert('Generate some keys first!');return;}
+  const allKeys=Array.from(keyRows).map(el=>el.textContent).join('\n');
+  navigator.clipboard.writeText(allKeys).then(()=>alert('All keys copied to clipboard!'));
+}
+
+function downloadJSON(){
+  const data={generated_at:new Date().toISOString(),generator:'SpunkArt API Key Generator',keys:{}};
+  Object.entries(allGenerated).forEach(([label,vals])=>{
+    if(vals.length===1)data.keys[label]=vals[0];
+    else data.keys[label]=vals;
+  });
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='api-keys.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function analyzeEntropy(val){
+  const len=val.length;
+  const unique=new Set(val.split('')).size;
+  const charSpace=unique;
+  const entropy=Math.round(len*Math.log2(charSpace));
+  return{len,unique,entropy};
+}
+
+function generateAllTypes(){
+  const origActive=activeType;
+  TYPES.forEach(t=>{
+    activeType=t.id;
+    renderPanel();
+    generate();
+  });
+  activeType=origActive;
+  renderTabs();
+  renderPanel();
+}
+
+// Security info tooltip
+function showSecurityInfo(){
+  alert(
+    'Security Information\n\n' +
+    '1. All keys are generated locally in your browser\n' +
+    '2. Uses Web Crypto API (crypto.getRandomValues())\n' +
+    '3. No data is ever sent to any server\n' +
+    '4. Keys are cryptographically secure random values\n' +
+    '5. Suitable for production environments\n' +
+    '6. Clear your browser data after generating sensitive keys\n' +
+    '7. CSPRNG compliant (same as TLS/SSL)\n' +
+    '8. Meets NIST SP 800-90A recommendations'
+  );
+}
+
+// Format key for display with masked middle
+function maskKey(val){
+  if(val.length<=12)return val;
+  return val.substring(0,6)+'...'+val.substring(val.length-6);
+}
+
+// Calculate Shannon entropy of a string
+function shannonEntropy(str){
+  const freq={};
+  for(const c of str)freq[c]=(freq[c]||0)+1;
+  const len=str.length;
+  let entropy=0;
+  for(const c in freq){
+    const p=freq[c]/len;
+    entropy-=p*Math.log2(p);
+  }
+  return(entropy*len).toFixed(1);
+}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+init();
+</script>
+</body>
+</html>

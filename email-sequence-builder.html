@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Sequence Builder — Design Automated Email Sequences Free</title>
+<meta name="description" content="Free email sequence builder. Design welcome series, product launch, abandoned cart, and re-engagement sequences with visual timeline, templates, and variable placeholders. Export as HTML or markdown. No signup required.">
+<meta property="og:title" content="Email Sequence Builder — Design Automated Email Sequences Free">
+<meta property="og:description" content="Build email sequences with visual timeline, pre-loaded templates, variable placeholders. Export as HTML or markdown. Free forever.">
+<meta property="og:url" content="https://spunkart.com/email-sequence-builder">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Email Sequence Builder">
+<meta name="twitter:description" content="Design automated email sequences with templates and visual timeline. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/email-sequence-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Email Sequence Builder","description":"Design automated email sequences with visual timeline, pre-loaded templates, variable placeholders, and HTML/markdown export.","url":"https://spunkart.com/email-sequence-builder","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:1000px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field select,.field textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#ff5f1f}
+.field textarea{resize:vertical;min-height:100px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
+.btn:hover{background:#e8540f;transform:translateY(-1px)}
+.btn-sm{padding:10px 20px;font-size:0.85rem;width:auto;border-radius:8px}
+.btn-outline{background:transparent;border:2px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;background:transparent}
+.btn-green{background:#10b981}.btn-green:hover{background:#0ea572}
+.btn-red{background:#ef4444;font-size:0.8rem;padding:6px 12px;width:auto}.btn-red:hover{background:#dc2626}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+.chip{padding:8px 16px;border-radius:20px;border:2px solid #333;background:#1a1a1a;color:#ccc;cursor:pointer;font-size:0.85rem;transition:all .2s}
+.chip:hover{border-color:#ff5f1f;color:#ff5f1f}
+.chip.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700}
+.timeline{position:relative;padding-left:40px;margin:1.5rem 0}
+.timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:#222}
+.tl-item{position:relative;margin-bottom:1.5rem;cursor:pointer}
+.tl-item::before{content:'';position:absolute;left:-28px;top:8px;width:12px;height:12px;border-radius:50%;background:#ff5f1f;border:2px solid #0a0a0a;z-index:1}
+.tl-item.active::before{background:#10b981;box-shadow:0 0 10px rgba(16,185,129,0.4)}
+.tl-day{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.tl-card{background:#141414;border:1px solid #222;border-radius:12px;padding:1rem;transition:all .2s}
+.tl-card:hover{border-color:#333}
+.tl-card.selected{border-color:#ff5f1f;box-shadow:0 0 15px rgba(255,95,31,0.1)}
+.tl-subject{font-weight:700;font-size:0.95rem;margin-bottom:4px}
+.tl-preview{font-size:0.8rem;color:#888;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tl-actions{display:flex;gap:6px;margin-top:8px}
+.tl-actions button{background:#222;border:1px solid #333;color:#ccc;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:0.7rem;transition:all .2s}
+.tl-actions button:hover{border-color:#ff5f1f;color:#ff5f1f}
+.email-preview{background:#1a1a1a;border:1px solid #222;border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.ep-header{background:#222;padding:16px;border-bottom:1px solid #333}
+.ep-header .ep-from{font-size:0.75rem;color:#888}
+.ep-header .ep-subject{font-size:1.1rem;font-weight:700;margin-top:4px}
+.ep-header .ep-to{font-size:0.75rem;color:#555;margin-top:2px}
+.ep-body{padding:20px;font-size:0.9rem;line-height:1.8;color:#ccc}
+.ep-body .var{color:#ff5f1f;font-weight:600;background:#1f1f1f;padding:1px 4px;border-radius:3px}
+.var-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
+.var-tag{background:#1a1a1a;border:1px solid #333;padding:4px 10px;border-radius:6px;font-size:0.8rem;color:#ff5f1f;cursor:pointer;font-family:'Courier New',monospace}
+.var-tag:hover{background:#ff5f1f;color:#fff}
+.actions-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.seq-name{font-size:1.2rem;font-weight:700;color:#ff5f1f;margin-bottom:0.5rem}
+.seq-meta{font-size:0.8rem;color:#888;margin-bottom:1rem}
+.cta-bar{text-align:center;padding:1.5rem;margin-top:1rem}
+.cta-bar a{color:#ff5f1f;font-weight:700;font-size:1rem}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.8rem;font-weight:800;color:#e8e8e8;opacity:0.1;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{background:#111;border-top:1px solid #222;padding:1.5rem;text-align:center;font-size:0.75rem;color:#555}
+@media(max-width:768px){.row2,.row3{grid-template-columns:1fr}h1{font-size:1.5rem}.card{padding:1.2rem}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SPUNKART.COM</div><div class="links"><a href="/">Home</a><a href="/store">Free Tools</a></div></nav>
+<main><div class="container">
+<h1>Email Sequence Builder</h1>
+<p class="sub">Design automated email sequences with templates, visual timeline & export.</p>
+<div class="use-badge">Used <span id="useCount">0</span> times</div>
+
+<div class="card">
+<h2>Load a Template</h2>
+<div class="chips" id="templateChips">
+<div class="chip" data-tpl="welcome">Welcome Sequence (7)</div>
+<div class="chip" data-tpl="launch">Product Launch (5)</div>
+<div class="chip" data-tpl="cart">Abandoned Cart (3)</div>
+<div class="chip" data-tpl="reengage">Re-engagement (4)</div>
+<div class="chip" data-tpl="tool-announce">Tool Announcement (3)</div>
+</div>
+<p style="font-size:0.75rem;color:#555">Or build your own sequence from scratch below.</p>
+</div>
+
+<div class="card">
+<h2>Sequence Info</h2>
+<div class="row2">
+<div class="field"><label>Sequence Name</label><input id="seqName" placeholder="My Email Sequence"></div>
+<div class="field"><label>From Name</label><input id="seqFrom" placeholder="Your Company" value="SpunkArt"></div>
+</div>
+<div class="field"><label>Variable Placeholders (click to insert into body)</label>
+<div class="var-list">
+<span class="var-tag" onclick="insertVar('{{name}}')">{{name}}</span>
+<span class="var-tag" onclick="insertVar('{{product}}')">{{product}}</span>
+<span class="var-tag" onclick="insertVar('{{link}}')">{{link}}</span>
+<span class="var-tag" onclick="insertVar('{{company}}')">{{company}}</span>
+<span class="var-tag" onclick="insertVar('{{unsubscribe}}')">{{unsubscribe}}</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Add Email to Sequence</h2>
+<div class="row3">
+<div class="field"><label>Send Delay (Day)</label><input type="number" id="emailDay" placeholder="0" min="0" value="0"></div>
+<div class="field"><label>Subject Line</label><input id="emailSubject" placeholder="Welcome to {{product}}!"></div>
+<div class="field"><label>Preview Text</label><input id="emailPreview" placeholder="Short preview for inbox..."></div>
+</div>
+<div class="field"><label>Email Body</label><textarea id="emailBody" rows="6" placeholder="Hi {{name}},
+
+Welcome to {{product}}! We're thrilled to have you.
+
+Here's what you can do next:
+- Explore our features at {{link}}
+- Join the community
+
+Best,
+The {{company}} Team"></textarea></div>
+<button class="btn" onclick="addEmail()">Add Email to Sequence</button>
+</div>
+
+<div class="card" id="sequenceCard" style="display:none">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:1rem">
+<div>
+<div class="seq-name" id="seqNameDisplay">My Sequence</div>
+<div class="seq-meta" id="seqMeta">0 emails over 0 days</div>
+</div>
+<div class="actions-bar" style="margin:0">
+<button class="btn btn-sm btn-outline" onclick="exportMarkdown()">Export Markdown</button>
+<button class="btn btn-sm btn-outline" onclick="exportHTML()">Export HTML</button>
+<button class="btn btn-sm btn-green" onclick="saveSequence()">Save</button>
+</div>
+</div>
+
+<h2>Visual Timeline</h2>
+<div class="timeline" id="timeline"></div>
+</div>
+
+<div class="card" id="previewCard" style="display:none">
+<h2>Email Preview</h2>
+<div class="email-preview" id="emailPreviewBox">
+<div class="ep-header">
+<div class="ep-from">From: <span id="epFrom">SpunkArt</span></div>
+<div class="ep-subject" id="epSubject">Subject Line</div>
+<div class="ep-to">To: {{name}} &lt;subscriber@example.com&gt;</div>
+</div>
+<div class="ep-body" id="epBody"></div>
+</div>
+</div>
+
+<div class="cta-bar"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div></main>
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2025 SpunkArt.com &mdash; All rights reserved.</footer>
+
+<script>
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+let useCount=parseInt(localStorage.getItem('spk_email_seq_uses')||'0');
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+
+let emails=JSON.parse(localStorage.getItem('spk_email_seq')||'[]');
+let selectedIdx=-1;
+
+function save(){localStorage.setItem('spk_email_seq',JSON.stringify(emails));}
+
+const templates={
+welcome:[
+{day:0,subject:'Welcome to {{product}}, {{name}}!',preview:'Your journey starts now',body:'Hi {{name}},\n\nWelcome to {{product}}! We\'re so glad you\'re here.\n\nHere\'s what you can expect:\n- Daily tips and tricks\n- Exclusive resources\n- Direct access to our team\n\nGet started: {{link}}\n\nCheers,\nThe {{company}} Team'},
+{day:1,subject:'Quick Start Guide for {{product}}',preview:'Get up and running in 5 minutes',body:'Hi {{name}},\n\nReady to dive in? Here\'s your quick start guide:\n\n1. Set up your profile\n2. Explore the dashboard\n3. Try your first project\n4. Invite your team\n\nNeed help? Reply to this email anytime.\n\n{{link}}\n\nBest,\n{{company}}'},
+{day:3,subject:'3 Tips to Get the Most from {{product}}',preview:'Power user tips inside',body:'Hi {{name}},\n\nYou\'ve been using {{product}} for a few days now. Here are 3 tips to level up:\n\nTip 1: Use keyboard shortcuts to save time\nTip 2: Set up automations for repetitive tasks\nTip 3: Explore our template library\n\nSee all tips: {{link}}\n\n{{company}} Team'},
+{day:5,subject:'Have Questions? We\'re Here to Help',preview:'Your success is our priority',body:'Hi {{name}},\n\nHow\'s everything going with {{product}}?\n\nWe want to make sure you\'re getting the most out of it. Here are some resources:\n\n- Help Center: {{link}}/help\n- Community Forum: {{link}}/community\n- Video Tutorials: {{link}}/tutorials\n\nJust reply to this email if you need anything.\n\nBest,\n{{company}}'},
+{day:7,subject:'You\'re Doing Great, {{name}}!',preview:'A quick check-in',body:'Hi {{name}},\n\nOne week in! Here\'s what you\'ve accomplished:\n\n- Account setup: Complete\n- First steps: Done\n- Ready for advanced features: YES\n\nUnlock more at {{link}}/pro\n\nKeep going!\n{{company}} Team'},
+{day:10,subject:'Exclusive: Unlock Advanced Features',preview:'Take it to the next level',body:'Hi {{name}},\n\nYou\'ve been crushing it with {{product}}. Ready for the next level?\n\nAdvanced features include:\n- Custom integrations\n- Advanced analytics\n- Priority support\n- Team collaboration\n\nExplore now: {{link}}/advanced\n\n{{company}}'},
+{day:14,subject:'Your {{product}} Journey: 2 Week Recap',preview:'Look how far you\'ve come',body:'Hi {{name}},\n\nTwo weeks with {{product}} — let\'s celebrate!\n\nHere\'s your recap:\n- Features explored\n- Time saved\n- Progress made\n\nWhat\'s next? Set your goals for the month:\n{{link}}/goals\n\nWe\'re rooting for you!\n{{company}} Team'}
+],
+launch:[
+{day:0,subject:'It\'s Here: {{product}} is LIVE!',preview:'The wait is over',body:'Hi {{name}},\n\nThe day is finally here — {{product}} is officially live!\n\nWhat\'s inside:\n- Feature 1: Save hours every week\n- Feature 2: Beautiful, intuitive design\n- Feature 3: Works with your favorite tools\n\nBe one of the first to try it:\n{{link}}\n\n{{company}} Team'},
+{day:1,subject:'Early Bird Bonus for {{product}}',preview:'Limited time offer inside',body:'Hi {{name}},\n\nAs a thank you for being an early supporter, here\'s an exclusive bonus:\n\n- 30% off your first year\n- Free onboarding call\n- Priority feature requests\n\nClaim your bonus: {{link}}/early-bird\n\nThis offer expires in 48 hours.\n\n{{company}}'},
+{day:3,subject:'What People Are Saying About {{product}}',preview:'Real feedback from real users',body:'Hi {{name}},\n\nSince launch, the response has been incredible:\n\n"Game changer for our workflow" — Sarah M.\n"Finally, a tool that just works" — David K.\n"Best in class, hands down" — Lisa T.\n\nJoin them: {{link}}\n\nThanks for being part of this journey.\n{{company}} Team'},
+{day:5,subject:'FAQ: Everything About {{product}}',preview:'Your questions answered',body:'Hi {{name}},\n\nGot questions about {{product}}? Here are the most common ones:\n\nQ: Is there a free plan?\nA: Yes! Start free at {{link}}\n\nQ: Can I import my data?\nA: Absolutely. One-click import.\n\nQ: Is my data secure?\nA: Bank-level encryption. Always.\n\nMore FAQs: {{link}}/faq\n\n{{company}}'},
+{day:7,subject:'Last Chance: Launch Pricing Ends Tomorrow',preview:'Don\'t miss out on launch pricing',body:'Hi {{name}},\n\nJust a heads up — our launch pricing for {{product}} ends tomorrow.\n\nAfter that, prices go up by 40%.\n\nLock in your rate now: {{link}}/pricing\n\nThank you for being part of our launch.\n\n{{company}} Team'}
+],
+cart:[
+{day:0,subject:'You Left Something Behind, {{name}}',preview:'Your cart is waiting',body:'Hi {{name}},\n\nLooks like you left {{product}} in your cart.\n\nNo worries — it happens! Your items are saved and ready when you are.\n\nComplete your order: {{link}}/cart\n\nNeed help? Just reply to this email.\n\n{{company}} Team'},
+{day:1,subject:'Still Thinking About {{product}}?',preview:'Here\'s why others love it',body:'Hi {{name}},\n\nStill on the fence about {{product}}? Here\'s what our customers say:\n\n- 4.9/5 average rating\n- 10,000+ happy users\n- 30-day money-back guarantee\n\nYour cart is still saved: {{link}}/cart\n\nWe\'re here if you have questions.\n{{company}}'},
+{day:3,subject:'Special Offer: 15% Off {{product}}',preview:'A little incentive to complete your order',body:'Hi {{name}},\n\nWe really think you\'ll love {{product}}, so here\'s a little something:\n\n15% OFF your order with code: COMEBACK15\n\nApply it here: {{link}}/cart?code=COMEBACK15\n\nThis code expires in 24 hours.\n\nHappy shopping!\n{{company}} Team'}
+],
+reengage:[
+{day:0,subject:'We Miss You, {{name}}!',preview:'It\'s been a while',body:'Hi {{name}},\n\nIt\'s been a while since we\'ve seen you at {{product}}. We miss you!\n\nHere\'s what\'s new since your last visit:\n- New features added\n- Performance improvements\n- Fresh templates\n\nCome back and check it out: {{link}}\n\n{{company}} Team'},
+{day:3,subject:'What\'s New at {{product}}',preview:'A lot has changed',body:'Hi {{name}},\n\nWe\'ve been busy making {{product}} even better:\n\n- Redesigned dashboard\n- 2x faster performance\n- New integrations\n- Mobile app launch\n\nSee what\'s new: {{link}}/changelog\n\nWe\'d love to have you back.\n{{company}}'},
+{day:7,subject:'A Gift for You, {{name}}',preview:'Because we value you',body:'Hi {{name}},\n\nAs a valued member, here\'s a special gift:\n\n1 month of Premium — completely free.\n\nNo strings attached. Just our way of saying thanks.\n\nActivate your gift: {{link}}/gift\n\nWelcome back,\n{{company}} Team'},
+{day:14,subject:'Last Email: Stay or Unsubscribe?',preview:'We respect your inbox',body:'Hi {{name}},\n\nWe respect your inbox. If you\'re no longer interested in {{product}}, no hard feelings.\n\nStay subscribed: {{link}}/stay\nUnsubscribe: {{unsubscribe}}\n\nIf there\'s anything we can improve, just reply and let us know.\n\nAll the best,\n{{company}} Team'}
+],
+'tool-announce':[
+{day:0,subject:'New Free Tool: {{product}} is Live!',preview:'Check out our latest creation',body:'Hi {{name}},\n\nWe just launched a brand new free tool: {{product}}!\n\nWhat it does:\n- Saves you hours of manual work\n- Beautiful, intuitive interface\n- Works on any device\n- 100% free, no signup needed\n\nTry it now: {{link}}\n\nAs always, completely free.\n{{company}} Team'},
+{day:2,subject:'5 Ways to Use {{product}}',preview:'Get the most out of our new tool',body:'Hi {{name}},\n\nHere are 5 ways to use {{product}} in your workflow:\n\n1. Daily productivity boost\n2. Client presentations\n3. Team collaboration\n4. Data analysis\n5. Quick decision making\n\nStart using it: {{link}}\n\nGot a creative use case? Reply and tell us!\n{{company}}'},
+{day:5,subject:'{{product}} + 80 More Free Tools',preview:'Your complete free toolkit',body:'Hi {{name}},\n\nLoving {{product}}? Wait until you see our full collection:\n\n80+ free tools for creators, developers, and marketers.\n\nBrowse all tools: {{link}}/store\n\nAll free. All yours. No signup required.\n\nHappy building!\n{{company}} Team'}
+]
+};
+
+document.querySelectorAll('#templateChips .chip').forEach(chip=>{
+chip.addEventListener('click',()=>{
+document.querySelectorAll('#templateChips .chip').forEach(c=>c.classList.remove('active'));
+chip.classList.add('active');
+const tpl=chip.dataset.tpl;
+if(templates[tpl]){
+if(emails.length>0&&!confirm('This will replace your current sequence. Continue?'))return;
+emails=JSON.parse(JSON.stringify(templates[tpl]));
+document.getElementById('seqName').value=chip.textContent.split('(')[0].trim();
+save();renderTimeline();
+useCount++;localStorage.setItem('spk_email_seq_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+});
+});
+
+function insertVar(v){
+const ta=document.getElementById('emailBody');
+const start=ta.selectionStart;
+ta.value=ta.value.substring(0,start)+v+ta.value.substring(ta.selectionEnd);
+ta.focus();
+ta.setSelectionRange(start+v.length,start+v.length);
+}
+
+function addEmail(){
+const day=parseInt(document.getElementById('emailDay').value)||0;
+const subject=document.getElementById('emailSubject').value.trim();
+const preview=document.getElementById('emailPreview').value.trim();
+const body=document.getElementById('emailBody').value.trim();
+if(!subject){alert('Enter a subject line');return;}
+if(!body){alert('Enter email body');return;}
+
+emails.push({day,subject,preview,body});
+emails.sort((a,b)=>a.day-b.day);
+save();renderTimeline();
+
+['emailSubject','emailPreview'].forEach(id=>document.getElementById(id).value='');
+document.getElementById('emailBody').value='';
+document.getElementById('emailDay').value=emails.length>0?emails[emails.length-1].day+2:0;
+
+useCount++;localStorage.setItem('spk_email_seq_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+
+function deleteEmail(idx){
+if(!confirm('Delete this email?'))return;
+emails.splice(idx,1);
+save();renderTimeline();
+if(selectedIdx>=emails.length)selectedIdx=emails.length-1;
+if(selectedIdx>=0)previewEmail(selectedIdx);
+else document.getElementById('previewCard').style.display='none';
+}
+
+function moveEmail(idx,dir){
+const newIdx=idx+dir;
+if(newIdx<0||newIdx>=emails.length)return;
+[emails[idx],emails[newIdx]]=[emails[newIdx],emails[idx]];
+save();renderTimeline();
+}
+
+function previewEmail(idx){
+selectedIdx=idx;
+const e=emails[idx];
+document.getElementById('epFrom').textContent=document.getElementById('seqFrom').value||'Your Company';
+document.getElementById('epSubject').textContent=e.subject;
+const bodyHtml=e.body.replace(/\n/g,'<br>').replace(/\{\{(\w+)\}\}/g,'<span class="var">{{$1}}</span>');
+document.getElementById('epBody').innerHTML=bodyHtml;
+document.getElementById('previewCard').style.display='block';
+document.querySelectorAll('.tl-card').forEach((c,i)=>{c.classList.toggle('selected',i===idx);});
+document.getElementById('previewCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function renderTimeline(){
+const card=document.getElementById('sequenceCard');
+if(emails.length===0){card.style.display='none';document.getElementById('previewCard').style.display='none';return;}
+card.style.display='block';
+
+const seqName=document.getElementById('seqName').value||'My Sequence';
+document.getElementById('seqNameDisplay').textContent=seqName;
+const maxDay=emails.length>0?Math.max(...emails.map(e=>e.day)):0;
+document.getElementById('seqMeta').textContent=`${emails.length} email${emails.length!==1?'s':''} over ${maxDay} days`;
+
+const tl=document.getElementById('timeline');
+tl.innerHTML=emails.map((e,i)=>`
+<div class="tl-item${i===selectedIdx?' active':''}" onclick="previewEmail(${i})">
+<div class="tl-day">Day ${e.day}</div>
+<div class="tl-card${i===selectedIdx?' selected':''}">
+<div class="tl-subject">${escHtml(e.subject)}</div>
+<div class="tl-preview">${escHtml(e.preview||e.body.substring(0,80))}</div>
+<div class="tl-actions">
+<button onclick="event.stopPropagation();previewEmail(${i})">Preview</button>
+<button onclick="event.stopPropagation();editEmail(${i})">Edit</button>
+<button onclick="event.stopPropagation();moveEmail(${i},-1)">Up</button>
+<button onclick="event.stopPropagation();moveEmail(${i},1)">Down</button>
+<button onclick="event.stopPropagation();deleteEmail(${i})" style="color:#ef4444">Delete</button>
+</div>
+</div>
+</div>`).join('');
+}
+
+function editEmail(idx){
+const e=emails[idx];
+document.getElementById('emailDay').value=e.day;
+document.getElementById('emailSubject').value=e.subject;
+document.getElementById('emailPreview').value=e.preview||'';
+document.getElementById('emailBody').value=e.body;
+emails.splice(idx,1);
+save();renderTimeline();
+window.scrollTo({top:document.querySelector('#emailDay').closest('.card').offsetTop-20,behavior:'smooth'});
+}
+
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function exportMarkdown(){
+const seqName=document.getElementById('seqName').value||'My Sequence';
+let md=`# ${seqName}\n\n`;
+md+=`**Emails:** ${emails.length} | **Duration:** ${emails.length>0?Math.max(...emails.map(e=>e.day)):0} days\n\n---\n\n`;
+emails.forEach((e,i)=>{
+md+=`## Email ${i+1} — Day ${e.day}\n\n`;
+md+=`**Subject:** ${e.subject}\n\n`;
+if(e.preview)md+=`**Preview:** ${e.preview}\n\n`;
+md+=`${e.body}\n\n---\n\n`;
+});
+md+=`*Generated by SpunkArt.com Email Sequence Builder*\n`;
+const blob=new Blob([md],{type:'text/markdown'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=seqName.replace(/\s+/g,'-').toLowerCase()+'.md';a.click();
+}
+
+function exportHTML(){
+const seqName=document.getElementById('seqName').value||'My Sequence';
+const from=document.getElementById('seqFrom').value||'Your Company';
+let emailsHtml=emails.map((e,i)=>{
+const bodyHtml=e.body.replace(/\n/g,'<br>').replace(/\{\{(\w+)\}\}/g,'<span style="color:#ff5f1f;font-weight:600">{{$1}}</span>');
+return `<div style="background:#141414;border:1px solid #222;border-radius:12px;overflow:hidden;margin-bottom:1.5rem">
+<div style="background:#222;padding:16px;border-bottom:1px solid #333">
+<div style="font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Day ${e.day} — Email ${i+1}</div>
+<div style="font-size:0.75rem;color:#888">From: ${from}</div>
+<div style="font-size:1.1rem;font-weight:700;margin-top:4px">${escHtml(e.subject)}</div>
+</div><div style="padding:20px;font-size:0.9rem;line-height:1.8;color:#ccc">${bodyHtml}</div></div>`;
+}).join('');
+
+const full=`<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${seqName}</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8e8e8;padding:2rem;line-height:1.6;max-width:700px;margin:0 auto}</style></head><body><h1 style="font-size:1.5rem;color:#ff5f1f;margin-bottom:0.5rem">${seqName}</h1><p style="color:#888;margin-bottom:2rem">${emails.length} emails over ${emails.length>0?Math.max(...emails.map(e=>e.day)):0} days</p>${emailsHtml}<p style="text-align:center;margin-top:2rem;color:#555;font-size:0.75rem">Generated by SpunkArt.com Email Sequence Builder</p></body></html>`;
+const blob=new Blob([full],{type:'text/html'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=seqName.replace(/\s+/g,'-').toLowerCase()+'.html';a.click();
+}
+
+function saveSequence(){
+save();
+const btn=document.querySelector('.btn-green');
+const orig=btn.textContent;
+btn.textContent='Saved!';
+setTimeout(()=>{btn.textContent=orig;},1500);
+}
+
+if(emails.length>0)renderTimeline();
+</script>
+</body>
+</html>

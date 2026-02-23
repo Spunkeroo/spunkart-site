@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Affiliate Link Manager & Tracker — Track Clicks, Revenue & UTM Links Free</title>
+<meta name="description" content="Free affiliate link manager and tracker. Add links, auto-generate UTM tags, track clicks, estimate revenue, and export as CSV or markdown. No signup required.">
+<meta property="og:title" content="Affiliate Link Manager & Tracker — Free Click & Revenue Tracking">
+<meta property="og:description" content="Track affiliate links, clicks, and estimated revenue. Auto-generate UTM tags. Export as CSV or markdown. Free forever.">
+<meta property="og:url" content="https://spunkart.com/affiliate-tracker">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Affiliate Link Manager & Tracker">
+<meta name="twitter:description" content="Track affiliate links, clicks, and revenue estimates. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/affiliate-tracker">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Affiliate Link Manager & Tracker","description":"Manage affiliate links with UTM tracking, click counting, revenue estimation, and CSV/markdown export.","url":"https://spunkart.com/affiliate-tracker","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:1000px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field select,.field textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#ff5f1f}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.row4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;width:100%}
+.btn:hover{background:#e8540f;transform:translateY(-1px)}
+.btn-sm{padding:10px 20px;font-size:0.85rem;width:auto;border-radius:8px}
+.btn-outline{background:transparent;border:2px solid #333;color:#ccc}
+.btn-outline:hover{border-color:#ff5f1f;color:#ff5f1f;background:transparent}
+.btn-green{background:#10b981}.btn-green:hover{background:#0ea572}
+.btn-red{background:#ef4444}.btn-red:hover{background:#dc2626}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat{background:#141414;border:1px solid #222;border-radius:12px;padding:1.2rem;text-align:center}
+.stat .stat-label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.stat .stat-val{font-size:1.6rem;font-weight:800;font-family:'Courier New',monospace}
+.stat .stat-val.orange{color:#ff5f1f}
+.stat .stat-val.green{color:#10b981}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.filter-chip{padding:6px 14px;border-radius:20px;border:1px solid #333;background:#1a1a1a;color:#ccc;cursor:pointer;font-size:0.8rem;transition:all .2s}
+.filter-chip:hover{border-color:#ff5f1f}
+.filter-chip.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.link-table{width:100%;border-collapse:collapse}
+.link-table th,.link-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #1a1a1a;font-size:0.85rem}
+.link-table th{color:#888;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;position:sticky;top:0;background:#111}
+.link-table td{color:#ccc}
+.link-table .link-name{color:#ff5f1f;font-weight:600}
+.link-actions{display:flex;gap:4px}
+.link-actions button{background:#222;border:1px solid #333;color:#ccc;padding:4px 10px;border-radius:4px;cursor:pointer;font-size:0.75rem;transition:all .2s}
+.link-actions button:hover{border-color:#ff5f1f;color:#ff5f1f}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:600}
+.badge-hosting{background:#10b981;color:#fff}.badge-tools{background:#6366f1;color:#fff}.badge-courses{background:#f59e0b;color:#fff}
+.badge-saas{background:#ff5f1f;color:#fff}.badge-ai{background:#ec4899;color:#fff}.badge-domains{background:#8b5cf6;color:#fff}
+.actions-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem}
+.utm-preview{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:10px;font-family:'Courier New',monospace;font-size:0.8rem;color:#10b981;word-break:break-all;margin-top:8px}
+.import-area{margin-top:1rem}
+.import-area textarea{min-height:100px;font-family:'Courier New',monospace;font-size:0.85rem}
+.cta-bar{text-align:center;padding:1.5rem;margin-top:1rem}
+.cta-bar a{color:#ff5f1f;font-weight:700;font-size:1rem}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.8rem;font-weight:800;color:#e8e8e8;opacity:0.1;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{background:#111;border-top:1px solid #222;padding:1.5rem;text-align:center;font-size:0.75rem;color:#555}
+.modal-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:1000}
+.modal-bg.show{display:flex}
+.modal{background:#111;border:1px solid #333;border-radius:16px;padding:2rem;max-width:500px;width:90%;max-height:80vh;overflow-y:auto}
+.modal h2{margin-bottom:1rem}
+@media(max-width:768px){.row2,.row3,.row4,.stats-row{grid-template-columns:1fr}h1{font-size:1.5rem}.card{padding:1.2rem}.link-table{font-size:0.75rem}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SPUNKART.COM</div><div class="links"><a href="/">Home</a><a href="/store">Free Tools</a></div></nav>
+<main><div class="container">
+<h1>Affiliate Link Manager & Tracker</h1>
+<p class="sub">Track affiliate links, clicks, and estimated revenue. All data stored locally.</p>
+<div class="use-badge">Used <span id="useCount">0</span> times</div>
+
+<div class="stats-row" id="statsRow">
+<div class="stat"><div class="stat-label">Total Links</div><div class="stat-val orange" id="statLinks">0</div></div>
+<div class="stat"><div class="stat-label">Total Clicks</div><div class="stat-val orange" id="statClicks">0</div></div>
+<div class="stat"><div class="stat-label">Est. Revenue</div><div class="stat-val green" id="statRevenue">$0</div></div>
+<div class="stat"><div class="stat-label">Avg Commission</div><div class="stat-val green" id="statAvgComm">0%</div></div>
+</div>
+
+<div class="card">
+<h2>Add Affiliate Link</h2>
+<div class="row2">
+<div class="field"><label>Link Name</label><input id="linkName" placeholder="e.g. Cloudflare Hosting"></div>
+<div class="field"><label>Affiliate URL</label><input id="linkUrl" placeholder="https://partner.example.com/ref=abc"></div>
+</div>
+<div class="row4">
+<div class="field"><label>Program</label><input id="linkProgram" placeholder="e.g. Impact, CJ, Direct"></div>
+<div class="field"><label>Commission %</label><input type="number" id="linkComm" placeholder="30" step="0.1"></div>
+<div class="field"><label>Category</label>
+<select id="linkCat"><option value="hosting">Hosting</option><option value="tools">Tools</option><option value="courses">Courses</option><option value="saas">SaaS</option><option value="ai">AI</option><option value="domains">Domains</option></select>
+</div>
+<div class="field"><label>Est. Conversion %</label><input type="number" id="linkConvRate" placeholder="2" step="0.1" value="2"></div>
+</div>
+<div class="row2">
+<div class="field"><label>UTM Source</label><input id="utmSource" placeholder="spunkart" value="spunkart"></div>
+<div class="field"><label>UTM Medium</label><input id="utmMedium" placeholder="affiliate" value="affiliate"></div>
+</div>
+<div class="utm-preview" id="utmPreview">UTM-tagged URL will appear here...</div>
+<br>
+<button class="btn" onclick="addLink()">Add Link</button>
+</div>
+
+<div class="card">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:1rem">
+<h2 style="margin:0">Your Links</h2>
+<div class="actions-bar" style="margin:0">
+<button class="btn btn-sm btn-outline" onclick="exportCSV()">Export CSV</button>
+<button class="btn btn-sm btn-outline" onclick="exportMarkdown()">Export Markdown</button>
+<button class="btn btn-sm btn-outline" onclick="showImport()">Import CSV</button>
+</div>
+</div>
+<div class="filter-bar" id="filterBar">
+<div class="filter-chip active" data-cat="all" onclick="filterLinks('all',this)">All</div>
+<div class="filter-chip" data-cat="hosting" onclick="filterLinks('hosting',this)">Hosting</div>
+<div class="filter-chip" data-cat="tools" onclick="filterLinks('tools',this)">Tools</div>
+<div class="filter-chip" data-cat="courses" onclick="filterLinks('courses',this)">Courses</div>
+<div class="filter-chip" data-cat="saas" onclick="filterLinks('saas',this)">SaaS</div>
+<div class="filter-chip" data-cat="ai" onclick="filterLinks('ai',this)">AI</div>
+<div class="filter-chip" data-cat="domains" onclick="filterLinks('domains',this)">Domains</div>
+</div>
+<div style="overflow-x:auto">
+<table class="link-table">
+<thead><tr><th>Name</th><th>Category</th><th>Program</th><th>Comm.</th><th>Clicks</th><th>Est. Rev.</th><th>Actions</th></tr></thead>
+<tbody id="linksBody"></tbody>
+</table>
+</div>
+</div>
+
+<div class="cta-bar"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+</div></main>
+
+<div class="modal-bg" id="importModal">
+<div class="modal">
+<h2>Import CSV</h2>
+<p style="font-size:0.85rem;color:#888;margin-bottom:1rem">Format: name,url,program,commission,category,convRate</p>
+<div class="field"><textarea id="importData" rows="6" placeholder="Cloudflare,https://cf.com/ref=abc,Impact,30,hosting,2
+Notion,https://notion.com/ref=xyz,Direct,20,saas,3"></textarea></div>
+<div style="display:flex;gap:8px">
+<button class="btn btn-sm btn-green" onclick="importCSV()">Import</button>
+<button class="btn btn-sm btn-outline" onclick="hideImport()">Cancel</button>
+</div>
+</div>
+</div>
+
+<div class="watermark">SPUNKART.COM</div>
+<footer>&copy; 2025 SpunkArt.com &mdash; All rights reserved.</footer>
+
+<script>
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+
+let useCount=parseInt(localStorage.getItem('spk_aff_tracker_uses')||'0');
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+
+let links=JSON.parse(localStorage.getItem('spk_aff_links')||'[]');
+let currentFilter='all';
+
+function saveLinks(){localStorage.setItem('spk_aff_links',JSON.stringify(links));}
+
+function generateUTM(){
+const url=document.getElementById('linkUrl').value.trim();
+const src=document.getElementById('utmSource').value.trim();
+const med=document.getElementById('utmMedium').value.trim();
+const name=document.getElementById('linkName').value.trim().replace(/\s+/g,'-').toLowerCase();
+if(!url){document.getElementById('utmPreview').textContent='Enter a URL to see UTM preview...';return;}
+const sep=url.includes('?')?'&':'?';
+const tagged=`${url}${sep}utm_source=${encodeURIComponent(src)}&utm_medium=${encodeURIComponent(med)}&utm_campaign=${encodeURIComponent(name)}`;
+document.getElementById('utmPreview').textContent=tagged;
+}
+['linkUrl','utmSource','utmMedium','linkName'].forEach(id=>document.getElementById(id).addEventListener('input',generateUTM));
+
+function addLink(){
+const name=document.getElementById('linkName').value.trim();
+const url=document.getElementById('linkUrl').value.trim();
+const program=document.getElementById('linkProgram').value.trim();
+const comm=parseFloat(document.getElementById('linkComm').value)||0;
+const cat=document.getElementById('linkCat').value;
+const convRate=parseFloat(document.getElementById('linkConvRate').value)||2;
+const src=document.getElementById('utmSource').value.trim();
+const med=document.getElementById('utmMedium').value.trim();
+if(!name||!url){alert('Please enter a name and URL');return;}
+
+const sep=url.includes('?')?'&':'?';
+const utmUrl=`${url}${sep}utm_source=${encodeURIComponent(src)}&utm_medium=${encodeURIComponent(med)}&utm_campaign=${encodeURIComponent(name.replace(/\s+/g,'-').toLowerCase())}`;
+
+links.push({id:Date.now(),name,url,utmUrl,program,commission:comm,category:cat,convRate,clicks:0,created:new Date().toISOString().split('T')[0]});
+saveLinks();renderLinks();updateStats();
+
+['linkName','linkUrl','linkProgram','linkComm'].forEach(id=>document.getElementById(id).value='');
+document.getElementById('utmPreview').textContent='UTM-tagged URL will appear here...';
+
+useCount++;localStorage.setItem('spk_aff_tracker_uses',useCount);
+document.getElementById('useCount').textContent=useCount.toLocaleString();
+}
+
+function simulateClick(id){
+const link=links.find(l=>l.id===id);
+if(link){link.clicks++;saveLinks();renderLinks();updateStats();}
+}
+
+function deleteLink(id){
+if(!confirm('Delete this link?'))return;
+links=links.filter(l=>l.id!==id);
+saveLinks();renderLinks();updateStats();
+}
+
+function copyUTM(id){
+const link=links.find(l=>l.id===id);
+if(link){navigator.clipboard.writeText(link.utmUrl);
+const btn=document.querySelector(`[data-copy="${id}"]`);
+if(btn){btn.textContent='Copied!';setTimeout(()=>{btn.textContent='UTM';},1000);}
+}}
+
+function filterLinks(cat,el){
+currentFilter=cat;
+document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+el.classList.add('active');
+renderLinks();
+}
+
+function renderLinks(){
+const body=document.getElementById('linksBody');
+const filtered=currentFilter==='all'?links:links.filter(l=>l.category===currentFilter);
+if(filtered.length===0){body.innerHTML=`<tr><td colspan="7" style="text-align:center;color:#555;padding:2rem">No links yet. Add your first affiliate link above.</td></tr>`;return;}
+
+body.innerHTML=filtered.map(l=>{
+const estRev=(l.clicks*(l.convRate/100)*(l.commission/100)*50).toFixed(2);
+const badgeClass='badge-'+l.category;
+return `<tr>
+<td><span class="link-name">${l.name}</span></td>
+<td><span class="badge ${badgeClass}">${l.category}</span></td>
+<td>${l.program||'-'}</td>
+<td>${l.commission}%</td>
+<td>${l.clicks.toLocaleString()}</td>
+<td style="color:#10b981">$${estRev}</td>
+<td><div class="link-actions">
+<button onclick="simulateClick(${l.id})">+Click</button>
+<button data-copy="${l.id}" onclick="copyUTM(${l.id})">UTM</button>
+<button onclick="deleteLink(${l.id})" style="color:#ef4444">Del</button>
+</div></td></tr>`;
+}).join('');
+}
+
+function updateStats(){
+const totalLinks=links.length;
+const totalClicks=links.reduce((s,l)=>s+l.clicks,0);
+const totalRev=links.reduce((s,l)=>s+(l.clicks*(l.convRate/100)*(l.commission/100)*50),0);
+const avgComm=totalLinks>0?(links.reduce((s,l)=>s+l.commission,0)/totalLinks):0;
+
+document.getElementById('statLinks').textContent=totalLinks;
+document.getElementById('statClicks').textContent=totalClicks.toLocaleString();
+document.getElementById('statRevenue').textContent='$'+totalRev.toFixed(2);
+document.getElementById('statAvgComm').textContent=avgComm.toFixed(1)+'%';
+}
+
+function exportCSV(){
+let csv='Name,URL,UTM URL,Program,Commission %,Category,Conv Rate %,Clicks,Created\n';
+links.forEach(l=>{csv+=`"${l.name}","${l.url}","${l.utmUrl}","${l.program}",${l.commission},"${l.category}",${l.convRate},${l.clicks},"${l.created}"\n`;});
+const blob=new Blob([csv],{type:'text/csv'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='affiliate-links.csv';a.click();
+}
+
+function exportMarkdown(){
+let md='| Name | URL | Program | Commission | Clicks | Category |\n|------|-----|---------|-----------|--------|----------|\n';
+links.forEach(l=>{md+=`| ${l.name} | [Link](${l.utmUrl}) | ${l.program} | ${l.commission}% | ${l.clicks} | ${l.category} |\n`;});
+const blob=new Blob([md],{type:'text/markdown'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='affiliate-links.md';a.click();
+}
+
+function showImport(){document.getElementById('importModal').classList.add('show');}
+function hideImport(){document.getElementById('importModal').classList.remove('show');}
+
+function importCSV(){
+const data=document.getElementById('importData').value.trim();
+if(!data){alert('Paste CSV data first');return;}
+const lines=data.split('\n');
+let added=0;
+lines.forEach(line=>{
+const parts=line.split(',').map(s=>s.trim().replace(/^"|"$/g,''));
+if(parts.length>=2){
+const name=parts[0],url=parts[1],program=parts[2]||'',comm=parseFloat(parts[3])||0,cat=parts[4]||'tools',convRate=parseFloat(parts[5])||2;
+const sep=url.includes('?')?'&':'?';
+const utmUrl=`${url}${sep}utm_source=spunkart&utm_medium=affiliate&utm_campaign=${name.replace(/\s+/g,'-').toLowerCase()}`;
+links.push({id:Date.now()+added,name,url,utmUrl,program,commission:comm,category:cat,convRate,clicks:0,created:new Date().toISOString().split('T')[0]});
+added++;
+}
+});
+saveLinks();renderLinks();updateStats();hideImport();
+document.getElementById('importData').value='';
+alert(`Imported ${added} links`);
+}
+
+renderLinks();updateStats();
+</script>
+</body>
+</html>
