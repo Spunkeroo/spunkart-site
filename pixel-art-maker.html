@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixel Art Maker - Free Online Pixel Art Editor | SPUNKART.COM</title>
+<meta name="description" content="Create pixel art in your browser. Grid canvas from 8x8 to 64x64, color picker, pencil/fill/eraser tools, undo/redo, export as PNG. Save to localStorage.">
+<meta name="keywords" content="pixel art maker, pixel art editor, online pixel art, pixel drawing tool, free pixel art creator">
+<meta property="og:title" content="Pixel Art Maker — Free Online Pixel Editor | SPUNKART.COM">
+<meta property="og:description" content="Draw pixel art in your browser. Multiple grid sizes, tools, colors, and export to PNG. Free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/pixel-art-maker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pixel Art Maker | SPUNKART.COM">
+<meta name="twitter:description" content="Free online pixel art editor with export to PNG.">
+<link rel="canonical" href="https://spunkart.com/pixel-art-maker">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.editor-wrap{display:flex;gap:20px;flex-wrap:wrap}
+.toolbar{background:#111;border:1px solid #222;border-radius:10px;padding:16px;min-width:200px;flex-shrink:0}
+.toolbar h3{font-size:0.9rem;color:#ff5f1f;margin-bottom:10px}
+.toolbar label{font-size:0.8rem;color:#888;display:block;margin-bottom:4px;margin-top:10px}
+.toolbar select,.toolbar input[type="number"]{width:100%;padding:8px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;margin-bottom:4px}
+.toolbar select:focus,.toolbar input:focus{border-color:#ff5f1f}
+.tool-btns{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tool-btn{padding:8px 12px;background:#1a1a1a;border:2px solid #333;border-radius:6px;color:#ccc;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all .2s}
+.tool-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.tool-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff}
+.color-picker-wrap{display:flex;align-items:center;gap:8px;margin-top:8px}
+.color-picker-wrap input[type="color"]{width:40px;height:40px;border:none;background:none;cursor:pointer}
+.color-display{font-family:monospace;font-size:0.85rem;color:#ccc}
+.preset-colors{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.preset-color{width:24px;height:24px;border-radius:4px;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.preset-color:hover,.preset-color.active{border-color:#fff;transform:scale(1.15)}
+.canvas-area{flex:1;display:flex;flex-direction:column;align-items:center}
+.canvas-container{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:12px;display:inline-block;cursor:crosshair;touch-action:none}
+canvas#pixelCanvas{display:block;image-rendering:pixelated}
+.action-bar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.btn{padding:8px 18px;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.btn-red{background:#ef4444;color:#fff}
+.btn-red:hover{background:#dc2626}
+.saves-section{background:#111;border:1px solid #222;border-radius:10px;padding:20px;margin-top:20px}
+.saves-section h2{font-size:1.1rem;color:#ff5f1f;margin-bottom:12px}
+.save-grid{display:flex;flex-wrap:wrap;gap:12px}
+.save-item{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:8px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.save-item:hover{border-color:#ff5f1f}
+.save-item canvas{image-rendering:pixelated;display:block;margin:0 auto 6px}
+.save-item .save-name{font-size:0.75rem;color:#888}
+.save-item .delete-save{position:absolute;top:4px;right:4px;background:#ef444433;border:none;color:#ef4444;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:0.7rem;display:none}
+.save-item:hover .delete-save{display:flex;align-items:center;justify-content:center}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:700px){
+  h1{font-size:1.5rem}
+  main{padding:20px 12px 60px}
+  .editor-wrap{flex-direction:column}
+  .toolbar{min-width:auto}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pixel Art Maker","description":"Create pixel art in your browser. Grid canvas 8x8 to 64x64, color picker, tools, undo/redo, export PNG.","url":"https://spunkart.com/pixel-art-maker.html","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Pixel Art <span>Maker</span></h1>
+  <p class="subtitle">Draw pixel art directly in your browser. Export as PNG, save your work locally.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="editor-wrap">
+    <div class="toolbar">
+      <h3>Canvas</h3>
+      <label>Grid Size</label>
+      <select id="gridSize" onchange="resizeGrid()">
+        <option value="8">8 x 8</option>
+        <option value="16" selected>16 x 16</option>
+        <option value="32">32 x 32</option>
+        <option value="48">48 x 48</option>
+        <option value="64">64 x 64</option>
+      </select>
+      <label>Show Grid</label>
+      <select id="showGrid" onchange="render()"><option value="1" selected>Yes</option><option value="0">No</option></select>
+
+      <h3 style="margin-top:16px">Tool</h3>
+      <div class="tool-btns">
+        <button class="tool-btn active" onclick="setTool(this,'pencil')">Pencil</button>
+        <button class="tool-btn" onclick="setTool(this,'eraser')">Eraser</button>
+        <button class="tool-btn" onclick="setTool(this,'fill')">Fill</button>
+        <button class="tool-btn" onclick="setTool(this,'picker')">Picker</button>
+      </div>
+
+      <h3 style="margin-top:16px">Color</h3>
+      <div class="color-picker-wrap">
+        <input type="color" id="colorPicker" value="#ff5f1f" oninput="currentColor=this.value;updateColorDisplay()">
+        <span class="color-display" id="colorDisplay">#FF5F1F</span>
+      </div>
+      <div class="preset-colors" id="presetColors"></div>
+
+      <h3 style="margin-top:16px">Export Scale</h3>
+      <select id="exportScale">
+        <option value="1">1x</option>
+        <option value="4">4x</option>
+        <option value="8" selected>8x</option>
+        <option value="16">16x</option>
+        <option value="32">32x</option>
+      </select>
+    </div>
+
+    <div class="canvas-area">
+      <div class="canvas-container" id="canvasContainer">
+        <canvas id="pixelCanvas" width="512" height="512"></canvas>
+      </div>
+      <div class="action-bar">
+        <button class="btn btn-secondary" onclick="undo()">Undo</button>
+        <button class="btn btn-secondary" onclick="redo()">Redo</button>
+        <button class="btn btn-primary" onclick="exportPNG()">Export PNG</button>
+        <button class="btn btn-green" onclick="saveWork()">Save</button>
+        <button class="btn btn-red" onclick="clearCanvas()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="saves-section">
+    <h2>Saved Art</h2>
+    <div class="save-grid" id="saveGrid"><p style="color:#555;font-size:0.85rem">No saved art yet. Draw something and save!</p></div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/art-palette-generator">Art Palette</a>
+      <a href="/merch-mockup-generator">Merch Mockups</a>
+      <a href="/watermark-generator">Watermark Generator</a>
+      <a href="/favicon-generator">Favicon Generator</a>
+      <a href="/svg-editor">SVG Editor</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+const canvas=document.getElementById('pixelCanvas');
+const ctx=canvas.getContext('2d');
+const CANVAS_PX=512;
+let gridSize=16;
+let pixelSize=CANVAS_PX/gridSize;
+let currentColor='#ff5f1f';
+let currentTool='pencil';
+let isDrawing=false;
+
+// Pixel data: 2D array of hex strings or null (transparent)
+let pixels=[];
+let undoStack=[];
+let redoStack=[];
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+
+// Preset colors
+const presets=['#000000','#ffffff','#ff0000','#ff5f1f','#ff9900','#ffff00','#00ff00','#10b981','#00ffff','#0066ff','#6600ff','#ff00ff','#ff69b4','#8b4513','#808080','#333333'];
+const presetContainer=document.getElementById('presetColors');
+presets.forEach(c=>{
+  const div=document.createElement('div');
+  div.className='preset-color';
+  div.style.background=c;
+  div.onclick=()=>{
+    currentColor=c;
+    document.getElementById('colorPicker').value=c;
+    updateColorDisplay();
+    document.querySelectorAll('.preset-color').forEach(p=>p.classList.remove('active'));
+    div.classList.add('active');
+  };
+  presetContainer.appendChild(div);
+});
+
+function updateColorDisplay(){
+  document.getElementById('colorDisplay').textContent=currentColor.toUpperCase();
+}
+
+function initPixels(){
+  pixels=Array.from({length:gridSize},()=>Array(gridSize).fill(null));
+}
+
+function resizeGrid(){
+  pushUndo();
+  const oldPixels=pixels;
+  const oldSize=gridSize;
+  gridSize=parseInt(document.getElementById('gridSize').value);
+  pixelSize=CANVAS_PX/gridSize;
+  initPixels();
+  // Copy over what fits
+  for(let y=0;y<Math.min(oldSize,gridSize);y++){
+    for(let x=0;x<Math.min(oldSize,gridSize);x++){
+      pixels[y][x]=oldPixels[y]?oldPixels[y][x]:null;
+    }
+  }
+  render();
+}
+
+function setTool(el,tool){
+  document.querySelectorAll('.tool-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  currentTool=tool;
+  canvas.style.cursor=tool==='picker'?'crosshair':tool==='fill'?'cell':'crosshair';
+}
+
+function pushUndo(){
+  undoStack.push(pixels.map(r=>[...r]));
+  if(undoStack.length>50) undoStack.shift();
+  redoStack=[];
+}
+
+function undo(){
+  if(!undoStack.length) return;
+  redoStack.push(pixels.map(r=>[...r]));
+  pixels=undoStack.pop();
+  gridSize=pixels.length;
+  document.getElementById('gridSize').value=gridSize;
+  pixelSize=CANVAS_PX/gridSize;
+  render();
+}
+
+function redo(){
+  if(!redoStack.length) return;
+  undoStack.push(pixels.map(r=>[...r]));
+  pixels=redoStack.pop();
+  gridSize=pixels.length;
+  document.getElementById('gridSize').value=gridSize;
+  pixelSize=CANVAS_PX/gridSize;
+  render();
+}
+
+function getPixelCoords(e){
+  const rect=canvas.getBoundingClientRect();
+  const scaleX=CANVAS_PX/rect.width;
+  const scaleY=CANVAS_PX/rect.height;
+  let clientX,clientY;
+  if(e.touches){clientX=e.touches[0].clientX;clientY=e.touches[0].clientY;}
+  else{clientX=e.clientX;clientY=e.clientY;}
+  const x=Math.floor((clientX-rect.left)*scaleX/pixelSize);
+  const y=Math.floor((clientY-rect.top)*scaleY/pixelSize);
+  return {x:Math.max(0,Math.min(gridSize-1,x)),y:Math.max(0,Math.min(gridSize-1,y))};
+}
+
+function drawPixel(x,y){
+  if(x<0||x>=gridSize||y<0||y>=gridSize) return;
+  if(currentTool==='pencil'){
+    pixels[y][x]=currentColor;
+  } else if(currentTool==='eraser'){
+    pixels[y][x]=null;
+  } else if(currentTool==='picker'){
+    if(pixels[y][x]){
+      currentColor=pixels[y][x];
+      document.getElementById('colorPicker').value=currentColor;
+      updateColorDisplay();
+    }
+  } else if(currentTool==='fill'){
+    floodFill(x,y,pixels[y][x],currentColor);
+  }
+  render();
+}
+
+function floodFill(x,y,targetColor,fillColor){
+  if(targetColor===fillColor) return;
+  const stack=[[x,y]];
+  const visited=new Set();
+  while(stack.length){
+    const [cx,cy]=stack.pop();
+    const key=cx+','+cy;
+    if(visited.has(key)) continue;
+    if(cx<0||cx>=gridSize||cy<0||cy>=gridSize) continue;
+    if(pixels[cy][cx]!==targetColor) continue;
+    visited.add(key);
+    pixels[cy][cx]=fillColor;
+    stack.push([cx+1,cy],[cx-1,cy],[cx,cy+1],[cx,cy-1]);
+  }
+}
+
+function render(){
+  ctx.clearRect(0,0,CANVAS_PX,CANVAS_PX);
+  // Transparent background checkerboard
+  const checkSize=pixelSize/2;
+  for(let y=0;y<gridSize;y++){
+    for(let x=0;x<gridSize;x++){
+      // Checkerboard for transparent pixels
+      for(let cy=0;cy<2;cy++){
+        for(let cx=0;cx<2;cx++){
+          ctx.fillStyle=(cx+cy)%2===0?'#2a2a2a':'#222';
+          ctx.fillRect(x*pixelSize+cx*checkSize,y*pixelSize+cy*checkSize,checkSize,checkSize);
+        }
+      }
+      if(pixels[y][x]){
+        ctx.fillStyle=pixels[y][x];
+        ctx.fillRect(x*pixelSize,y*pixelSize,pixelSize,pixelSize);
+      }
+    }
+  }
+  // Grid lines
+  if(document.getElementById('showGrid').value==='1'){
+    ctx.strokeStyle='rgba(255,255,255,0.08)';
+    ctx.lineWidth=0.5;
+    for(let i=0;i<=gridSize;i++){
+      ctx.beginPath();ctx.moveTo(i*pixelSize,0);ctx.lineTo(i*pixelSize,CANVAS_PX);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,i*pixelSize);ctx.lineTo(CANVAS_PX,i*pixelSize);ctx.stroke();
+    }
+  }
+}
+
+// Mouse events
+canvas.addEventListener('mousedown',e=>{
+  e.preventDefault();
+  isDrawing=true;
+  pushUndo();
+  const {x,y}=getPixelCoords(e);
+  drawPixel(x,y);
+});
+canvas.addEventListener('mousemove',e=>{
+  if(!isDrawing) return;
+  const {x,y}=getPixelCoords(e);
+  if(currentTool!=='fill'&&currentTool!=='picker') drawPixel(x,y);
+});
+canvas.addEventListener('mouseup',()=>{isDrawing=false;});
+canvas.addEventListener('mouseleave',()=>{isDrawing=false;});
+
+// Touch events
+canvas.addEventListener('touchstart',e=>{
+  e.preventDefault();
+  isDrawing=true;
+  pushUndo();
+  const {x,y}=getPixelCoords(e);
+  drawPixel(x,y);
+},{passive:false});
+canvas.addEventListener('touchmove',e=>{
+  e.preventDefault();
+  if(!isDrawing) return;
+  const {x,y}=getPixelCoords(e);
+  if(currentTool!=='fill'&&currentTool!=='picker') drawPixel(x,y);
+},{passive:false});
+canvas.addEventListener('touchend',()=>{isDrawing=false;});
+
+// Keyboard shortcuts
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='SELECT') return;
+  if(e.ctrlKey&&e.key==='z'){e.preventDefault();undo();}
+  if(e.ctrlKey&&e.key==='y'){e.preventDefault();redo();}
+  if(e.key==='p') setTool(document.querySelector('[onclick*="pencil"]'),'pencil');
+  if(e.key==='e') setTool(document.querySelector('[onclick*="eraser"]'),'eraser');
+  if(e.key==='f') setTool(document.querySelector('[onclick*="fill"]'),'fill');
+  if(e.key==='i') setTool(document.querySelector('[onclick*="picker"]'),'picker');
+});
+
+function clearCanvas(){
+  if(!confirm('Clear the entire canvas?')) return;
+  pushUndo();
+  initPixels();
+  render();
+}
+
+function exportPNG(){
+  const scale=parseInt(document.getElementById('exportScale').value);
+  const expCanvas=document.createElement('canvas');
+  const expSize=gridSize*scale;
+  expCanvas.width=expSize;expCanvas.height=expSize;
+  const expCtx=expCanvas.getContext('2d');
+  // Transparent background
+  for(let y=0;y<gridSize;y++){
+    for(let x=0;x<gridSize;x++){
+      if(pixels[y][x]){
+        expCtx.fillStyle=pixels[y][x];
+        expCtx.fillRect(x*scale,y*scale,scale,scale);
+      }
+    }
+  }
+  const a=document.createElement('a');
+  a.href=expCanvas.toDataURL('image/png');
+  a.download=`pixel-art-${gridSize}x${gridSize}.png`;
+  a.click();
+  showToast('Exported as PNG!');
+  gtag('event','export_pixel_art',{event_category:'tool_use',size:gridSize+'x'+gridSize,scale:scale+'x'});
+}
+
+// Save/Load from localStorage
+function saveWork(){
+  const name=prompt('Save name:','My Art');
+  if(!name) return;
+  const saves=JSON.parse(localStorage.getItem('pixelArtSaves')||'[]');
+  saves.push({name,gridSize,pixels:pixels.map(r=>[...r]),date:Date.now()});
+  localStorage.setItem('pixelArtSaves',JSON.stringify(saves));
+  renderSaves();
+  showToast('Saved!');
+}
+
+function renderSaves(){
+  const saves=JSON.parse(localStorage.getItem('pixelArtSaves')||'[]');
+  const container=document.getElementById('saveGrid');
+  if(!saves.length){container.innerHTML='<p style="color:#555;font-size:0.85rem">No saved art yet. Draw something and save!</p>';return;}
+  container.innerHTML='';
+  saves.forEach((save,i)=>{
+    const div=document.createElement('div');
+    div.className='save-item';
+    div.onclick=()=>{loadSave(i);};
+
+    // Mini preview canvas
+    const mc=document.createElement('canvas');
+    const ms=80;
+    mc.width=ms;mc.height=ms;
+    mc.style.width=ms+'px';mc.style.height=ms+'px';
+    const mctx=mc.getContext('2d');
+    const ps=ms/save.gridSize;
+    mctx.fillStyle='#1a1a1a';mctx.fillRect(0,0,ms,ms);
+    for(let y=0;y<save.gridSize;y++){
+      for(let x=0;x<save.gridSize;x++){
+        if(save.pixels[y]&&save.pixels[y][x]){
+          mctx.fillStyle=save.pixels[y][x];
+          mctx.fillRect(x*ps,y*ps,ps,ps);
+        }
+      }
+    }
+    div.appendChild(mc);
+
+    const label=document.createElement('div');
+    label.className='save-name';
+    label.textContent=save.name;
+    div.appendChild(label);
+
+    const del=document.createElement('button');
+    del.className='delete-save';
+    del.textContent='x';
+    del.onclick=e=>{
+      e.stopPropagation();
+      saves.splice(i,1);
+      localStorage.setItem('pixelArtSaves',JSON.stringify(saves));
+      renderSaves();
+    };
+    div.appendChild(del);
+    container.appendChild(div);
+  });
+}
+
+function loadSave(i){
+  const saves=JSON.parse(localStorage.getItem('pixelArtSaves')||'[]');
+  if(!saves[i]) return;
+  pushUndo();
+  gridSize=saves[i].gridSize;
+  pixels=saves[i].pixels.map(r=>[...r]);
+  pixelSize=CANVAS_PX/gridSize;
+  document.getElementById('gridSize').value=gridSize;
+  render();
+  showToast('Loaded: '+saves[i].name);
+}
+
+// Initialize
+initPixels();
+render();
+renderSaves();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s'){e.preventDefault();saveWork();}
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
