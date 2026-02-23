@@ -656,116 +656,14 @@ a{color:inherit;text-decoration:none}
 
 <script>
 // ========================
-// TOOL DATABASE (98 tools)
+// DYNAMIC TOOL DIRECTORY
 // ========================
-var TOOLS = [
-  {file:'ab-test-calculator',name:'A/B Test Calculator',desc:'Calculate statistical significance for your split tests with sample size and conversion rates.',icon:'\uD83E\uDDEA',cat:'Analytics'},
-  {file:'age-calculator',name:'Age Calculator',desc:'Calculate exact age in years, months, days, hours, and minutes from any date.',icon:'\uD83C\uDF82',cat:'Business'},
-  {file:'affiliate-tracker',name:'Affiliate Tracker',desc:'Track affiliate links, clicks, conversions, and commissions in one dashboard.',icon:'\uD83D\uDCB0',cat:'Analytics'},
-  {file:'ai-image-prompt',name:'AI Image Prompt Generator',desc:'Generate detailed prompts for Midjourney, DALL-E, and Stable Diffusion from simple ideas.',icon:'\uD83C\uDFA8',cat:'AI'},
-  {file:'ai-prompt-vault',name:'AI Prompt Vault',desc:'Browse, save, and organize your best AI prompts. Categorized library with copy-paste.',icon:'\uD83E\uDDE0',cat:'AI'},
-  {file:'analytics-dashboard',name:'Analytics Dashboard',desc:'Visualize your website traffic, page views, and user behavior with clean charts.',icon:'\uD83D\uDCCA',cat:'Analytics'},
-  {file:'api-key-generator',name:'API Key Generator',desc:'Generate secure random API keys and tokens in various formats and lengths.',icon:'\uD83D\uDD11',cat:'Dev'},
-  {file:'api-tester',name:'API Tester',desc:'Test REST API endpoints with GET, POST, PUT, DELETE. Custom headers, body, and response viewer.',icon:'\u26A1',cat:'Dev'},
-  {file:'base64-tool',name:'Base64 Encoder/Decoder',desc:'Encode and decode Base64 strings instantly. Supports text and file encoding.',icon:'\uD83D\uDD04',cat:'Dev'},
-  {file:'budget-tracker',name:'Budget Tracker',desc:'Track income and expenses with categories, charts, and CSV export. Data stays local.',icon:'\uD83D\uDCB5',cat:'Business'},
-  {file:'business-name',name:'Business Name Generator',desc:'Generate creative business names instantly. Check domain availability and save favorites.',icon:'\uD83D\uDCA1',cat:'Business'},
-  {file:'business-plan',name:'Business Plan Generator',desc:'Create a structured business plan with market analysis, financials, and strategy sections.',icon:'\uD83D\uDCCB',cat:'Business'},
-  {file:'chmod-calculator',name:'Chmod Calculator',desc:'Calculate Unix file permissions with visual toggles. Shows numeric and symbolic notation.',icon:'\uD83D\uDD12',cat:'Dev'},
-  {file:'code-playground',name:'Code Playground',desc:'Write and run HTML, CSS, and JavaScript live in the browser with instant preview.',icon:'\uD83D\uDCBB',cat:'Dev'},
-  {file:'color-contrast',name:'Color Contrast Checker',desc:'Check WCAG accessibility compliance between text and background colors with AA/AAA ratings.',icon:'\uD83D\uDC41\uFE0F',cat:'Design'},
-  {file:'color-converter',name:'Color Converter',desc:'Convert between HEX, RGB, HSL, and CMYK color formats instantly.',icon:'\uD83C\uDFA8',cat:'Design'},
-  {file:'color-palette',name:'Color Palette Generator',desc:'Generate harmonious 5-color palettes. Complementary, analogous, triadic modes with export.',icon:'\uD83C\uDF08',cat:'Design'},
-  {file:'color-scheme',name:'Color Scheme Generator',desc:'Create complete color schemes for websites with primary, secondary, and accent colors.',icon:'\uD83D\uDD8C\uFE0F',cat:'Design'},
-  {file:'competitor-analysis',name:'Competitor Analysis',desc:'Analyze competitor websites, traffic, keywords, and social presence in one view.',icon:'\uD83D\uDD0D',cat:'Business'},
-  {file:'content-planner',name:'Content Planner',desc:'Plan and schedule your content calendar with topics, deadlines, and status tracking.',icon:'\uD83D\uDCC5',cat:'Content'},
-  {file:'contract-generator',name:'Contract Generator',desc:'Generate freelancer contracts, NDAs, and service agreements. Customize and download as PDF.',icon:'\uD83D\uDCDC',cat:'Business'},
-  {file:'countdown-generator',name:'Countdown Generator',desc:'Create beautiful countdown timers for events, launches, and deadlines. Embed anywhere.',icon:'\u23F3',cat:'Content'},
-  {file:'cron-generator',name:'Cron Expression Generator',desc:'Build cron expressions visually with plain-English explanations of the schedule.',icon:'\u23F0',cat:'Dev'},
-  {file:'crontab-generator',name:'Crontab Generator',desc:'Generate and validate crontab entries with a visual scheduler and next-run preview.',icon:'\uD83D\uDCC6',cat:'Dev'},
-  {file:'css-animation-generator',name:'CSS Animation Generator',desc:'Create keyframe animations visually with easing curves, timing, and live preview.',icon:'\uD83C\uDFAC',cat:'Design'},
-  {file:'css-gradient',name:'CSS Gradient Generator',desc:'Design gradients visually. Linear, radial, conic. Presets gallery. Copy CSS code.',icon:'\uD83C\uDF08',cat:'Design'},
-  {file:'css-minifier',name:'CSS Minifier',desc:'Minify CSS code to reduce file size. Removes comments, whitespace, and redundant rules.',icon:'\uD83D\uDDDC\uFE0F',cat:'Dev'},
-  {file:'diff-checker',name:'Diff Checker',desc:'Compare two texts side by side with highlighted additions, deletions, and changes.',icon:'\uD83D\uDD0D',cat:'Dev'},
-  {file:'dns-lookup',name:'DNS Lookup',desc:'Query DNS records for any domain. A, AAAA, MX, CNAME, TXT, NS, and more.',icon:'\uD83C\uDF10',cat:'Dev'},
-  {file:'domain-generator',name:'Domain Name Generator',desc:'Generate available domain names with keywords. Check TLD availability and pricing.',icon:'\uD83C\uDF10',cat:'Business'},
-  {file:'domain-portfolio',name:'Domain Portfolio Manager',desc:'Track and manage your domain portfolio with expiry dates, registrars, and valuations.',icon:'\uD83D\uDCC1',cat:'Business'},
-  {file:'email-sequence-builder',name:'Email Sequence Builder',desc:'Plan and build email drip campaigns with templates, timing, and follow-up sequences.',icon:'\uD83D\uDCE7',cat:'Content'},
-  {file:'email-signature',name:'Email Signature Generator',desc:'Design HTML email signatures with logo, links, and social icons. Copy-paste ready.',icon:'\u2709\uFE0F',cat:'Business'},
-  {file:'email-templates',name:'Email Templates',desc:'Browse and customize professional email templates for outreach, sales, and support.',icon:'\uD83D\uDCE8',cat:'Content'},
-  {file:'emoji-picker',name:'Emoji Picker',desc:'Browse, search, and copy emojis by category. Shows Unicode values and shortcodes.',icon:'\uD83D\uDE00',cat:'Content'},
-  {file:'favicon-generator',name:'Favicon Generator',desc:'Upload any image, get all favicon sizes. ICO, PNG, Apple Touch. Download as ZIP.',icon:'\uD83D\uDDBC\uFE0F',cat:'Design'},
-  {file:'flexbox-generator',name:'Flexbox Generator',desc:'Build CSS flexbox layouts visually with drag-and-drop items and property controls.',icon:'\uD83D\uDCD0',cat:'Design'},
-  {file:'font-pairing',name:'Font Pairing Tool',desc:'Find beautiful Google Font pairings with live preview and CSS import code.',icon:'\uD83D\uDD24',cat:'Design'},
-  {file:'git-cheatsheet',name:'Git Cheatsheet',desc:'Quick reference for Git commands with search, categories, and copy-paste examples.',icon:'\uD83D\uDCDA',cat:'Dev'},
-  {file:'grid-generator',name:'CSS Grid Generator',desc:'Build CSS Grid layouts visually. Define columns, rows, gaps, and areas with code export.',icon:'\uD83D\uDD33',cat:'Design'},
-  {file:'hashtag-generator',name:'Hashtag Generator',desc:'Generate trending hashtags for Instagram, TikTok, X, and LinkedIn by topic or niche.',icon:'#\uFE0F\u20E3',cat:'Content'},
-  {file:'headers-checker',name:'HTTP Headers Checker',desc:'Check any website\'s HTTP security headers. Get a grade A-F with fix recommendations.',icon:'\uD83D\uDEE1\uFE0F',cat:'Security'},
-  {file:'htaccess-generator',name:'.htaccess Generator',desc:'Generate Apache .htaccess rules for redirects, caching, compression, and security headers.',icon:'\u2699\uFE0F',cat:'Dev'},
-  {file:'html-entity-encoder',name:'HTML Entity Encoder',desc:'Encode and decode HTML entities. Convert special characters for safe HTML embedding.',icon:'\uD83D\uDD20',cat:'Dev'},
-  {file:'html-minifier',name:'HTML Minifier',desc:'Minify HTML code to reduce page size. Strips comments, whitespace, and optional tags.',icon:'\uD83D\uDCC4',cat:'Dev'},
-  {file:'image-compressor',name:'Image Compressor',desc:'Compress images in your browser. Adjust quality, resize, convert formats. No uploads.',icon:'\uD83D\uDDDC\uFE0F',cat:'Design'},
-  {file:'invoice-generator',name:'Invoice Generator',desc:'Create professional invoices in seconds. Add line items, tax, notes. Export to PDF.',icon:'\uD83E\uDDFE',cat:'Business'},
-  {file:'ip-lookup',name:'IP Lookup',desc:'Look up IP address details including geolocation, ISP, timezone, and network info.',icon:'\uD83D\uDCCD',cat:'Dev'},
-  {file:'json-formatter',name:'JSON Formatter',desc:'Paste messy JSON, get it formatted with syntax highlighting, validation, and tree view.',icon:'\uD83D\uDCCB',cat:'Dev'},
-  {file:'json-to-csv',name:'JSON to CSV Converter',desc:'Convert JSON data to CSV format and vice versa. Handles nested objects and arrays.',icon:'\uD83D\uDD04',cat:'Dev'},
-  {file:'json-validator',name:'JSON Validator',desc:'Validate JSON syntax with detailed error messages, line numbers, and auto-fix suggestions.',icon:'\u2705',cat:'Dev'},
-  {file:'jwt-decoder',name:'JWT Decoder',desc:'Decode and inspect JSON Web Tokens. View header, payload, and verify expiration.',icon:'\uD83D\uDD13',cat:'Security'},
-  {file:'keyboard-tester',name:'Keyboard Tester',desc:'Test every key on your keyboard. Visual layout shows key codes, events, and press status.',icon:'\u2328\uFE0F',cat:'Dev'},
-  {file:'landing-page-copy',name:'Landing Page Copy Generator',desc:'Generate high-converting landing page copy. Headlines, CTAs, and feature sections ready to use.',icon:'\uD83D\uDCDD',cat:'Content'},
-  {file:'launch-checklist',name:'Launch Checklist',desc:'Complete checklist for launching a website or product. SEO, legal, performance, and more.',icon:'\uD83D\uDE80',cat:'Business'},
-  {file:'lorem-ipsum',name:'Lorem Ipsum Generator',desc:'Generate placeholder text in paragraphs, sentences, or words. Multiple styles available.',icon:'\uD83D\uDCDD',cat:'Content'},
-  {file:'markdown-editor',name:'Markdown Editor',desc:'Live preview markdown editor. Toolbar, export to HTML, autosave. Split-pane layout.',icon:'\u270F\uFE0F',cat:'Dev'},
-  {file:'meta-generator',name:'Meta Tag Generator',desc:'Generate perfect SEO meta tags, Open Graph, and Twitter Card tags with character validation.',icon:'\uD83C\uDFF7\uFE0F',cat:'SEO'},
-  {file:'mortgage-calculator',name:'Mortgage Calculator',desc:'Calculate monthly payments, total interest, and amortization schedule for any loan.',icon:'\uD83C\uDFE0',cat:'Business'},
-  {file:'og-image-maker',name:'OG Image Maker',desc:'Create Open Graph images for social sharing with text, branding, and gradient backgrounds.',icon:'\uD83D\uDDBC\uFE0F',cat:'Content'},
-  {file:'og-preview',name:'OG Tag Preview',desc:'Preview how your site looks when shared on X, Facebook, LinkedIn, and Discord.',icon:'\uD83D\uDC41\uFE0F',cat:'SEO'},
-  {file:'password-generator',name:'Password Generator',desc:'Cryptographically secure passwords. Custom length, character sets, and strength meter.',icon:'\uD83D\uDD10',cat:'Security'},
-  {file:'pdf-tools',name:'PDF Tools',desc:'Merge, split, compress PDFs. Convert images to PDF. Everything stays in your browser.',icon:'\uD83D\uDCC4',cat:'Business'},
-  {file:'placeholder-image',name:'Placeholder Image Generator',desc:'Generate placeholder images of any size with custom colors, text, and formats.',icon:'\uD83D\uDDBC\uFE0F',cat:'Design'},
-  {file:'pomodoro',name:'Pomodoro Timer',desc:'Focus timer with work/break intervals. Tracks sessions, plays sounds, and logs productivity.',icon:'\uD83C\uDF45',cat:'Business'},
-  {file:'pricing-calculator',name:'Pricing Calculator',desc:'Calculate optimal pricing for your products with cost, margin, and competitor analysis.',icon:'\uD83D\uDCB2',cat:'Business'},
-  {file:'privacy-policy-generator',name:'Privacy Policy Generator',desc:'Generate a GDPR/CCPA-compliant privacy policy. Customize for your site and download as HTML.',icon:'\uD83D\uDCDC',cat:'Business'},
-  {file:'qr-generator',name:'QR Code Generator',desc:'Generate custom QR codes with brand colors. Download as PNG. No watermark.',icon:'\uD83D\uDCF1',cat:'Business'},
-  {file:'readme-builder',name:'README Builder',desc:'Build beautiful GitHub README files with drag-and-drop sections and live markdown preview.',icon:'\uD83D\uDCD6',cat:'Dev'},
-  {file:'readme-generator',name:'README Generator',desc:'Generate professional README.md files for your projects with badges, install steps, and API docs.',icon:'\uD83D\uDCC3',cat:'Dev'},
-  {file:'regex-cheatsheet',name:'Regex Cheatsheet',desc:'Quick reference for regular expressions with patterns, examples, and explanations.',icon:'\uD83D\uDCDA',cat:'Dev'},
-  {file:'regex-tester',name:'Regex Tester',desc:'Test regular expressions live with match highlighting, capture groups, and flag toggles.',icon:'\uD83E\uDDE9',cat:'Dev'},
-  {file:'revenue-calculator',name:'Revenue Calculator',desc:'Project revenue, costs, and profit over time with charts and scenario modeling.',icon:'\uD83D\uDCB0',cat:'Business'},
-  {file:'robots-generator',name:'Robots.txt Generator',desc:'Generate perfect robots.txt files with toggles for 16 bots. Copy-paste ready.',icon:'\uD83E\uDD16',cat:'SEO'},
-  {file:'schema-generator',name:'Schema Markup Generator',desc:'Generate JSON-LD structured data for articles, products, FAQs, and organizations.',icon:'\uD83C\uDFF7\uFE0F',cat:'SEO'},
-  {file:'screen-size',name:'Screen Size Detector',desc:'Detect your screen resolution, viewport size, pixel ratio, and device orientation.',icon:'\uD83D\uDCBB',cat:'Dev'},
-  {file:'seo-checklist',name:'SEO Checklist',desc:'Complete on-page and technical SEO checklist with scoring. Track your optimization progress.',icon:'\u2705',cat:'SEO'},
-  {file:'sitemap-generator',name:'Sitemap Generator',desc:'Generate XML sitemaps for any site. Set priorities and frequencies for each page.',icon:'\uD83D\uDDFA\uFE0F',cat:'SEO'},
-  {file:'slug-generator',name:'URL Slug Generator',desc:'Convert any text to a clean URL-friendly slug. Handles unicode, accents, and special chars.',icon:'\uD83D\uDD17',cat:'Dev'},
-  {file:'social-bio',name:'Social Bio Generator',desc:'Generate bios for X, LinkedIn, Instagram, TikTok, and GitHub with character counts.',icon:'\u270D\uFE0F',cat:'Content'},
-  {file:'social-calendar',name:'Social Media Calendar',desc:'Plan and schedule social media posts across platforms with a visual calendar view.',icon:'\uD83D\uDCC5',cat:'Content'},
-  {file:'social-cards',name:'Social Card Previewer',desc:'Preview your social sharing cards for Twitter, Facebook, and LinkedIn before publishing.',icon:'\uD83C\uDFF4',cat:'SEO'},
-  {file:'social-post-generator',name:'Social Post Generator',desc:'Generate engaging social media posts for any platform with hashtags and CTAs.',icon:'\uD83D\uDCF1',cat:'Content'},
-  {file:'speed-test',name:'Page Speed Test',desc:'Test your website\'s loading speed with performance metrics and optimization tips.',icon:'\u26A1',cat:'Analytics'},
-  {file:'sql-formatter',name:'SQL Formatter',desc:'Format and beautify SQL queries with syntax highlighting and indentation options.',icon:'\uD83D\uDDC3\uFE0F',cat:'Dev'},
-  {file:'startup-costs',name:'Startup Costs Calculator',desc:'Estimate startup costs with categories for legal, hosting, marketing, tools, and operations.',icon:'\uD83D\uDCB8',cat:'Business'},
-  {file:'svg-editor',name:'SVG Editor',desc:'Edit SVG code with live visual preview. Optimize, transform, and export SVG files.',icon:'\u270F\uFE0F',cat:'Design'},
-  {file:'tech-stack',name:'Tech Stack Recommender',desc:'Get tech stack recommendations based on your project type, scale, and budget.',icon:'\uD83E\uDDF1',cat:'Dev'},
-  {file:'terms-of-service',name:'Terms of Service Generator',desc:'Generate terms of service for your website or app. Customizable clauses and legal language.',icon:'\uD83D\uDCDC',cat:'Business'},
-  {file:'timestamp-converter',name:'Timestamp Converter',desc:'Convert between Unix timestamps, ISO 8601, and human-readable date formats.',icon:'\uD83D\uDD52',cat:'Dev'},
-  {file:'tip-calculator',name:'Tip Calculator',desc:'Calculate tips and split bills between people. Supports custom percentages and rounding.',icon:'\uD83D\uDCB5',cat:'Business'},
-  {file:'tweet-generator',name:'Tweet Generator',desc:'Craft tweets with character count, thread builder, and engagement optimization tips.',icon:'\uD83D\uDC26',cat:'Content'},
-  {file:'uptime-monitor',name:'Uptime Monitor',desc:'Monitor your websites from the browser. Check status, response times, and uptime history.',icon:'\uD83D\uDCCA',cat:'Analytics'},
-  {file:'url-encoder',name:'URL Encoder/Decoder',desc:'Encode and decode URLs and query parameters. Handles special characters and Unicode.',icon:'\uD83D\uDD17',cat:'Dev'},
-  {file:'uuid-generator',name:'UUID Generator',desc:'Generate v4 UUIDs instantly. Bulk generation, copy-paste, and format options.',icon:'\uD83C\uDFB2',cat:'Dev'},
-  {file:'webhook-tester',name:'Webhook Tester',desc:'Test webhook endpoints with custom payloads, headers, and methods. View responses live.',icon:'\uD83D\uDD14',cat:'Dev'},
-  {file:'word-counter',name:'Word Counter',desc:'Count words, characters, sentences, and paragraphs. Reading time estimate included.',icon:'\uD83D\uDD22',cat:'Content'},
-  {file:'youtube-embed',name:'YouTube Embed Generator',desc:'Generate responsive YouTube embed code with custom player options and lazy loading.',icon:'\u25B6\uFE0F',cat:'Content'}
-];
+var TOOLS = [];
 
-// ========================
-// RENDER TOOL GRID
-// ========================
-var badgeClass = {Dev:'badge-dev',Design:'badge-design',SEO:'badge-seo',Business:'badge-business',Content:'badge-content',Security:'badge-security',Analytics:'badge-analytics',AI:'badge-ai'};
+var badgeClass = {Dev:'badge-dev',Design:'badge-design',SEO:'badge-seo',Business:'badge-business',Content:'badge-content',Security:'badge-security',Analytics:'badge-analytics',AI:'badge-ai',Automation:'badge-automation',Artist:'badge-artist',Creator:'badge-creator'};
 
-function getUsageCount(file) {
-  var k = 'tool_usage_' + file;
+function getUsageCount(slug) {
+  var k = 'tool_usage_' + slug;
   return parseInt(localStorage.getItem(k) || '0', 10);
 }
 
@@ -775,24 +673,40 @@ function renderTools() {
   var totalUsage = 0;
   for (var i = 0; i < TOOLS.length; i++) {
     var t = TOOLS[i];
-    var usage = getUsageCount(t.file);
+    var usage = getUsageCount(t.slug);
     totalUsage += usage;
-    html += '<a href="/' + t.file + '" class="tool-card" data-cat="' + t.cat + '" data-name="' + t.name.toLowerCase() + '" data-desc="' + t.desc.toLowerCase() + '">' +
+    html += '<a href="/' + t.slug + '" class="tool-card" data-cat="' + t.category + '" data-name="' + t.name.toLowerCase() + '" data-desc="' + t.description.toLowerCase() + '">' +
       '<div class="tool-card-header"><span class="tool-icon">' + t.icon + '</span><span class="tool-name">' + t.name + '</span></div>' +
-      '<div class="tool-desc">' + t.desc + '</div>' +
+      '<div class="tool-desc">' + t.description + '</div>' +
       '<div class="tool-footer">' +
-        '<span class="tool-badge ' + (badgeClass[t.cat] || 'badge-dev') + '">' + t.cat + '</span>' +
+        '<span class="tool-badge ' + (badgeClass[t.category] || 'badge-dev') + '">' + t.category + '</span>' +
         '<span class="tool-usage">' + (usage > 0 ? usage.toLocaleString() + ' uses' : '') + '</span>' +
         '<span class="tool-try-btn">Try Free</span>' +
       '</div>' +
     '</a>';
   }
   grid.innerHTML = html;
-  var el = document.getElementById('totalUsageCount');
-  if (el) el.textContent = totalUsage.toLocaleString();
+
+  // Update all dynamic counts
+  var countEl = document.getElementById('totalToolCount');
+  if (countEl) countEl.textContent = TOOLS.length;
+  var usageEl = document.getElementById('totalUsageCount');
+  if (usageEl) usageEl.textContent = totalUsage.toLocaleString();
+  document.getElementById('toolCountDisplay').textContent = 'Showing all ' + TOOLS.length + ' tools';
+  document.getElementById('toolSearch').placeholder = 'Search ' + TOOLS.length + ' tools... (e.g. JSON, color, SEO, PDF)';
 }
 
-renderTools();
+// Fetch tools from JSON directory
+fetch('/tools-directory.json?v=' + Date.now())
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    TOOLS = data;
+    renderTools();
+  })
+  .catch(function(err) {
+    console.error('Failed to load tools directory:', err);
+    document.getElementById('toolCountDisplay').textContent = 'Error loading tools. Please refresh.';
+  });
 
 // ========================
 // SEARCH & FILTER
@@ -831,7 +745,8 @@ function applyFilters() {
       c.classList.add('hidden');
     }
   }
-  document.getElementById('toolCountDisplay').textContent = 'Showing ' + shown + ' of ' + TOOLS.length + ' tools';
+  var label = (activeFilter === 'all' && !q) ? 'Showing all ' + TOOLS.length + ' tools' : 'Showing ' + shown + ' of ' + TOOLS.length + ' tools';
+  document.getElementById('toolCountDisplay').textContent = label;
 }
 
 // ========================
