@@ -1,679 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Revenue & Growth Calculator — Free MRR, ARR & Projection Tool</title>
-<meta name="description" content="Free revenue calculator for solo founders. Project MRR, ARR, profit, churn, LTV, and 12-month growth with charts. No signup required.">
-<meta property="og:title" content="Revenue & Growth Calculator — Free MRR, ARR & Projection Tool">
-<meta property="og:description" content="Project MRR, ARR, profit, churn, LTV, and 12-month growth with charts. Free tool for solo founders.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Calculator for Solo Founders | SpunkArt.com</title>
+<meta name="description" content="Free revenue calculator for solo founders. Project monthly and annual revenue across multiple sites with growth modeling and compound projections.">
+<meta name="keywords" content="revenue calculator, solo founder, income projections, growth calculator, startup revenue">
+<meta property="og:title" content="Revenue Calculator for Solo Founders | SpunkArt.com">
+<meta property="og:description" content="Project your revenue across multiple sites with compound growth modeling. Free tool for solo founders.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://spunkart.com/revenue-calculator">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Revenue & Growth Calculator | SPUNKART.COM">
-<meta name="twitter:description" content="Free MRR, ARR, LTV & 12-month projection calculator for solo founders. No signup.">
-<link rel="canonical" href="https://spunkart.com/revenue-calculator">
+<meta property="og:url" content="https://spunkart.com/revenue-calculator.html">
+<meta property="og:image" content="https://spunkart.com/art/og-revenue-calculator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Revenue Calculator for Solo Founders">
+<meta name="twitter:description" content="Project your revenue across multiple sites with compound growth modeling.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Revenue Calculator for Solo Founders",
+  "description": "Project monthly and annual revenue across multiple sites with growth modeling and compound projections.",
+  "url": "https://spunkart.com/revenue-calculator.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
-<meta name="author" content="SpunkArt.com">
-<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Revenue & Growth Calculator","description":"Free revenue calculator for solo founders. Project MRR, ARR, profit, churn, LTV, and 12-month growth scenarios with charts.","url":"https://spunkart.com/revenue-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.5}
-a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
-nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
-nav .links{display:flex;gap:20px;font-size:0.9rem}
-nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
-main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:2rem 1rem}
-h1{font-size:1.9rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
-.usage-badge-wrap{text-align:center;margin-bottom:1.2rem}
-.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600}
-
-/* Inputs */
-.inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
-.input-group{display:flex;flex-direction:column;gap:4px}
-.input-group label{font-size:0.8rem;color:#888;font-weight:500}
-.input-group input,.input-group select{background:#141414;border:1px solid #333;border-radius:8px;padding:10px 12px;color:#e8e8e8;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s}
-.input-group input:focus,.input-group select:focus{border-color:#ff5f1f}
-.input-group select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.input-group select option{background:#141414;color:#e8e8e8}
-.input-group small{font-size:0.7rem;color:#555}
-
-/* Metric cards */
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
-.metric-card{background:#141414;border:1px solid #222;border-radius:12px;padding:16px;text-align:center}
-.metric-card .value{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
-.metric-card .label{font-size:0.72rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
-.val-green{color:#10b981}
-.val-orange{color:#ff5f1f}
-.val-red{color:#ef4444}
-.val-white{color:#e8e8e8}
-
-/* Section headers */
-.section-title{font-size:1.15rem;font-weight:700;margin:2rem 0 1rem;color:#ccc;border-bottom:1px solid #222;padding-bottom:8px}
-
-/* Table */
-.table-wrap{overflow-x:auto;margin-bottom:2rem;border:1px solid #222;border-radius:12px}
-table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:700px}
-thead{background:#141414;position:sticky;top:0;z-index:1}
-th{padding:10px 8px;text-align:right;color:#888;font-weight:600;border-bottom:1px solid #333;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
-th:first-child{text-align:left;padding-left:14px}
-td{padding:8px;text-align:right;font-variant-numeric:tabular-nums;color:#ccc;font-size:0.82rem}
-td:first-child{text-align:left;color:#888;padding-left:14px}
-tr:nth-child(even){background:#141414}
-tr:nth-child(odd){background:#0a0a0a}
-.neg{color:#ef4444}
-
-/* Actions */
-.actions{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap}
-.action-btn{padding:8px 18px;background:#222;border:1px solid #333;border-radius:8px;color:#ccc;font-size:0.82rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
-.action-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
-.action-btn.copied{border-color:#10b981;color:#10b981}
-
-/* Charts */
-.chart-container{background:#141414;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:2rem}
-.chart-container h3{font-size:0.9rem;color:#888;margin-bottom:16px;font-weight:600}
-.chart-area{position:relative;height:220px;display:flex;align-items:flex-end;gap:2px;padding-bottom:24px}
-.chart-bar-group{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;height:100%}
-.chart-bar{width:100%;border-radius:3px 3px 0 0;transition:height 0.4s ease;position:absolute;bottom:24px;cursor:pointer}
-.chart-bar:hover{opacity:0.85}
-.chart-bar-label{position:absolute;bottom:0;font-size:0.6rem;color:#555;white-space:nowrap;text-align:center;width:100%}
-.chart-tooltip{display:none;position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:#333;padding:3px 8px;border-radius:4px;font-size:0.65rem;white-space:nowrap;color:#e8e8e8;z-index:5;pointer-events:none}
-.chart-bar:hover .chart-tooltip{display:block}
-.chart-y-axis{position:absolute;left:0;top:0;bottom:24px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
-.chart-y-label{font-size:0.6rem;color:#444;white-space:nowrap}
-.chart-bars-area{display:flex;align-items:flex-end;gap:3px;flex:1;height:100%;padding-bottom:24px;position:relative}
-
-/* Profit line chart */
-.line-chart{position:relative;height:180px;margin-top:12px}
-.line-chart svg{width:100%;height:100%}
-.line-labels{display:flex;justify-content:space-between;margin-top:4px}
-.line-labels span{font-size:0.6rem;color:#555}
-
-/* Scenarios */
-.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
-.scenario-card{background:#141414;border:1px solid #222;border-radius:12px;padding:18px;text-align:center}
-.scenario-card h4{font-size:0.85rem;margin-bottom:12px;font-weight:700}
-.scenario-card.conservative h4{color:#888}
-.scenario-card.moderate h4{color:#ff5f1f}
-.scenario-card.aggressive h4{color:#10b981}
-.scenario-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1a1a1a;font-size:0.8rem}
-.scenario-row:last-child{border-bottom:none}
-.scenario-row .s-label{color:#666}
-.scenario-row .s-value{font-weight:700;font-variant-numeric:tabular-nums}
-
-/* Cross-sell */
-.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
-.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
-.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
-
-footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;margin-top:auto}
-footer a{color:#ff5f1f}
-
-@media(max-width:700px){
-  .inputs-grid{grid-template-columns:1fr}
-  .metrics{grid-template-columns:repeat(2,1fr)}
-  .scenarios{grid-template-columns:1fr}
-  h1{font-size:1.4rem}
-  .metric-card .value{font-size:1.2rem}
-  table{font-size:0.7rem}
-}
-@media(max-width:480px){
-  .metrics{grid-template-columns:1fr}
-  main{padding:1rem 0.75rem}
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+.cta-banner{background:linear-gradient(135deg,#ff5f1f,#e04500);text-align:center;padding:10px 16px;font-size:14px;font-weight:600;color:#fff;position:sticky;top:0;z-index:100;}
+.cta-banner a{color:#fff;text-decoration:underline;}
+.container{max-width:960px;margin:0 auto;padding:24px 16px 80px;}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:6px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;font-size:14px;margin-bottom:28px;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:24px;}
+.usage-badge strong{color:#ff5f1f;}
+.scenarios{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.scenario-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 18px;color:#e8e8e8;cursor:pointer;font-size:13px;font-weight:600;transition:all .2s;}
+.scenario-btn:hover,.scenario-btn.active{border-color:#ff5f1f;background:#1f1008;color:#ff5f1f;}
+.input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px;}
+.input-group{display:flex;flex-direction:column;gap:6px;}
+.input-group label{font-size:13px;color:#aaa;font-weight:500;}
+.input-group input,.input-group select{background:#111;border:1px solid #333;border-radius:8px;padding:12px 14px;color:#e8e8e8;font-size:15px;transition:border-color .2s;}
+.input-group input:focus,.input-group select:focus{outline:none;border-color:#ff5f1f;}
+.growth-row{display:flex;gap:12px;align-items:end;margin-bottom:28px;flex-wrap:wrap;}
+.growth-row .input-group{flex:1;min-width:160px;}
+.btn-calc{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s;width:100%;max-width:300px;margin:0 auto 32px;display:block;}
+.btn-calc:hover{background:#e04500;}
+.results{display:none;}
+.result-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px;}
+.result-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;text-align:center;}
+.result-card .label{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.result-card .value{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#10b981;}
+.result-card .value.orange{color:#ff5f1f;}
+.result-card .sub{font-size:12px;color:#666;margin-top:4px;}
+h2{font-size:1.2rem;font-weight:700;margin-bottom:16px;color:#e8e8e8;}
+.chart-section{margin-bottom:32px;}
+.bar-chart{display:flex;align-items:flex-end;gap:12px;height:220px;padding:20px 0;border-bottom:1px solid #333;}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;}
+.bar{width:100%;max-width:80px;border-radius:6px 6px 0 0;transition:height .6s ease;position:relative;min-height:4px;}
+.bar.green{background:linear-gradient(180deg,#10b981,#059669);}
+.bar.orange{background:linear-gradient(180deg,#ff5f1f,#e04500);}
+.bar-label{font-size:11px;color:#888;margin-top:8px;text-align:center;}
+.bar-value{font-size:12px;font-weight:700;color:#e8e8e8;margin-bottom:4px;text-align:center;}
+.projections-table{width:100%;border-collapse:collapse;margin-bottom:28px;}
+.projections-table th{text-align:left;font-size:12px;color:#888;padding:10px 12px;border-bottom:1px solid #333;text-transform:uppercase;letter-spacing:.5px;}
+.projections-table td{padding:10px 12px;border-bottom:1px solid #1a1a1a;font-size:14px;}
+.projections-table tr:hover{background:#111;}
+.projections-table .highlight{color:#10b981;font-weight:700;}
+.export-row{display:flex;gap:10px;margin-top:20px;}
+.btn-export{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 20px;color:#e8e8e8;font-size:13px;cursor:pointer;transition:all .2s;}
+.btn-export:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+@media(max-width:600px){.input-grid{grid-template-columns:1fr;}.result-cards{grid-template-columns:repeat(2,1fr);}.bar-chart{gap:6px;}}
 </style>
 </head>
 <body>
-<nav>
-  <a href="/" class="logo">SPUNKART.COM</a>
-  <div class="links">
-    <a href="/store#free-tools">All Tools</a>
-    <a href="/store">Store</a>
-    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
-    <a href="/blog">Blog</a>
-  </div>
-</nav>
-<main>
-  <h1>Revenue & Growth Calculator</h1>
-  <div class="sub">Project MRR, ARR, and 12-month growth for your business</div>
-  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge">Used 0 times</div></div>
+<div class="cta-banner"><a href="https://spunkart.com/store">80+ Free Tools &rarr; SpunkArt.com/store</a></div>
+<div class="container">
+  <h1><span>Revenue Calculator</span> for Solo Founders</h1>
+  <p class="subtitle">Project your income across multiple sites with compound growth modeling</p>
+  <div class="usage-badge">Used <strong id="usageCount">0</strong> times</div>
 
-  <!-- Inputs -->
-  <div class="inputs-grid">
+  <div class="scenarios">
+    <button class="scenario-btn" onclick="loadScenario('starter')">Starter (5 sites)</button>
+    <button class="scenario-btn" onclick="loadScenario('growth')">Growth (25 sites)</button>
+    <button class="scenario-btn" onclick="loadScenario('empire')">Empire (100+ sites)</button>
+  </div>
+
+  <div class="input-grid">
     <div class="input-group">
-      <label for="price">Product Price ($)</label>
-      <input type="number" id="price" value="29" min="0" step="0.01" placeholder="29.00">
+      <label>Number of Sites</label>
+      <input type="number" id="numSites" value="5" min="1" max="10000">
     </div>
     <div class="input-group">
-      <label for="model">Pricing Model</label>
-      <select id="model">
-        <option value="monthly" selected>Monthly Subscription</option>
-        <option value="annual">Annual Subscription</option>
-        <option value="onetime">One-Time Purchase</option>
+      <label>Avg Monthly Visitors / Site</label>
+      <input type="number" id="avgVisitors" value="2000" min="1">
+    </div>
+    <div class="input-group">
+      <label>Conversion Rate (%)</label>
+      <input type="number" id="convRate" value="2.5" min="0.01" max="100" step="0.1">
+    </div>
+    <div class="input-group">
+      <label>Avg Product Price ($)</label>
+      <input type="number" id="avgPrice" value="29" min="0.01" step="0.01">
+    </div>
+  </div>
+
+  <div class="growth-row">
+    <div class="input-group">
+      <label>Monthly Growth Rate (%)</label>
+      <input type="number" id="growthRate" value="10" min="0" max="500" step="0.5">
+    </div>
+    <div class="input-group">
+      <label>Revenue Model</label>
+      <select id="revenueModel">
+        <option value="one-time">One-Time Purchase</option>
+        <option value="recurring">Recurring (Monthly)</option>
+        <option value="mixed">Mixed (60% one-time, 40% recurring)</option>
       </select>
     </div>
-    <div class="input-group">
-      <label for="customers">Current Customers</label>
-      <input type="number" id="customers" value="50" min="0" step="1" placeholder="50">
-    </div>
-    <div class="input-group">
-      <label for="newPerMonth">New Customers / Month</label>
-      <input type="number" id="newPerMonth" value="10" min="0" step="1" placeholder="10">
-    </div>
-    <div class="input-group">
-      <label for="churn">Monthly Churn Rate (%)</label>
-      <input type="number" id="churn" value="5" min="0" max="100" step="0.1" placeholder="5">
-      <small>For subscriptions only</small>
-    </div>
-    <div class="input-group">
-      <label for="growth">Monthly Growth Rate (%)</label>
-      <input type="number" id="growth" value="0" min="0" max="1000" step="0.1" placeholder="0">
-      <small>Compounds new customers monthly (optional)</small>
-    </div>
-    <div class="input-group">
-      <label for="costs">Monthly Costs ($)</label>
-      <input type="number" id="costs" value="500" min="0" step="1" placeholder="500">
-    </div>
   </div>
 
-  <!-- Metrics -->
-  <div class="metrics" id="metricsGrid">
-    <div class="metric-card"><div class="value val-orange" id="mMRR">$0</div><div class="label">Monthly Revenue (MRR)</div></div>
-    <div class="metric-card"><div class="value val-orange" id="mARR">$0</div><div class="label">Annual Revenue (ARR)</div></div>
-    <div class="metric-card"><div class="value val-green" id="mProfit">$0</div><div class="label">Monthly Profit</div></div>
-    <div class="metric-card"><div class="value val-white" id="mMonths10k">--</div><div class="label">Months to $10K MRR</div></div>
-    <div class="metric-card"><div class="value val-white" id="mLTV">$0</div><div class="label">Customer Lifetime Value</div></div>
-    <div class="metric-card"><div class="value val-white" id="mBreakeven">0</div><div class="label">Break-Even Customers</div></div>
-  </div>
+  <button class="btn-calc" onclick="calculate()">Calculate Revenue</button>
 
-  <!-- Projection Table -->
-  <div class="section-title">12-Month Projection</div>
-  <div class="actions">
-    <button class="action-btn" id="btnCopy" onclick="copySummary()">Copy Summary</button>
-    <button class="action-btn" id="btnCSV" onclick="downloadCSV()">Download CSV</button>
-  </div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Month</th>
-          <th>Customers</th>
-          <th>New</th>
-          <th>Churned</th>
-          <th>Revenue</th>
-          <th>Costs</th>
-          <th>Profit</th>
-          <th>Cumulative</th>
-        </tr>
-      </thead>
-      <tbody id="projectionBody"></tbody>
+  <div class="results" id="results">
+    <div class="result-cards">
+      <div class="result-card"><div class="label">Monthly Revenue</div><div class="value" id="monthlyRev">$0</div><div class="sub" id="monthlyRevSub"></div></div>
+      <div class="result-card"><div class="label">Annual Revenue</div><div class="value" id="annualRev">$0</div><div class="sub" id="annualRevSub"></div></div>
+      <div class="result-card"><div class="label">Revenue / Site</div><div class="value orange" id="perSiteRev">$0</div><div class="sub" id="perSiteRevSub"></div></div>
+      <div class="result-card"><div class="label">Total Conversions / Mo</div><div class="value orange" id="totalConv">0</div><div class="sub" id="totalConvSub"></div></div>
+    </div>
+
+    <div class="chart-section">
+      <h2>Growth Projections</h2>
+      <div class="bar-chart" id="barChart"></div>
+    </div>
+
+    <table class="projections-table">
+      <thead><tr><th>Month</th><th>Revenue</th><th>Cumulative</th><th>Visitors</th><th>Conversions</th></tr></thead>
+      <tbody id="projTableBody"></tbody>
     </table>
-  </div>
 
-  <!-- Charts -->
-  <div class="section-title">Revenue Chart</div>
-  <div class="chart-container">
-    <h3>Monthly Revenue (12 Months)</h3>
-    <div style="position:relative;height:220px;display:flex;gap:0" id="barChartWrap">
-      <div class="chart-y-axis" id="barYAxis"></div>
-      <div class="chart-bars-area" id="barChart"></div>
+    <div class="export-row">
+      <button class="btn-export" onclick="exportResults()">Copy Results as Text</button>
+      <button class="btn-export" onclick="exportCSV()">Export CSV</button>
     </div>
   </div>
+</div>
 
-  <div class="chart-container">
-    <h3>Cumulative Profit</h3>
-    <div class="line-chart" id="lineChartWrap">
-      <svg id="lineSvg" viewBox="0 0 960 180" preserveAspectRatio="none"></svg>
-      <div class="line-labels" id="lineLabels"></div>
-    </div>
-  </div>
-
-  <!-- Scenarios -->
-  <div class="section-title">Growth Scenarios</div>
-  <div class="scenarios" id="scenariosGrid">
-    <div class="scenario-card conservative" id="scenConservative">
-      <h4>Conservative</h4>
-    </div>
-    <div class="scenario-card moderate" id="scenModerate">
-      <h4>Moderate (1.5x)</h4>
-    </div>
-    <div class="scenario-card aggressive" id="scenAggressive">
-      <h4>Aggressive (2x)</h4>
-    </div>
-  </div>
-
-  <!-- Cross-sell -->
-  <div class="cross-sell">
-    <h3>Build Your Business Faster</h3>
-    <p>Explore 100+ free tools for founders, creators, and developers.</p>
-    <a href="/store#free-tools" class="cta">Browse Free Tools</a>
-  </div>
-</main>
-
-<footer>&copy; 2025 <a href="/">SpunkArt</a> &middot; <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Copied!</div>
 
 <script>
-/* ===== State & Refs ===== */
-var projectionData = [];
-var USAGE_KEY = 'spunkart_revenue_calc_uses';
-var useCount = parseInt(localStorage.getItem(USAGE_KEY)) || 0;
+let usage = parseInt(localStorage.getItem('rc_usage')||'0');
+document.getElementById('usageCount').textContent = usage;
 
-function updateBadge() {
-  document.getElementById('usageBadge').textContent = 'Used ' + useCount + ' time' + (useCount !== 1 ? 's' : '');
-}
-updateBadge();
-
-function incrementUsage() {
-  useCount++;
-  localStorage.setItem(USAGE_KEY, useCount);
-  updateBadge();
+function incrementUsage(){
+  usage++;
+  localStorage.setItem('rc_usage', usage);
+  document.getElementById('usageCount').textContent = usage;
 }
 
-/* ===== Formatting ===== */
-function fmt(n) {
-  if (Math.abs(n) >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
-  if (Math.abs(n) >= 10000) return '$' + (n / 1000).toFixed(1) + 'K';
-  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
-function fmtFull(n) {
-  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-function fmtInt(n) {
-  return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
-
-/* ===== Core Calculation ===== */
-function getInputs() {
-  return {
-    price: parseFloat(document.getElementById('price').value) || 0,
-    model: document.getElementById('model').value,
-    customers: parseInt(document.getElementById('customers').value) || 0,
-    newPerMonth: parseInt(document.getElementById('newPerMonth').value) || 0,
-    churn: parseFloat(document.getElementById('churn').value) || 0,
-    growth: parseFloat(document.getElementById('growth').value) || 0,
-    costs: parseFloat(document.getElementById('costs').value) || 0
-  };
+function loadScenario(type){
+  document.querySelectorAll('.scenario-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  const s = {
+    starter: {sites:5, visitors:2000, conv:2.5, price:29, growth:10},
+    growth: {sites:25, visitors:5000, conv:3, price:39, growth:15},
+    empire: {sites:120, visitors:8000, conv:3.5, price:49, growth:20}
+  }[type];
+  document.getElementById('numSites').value = s.sites;
+  document.getElementById('avgVisitors').value = s.visitors;
+  document.getElementById('convRate').value = s.conv;
+  document.getElementById('avgPrice').value = s.price;
+  document.getElementById('growthRate').value = s.growth;
 }
 
-function calcMonthlyRevPerCustomer(price, model) {
-  if (model === 'monthly') return price;
-  if (model === 'annual') return price / 12;
-  return 0; /* one-time handled separately */
+function fmt(n){
+  if(n>=1000000) return '$'+(n/1000000).toFixed(n>=10000000?1:2)+'M';
+  if(n>=1000) return '$'+(n/1000).toFixed(n>=100000?0:1)+'K';
+  return '$'+n.toFixed(2);
 }
+function fmtFull(n){ return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtInt(n){ return n.toLocaleString('en-US'); }
 
-function runProjection(inp, growthMultiplier) {
-  var rows = [];
-  var currentCustomers = inp.customers;
-  var cumProfit = 0;
-  var isRecurring = inp.model !== 'onetime';
-  var monthlyRev = calcMonthlyRevPerCustomer(inp.price, inp.model);
-  var churnRate = isRecurring ? inp.churn / 100 : 0;
-  var baseNew = inp.newPerMonth;
-  var growthRate = (inp.growth * growthMultiplier) / 100;
+let lastCalc = {};
 
-  for (var m = 1; m <= 12; m++) {
-    var newCust = Math.round(baseNew * Math.pow(1 + growthRate, m - 1));
-    var churned = isRecurring ? Math.round(currentCustomers * churnRate) : 0;
-    currentCustomers = currentCustomers + newCust - churned;
-    if (currentCustomers < 0) currentCustomers = 0;
-
-    var revenue;
-    if (isRecurring) {
-      revenue = currentCustomers * monthlyRev;
-    } else {
-      /* one-time: revenue only from new customers */
-      revenue = newCust * inp.price;
-    }
-
-    var profit = revenue - inp.costs;
-    cumProfit += profit;
-
-    rows.push({
-      month: m,
-      customers: currentCustomers,
-      newCust: newCust,
-      churned: churned,
-      revenue: revenue,
-      costs: inp.costs,
-      profit: profit,
-      cumProfit: cumProfit
-    });
-  }
-  return rows;
-}
-
-/* ===== Update Dashboard ===== */
-function update() {
-  var inp = getInputs();
-  var rows = runProjection(inp, 1);
-  projectionData = rows;
-
-  /* Key metrics (based on month 1) */
-  var isRecurring = inp.model !== 'onetime';
-  var monthlyRev = calcMonthlyRevPerCustomer(inp.price, inp.model);
-  var mrr, arr;
-
-  if (isRecurring) {
-    mrr = inp.customers * monthlyRev;
-  } else {
-    mrr = inp.newPerMonth * inp.price;
-  }
-  arr = mrr * 12;
-  var monthlyProfit = mrr - inp.costs;
-
-  /* Months to 10K MRR */
-  var months10k = '--';
-  if (mrr >= 10000) {
-    months10k = '0';
-  } else if (isRecurring) {
-    for (var i = 0; i < rows.length; i++) {
-      if (rows[i].revenue >= 10000) { months10k = '' + (i + 1); break; }
-    }
-    if (months10k === '--') {
-      /* Extend beyond 12 months */
-      var extInp = Object.assign({}, inp);
-      var extRows = [];
-      var cc = inp.customers;
-      var gr = inp.growth / 100;
-      var cr = inp.churn / 100;
-      for (var j = 1; j <= 120; j++) {
-        var nc = Math.round(inp.newPerMonth * Math.pow(1 + gr, j - 1));
-        var ch = Math.round(cc * cr);
-        cc = cc + nc - ch;
-        if (cc < 0) cc = 0;
-        var rev = cc * monthlyRev;
-        if (rev >= 10000) { months10k = '' + j; break; }
-      }
-      if (months10k === '--') months10k = '120+';
-    }
-  } else {
-    /* one-time: check if monthly new * price >= 10K */
-    for (var k = 0; k < rows.length; k++) {
-      if (rows[k].revenue >= 10000) { months10k = '' + (k + 1); break; }
-    }
-    if (months10k === '--') months10k = 'N/A';
-  }
-
-  /* LTV */
-  var ltv;
-  if (isRecurring && inp.churn > 0) {
-    ltv = monthlyRev / (inp.churn / 100);
-  } else if (isRecurring) {
-    ltv = monthlyRev * 60; /* assume 5 yr if no churn */
-  } else {
-    ltv = inp.price;
-  }
-
-  /* Break-even customers */
-  var breakeven;
-  if (isRecurring) {
-    breakeven = monthlyRev > 0 ? Math.ceil(inp.costs / monthlyRev) : 0;
-  } else {
-    breakeven = inp.price > 0 ? Math.ceil(inp.costs / inp.price) : 0;
-  }
-
-  /* Update metric cards */
-  document.getElementById('mMRR').textContent = fmt(Math.round(mrr));
-  document.getElementById('mARR').textContent = fmt(Math.round(arr));
-  var profitEl = document.getElementById('mProfit');
-  profitEl.textContent = fmt(Math.round(monthlyProfit));
-  profitEl.className = 'value ' + (monthlyProfit >= 0 ? 'val-green' : 'val-red');
-  document.getElementById('mMonths10k').textContent = months10k;
-  document.getElementById('mLTV').textContent = fmt(Math.round(ltv));
-  document.getElementById('mBreakeven').textContent = fmtInt(breakeven);
-
-  /* Update table */
-  var tbody = document.getElementById('projectionBody');
-  var html = '';
-  for (var r = 0; r < rows.length; r++) {
-    var d = rows[r];
-    html += '<tr>';
-    html += '<td>Month ' + d.month + '</td>';
-    html += '<td>' + fmtInt(d.customers) + '</td>';
-    html += '<td>+' + fmtInt(d.newCust) + '</td>';
-    html += '<td>' + (d.churned > 0 ? '-' + fmtInt(d.churned) : '0') + '</td>';
-    html += '<td>' + fmtFull(d.revenue) + '</td>';
-    html += '<td>' + fmtFull(d.costs) + '</td>';
-    html += '<td class="' + (d.profit < 0 ? 'neg' : '') + '">' + fmtFull(d.profit) + '</td>';
-    html += '<td class="' + (d.cumProfit < 0 ? 'neg' : '') + '">' + fmtFull(d.cumProfit) + '</td>';
-    html += '</tr>';
-  }
-  tbody.innerHTML = html;
-
-  /* Charts */
-  renderBarChart(rows);
-  renderLineChart(rows);
-
-  /* Scenarios */
-  renderScenarios(inp);
-}
-
-/* ===== Bar Chart ===== */
-function renderBarChart(rows) {
-  var maxRev = Math.max.apply(null, rows.map(function(r) { return r.revenue; }));
-  if (maxRev === 0) maxRev = 1;
-  var chartH = 180;
-
-  /* Y-axis */
-  var yAxis = document.getElementById('barYAxis');
-  yAxis.innerHTML = '';
-  for (var y = 4; y >= 0; y--) {
-    var val = (maxRev / 4) * y;
-    var lbl = document.createElement('span');
-    lbl.className = 'chart-y-label';
-    lbl.textContent = fmt(Math.round(val));
-    lbl.style.fontSize = '0.6rem';
-    yAxis.appendChild(lbl);
-  }
-  yAxis.style.width = '50px';
-  yAxis.style.flexShrink = '0';
-
-  /* Bars */
-  var barsArea = document.getElementById('barChart');
-  var barsHtml = '';
-  for (var i = 0; i < rows.length; i++) {
-    var h = (rows[i].revenue / maxRev) * chartH;
-    if (h < 2 && rows[i].revenue > 0) h = 2;
-    barsHtml += '<div class="chart-bar-group">';
-    barsHtml += '<div class="chart-bar" style="height:' + h + 'px;background:#ff5f1f;width:80%;left:10%">';
-    barsHtml += '<div class="chart-tooltip">' + fmtFull(rows[i].revenue) + '</div>';
-    barsHtml += '</div>';
-    barsHtml += '<div class="chart-bar-label">M' + (i + 1) + '</div>';
-    barsHtml += '</div>';
-  }
-  barsArea.innerHTML = barsHtml;
-}
-
-/* ===== Line Chart (Cumulative Profit) ===== */
-function renderLineChart(rows) {
-  var svg = document.getElementById('lineSvg');
-  var labelsEl = document.getElementById('lineLabels');
-  var vals = rows.map(function(r) { return r.cumProfit; });
-  var minVal = Math.min.apply(null, vals);
-  var maxVal = Math.max.apply(null, vals);
-  if (minVal === maxVal) { maxVal = minVal + 1; }
-  var range = maxVal - minVal;
-  var w = 960, h = 170, padX = 10, padY = 10;
-  var usableW = w - padX * 2;
-  var usableH = h - padY * 2;
-
-  /* Build path */
-  var points = [];
-  for (var i = 0; i < vals.length; i++) {
-    var x = padX + (i / (vals.length - 1)) * usableW;
-    var y = padY + usableH - ((vals[i] - minVal) / range) * usableH;
-    points.push(x + ',' + y);
-  }
-
-  /* Zero line */
-  var zeroY = padY + usableH - ((0 - minVal) / range) * usableH;
-  var zeroLine = '';
-  if (minVal < 0 && maxVal > 0) {
-    zeroLine = '<line x1="' + padX + '" y1="' + zeroY + '" x2="' + (w - padX) + '" y2="' + zeroY + '" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>';
-  }
-
-  /* Gradient fill */
-  var fillPoints = padX + ',' + (padY + usableH) + ' ' + points.join(' ') + ' ' + (w - padX) + ',' + (padY + usableH);
-
-  var svgContent = '<defs>';
-  svgContent += '<linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">';
-  svgContent += '<stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>';
-  svgContent += '<stop offset="100%" stop-color="#10b981" stop-opacity="0.02"/>';
-  svgContent += '</linearGradient></defs>';
-  svgContent += zeroLine;
-  svgContent += '<polygon points="' + fillPoints + '" fill="url(#profitGrad)"/>';
-  svgContent += '<polyline points="' + points.join(' ') + '" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
-
-  /* Dots */
-  for (var j = 0; j < points.length; j++) {
-    var coords = points[j].split(',');
-    svgContent += '<circle cx="' + coords[0] + '" cy="' + coords[1] + '" r="4" fill="#10b981" stroke="#0a0a0a" stroke-width="2"/>';
-  }
-  svg.innerHTML = svgContent;
-
-  /* Labels */
-  var labelsHtml = '';
-  for (var k = 0; k < rows.length; k++) {
-    labelsHtml += '<span>M' + (k + 1) + '</span>';
-  }
-  labelsEl.innerHTML = labelsHtml;
-}
-
-/* ===== Scenarios ===== */
-function renderScenarios(inp) {
-  var multipliers = [1, 1.5, 2];
-  var ids = ['scenConservative', 'scenModerate', 'scenAggressive'];
-  var labels = ['Conservative', 'Moderate (1.5x)', 'Aggressive (2x)'];
-
-  for (var s = 0; s < 3; s++) {
-    var rows = runProjection(inp, multipliers[s]);
-    var last = rows[rows.length - 1];
-    var totalRev = 0, totalProfit = 0;
-    for (var r = 0; r < rows.length; r++) {
-      totalRev += rows[r].revenue;
-      totalProfit += rows[r].profit;
-    }
-
-    var card = document.getElementById(ids[s]);
-    var profitClass = totalProfit >= 0 ? 'val-green' : 'val-red';
-    card.innerHTML = '<h4>' + labels[s] + '</h4>';
-    card.innerHTML += '<div class="scenario-row"><span class="s-label">12-Mo Revenue</span><span class="s-value val-orange">' + fmt(Math.round(totalRev)) + '</span></div>';
-    card.innerHTML += '<div class="scenario-row"><span class="s-label">Total Profit</span><span class="s-value ' + profitClass + '">' + fmt(Math.round(totalProfit)) + '</span></div>';
-    card.innerHTML += '<div class="scenario-row"><span class="s-label">Customers (Mo 12)</span><span class="s-value val-white">' + fmtInt(last.customers) + '</span></div>';
-    card.innerHTML += '<div class="scenario-row"><span class="s-label">MRR (Mo 12)</span><span class="s-value val-orange">' + fmt(Math.round(last.revenue)) + '</span></div>';
-  }
-}
-
-/* ===== Copy Summary ===== */
-function copySummary() {
-  var inp = getInputs();
-  var rows = projectionData;
-  if (!rows.length) return;
-  var last = rows[rows.length - 1];
-  var totalRev = 0, totalProfit = 0;
-  for (var i = 0; i < rows.length; i++) { totalRev += rows[i].revenue; totalProfit += rows[i].profit; }
-
-  var text = 'Revenue Projection Summary\n';
-  text += '==========================\n';
-  text += 'Price: $' + inp.price + ' (' + inp.model + ')\n';
-  text += 'Starting customers: ' + inp.customers + '\n';
-  text += 'New/month: ' + inp.newPerMonth + '\n';
-  if (inp.model !== 'onetime') text += 'Churn: ' + inp.churn + '%\n';
-  if (inp.growth > 0) text += 'Growth rate: ' + inp.growth + '%\n';
-  text += 'Monthly costs: $' + inp.costs + '\n\n';
-  text += 'Month 12 Customers: ' + fmtInt(last.customers) + '\n';
-  text += 'Month 12 MRR: ' + fmtFull(last.revenue) + '\n';
-  text += '12-Month Total Revenue: ' + fmtFull(totalRev) + '\n';
-  text += '12-Month Total Profit: ' + fmtFull(totalProfit) + '\n';
-  text += '\nGenerated at spunkart.com/revenue-calculator';
-
-  navigator.clipboard.writeText(text).then(function() {
-    var btn = document.getElementById('btnCopy');
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(function() { btn.textContent = 'Copy Summary'; btn.classList.remove('copied'); }, 2000);
-  });
+function calculate(){
   incrementUsage();
-}
+  const sites = parseInt(document.getElementById('numSites').value)||1;
+  const visitors = parseInt(document.getElementById('avgVisitors').value)||1;
+  const conv = parseFloat(document.getElementById('convRate').value)||1;
+  const price = parseFloat(document.getElementById('avgPrice').value)||1;
+  const growth = parseFloat(document.getElementById('growthRate').value)||0;
+  const model = document.getElementById('revenueModel').value;
 
-/* ===== Download CSV ===== */
-function downloadCSV() {
-  if (!projectionData.length) return;
-  var csv = 'Month,Customers,New,Churned,Revenue,Costs,Profit,Cumulative Profit\n';
-  for (var i = 0; i < projectionData.length; i++) {
-    var d = projectionData[i];
-    csv += d.month + ',' + d.customers + ',' + d.newCust + ',' + d.churned + ',';
-    csv += d.revenue.toFixed(2) + ',' + d.costs.toFixed(2) + ',' + d.profit.toFixed(2) + ',' + d.cumProfit.toFixed(2) + '\n';
-  }
-  var blob = new Blob([csv], { type: 'text/csv' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'revenue-projection-' + new Date().toISOString().split('T')[0] + '.csv';
-  a.click();
-  incrementUsage();
-}
+  const totalVisitors = sites * visitors;
+  const conversions = Math.round(totalVisitors * (conv/100));
+  let monthlyRev = conversions * price;
+  const annualRev = monthlyRev * 12;
+  const perSite = monthlyRev / sites;
 
-/* ===== Live Updates ===== */
-var inputs = document.querySelectorAll('.inputs-grid input, .inputs-grid select');
-var debounceTimer;
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener('input', function() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(function() {
-      update();
-      incrementUsage();
-    }, 150);
-  });
-  inputs[i].addEventListener('change', function() {
-    update();
-  });
-}
+  document.getElementById('monthlyRev').textContent = fmt(monthlyRev);
+  document.getElementById('monthlyRevSub').textContent = fmtFull(monthlyRev)+' / month';
+  document.getElementById('annualRev').textContent = fmt(annualRev);
+  document.getElementById('annualRevSub').textContent = 'without growth applied';
+  document.getElementById('perSiteRev').textContent = fmt(perSite);
+  document.getElementById('perSiteRevSub').textContent = fmtFull(perSite)+' per site / month';
+  document.getElementById('totalConv').textContent = fmtInt(conversions);
+  document.getElementById('totalConvSub').textContent = fmtInt(totalVisitors)+' visitors total';
 
-/* ===== Toggle churn visibility ===== */
-function updateChurnVisibility() {
-  var model = document.getElementById('model').value;
-  var churnGroup = document.getElementById('churn').parentElement;
-  churnGroup.style.opacity = model === 'onetime' ? '0.4' : '1';
-  document.getElementById('churn').disabled = model === 'onetime';
-}
-document.getElementById('model').addEventListener('change', updateChurnVisibility);
-updateChurnVisibility();
+  const milestones = [1,3,6,12,18,24];
+  const projections = [];
+  let cumulative = 0;
+  let maxRev = 0;
 
-/* Initial render */
-update();
-</script>
-
-<!-- Email collection -->
-<script>
-(function(){
-  var ek = 'spunkart_email_collected_revcalc', uk = USAGE_KEY;
-  if (localStorage.getItem(ek)) return;
-  var check = setInterval(function(){
-    if (parseInt(localStorage.getItem(uk) || '0') >= 2) {
-      clearInterval(check);
-      var bar = document.createElement('div');
-      bar.innerHTML = '<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools & updates &mdash; </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected_revcalc\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
-      document.body.appendChild(bar);
+  for(let m=1; m<=24; m++){
+    const factor = Math.pow(1+(growth/100), m-1);
+    let mRev = monthlyRev * factor;
+    if(model==='recurring'){
+      mRev = 0;
+      for(let i=1;i<=m;i++) mRev += conversions * price * Math.pow(1+(growth/100), i-1) * 0.85;
+    } else if(model==='mixed'){
+      const oneTimeRev = conversions * price * 0.6 * factor;
+      let recurRev = 0;
+      for(let i=1;i<=m;i++) recurRev += conversions * price * 0.4 * Math.pow(1+(growth/100), i-1) * 0.85;
+      mRev = oneTimeRev + recurRev;
     }
-  }, 1000);
-})();
-</script>
+    cumulative += mRev;
+    if(mRev > maxRev) maxRev = mRev;
+    projections.push({month:m, rev:mRev, cum:cumulative, visitors:Math.round(totalVisitors*factor), convs:Math.round(conversions*factor)});
+  }
 
-<!-- Code protection -->
-<script>
-document.addEventListener('contextmenu',function(e){e.preventDefault()});
-document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault()});
-console.log('%c\u26A0 SpunkArt Protected','font-size:20px;color:#ff5f1f;font-weight:bold');
-console.log('%cUnauthorized copying or redistribution of this tool is prohibited.','font-size:12px;color:#e8e8e8');
-</script>
+  const chart = document.getElementById('barChart');
+  chart.innerHTML = '';
+  milestones.forEach((m,i)=>{
+    const p = projections[m-1];
+    const pct = (p.rev/maxRev)*100;
+    const c = i < 3 ? 'green' : 'orange';
+    chart.innerHTML += `<div class="bar-wrap"><div class="bar-value">${fmt(p.rev)}</div><div class="bar ${c}" style="height:${Math.max(pct,3)}%"></div><div class="bar-label">Mo ${m}</div></div>`;
+  });
 
-<!-- Clarity -->
-<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+  const tbody = document.getElementById('projTableBody');
+  tbody.innerHTML = '';
+  milestones.forEach(m=>{
+    const p = projections[m-1];
+    tbody.innerHTML += `<tr><td>Month ${m}</td><td class="highlight">${fmtFull(p.rev)}</td><td>${fmtFull(p.cum)}</td><td>${fmtInt(p.visitors)}</td><td>${fmtInt(p.convs)}</td></tr>`;
+  });
+
+  lastCalc = {sites, visitors, conv, price, growth, model, monthlyRev, annualRev, perSite, conversions, projections, milestones};
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+
+function exportResults(){
+  const c = lastCalc;
+  let txt = `REVENUE PROJECTION — Solo Founder Calculator\nGenerated: ${new Date().toLocaleDateString()}\n${'='.repeat(45)}\n\nINPUTS\nSites: ${c.sites} | Visitors/site: ${fmtInt(c.visitors)} | Conv: ${c.conv}%\nPrice: $${c.price} | Growth: ${c.growth}%/mo | Model: ${c.model}\n\nRESULTS\nMonthly Revenue: ${fmtFull(c.monthlyRev)}\nAnnual Revenue: ${fmtFull(c.annualRev)}\nPer Site: ${fmtFull(c.perSite)}/mo\nConversions/mo: ${fmtInt(c.conversions)}\n\nGROWTH PROJECTIONS\n`;
+  c.milestones.forEach(m=>{const p=c.projections[m-1];txt+=`Month ${m}: ${fmtFull(p.rev)}/mo (cumulative: ${fmtFull(p.cum)})\n`;});
+  txt += `\nGenerated at SpunkArt.com/revenue-calculator.html`;
+  navigator.clipboard.writeText(txt);
+  showToast('Copied to clipboard!');
+}
+
+function exportCSV(){
+  let csv = 'Month,Monthly Revenue,Cumulative Revenue,Visitors,Conversions\n';
+  lastCalc.projections.forEach(p=>csv+=`${p.month},${p.rev.toFixed(2)},${p.cum.toFixed(2)},${p.visitors},${p.convs}\n`);
+  const blob = new Blob([csv],{type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href=url;a.download='revenue-projection.csv';a.click();
+  URL.revokeObjectURL(url);
+  showToast('CSV downloaded!');
+}
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2000);}
+
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'))||(e.ctrlKey&&e.key==='u'))e.preventDefault();});
+</script>
 </body>
 </html>

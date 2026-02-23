@@ -39,6 +39,17 @@ a{color:inherit;text-decoration:none}
 .post-card .read-more{color:#ff5f1f;font-weight:600;font-size:0.8rem;transition:opacity 0.2s}
 .post-card .read-more:hover{opacity:0.8}
 
+.featured{max-width:900px;margin:0 auto 2rem;padding:0 2rem}
+.featured h2{font-size:1.2rem;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;font-size:0.75rem}
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.featured-card{background:#111;border:1px solid #1a1a1a;border-radius:12px;padding:1.5rem;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden}
+.featured-card:hover{border-color:#ff5f1f44;transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,95,31,0.08)}
+.featured-card .badge{display:inline-block;background:linear-gradient(135deg,#ff5f1f,#f59e0b);color:#000;font-size:0.6rem;font-weight:800;padding:0.2rem 0.6rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.7rem}
+.featured-card h3{font-size:1rem;font-weight:700;margin-bottom:0.4rem;line-height:1.3;color:#e8e8e8}
+.featured-card p{color:#888;font-size:0.78rem;line-height:1.5;margin-bottom:0.8rem}
+.featured-card .cta{color:#ff5f1f;font-weight:600;font-size:0.75rem}
+@media(max-width:600px){.featured-grid{grid-template-columns:1fr}.featured{padding:0 1rem}}
+
 .email-section{max-width:600px;margin:4rem auto;padding:2rem;text-align:center}
 .email-section h2{font-size:1.5rem;font-weight:700;margin-bottom:0.5rem}
 .email-section p{color:#888;font-size:0.9rem;margin-bottom:1.5rem}
@@ -79,7 +90,31 @@ footer p{font-size:0.7rem;color:#444;letter-spacing:0.1em}
 
 <div class="hero">
   <h1>The SpunkArt Blog</h1>
-  <p>Tutorials, behind-the-scenes breakdowns, and actionable guides on building with AI, shipping fast, and selling digital products.</p>
+  <p>100+ free tools, 7 ebooks, and actionable guides on building with AI, shipping fast, and selling digital products.</p>
+</div>
+
+<div class="featured">
+  <h2>Featured Ebooks</h2>
+  <div class="featured-grid">
+    <div class="featured-card" onclick="location.href='/ebook-ai-agents'">
+      <span class="badge">New</span>
+      <h3>Building AI Agents</h3>
+      <p>The solo founder's guide to autonomous workflows, multi-agent architectures, and managing 100+ sites with AI.</p>
+      <span class="cta">Read free &rarr;</span>
+    </div>
+    <div class="featured-card" onclick="location.href='/ebook-passive-income'">
+      <span class="badge">New</span>
+      <h3>The Passive Income Machine</h3>
+      <p>50 automated revenue streams for 2026 — from digital products to micro-SaaS, with complete setup guides.</p>
+      <span class="cta">Read free &rarr;</span>
+    </div>
+    <div class="featured-card" onclick="location.href='/ebook-no-code-empire'">
+      <span class="badge">New</span>
+      <h3>The No-Code Empire</h3>
+      <p>Build and scale a portfolio of profitable sites without writing a single line of code. The 2026 blueprint.</p>
+      <span class="cta">Read free &rarr;</span>
+    </div>
+  </div>
 </div>
 
 <div class="posts">

@@ -98,6 +98,27 @@ a{color:inherit;text-decoration:none}
 .ebook-price{font-size:1.8rem;font-weight:800;color:#ff5f1f;margin-bottom:1rem}
 .ebook-btn{display:inline-block;padding:0.8rem 2rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;transition:all 0.2s;cursor:pointer;border:none;font-size:1rem}
 .ebook-btn:hover{background:#e5541b;transform:scale(1.03)}
+/* Ebook Bundle Banner */
+.ebook-bundle{max-width:1100px;margin:0 auto 2rem;padding:2rem 2.5rem;background:linear-gradient(145deg,#0a1a0a,#111);border:2px solid #10b98155;border-radius:20px;text-align:center;position:relative;overflow:hidden}
+.ebook-bundle::before{content:"BEST VALUE";position:absolute;top:14px;right:-35px;background:#10b981;color:#fff;font-size:0.65rem;font-weight:800;padding:0.25rem 2.5rem;transform:rotate(45deg);letter-spacing:0.5px}
+.ebook-bundle h3{font-size:1.6rem;margin-bottom:0.3rem;color:#fff}
+.ebook-bundle .bundle-save{color:#10b981;font-size:1rem;font-weight:700;margin-bottom:0.3rem}
+.ebook-bundle .bundle-orig{color:#666;font-size:0.85rem;text-decoration:line-through;margin-bottom:0.8rem}
+.ebook-bundle .bundle-price{font-size:2.2rem;font-weight:800;color:#10b981;margin-bottom:0.3rem}
+.ebook-bundle .bundle-desc{color:#888;font-size:0.85rem;margin-bottom:1.2rem}
+.ebook-bundle-btn{display:inline-block;padding:0.9rem 2.5rem;background:#10b981;color:#fff;border-radius:10px;font-weight:700;font-size:1.05rem;transition:all 0.2s;cursor:pointer;border:none}
+.ebook-bundle-btn:hover{background:#0d9668;transform:scale(1.03)}
+/* Ebook Grid */
+.ebook-grid{max-width:1100px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.ebook-grid-card{background:linear-gradient(145deg,#1a0a00,#111);border:1px solid #ff5f1f22;border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;transition:all 0.3s}
+.ebook-grid-card:hover{border-color:#ff5f1f66;transform:translateY(-4px);box-shadow:0 10px 30px rgba(255,95,31,0.15)}
+.ebook-grid-card h4{font-size:1rem;color:#fff;margin-bottom:0.5rem;line-height:1.3}
+.ebook-grid-card .eg-price{font-size:1.4rem;font-weight:800;color:#ff5f1f;margin-bottom:0.7rem}
+.ebook-grid-card ul{list-style:none;font-size:0.75rem;color:#aaa;margin-bottom:1rem;flex:1}
+.ebook-grid-card ul li{padding:0.2rem 0}
+.ebook-grid-card ul li::before{content:"✓ ";color:#10b981;font-weight:700}
+.ebook-grid-btn{display:inline-block;padding:0.6rem 1.2rem;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:700;font-size:0.85rem;transition:all 0.2s;cursor:pointer;border:none;text-align:center;width:100%}
+.ebook-grid-btn:hover{background:#e5541b;transform:scale(1.03)}
 
 
 /* Email Capture */
@@ -164,6 +185,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:768px){
   .hero h1{font-size:2rem}
   .ebook-card{flex-direction:column;text-align:center}
+  .ebook-grid{grid-template-columns:repeat(2,1fr)}
   .bundles{grid-template-columns:1fr 1fr}
   .email-form{flex-direction:column}
 }
@@ -742,13 +764,24 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- Ebook -->
+<!-- Ebooks -->
 <section id="ebook">
   <div class="section-title">
-    <h2>The Ebook</h2>
-    <p>How one person built 120+ websites in under a week using AI</p>
+    <h2>Ebooks</h2>
+    <p>8 guides covering every angle of building, automating, and profiting with AI</p>
   </div>
 
+  <!-- Bundle Deal -->
+  <div class="ebook-bundle">
+    <h3>Complete Ebook Library</h3>
+    <div class="bundle-save">Save 61% — Get all 8 ebooks</div>
+    <div class="bundle-orig">Normally $203.93</div>
+    <div class="bundle-price">$79.99</div>
+    <div class="bundle-desc">Every ebook in the collection. One price. Instant delivery.</div>
+    <button class="ebook-bundle-btn" onclick="buy('ebook-bundle')">Get All 8 Ebooks — $79.99</button>
+  </div>
+
+  <!-- Original Ebook (featured) -->
   <div class="ebook">
     <div class="ebook-card">
       <div class="ebook-cover">
@@ -769,6 +802,87 @@ a{color:inherit;text-decoration:none}
         <div class="ebook-price">$14.99</div>
         <button class="ebook-btn" onclick="buy('ebook')">Buy the Ebook — $14.99</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Ebook Grid -->
+  <div class="ebook-grid">
+    <div class="ebook-grid-card">
+      <h4>The AI Automation Playbook</h4>
+      <div class="eg-price">$29.99</div>
+      <ul>
+        <li>10 chapters on automating with AI</li>
+        <li>Solo founder automation systems</li>
+        <li>Real workflows, not theory</li>
+        <li>Copy-paste prompt templates</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-automation')">Buy — $29.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>The 120-Site Empire Blueprint</h4>
+      <div class="eg-price">$39.99</div>
+      <ul>
+        <li>Build massive site networks</li>
+        <li>The only playbook of its kind</li>
+        <li>Generator scripts included</li>
+        <li>SEO cross-linking strategy</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-empire')">Buy — $39.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>Vibe Coding Mastery</h4>
+      <div class="eg-price">$24.99</div>
+      <ul>
+        <li>Ship 100 projects with AI</li>
+        <li>The vibe coding methodology</li>
+        <li>Prompt-first development</li>
+        <li>From idea to deploy in hours</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-vibe')">Buy — $24.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>Free Tools That Print Money</h4>
+      <div class="eg-price">$19.99</div>
+      <ul>
+        <li>Monetize free tools into revenue</li>
+        <li>Proven funnel strategies</li>
+        <li>Traffic without ad spend</li>
+        <li>Real case studies included</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-tools')">Buy — $19.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>Building AI Agents</h4>
+      <div class="eg-price">$29.99</div>
+      <ul>
+        <li>Autonomous AI workflows</li>
+        <li>Solo founder's agent guide</li>
+        <li>Multi-agent architectures</li>
+        <li>Production-ready patterns</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-agents')">Buy — $29.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>The Passive Income Machine</h4>
+      <div class="eg-price">$24.99</div>
+      <ul>
+        <li>50 automated revenue streams</li>
+        <li>Built for 2026 and beyond</li>
+        <li>Set up once, earn forever</li>
+        <li>Step-by-step blueprints</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-passive')">Buy — $24.99</button>
+    </div>
+    <div class="ebook-grid-card">
+      <h4>The No-Code Empire</h4>
+      <div class="eg-price">$19.99</div>
+      <ul>
+        <li>6-figure business, zero code</li>
+        <li>No-code tool stack revealed</li>
+        <li>Automation without devs</li>
+        <li>Launch in days, not months</li>
+      </ul>
+      <button class="ebook-grid-btn" onclick="buy('ebook-nocode')">Buy — $19.99</button>
     </div>
   </div>
 </section>
@@ -1142,6 +1256,14 @@ var PRODUCTS = {
   empire: { name: 'Empire Bundle (Everything)', price: '$49.99', amount: 49.99 },
   lifetime: { name: 'Lifetime Access (Everything Forever)', price: '$99.99', amount: 99.99 },
   ebook: { name: 'AI Website Empire Ebook', price: '$14.99', amount: 14.99 },
+  'ebook-automation': { name: 'AI Automation Playbook', price: '$29.99', amount: 29.99 },
+  'ebook-empire': { name: '120-Site Empire Blueprint', price: '$39.99', amount: 39.99 },
+  'ebook-vibe': { name: 'Vibe Coding Mastery', price: '$24.99', amount: 24.99 },
+  'ebook-tools': { name: 'Free Tools That Print Money', price: '$19.99', amount: 19.99 },
+  'ebook-agents': { name: 'Building AI Agents', price: '$29.99', amount: 29.99 },
+  'ebook-passive': { name: 'Passive Income Machine', price: '$24.99', amount: 24.99 },
+  'ebook-nocode': { name: 'No-Code Empire', price: '$19.99', amount: 19.99 },
+  'ebook-bundle': { name: 'Complete Ebook Library (8 books)', price: '$79.99', amount: 79.99 },
   openclaw: { name: 'OpenClaw Game Worker', price: '$4.99', amount: 4.99 },
   ssl: { name: 'Auto-SSL Monitor', price: '$4.99', amount: 4.99 },
   spotify: { name: 'Spotify Connect Widget', price: '$4.99', amount: 4.99 },
@@ -1272,6 +1394,14 @@ var PAYMENT_LINKS = {
   empire: GUMROAD_BUNDLE,
   lifetime: GUMROAD_BUNDLE,
   ebook: GUMROAD_BUNDLE,
+  'ebook-automation': GUMROAD_BUNDLE,
+  'ebook-empire': GUMROAD_BUNDLE,
+  'ebook-vibe': GUMROAD_BUNDLE,
+  'ebook-tools': GUMROAD_BUNDLE,
+  'ebook-agents': GUMROAD_BUNDLE,
+  'ebook-passive': GUMROAD_BUNDLE,
+  'ebook-nocode': GUMROAD_BUNDLE,
+  'ebook-bundle': GUMROAD_BUNDLE,
   botblock: GUMROAD_BUNDLE,
   uptime: GUMROAD_BUNDLE,
   analytics: GUMROAD_BUNDLE,
