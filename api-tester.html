@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Tester — Test REST APIs in Your Browser | SPUNKART.COM</title>
+<meta name="description" content="Free online API tester. Send GET, POST, PUT, PATCH, DELETE requests with custom headers and JSON body. See formatted responses, status codes, and timing. No signup required.">
+<meta property="og:title" content="API Tester — Test REST APIs in Your Browser">
+<meta property="og:description" content="Free Postman-like API tester that runs in your browser. Send requests, set headers, add JSON body, view formatted responses.">
+<meta property="og:image" content="https://spunkart.com/assets/og-api-tester.png">
+<meta property="og:url" content="https://spunkart.com/api-tester.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="API Tester — Test REST APIs in Your Browser">
+<meta name="twitter:description" content="Free online REST API tester. Send requests, set headers, view formatted responses with status codes and timing.">
+<meta name="twitter:image" content="https://spunkart.com/assets/og-api-tester.png">
+<link rel="canonical" href="https://spunkart.com/api-tester.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"API Tester","description":"Free online REST API tester. Send GET, POST, PUT, PATCH, DELETE requests with custom headers and JSON body. View formatted responses with status codes and timing.","url":"https://spunkart.com/api-tester.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+
+/* Usage badge */
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{margin-bottom:0;}
+
+/* Method + URL bar */
+.request-bar{display:flex;gap:0;margin-bottom:16px;border-radius:10px;overflow:hidden;border:1px solid #333;}
+.method-select{background:#1a1a1a;color:#ff5f1f;border:none;border-right:1px solid #333;padding:12px 14px;font-size:0.9rem;font-weight:700;cursor:pointer;outline:none;min-width:110px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.method-select option{background:#1a1a1a;color:#e8e8e8;}
+.url-input{flex:1;background:#111;color:#e8e8e8;border:none;padding:12px 16px;font-size:0.95rem;font-family:inherit;outline:none;min-width:0;}
+.url-input::placeholder{color:#555;}
+.url-input:focus{background:#151515;}
+.send-btn{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:background 0.2s;white-space:nowrap;}
+.send-btn:hover{background:#e5520f;}
+.send-btn:disabled{background:#555;cursor:not-allowed;}
+.send-btn.loading{position:relative;color:transparent;}
+.send-btn.loading::after{content:'';position:absolute;width:18px;height:18px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 0.6s linear infinite;top:50%;left:50%;margin:-9px 0 0 -9px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:0;border-bottom:1px solid #333;}
+.tab-btn{background:transparent;color:#888;border:none;padding:10px 20px;font-size:0.85rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;}
+.tab-btn:hover{color:#ccc;}
+.tab-btn.active{color:#ff5f1f;border-bottom-color:#ff5f1f;}
+.tab-content{display:none;padding:16px 0;}
+.tab-content.active{display:block;}
+
+/* Headers section */
+.header-row{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+.header-row input{flex:1;background:#111;border:1px solid #333;color:#e8e8e8;padding:8px 12px;border-radius:6px;font-size:0.85rem;font-family:inherit;outline:none;}
+.header-row input:focus{border-color:#ff5f1f;}
+.header-row input::placeholder{color:#555;}
+.remove-header{background:#333;color:#888;border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;}
+.remove-header:hover{background:#e74c3c;color:#fff;}
+.add-header-btn{background:#1a1a1a;color:#ff5f1f;border:1px dashed #333;padding:8px 16px;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.add-header-btn:hover{border-color:#ff5f1f;background:#1f1510;}
+
+/* Body editor */
+.body-editor{width:100%;min-height:180px;background:#111;border:1px solid #333;color:#e8e8e8;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;outline:none;resize:vertical;border-radius:10px;tab-size:2;line-height:1.5;}
+.body-editor:focus{border-color:#ff5f1f;}
+
+/* Response panel */
+.response-section{margin-top:24px;}
+.response-header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
+.response-header h2{font-size:1.1rem;color:#fff;}
+.status-badge{padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;letter-spacing:0.5px;}
+.status-2xx{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3);}
+.status-3xx{background:rgba(59,130,246,0.15);color:#3b82f6;border:1px solid rgba(59,130,246,0.3);}
+.status-4xx{background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);}
+.status-5xx{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}
+.status-err{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}
+.timing-badge{color:#888;font-size:0.8rem;}
+.size-badge{color:#888;font-size:0.8rem;}
+
+.response-tabs{display:flex;gap:0;border-bottom:1px solid #333;margin-bottom:0;}
+.resp-tab-btn{background:transparent;color:#888;border:none;padding:8px 16px;font-size:0.8rem;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;}
+.resp-tab-btn:hover{color:#ccc;}
+.resp-tab-btn.active{color:#10b981;border-bottom-color:#10b981;}
+.resp-tab-content{display:none;}
+.resp-tab-content.active{display:block;}
+
+.response-body-panel{background:#111;border:1px solid #333;border-radius:10px;overflow:auto;max-height:500px;position:relative;}
+.response-body-pre{padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-all;line-height:1.5;margin:0;}
+.resp-headers-panel{background:#111;border:1px solid #333;border-radius:10px;overflow:auto;max-height:300px;}
+.resp-headers-table{width:100%;border-collapse:collapse;}
+.resp-headers-table th{text-align:left;padding:10px 16px;font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #333;background:#1a1a1a;}
+.resp-headers-table td{padding:8px 16px;font-size:0.85rem;border-bottom:1px solid #222;font-family:'SF Mono',Monaco,monospace;}
+.resp-headers-table td:first-child{color:#ff5f1f;font-weight:600;white-space:nowrap;}
+
+/* Syntax highlighting */
+.json-key{color:#ff5f1f;}
+.json-string{color:#10b981;}
+.json-number{color:#3498db;}
+.json-boolean{color:#e67e22;}
+.json-null{color:#e74c3c;}
+.json-bracket{color:#888;}
+
+/* Copy button */
+.copy-btn{background:#333;color:#ccc;border:none;padding:4px 12px;border-radius:5px;font-size:0.7rem;cursor:pointer;transition:all 0.2s;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;}
+.copy-btn.copied{background:#10b981;color:#fff;}
+
+/* History panel */
+.history-section{margin-top:32px;}
+.history-section h2{font-size:1.1rem;color:#fff;margin-bottom:12px;}
+.history-list{display:flex;flex-direction:column;gap:6px;}
+.history-item{display:flex;align-items:center;gap:12px;background:#111;border:1px solid #222;border-radius:8px;padding:10px 14px;cursor:pointer;transition:all 0.2s;overflow:hidden;}
+.history-item:hover{border-color:#ff5f1f;background:#151515;}
+.history-method{font-weight:700;font-size:0.75rem;min-width:52px;text-align:center;padding:3px 8px;border-radius:4px;letter-spacing:0.5px;}
+.method-GET{color:#10b981;background:rgba(16,185,129,0.1);}
+.method-POST{color:#3b82f6;background:rgba(59,130,246,0.1);}
+.method-PUT{color:#f59e0b;background:rgba(245,158,11,0.1);}
+.method-PATCH{color:#a855f7;background:rgba(168,85,247,0.1);}
+.method-DELETE{color:#ef4444;background:rgba(239,68,68,0.1);}
+.history-url{flex:1;font-family:'SF Mono',Monaco,monospace;font-size:0.8rem;color:#ccc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.history-status{font-size:0.75rem;font-weight:600;min-width:40px;text-align:right;}
+.history-time{font-size:0.7rem;color:#555;min-width:60px;text-align:right;}
+.history-delete{background:none;border:none;color:#555;cursor:pointer;font-size:0.9rem;padding:2px 6px;border-radius:4px;transition:all 0.2s;}
+.history-delete:hover{color:#ef4444;background:rgba(239,68,68,0.1);}
+.clear-history-btn{background:#1a1a1a;color:#888;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.75rem;cursor:pointer;transition:all 0.2s;margin-left:auto;}
+.clear-history-btn:hover{border-color:#e74c3c;color:#e74c3c;}
+
+.no-response{text-align:center;color:#555;padding:60px 20px;font-size:0.95rem;}
+
+/* Cross sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+/* Email bar */
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+/* Responsive */
+@media(max-width:768px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .request-bar{flex-wrap:wrap;}
+  .method-select{min-width:100%;border-right:none;border-bottom:1px solid #333;}
+  .url-input{min-width:0;flex:1;}
+  .send-btn{width:100%;}
+  .header-row{flex-wrap:wrap;}
+  .header-row input{min-width:0;}
+  .response-body-panel{max-height:350px;}
+  .history-item{flex-wrap:wrap;gap:6px;}
+  .history-url{min-width:100%;order:3;}
+}
+@media(min-width:769px){
+  .request-bar{border-radius:10px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>API Tester</h1>
+  <p class="subtitle">Test REST APIs directly in your browser. Send requests, set headers, add JSON body, and inspect formatted responses.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <!-- Request Bar -->
+  <div class="request-bar">
+    <select class="method-select" id="methodSelect">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="PATCH">PATCH</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    <input type="text" class="url-input" id="urlInput" placeholder="https://jsonplaceholder.typicode.com/posts/1" spellcheck="false">
+    <button class="send-btn" id="sendBtn" onclick="sendRequest()">Send</button>
+  </div>
+
+  <!-- Request Tabs: Headers / Body -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchReqTab('headers',this)">Headers</button>
+    <button class="tab-btn" onclick="switchReqTab('body',this)">Body</button>
+  </div>
+
+  <!-- Headers Tab -->
+  <div class="tab-content active" id="tab-headers">
+    <div id="headersContainer">
+      <div class="header-row">
+        <input type="text" placeholder="Header name" value="Content-Type" class="header-key">
+        <input type="text" placeholder="Header value" value="application/json" class="header-val">
+        <button class="remove-header" onclick="removeHeader(this)">&times;</button>
+      </div>
+      <div class="header-row">
+        <input type="text" placeholder="Header name" value="Accept" class="header-key">
+        <input type="text" placeholder="Header value" value="application/json" class="header-val">
+        <button class="remove-header" onclick="removeHeader(this)">&times;</button>
+      </div>
+    </div>
+    <button class="add-header-btn" onclick="addHeader()">+ Add Header</button>
+  </div>
+
+  <!-- Body Tab -->
+  <div class="tab-content" id="tab-body">
+    <textarea class="body-editor" id="bodyEditor" placeholder='Enter request body (JSON)...
+
+Example:
+{
+  "title": "Hello World",
+  "body": "This is a test.",
+  "userId": 1
+}' spellcheck="false"></textarea>
+  </div>
+
+  <!-- Response Section -->
+  <div class="response-section" id="responseSection">
+    <div class="response-header" id="responseHeader" style="display:none;">
+      <h2>Response</h2>
+      <span class="status-badge" id="statusBadge"></span>
+      <span class="timing-badge" id="timingBadge"></span>
+      <span class="size-badge" id="sizeBadge"></span>
+      <button class="copy-btn" id="respCopyBtn" onclick="copyResponse()">Copy</button>
+    </div>
+
+    <div id="responseContent">
+      <div class="no-response" id="noResponse">Send a request to see the response here.</div>
+    </div>
+
+    <div id="responseTabsWrap" style="display:none;">
+      <div class="response-tabs">
+        <button class="resp-tab-btn active" onclick="switchRespTab('resp-body',this)">Body</button>
+        <button class="resp-tab-btn" onclick="switchRespTab('resp-headers',this)">Headers</button>
+      </div>
+      <div class="resp-tab-content active" id="resp-body">
+        <div class="response-body-panel">
+          <pre class="response-body-pre" id="responseBodyPre"></pre>
+        </div>
+      </div>
+      <div class="resp-tab-content" id="resp-headers">
+        <div class="resp-headers-panel">
+          <table class="resp-headers-table">
+            <thead><tr><th>Header</th><th>Value</th></tr></thead>
+            <tbody id="respHeadersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Section -->
+  <div class="history-section" id="historySection">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <h2>Recent Requests</h2>
+      <button class="clear-history-btn" id="clearHistoryBtn" onclick="clearHistory()">Clear All</button>
+    </div>
+    <div class="history-list" id="historyList"></div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+/* ============================================================
+   API Tester - 100% Client-Side
+   Copyright 2026 SpunkArt.com. All rights reserved.
+   ============================================================ */
+
+// ---- State ----
+let lastResponseText = '';
+const HISTORY_KEY = 'spunkart_api_tester_history';
+const USAGE_KEY = 'spunkart_api_test_uses';
+const BAR_KEY = 'sa_bar_dismissed_api-tester';
+const MAX_HISTORY = 30;
+
+// ---- Tab Switching (Request) ----
+function switchReqTab(tabId, btn) {
+  document.querySelectorAll('.tabs .tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tabId).classList.add('active');
+}
+
+// ---- Tab Switching (Response) ----
+function switchRespTab(tabId, btn) {
+  document.querySelectorAll('.resp-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.resp-tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+// ---- Headers ----
+function addHeader() {
+  var row = document.createElement('div');
+  row.className = 'header-row';
+  row.innerHTML = '<input type="text" placeholder="Header name" class="header-key"><input type="text" placeholder="Header value" class="header-val"><button class="remove-header" onclick="removeHeader(this)">&times;</button>';
+  document.getElementById('headersContainer').appendChild(row);
+}
+
+function removeHeader(btn) {
+  btn.parentElement.remove();
+}
+
+function getHeaders() {
+  var headers = {};
+  document.querySelectorAll('#headersContainer .header-row').forEach(function(row) {
+    var key = row.querySelector('.header-key').value.trim();
+    var val = row.querySelector('.header-val').value.trim();
+    if (key) headers[key] = val;
+  });
+  return headers;
+}
+
+// ---- Body Editor Tab Support ----
+document.getElementById('bodyEditor').addEventListener('keydown', function(e) {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    var start = this.selectionStart;
+    var end = this.selectionEnd;
+    this.value = this.value.substring(0, start) + '  ' + this.value.substring(end);
+    this.selectionStart = this.selectionEnd = start + 2;
+  }
+});
+
+// ---- Send Request ----
+async function sendRequest() {
+  var url = document.getElementById('urlInput').value.trim();
+  if (!url) {
+    document.getElementById('urlInput').focus();
+    return;
+  }
+  // Prepend https:// if missing
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+  var method = document.getElementById('methodSelect').value;
+  var headers = getHeaders();
+  var body = null;
+  if (method !== 'GET' && method !== 'DELETE') {
+    var bodyText = document.getElementById('bodyEditor').value.trim();
+    if (bodyText) body = bodyText;
+  }
+
+  var sendBtn = document.getElementById('sendBtn');
+  sendBtn.disabled = true;
+  sendBtn.classList.add('loading');
+  sendBtn.textContent = 'Sending...';
+
+  // Hide previous
+  document.getElementById('noResponse').style.display = 'none';
+  document.getElementById('responseHeader').style.display = 'none';
+  document.getElementById('responseTabsWrap').style.display = 'none';
+
+  var startTime = performance.now();
+  var status = 0;
+  var statusText = '';
+  var respHeaders = [];
+  var respBody = '';
+  var error = false;
+
+  try {
+    var fetchOpts = { method: method, headers: headers, mode: 'cors' };
+    if (body && method !== 'GET' && method !== 'DELETE') fetchOpts.body = body;
+
+    var response = await fetch(url, fetchOpts);
+    var elapsed = performance.now() - startTime;
+    status = response.status;
+    statusText = response.statusText;
+
+    // Collect response headers
+    response.headers.forEach(function(val, key) {
+      respHeaders.push([key, val]);
+    });
+
+    respBody = await response.text();
+  } catch (err) {
+    var elapsed = performance.now() - startTime;
+    error = true;
+    respBody = 'Error: ' + err.message + '\n\nThis usually means:\n- The URL is unreachable\n- CORS is blocking the request\n- The server is not responding\n\nTip: Some APIs block browser requests. Try a public API like:\nhttps://jsonplaceholder.typicode.com/posts/1';
+  }
+
+  sendBtn.disabled = false;
+  sendBtn.classList.remove('loading');
+  sendBtn.textContent = 'Send';
+
+  // Increment usage
+  incrementUsage();
+
+  // Display response
+  displayResponse(status, statusText, elapsed, respHeaders, respBody, error);
+
+  // Save to history
+  saveHistory(method, url, status, elapsed, error);
+
+  // GA event
+  gtag('event', 'api_request', { event_category: 'tool_use', event_label: method });
+}
+
+// ---- Display Response ----
+function displayResponse(status, statusText, elapsed, headers, body, isError) {
+  document.getElementById('responseHeader').style.display = 'flex';
+  document.getElementById('responseTabsWrap').style.display = 'block';
+  document.getElementById('noResponse').style.display = 'none';
+
+  // Status badge
+  var badge = document.getElementById('statusBadge');
+  if (isError) {
+    badge.textContent = 'ERROR';
+    badge.className = 'status-badge status-err';
+  } else {
+    badge.textContent = status + ' ' + statusText;
+    if (status >= 200 && status < 300) badge.className = 'status-badge status-2xx';
+    else if (status >= 300 && status < 400) badge.className = 'status-badge status-3xx';
+    else if (status >= 400 && status < 500) badge.className = 'status-badge status-4xx';
+    else badge.className = 'status-badge status-5xx';
+  }
+
+  // Timing
+  document.getElementById('timingBadge').textContent = Math.round(elapsed) + 'ms';
+
+  // Size
+  var sizeBytes = new Blob([body]).size;
+  var sizeStr = sizeBytes > 1024 ? (sizeBytes / 1024).toFixed(1) + ' KB' : sizeBytes + ' B';
+  document.getElementById('sizeBadge').textContent = sizeStr;
+
+  // Body
+  lastResponseText = body;
+  var pre = document.getElementById('responseBodyPre');
+  if (isError) {
+    pre.innerHTML = '<span style="color:#ef4444;">' + escHtml(body) + '</span>';
+  } else {
+    // Try to parse as JSON for pretty display
+    try {
+      var parsed = JSON.parse(body);
+      var formatted = JSON.stringify(parsed, null, 2);
+      lastResponseText = formatted;
+      pre.innerHTML = syntaxHighlight(formatted);
+    } catch (e) {
+      pre.innerHTML = escHtml(body);
+    }
+  }
+
+  // Response headers
+  var tbody = document.getElementById('respHeadersBody');
+  tbody.innerHTML = '';
+  headers.forEach(function(h) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + escHtml(h[0]) + '</td><td>' + escHtml(h[1]) + '</td>';
+    tbody.appendChild(tr);
+  });
+
+  // Reset to body tab
+  document.querySelectorAll('.resp-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.resp-tab-content').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelector('.resp-tab-btn').classList.add('active');
+  document.getElementById('resp-body').classList.add('active');
+}
+
+// ---- Syntax Highlighting ----
+function syntaxHighlight(json) {
+  json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?|[{}\[\],])/g, function(match) {
+    var cls = 'json-number';
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) cls = 'json-key';
+      else cls = 'json-string';
+    } else if (/true|false/.test(match)) cls = 'json-boolean';
+    else if (/null/.test(match)) cls = 'json-null';
+    else if (/[{}\[\]]/.test(match)) cls = 'json-bracket';
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
+}
+
+function escHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// ---- Copy Response ----
+function copyResponse() {
+  if (!lastResponseText) return;
+  navigator.clipboard.writeText(lastResponseText).then(function() {
+    var btn = document.getElementById('respCopyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ---- History ----
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch(e) { return []; }
+}
+
+function saveHistory(method, url, status, elapsed, isError) {
+  var history = getHistory();
+  history.unshift({
+    method: method,
+    url: url,
+    status: isError ? 'ERR' : status,
+    time: Math.round(elapsed),
+    timestamp: Date.now()
+  });
+  if (history.length > MAX_HISTORY) history = history.slice(0, MAX_HISTORY);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  renderHistory();
+}
+
+function renderHistory() {
+  var history = getHistory();
+  var list = document.getElementById('historyList');
+  var section = document.getElementById('historySection');
+
+  if (history.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  list.innerHTML = '';
+
+  history.forEach(function(item, idx) {
+    var div = document.createElement('div');
+    div.className = 'history-item';
+    div.onclick = function(e) {
+      if (e.target.classList.contains('history-delete')) return;
+      loadFromHistory(item);
+    };
+
+    var statusColor = '#888';
+    var statusVal = item.status;
+    if (typeof statusVal === 'number') {
+      if (statusVal >= 200 && statusVal < 300) statusColor = '#10b981';
+      else if (statusVal >= 300 && statusVal < 400) statusColor = '#3b82f6';
+      else if (statusVal >= 400 && statusVal < 500) statusColor = '#f59e0b';
+      else statusColor = '#ef4444';
+    } else {
+      statusColor = '#ef4444';
+    }
+
+    var ago = timeAgo(item.timestamp);
+
+    div.innerHTML =
+      '<span class="history-method method-' + item.method + '">' + item.method + '</span>' +
+      '<span class="history-url">' + escHtml(item.url) + '</span>' +
+      '<span class="history-status" style="color:' + statusColor + '">' + statusVal + '</span>' +
+      '<span class="history-time">' + item.time + 'ms &middot; ' + ago + '</span>' +
+      '<button class="history-delete" onclick="deleteHistory(' + idx + ',event)">&times;</button>';
+
+    list.appendChild(div);
+  });
+}
+
+function loadFromHistory(item) {
+  document.getElementById('methodSelect').value = item.method;
+  document.getElementById('urlInput').value = item.url;
+}
+
+function deleteHistory(idx, e) {
+  e.stopPropagation();
+  var history = getHistory();
+  history.splice(idx, 1);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  renderHistory();
+}
+
+function clearHistory() {
+  localStorage.removeItem(HISTORY_KEY);
+  renderHistory();
+}
+
+function timeAgo(ts) {
+  var diff = Date.now() - ts;
+  var sec = Math.floor(diff / 1000);
+  if (sec < 60) return 'just now';
+  var min = Math.floor(sec / 60);
+  if (min < 60) return min + 'm ago';
+  var hr = Math.floor(min / 60);
+  if (hr < 24) return hr + 'h ago';
+  var days = Math.floor(hr / 24);
+  return days + 'd ago';
+}
+
+// ---- Usage Counter ----
+function getUsageCount() {
+  return parseInt(localStorage.getItem(USAGE_KEY)) || 0;
+}
+
+function incrementUsage() {
+  var count = getUsageCount() + 1;
+  localStorage.setItem(USAGE_KEY, count);
+  updateUsageBadge(count);
+  // Show email bar after 3rd use
+  if (count >= 3 && !localStorage.getItem(BAR_KEY)) {
+    document.getElementById('saEmailBar').classList.add('show');
+  }
+}
+
+function updateUsageBadge(count) {
+  document.getElementById('usageBadge').textContent = count + ' request' + (count !== 1 ? 's' : '') + ' sent';
+}
+
+// ---- Email Bar (beehiiv) ----
+function saDismissBar() {
+  document.getElementById('saEmailBar').classList.remove('show');
+  localStorage.setItem(BAR_KEY, '1');
+}
+
+function saSubmitEmail() {
+  var email = document.getElementById('saBarEmail').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  localStorage.setItem('sa_subscriber_email', email);
+  localStorage.setItem(BAR_KEY, '1');
+  window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+  document.getElementById('saEmailBar').classList.remove('show');
+  var btn = document.querySelector('.sa-sub-btn');
+  btn.textContent = 'Subscribed!';
+  btn.style.background = '#10b981';
+}
+
+// ---- Enter key to send ----
+document.getElementById('urlInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') sendRequest();
+});
+
+// ---- Init ----
+(function() {
+  var count = getUsageCount();
+  updateUsageBadge(count);
+  renderHistory();
+})();
+</script>
+</body>
+</html>

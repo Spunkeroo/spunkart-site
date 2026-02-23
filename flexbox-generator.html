@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Flexbox Generator — Visual Flexbox Builder | SPUNKART.COM</title>
+<meta name="description" content="Visual CSS Flexbox playground. Toggle flex-direction, justify-content, align-items, flex-wrap, gap and more. See live preview and copy the generated CSS code. Free online tool.">
+<meta property="og:title" content="CSS Flexbox Generator — Visual Flexbox Builder | SPUNKART.COM">
+<meta property="og:description" content="Build flexbox layouts visually. Toggle every property, see live preview, copy CSS. Free, no signup required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/flexbox-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-flexbox-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="CSS Flexbox Generator — Visual Flexbox Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Build flexbox layouts visually. Toggle every property, see live preview, copy CSS. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/flexbox-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+/* Preview area */
+.preview-box{width:100%;min-height:320px;border-radius:14px;border:1px solid #222;margin-bottom:24px;padding:20px;position:relative;overflow:auto;background:#151515;}
+.preview-box .preview-label{position:absolute;bottom:12px;right:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:1px;pointer-events:none;}
+
+.flex-container{min-height:240px;border:2px dashed #333;border-radius:10px;padding:16px;transition:all .3s;}
+.flex-item{border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;color:#fff;min-width:60px;min-height:60px;transition:all .3s;cursor:default;position:relative;}
+.flex-item .item-label{pointer-events:none;}
+
+/* Item colors */
+.fi-0{background:#ff5f1f;}
+.fi-1{background:#3b82f6;}
+.fi-2{background:#10b981;}
+.fi-3{background:#a855f7;}
+.fi-4{background:#f43f5e;}
+.fi-5{background:#eab308;}
+.fi-6{background:#06b6d4;}
+.fi-7{background:#ec4899;}
+.fi-8{background:#f97316;}
+.fi-9{background:#6366f1;}
+
+/* Controls */
+.controls-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.input-group{margin-bottom:0;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group select,.input-group input{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.input-group select:focus,.input-group input:focus{border-color:#ff5f1f;}
+.input-group input[type="range"]{-webkit-appearance:none;height:6px;background:#2a2a2a;border-radius:3px;padding:0;border:none;cursor:pointer;}
+.input-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#ff5f1f;cursor:pointer;}
+.input-group input[type="number"]{-moz-appearance:textfield;}
+.input-group input[type="number"]::-webkit-inner-spin-button,.input-group input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
+
+/* Toggle buttons for properties */
+.prop-toggle-group{display:flex;flex-wrap:wrap;gap:6px;}
+.prop-btn{padding:7px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:monospace;white-space:nowrap;}
+.prop-btn:hover{border-color:#555;color:#ccc;}
+.prop-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700;}
+
+/* Child item controls */
+.child-controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.child-selector{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.child-chip{padding:6px 14px;border-radius:6px;cursor:pointer;font-size:0.85rem;font-weight:600;border:2px solid transparent;transition:all .2s;}
+.child-chip:hover{opacity:0.8;}
+.child-chip.selected{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.2);}
+
+/* Item management */
+.item-management{display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+
+/* CSS Output */
+.css-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;color:#8f8;white-space:pre-wrap;word-break:break-all;line-height:1.7;position:relative;max-height:400px;overflow-y:auto;}
+
+/* Buttons */
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+.btn-danger{background:#2a1515;color:#ff4444;border:1px solid #4a2020;}
+.btn-danger:hover{background:#3a1515;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+/* Responsive */
+@media(max-width:768px){
+  h1{font-size:1.5rem;}
+  .controls-grid{grid-template-columns:1fr 1fr;}
+  .child-controls{grid-template-columns:1fr;}
+  .preview-box{min-height:240px;}
+}
+@media(max-width:500px){
+  .controls-grid{grid-template-columns:1fr;}
+  .prop-btn{padding:6px 10px;font-size:0.75rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSS Flexbox Generator","description":"Visual CSS Flexbox playground. Toggle flex-direction, justify-content, align-items, flex-wrap, gap and more. See live preview and copy CSS code instantly.","url":"https://spunkart.com/flexbox-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>CSS Flexbox <span>Generator</span></h1>
+  <p class="subtitle">Visual flexbox playground. Toggle properties, see live preview, copy the CSS.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <!-- Live Preview -->
+  <div class="preview-box" id="previewBox">
+    <div class="flex-container" id="flexContainer"></div>
+    <span class="preview-label">LIVE PREVIEW</span>
+  </div>
+
+  <!-- Container Properties -->
+  <div class="section">
+    <h2>Container Properties</h2>
+
+    <div class="controls-grid">
+      <div class="input-group">
+        <label>flex-direction</label>
+        <div class="prop-toggle-group" data-prop="flexDirection">
+          <button class="prop-btn active" data-val="row">row</button>
+          <button class="prop-btn" data-val="row-reverse">row-reverse</button>
+          <button class="prop-btn" data-val="column">column</button>
+          <button class="prop-btn" data-val="column-reverse">column-reverse</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>justify-content</label>
+        <div class="prop-toggle-group" data-prop="justifyContent">
+          <button class="prop-btn active" data-val="flex-start">flex-start</button>
+          <button class="prop-btn" data-val="flex-end">flex-end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="space-between">space-between</button>
+          <button class="prop-btn" data-val="space-around">space-around</button>
+          <button class="prop-btn" data-val="space-evenly">space-evenly</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>align-items</label>
+        <div class="prop-toggle-group" data-prop="alignItems">
+          <button class="prop-btn active" data-val="stretch">stretch</button>
+          <button class="prop-btn" data-val="flex-start">flex-start</button>
+          <button class="prop-btn" data-val="flex-end">flex-end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="baseline">baseline</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>flex-wrap</label>
+        <div class="prop-toggle-group" data-prop="flexWrap">
+          <button class="prop-btn active" data-val="nowrap">nowrap</button>
+          <button class="prop-btn" data-val="wrap">wrap</button>
+          <button class="prop-btn" data-val="wrap-reverse">wrap-reverse</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>align-content</label>
+        <div class="prop-toggle-group" data-prop="alignContent">
+          <button class="prop-btn active" data-val="stretch">stretch</button>
+          <button class="prop-btn" data-val="flex-start">flex-start</button>
+          <button class="prop-btn" data-val="flex-end">flex-end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="space-between">space-between</button>
+          <button class="prop-btn" data-val="space-around">space-around</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>gap: <span id="gapVal">10</span>px</label>
+        <input type="range" id="gapRange" min="0" max="60" value="10">
+      </div>
+    </div>
+  </div>
+
+  <!-- Item Management -->
+  <div class="section">
+    <h2>Child Items</h2>
+    <div class="item-management">
+      <button class="btn btn-green" id="addItemBtn" onclick="addItem()">+ Add Item</button>
+      <button class="btn btn-danger" id="removeItemBtn" onclick="removeItem()">- Remove Item</button>
+      <span style="color:#888;font-size:0.85rem;" id="itemCountLabel">3 items</span>
+    </div>
+
+    <label style="font-size:0.85rem;color:#888;margin-bottom:10px;display:block;">Select an item to edit its individual properties:</label>
+    <div class="child-selector" id="childSelector"></div>
+
+    <div class="child-controls" id="childControls">
+      <div class="input-group">
+        <label>flex-grow: <span id="fgVal">0</span></label>
+        <input type="range" id="flexGrow" min="0" max="10" value="0" step="1">
+      </div>
+      <div class="input-group">
+        <label>flex-shrink: <span id="fsVal">1</span></label>
+        <input type="range" id="flexShrink" min="0" max="10" value="1" step="1">
+      </div>
+      <div class="input-group">
+        <label>flex-basis</label>
+        <select id="flexBasis">
+          <option value="auto">auto</option>
+          <option value="0">0</option>
+          <option value="50px">50px</option>
+          <option value="80px">80px</option>
+          <option value="100px">100px</option>
+          <option value="150px">150px</option>
+          <option value="200px">200px</option>
+          <option value="25%">25%</option>
+          <option value="33.33%">33.33%</option>
+          <option value="50%">50%</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>order: <span id="orderVal">0</span></label>
+        <input type="range" id="orderRange" min="-5" max="5" value="0" step="1">
+      </div>
+      <div class="input-group" style="grid-column:1/-1;">
+        <label>align-self</label>
+        <div class="prop-toggle-group" data-prop="alignSelf">
+          <button class="prop-btn active" data-val="auto">auto</button>
+          <button class="prop-btn" data-val="flex-start">flex-start</button>
+          <button class="prop-btn" data-val="flex-end">flex-end</button>
+          <button class="prop-btn" data-val="center">center</button>
+          <button class="prop-btn" data-val="stretch">stretch</button>
+          <button class="prop-btn" data-val="baseline">baseline</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CSS Output -->
+  <div class="section">
+    <h2>Generated CSS</h2>
+    <div class="css-output" id="cssOutput"></div>
+    <div class="btn-row" style="margin-top:14px;">
+      <button class="btn btn-primary" id="copyBtn" onclick="copyCSS()">Copy CSS</button>
+      <button class="btn btn-secondary" onclick="resetAll()">Reset All</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ─── State ─── */
+  var MAX_ITEMS = 10;
+  var MIN_ITEMS = 1;
+  var selectedChild = 0;
+
+  // Container defaults
+  var containerProps = {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    flexWrap: 'nowrap',
+    alignContent: 'stretch',
+    gap: 10
+  };
+
+  // Item defaults: array of objects
+  var itemDefaults = function(){ return { flexGrow:0, flexShrink:1, flexBasis:'auto', order:0, alignSelf:'auto' }; };
+  var items = [ itemDefaults(), itemDefaults(), itemDefaults() ];
+
+  // Sizing per item for visual variety
+  var itemSizes = [
+    {w:80,h:80},{w:120,h:60},{w:60,h:100},{w:100,h:70},{w:70,h:90},
+    {w:90,h:80},{w:110,h:60},{w:80,h:110},{w:100,h:80},{w:70,h:70}
+  ];
+
+  /* ─── Container property toggle buttons ─── */
+  var containerGroups = document.querySelectorAll('.section:first-of-type .prop-toggle-group');
+  // Actually select all prop-toggle-group that are NOT alignSelf
+  document.querySelectorAll('.prop-toggle-group').forEach(function(group){
+    var prop = group.dataset.prop;
+    if(prop === 'alignSelf') return; // handled separately
+    group.querySelectorAll('.prop-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.prop-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        containerProps[prop] = btn.dataset.val;
+        render();
+        bumpUsage();
+      });
+    });
+  });
+
+  // Gap range
+  var gapRange = document.getElementById('gapRange');
+  var gapVal = document.getElementById('gapVal');
+  gapRange.addEventListener('input', function(){
+    gapVal.textContent = gapRange.value;
+    containerProps.gap = parseInt(gapRange.value);
+    render();
+    bumpUsage();
+  });
+
+  /* ─── Child property controls ─── */
+  var fgSlider = document.getElementById('flexGrow');
+  var fsSlider = document.getElementById('flexShrink');
+  var fbSelect = document.getElementById('flexBasis');
+  var orderSlider = document.getElementById('orderRange');
+  var fgValSpan = document.getElementById('fgVal');
+  var fsValSpan = document.getElementById('fsVal');
+  var orderValSpan = document.getElementById('orderVal');
+
+  fgSlider.addEventListener('input', function(){
+    fgValSpan.textContent = fgSlider.value;
+    items[selectedChild].flexGrow = parseInt(fgSlider.value);
+    render();
+    bumpUsage();
+  });
+  fsSlider.addEventListener('input', function(){
+    fsValSpan.textContent = fsSlider.value;
+    items[selectedChild].flexShrink = parseInt(fsSlider.value);
+    render();
+    bumpUsage();
+  });
+  fbSelect.addEventListener('change', function(){
+    items[selectedChild].flexBasis = fbSelect.value;
+    render();
+    bumpUsage();
+  });
+  orderSlider.addEventListener('input', function(){
+    orderValSpan.textContent = orderSlider.value;
+    items[selectedChild].order = parseInt(orderSlider.value);
+    render();
+    bumpUsage();
+  });
+
+  // align-self toggle
+  var alignSelfGroup = document.querySelector('.prop-toggle-group[data-prop="alignSelf"]');
+  alignSelfGroup.querySelectorAll('.prop-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      alignSelfGroup.querySelectorAll('.prop-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      items[selectedChild].alignSelf = btn.dataset.val;
+      render();
+      bumpUsage();
+    });
+  });
+
+  /* ─── Add / Remove Items ─── */
+  window.addItem = function(){
+    if(items.length >= MAX_ITEMS) return;
+    items.push(itemDefaults());
+    render();
+    renderChildSelector();
+    bumpUsage();
+  };
+
+  window.removeItem = function(){
+    if(items.length <= MIN_ITEMS) return;
+    items.pop();
+    if(selectedChild >= items.length) {
+      selectedChild = items.length - 1;
+    }
+    render();
+    renderChildSelector();
+    loadChildProps();
+    bumpUsage();
+  };
+
+  /* ─── Child Selector Chips ─── */
+  function renderChildSelector(){
+    var container = document.getElementById('childSelector');
+    container.innerHTML = '';
+    items.forEach(function(_, i){
+      var chip = document.createElement('div');
+      chip.className = 'child-chip fi-' + i + (i === selectedChild ? ' selected' : '');
+      chip.textContent = (i + 1);
+      chip.addEventListener('click', function(){
+        selectedChild = i;
+        renderChildSelector();
+        loadChildProps();
+      });
+      container.appendChild(chip);
+    });
+    document.getElementById('itemCountLabel').textContent = items.length + ' item' + (items.length !== 1 ? 's' : '');
+    document.getElementById('addItemBtn').style.display = items.length >= MAX_ITEMS ? 'none' : 'inline-block';
+    document.getElementById('removeItemBtn').style.display = items.length <= MIN_ITEMS ? 'none' : 'inline-block';
+  }
+
+  function loadChildProps(){
+    var item = items[selectedChild];
+    fgSlider.value = item.flexGrow;
+    fgValSpan.textContent = item.flexGrow;
+    fsSlider.value = item.flexShrink;
+    fsValSpan.textContent = item.flexShrink;
+    fbSelect.value = item.flexBasis;
+    orderSlider.value = item.order;
+    orderValSpan.textContent = item.order;
+
+    // Update align-self buttons
+    alignSelfGroup.querySelectorAll('.prop-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.val === item.alignSelf);
+    });
+  }
+
+  /* ─── Render Preview ─── */
+  function render(){
+    var fc = document.getElementById('flexContainer');
+    fc.innerHTML = '';
+    fc.style.display = 'flex';
+    fc.style.flexDirection = containerProps.flexDirection;
+    fc.style.justifyContent = containerProps.justifyContent;
+    fc.style.alignItems = containerProps.alignItems;
+    fc.style.flexWrap = containerProps.flexWrap;
+    fc.style.alignContent = containerProps.alignContent;
+    fc.style.gap = containerProps.gap + 'px';
+
+    items.forEach(function(item, i){
+      var div = document.createElement('div');
+      div.className = 'flex-item fi-' + i + (i === selectedChild ? ' selected' : '');
+      var sz = itemSizes[i];
+      div.style.width = sz.w + 'px';
+      div.style.height = sz.h + 'px';
+      div.style.flexGrow = item.flexGrow;
+      div.style.flexShrink = item.flexShrink;
+      div.style.flexBasis = item.flexBasis;
+      div.style.order = item.order;
+      if(item.alignSelf !== 'auto'){
+        div.style.alignSelf = item.alignSelf;
+      }
+      if(i === selectedChild){
+        div.style.outline = '2px solid #fff';
+        div.style.outlineOffset = '2px';
+      }
+      div.innerHTML = '<span class="item-label">' + (i + 1) + '</span>';
+      div.addEventListener('click', function(){
+        selectedChild = i;
+        renderChildSelector();
+        loadChildProps();
+        render();
+      });
+      fc.appendChild(div);
+    });
+
+    updateCSSOutput();
+  }
+
+  /* ─── CSS Output ─── */
+  function camelToDash(str){
+    return str.replace(/([A-Z])/g, function(m){ return '-' + m.toLowerCase(); });
+  }
+
+  function updateCSSOutput(){
+    var lines = [];
+    lines.push('.container {');
+    lines.push('  display: flex;');
+    if(containerProps.flexDirection !== 'row') lines.push('  flex-direction: ' + containerProps.flexDirection + ';');
+    if(containerProps.justifyContent !== 'flex-start') lines.push('  justify-content: ' + containerProps.justifyContent + ';');
+    if(containerProps.alignItems !== 'stretch') lines.push('  align-items: ' + containerProps.alignItems + ';');
+    if(containerProps.flexWrap !== 'nowrap') lines.push('  flex-wrap: ' + containerProps.flexWrap + ';');
+    if(containerProps.alignContent !== 'stretch' && containerProps.flexWrap !== 'nowrap') lines.push('  align-content: ' + containerProps.alignContent + ';');
+    if(containerProps.gap > 0) lines.push('  gap: ' + containerProps.gap + 'px;');
+    lines.push('}');
+
+    // Check if any child has non-default props
+    var hasChildOverrides = false;
+    items.forEach(function(item, i){
+      if(item.flexGrow !== 0 || item.flexShrink !== 1 || item.flexBasis !== 'auto' || item.order !== 0 || item.alignSelf !== 'auto'){
+        hasChildOverrides = true;
+      }
+    });
+
+    if(hasChildOverrides){
+      lines.push('');
+      // Check if all children share the same props
+      var allSame = true;
+      for(var i = 1; i < items.length; i++){
+        if(items[i].flexGrow !== items[0].flexGrow || items[i].flexShrink !== items[0].flexShrink ||
+           items[i].flexBasis !== items[0].flexBasis || items[i].order !== items[0].order ||
+           items[i].alignSelf !== items[0].alignSelf){
+          allSame = false;
+          break;
+        }
+      }
+
+      if(allSame){
+        lines.push('.container > * {');
+        var def = items[0];
+        if(def.flexGrow !== 0) lines.push('  flex-grow: ' + def.flexGrow + ';');
+        if(def.flexShrink !== 1) lines.push('  flex-shrink: ' + def.flexShrink + ';');
+        if(def.flexBasis !== 'auto') lines.push('  flex-basis: ' + def.flexBasis + ';');
+        if(def.order !== 0) lines.push('  order: ' + def.order + ';');
+        if(def.alignSelf !== 'auto') lines.push('  align-self: ' + def.alignSelf + ';');
+        lines.push('}');
+      } else {
+        items.forEach(function(item, i){
+          if(item.flexGrow !== 0 || item.flexShrink !== 1 || item.flexBasis !== 'auto' || item.order !== 0 || item.alignSelf !== 'auto'){
+            lines.push('.item-' + (i + 1) + ' {');
+            if(item.flexGrow !== 0) lines.push('  flex-grow: ' + item.flexGrow + ';');
+            if(item.flexShrink !== 1) lines.push('  flex-shrink: ' + item.flexShrink + ';');
+            if(item.flexBasis !== 'auto') lines.push('  flex-basis: ' + item.flexBasis + ';');
+            if(item.order !== 0) lines.push('  order: ' + item.order + ';');
+            if(item.alignSelf !== 'auto') lines.push('  align-self: ' + item.alignSelf + ';');
+            lines.push('}');
+            lines.push('');
+          }
+        });
+        // Remove trailing blank line
+        if(lines[lines.length - 1] === '') lines.pop();
+      }
+    }
+
+    document.getElementById('cssOutput').textContent = lines.join('\n');
+  }
+
+  /* ─── Copy CSS ─── */
+  window.copyCSS = function(){
+    var text = document.getElementById('cssOutput').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.getElementById('copyBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'Copy CSS'; btn.classList.remove('copied'); }, 2000);
+      gtag('event', 'copy_flexbox_css', { event_category: 'tool_use' });
+    });
+  };
+
+  /* ─── Reset ─── */
+  window.resetAll = function(){
+    containerProps.flexDirection = 'row';
+    containerProps.justifyContent = 'flex-start';
+    containerProps.alignItems = 'stretch';
+    containerProps.flexWrap = 'nowrap';
+    containerProps.alignContent = 'stretch';
+    containerProps.gap = 10;
+
+    gapRange.value = 10;
+    gapVal.textContent = '10';
+
+    // Reset container toggle buttons
+    document.querySelectorAll('.prop-toggle-group').forEach(function(group){
+      var prop = group.dataset.prop;
+      if(prop === 'alignSelf') return;
+      var defaultVal = containerProps[prop];
+      group.querySelectorAll('.prop-btn').forEach(function(btn){
+        btn.classList.toggle('active', btn.dataset.val === defaultVal);
+      });
+    });
+
+    items = [ itemDefaults(), itemDefaults(), itemDefaults() ];
+    selectedChild = 0;
+
+    renderChildSelector();
+    loadChildProps();
+    render();
+  };
+
+  /* ─── Usage Counter ─── */
+  var TOOL_KEY = 'spunkart_flexbox_uses';
+  var BAR_KEY = 'sa_bar_dismissed_flexbox';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+
+  function updateBadge(){
+    badge.textContent = usageCount + ' layout' + (usageCount !== 1 ? 's' : '') + ' built';
+  }
+  updateBadge();
+
+  function bumpUsage(){
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    // Show email bar after 3rd use
+    if(usageCount >= 3 && !localStorage.getItem(BAR_KEY)){
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  /* ─── Email Bar ─── */
+  window.saDismissBar = function(){
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+  window.saSubmitEmail = function(){
+    var email = document.getElementById('saBarEmail').value;
+    if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+  /* ─── Init ─── */
+  renderChildSelector();
+  loadChildProps();
+  render();
+
+})();
+</script>
+
+<!-- Email collection bar -->
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<!-- Code Protection -->
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

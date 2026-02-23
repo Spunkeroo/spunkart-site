@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git Cheat Sheet — Every Command You Need | SPUNKART.COM</title>
+<meta name="description" content="Searchable git cheat sheet with 80+ commands organized by category. Click to copy any command. Setup, branching, merging, stashing, remote, undoing, log, advanced, and GitHub CLI.">
+<meta property="og:title" content="Git Cheat Sheet — Every Command You Need">
+<meta property="og:description" content="Searchable git command reference with 80+ commands. Click to copy, see examples, organized by category. Free forever.">
+<meta property="og:image" content="https://spunkart.com/assets/og-git-cheatsheet.png">
+<meta property="og:url" content="https://spunkart.com/git-cheatsheet">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Git Cheat Sheet — Every Command You Need">
+<meta name="twitter:description" content="80+ git commands, searchable, click to copy. Setup, branching, merging, stashing, undoing, advanced & more. By SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/git-cheatsheet">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Git Cheat Sheet","description":"Searchable git command reference with 80+ commands organized by category. Click to copy any command with examples.","url":"https://spunkart.com/git-cheatsheet","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:20px;font-size:1rem;}
+
+.usage-badge-wrap{margin-bottom:16px;}
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.78rem;color:#10b981;font-weight:600;}
+
+.search-wrap{position:relative;margin-bottom:24px;}
+.search-wrap input{width:100%;background:#111;border:1px solid #333;color:#e8e8e8;padding:14px 18px 14px 44px;border-radius:10px;font-size:1rem;outline:none;transition:border-color 0.2s;}
+.search-wrap input:focus{border-color:#ff5f1f;}
+.search-wrap input::placeholder{color:#555;}
+.search-wrap .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#555;font-size:1.1rem;pointer-events:none;}
+.search-wrap .search-hint{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#444;font-size:0.75rem;border:1px solid #333;border-radius:4px;padding:2px 7px;pointer-events:none;}
+
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.cat-tab{background:#1a1a1a;color:#999;border:1px solid #222;padding:6px 16px;border-radius:20px;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.cat-tab:hover{color:#ff5f1f;border-color:#ff5f1f;}
+.cat-tab.active{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+
+.category-section{margin-bottom:36px;}
+.category-title{font-size:1.2rem;color:#ff5f1f;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #222;display:flex;align-items:center;gap:10px;}
+.category-title .cat-icon{font-size:1rem;opacity:0.8;}
+.category-count{font-size:0.75rem;color:#666;font-weight:400;}
+
+.cmd-card{background:#111;border:1px solid #222;border-radius:10px;padding:16px 18px;margin-bottom:10px;transition:border-color 0.2s;}
+.cmd-card:hover{border-color:#333;}
+.cmd-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.cmd-code{font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.88rem;color:#10b981;background:#0d1117;padding:8px 14px;border-radius:6px;border:1px solid #1a2a1a;flex:1;word-break:break-all;cursor:pointer;transition:background 0.2s;line-height:1.5;}
+.cmd-code:hover{background:#112211;}
+.copy-btn{background:#1a1a1a;color:#888;border:1px solid #333;padding:6px 14px;border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.copy-btn:hover{background:#ff5f1f;color:#fff;border-color:#ff5f1f;}
+.copy-btn.copied{background:#10b981;color:#fff;border-color:#10b981;}
+.cmd-desc{color:#bbb;font-size:0.88rem;margin-top:10px;line-height:1.5;}
+.cmd-example{margin-top:8px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:0.8rem;color:#888;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:6px;padding:8px 12px;line-height:1.5;}
+.cmd-example .label{color:#555;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
+
+.no-results{text-align:center;padding:60px 20px;color:#555;font-size:1rem;}
+.no-results .big{font-size:2rem;margin-bottom:8px;opacity:0.4;}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:0.85rem;font-weight:600;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.toast.show{opacity:1;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+@media(max-width:768px){
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+  .cmd-top{flex-direction:column;gap:8px;}
+  .copy-btn{align-self:flex-start;}
+  .cat-tabs{gap:6px;}
+  .cat-tab{padding:5px 12px;font-size:0.75rem;}
+  .search-wrap input{padding:12px 16px 12px 40px;font-size:0.9rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Git Cheat Sheet &mdash; Every Command You Need</h1>
+  <p class="subtitle">80+ git commands, searchable and organized. Click any command to copy it.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge">0 commands copied</div></div>
+
+  <div class="search-wrap">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" id="searchInput" placeholder="Search git commands..." autocomplete="off" autofocus>
+    <span class="search-hint">/</span>
+  </div>
+
+  <div class="cat-tabs" id="catTabs">
+    <button class="cat-tab active" data-cat="all">All</button>
+    <button class="cat-tab" data-cat="setup">Setup</button>
+    <button class="cat-tab" data-cat="basics">Basics</button>
+    <button class="cat-tab" data-cat="branching">Branching</button>
+    <button class="cat-tab" data-cat="merging">Merging</button>
+    <button class="cat-tab" data-cat="stashing">Stashing</button>
+    <button class="cat-tab" data-cat="remote">Remote</button>
+    <button class="cat-tab" data-cat="undoing">Undoing</button>
+    <button class="cat-tab" data-cat="log">Log / History</button>
+    <button class="cat-tab" data-cat="advanced">Advanced</button>
+    <button class="cat-tab" data-cat="ghcli">GitHub CLI</button>
+  </div>
+
+  <div id="commandsContainer"></div>
+  <div class="no-results" id="noResults" style="display:none;">
+    <div class="big">&#128533;</div>
+    No commands match your search.
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast"></div>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30+ free dev tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" id="saSubBtn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+<script>
+(function(){
+'use strict';
+
+// ===== GIT COMMANDS DATA =====
+const commands = [
+// ---- SETUP ----
+{cat:'setup',cmd:'git init',desc:'Initialize a new git repository in the current directory.',ex:'git init\ngit init my-project'},
+{cat:'setup',cmd:'git clone <url>',desc:'Clone a remote repository to your local machine.',ex:'git clone https://github.com/user/repo.git\ngit clone git@github.com:user/repo.git my-folder'},
+{cat:'setup',cmd:'git config --global user.name "<name>"',desc:'Set your name for all repositories on this machine.',ex:'git config --global user.name "John Doe"'},
+{cat:'setup',cmd:'git config --global user.email "<email>"',desc:'Set your email for all repositories on this machine.',ex:'git config --global user.email "john@example.com"'},
+{cat:'setup',cmd:'git config --list',desc:'List all git configuration settings.',ex:'git config --list\ngit config --global --list'},
+{cat:'setup',cmd:'git config --global core.editor "<editor>"',desc:'Set the default text editor for git.',ex:'git config --global core.editor "code --wait"\ngit config --global core.editor "vim"'},
+{cat:'setup',cmd:'git config --global init.defaultBranch main',desc:'Set the default branch name for new repositories.',ex:'git config --global init.defaultBranch main'},
+{cat:'setup',cmd:'git config --global alias.<name> "<command>"',desc:'Create a shortcut alias for a git command.',ex:'git config --global alias.co "checkout"\ngit config --global alias.st "status"'},
+
+// ---- BASICS ----
+{cat:'basics',cmd:'git status',desc:'Show the working tree status: staged, unstaged, and untracked files.',ex:'git status\ngit status -s'},
+{cat:'basics',cmd:'git add <file>',desc:'Stage a file for the next commit.',ex:'git add index.html\ngit add src/'},
+{cat:'basics',cmd:'git add .',desc:'Stage all changed and new files in the current directory.',ex:'git add .'},
+{cat:'basics',cmd:'git add -A',desc:'Stage all changes including deletions across the entire repo.',ex:'git add -A'},
+{cat:'basics',cmd:'git add -p',desc:'Interactively stage parts (hunks) of files.',ex:'git add -p\ngit add -p myfile.js'},
+{cat:'basics',cmd:'git commit -m "<message>"',desc:'Commit staged changes with a message.',ex:'git commit -m "Add login feature"\ngit commit -m "Fix: resolve null pointer in auth"'},
+{cat:'basics',cmd:'git commit -am "<message>"',desc:'Stage all tracked modified files and commit in one step.',ex:'git commit -am "Quick fix typo in README"'},
+{cat:'basics',cmd:'git commit --amend',desc:'Modify the most recent commit (message or content).',ex:'git commit --amend\ngit commit --amend -m "Updated message"'},
+{cat:'basics',cmd:'git diff',desc:'Show unstaged changes in the working directory.',ex:'git diff\ngit diff src/app.js'},
+{cat:'basics',cmd:'git diff --staged',desc:'Show changes that are staged for the next commit.',ex:'git diff --staged\ngit diff --cached'},
+{cat:'basics',cmd:'git diff <branch1> <branch2>',desc:'Show differences between two branches.',ex:'git diff main feature-branch\ngit diff main..develop'},
+{cat:'basics',cmd:'git rm <file>',desc:'Remove a file from the working directory and stage the removal.',ex:'git rm old-file.txt\ngit rm -r old-folder/'},
+{cat:'basics',cmd:'git rm --cached <file>',desc:'Unstage a file but keep it in the working directory.',ex:'git rm --cached secrets.env'},
+{cat:'basics',cmd:'git mv <old> <new>',desc:'Rename or move a file and stage the change.',ex:'git mv old-name.js new-name.js\ngit mv src/file.js lib/file.js'},
+
+// ---- BRANCHING ----
+{cat:'branching',cmd:'git branch',desc:'List all local branches. The current branch is marked with *.',ex:'git branch\ngit branch -v'},
+{cat:'branching',cmd:'git branch <name>',desc:'Create a new branch (does not switch to it).',ex:'git branch feature-login\ngit branch hotfix/payment-bug'},
+{cat:'branching',cmd:'git branch -a',desc:'List all branches, including remote-tracking branches.',ex:'git branch -a'},
+{cat:'branching',cmd:'git branch -d <name>',desc:'Delete a branch that has been fully merged.',ex:'git branch -d feature-login'},
+{cat:'branching',cmd:'git branch -D <name>',desc:'Force delete a branch, even if it has unmerged changes.',ex:'git branch -D experimental-feature'},
+{cat:'branching',cmd:'git branch -m <old> <new>',desc:'Rename a branch.',ex:'git branch -m old-name new-name\ngit branch -m new-name'},
+{cat:'branching',cmd:'git checkout <branch>',desc:'Switch to an existing branch.',ex:'git checkout main\ngit checkout develop'},
+{cat:'branching',cmd:'git checkout -b <name>',desc:'Create a new branch and switch to it immediately.',ex:'git checkout -b feature-signup\ngit checkout -b hotfix/urgent'},
+{cat:'branching',cmd:'git switch <branch>',desc:'Switch to an existing branch (modern alternative to checkout).',ex:'git switch main\ngit switch develop'},
+{cat:'branching',cmd:'git switch -c <name>',desc:'Create and switch to a new branch (modern syntax).',ex:'git switch -c feature-dashboard'},
+
+// ---- MERGING ----
+{cat:'merging',cmd:'git merge <branch>',desc:'Merge the specified branch into the current branch.',ex:'git merge feature-login\ngit merge --no-ff feature-login'},
+{cat:'merging',cmd:'git merge --no-ff <branch>',desc:'Merge with a merge commit even if fast-forward is possible.',ex:'git merge --no-ff feature-login'},
+{cat:'merging',cmd:'git merge --squash <branch>',desc:'Squash all commits from a branch into a single staged change.',ex:'git merge --squash feature-login\ngit commit -m "Add login feature"'},
+{cat:'merging',cmd:'git merge --abort',desc:'Abort an in-progress merge and restore the pre-merge state.',ex:'git merge --abort'},
+{cat:'merging',cmd:'git rebase <branch>',desc:'Reapply commits on top of another branch tip.',ex:'git rebase main\ngit rebase develop'},
+{cat:'merging',cmd:'git rebase --abort',desc:'Abort an in-progress rebase and return to the original state.',ex:'git rebase --abort'},
+{cat:'merging',cmd:'git rebase --continue',desc:'Continue the rebase after resolving conflicts.',ex:'git rebase --continue'},
+{cat:'merging',cmd:'git cherry-pick <commit>',desc:'Apply a specific commit from another branch to the current branch.',ex:'git cherry-pick a1b2c3d\ngit cherry-pick feature-branch~2'},
+
+// ---- STASHING ----
+{cat:'stashing',cmd:'git stash',desc:'Temporarily save uncommitted changes and clean the working directory.',ex:'git stash'},
+{cat:'stashing',cmd:'git stash save "<message>"',desc:'Stash changes with a descriptive message.',ex:'git stash save "WIP: login form validation"'},
+{cat:'stashing',cmd:'git stash list',desc:'List all stashed changesets.',ex:'git stash list'},
+{cat:'stashing',cmd:'git stash pop',desc:'Apply the most recent stash and remove it from the stash list.',ex:'git stash pop\ngit stash pop stash@{2}'},
+{cat:'stashing',cmd:'git stash apply',desc:'Apply a stash without removing it from the stash list.',ex:'git stash apply\ngit stash apply stash@{1}'},
+{cat:'stashing',cmd:'git stash drop',desc:'Remove a specific stash entry from the list.',ex:'git stash drop\ngit stash drop stash@{0}'},
+{cat:'stashing',cmd:'git stash clear',desc:'Remove all stash entries.',ex:'git stash clear'},
+{cat:'stashing',cmd:'git stash show',desc:'Show a summary of the changes in the latest stash.',ex:'git stash show\ngit stash show -p stash@{1}'},
+{cat:'stashing',cmd:'git stash branch <name>',desc:'Create a new branch from a stash and apply it.',ex:'git stash branch my-stash-branch'},
+
+// ---- REMOTE ----
+{cat:'remote',cmd:'git remote -v',desc:'List all configured remote repositories with their URLs.',ex:'git remote -v'},
+{cat:'remote',cmd:'git remote add <name> <url>',desc:'Add a new remote repository.',ex:'git remote add origin https://github.com/user/repo.git\ngit remote add upstream https://github.com/original/repo.git'},
+{cat:'remote',cmd:'git remote remove <name>',desc:'Remove a remote repository.',ex:'git remote remove upstream'},
+{cat:'remote',cmd:'git remote rename <old> <new>',desc:'Rename a remote.',ex:'git remote rename origin upstream'},
+{cat:'remote',cmd:'git fetch',desc:'Download objects and refs from a remote without merging.',ex:'git fetch\ngit fetch origin\ngit fetch --all'},
+{cat:'remote',cmd:'git fetch --prune',desc:'Fetch and remove remote-tracking refs that no longer exist on the remote.',ex:'git fetch --prune\ngit fetch -p origin'},
+{cat:'remote',cmd:'git pull',desc:'Fetch from a remote and merge into the current branch.',ex:'git pull\ngit pull origin main'},
+{cat:'remote',cmd:'git pull --rebase',desc:'Fetch and rebase local changes on top of the remote branch.',ex:'git pull --rebase\ngit pull --rebase origin main'},
+{cat:'remote',cmd:'git push',desc:'Upload local branch commits to the remote repository.',ex:'git push\ngit push origin main'},
+{cat:'remote',cmd:'git push -u origin <branch>',desc:'Push a branch and set it to track the remote branch.',ex:'git push -u origin feature-login'},
+{cat:'remote',cmd:'git push --force',desc:'Force push, overwriting the remote branch history. Use with caution.',ex:'git push --force\ngit push --force-with-lease'},
+{cat:'remote',cmd:'git push origin --delete <branch>',desc:'Delete a branch on the remote repository.',ex:'git push origin --delete feature-old'},
+{cat:'remote',cmd:'git push --tags',desc:'Push all local tags to the remote.',ex:'git push --tags'},
+
+// ---- UNDOING ----
+{cat:'undoing',cmd:'git restore <file>',desc:'Discard uncommitted changes in a file (restore from last commit).',ex:'git restore index.html\ngit restore src/'},
+{cat:'undoing',cmd:'git restore --staged <file>',desc:'Unstage a file without discarding changes.',ex:'git restore --staged index.html'},
+{cat:'undoing',cmd:'git reset HEAD <file>',desc:'Unstage a file (older syntax, same as restore --staged).',ex:'git reset HEAD myfile.js'},
+{cat:'undoing',cmd:'git reset --soft HEAD~1',desc:'Undo the last commit but keep changes staged.',ex:'git reset --soft HEAD~1\ngit reset --soft HEAD~3'},
+{cat:'undoing',cmd:'git reset --mixed HEAD~1',desc:'Undo the last commit and unstage changes (default reset mode).',ex:'git reset --mixed HEAD~1\ngit reset HEAD~1'},
+{cat:'undoing',cmd:'git reset --hard HEAD~1',desc:'Undo the last commit and discard all changes permanently.',ex:'git reset --hard HEAD~1'},
+{cat:'undoing',cmd:'git reset --hard origin/main',desc:'Reset local branch to match the remote exactly.',ex:'git reset --hard origin/main'},
+{cat:'undoing',cmd:'git revert <commit>',desc:'Create a new commit that undoes a previous commit (safe for shared history).',ex:'git revert a1b2c3d\ngit revert HEAD'},
+{cat:'undoing',cmd:'git revert --no-commit <commit>',desc:'Revert changes without auto-creating a commit.',ex:'git revert --no-commit a1b2c3d'},
+{cat:'undoing',cmd:'git clean -fd',desc:'Remove untracked files and directories.',ex:'git clean -fd\ngit clean -fdn (dry run)'},
+{cat:'undoing',cmd:'git checkout -- <file>',desc:'Discard changes in a file (older syntax for restore).',ex:'git checkout -- index.html'},
+
+// ---- LOG / HISTORY ----
+{cat:'log',cmd:'git log',desc:'Show the commit history for the current branch.',ex:'git log\ngit log -5'},
+{cat:'log',cmd:'git log --oneline',desc:'Show commit history in compact one-line format.',ex:'git log --oneline\ngit log --oneline -10'},
+{cat:'log',cmd:'git log --graph',desc:'Show commit history with an ASCII graph of branches.',ex:'git log --graph --oneline --all'},
+{cat:'log',cmd:'git log --all --decorate',desc:'Show history for all branches with ref names.',ex:'git log --all --decorate --oneline --graph'},
+{cat:'log',cmd:'git log -p <file>',desc:'Show commit history with diffs for a specific file.',ex:'git log -p src/app.js\ngit log -p -2 README.md'},
+{cat:'log',cmd:'git log --author="<name>"',desc:'Filter commit history by author.',ex:'git log --author="John"\ngit log --author="john@example.com"'},
+{cat:'log',cmd:'git log --since="<date>"',desc:'Show commits after a specific date.',ex:'git log --since="2024-01-01"\ngit log --since="2 weeks ago"'},
+{cat:'log',cmd:'git log --grep="<pattern>"',desc:'Search commit messages for a pattern.',ex:'git log --grep="fix"\ngit log --grep="login" --oneline'},
+{cat:'log',cmd:'git shortlog -sn',desc:'Show a summary of commits per author, sorted by count.',ex:'git shortlog -sn\ngit shortlog -sn --all'},
+{cat:'log',cmd:'git show <commit>',desc:'Show detailed info and diff for a specific commit.',ex:'git show a1b2c3d\ngit show HEAD'},
+{cat:'log',cmd:'git blame <file>',desc:'Show who last modified each line of a file.',ex:'git blame src/app.js\ngit blame -L 10,20 src/app.js'},
+{cat:'log',cmd:'git reflog',desc:'Show a log of all reference updates (useful for recovery).',ex:'git reflog\ngit reflog show HEAD'},
+
+// ---- ADVANCED ----
+{cat:'advanced',cmd:'git tag <name>',desc:'Create a lightweight tag at the current commit.',ex:'git tag v1.0.0'},
+{cat:'advanced',cmd:'git tag -a <name> -m "<msg>"',desc:'Create an annotated tag with a message.',ex:'git tag -a v1.0.0 -m "Release version 1.0.0"'},
+{cat:'advanced',cmd:'git tag -d <name>',desc:'Delete a local tag.',ex:'git tag -d v1.0.0'},
+{cat:'advanced',cmd:'git tag -l',desc:'List all tags.',ex:'git tag -l\ngit tag -l "v1.*"'},
+{cat:'advanced',cmd:'git bisect start',desc:'Start a binary search to find a commit that introduced a bug.',ex:'git bisect start\ngit bisect bad\ngit bisect good v1.0'},
+{cat:'advanced',cmd:'git bisect bad',desc:'Mark the current commit as bad during bisect.',ex:'git bisect bad'},
+{cat:'advanced',cmd:'git bisect good <commit>',desc:'Mark a commit as good during bisect.',ex:'git bisect good a1b2c3d'},
+{cat:'advanced',cmd:'git bisect reset',desc:'End the bisect session and return to the original branch.',ex:'git bisect reset'},
+{cat:'advanced',cmd:'git submodule add <url>',desc:'Add a git submodule to the repository.',ex:'git submodule add https://github.com/user/lib.git libs/lib'},
+{cat:'advanced',cmd:'git submodule update --init --recursive',desc:'Initialize and update all submodules.',ex:'git submodule update --init --recursive'},
+{cat:'advanced',cmd:'git worktree add <path> <branch>',desc:'Create a linked working tree for a branch.',ex:'git worktree add ../hotfix hotfix-branch'},
+{cat:'advanced',cmd:'git worktree list',desc:'List all linked working trees.',ex:'git worktree list'},
+{cat:'advanced',cmd:'git archive --format=zip HEAD -o repo.zip',desc:'Create a zip archive of the current HEAD.',ex:'git archive --format=zip HEAD -o latest.zip'},
+{cat:'advanced',cmd:'git gc',desc:'Run garbage collection to optimize the repository.',ex:'git gc\ngit gc --aggressive'},
+{cat:'advanced',cmd:'git fsck',desc:'Verify the integrity of objects in the repository.',ex:'git fsck\ngit fsck --full'},
+{cat:'advanced',cmd:'git rev-parse HEAD',desc:'Get the full SHA hash of the current commit.',ex:'git rev-parse HEAD\ngit rev-parse --short HEAD'},
+
+// ---- GITHUB CLI ----
+{cat:'ghcli',cmd:'gh auth login',desc:'Authenticate with GitHub.',ex:'gh auth login\ngh auth login --with-token < token.txt'},
+{cat:'ghcli',cmd:'gh repo create <name>',desc:'Create a new GitHub repository.',ex:'gh repo create my-project --public\ngh repo create my-project --private'},
+{cat:'ghcli',cmd:'gh repo clone <repo>',desc:'Clone a GitHub repository.',ex:'gh repo clone user/repo\ngh repo clone user/repo my-folder'},
+{cat:'ghcli',cmd:'gh repo fork <repo>',desc:'Fork a repository on GitHub.',ex:'gh repo fork user/repo\ngh repo fork user/repo --clone'},
+{cat:'ghcli',cmd:'gh pr create',desc:'Create a pull request on GitHub.',ex:'gh pr create --title "Add feature" --body "Description"\ngh pr create --fill'},
+{cat:'ghcli',cmd:'gh pr list',desc:'List pull requests in the current repository.',ex:'gh pr list\ngh pr list --state open'},
+{cat:'ghcli',cmd:'gh pr checkout <number>',desc:'Check out a pull request locally.',ex:'gh pr checkout 42'},
+{cat:'ghcli',cmd:'gh pr merge <number>',desc:'Merge a pull request on GitHub.',ex:'gh pr merge 42\ngh pr merge 42 --squash'},
+{cat:'ghcli',cmd:'gh pr view <number>',desc:'View details of a pull request.',ex:'gh pr view 42\ngh pr view 42 --web'},
+{cat:'ghcli',cmd:'gh issue create',desc:'Create a new issue on GitHub.',ex:'gh issue create --title "Bug report" --body "Details"'},
+{cat:'ghcli',cmd:'gh issue list',desc:'List issues in the current repository.',ex:'gh issue list\ngh issue list --label "bug"'},
+{cat:'ghcli',cmd:'gh issue close <number>',desc:'Close an issue on GitHub.',ex:'gh issue close 15'},
+{cat:'ghcli',cmd:'gh release create <tag>',desc:'Create a new release on GitHub.',ex:'gh release create v1.0.0\ngh release create v1.0.0 --title "v1.0.0" --notes "Release notes"'},
+{cat:'ghcli',cmd:'gh gist create <file>',desc:'Create a gist from a file.',ex:'gh gist create script.sh\ngh gist create --public notes.md'},
+{cat:'ghcli',cmd:'gh workflow run <name>',desc:'Trigger a GitHub Actions workflow.',ex:'gh workflow run deploy.yml\ngh workflow run build.yml --ref main'},
+{cat:'ghcli',cmd:'gh api <endpoint>',desc:'Make an authenticated API request to GitHub.',ex:'gh api repos/user/repo/pulls\ngh api /user'}
+];
+
+const catLabels = {
+  setup:'Setup',basics:'Basics',branching:'Branching',merging:'Merging',
+  stashing:'Stashing',remote:'Remote',undoing:'Undoing',log:'Log / History',
+  advanced:'Advanced',ghcli:'GitHub CLI'
+};
+
+const catIcons = {
+  setup:'\u2699',basics:'\u2605',branching:'\u2442',merging:'\u21C4',
+  stashing:'\u{1F4E6}',remote:'\u2601',undoing:'\u21B6',log:'\u{1F4DC}',
+  advanced:'\u26A1',ghcli:'\u{1F419}'
+};
+
+const USAGE_KEY = 'spunkart_git_cheat_uses';
+const BAR_KEY = 'sa_bar_dismissed_git-cheatsheet';
+let copyCount = parseInt(localStorage.getItem(USAGE_KEY)) || 0;
+let activeCat = 'all';
+
+// ===== RENDER =====
+function render(filter, cat) {
+  const container = document.getElementById('commandsContainer');
+  const noResults = document.getElementById('noResults');
+  const q = (filter || '').toLowerCase().trim();
+  let filtered = commands;
+  if (cat && cat !== 'all') filtered = filtered.filter(c => c.cat === cat);
+  if (q) filtered = filtered.filter(c => c.cmd.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q) || c.ex.toLowerCase().includes(q) || catLabels[c.cat].toLowerCase().includes(q));
+
+  if (filtered.length === 0) {
+    container.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+
+  // Group by category
+  const groups = {};
+  const catOrder = ['setup','basics','branching','merging','stashing','remote','undoing','log','advanced','ghcli'];
+  filtered.forEach(c => {
+    if (!groups[c.cat]) groups[c.cat] = [];
+    groups[c.cat].push(c);
+  });
+
+  let html = '';
+  catOrder.forEach(catKey => {
+    if (!groups[catKey]) return;
+    html += '<div class="category-section" data-cat="' + catKey + '">';
+    html += '<div class="category-title"><span class="cat-icon">' + catIcons[catKey] + '</span>' + catLabels[catKey] + '<span class="category-count">(' + groups[catKey].length + ')</span></div>';
+    groups[catKey].forEach((c, i) => {
+      const id = catKey + '-' + i;
+      html += '<div class="cmd-card">';
+      html += '<div class="cmd-top">';
+      html += '<code class="cmd-code" onclick="copyCmd(this)" title="Click to copy">' + escHTML(c.cmd) + '</code>';
+      html += '<button class="copy-btn" onclick="copyCmd(this.previousElementSibling)">Copy</button>';
+      html += '</div>';
+      html += '<div class="cmd-desc">' + escHTML(c.desc) + '</div>';
+      html += '<div class="cmd-example"><div class="label">Example</div>' + escHTML(c.ex).replace(/\n/g, '<br>') + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+function escHTML(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ===== COPY =====
+window.copyCmd = function(el) {
+  const text = el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    // Visual feedback on the copy button
+    const card = el.closest('.cmd-card');
+    const btn = card.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+    showToast('Copied: ' + text);
+
+    // Increment counter
+    copyCount++;
+    localStorage.setItem(USAGE_KEY, copyCount);
+    updateBadge();
+
+    // Show email bar after 5th copy
+    if (copyCount >= 5 && !localStorage.getItem(BAR_KEY)) {
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+
+    gtag('event','copy_command',{event_category:'tool_use',event_label:text});
+  }).catch(() => {
+    showToast('Failed to copy');
+  });
+};
+
+function updateBadge() {
+  document.getElementById('usageBadge').textContent = copyCount + ' command' + (copyCount !== 1 ? 's' : '') + ' copied';
+}
+updateBadge();
+
+// ===== SEARCH =====
+const searchInput = document.getElementById('searchInput');
+let searchTimer = null;
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    render(searchInput.value, activeCat);
+  }, 150);
+});
+
+// Keyboard shortcut: / to focus search
+document.addEventListener('keydown', (e) => {
+  if (e.key === '/' && document.activeElement !== searchInput && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    searchInput.focus();
+    searchInput.select();
+  }
+  if (e.key === 'Escape' && document.activeElement === searchInput) {
+    searchInput.blur();
+  }
+});
+
+// ===== CATEGORY TABS =====
+document.getElementById('catTabs').addEventListener('click', (e) => {
+  const tab = e.target.closest('.cat-tab');
+  if (!tab) return;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  activeCat = tab.getAttribute('data-cat');
+  render(searchInput.value, activeCat);
+  gtag('event','filter_category',{event_category:'tool_use',event_label:activeCat});
+});
+
+// ===== TOAST =====
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ===== EMAIL BAR =====
+window.saDismissBar = function() {
+  document.getElementById('saEmailBar').classList.remove('show');
+  localStorage.setItem(BAR_KEY, '1');
+};
+
+window.saSubmitEmail = function() {
+  const email = document.getElementById('saBarEmail').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  localStorage.setItem('sa_subscriber_email', email);
+  localStorage.setItem(BAR_KEY, '1');
+  window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+  document.getElementById('saEmailBar').classList.remove('show');
+  var btn = document.getElementById('saSubBtn');
+  btn.textContent = 'Subscribed!';
+  btn.style.background = '#10b981';
+};
+
+// ===== INITIAL RENDER =====
+render('', 'all');
+
+})();
+</script>
+<script>
+// Code protection
+(function(){document.addEventListener('contextmenu',function(e){e.preventDefault()});document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='u'){e.preventDefault()}if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c')){e.preventDefault()}if(e.key==='F12'){e.preventDefault()}})})();
+</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</body>
+</html>

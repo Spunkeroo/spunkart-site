@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Icon Editor — Create & Edit SVG Icons Free | SPUNKART.COM</title>
+<meta name="description" content="Create and edit SVG icons free online. Draw shapes, customize 30+ pre-built icons, change colors, resize, and export clean SVG code. No signup, no watermarks.">
+<meta property="og:title" content="SVG Icon Editor — Create & Edit SVG Icons Free">
+<meta property="og:description" content="Create SVG icons with shape tools, customize 30+ built-in icons, and export clean code. Free tool by SPUNKART.COM">
+<meta property="og:image" content="https://spunkart.com/assets/og-svg-editor.png">
+<meta property="og:url" content="https://spunkart.com/svg-editor">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:creator" content="@SpunkArt13">
+<meta name="twitter:title" content="SVG Icon Editor — Create & Edit SVG Icons Free">
+<meta name="twitter:description" content="Create and edit SVG icons free. 30+ built-in icons, shape tools, color picker, export SVG code. No signup.">
+<meta name="twitter:image" content="https://spunkart.com/assets/og-svg-editor.png">
+<link rel="canonical" href="https://spunkart.com/svg-editor">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<meta name="robots" content="index, follow">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SVG Icon Editor","description":"Create and edit SVG icons free online. Draw shapes, customize 30+ pre-built icons, change colors, resize, and export clean SVG code.","url":"https://spunkart.com/svg-editor","applicationCategory":"DesignApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"},"featureList":"Shape tools, Icon library, Color picker, SVG export, Download SVG"}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+
+main{flex:1;max-width:1200px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+.usage-badge-wrap{text-align:center;}
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+
+/* Editor Layout */
+.editor-wrap{display:grid;grid-template-columns:260px 1fr 260px;gap:16px;margin-bottom:32px;}
+.panel{background:#111;border:1px solid #222;border-radius:12px;padding:16px;overflow-y:auto;}
+.panel h3{font-size:0.85rem;color:#ff5f1f;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #222;}
+.panel h3:not(:first-child){margin-top:16px;}
+
+/* Canvas */
+.canvas-wrap{background:#111;border:1px solid #222;border-radius:12px;display:flex;align-items:center;justify-content:center;min-height:500px;position:relative;overflow:hidden;}
+.canvas-wrap svg{cursor:crosshair;}
+.canvas-bg{fill:#1a1a1a;}
+.canvas-grid line{stroke:#252525;stroke-width:0.5;}
+
+/* Tool buttons */
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px;}
+.tool-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 6px;font-size:0.75rem;color:#ccc;cursor:pointer;text-align:center;transition:all 0.15s;}
+.tool-btn:hover{border-color:#ff5f1f;color:#fff;}
+.tool-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;}
+.tool-btn svg{display:block;margin:0 auto 4px;width:20px;height:20px;}
+
+/* Controls */
+.ctrl-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.ctrl-row label{font-size:0.78rem;color:#999;min-width:50px;}
+.ctrl-row input[type="number"]{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:6px 8px;border-radius:6px;width:70px;font-size:0.82rem;outline:none;}
+.ctrl-row input[type="number"]:focus{border-color:#ff5f1f;}
+.ctrl-row input[type="color"]{width:36px;height:30px;border:1px solid #333;border-radius:6px;background:#1a1a1a;cursor:pointer;padding:2px;}
+.ctrl-row input[type="range"]{flex:1;accent-color:#ff5f1f;}
+.ctrl-row input[type="text"]{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:6px 8px;border-radius:6px;flex:1;font-size:0.82rem;outline:none;}
+.ctrl-row input[type="text"]:focus{border-color:#ff5f1f;}
+.ctrl-row select{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:6px 8px;border-radius:6px;font-size:0.82rem;outline:none;flex:1;}
+.ctrl-row select:focus{border-color:#ff5f1f;}
+
+.checkbox-row{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:0.8rem;color:#ccc;}
+.checkbox-row input[type="checkbox"]{accent-color:#ff5f1f;}
+
+/* Icon library */
+.icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:400px;overflow-y:auto;}
+.icon-item{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px;cursor:pointer;text-align:center;transition:all 0.15s;}
+.icon-item:hover{border-color:#ff5f1f;background:#1f1a17;}
+.icon-item svg{width:24px;height:24px;fill:#ccc;display:block;margin:0 auto 4px;}
+.icon-item span{font-size:0.6rem;color:#888;display:block;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/* Element list */
+.element-list{max-height:200px;overflow-y:auto;}
+.element-item{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#1a1a1a;border:1px solid #222;border-radius:6px;margin-bottom:4px;font-size:0.78rem;cursor:pointer;transition:all 0.15s;}
+.element-item:hover{border-color:#444;}
+.element-item.selected{border-color:#ff5f1f;background:#1f1a17;}
+.element-item .el-name{color:#ccc;}
+.element-item .el-actions{display:flex;gap:4px;}
+.element-item .el-actions button{background:none;border:none;color:#666;cursor:pointer;font-size:0.85rem;padding:0 2px;}
+.element-item .el-actions button:hover{color:#ff5f1f;}
+
+/* Action buttons */
+.action-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.action-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 14px;font-size:0.8rem;color:#ccc;cursor:pointer;transition:all 0.15s;flex:1;text-align:center;min-width:60px;}
+.action-btn:hover{border-color:#ff5f1f;color:#fff;}
+.action-btn.primary{background:#ff5f1f;border-color:#ff5f1f;color:#fff;}
+.action-btn.primary:hover{background:#e5520f;}
+.action-btn.green{background:#10b981;border-color:#10b981;color:#fff;}
+.action-btn.green:hover{background:#0ea572;}
+
+/* Export section */
+.export-section{margin-top:24px;}
+.export-section h2{font-size:1.3rem;color:#fff;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #222;}
+.code-block{background:#111;border:1px solid #222;border-radius:10px;padding:16px;position:relative;margin-bottom:16px;overflow-x:auto;max-height:300px;overflow-y:auto;}
+.code-block pre{color:#ccc;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.82rem;white-space:pre-wrap;word-wrap:break-word;line-height:1.7;}
+.code-block .copy-btn{position:absolute;top:10px;right:10px;background:#222;color:#ccc;border:1px solid #333;padding:5px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;transition:background 0.2s;}
+.code-block .copy-btn:hover{background:#333;color:#fff;}
+.export-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.export-btns button{background:#ff5f1f;color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.export-btns button:hover{background:#e5520f;}
+.export-btns .btn-secondary{background:#222;color:#ccc;}
+.export-btns .btn-secondary:hover{background:#333;}
+
+/* Canvas size info */
+.canvas-info{position:absolute;bottom:8px;left:12px;font-size:0.7rem;color:#555;}
+.canvas-coords{position:absolute;bottom:8px;right:12px;font-size:0.7rem;color:#555;}
+
+/* Cross sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+
+.watermark{position:fixed;bottom:12px;right:16px;font-size:0.65rem;color:#333;font-weight:700;letter-spacing:1px;pointer-events:none;z-index:10;}
+
+/* Email bar */
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+
+/* Selection handles */
+.selection-rect{fill:none;stroke:#ff5f1f;stroke-width:1;stroke-dasharray:4 2;pointer-events:none;}
+.handle{fill:#ff5f1f;stroke:#0a0a0a;stroke-width:1;cursor:pointer;r:4;}
+
+/* Responsive */
+@media(max-width:900px){
+  .editor-wrap{grid-template-columns:1fr;grid-template-rows:auto auto auto;}
+  .panel{max-height:300px;}
+  .canvas-wrap{min-height:350px;}
+  h1{font-size:1.4rem;}
+  main{padding:20px 16px 60px;}
+}
+@media(min-width:901px) and (max-width:1100px){
+  .editor-wrap{grid-template-columns:220px 1fr 220px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>SVG Icon Editor</h1>
+  <p class="subtitle">Create and edit SVG icons with shape tools and 30+ built-in icons. Change colors, resize, and export clean SVG code. Free, instant, no signup.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <div class="editor-wrap">
+    <!-- LEFT PANEL: Tools & Icon Library -->
+    <div class="panel" id="leftPanel">
+      <h3>Shape Tools</h3>
+      <div class="tool-grid">
+        <div class="tool-btn active" data-tool="select" onclick="setTool('select')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 3l9 7-4 1-2 5-3-13z"/></svg>
+          Select
+        </div>
+        <div class="tool-btn" data-tool="rect" onclick="setTool('rect')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="14" height="12" rx="1"/></svg>
+          Rectangle
+        </div>
+        <div class="tool-btn" data-tool="circle" onclick="setTool('circle')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7"/></svg>
+          Circle
+        </div>
+        <div class="tool-btn" data-tool="ellipse" onclick="setTool('ellipse')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="10" cy="10" rx="8" ry="5"/></svg>
+          Ellipse
+        </div>
+        <div class="tool-btn" data-tool="line" onclick="setTool('line')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="17" x2="17" y2="3"/></svg>
+          Line
+        </div>
+        <div class="tool-btn" data-tool="text" onclick="setTool('text')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><text x="4" y="15" font-size="14" fill="currentColor" stroke="none">T</text></svg>
+          Text
+        </div>
+      </div>
+
+      <h3>Icon Library</h3>
+      <div style="margin-bottom:8px;">
+        <input type="text" id="iconSearch" placeholder="Search icons..." style="width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:6px 10px;border-radius:6px;font-size:0.8rem;outline:none;" oninput="filterIcons(this.value)">
+      </div>
+      <div class="icon-grid" id="iconGrid"></div>
+    </div>
+
+    <!-- CENTER: Canvas -->
+    <div class="canvas-wrap" id="canvasWrap">
+      <svg id="svgCanvas" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+        <rect class="canvas-bg" width="500" height="500"/>
+        <g id="gridGroup"></g>
+        <g id="elementsGroup"></g>
+        <g id="selectionGroup"></g>
+      </svg>
+      <div class="canvas-info" id="canvasInfo">500 x 500</div>
+      <div class="canvas-coords" id="canvasCoords">0, 0</div>
+    </div>
+
+    <!-- RIGHT PANEL: Properties & Elements -->
+    <div class="panel" id="rightPanel">
+      <h3>Canvas</h3>
+      <div class="ctrl-row">
+        <label>Width</label>
+        <input type="number" id="canvasW" value="500" min="50" max="2000" onchange="resizeCanvas()">
+      </div>
+      <div class="ctrl-row">
+        <label>Height</label>
+        <input type="number" id="canvasH" value="500" min="50" max="2000" onchange="resizeCanvas()">
+      </div>
+      <div class="ctrl-row">
+        <label>BG</label>
+        <input type="color" id="canvasBg" value="#1a1a1a" onchange="updateCanvasBg()">
+        <div class="checkbox-row" style="margin:0;">
+          <input type="checkbox" id="canvasBgTransparent" onchange="updateCanvasBg()"><label style="min-width:auto;font-size:0.75rem;color:#999;">Transparent</label>
+        </div>
+      </div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="showGrid" checked onchange="toggleGrid()">Show grid
+      </div>
+
+      <h3>Properties</h3>
+      <div id="propsPanel">
+        <p style="font-size:0.78rem;color:#666;">Select an element to edit its properties.</p>
+      </div>
+
+      <h3>Actions</h3>
+      <div class="action-row">
+        <div class="action-btn" onclick="duplicateSelected()" title="Duplicate">Dup</div>
+        <div class="action-btn" onclick="deleteSelected()" title="Delete" style="color:#f44;">Del</div>
+        <div class="action-btn" onclick="bringForward()" title="Bring forward">Fwd</div>
+        <div class="action-btn" onclick="sendBackward()" title="Send backward">Bck</div>
+      </div>
+      <div class="action-row">
+        <div class="action-btn" onclick="clearCanvas()">Clear All</div>
+        <div class="action-btn" onclick="undoAction()">Undo</div>
+      </div>
+
+      <h3>Elements</h3>
+      <div class="element-list" id="elementList">
+        <p style="font-size:0.78rem;color:#666;">No elements yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Export Section -->
+  <div class="export-section">
+    <h2>Export SVG</h2>
+    <div class="export-btns">
+      <button onclick="copySVGCode()">Copy SVG Code</button>
+      <button class="btn-secondary" onclick="downloadSVG()">Download .svg</button>
+      <button class="btn-secondary" onclick="downloadPNG()">Download .png</button>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" onclick="copySVGCode(this)">Copy</button>
+      <pre id="svgOutput">Click "Copy SVG Code" or add elements to see the SVG code here.</pre>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+<div class="watermark">SPUNKART.COM</div>
+
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+/* ===== STATE ===== */
+let currentTool = 'select';
+let elements = [];
+let selectedId = null;
+let undoStack = [];
+let isDrawing = false;
+let drawStart = {x:0, y:0};
+let tempElement = null;
+let dragOffset = {x:0, y:0};
+let isDragging = false;
+let nextId = 1;
+
+const svgCanvas = document.getElementById('svgCanvas');
+const elementsGroup = document.getElementById('elementsGroup');
+const selectionGroup = document.getElementById('selectionGroup');
+const gridGroup = document.getElementById('gridGroup');
+
+/* ===== ICON LIBRARY (30+ icons) ===== */
+const iconLibrary = [
+  {name:'Arrow Right', path:'M5 12h14M13 5l7 7-7 7', type:'stroke'},
+  {name:'Arrow Left', path:'M19 12H5M11 19l-7-7 7-7', type:'stroke'},
+  {name:'Arrow Up', path:'M12 19V5M5 12l7-7 7 7', type:'stroke'},
+  {name:'Arrow Down', path:'M12 5v14M19 12l-7 7-7-7', type:'stroke'},
+  {name:'Check', path:'M5 13l4 4L19 7', type:'stroke'},
+  {name:'X Close', path:'M6 6l12 12M18 6L6 18', type:'stroke'},
+  {name:'Plus', path:'M12 5v14M5 12h14', type:'stroke'},
+  {name:'Minus', path:'M5 12h14', type:'stroke'},
+  {name:'Star', path:'M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z', type:'fill'},
+  {name:'Heart', path:'M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z', type:'fill'},
+  {name:'Home', path:'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z', type:'stroke'},
+  {name:'Search', path:'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z', type:'stroke'},
+  {name:'Settings', path:'M12 15a3 3 0 100-6 3 3 0 000 6z', type:'stroke', extra:'M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z'},
+  {name:'User', path:'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2', type:'stroke', extra:'M12 3a4 4 0 100 8 4 4 0 000-8z'},
+  {name:'Mail', path:'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z', type:'stroke', extra:'M22 6l-10 7L2 6'},
+  {name:'Phone', path:'M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z', type:'stroke'},
+  {name:'Camera', path:'M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z', type:'stroke', extra:'M12 17a4 4 0 100-8 4 4 0 000 8z'},
+  {name:'Image', path:'M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2z', type:'stroke', extra:'M8.5 10a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM21 15l-5-5L5 21'},
+  {name:'Lock', path:'M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2z', type:'stroke', extra:'M7 11V7a5 5 0 0110 0v4'},
+  {name:'Unlock', path:'M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2z', type:'stroke', extra:'M7 11V7a5 5 0 019.9-1'},
+  {name:'Eye', path:'M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z', type:'stroke', extra:'M12 9a3 3 0 100 6 3 3 0 000-6z'},
+  {name:'Trash', path:'M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2', type:'stroke', extra:'M10 11v6M14 11v6'},
+  {name:'Edit Pen', path:'M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7', type:'stroke', extra:'M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z'},
+  {name:'Download', path:'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3', type:'stroke'},
+  {name:'Upload', path:'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12', type:'stroke'},
+  {name:'Share', path:'M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13', type:'stroke'},
+  {name:'Link', path:'M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71', type:'stroke', extra:'M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71'},
+  {name:'Clock', path:'M12 2a10 10 0 100 20 10 10 0 000-20z', type:'stroke', extra:'M12 6v6l4 2'},
+  {name:'Calendar', path:'M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zM16 2v4M8 2v4M3 10h18', type:'stroke'},
+  {name:'Bell', path:'M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0', type:'stroke'},
+  {name:'Bookmark', path:'M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z', type:'stroke'},
+  {name:'Flag', path:'M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7', type:'stroke'},
+  {name:'Map Pin', path:'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z', type:'stroke', extra:'M12 7a3 3 0 100 6 3 3 0 000-6z'},
+  {name:'Wifi', path:'M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01', type:'stroke'},
+  {name:'Zap', path:'M13 2L3 14h9l-1 8 10-12h-9l1-8z', type:'fill'},
+  {name:'Sun', path:'M12 7a5 5 0 100 10 5 5 0 000-10zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42', type:'stroke'},
+  {name:'Moon', path:'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z', type:'fill'},
+  {name:'Cloud', path:'M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z', type:'stroke'},
+  {name:'Music', path:'M9 18V5l12-2v13', type:'stroke', extra:'M6 21a3 3 0 100-6 3 3 0 000 6zM18 19a3 3 0 100-6 3 3 0 000 6z'},
+  {name:'Play', path:'M5 3l14 9-14 9V3z', type:'fill'},
+  {name:'Pause', path:'M6 4h4v16H6zM14 4h4v16h-4z', type:'fill'},
+  {name:'Menu', path:'M3 12h18M3 6h18M3 18h18', type:'stroke'},
+  {name:'Filter', path:'M22 3H2l8 9.46V19l4 2v-8.54L22 3z', type:'stroke'},
+  {name:'Folder', path:'M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z', type:'stroke'},
+  {name:'File', path:'M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z', type:'stroke', extra:'M13 2v7h7'},
+  {name:'Copy', path:'M20 9H11a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-9a2 2 0 00-2-2z', type:'stroke', extra:'M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1'},
+  {name:'Layers', path:'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', type:'stroke'},
+  {name:'Globe', path:'M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20', type:'stroke', extra:'M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z'},
+  {name:'Code', path:'M16 18l6-6-6-6M8 6l-6 6 6 6', type:'stroke'},
+  {name:'Terminal', path:'M4 17l6-5-6-5M12 19h8', type:'stroke'},
+];
+
+/* ===== TOOL SELECTION ===== */
+function setTool(tool) {
+  currentTool = tool;
+  document.querySelectorAll('.tool-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tool === tool);
+  });
+  svgCanvas.style.cursor = tool === 'select' ? 'default' : 'crosshair';
+}
+
+/* ===== CANVAS RESIZE ===== */
+function resizeCanvas() {
+  const w = parseInt(document.getElementById('canvasW').value) || 500;
+  const h = parseInt(document.getElementById('canvasH').value) || 500;
+  svgCanvas.setAttribute('width', w);
+  svgCanvas.setAttribute('height', h);
+  svgCanvas.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  svgCanvas.querySelector('.canvas-bg').setAttribute('width', w);
+  svgCanvas.querySelector('.canvas-bg').setAttribute('height', h);
+  document.getElementById('canvasInfo').textContent = `${w} x ${h}`;
+  drawGrid();
+}
+
+function updateCanvasBg() {
+  const transparent = document.getElementById('canvasBgTransparent').checked;
+  const color = document.getElementById('canvasBg').value;
+  const bg = svgCanvas.querySelector('.canvas-bg');
+  if (transparent) {
+    bg.setAttribute('fill', 'none');
+    bg.setAttribute('opacity', '0');
+  } else {
+    bg.setAttribute('fill', color);
+    bg.setAttribute('opacity', '1');
+  }
+}
+
+/* ===== GRID ===== */
+function drawGrid() {
+  const w = parseInt(svgCanvas.getAttribute('width'));
+  const h = parseInt(svgCanvas.getAttribute('height'));
+  gridGroup.innerHTML = '';
+  if (!document.getElementById('showGrid').checked) return;
+  const step = 25;
+  for (let x = step; x < w; x += step) {
+    const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('x1',x);l.setAttribute('y1',0);l.setAttribute('x2',x);l.setAttribute('y2',h);
+    l.setAttribute('stroke','#252525');l.setAttribute('stroke-width','0.5');
+    gridGroup.appendChild(l);
+  }
+  for (let y = step; y < h; y += step) {
+    const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('x1',0);l.setAttribute('y1',y);l.setAttribute('x2',w);l.setAttribute('y2',y);
+    l.setAttribute('stroke','#252525');l.setAttribute('stroke-width','0.5');
+    gridGroup.appendChild(l);
+  }
+}
+function toggleGrid() { drawGrid(); }
+drawGrid();
+
+/* ===== SVG MOUSE POSITION ===== */
+function getSVGPoint(e) {
+  const rect = svgCanvas.getBoundingClientRect();
+  const scaleX = parseInt(svgCanvas.getAttribute('width')) / rect.width;
+  const scaleY = parseInt(svgCanvas.getAttribute('height')) / rect.height;
+  return {
+    x: Math.round((e.clientX - rect.left) * scaleX),
+    y: Math.round((e.clientY - rect.top) * scaleY)
+  };
+}
+
+/* ===== DRAWING HANDLERS ===== */
+svgCanvas.addEventListener('mousedown', e => {
+  const pt = getSVGPoint(e);
+  document.getElementById('canvasCoords').textContent = `${pt.x}, ${pt.y}`;
+
+  if (currentTool === 'select') {
+    // Check if clicking on an element
+    const target = e.target.closest('[data-eid]');
+    if (target) {
+      const eid = parseInt(target.getAttribute('data-eid'));
+      selectElement(eid);
+      isDragging = true;
+      const el = elements.find(x => x.id === eid);
+      if (el) {
+        dragOffset.x = pt.x - (el.x || 0);
+        dragOffset.y = pt.y - (el.y || 0);
+      }
+    } else {
+      deselectAll();
+    }
+    return;
+  }
+
+  isDrawing = true;
+  drawStart = pt;
+  saveUndo();
+
+  if (currentTool === 'text') {
+    const text = prompt('Enter text:', 'Hello');
+    if (text) {
+      addElement({
+        type: 'text', x: pt.x, y: pt.y,
+        text: text, fontSize: 24, fontFamily: 'Arial',
+        fill: '#e8e8e8', stroke: 'none', strokeWidth: 0
+      });
+    }
+    isDrawing = false;
+    return;
+  }
+});
+
+svgCanvas.addEventListener('mousemove', e => {
+  const pt = getSVGPoint(e);
+  document.getElementById('canvasCoords').textContent = `${pt.x}, ${pt.y}`;
+
+  if (isDragging && selectedId !== null) {
+    const el = elements.find(x => x.id === selectedId);
+    if (!el) return;
+    el.x = pt.x - dragOffset.x;
+    el.y = pt.y - dragOffset.y;
+    renderElements();
+    updateProps();
+    return;
+  }
+
+  if (!isDrawing) return;
+
+  const x = Math.min(drawStart.x, pt.x);
+  const y = Math.min(drawStart.y, pt.y);
+  const w = Math.abs(pt.x - drawStart.x);
+  const h = Math.abs(pt.y - drawStart.y);
+
+  // Remove temp element
+  if (tempElement) tempElement.remove();
+
+  if (currentTool === 'rect') {
+    tempElement = createSVGElement('rect');
+    tempElement.setAttribute('x', x);
+    tempElement.setAttribute('y', y);
+    tempElement.setAttribute('width', w);
+    tempElement.setAttribute('height', h);
+    tempElement.setAttribute('fill', '#ff5f1f');
+    tempElement.setAttribute('stroke', '#e8e8e8');
+    tempElement.setAttribute('stroke-width', '2');
+    tempElement.setAttribute('opacity', '0.7');
+    elementsGroup.appendChild(tempElement);
+  } else if (currentTool === 'circle') {
+    const r = Math.sqrt(w*w + h*h) / 2;
+    tempElement = createSVGElement('circle');
+    tempElement.setAttribute('cx', drawStart.x);
+    tempElement.setAttribute('cy', drawStart.y);
+    tempElement.setAttribute('r', r);
+    tempElement.setAttribute('fill', '#ff5f1f');
+    tempElement.setAttribute('stroke', '#e8e8e8');
+    tempElement.setAttribute('stroke-width', '2');
+    tempElement.setAttribute('opacity', '0.7');
+    elementsGroup.appendChild(tempElement);
+  } else if (currentTool === 'ellipse') {
+    tempElement = createSVGElement('ellipse');
+    tempElement.setAttribute('cx', drawStart.x + (pt.x - drawStart.x)/2);
+    tempElement.setAttribute('cy', drawStart.y + (pt.y - drawStart.y)/2);
+    tempElement.setAttribute('rx', w/2);
+    tempElement.setAttribute('ry', h/2);
+    tempElement.setAttribute('fill', '#ff5f1f');
+    tempElement.setAttribute('stroke', '#e8e8e8');
+    tempElement.setAttribute('stroke-width', '2');
+    tempElement.setAttribute('opacity', '0.7');
+    elementsGroup.appendChild(tempElement);
+  } else if (currentTool === 'line') {
+    tempElement = createSVGElement('line');
+    tempElement.setAttribute('x1', drawStart.x);
+    tempElement.setAttribute('y1', drawStart.y);
+    tempElement.setAttribute('x2', pt.x);
+    tempElement.setAttribute('y2', pt.y);
+    tempElement.setAttribute('stroke', '#e8e8e8');
+    tempElement.setAttribute('stroke-width', '2');
+    tempElement.setAttribute('stroke-linecap', 'round');
+    tempElement.setAttribute('opacity', '0.7');
+    elementsGroup.appendChild(tempElement);
+  }
+});
+
+svgCanvas.addEventListener('mouseup', e => {
+  if (isDragging) {
+    isDragging = false;
+    saveUndo();
+    updateSVGOutput();
+    return;
+  }
+  if (!isDrawing) return;
+  isDrawing = false;
+
+  const pt = getSVGPoint(e);
+  const x = Math.min(drawStart.x, pt.x);
+  const y = Math.min(drawStart.y, pt.y);
+  const w = Math.abs(pt.x - drawStart.x);
+  const h = Math.abs(pt.y - drawStart.y);
+
+  if (tempElement) { tempElement.remove(); tempElement = null; }
+
+  // Minimum size threshold
+  if (w < 3 && h < 3 && currentTool !== 'text') return;
+
+  if (currentTool === 'rect') {
+    addElement({
+      type: 'rect', x, y, width: w, height: h, rx: 0,
+      fill: '#ff5f1f', stroke: '#e8e8e8', strokeWidth: 2
+    });
+  } else if (currentTool === 'circle') {
+    const r = Math.round(Math.sqrt(w*w + h*h) / 2);
+    addElement({
+      type: 'circle', x: drawStart.x, y: drawStart.y, r,
+      fill: '#ff5f1f', stroke: '#e8e8e8', strokeWidth: 2
+    });
+  } else if (currentTool === 'ellipse') {
+    addElement({
+      type: 'ellipse', x: drawStart.x + (pt.x - drawStart.x)/2, y: drawStart.y + (pt.y - drawStart.y)/2,
+      rx: Math.round(w/2), ry: Math.round(h/2),
+      fill: '#ff5f1f', stroke: '#e8e8e8', strokeWidth: 2
+    });
+  } else if (currentTool === 'line') {
+    addElement({
+      type: 'line', x: drawStart.x, y: drawStart.y, x2: pt.x, y2: pt.y,
+      fill: 'none', stroke: '#e8e8e8', strokeWidth: 2
+    });
+  }
+
+  incrementUsage();
+});
+
+// Touch support
+svgCanvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const mouseEvent = new MouseEvent('mousedown', {clientX: touch.clientX, clientY: touch.clientY});
+  svgCanvas.dispatchEvent(mouseEvent);
+}, {passive: false});
+svgCanvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const mouseEvent = new MouseEvent('mousemove', {clientX: touch.clientX, clientY: touch.clientY});
+  svgCanvas.dispatchEvent(mouseEvent);
+}, {passive: false});
+svgCanvas.addEventListener('touchend', e => {
+  e.preventDefault();
+  const mouseEvent = new MouseEvent('mouseup', {clientX: 0, clientY: 0});
+  svgCanvas.dispatchEvent(mouseEvent);
+}, {passive: false});
+
+/* ===== SVG ELEMENT HELPERS ===== */
+function createSVGElement(tag) {
+  return document.createElementNS('http://www.w3.org/2000/svg', tag);
+}
+
+function addElement(el) {
+  el.id = nextId++;
+  el.name = el.name || (el.type.charAt(0).toUpperCase() + el.type.slice(1) + ' ' + el.id);
+  elements.push(el);
+  selectElement(el.id);
+  renderElements();
+  updateSVGOutput();
+}
+
+function renderElements() {
+  elementsGroup.innerHTML = '';
+  selectionGroup.innerHTML = '';
+
+  elements.forEach(el => {
+    let svgEl;
+    if (el.type === 'rect') {
+      svgEl = createSVGElement('rect');
+      svgEl.setAttribute('x', el.x);
+      svgEl.setAttribute('y', el.y);
+      svgEl.setAttribute('width', el.width);
+      svgEl.setAttribute('height', el.height);
+      if (el.rx) svgEl.setAttribute('rx', el.rx);
+      svgEl.setAttribute('fill', el.fill);
+      svgEl.setAttribute('stroke', el.stroke);
+      svgEl.setAttribute('stroke-width', el.strokeWidth);
+    } else if (el.type === 'circle') {
+      svgEl = createSVGElement('circle');
+      svgEl.setAttribute('cx', el.x);
+      svgEl.setAttribute('cy', el.y);
+      svgEl.setAttribute('r', el.r);
+      svgEl.setAttribute('fill', el.fill);
+      svgEl.setAttribute('stroke', el.stroke);
+      svgEl.setAttribute('stroke-width', el.strokeWidth);
+    } else if (el.type === 'ellipse') {
+      svgEl = createSVGElement('ellipse');
+      svgEl.setAttribute('cx', el.x);
+      svgEl.setAttribute('cy', el.y);
+      svgEl.setAttribute('rx', el.rx);
+      svgEl.setAttribute('ry', el.ry);
+      svgEl.setAttribute('fill', el.fill);
+      svgEl.setAttribute('stroke', el.stroke);
+      svgEl.setAttribute('stroke-width', el.strokeWidth);
+    } else if (el.type === 'line') {
+      svgEl = createSVGElement('line');
+      svgEl.setAttribute('x1', el.x);
+      svgEl.setAttribute('y1', el.y);
+      svgEl.setAttribute('x2', el.x2);
+      svgEl.setAttribute('y2', el.y2);
+      svgEl.setAttribute('stroke', el.stroke);
+      svgEl.setAttribute('stroke-width', el.strokeWidth);
+      svgEl.setAttribute('stroke-linecap', 'round');
+    } else if (el.type === 'text') {
+      svgEl = createSVGElement('text');
+      svgEl.setAttribute('x', el.x);
+      svgEl.setAttribute('y', el.y);
+      svgEl.setAttribute('font-size', el.fontSize);
+      svgEl.setAttribute('font-family', el.fontFamily);
+      svgEl.setAttribute('fill', el.fill);
+      if (el.stroke && el.stroke !== 'none') {
+        svgEl.setAttribute('stroke', el.stroke);
+        svgEl.setAttribute('stroke-width', el.strokeWidth || 0);
+      }
+      svgEl.textContent = el.text;
+    } else if (el.type === 'path' || el.type === 'icon') {
+      const g = createSVGElement('g');
+      g.setAttribute('data-eid', el.id);
+      g.setAttribute('transform', `translate(${el.x}, ${el.y}) scale(${(el.scale||1)})`);
+      g.style.cursor = 'pointer';
+
+      const paths = el.paths || [el.d];
+      paths.forEach(d => {
+        const p = createSVGElement('path');
+        p.setAttribute('d', d);
+        if (el.iconType === 'stroke' || el.strokeOnly) {
+          p.setAttribute('fill', 'none');
+          p.setAttribute('stroke', el.stroke || '#e8e8e8');
+          p.setAttribute('stroke-width', el.strokeWidth || 2);
+          p.setAttribute('stroke-linecap', 'round');
+          p.setAttribute('stroke-linejoin', 'round');
+        } else {
+          p.setAttribute('fill', el.fill || '#ff5f1f');
+          p.setAttribute('stroke', el.stroke || 'none');
+          p.setAttribute('stroke-width', el.strokeWidth || 0);
+          if (el.stroke && el.stroke !== 'none') {
+            p.setAttribute('stroke-linecap', 'round');
+            p.setAttribute('stroke-linejoin', 'round');
+          }
+        }
+        g.appendChild(p);
+      });
+
+      elementsGroup.appendChild(g);
+
+      // Draw selection
+      if (el.id === selectedId) {
+        const box = g.getBBox();
+        const selRect = createSVGElement('rect');
+        selRect.setAttribute('x', box.x - 4);
+        selRect.setAttribute('y', box.y - 4);
+        selRect.setAttribute('width', box.width + 8);
+        selRect.setAttribute('height', box.height + 8);
+        selRect.classList.add('selection-rect');
+        selectionGroup.appendChild(selRect);
+      }
+      return; // Skip the common code below
+    }
+
+    if (svgEl) {
+      svgEl.setAttribute('data-eid', el.id);
+      svgEl.style.cursor = 'pointer';
+      elementsGroup.appendChild(svgEl);
+
+      // Draw selection
+      if (el.id === selectedId) {
+        const box = svgEl.getBBox();
+        const selRect = createSVGElement('rect');
+        selRect.setAttribute('x', box.x - 4);
+        selRect.setAttribute('y', box.y - 4);
+        selRect.setAttribute('width', box.width + 8);
+        selRect.setAttribute('height', box.height + 8);
+        selRect.classList.add('selection-rect');
+        selectionGroup.appendChild(selRect);
+      }
+    }
+  });
+
+  updateElementList();
+}
+
+/* ===== SELECTION ===== */
+function selectElement(id) {
+  selectedId = id;
+  renderElements();
+  updateProps();
+  updateElementList();
+}
+
+function deselectAll() {
+  selectedId = null;
+  selectionGroup.innerHTML = '';
+  updateProps();
+  updateElementList();
+}
+
+/* ===== PROPERTIES PANEL ===== */
+function updateProps() {
+  const panel = document.getElementById('propsPanel');
+  const el = elements.find(x => x.id === selectedId);
+  if (!el) {
+    panel.innerHTML = '<p style="font-size:0.78rem;color:#666;">Select an element to edit its properties.</p>';
+    return;
+  }
+
+  let html = '';
+
+  // Name
+  html += `<div class="ctrl-row"><label>Name</label><input type="text" value="${escHtml(el.name)}" onchange="updateProp('name',this.value)"></div>`;
+
+  // Position
+  html += `<div class="ctrl-row"><label>X</label><input type="number" value="${el.x||0}" onchange="updateProp('x',+this.value)">`;
+  html += `<label>Y</label><input type="number" value="${el.y||0}" onchange="updateProp('y',+this.value)"></div>`;
+
+  if (el.type === 'rect') {
+    html += `<div class="ctrl-row"><label>W</label><input type="number" value="${el.width}" min="1" onchange="updateProp('width',+this.value)">`;
+    html += `<label>H</label><input type="number" value="${el.height}" min="1" onchange="updateProp('height',+this.value)"></div>`;
+    html += `<div class="ctrl-row"><label>Radius</label><input type="number" value="${el.rx||0}" min="0" onchange="updateProp('rx',+this.value)"></div>`;
+  } else if (el.type === 'circle') {
+    html += `<div class="ctrl-row"><label>Radius</label><input type="number" value="${el.r}" min="1" onchange="updateProp('r',+this.value)"></div>`;
+  } else if (el.type === 'ellipse') {
+    html += `<div class="ctrl-row"><label>RX</label><input type="number" value="${el.rx}" min="1" onchange="updateProp('rx',+this.value)">`;
+    html += `<label>RY</label><input type="number" value="${el.ry}" min="1" onchange="updateProp('ry',+this.value)"></div>`;
+  } else if (el.type === 'line') {
+    html += `<div class="ctrl-row"><label>X2</label><input type="number" value="${el.x2}" onchange="updateProp('x2',+this.value)">`;
+    html += `<label>Y2</label><input type="number" value="${el.y2}" onchange="updateProp('y2',+this.value)"></div>`;
+  } else if (el.type === 'text') {
+    html += `<div class="ctrl-row"><label>Text</label><input type="text" value="${escHtml(el.text)}" onchange="updateProp('text',this.value)"></div>`;
+    html += `<div class="ctrl-row"><label>Size</label><input type="number" value="${el.fontSize}" min="6" max="200" onchange="updateProp('fontSize',+this.value)"></div>`;
+    html += `<div class="ctrl-row"><label>Font</label><select onchange="updateProp('fontFamily',this.value)">`;
+    ['Arial','Helvetica','Georgia','Times New Roman','Courier New','Verdana','Impact','Comic Sans MS'].forEach(f => {
+      html += `<option value="${f}"${el.fontFamily===f?' selected':''}>${f}</option>`;
+    });
+    html += `</select></div>`;
+  } else if (el.type === 'path' || el.type === 'icon') {
+    html += `<div class="ctrl-row"><label>Scale</label><input type="number" value="${el.scale||1}" min="0.1" max="50" step="0.5" onchange="updateProp('scale',+this.value)"></div>`;
+  }
+
+  // Fill (not for line)
+  if (el.type !== 'line') {
+    const fillVal = el.fill && el.fill !== 'none' ? el.fill : '#ff5f1f';
+    html += `<div class="ctrl-row"><label>Fill</label><input type="color" value="${fillVal}" onchange="updateProp('fill',this.value)">`;
+    html += `<div class="checkbox-row" style="margin:0;"><input type="checkbox" ${el.fill==='none'?'checked':''} onchange="updateProp('fill',this.checked?'none':document.querySelector('#propsPanel input[type=color]').value)"><label style="min-width:auto;font-size:0.75rem;color:#999;">None</label></div></div>`;
+  }
+
+  // Stroke
+  const strokeVal = el.stroke && el.stroke !== 'none' ? el.stroke : '#e8e8e8';
+  html += `<div class="ctrl-row"><label>Stroke</label><input type="color" value="${strokeVal}" onchange="updateProp('stroke',this.value)">`;
+  html += `<label>W</label><input type="number" value="${el.strokeWidth||0}" min="0" max="50" step="0.5" onchange="updateProp('strokeWidth',+this.value)"></div>`;
+
+  // Opacity
+  html += `<div class="ctrl-row"><label>Opacity</label><input type="range" min="0" max="1" step="0.05" value="${el.opacity!==undefined?el.opacity:1}" onchange="updateProp('opacity',+this.value)"><span style="font-size:0.75rem;color:#999;min-width:30px;text-align:right;">${Math.round((el.opacity!==undefined?el.opacity:1)*100)}%</span></div>`;
+
+  panel.innerHTML = html;
+}
+
+function updateProp(prop, val) {
+  const el = elements.find(x => x.id === selectedId);
+  if (!el) return;
+  saveUndo();
+  el[prop] = val;
+  renderElements();
+  updateProps();
+  updateSVGOutput();
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ===== ELEMENT LIST ===== */
+function updateElementList() {
+  const list = document.getElementById('elementList');
+  if (!elements.length) {
+    list.innerHTML = '<p style="font-size:0.78rem;color:#666;">No elements yet.</p>';
+    return;
+  }
+  list.innerHTML = elements.map(el =>
+    `<div class="element-item${el.id===selectedId?' selected':''}" onclick="selectElement(${el.id})">
+      <span class="el-name">${escHtml(el.name)}</span>
+      <span class="el-actions">
+        <button onclick="event.stopPropagation();duplicateEl(${el.id})" title="Duplicate">&#9114;</button>
+        <button onclick="event.stopPropagation();deleteEl(${el.id})" title="Delete" style="color:#f44;">&times;</button>
+      </span>
+    </div>`
+  ).reverse().join('');
+}
+
+/* ===== ACTIONS ===== */
+function duplicateSelected() {
+  if (selectedId === null) return;
+  duplicateEl(selectedId);
+}
+function duplicateEl(id) {
+  const el = elements.find(x => x.id === id);
+  if (!el) return;
+  saveUndo();
+  const copy = JSON.parse(JSON.stringify(el));
+  copy.id = nextId++;
+  copy.name = copy.name + ' copy';
+  copy.x = (copy.x || 0) + 20;
+  copy.y = (copy.y || 0) + 20;
+  elements.push(copy);
+  selectElement(copy.id);
+  renderElements();
+  updateSVGOutput();
+}
+function deleteSelected() {
+  if (selectedId === null) return;
+  deleteEl(selectedId);
+}
+function deleteEl(id) {
+  saveUndo();
+  elements = elements.filter(x => x.id !== id);
+  if (selectedId === id) selectedId = null;
+  renderElements();
+  updateProps();
+  updateSVGOutput();
+}
+function bringForward() {
+  if (selectedId === null) return;
+  const idx = elements.findIndex(x => x.id === selectedId);
+  if (idx < elements.length - 1) {
+    saveUndo();
+    [elements[idx], elements[idx+1]] = [elements[idx+1], elements[idx]];
+    renderElements();
+  }
+}
+function sendBackward() {
+  if (selectedId === null) return;
+  const idx = elements.findIndex(x => x.id === selectedId);
+  if (idx > 0) {
+    saveUndo();
+    [elements[idx], elements[idx-1]] = [elements[idx-1], elements[idx]];
+    renderElements();
+  }
+}
+function clearCanvas() {
+  if (elements.length && !confirm('Clear all elements?')) return;
+  saveUndo();
+  elements = [];
+  selectedId = null;
+  renderElements();
+  updateProps();
+  updateSVGOutput();
+}
+
+/* ===== UNDO ===== */
+function saveUndo() {
+  undoStack.push(JSON.stringify(elements));
+  if (undoStack.length > 50) undoStack.shift();
+}
+function undoAction() {
+  if (!undoStack.length) return;
+  elements = JSON.parse(undoStack.pop());
+  selectedId = null;
+  renderElements();
+  updateProps();
+  updateSVGOutput();
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+  if ((e.key === 'Delete' || e.key === 'Backspace') && selectedId !== null) {
+    e.preventDefault();
+    deleteSelected();
+  }
+  if (e.ctrlKey && e.key === 'z') {
+    e.preventDefault();
+    undoAction();
+  }
+  if (e.ctrlKey && e.key === 'd') {
+    e.preventDefault();
+    duplicateSelected();
+  }
+  if (e.key === 'Escape') {
+    deselectAll();
+    setTool('select');
+  }
+});
+
+/* ===== ICON LIBRARY RENDER ===== */
+function renderIconLibrary(filter) {
+  const grid = document.getElementById('iconGrid');
+  const f = (filter || '').toLowerCase();
+  const filtered = f ? iconLibrary.filter(ic => ic.name.toLowerCase().includes(f)) : iconLibrary;
+
+  grid.innerHTML = filtered.map((ic, i) => {
+    const paths = ic.extra ? `<path d="${ic.path}"/><path d="${ic.extra}"/>` : `<path d="${ic.path}"/>`;
+    const style = ic.type === 'stroke'
+      ? 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
+      : 'fill="currentColor" stroke="none"';
+    return `<div class="icon-item" onclick="addIcon(${iconLibrary.indexOf(ic)})" title="${ic.name}">
+      <svg viewBox="0 0 24 24" ${style}>${paths}</svg>
+      <span>${ic.name}</span>
+    </div>`;
+  }).join('');
+}
+function filterIcons(val) { renderIconLibrary(val); }
+renderIconLibrary();
+
+function addIcon(idx) {
+  const ic = iconLibrary[idx];
+  if (!ic) return;
+  saveUndo();
+
+  const paths = ic.extra ? [ic.path, ic.extra] : [ic.path];
+  const cw = parseInt(svgCanvas.getAttribute('width'));
+  const ch = parseInt(svgCanvas.getAttribute('height'));
+
+  addElement({
+    type: 'icon',
+    name: ic.name,
+    x: Math.round(cw/2 - 60),
+    y: Math.round(ch/2 - 60),
+    scale: 5,
+    paths: paths,
+    iconType: ic.type,
+    strokeOnly: ic.type === 'stroke',
+    fill: ic.type === 'fill' ? '#ff5f1f' : 'none',
+    stroke: ic.type === 'stroke' ? '#e8e8e8' : 'none',
+    strokeWidth: ic.type === 'stroke' ? 2 : 0
+  });
+  incrementUsage();
+}
+
+/* ===== EXPORT ===== */
+function generateCleanSVG() {
+  const w = parseInt(svgCanvas.getAttribute('width'));
+  const h = parseInt(svgCanvas.getAttribute('height'));
+  const transparent = document.getElementById('canvasBgTransparent').checked;
+  const bgColor = document.getElementById('canvasBg').value;
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">\n`;
+
+  if (!transparent) {
+    svg += `  <rect width="${w}" height="${h}" fill="${bgColor}"/>\n`;
+  }
+
+  elements.forEach(el => {
+    const opacity = el.opacity !== undefined && el.opacity !== 1 ? ` opacity="${el.opacity}"` : '';
+    if (el.type === 'rect') {
+      svg += `  <rect x="${el.x}" y="${el.y}" width="${el.width}" height="${el.height}"${el.rx?` rx="${el.rx}"`:''} fill="${el.fill}" stroke="${el.stroke}" stroke-width="${el.strokeWidth}"${opacity}/>\n`;
+    } else if (el.type === 'circle') {
+      svg += `  <circle cx="${el.x}" cy="${el.y}" r="${el.r}" fill="${el.fill}" stroke="${el.stroke}" stroke-width="${el.strokeWidth}"${opacity}/>\n`;
+    } else if (el.type === 'ellipse') {
+      svg += `  <ellipse cx="${el.x}" cy="${el.y}" rx="${el.rx}" ry="${el.ry}" fill="${el.fill}" stroke="${el.stroke}" stroke-width="${el.strokeWidth}"${opacity}/>\n`;
+    } else if (el.type === 'line') {
+      svg += `  <line x1="${el.x}" y1="${el.y}" x2="${el.x2}" y2="${el.y2}" stroke="${el.stroke}" stroke-width="${el.strokeWidth}" stroke-linecap="round"${opacity}/>\n`;
+    } else if (el.type === 'text') {
+      const strokeAttr = el.stroke && el.stroke !== 'none' ? ` stroke="${el.stroke}" stroke-width="${el.strokeWidth||0}"` : '';
+      svg += `  <text x="${el.x}" y="${el.y}" font-size="${el.fontSize}" font-family="${el.fontFamily}" fill="${el.fill}"${strokeAttr}${opacity}>${escHtml(el.text)}</text>\n`;
+    } else if (el.type === 'path' || el.type === 'icon') {
+      svg += `  <g transform="translate(${el.x}, ${el.y}) scale(${el.scale||1})"${opacity}>\n`;
+      const paths = el.paths || [el.d];
+      paths.forEach(d => {
+        if (el.iconType === 'stroke' || el.strokeOnly) {
+          svg += `    <path d="${d}" fill="none" stroke="${el.stroke||'#e8e8e8'}" stroke-width="${el.strokeWidth||2}" stroke-linecap="round" stroke-linejoin="round"/>\n`;
+        } else {
+          const sAttr = el.stroke && el.stroke !== 'none' ? ` stroke="${el.stroke}" stroke-width="${el.strokeWidth||0}" stroke-linecap="round" stroke-linejoin="round"` : '';
+          svg += `    <path d="${d}" fill="${el.fill||'#ff5f1f'}"${sAttr}/>\n`;
+        }
+      });
+      svg += `  </g>\n`;
+    }
+  });
+
+  svg += `</svg>`;
+  return svg;
+}
+
+function updateSVGOutput() {
+  document.getElementById('svgOutput').textContent = generateCleanSVG();
+}
+
+function copySVGCode(btn) {
+  const code = generateCleanSVG();
+  document.getElementById('svgOutput').textContent = code;
+  navigator.clipboard.writeText(code).then(() => {
+    showCopyFeedback(btn || document.querySelector('.code-block .copy-btn'));
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    showCopyFeedback(btn || document.querySelector('.code-block .copy-btn'));
+  });
+  gtag('event','copy_svg',{event_category:'tool_use'});
+}
+
+function showCopyFeedback(btn) {
+  if (!btn) return;
+  const orig = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.style.background = '#10b981';
+  btn.style.color = '#fff';
+  btn.style.borderColor = '#10b981';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.style.borderColor = '';
+  }, 1500);
+}
+
+function downloadSVG() {
+  const code = generateCleanSVG();
+  const blob = new Blob([code], {type: 'image/svg+xml'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'icon-spunkart.svg';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event','download_svg',{event_category:'tool_use'});
+}
+
+function downloadPNG() {
+  const code = generateCleanSVG();
+  const w = parseInt(svgCanvas.getAttribute('width'));
+  const h = parseInt(svgCanvas.getAttribute('height'));
+  const img = new Image();
+  const svgBlob = new Blob([code], {type: 'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(svgBlob);
+  img.onload = function() {
+    const canvas = document.createElement('canvas');
+    canvas.width = w * 2;
+    canvas.height = h * 2;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(2, 2);
+    ctx.drawImage(img, 0, 0, w, h);
+    URL.revokeObjectURL(url);
+    canvas.toBlob(function(blob) {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'icon-spunkart.png';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/png');
+    gtag('event','download_png',{event_category:'tool_use'});
+  };
+  img.src = url;
+}
+
+/* ===== USAGE COUNTER ===== */
+const TOOL_KEY = 'spunkart_svg_edit_uses';
+const BAR_KEY = 'sa_bar_dismissed_svg-editor';
+let usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+
+function updateUsageBadge() {
+  document.getElementById('usageBadge').textContent = usageCount + ' icon' + (usageCount !== 1 ? 's' : '') + ' created';
+}
+updateUsageBadge();
+
+function incrementUsage() {
+  usageCount++;
+  localStorage.setItem(TOOL_KEY, usageCount);
+  updateUsageBadge();
+  if (usageCount >= 2 && !localStorage.getItem(BAR_KEY)) {
+    document.getElementById('saEmailBar').classList.add('show');
+  }
+}
+
+/* ===== EMAIL BAR ===== */
+window.saDismissBar = function() {
+  document.getElementById('saEmailBar').classList.remove('show');
+  localStorage.setItem(BAR_KEY, '1');
+};
+window.saSubmitEmail = function() {
+  var email = document.getElementById('saBarEmail').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  localStorage.setItem('sa_subscriber_email', email);
+  localStorage.setItem(BAR_KEY, '1');
+  window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+  document.getElementById('saEmailBar').classList.remove('show');
+  var btn = document.querySelector('.sa-sub-btn');
+  btn.textContent = 'Subscribed!';
+  btn.style.background = '#10b981';
+};
+
+/* ===== INITIAL OUTPUT ===== */
+updateSVGOutput();
+</script>
+
+<script>
+/* Microsoft Clarity */
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");
+</script>
+
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

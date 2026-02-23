@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regex Cheat Sheet & Live Tester — Complete Regular Expression Reference</title>
+<meta name="description" content="Comprehensive regex cheat sheet with live tester. Test patterns in real-time, see matches highlighted, and reference every regex syntax — anchors, quantifiers, groups, lookaheads, character classes, and common patterns.">
+<meta name="keywords" content="regex cheat sheet, regular expression reference, regex tester, regex patterns, regex guide, regex syntax, regex examples">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<link rel="canonical" href="https://spunkart.com/regex-cheatsheet.html">
+<meta property="og:title" content="Regex Cheat Sheet & Live Tester — Complete Regular Expression Reference">
+<meta property="og:description" content="Comprehensive regex cheat sheet with a live tester. Test patterns in real-time with match highlighting. Full reference for anchors, quantifiers, groups, lookaheads, character classes, and 20+ common patterns.">
+<meta property="og:url" content="https://spunkart.com/regex-cheatsheet.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpunkArt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Regex Cheat Sheet & Live Tester">
+<meta name="twitter:description" content="Comprehensive regex cheat sheet with live tester. Test patterns in real-time with match highlighting. Full syntax reference included.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Cheat Sheet & Live Tester","description":"Comprehensive regex cheat sheet with a live tester. Test regular expression patterns in real-time with match highlighting. Includes full reference for anchors, quantifiers, groups, lookaheads, character classes, and common patterns.","url":"https://spunkart.com/regex-cheatsheet.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:960px;width:100%}
+h1{font-size:2.2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:0.8rem;font-size:0.9rem}
+.usage-counter{text-align:center;color:#555;font-size:0.8rem;margin-bottom:2rem}
+.usage-counter span{color:#10b981;font-weight:700}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:0;border-bottom:2px solid #222}
+.tab{flex:1;padding:12px 16px;text-align:center;cursor:pointer;font-weight:700;font-size:0.95rem;color:#666;background:#111;border:1px solid #222;border-bottom:none;border-radius:10px 10px 0 0;transition:all 0.2s}
+.tab:hover{color:#ccc;background:#1a1a1a}
+.tab.active{color:#ff5f1f;background:#0a0a0a;border-color:#333;border-bottom-color:#0a0a0a;position:relative;top:2px}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Sections */
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.section-title{font-size:1.1rem;font-weight:700;color:#ff5f1f;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:1.2rem}
+
+/* Live Tester */
+.regex-row{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.regex-input{flex:1;min-width:200px;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:10px 14px;font-family:'Courier New',monospace;font-size:0.95rem;outline:none}
+.regex-input:focus{border-color:#ff5f1f}
+.flags-input{width:80px;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:10px 12px;font-family:'Courier New',monospace;font-size:0.95rem;outline:none;text-align:center}
+.flags-input:focus{border-color:#ff5f1f}
+.regex-slash{color:#666;font-family:'Courier New',monospace;font-size:1.2rem}
+label.label{display:block;font-size:0.8rem;color:#666;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+textarea{width:100%;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:14px;font-family:'Courier New',monospace;font-size:0.9rem;resize:vertical;outline:none;min-height:140px;line-height:1.6}
+textarea:focus{border-color:#ff5f1f}
+.stats-bar{display:flex;gap:16px;font-size:0.85rem;color:#666;margin-top:12px;flex-wrap:wrap}
+.stats-bar span{color:#ff5f1f;font-weight:700}
+.highlighted{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:14px;font-family:'Courier New',monospace;font-size:0.9rem;line-height:1.6;min-height:60px;color:#ccc;word-break:break-all;white-space:pre-wrap}
+.highlighted mark{background:#ff5f1f33;color:#ff5f1f;border-radius:2px;padding:1px 2px;border-bottom:2px solid #ff5f1f}
+.error{color:#ef4444;font-size:0.85rem;margin-top:8px;min-height:20px}
+.groups-section{margin-top:16px}
+.groups-section h3{font-size:0.9rem;color:#10b981;margin-bottom:8px}
+.groups-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.groups-table th{text-align:left;padding:6px 10px;color:#ff5f1f;border-bottom:1px solid #333;font-weight:600}
+.groups-table td{padding:6px 10px;border-bottom:1px solid #1a1a1a;color:#ccc;font-family:'Courier New',monospace}
+.groups-table tr:hover td{background:#1a1a1a}
+.no-matches{color:#666;font-style:italic}
+
+/* Quick presets */
+.preset-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.preset{padding:5px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.72rem;cursor:pointer;color:#888;transition:all 0.2s;font-family:'Courier New',monospace}
+.preset:hover{border-color:#ff5f1f;color:#fff}
+
+/* Flag toggles */
+.flag-toggles{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.flag-toggle{padding:5px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.78rem;cursor:pointer;color:#888;transition:all 0.2s;user-select:none}
+.flag-toggle:hover{border-color:#ff5f1f;color:#ccc}
+.flag-toggle.active{border-color:#ff5f1f;color:#ff5f1f;background:#ff5f1f11}
+
+/* Cheat Sheet */
+.cheat-category{margin-bottom:2rem}
+.cheat-category h2{font-size:1.15rem;color:#ff5f1f;margin-bottom:0.8rem;padding-bottom:6px;border-bottom:1px solid #222}
+.cheat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.cheat-item{background:#111;border:1px solid #222;border-radius:8px;padding:12px 14px;display:flex;align-items:flex-start;gap:12px;transition:border-color 0.2s;position:relative}
+.cheat-item:hover{border-color:#333}
+.cheat-pattern{font-family:'Courier New',monospace;font-size:0.88rem;color:#ff5f1f;background:#1a1a1a;padding:3px 8px;border-radius:4px;white-space:nowrap;min-width:fit-content;flex-shrink:0}
+.cheat-desc{font-size:0.82rem;color:#aaa;line-height:1.4;flex:1}
+.cheat-copy{position:absolute;top:8px;right:8px;background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:3px 8px;font-size:0.68rem;color:#666;cursor:pointer;transition:all 0.2s;opacity:0}
+.cheat-item:hover .cheat-copy{opacity:1}
+.cheat-copy:hover{border-color:#ff5f1f;color:#ff5f1f}
+.cheat-copy.copied-btn{border-color:#10b981;color:#10b981}
+
+/* Try button */
+.cheat-try{position:absolute;bottom:8px;right:8px;background:transparent;border:1px solid #333;border-radius:4px;padding:2px 7px;font-size:0.65rem;color:#555;cursor:pointer;transition:all 0.2s;opacity:0}
+.cheat-item:hover .cheat-try{opacity:1}
+.cheat-try:hover{border-color:#10b981;color:#10b981}
+
+/* Search / filter */
+.cheat-search{width:100%;background:#1a1a1a;color:#e8e8e8;border:1px solid #333;border-radius:8px;padding:10px 14px;font-size:0.9rem;outline:none;margin-bottom:1.5rem}
+.cheat-search:focus{border-color:#ff5f1f}
+.cheat-search::placeholder{color:#555}
+
+/* Newsletter */
+.newsletter{margin-top:2rem;text-align:center;display:none}
+.newsletter.show{display:block}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#999;font-size:0.9rem;margin-bottom:12px}
+
+/* Cross-sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:2rem}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+
+/* Toast */
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied.show{opacity:1}
+
+/* Footer */
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+
+/* Responsive */
+@media(max-width:700px){
+  .container{padding:0 0.5rem}
+  h1{font-size:1.5rem}
+  .regex-row{flex-direction:column}
+  .flags-input{width:100%}
+  .cheat-grid{grid-template-columns:1fr}
+  .tab{font-size:0.8rem;padding:10px 8px}
+  .cheat-item .cheat-copy,.cheat-item .cheat-try{opacity:1}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>Regex Cheat Sheet & Live Tester</h1>
+  <div class="sub">Complete regular expression reference with real-time pattern testing</div>
+  <div class="usage-counter"><span id="useCount">0</span> patterns tested</div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('tester')">Live Tester</div>
+    <div class="tab" onclick="switchTab('cheatsheet')">Cheat Sheet</div>
+  </div>
+
+  <!-- ===== TAB 1: LIVE TESTER ===== -->
+  <div class="tab-content active" id="tab-tester">
+    <div class="section" style="border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+      <label class="label">Quick Presets</label>
+      <div class="preset-row">
+        <div class="preset" onclick="setPreset('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}','g','user@example.com and admin@test.org')">Email</div>
+        <div class="preset" onclick="setPreset('https?://[^\\s]+','g','Visit https://spunkart.com or http://example.com today')">URL</div>
+        <div class="preset" onclick="setPreset('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b','g','Server 192.168.1.1 and 10.0.0.255 are active')">IP Address</div>
+        <div class="preset" onclick="setPreset('\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})','g','Call (555) 123-4567 or 800-555-0199')">Phone</div>
+        <div class="preset" onclick="setPreset('#([0-9a-fA-F]{3}){1,2}\\b','g','Colors: #ff5f1f #10b981 #fff #0a0a0a')">Hex Color</div>
+        <div class="preset" onclick="setPreset('\\b\\d{4}-\\d{2}-\\d{2}\\b','g','Dates: 2026-02-23 and 2025-12-31')">Date</div>
+        <div class="preset" onclick="setPreset('<[^>]+>','g','<div class=\"test\"><p>Hello</p></div>')">HTML Tags</div>
+        <div class="preset" onclick="setPreset('\\b[A-Z][a-z]+(?:\\s[A-Z][a-z]+)+\\b','g','John Smith met Jane Doe at New York City')">Names</div>
+        <div class="preset" onclick="setPreset('\\b\\d+\\.\\d{2}\\b','g','Prices: 9.99 and 100.00 but not 5.1')">Decimals</div>
+        <div class="preset" onclick="setPreset('\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\b','gi','EMAIL: User@Test.COM and ADMIN@SITE.ORG')">Email (case-insensitive)</div>
+      </div>
+
+      <label class="label">Flags</label>
+      <div class="flag-toggles">
+        <div class="flag-toggle active" data-flag="g" onclick="toggleFlag(this)">g <small>global</small></div>
+        <div class="flag-toggle" data-flag="i" onclick="toggleFlag(this)">i <small>insensitive</small></div>
+        <div class="flag-toggle" data-flag="m" onclick="toggleFlag(this)">m <small>multiline</small></div>
+        <div class="flag-toggle" data-flag="s" onclick="toggleFlag(this)">s <small>dotall</small></div>
+        <div class="flag-toggle" data-flag="u" onclick="toggleFlag(this)">u <small>unicode</small></div>
+      </div>
+
+      <label class="label">Regular Expression</label>
+      <div class="regex-row">
+        <span class="regex-slash">/</span>
+        <input type="text" class="regex-input" id="regexInput" placeholder="Enter regex pattern..." value="(\w+)@(\w+)\.(\w+)" oninput="runRegex()">
+        <span class="regex-slash">/</span>
+        <input type="text" class="flags-input" id="flagsInput" placeholder="gim" value="g" oninput="syncFlagToggles();runRegex()">
+      </div>
+      <div class="error" id="regexError"></div>
+
+      <label class="label">Test String</label>
+      <textarea id="testString" oninput="runRegex()" placeholder="Enter your test string here...">Contact us at hello@example.com or support@spunkart.com. You can also reach admin@test.org for help.</textarea>
+    </div>
+
+    <div class="section">
+      <label class="label">Matches Highlighted</label>
+      <div class="highlighted" id="highlightOutput"></div>
+      <div class="stats-bar">
+        <div>Matches: <span id="matchCount">0</span></div>
+        <div>Groups: <span id="groupCount">0</span></div>
+      </div>
+    </div>
+
+    <div class="section groups-section" id="groupsSection" style="display:none">
+      <h3>Match Details</h3>
+      <table class="groups-table">
+        <thead><tr><th>#</th><th>Full Match</th><th>Index</th><th>Groups</th></tr></thead>
+        <tbody id="groupsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== TAB 2: CHEAT SHEET ===== -->
+  <div class="tab-content" id="tab-cheatsheet">
+    <div class="section" style="border-top-left-radius:0;border-top-right-radius:0;border-top:none">
+      <input type="text" class="cheat-search" id="cheatSearch" placeholder="Search cheat sheet... (e.g. 'email', 'lookahead', 'digit')" oninput="filterCheat()">
+
+      <!-- Character Classes -->
+      <div class="cheat-category" data-cat="character-classes">
+        <h2>Character Classes</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">.</span><span class="cheat-desc">Any character except newline</span><button class="cheat-copy" onclick="copyPattern(this,'.')">Copy</button><button class="cheat-try" onclick="tryPattern('.','g','Hello World!')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\d</span><span class="cheat-desc">Any digit [0-9]</span><button class="cheat-copy" onclick="copyPattern(this,'\\d')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d','g','abc 123 def 456')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\D</span><span class="cheat-desc">Any non-digit [^0-9]</span><button class="cheat-copy" onclick="copyPattern(this,'\\D')">Copy</button><button class="cheat-try" onclick="tryPattern('\\D','g','abc 123 def 456')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\w</span><span class="cheat-desc">Word character [a-zA-Z0-9_]</span><button class="cheat-copy" onclick="copyPattern(this,'\\w')">Copy</button><button class="cheat-try" onclick="tryPattern('\\w','g','hello_world-123!')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\W</span><span class="cheat-desc">Non-word character [^a-zA-Z0-9_]</span><button class="cheat-copy" onclick="copyPattern(this,'\\W')">Copy</button><button class="cheat-try" onclick="tryPattern('\\W','g','hello_world-123!')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\s</span><span class="cheat-desc">Whitespace (space, tab, newline)</span><button class="cheat-copy" onclick="copyPattern(this,'\\s')">Copy</button><button class="cheat-try" onclick="tryPattern('\\s','g','hello world\tnew')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\S</span><span class="cheat-desc">Non-whitespace character</span><button class="cheat-copy" onclick="copyPattern(this,'\\S')">Copy</button><button class="cheat-try" onclick="tryPattern('\\S','g','hello world\tnew')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[abc]</span><span class="cheat-desc">Match a, b, or c</span><button class="cheat-copy" onclick="copyPattern(this,'[abc]')">Copy</button><button class="cheat-try" onclick="tryPattern('[abc]','g','a big cat danced')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[^abc]</span><span class="cheat-desc">Not a, b, or c</span><button class="cheat-copy" onclick="copyPattern(this,'[^abc]')">Copy</button><button class="cheat-try" onclick="tryPattern('[^abc]','g','a big cat danced')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[a-z]</span><span class="cheat-desc">Character range a through z</span><button class="cheat-copy" onclick="copyPattern(this,'[a-z]')">Copy</button><button class="cheat-try" onclick="tryPattern('[a-z]','g','Hello World 123')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[A-Z]</span><span class="cheat-desc">Uppercase letter range</span><button class="cheat-copy" onclick="copyPattern(this,'[A-Z]')">Copy</button><button class="cheat-try" onclick="tryPattern('[A-Z]','g','Hello World ABC')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[0-9]</span><span class="cheat-desc">Digit range (same as \d)</span><button class="cheat-copy" onclick="copyPattern(this,'[0-9]')">Copy</button><button class="cheat-try" onclick="tryPattern('[0-9]','g','abc 123 def 456')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- Anchors -->
+      <div class="cheat-category" data-cat="anchors">
+        <h2>Anchors</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">^</span><span class="cheat-desc">Start of string (or line with m flag)</span><button class="cheat-copy" onclick="copyPattern(this,'^')">Copy</button><button class="cheat-try" onclick="tryPattern('^\\w+','gm','Hello\nWorld\nTest')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">$</span><span class="cheat-desc">End of string (or line with m flag)</span><button class="cheat-copy" onclick="copyPattern(this,'$')">Copy</button><button class="cheat-try" onclick="tryPattern('\\w+$','gm','Hello World\nFoo Bar')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\b</span><span class="cheat-desc">Word boundary</span><button class="cheat-copy" onclick="copyPattern(this,'\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('\\bcat\\b','g','cat caterpillar concatenate scat')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\B</span><span class="cheat-desc">Non-word boundary</span><button class="cheat-copy" onclick="copyPattern(this,'\\B')">Copy</button><button class="cheat-try" onclick="tryPattern('\\Bcat\\B','g','cat caterpillar concatenate scat')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- Quantifiers -->
+      <div class="cheat-category" data-cat="quantifiers">
+        <h2>Quantifiers</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">*</span><span class="cheat-desc">0 or more (greedy)</span><button class="cheat-copy" onclick="copyPattern(this,'*')">Copy</button><button class="cheat-try" onclick="tryPattern('ab*c','g','ac abc abbc abbbc')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">+</span><span class="cheat-desc">1 or more (greedy)</span><button class="cheat-copy" onclick="copyPattern(this,'+')">Copy</button><button class="cheat-try" onclick="tryPattern('ab+c','g','ac abc abbc abbbc')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">?</span><span class="cheat-desc">0 or 1 (optional)</span><button class="cheat-copy" onclick="copyPattern(this,'?')">Copy</button><button class="cheat-try" onclick="tryPattern('colou?r','g','color and colour')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">{n}</span><span class="cheat-desc">Exactly n times</span><button class="cheat-copy" onclick="copyPattern(this,'{3}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d{3}','g','1 12 123 1234 12345')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">{n,}</span><span class="cheat-desc">n or more times</span><button class="cheat-copy" onclick="copyPattern(this,'{2,}')">Copy</button><button class="cheat-try" onclick="tryPattern('a{2,}','g','a aa aaa aaaa')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">{n,m}</span><span class="cheat-desc">Between n and m times</span><button class="cheat-copy" onclick="copyPattern(this,'{2,4}')">Copy</button><button class="cheat-try" onclick="tryPattern('a{2,4}','g','a aa aaa aaaa aaaaa')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">*?</span><span class="cheat-desc">0 or more (lazy / non-greedy)</span><button class="cheat-copy" onclick="copyPattern(this,'*?')">Copy</button><button class="cheat-try" onclick="tryPattern('\".*?\"','g','\"hello\" and \"world\"')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">+?</span><span class="cheat-desc">1 or more (lazy / non-greedy)</span><button class="cheat-copy" onclick="copyPattern(this,'+?')">Copy</button><button class="cheat-try" onclick="tryPattern('<.+?>','g','<div><p>text</p></div>')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- Groups & Alternation -->
+      <div class="cheat-category" data-cat="groups">
+        <h2>Groups & Alternation</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">(abc)</span><span class="cheat-desc">Capturing group</span><button class="cheat-copy" onclick="copyPattern(this,'(abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('(\\w+)@(\\w+)','g','user@host admin@server')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?:abc)</span><span class="cheat-desc">Non-capturing group</span><button class="cheat-copy" onclick="copyPattern(this,'(?:abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('(?:https?://)?(\\S+)','g','https://example.com example.org')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?&lt;name&gt;abc)</span><span class="cheat-desc">Named capturing group</span><button class="cheat-copy" onclick="copyPattern(this,'(?<name>abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('(?<user>\\w+)@(?<domain>\\w+)','g','user@host admin@server')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\1</span><span class="cheat-desc">Backreference to group 1</span><button class="cheat-copy" onclick="copyPattern(this,'\\1')">Copy</button><button class="cheat-try" onclick="tryPattern('(\\w+)\\s+\\1','g','the the cat cat dog fox fox')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">a|b</span><span class="cheat-desc">Alternation (a or b)</span><button class="cheat-copy" onclick="copyPattern(this,'|')">Copy</button><button class="cheat-try" onclick="tryPattern('cat|dog','g','I have a cat and a dog')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- Lookaheads & Lookbehinds -->
+      <div class="cheat-category" data-cat="lookaround">
+        <h2>Lookaheads & Lookbehinds</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">(?=abc)</span><span class="cheat-desc">Positive lookahead: followed by abc</span><button class="cheat-copy" onclick="copyPattern(this,'(?=abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('\\w+(?=ing)','g','running jumping sitting cat')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?!abc)</span><span class="cheat-desc">Negative lookahead: NOT followed by abc</span><button class="cheat-copy" onclick="copyPattern(this,'(?!abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d+(?!px)','g','12px 34em 56px 78rem')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?&lt;=abc)</span><span class="cheat-desc">Positive lookbehind: preceded by abc</span><button class="cheat-copy" onclick="copyPattern(this,'(?<=abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('(?<=\\$)\\d+','g','$100 and 200 and $350')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?&lt;!abc)</span><span class="cheat-desc">Negative lookbehind: NOT preceded by abc</span><button class="cheat-copy" onclick="copyPattern(this,'(?<!abc)')">Copy</button><button class="cheat-try" onclick="tryPattern('(?<!\\$)\\b\\d+\\b','g','$100 and 200 and $350')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- Flags -->
+      <div class="cheat-category" data-cat="flags">
+        <h2>Flags / Modifiers</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">g</span><span class="cheat-desc">Global: find all matches, not just the first</span><button class="cheat-copy" onclick="copyPattern(this,'g')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">i</span><span class="cheat-desc">Case-insensitive matching</span><button class="cheat-copy" onclick="copyPattern(this,'i')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">m</span><span class="cheat-desc">Multiline: ^ and $ match line boundaries</span><button class="cheat-copy" onclick="copyPattern(this,'m')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">s</span><span class="cheat-desc">Dotall: . matches newlines too</span><button class="cheat-copy" onclick="copyPattern(this,'s')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">u</span><span class="cheat-desc">Unicode: treat pattern as Unicode code points</span><button class="cheat-copy" onclick="copyPattern(this,'u')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">y</span><span class="cheat-desc">Sticky: match from lastIndex only</span><button class="cheat-copy" onclick="copyPattern(this,'y')">Copy</button></div>
+        </div>
+      </div>
+
+      <!-- Special Characters -->
+      <div class="cheat-category" data-cat="special">
+        <h2>Special Characters & Escapes</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">\</span><span class="cheat-desc">Escape the next character</span><button class="cheat-copy" onclick="copyPattern(this,'\\\\')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\n</span><span class="cheat-desc">Newline</span><button class="cheat-copy" onclick="copyPattern(this,'\\n')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\t</span><span class="cheat-desc">Tab character</span><button class="cheat-copy" onclick="copyPattern(this,'\\t')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\r</span><span class="cheat-desc">Carriage return</span><button class="cheat-copy" onclick="copyPattern(this,'\\r')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\0</span><span class="cheat-desc">Null character</span><button class="cheat-copy" onclick="copyPattern(this,'\\0')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\xHH</span><span class="cheat-desc">Hex character (e.g. \x41 = A)</span><button class="cheat-copy" onclick="copyPattern(this,'\\x41')">Copy</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\uHHHH</span><span class="cheat-desc">Unicode character (e.g. \u00E9 = e with accent)</span><button class="cheat-copy" onclick="copyPattern(this,'\\u00E9')">Copy</button></div>
+        </div>
+      </div>
+
+      <!-- Common Patterns -->
+      <div class="cheat-category" data-cat="common-patterns">
+        <h2>Common Patterns</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</span><span class="cheat-desc">Email address</span><button class="cheat-copy" onclick="copyPattern(this,'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}')">Copy</button><button class="cheat-try" onclick="tryPattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}','g','user@example.com and bad@ and test@site.org')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">https?://[^\s]+</span><span class="cheat-desc">URL (http or https)</span><button class="cheat-copy" onclick="copyPattern(this,'https?://[^\\s]+')">Copy</button><button class="cheat-try" onclick="tryPattern('https?://[^\\s]+','g','Visit https://spunkart.com and http://example.com')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}</span><span class="cheat-desc">US phone number</span><button class="cheat-copy" onclick="copyPattern(this,'\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}','g','Call (555) 123-4567 or 800.555.0199')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b</span><span class="cheat-desc">IPv4 address</span><button class="cheat-copy" onclick="copyPattern(this,'\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b','g','Servers: 192.168.1.1, 10.0.0.1, 255.255.255.0')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">#([0-9a-fA-F]{3}){1,2}\b</span><span class="cheat-desc">Hex color code</span><button class="cheat-copy" onclick="copyPattern(this,'#([0-9a-fA-F]{3}){1,2}\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('#([0-9a-fA-F]{3}){1,2}\\b','g','Colors: #ff5f1f #10b981 #fff #0a0')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\b\d{4}-\d{2}-\d{2}\b</span><span class="cheat-desc">Date (YYYY-MM-DD)</span><button class="cheat-copy" onclick="copyPattern(this,'\\b\\d{4}-\\d{2}-\\d{2}\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('\\b\\d{4}-\\d{2}-\\d{2}\\b','g','Dates: 2026-02-23 and 2025-12-31')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\d{2}/\d{2}/\d{4}</span><span class="cheat-desc">Date (MM/DD/YYYY)</span><button class="cheat-copy" onclick="copyPattern(this,'\\d{2}/\\d{2}/\\d{4}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d{2}/\\d{2}/\\d{4}','g','02/23/2026 and 12/31/2025')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\d{1,2}:\d{2}(:\d{2})?\s?(AM|PM|am|pm)?</span><span class="cheat-desc">Time (12h or 24h)</span><button class="cheat-copy" onclick="copyPattern(this,'\\d{1,2}:\\d{2}(:\\d{2})?\\s?(AM|PM|am|pm)?')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d{1,2}:\\d{2}(:\\d{2})?\\s?(AM|PM|am|pm)?','g','Meeting at 2:30 PM and 14:30:00 and 9:15am')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\d{5}(-\d{4})?</span><span class="cheat-desc">US ZIP code (5 or 9 digit)</span><button class="cheat-copy" onclick="copyPattern(this,'\\d{5}(-\\d{4})?')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d{5}(-\\d{4})?','g','ZIP: 90210 and 10001-1234')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\d{3}-\d{2}-\d{4}</span><span class="cheat-desc">SSN format (XXX-XX-XXXX)</span><button class="cheat-copy" onclick="copyPattern(this,'\\d{3}-\\d{2}-\\d{4}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\d{3}-\\d{2}-\\d{4}','g','SSN: 123-45-6789 and 987-65-4321')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?:25[0-5]|2[0-4]\d|[01]?\d\d?)(?:\.(?:25[0-5]|2[0-4]\d|[01]?\d\d?)){3}</span><span class="cheat-desc">Validated IPv4 (0-255 per octet)</span><button class="cheat-copy" onclick="copyPattern(this,'(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)(?:\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)){3}')">Copy</button><button class="cheat-try" onclick="tryPattern('(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)(?:\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)){3}','g','Valid: 192.168.1.1 Invalid: 999.999.999.999')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">&lt;[^>]+></span><span class="cheat-desc">HTML tags</span><button class="cheat-copy" onclick="copyPattern(this,'<[^>]+>')">Copy</button><button class="cheat-try" onclick="tryPattern('<[^>]+>','g','<div class=\"test\"><p>Hello</p></div>')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$</span><span class="cheat-desc">Strong password (8+ chars, upper, lower, digit, special)</span><button class="cheat-copy" onclick="copyPattern(this,'^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$')">Copy</button><button class="cheat-try" onclick="tryPattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{8,}$','gm','Passw0rd!\nweakpass\n12345678\nStr0ng!Pass')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">^[a-zA-Z0-9_-]{3,16}$</span><span class="cheat-desc">Username (3-16 chars, alphanum, dash, underscore)</span><button class="cheat-copy" onclick="copyPattern(this,'^[a-zA-Z0-9_-]{3,16}$')">Copy</button><button class="cheat-try" onclick="tryPattern('^[a-zA-Z0-9_-]{3,16}$','gm','user_name\nab\nvalid-user-123\nthis_name_is_way_too_long_for_validation')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[-+]?\d*\.?\d+([eE][-+]?\d+)?</span><span class="cheat-desc">Number (integer, decimal, scientific)</span><button class="cheat-copy" onclick="copyPattern(this,'[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?')">Copy</button><button class="cheat-try" onclick="tryPattern('[-+]?\\d*\\.?\\d+([eE][-+]?\\d+)?','g','Values: 42 -3.14 +2.5 1.5e10 -3E-4')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\$[\d,]+\.?\d*</span><span class="cheat-desc">Currency ($1,234.56)</span><button class="cheat-copy" onclick="copyPattern(this,'\\$[\\d,]+\\.?\\d*')">Copy</button><button class="cheat-try" onclick="tryPattern('\\$[\\d,]+\\.?\\d*','g','Prices: $9.99 $1,234.56 $100')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+</span><span class="cheat-desc">URL (flexible, with or without protocol)</span><button class="cheat-copy" onclick="copyPattern(this,'(?:(?:https?|ftp):\\/\\/)?[\\w/\\-?=%.]+\\.[\\w/\\-&?=%.]+')">Copy</button><button class="cheat-try" onclick="tryPattern('(?:(?:https?|ftp):\\/\\/)?[\\w/\\-?=%.]+\\.[\\w/\\-&?=%.]+','g','https://example.com www.test.org ftp://files.net/doc.pdf')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}</span><span class="cheat-desc">UK postcode</span><button class="cheat-copy" onclick="copyPattern(this,'[A-Z]{1,2}\\d[A-Z\\d]?\\s?\\d[A-Z]{2}')">Copy</button><button class="cheat-try" onclick="tryPattern('[A-Z]{1,2}\\d[A-Z\\d]?\\s?\\d[A-Z]{2}','g','Postcodes: SW1A 1AA EC2A 3NW M1 1AE')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\/\*[\s\S]*?\*\/|\/\/.*</span><span class="cheat-desc">JavaScript comments (single + multi-line)</span><button class="cheat-copy" onclick="copyPattern(this,'\\/\\*[\\s\\S]*?\\*\\/|\\/\\/.*')">Copy</button><button class="cheat-try" onclick="tryPattern('\\/\\*[\\s\\S]*?\\*\\/|\\/\\/.*','g','// single line\ncode(); /* multi\nline */ more();')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">[\"']([^\"']*)[\"']</span><span class="cheat-desc">Quoted strings (single or double)</span><button class="cheat-copy" onclick="copyPattern(this,'[\"\\x27]([^\"\\x27]*)[\"\\x27]')">Copy</button><button class="cheat-try" onclick="tryPattern('[\"\\x27]([^\"\\x27]*)[\"\\x27]','g','He said \"hello\" and she said \\x27goodbye\\x27')">Try</button></div>
+        </div>
+      </div>
+
+      <!-- POSIX Classes -->
+      <div class="cheat-category" data-cat="posix">
+        <h2>POSIX-Style & Unicode (not all JS-supported)</h2>
+        <div class="cheat-grid">
+          <div class="cheat-item"><span class="cheat-pattern">\p{L}</span><span class="cheat-desc">Any Unicode letter (requires u flag)</span><button class="cheat-copy" onclick="copyPattern(this,'\\p{L}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\p{L}+','gu','Hello cafe\u0301 naiv\u0308 \u4f60\u597d')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\p{N}</span><span class="cheat-desc">Any Unicode number (requires u flag)</span><button class="cheat-copy" onclick="copyPattern(this,'\\p{N}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\p{N}+','gu','123 \u00bd \u2153 abc')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\p{Emoji}</span><span class="cheat-desc">Emoji characters (requires u flag)</span><button class="cheat-copy" onclick="copyPattern(this,'\\p{Emoji}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\p{Emoji}','gu','Hello \ud83d\ude00 World \ud83c\udf0d!')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">\p{Script=Latin}</span><span class="cheat-desc">Latin script characters (requires u flag)</span><button class="cheat-copy" onclick="copyPattern(this,'\\p{Script=Latin}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\p{Script=Latin}+','gu','Hello \u4f60\u597d World \u043f\u0440\u0438\u0432\u0435\u0442')">Try</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Newsletter (hidden, shown after 3 uses) -->
+  <div class="newsletter" id="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get notified when we launch new free tools.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:480px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/lorem-ipsum.html">Lorem Ipsum</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/url-encoder.html">URL Encoder</a>
+      <a href="/cron-generator.html">Cron Generator</a>
+      <a href="/markdown-editor.html">Markdown Editor</a>
+      <a href="/color-palette.html">Color Palette</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</div>
+</main>
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<div class="copied" id="copiedToast">Copied!</div>
+
+<script>
+/* ===== Usage Counter ===== */
+var STORAGE_KEY = 'spunkart_regex_cheat_uses';
+var useCount = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+document.getElementById('useCount').textContent = useCount;
+
+function incrementUse() {
+  useCount++;
+  localStorage.setItem(STORAGE_KEY, useCount);
+  document.getElementById('useCount').textContent = useCount;
+  if (useCount >= 3) {
+    document.getElementById('newsletter').classList.add('show');
+  }
+}
+
+/* ===== Tabs ===== */
+function switchTab(tabId) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('tab-' + tabId).classList.add('active');
+  var tabs = document.querySelectorAll('.tab');
+  if (tabId === 'tester') tabs[0].classList.add('active');
+  else tabs[1].classList.add('active');
+}
+
+/* ===== Flag Toggles ===== */
+function toggleFlag(el) {
+  el.classList.toggle('active');
+  syncFlagsFromToggles();
+  runRegex();
+}
+
+function syncFlagsFromToggles() {
+  var flags = '';
+  document.querySelectorAll('.flag-toggle.active').forEach(function(t) {
+    flags += t.getAttribute('data-flag');
+  });
+  document.getElementById('flagsInput').value = flags;
+}
+
+function syncFlagToggles() {
+  var flags = document.getElementById('flagsInput').value;
+  document.querySelectorAll('.flag-toggle').forEach(function(t) {
+    var f = t.getAttribute('data-flag');
+    if (flags.indexOf(f) !== -1) t.classList.add('active');
+    else t.classList.remove('active');
+  });
+}
+
+/* ===== HTML Escape ===== */
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/* ===== Toast ===== */
+var toastTimeout;
+function showToast(msg) {
+  var el = document.getElementById('copiedToast');
+  el.textContent = msg || 'Copied!';
+  el.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(function() { el.classList.remove('show'); }, 1500);
+}
+
+/* ===== Copy Pattern ===== */
+function copyPattern(btn, pattern) {
+  navigator.clipboard.writeText(pattern).then(function() {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied-btn');
+    showToast('Copied!');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied-btn'); }, 1500);
+  });
+}
+
+/* ===== Try Pattern (load into tester) ===== */
+function tryPattern(pattern, flags, testStr) {
+  switchTab('tester');
+  document.getElementById('regexInput').value = pattern;
+  document.getElementById('flagsInput').value = flags;
+  syncFlagToggles();
+  document.getElementById('testString').value = testStr;
+  runRegex();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ===== Set Preset ===== */
+function setPreset(pattern, flags, testStr) {
+  document.getElementById('regexInput').value = pattern;
+  document.getElementById('flagsInput').value = flags;
+  syncFlagToggles();
+  if (testStr) document.getElementById('testString').value = testStr;
+  runRegex();
+}
+
+/* ===== Run Regex ===== */
+var lastPattern = '';
+function runRegex() {
+  var patternStr = document.getElementById('regexInput').value;
+  var flagsStr = document.getElementById('flagsInput').value;
+  var testStr = document.getElementById('testString').value;
+  var errorEl = document.getElementById('regexError');
+  var highlightEl = document.getElementById('highlightOutput');
+  var groupsBody = document.getElementById('groupsBody');
+  var groupsSection = document.getElementById('groupsSection');
+
+  errorEl.textContent = '';
+  groupsBody.innerHTML = '';
+  groupsSection.style.display = 'none';
+  document.getElementById('matchCount').textContent = '0';
+  document.getElementById('groupCount').textContent = '0';
+
+  if (!patternStr) {
+    highlightEl.innerHTML = escapeHtml(testStr) || '<span class="no-matches">Enter a regex pattern above</span>';
+    return;
+  }
+
+  var regex;
+  try {
+    regex = new RegExp(patternStr, flagsStr);
+  } catch (e) {
+    errorEl.textContent = e.message;
+    highlightEl.innerHTML = escapeHtml(testStr);
+    return;
+  }
+
+  // Track usage if pattern changed
+  if (patternStr !== lastPattern && patternStr.length > 0) {
+    lastPattern = patternStr;
+    incrementUse();
+  }
+
+  if (!testStr) {
+    highlightEl.innerHTML = '<span class="no-matches">Enter a test string above</span>';
+    return;
+  }
+
+  // Collect all matches
+  var matches = [];
+  var match;
+  var isGlobal = regex.global;
+  var safety = 0;
+
+  if (isGlobal) {
+    while ((match = regex.exec(testStr)) !== null && safety < 5000) {
+      matches.push({ index: match.index, length: match[0].length, full: match[0], groups: Array.prototype.slice.call(match, 1) });
+      if (match[0].length === 0) regex.lastIndex++;
+      safety++;
+    }
+  } else {
+    match = regex.exec(testStr);
+    if (match) {
+      matches.push({ index: match.index, length: match[0].length, full: match[0], groups: Array.prototype.slice.call(match, 1) });
+    }
+  }
+
+  document.getElementById('matchCount').textContent = matches.length;
+
+  if (matches.length === 0) {
+    highlightEl.innerHTML = escapeHtml(testStr) + ' <span class="no-matches">(no matches)</span>';
+    return;
+  }
+
+  var html = '';
+  var lastIndex = 0;
+  var maxGroups = 0;
+
+  matches.forEach(function(m, i) {
+    html += escapeHtml(testStr.slice(lastIndex, m.index));
+    html += '<mark>' + escapeHtml(m.full) + '</mark>';
+    lastIndex = m.index + m.length;
+
+    if (m.groups.length > maxGroups) maxGroups = m.groups.length;
+    var groupsStr = m.groups.length > 0
+      ? m.groups.map(function(g, gi) { return '<span style="color:#10b981">$' + (gi + 1) + ':</span> ' + escapeHtml(g || '(undefined)'); }).join(', ')
+      : '<span style="color:#666">none</span>';
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + (i + 1) + '</td><td style="color:#ff5f1f">' + escapeHtml(m.full) + '</td><td>' + m.index + '</td><td>' + groupsStr + '</td>';
+    groupsBody.appendChild(tr);
+  });
+
+  html += escapeHtml(testStr.slice(lastIndex));
+  highlightEl.innerHTML = html;
+
+  document.getElementById('groupCount').textContent = maxGroups;
+
+  if (matches.length > 0) {
+    groupsSection.style.display = 'block';
+  }
+}
+
+/* ===== Cheat Sheet Search / Filter ===== */
+function filterCheat() {
+  var q = document.getElementById('cheatSearch').value.toLowerCase().trim();
+  var items = document.querySelectorAll('.cheat-item');
+  var categories = document.querySelectorAll('.cheat-category');
+
+  items.forEach(function(item) {
+    var pattern = item.querySelector('.cheat-pattern').textContent.toLowerCase();
+    var desc = item.querySelector('.cheat-desc').textContent.toLowerCase();
+    var visible = !q || pattern.indexOf(q) !== -1 || desc.indexOf(q) !== -1;
+    item.style.display = visible ? '' : 'none';
+  });
+
+  // Hide empty categories
+  categories.forEach(function(cat) {
+    var visibleItems = cat.querySelectorAll('.cheat-item:not([style*="display: none"])');
+    cat.style.display = visibleItems.length > 0 ? '' : 'none';
+  });
+}
+
+/* ===== Init ===== */
+runRegex();
+if (useCount >= 3) {
+  document.getElementById('newsletter').classList.add('show');
+}
+</script>
+
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.key === 'u') e.preventDefault();
+    if (e.ctrlKey && e.key === 's') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.', 'color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com', 'color:#888;font-size:12px;');
+  if (!document.querySelector('.watermark')) {
+    var w = document.createElement('div');
+    w.style.cssText = 'position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent = 'SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
