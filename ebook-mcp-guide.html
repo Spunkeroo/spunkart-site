@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The MCP Server Guide: Build AI Tool Integrations That Sell | SpunkArt.com</title>
+<meta name="description" content="The definitive 2026 guide to building MCP servers. Learn the Model Context Protocol, build AI tool integrations for Claude and Cursor, and monetize your MCP servers.">
+<meta name="keywords" content="MCP server, Model Context Protocol, MCP tools, Claude MCP, Cursor MCP, AI tool integrations, build MCP server, MCP guide, AI tools, MCP marketplace">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<meta property="og:title" content="The MCP Server Guide: Build AI Tool Integrations That Sell">
+<meta property="og:description" content="The complete guide to building MCP servers in 2026. 10 chapters covering the Model Context Protocol, tool definitions, publishing, and monetization.">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://spunkart.com/ebook-mcp-guide.html">
+<meta property="og:site_name" content="SpunkArt.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="The MCP Server Guide: Build AI Tool Integrations That Sell">
+<meta name="twitter:description" content="The complete guide to building and monetizing MCP servers for Claude, Cursor, and other AI tools.">
+<link rel="canonical" href="https://spunkart.com/ebook-mcp-guide.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "The MCP Server Guide: Build AI Tool Integrations That Sell",
+  "author": {"@type": "Organization", "name": "SpunkArt", "url": "https://spunkart.com"},
+  "publisher": {"@type": "Organization", "name": "SpunkArt", "url": "https://spunkart.com"},
+  "datePublished": "2026-02-23",
+  "description": "The definitive 2026 guide to building MCP servers. Build AI tool integrations for Claude, Cursor, and other AI platforms.",
+  "genre": "Technology",
+  "inLanguage": "en",
+  "bookFormat": "https://schema.org/EBook",
+  "numberOfPages": "10 chapters",
+  "url": "https://spunkart.com/ebook-mcp-guide.html",
+  "offers": {"@type": "Offer", "price": "24.99", "priceCurrency": "USD", "url": "https://monkeyshine40.gumroad.com/l/mhmzrz"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--text:#e8e8e8;--accent:#ff5f1f;--green:#10b981;--dim:#888;--card:#141414;--border:#222}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.8;font-size:17px}
+.container{max-width:800px;margin:0 auto;padding:20px 24px 80px}
+h1{font-size:2.4em;line-height:1.2;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),#ff8c42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:1.8em;color:var(--accent);margin:48px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+h3{font-size:1.3em;color:var(--green);margin:32px 0 12px}
+h4{font-size:1.1em;color:var(--text);margin:24px 0 8px}
+p{margin:12px 0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.subtitle{font-size:1.2em;color:var(--dim);margin-bottom:32px}
+.author{color:var(--dim);font-size:0.95em;margin-bottom:40px;display:block}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;margin:32px 0}
+.toc h2{margin:0 0 16px;border:none;font-size:1.4em}
+.toc ol{padding-left:24px}
+.toc li{margin:8px 0}
+.toc a{color:var(--text)}
+.toc a:hover{color:var(--accent)}
+pre{background:#111;border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin:16px 0;font-size:0.9em;line-height:1.6}
+code{font-family:'SF Mono',Monaco,'Cascadia Code',monospace;color:var(--green)}
+p code,li code{background:#1a1a1a;padding:2px 6px;border-radius:4px;font-size:0.9em}
+.tip{background:#0d2818;border-left:4px solid var(--green);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0}
+.tip strong{color:var(--green)}
+.warning{background:#2a1a0a;border-left:4px solid var(--accent);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0}
+.warning strong{color:var(--accent)}
+.cta-box{background:linear-gradient(135deg,#1a0a00,#0a1a10);border:2px solid var(--accent);border-radius:12px;padding:32px;text-align:center;margin:40px 0}
+.cta-box h3{color:var(--accent);margin-top:0}
+.cta-btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 32px;border-radius:8px;font-weight:700;font-size:1.1em;margin-top:12px;transition:all .3s}
+.cta-btn:hover{background:#e5540f;text-decoration:none;transform:translateY(-2px)}
+.chapter-num{display:inline-block;background:var(--accent);color:#fff;width:36px;height:36px;line-height:36px;text-align:center;border-radius:50%;font-weight:700;font-size:0.9em;margin-right:12px;vertical-align:middle}
+ul,ol{margin:12px 0 12px 24px}
+li{margin:6px 0}
+blockquote{border-left:3px solid var(--accent);padding-left:16px;color:var(--dim);font-style:italic;margin:16px 0}
+.divider{height:1px;background:var(--border);margin:48px 0}
+.watermark{position:fixed;bottom:20px;right:20px;font-size:14px;color:rgba(255,255,255,0.10);font-weight:700;pointer-events:none;z-index:9999;letter-spacing:2px}
+footer{text-align:center;padding:40px 0 20px;color:var(--dim);font-size:0.9em;border-top:1px solid var(--border);margin-top:60px}
+footer a{color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:20px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.stat-num{font-size:1.8em;font-weight:700;color:var(--accent)}
+.stat-label{font-size:0.85em;color:var(--dim)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);border-bottom:1px solid #1a1a1a;padding:0.8rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;font-size:0.85rem}
+.nav-links a{color:#888;text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--green));z-index:200;transition:width .2s}
+@media print{
+body{background:#fff;color:#111;font-size:12pt}
+.container{max-width:100%;padding:0}
+h1{-webkit-text-fill-color:#111;color:#111}
+h2{color:#333;border-color:#ccc}
+h3{color:#555}
+pre{border-color:#ccc;background:#f5f5f5}
+code{color:#333}
+.toc{border-color:#ccc;background:#f9f9f9}
+.watermark,.cta-box,.nav,.progress-bar{display:none}
+footer{border-color:#ccc}
+.tip{background:#f0fff0;border-color:#333}
+.warning{background:#fff8f0;border-color:#333}
+a{color:#333}
+}
+@media(max-width:600px){
+h1{font-size:1.8em}
+h2{font-size:1.4em}
+.container{padding:16px 16px 60px}
+.nav{padding:0.8rem 1rem}
+.nav-links{gap:1rem;font-size:0.75rem}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">SPUNKART</a>
+  <div class="nav-links">
+    <a href="/store">Store</a>
+    <a href="/ebook">Ebook</a>
+    <a href="/reseller">Reseller</a>
+    <a href="/blog">Blog</a>
+    <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>The MCP Server Guide</h1>
+<p class="subtitle">Build AI Tool Integrations That Sell</p>
+<span class="author">By SpunkArt &bull; 2026 Edition &bull; 10 Chapters &bull; $24.99</span>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Chapters</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Code Examples</div></div>
+  <div class="stat"><div class="stat-num">MCP</div><div class="stat-label">Protocol Deep Dive</div></div>
+  <div class="stat"><div class="stat-num">2026</div><div class="stat-label">Latest Spec</div></div>
+</div>
+
+<nav class="toc" id="toc">
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#ch1">What Is MCP (Model Context Protocol)?</a></li>
+<li><a href="#ch2">Setting Up Your First MCP Server</a></li>
+<li><a href="#ch3">Tool Definitions and Schemas</a></li>
+<li><a href="#ch4">Connecting to Claude and Cursor</a></li>
+<li><a href="#ch5">Building Useful Integrations</a></li>
+<li><a href="#ch6">Testing and Debugging</a></li>
+<li><a href="#ch7">Publishing to Marketplaces</a></li>
+<li><a href="#ch8">Monetization Strategies</a></li>
+<li><a href="#ch9">Real-World MCP Server Examples</a></li>
+<li><a href="#ch10">The Future of AI Tool Ecosystems</a></li>
+</ol>
+</nav>
+
+<!-- CHAPTER 1 -->
+<section id="ch1">
+<h2><span class="chapter-num">1</span> What Is MCP (Model Context Protocol)?</h2>
+
+<p>The Model Context Protocol, or MCP, is an open standard created by Anthropic that defines how AI assistants connect to external tools, data sources, and services. Think of MCP as the USB standard for AI. Before USB, every device needed its own proprietary cable. Before MCP, every AI integration needed its own custom API adapter. MCP creates a universal interface that any AI client can use to connect to any tool server.</p>
+
+<p>The protocol was first released by Anthropic in late 2024 and has since been adopted across the AI industry. Claude, Cursor, Windsurf, Cline, Zed, and dozens of other AI tools support MCP. This means that when you build an MCP server, your integration works with every major AI platform automatically. Build once, run everywhere.</p>
+
+<h3>The Architecture</h3>
+
+<p>MCP follows a client-server architecture with three key roles:</p>
+
+<ul>
+<li><strong>MCP Host:</strong> The AI application the user interacts with. Claude Desktop, Cursor, Claude Code. The host manages connections to one or more MCP servers.</li>
+<li><strong>MCP Client:</strong> A component within the host that maintains a one-to-one connection with a specific MCP server. Each client handles the protocol-level communication.</li>
+<li><strong>MCP Server:</strong> A lightweight program that exposes tools, resources, and prompts through the MCP protocol. This is what you build. Your server connects to databases, APIs, file systems, or any external service and makes them available to AI assistants.</li>
+</ul>
+
+<pre><code># MCP Architecture Overview
+# ============================
+
+# User (human)
+#   |
+#   v
+# MCP Host (Claude Desktop, Cursor, etc.)
+#   |
+#   +-- MCP Client 1 &lt;--&gt; MCP Server: Database Tools
+#   |
+#   +-- MCP Client 2 &lt;--&gt; MCP Server: GitHub Integration
+#   |
+#   +-- MCP Client 3 &lt;--&gt; MCP Server: Web Scraper
+#   |
+#   +-- MCP Client N &lt;--&gt; MCP Server: Your Custom Server
+
+# Each server exposes:
+# - Tools: Functions the AI can call (e.g., "query_database")
+# - Resources: Data the AI can read (e.g., "file://config.json")
+# - Prompts: Pre-built prompt templates for common tasks</code></pre>
+
+<h3>Why MCP Matters</h3>
+
+<p>Before MCP, connecting an AI assistant to an external service required building a custom integration for every AI platform. If you wanted your database tool to work with Claude, Cursor, and GPT, you needed three separate integrations. Each platform had its own API format, authentication scheme, and tool-calling convention. This fragmentation was unsustainable.</p>
+
+<p>MCP solves this by providing a single, standardized protocol. The benefits cascade:</p>
+
+<ol>
+<li><strong>Build once, deploy everywhere.</strong> Your MCP server works with every MCP-compatible client without modification. One codebase serves Claude, Cursor, Windsurf, and any future AI tool that adopts the standard.</li>
+<li><strong>Composability.</strong> Users can connect multiple MCP servers to the same AI session. A developer might connect a database server, a GitHub server, and a deployment server simultaneously. The AI sees all tools from all servers and can orchestrate complex workflows across them.</li>
+<li><strong>Security by design.</strong> MCP servers run locally on the user's machine. Data never passes through a third-party cloud unless you explicitly design it that way. This is critical for enterprise adoption where data sovereignty matters.</li>
+<li><strong>The ecosystem effect.</strong> As more developers build MCP servers, the value of every MCP-compatible client increases. This creates a flywheel that accelerates adoption and makes MCP the de facto standard for AI tool integration.</li>
+</ol>
+
+<h3>The MCP Primitives</h3>
+
+<p>MCP defines three core primitives that servers can expose:</p>
+
+<ul>
+<li><strong>Tools:</strong> Functions that the AI can invoke. Tools take input parameters and return results. Example: a <code>search_database</code> tool that accepts a query string and returns matching records. Tools are the most common MCP primitive and the one you will build most often.</li>
+<li><strong>Resources:</strong> Data that the AI can read. Resources are identified by URIs (like file paths or URLs) and return content. Example: a resource at <code>config://app-settings</code> that returns the current application configuration. Resources let the AI access contextual data without making tool calls.</li>
+<li><strong>Prompts:</strong> Pre-built templates that guide AI behavior. A prompt template might define a specific workflow: "Given this database schema, generate a migration script." Prompts help users get consistent results from complex operations.</li>
+</ul>
+
+<div class="tip">
+<strong>First-Mover Advantage:</strong> MCP is still in its early stages. The marketplace for MCP servers is just emerging. Building and publishing useful MCP servers now positions you as an authority in a market that will explode over the next 12-24 months. The developers who build the best MCP servers today will own the ecosystem tomorrow.
+</div>
+
+<p>This book teaches you everything from building your first MCP server to publishing it on marketplaces and generating revenue. By the end, you will have the skills to build MCP integrations for any service and the business model to turn those integrations into income.</p>
+</section>
+
+<!-- CHAPTER 2 -->
+<section id="ch2">
+<h2><span class="chapter-num">2</span> Setting Up Your First MCP Server</h2>
+
+<p>Building an MCP server is surprisingly simple. The protocol handles the complexity of AI communication. You just need to define what tools your server provides and implement the logic behind them. This chapter walks you through building a complete, working MCP server from scratch in under 30 minutes.</p>
+
+<h3>Prerequisites</h3>
+
+<pre><code># Requirements:
+# - Node.js 18+ (or Python 3.10+)
+# - npm (comes with Node.js)
+# - A text editor or IDE
+# - Claude Desktop or Cursor (for testing)
+
+# Verify your setup:
+node --version    # Should be 18.x or higher
+npm --version     # Should be 9.x or higher</code></pre>
+
+<h3>Project Scaffolding</h3>
+
+<pre><code># Create a new MCP server project
+mkdir my-mcp-server && cd my-mcp-server
+npm init -y
+
+# Install the MCP SDK
+npm install @modelcontextprotocol/sdk
+
+# Install TypeScript (recommended)
+npm install -D typescript @types/node
+npx tsc --init
+
+# Project structure:
+# my-mcp-server/
+#   src/
+#     index.ts        # Main server entry point
+#   package.json
+#   tsconfig.json</code></pre>
+
+<h3>Your First MCP Server</h3>
+
+<p>Let us build a practical MCP server that provides weather data. This is small enough to understand completely but demonstrates every core concept you need.</p>
+
+<pre><code>// src/index.ts
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+// Create the MCP server
+const server = new McpServer({
+  name: "weather-server",
+  version: "1.0.0",
+  description: "Provides weather data for any city"
+});
+
+// Define a tool: get_weather
+server.tool(
+  "get_weather",
+  "Get the current weather for a city",
+  {
+    city: z.string().describe("The city name (e.g., 'New York')"),
+    units: z.enum(["celsius", "fahrenheit"])
+      .optional()
+      .default("fahrenheit")
+      .describe("Temperature units")
+  },
+  async ({ city, units }) => {
+    // In production, call a real weather API here
+    // For demo, we use mock data
+    const weather = await fetchWeather(city, units);
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(weather, null, 2)
+      }]
+    };
+  }
+);
+
+// Define a resource: weather://forecast
+server.resource(
+  "weather://forecast/{city}",
+  "Get a 5-day forecast for a city",
+  async (uri) => {
+    const city = uri.pathname.split("/").pop();
+    const forecast = await fetchForecast(city);
+
+    return {
+      contents: [{
+        uri: uri.href,
+        mimeType: "application/json",
+        text: JSON.stringify(forecast, null, 2)
+      }]
+    };
+  }
+);
+
+// Helper function (replace with real API call)
+async function fetchWeather(city: string, units: string) {
+  // Call OpenWeatherMap, WeatherAPI, or similar
+  const response = await fetch(
+    `https://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=${city}`
+  );
+  const data = await response.json();
+
+  return {
+    city: data.location.name,
+    country: data.location.country,
+    temperature: units === "celsius"
+      ? data.current.temp_c
+      : data.current.temp_f,
+    units: units,
+    condition: data.current.condition.text,
+    humidity: data.current.humidity,
+    wind_mph: data.current.wind_mph,
+    updated: data.current.last_updated
+  };
+}
+
+async function fetchForecast(city: string) {
+  // Simplified forecast data
+  return { city, days: 5, note: "Replace with real API call" };
+}
+
+// Start the server using stdio transport
+const transport = new StdioServerTransport();
+await server.connect(transport);
+console.error("Weather MCP server running on stdio");</code></pre>
+
+<h3>Building and Running</h3>
+
+<pre><code># Add build script to package.json
+# "scripts": {
+#   "build": "tsc",
+#   "start": "node dist/index.js"
+# }
+
+# Build the server
+npm run build
+
+# Test it manually (the server communicates via stdin/stdout)
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}' | node dist/index.js</code></pre>
+
+<h3>Configuring Claude Desktop</h3>
+
+<p>To connect your MCP server to Claude Desktop, add it to the configuration file:</p>
+
+<pre><code># On macOS, edit:
+# ~/Library/Application Support/Claude/claude_desktop_config.json
+
+# On Windows, edit:
+# %APPDATA%\Claude\claude_desktop_config.json
+
+{
+  "mcpServers": {
+    "weather": {
+      "command": "node",
+      "args": ["/absolute/path/to/my-mcp-server/dist/index.js"],
+      "env": {
+        "WEATHER_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+
+# Restart Claude Desktop after editing the config.
+# You should see a hammer icon indicating tools are available.
+# Ask Claude: "What's the weather in Tokyo?"
+# Claude will call your get_weather tool automatically.</code></pre>
+
+<h3>The Python Alternative</h3>
+
+<pre><code># If you prefer Python, the setup is equally simple:
+
+pip install mcp
+
+# server.py
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
+
+app = Server("weather-server")
+
+@app.tool()
+async def get_weather(city: str, units: str = "fahrenheit") -> str:
+    """Get the current weather for a city."""
+    # Your weather logic here
+    return f"Weather in {city}: 72F, Sunny"
+
+async def main():
+    async with stdio_server() as (read, write):
+        await app.run(read, write)
+
+import asyncio
+asyncio.run(main())</code></pre>
+
+<div class="warning">
+<strong>Security Note:</strong> Never hardcode API keys in your MCP server source code. Always use environment variables passed through the MCP client configuration. The <code>env</code> field in the config is specifically designed for this. Anyone who can read your source code should not automatically have access to your API keys.
+</div>
+
+<p>You now have a working MCP server. It took about 50 lines of code. The protocol handles all the communication complexity. In the next chapters, we will build more sophisticated tools and learn how to create server integrations that people will pay for.</p>
+</section>
+
+<!-- CHAPTER 3 -->
+<section id="ch3">
+<h2><span class="chapter-num">3</span> Tool Definitions and Schemas</h2>
+
+<p>The tool definition is the contract between your MCP server and the AI client. It tells the AI what your tool does, what parameters it accepts, and what it returns. A well-defined tool is discoverable, predictable, and reliable. A poorly defined tool confuses the AI, produces unexpected results, and frustrates users. This chapter teaches you how to craft tool definitions that work perfectly every time.</p>
+
+<h3>The Anatomy of a Tool Definition</h3>
+
+<p>Every MCP tool has four components:</p>
+
+<ol>
+<li><strong>Name:</strong> A unique identifier for the tool. Use snake_case, be descriptive. <code>search_database</code> not <code>search</code>.</li>
+<li><strong>Description:</strong> A human-readable explanation of what the tool does. This is what the AI reads to decide when to use your tool. Make it clear and specific.</li>
+<li><strong>Input Schema:</strong> A JSON Schema (or Zod schema) defining the parameters the tool accepts. Every parameter needs a type, description, and optionally a default value.</li>
+<li><strong>Handler:</strong> The function that executes when the tool is called. Receives the validated parameters and returns a result.</li>
+</ol>
+
+<pre><code>// Comprehensive tool definition example
+server.tool(
+  // 1. Name - descriptive, snake_case
+  "search_products",
+
+  // 2. Description - tells the AI when and how to use this tool
+  "Search the product catalog by keyword, category, or price range. " +
+  "Returns matching products with name, price, rating, and URL. " +
+  "Use this when the user asks about products, prices, or availability.",
+
+  // 3. Input Schema - defines all parameters
+  {
+    query: z.string()
+      .describe("Search keywords (e.g., 'wireless headphones')"),
+
+    category: z.enum([
+      "electronics", "clothing", "home", "books", "all"
+    ])
+      .optional()
+      .default("all")
+      .describe("Product category to filter by"),
+
+    min_price: z.number()
+      .min(0)
+      .optional()
+      .describe("Minimum price in USD"),
+
+    max_price: z.number()
+      .max(10000)
+      .optional()
+      .describe("Maximum price in USD"),
+
+    sort_by: z.enum(["relevance", "price_low", "price_high", "rating"])
+      .optional()
+      .default("relevance")
+      .describe("Sort order for results"),
+
+    limit: z.number()
+      .min(1)
+      .max(50)
+      .optional()
+      .default(10)
+      .describe("Maximum number of results to return")
+  },
+
+  // 4. Handler - the actual implementation
+  async ({ query, category, min_price, max_price, sort_by, limit }) => {
+    const results = await productDatabase.search({
+      query, category, min_price, max_price, sort_by, limit
+    });
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          total: results.length,
+          products: results
+        }, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Schema Design Best Practices</h3>
+
+<p>The quality of your schema directly affects how well the AI uses your tool. Follow these rules:</p>
+
+<h4>Rule 1: Describe Everything</h4>
+<p>Every parameter must have a <code>.describe()</code> call with a clear explanation. The AI reads these descriptions to understand what values to pass. Without descriptions, the AI guesses and often guesses wrong.</p>
+
+<pre><code>// Bad: No descriptions
+{
+  q: z.string(),
+  n: z.number().optional()
+}
+
+// Good: Clear descriptions
+{
+  query: z.string()
+    .describe("The search query string, e.g., 'blue running shoes'"),
+  max_results: z.number()
+    .optional()
+    .default(10)
+    .describe("Maximum number of results to return (1-100)")
+}</code></pre>
+
+<h4>Rule 2: Use Enums for Fixed Options</h4>
+<pre><code>// Bad: Free-form string for known values
+{
+  format: z.string().describe("Output format")
+}
+
+// Good: Enum with explicit options
+{
+  format: z.enum(["json", "csv", "xml", "markdown"])
+    .describe("Output format for the exported data")
+}</code></pre>
+
+<h4>Rule 3: Set Sensible Defaults</h4>
+<pre><code>// Bad: Required parameter that usually has the same value
+{
+  include_metadata: z.boolean()
+    .describe("Whether to include metadata in results")
+}
+
+// Good: Optional with a default
+{
+  include_metadata: z.boolean()
+    .optional()
+    .default(true)
+    .describe("Whether to include metadata in results")
+}</code></pre>
+
+<h4>Rule 4: Validate Ranges</h4>
+<pre><code>// Bad: No validation
+{
+  page_size: z.number()
+}
+
+// Good: Range validation prevents abuse
+{
+  page_size: z.number()
+    .min(1)
+    .max(100)
+    .default(20)
+    .describe("Number of items per page (1-100)")
+}</code></pre>
+
+<h3>Return Value Patterns</h3>
+
+<p>How you structure return values affects how the AI interprets and presents results to the user:</p>
+
+<pre><code>// Pattern 1: Structured JSON (best for data)
+return {
+  content: [{
+    type: "text",
+    text: JSON.stringify({
+      success: true,
+      data: results,
+      metadata: { total: 42, page: 1, pages: 5 }
+    }, null, 2)
+  }]
+};
+
+// Pattern 2: Human-readable text (best for summaries)
+return {
+  content: [{
+    type: "text",
+    text: `Found ${results.length} products matching "${query}":
+${results.map(p => `- ${p.name}: $${p.price} (${p.rating} stars)`).join('\n')}
+
+Showing page ${page} of ${totalPages}.`
+  }]
+};
+
+// Pattern 3: Multiple content blocks (best for rich results)
+return {
+  content: [
+    {
+      type: "text",
+      text: `Search results for "${query}"`
+    },
+    {
+      type: "text",
+      text: JSON.stringify(results, null, 2)
+    }
+  ]
+};
+
+// Pattern 4: Error handling
+return {
+  content: [{
+    type: "text",
+    text: JSON.stringify({
+      error: true,
+      message: "Database connection failed",
+      code: "DB_CONN_ERROR",
+      suggestion: "Check that the database server is running"
+    })
+  }],
+  isError: true
+};</code></pre>
+
+<div class="tip">
+<strong>Pro Tip:</strong> Include a <code>suggestion</code> field in error responses. When the AI sees a suggestion, it can relay actionable advice to the user instead of just reporting a generic error. This dramatically improves the user experience.
+</div>
+
+<p>Well-crafted tool definitions are the foundation of every successful MCP server. Invest time here and everything downstream becomes easier: the AI uses your tools correctly, users get reliable results, and your server's reputation grows organically.</p>
+</section>
+
+<!-- CHAPTER 4 -->
+<section id="ch4">
+<h2><span class="chapter-num">4</span> Connecting to Claude and Cursor</h2>
+
+<p>Your MCP server is built and your tools are defined. Now you need to connect it to the AI clients your users actually use. This chapter covers the configuration and integration details for Claude Desktop, Claude Code, Cursor, and other popular MCP hosts. Getting this right means your server works seamlessly. Getting it wrong means users give up and uninstall.</p>
+
+<h3>Claude Desktop Configuration</h3>
+
+<p>Claude Desktop is the most popular MCP host. Configuration is done through a JSON file that tells Claude where to find your server and how to launch it.</p>
+
+<pre><code># Configuration file location:
+# macOS: ~/Library/Application Support/Claude/claude_desktop_config.json
+# Windows: %APPDATA%\Claude\claude_desktop_config.json
+# Linux: ~/.config/Claude/claude_desktop_config.json
+
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "node",
+      "args": ["/Users/you/my-mcp-server/dist/index.js"],
+      "env": {
+        "API_KEY": "your-api-key",
+        "DATABASE_URL": "postgresql://localhost:5432/mydb"
+      }
+    }
+  }
+}
+
+# For npx-based servers (no local install needed):
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "npx",
+      "args": ["-y", "my-mcp-server-package"]
+    }
+  }
+}
+
+# For Python servers:
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "python3",
+      "args": ["/Users/you/my-mcp-server/server.py"],
+      "env": {
+        "API_KEY": "your-api-key"
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Claude Code Configuration</h3>
+
+<p>Claude Code, the terminal-based AI coding tool, also supports MCP servers. Configuration is managed through the <code>claude mcp</code> command:</p>
+
+<pre><code># Add an MCP server to Claude Code
+claude mcp add my-server node /path/to/my-mcp-server/dist/index.js
+
+# Add with environment variables
+claude mcp add my-server \
+  -e API_KEY=your-key \
+  -e DATABASE_URL=postgresql://localhost/mydb \
+  -- node /path/to/server/dist/index.js
+
+# List configured servers
+claude mcp list
+
+# Remove a server
+claude mcp remove my-server
+
+# Scopes: project-level vs global
+# Project scope (stored in .mcp.json in project root):
+claude mcp add --scope project my-server node ./dist/index.js
+
+# Global scope (available in all projects):
+claude mcp add --scope global my-server node /path/to/dist/index.js</code></pre>
+
+<h3>Cursor Configuration</h3>
+
+<p>Cursor supports MCP servers through its settings interface and also through a JSON configuration file:</p>
+
+<pre><code># Cursor MCP config location:
+# ~/.cursor/mcp.json (global)
+# .cursor/mcp.json (project-level)
+
+{
+  "mcpServers": {
+    "my-server": {
+      "command": "node",
+      "args": ["/path/to/my-mcp-server/dist/index.js"],
+      "env": {
+        "API_KEY": "your-api-key"
+      }
+    }
+  }
+}
+
+# Cursor also supports SSE (Server-Sent Events) transport
+# for remote MCP servers:
+{
+  "mcpServers": {
+    "remote-server": {
+      "url": "https://my-mcp-server.example.com/sse",
+      "headers": {
+        "Authorization": "Bearer your-token"
+      }
+    }
+  }
+}</code></pre>
+
+<h3>Transport Types</h3>
+
+<p>MCP supports two transport mechanisms. Choosing the right one matters for performance and deployment:</p>
+
+<h4>stdio Transport (Local Servers)</h4>
+<p>The default transport. The MCP host launches your server as a child process and communicates via stdin/stdout. Best for local development and distribution via npm/pip.</p>
+
+<pre><code>// stdio transport (default)
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+
+// Advantages:
+// - No network configuration
+// - No port conflicts
+// - Secure (no external access)
+// - Simple to distribute (npm package)
+
+// Disadvantages:
+// - Must be installed locally
+// - One instance per client</code></pre>
+
+<h4>SSE Transport (Remote Servers)</h4>
+<p>For servers that run on a remote machine or cloud service. Uses HTTP with Server-Sent Events for real-time communication.</p>
+
+<pre><code>// SSE transport (remote servers)
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
+import express from "express";
+
+const app = express();
+
+app.get("/sse", async (req, res) => {
+  const transport = new SSEServerTransport("/messages", res);
+  await server.connect(transport);
+});
+
+app.post("/messages", async (req, res) => {
+  // Handle incoming messages
+  await transport.handlePostMessage(req, res);
+});
+
+app.listen(3000, () => {
+  console.log("MCP SSE server running on port 3000");
+});
+
+// Advantages:
+// - No local installation required
+// - Shared state across clients
+// - Centralized updates
+
+// Disadvantages:
+// - Requires server hosting
+// - Network latency
+// - Must handle authentication</code></pre>
+
+<h3>Testing Your Connection</h3>
+
+<pre><code># Test with the MCP Inspector (official debugging tool)
+npx @modelcontextprotocol/inspector node dist/index.js
+
+# This opens a web UI where you can:
+# - See all registered tools
+# - Test tool calls with custom parameters
+# - View resources and prompts
+# - Debug protocol messages
+# - Inspect errors and responses
+
+# Manual test via Claude Desktop:
+# 1. Add your server to claude_desktop_config.json
+# 2. Restart Claude Desktop
+# 3. Look for the hammer icon (tools available)
+# 4. Ask Claude to use your tool:
+#    "Search for wireless headphones under $100"
+# 5. Claude should call your search_products tool</code></pre>
+
+<div class="warning">
+<strong>Common Pitfall:</strong> After editing the Claude Desktop config file, you must restart Claude Desktop completely. Simply closing and reopening the chat window is not enough. On macOS, use Cmd+Q to fully quit, then relaunch. If your server still does not appear, check the logs at <code>~/Library/Logs/Claude/mcp*.log</code> for error messages.
+</div>
+
+<p>With your server connected to Claude, Cursor, or both, you can now test it in real-world conversations. In the next chapter, we build integrations that solve real problems and demonstrate the full power of the MCP protocol.</p>
+</section>
+
+<!-- CHAPTER 5 -->
+<section id="ch5">
+<h2><span class="chapter-num">5</span> Building Useful Integrations</h2>
+
+<p>The difference between an MCP server that collects dust and one that gets thousands of installations is usefulness. Users install MCP servers that solve real, recurring problems. This chapter walks through five complete MCP server builds that solve common pain points. Each is production-ready and demonstrates patterns you can adapt for your own integrations.</p>
+
+<h3>Integration 1: Database Query Server</h3>
+
+<p>The most requested MCP integration. Let the AI query your database directly, safely, with read-only access.</p>
+
+<pre><code>// mcp-database-server
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+import pg from "pg";
+
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
+const server = new McpServer({
+  name: "database-query",
+  version: "1.0.0"
+});
+
+// Tool: Run a read-only SQL query
+server.tool(
+  "query_database",
+  "Execute a read-only SQL query against the PostgreSQL database. " +
+  "Only SELECT statements are allowed. Returns results as JSON.",
+  {
+    sql: z.string().describe(
+      "SQL SELECT query to execute. Must be read-only."
+    ),
+    limit: z.number().min(1).max(1000).default(100)
+      .describe("Maximum rows to return")
+  },
+  async ({ sql, limit }) => {
+    // Safety: Only allow SELECT statements
+    const trimmed = sql.trim().toUpperCase();
+    if (!trimmed.startsWith("SELECT")) {
+      return {
+        content: [{ type: "text", text: "Error: Only SELECT queries are allowed." }],
+        isError: true
+      };
+    }
+
+    // Add LIMIT if not present
+    if (!trimmed.includes("LIMIT")) {
+      sql = `${sql} LIMIT ${limit}`;
+    }
+
+    try {
+      const result = await pool.query(sql);
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            rows: result.rows,
+            rowCount: result.rowCount,
+            fields: result.fields.map(f => f.name)
+          }, null, 2)
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{ type: "text", text: `Query error: ${error.message}` }],
+        isError: true
+      };
+    }
+  }
+);
+
+// Resource: Database schema
+server.resource(
+  "schema://tables",
+  "List all tables and their columns in the database",
+  async () => {
+    const result = await pool.query(`
+      SELECT table_name, column_name, data_type, is_nullable
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+      ORDER BY table_name, ordinal_position
+    `);
+
+    return {
+      contents: [{
+        uri: "schema://tables",
+        mimeType: "application/json",
+        text: JSON.stringify(result.rows, null, 2)
+      }]
+    };
+  }
+);
+
+const transport = new StdioServerTransport();
+await server.connect(transport);</code></pre>
+
+<h3>Integration 2: File Search and Analysis Server</h3>
+
+<pre><code>// mcp-file-search - Search and analyze files in a directory
+server.tool(
+  "search_files",
+  "Search for files by name, extension, or content. " +
+  "Returns matching file paths, sizes, and modification dates.",
+  {
+    directory: z.string()
+      .describe("Root directory to search in"),
+    pattern: z.string()
+      .describe("Glob pattern (e.g., '**/*.ts') or regex for content search"),
+    search_type: z.enum(["filename", "content"])
+      .default("filename")
+      .describe("Search by filename pattern or file content"),
+    max_results: z.number().min(1).max(100).default(20)
+      .describe("Maximum number of files to return")
+  },
+  async ({ directory, pattern, search_type, max_results }) => {
+    const results = search_type === "filename"
+      ? await globSearch(directory, pattern, max_results)
+      : await contentSearch(directory, pattern, max_results);
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(results, null, 2)
+      }]
+    };
+  }
+);
+
+server.tool(
+  "analyze_codebase",
+  "Analyze a codebase and return statistics: file counts by type, " +
+  "total lines of code, largest files, and dependency information.",
+  {
+    directory: z.string().describe("Root directory of the codebase")
+  },
+  async ({ directory }) => {
+    const stats = await analyzeDirectory(directory);
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(stats, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Integration 3: Web Scraping Server</h3>
+
+<pre><code>// mcp-web-scraper - Fetch and extract data from web pages
+server.tool(
+  "scrape_page",
+  "Fetch a web page and extract its content as clean text or " +
+  "structured data. Useful for reading documentation, articles, " +
+  "or any web content.",
+  {
+    url: z.string().url()
+      .describe("The URL to scrape"),
+    extract: z.enum(["text", "links", "images", "meta", "all"])
+      .default("text")
+      .describe("What to extract from the page"),
+    selector: z.string().optional()
+      .describe("CSS selector to extract specific elements")
+  },
+  async ({ url, extract, selector }) => {
+    const response = await fetch(url);
+    const html = await response.text();
+    const extracted = parseHTML(html, extract, selector);
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          url,
+          title: extracted.title,
+          data: extracted.data
+        }, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Integration 4: API Monitoring Server</h3>
+
+<pre><code>// mcp-api-monitor - Check API health and response times
+server.tool(
+  "check_api",
+  "Check the health, response time, and status of an API endpoint. " +
+  "Returns status code, response time, headers, and body preview.",
+  {
+    url: z.string().url().describe("API endpoint URL"),
+    method: z.enum(["GET", "POST", "PUT", "DELETE"]).default("GET"),
+    headers: z.record(z.string()).optional()
+      .describe("Custom headers as key-value pairs"),
+    body: z.string().optional()
+      .describe("Request body (for POST/PUT)")
+  },
+  async ({ url, method, headers, body }) => {
+    const start = Date.now();
+
+    try {
+      const response = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json", ...headers },
+        body: body ? body : undefined
+      });
+
+      const elapsed = Date.now() - start;
+      const responseBody = await response.text();
+
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: response.status,
+            statusText: response.statusText,
+            response_time_ms: elapsed,
+            headers: Object.fromEntries(response.headers),
+            body_preview: responseBody.substring(0, 500),
+            healthy: response.status >= 200 && response.status < 300
+          }, null, 2)
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{ type: "text", text: `Request failed: ${error.message}` }],
+        isError: true
+      };
+    }
+  }
+);</code></pre>
+
+<h3>Integration 5: Git Operations Server</h3>
+
+<pre><code>// mcp-git - Safe git operations for AI assistants
+server.tool(
+  "git_status",
+  "Get the current git status of a repository, including " +
+  "modified files, staged changes, and branch information.",
+  {
+    repo_path: z.string().describe("Path to the git repository")
+  },
+  async ({ repo_path }) => {
+    const status = execSync(`git -C ${repo_path} status --porcelain`);
+    const branch = execSync(`git -C ${repo_path} branch --show-current`);
+    const log = execSync(
+      `git -C ${repo_path} log --oneline -5`
+    );
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          branch: branch.toString().trim(),
+          changes: status.toString().trim().split('\n').filter(Boolean),
+          recent_commits: log.toString().trim().split('\n')
+        }, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<div class="tip">
+<strong>The Key Pattern:</strong> Every successful MCP integration follows the same formula: take something the AI cannot do on its own (access a database, call an API, read local files) and expose it as a clean, well-documented tool. The simpler the tool interface, the more reliably the AI uses it.
+</div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section id="ch6">
+<h2><span class="chapter-num">6</span> Testing and Debugging</h2>
+
+<p>Shipping a buggy MCP server destroys trust instantly. When a user installs your server and the first tool call fails, they uninstall and never come back. Thorough testing is the difference between MCP servers that get recommended and shared versus ones that get abandoned. This chapter covers every testing and debugging technique you need.</p>
+
+<h3>The MCP Inspector</h3>
+
+<p>The official MCP Inspector is your primary debugging tool. It provides a visual interface for testing every aspect of your server without needing to connect to a real AI client.</p>
+
+<pre><code># Launch the MCP Inspector
+npx @modelcontextprotocol/inspector node dist/index.js
+
+# Or with environment variables:
+npx @modelcontextprotocol/inspector \
+  -e API_KEY=test-key \
+  -e DATABASE_URL=postgresql://localhost/test \
+  node dist/index.js
+
+# The Inspector lets you:
+# 1. View all registered tools, resources, and prompts
+# 2. Call tools with custom parameters
+# 3. Read resources by URI
+# 4. See raw protocol messages
+# 5. Inspect errors with full stack traces
+# 6. Test parameter validation</code></pre>
+
+<h3>Unit Testing Your Tools</h3>
+
+<pre><code>// test/tools.test.ts
+import { describe, it, expect } from "vitest";
+import { searchProducts } from "../src/tools/search.js";
+
+describe("searchProducts", () => {
+  it("returns results for valid query", async () => {
+    const results = await searchProducts({
+      query: "headphones",
+      category: "electronics",
+      limit: 5
+    });
+
+    expect(results).toBeDefined();
+    expect(results.length).toBeLessThanOrEqual(5);
+    expect(results[0]).toHaveProperty("name");
+    expect(results[0]).toHaveProperty("price");
+  });
+
+  it("handles empty results gracefully", async () => {
+    const results = await searchProducts({
+      query: "xyznonexistentproduct123",
+      category: "all",
+      limit: 10
+    });
+
+    expect(results).toEqual([]);
+  });
+
+  it("validates price range", async () => {
+    const results = await searchProducts({
+      query: "laptop",
+      min_price: 500,
+      max_price: 1000,
+      limit: 20
+    });
+
+    results.forEach(product => {
+      expect(product.price).toBeGreaterThanOrEqual(500);
+      expect(product.price).toBeLessThanOrEqual(1000);
+    });
+  });
+
+  it("rejects SQL injection in query", async () => {
+    const results = await searchProducts({
+      query: "'; DROP TABLE products; --",
+      limit: 10
+    });
+
+    // Should return empty results, not execute SQL
+    expect(Array.isArray(results)).toBe(true);
+  });
+});
+
+// Run tests:
+// npx vitest run</code></pre>
+
+<h3>Integration Testing</h3>
+
+<pre><code>// test/integration.test.ts
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
+
+describe("MCP Server Integration", () => {
+  let client: Client;
+
+  beforeAll(async () => {
+    const transport = new StdioClientTransport({
+      command: "node",
+      args: ["dist/index.js"],
+      env: { ...process.env, API_KEY: "test-key" }
+    });
+
+    client = new Client({
+      name: "test-client",
+      version: "1.0.0"
+    });
+
+    await client.connect(transport);
+  });
+
+  afterAll(async () => {
+    await client.close();
+  });
+
+  it("lists all tools", async () => {
+    const tools = await client.listTools();
+    expect(tools.tools.length).toBeGreaterThan(0);
+    expect(tools.tools[0]).toHaveProperty("name");
+    expect(tools.tools[0]).toHaveProperty("description");
+    expect(tools.tools[0]).toHaveProperty("inputSchema");
+  });
+
+  it("calls search_products tool", async () => {
+    const result = await client.callTool({
+      name: "search_products",
+      arguments: {
+        query: "headphones",
+        limit: 5
+      }
+    });
+
+    expect(result.content[0].type).toBe("text");
+    const data = JSON.parse(result.content[0].text);
+    expect(data).toHaveProperty("products");
+  });
+
+  it("handles invalid parameters gracefully", async () => {
+    const result = await client.callTool({
+      name: "search_products",
+      arguments: {
+        query: "",
+        limit: -1
+      }
+    });
+
+    expect(result.isError).toBe(true);
+  });
+});</code></pre>
+
+<h3>Debugging Common Issues</h3>
+
+<pre><code># Issue 1: Server not appearing in Claude Desktop
+# Check the config file for JSON syntax errors:
+python3 -m json.tool ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+# Check MCP logs:
+tail -f ~/Library/Logs/Claude/mcp*.log
+
+# Issue 2: Tool calls failing silently
+# Add logging to your server (use stderr, not stdout):
+console.error("[DEBUG] Tool called:", toolName, params);
+console.error("[DEBUG] Result:", JSON.stringify(result));
+
+# Issue 3: Server crashes on startup
+# Test the server standalone:
+node dist/index.js
+# Then send a test message via stdin:
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | node dist/index.js
+
+# Issue 4: Environment variables not passed
+# Verify env vars are in the config:
+cat ~/Library/Application\ Support/Claude/claude_desktop_config.json | jq '.mcpServers'
+
+# Issue 5: Timeout errors
+# MCP has a default timeout. For long-running operations:
+# - Send progress notifications
+# - Break large operations into smaller tool calls
+# - Use async patterns with status polling</code></pre>
+
+<h3>Error Handling Patterns</h3>
+
+<pre><code>// Comprehensive error handling for MCP tools
+async function safeToolHandler(fn, params) {
+  try {
+    const result = await fn(params);
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(result, null, 2)
+      }]
+    };
+  } catch (error) {
+    // Log the full error for debugging
+    console.error(`[ERROR] Tool failed:`, error);
+
+    // Return a user-friendly error
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          error: true,
+          message: error.message,
+          type: error.constructor.name,
+          suggestion: getSuggestion(error)
+        })
+      }],
+      isError: true
+    };
+  }
+}
+
+function getSuggestion(error) {
+  if (error.code === "ECONNREFUSED") {
+    return "The service appears to be down. Check that it is running.";
+  }
+  if (error.code === "ENOTFOUND") {
+    return "DNS lookup failed. Check the URL and your internet connection.";
+  }
+  if (error.message.includes("timeout")) {
+    return "The request timed out. Try again or use a smaller query.";
+  }
+  return "Try again. If the problem persists, check the server logs.";
+}</code></pre>
+
+<div class="warning">
+<strong>Testing Checklist:</strong> Before publishing any MCP server, verify: (1) All tools respond to valid input, (2) All tools handle invalid input gracefully, (3) The server starts without errors, (4) The server works with both Claude Desktop and Cursor, (5) Error messages are helpful, (6) No sensitive data is logged or returned, (7) Long-running operations have timeouts.
+</div>
+</section>
+
+<!-- CHAPTER 7 -->
+<section id="ch7">
+<h2><span class="chapter-num">7</span> Publishing to Marketplaces</h2>
+
+<p>A well-built MCP server sitting on your local machine helps no one. Publishing your server makes it discoverable, installable, and usable by thousands of developers. This chapter covers every publishing channel available in 2026 and how to maximize your server's visibility on each platform.</p>
+
+<h3>npm (Primary Distribution)</h3>
+
+<p>npm is the primary distribution channel for MCP servers. Most MCP hosts support <code>npx</code> as a launch command, which means users can run your server without installing it permanently.</p>
+
+<pre><code># Prepare your package.json
+{
+  "name": "mcp-server-weather",
+  "version": "1.0.0",
+  "description": "MCP server for weather data",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "mcp-server-weather": "dist/index.js"
+  },
+  "files": ["dist/"],
+  "keywords": [
+    "mcp", "mcp-server", "model-context-protocol",
+    "weather", "ai-tools", "claude", "cursor"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/you/mcp-server-weather"
+  }
+}
+
+# Add shebang to your entry point
+# First line of dist/index.js should be:
+#!/usr/bin/env node
+
+# Publish to npm
+npm login
+npm publish
+
+# Users install with:
+# npx -y mcp-server-weather
+# Or configure in Claude Desktop:
+# { "command": "npx", "args": ["-y", "mcp-server-weather"] }</code></pre>
+
+<h3>GitHub Repository</h3>
+
+<p>A well-organized GitHub repository is essential for credibility, contributions, and discoverability. Here is the structure every MCP server repo should have:</p>
+
+<pre><code># Repository structure
+mcp-server-weather/
+  src/
+    index.ts
+    tools/
+    resources/
+  dist/              # Built output (gitignored in source)
+  test/
+    tools.test.ts
+    integration.test.ts
+  README.md          # Critical: installation, usage, examples
+  LICENSE            # MIT recommended
+  CHANGELOG.md       # Version history
+  package.json
+  tsconfig.json
+  .github/
+    workflows/
+      test.yml       # CI: run tests on every push
+      publish.yml    # CD: publish to npm on tag</code></pre>
+
+<h3>Writing a README That Converts</h3>
+
+<p>Your README is your sales page. It determines whether a developer installs your server or moves on. Follow this structure:</p>
+
+<pre><code># mcp-server-weather
+
+> MCP server that provides real-time weather data to AI assistants.
+> Works with Claude Desktop, Cursor, Claude Code, and any MCP client.
+
+## Quick Start
+
+```bash
+# Add to Claude Desktop config:
+{
+  "mcpServers": {
+    "weather": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-weather"],
+      "env": {
+        "WEATHER_API_KEY": "your-key"
+      }
+    }
+  }
+}
+```
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `get_weather` | Current weather for any city |
+| `get_forecast` | 5-day weather forecast |
+| `weather_alerts` | Active weather alerts by region |
+
+## Example Usage
+
+Ask Claude: "What's the weather in Tokyo?"
+
+Claude will automatically call `get_weather` and return:
+- Temperature, humidity, wind speed
+- Current conditions
+- Feels-like temperature
+
+## Configuration
+
+| Env Variable | Required | Description |
+|-------------|----------|-------------|
+| `WEATHER_API_KEY` | Yes | API key from weatherapi.com |
+
+## License
+
+MIT</code></pre>
+
+<h3>MCP Server Directories</h3>
+
+<p>Several directories and registries are emerging for MCP servers. List your server on all of them for maximum discoverability:</p>
+
+<ul>
+<li><strong>Anthropic MCP Servers Repository:</strong> The official Anthropic collection of reference MCP servers on GitHub. Submit a PR to get listed alongside official servers.</li>
+<li><strong>mcp.so:</strong> A community-run directory of MCP servers. Submit your server listing with description, screenshots, and installation instructions.</li>
+<li><strong>Smithery:</strong> An MCP server registry that provides one-click installation for various AI clients. Publishing here dramatically simplifies the installation process for your users.</li>
+<li><strong>Glama:</strong> Another MCP directory that curates servers by category and quality. Good reviews here drive significant installs.</li>
+</ul>
+
+<pre><code># Maximize discoverability:
+# 1. Publish to npm with "mcp" and "mcp-server" keywords
+# 2. Submit to mcp.so directory
+# 3. Submit to Smithery registry
+# 4. Submit to Glama directory
+# 5. Post on X/Twitter with #MCP hashtag
+# 6. Share in MCP Discord communities
+# 7. Write a blog post showing your server in action
+# 8. Create a demo video (2-3 minutes)</code></pre>
+
+<h3>Versioning and Updates</h3>
+
+<pre><code># Semantic versioning for MCP servers:
+# MAJOR.MINOR.PATCH
+
+# PATCH (1.0.0 -> 1.0.1): Bug fixes, no API changes
+# MINOR (1.0.0 -> 1.1.0): New tools added, backward compatible
+# MAJOR (1.0.0 -> 2.0.0): Breaking changes to existing tools
+
+# Automated publishing with GitHub Actions:
+# .github/workflows/publish.yml
+name: Publish to npm
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+# Release workflow:
+git tag v1.1.0
+git push origin v1.1.0
+# GitHub Actions automatically publishes to npm</code></pre>
+
+<div class="tip">
+<strong>Pro Tip:</strong> The first impression matters enormously. Before publishing, have three people install and test your server from scratch using only your README. If any of them get stuck, your documentation needs work. The install-to-first-tool-call experience should take under five minutes.
+</div>
+</section>
+
+<!-- CHAPTER 8 -->
+<section id="ch8">
+<h2><span class="chapter-num">8</span> Monetization Strategies</h2>
+
+<p>The MCP ecosystem is brand new. The monetization models are still forming. This is exactly the right time to establish yourself as a premium MCP server developer. This chapter covers every viable monetization strategy, from free-with-premium-upgrade to enterprise licensing. The key insight is that MCP servers solve real business problems, and businesses pay for solutions.</p>
+
+<h3>The MCP Revenue Stack</h3>
+
+<pre><code># MCP Monetization Models
+# ============================
+
+# Model 1: Open Source + Premium
+# Free: Basic server with core tools
+# Paid: Advanced tools, priority support, custom integrations
+# Example: Free database query tool, paid analytics dashboard
+
+# Model 2: SaaS Backend
+# Free: MCP server (client-side)
+# Paid: Cloud API the server connects to
+# Example: Free scraping server, paid proxy/API service
+
+# Model 3: Marketplace Listing
+# Sell ready-made MCP servers on Gumroad or your own store
+# Price: $19-99 per server or bundle
+# Example: "Enterprise Database Server" for $49
+
+# Model 4: Custom Development
+# Build bespoke MCP servers for companies
+# Price: $500-5,000 per custom server
+# Example: Company needs MCP server for their internal API
+
+# Model 5: Consulting
+# Teach teams how to build and deploy MCP servers
+# Price: $100-300/hour
+# Example: Half-day workshop for a dev team
+
+# Combined annual potential:
+# Open source donations: $500-2,000
+# Premium upgrades: $2,000-20,000
+# Marketplace sales: $1,000-10,000
+# Custom development: $5,000-50,000
+# Consulting: $5,000-30,000</code></pre>
+
+<h3>Open Source + Premium Model</h3>
+
+<p>This is the most sustainable model. Give away a genuinely useful free version that builds your reputation and audience. Charge for advanced features that power users and businesses need.</p>
+
+<pre><code>// Free tier: Basic database query
+server.tool("query_database", ...);  // Free
+server.tool("list_tables", ...);     // Free
+server.tool("describe_table", ...);  // Free
+
+// Premium tier: Advanced analytics
+if (isLicensed()) {
+  server.tool("query_analytics", ...);     // Premium
+  server.tool("generate_report", ...);     // Premium
+  server.tool("export_dashboard", ...);    // Premium
+  server.tool("schedule_query", ...);      // Premium
+  server.tool("query_optimization", ...);  // Premium
+}
+
+function isLicensed() {
+  const key = process.env.LICENSE_KEY;
+  if (!key) return false;
+  // Validate license key against your server
+  return validateLicense(key);
+}
+
+// License validation
+async function validateLicense(key) {
+  try {
+    const res = await fetch("https://your-api.com/validate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key })
+    });
+    const data = await res.json();
+    return data.valid === true;
+  } catch {
+    // If validation server is down, allow a grace period
+    return checkOfflineCache(key);
+  }
+}</code></pre>
+
+<h3>Selling on Gumroad</h3>
+
+<p>For standalone MCP server products, Gumroad is the simplest sales channel. Package your server with documentation, configuration guides, and support.</p>
+
+<pre><code># Gumroad MCP Server Product Structure
+# =======================================
+
+# What to include in the download:
+# 1. The MCP server source code
+# 2. Pre-built binaries (npm package)
+# 3. Installation guide (step-by-step with screenshots)
+# 4. Configuration examples for Claude, Cursor, and others
+# 5. Video walkthrough (5-10 minutes)
+# 6. Support email for setup issues
+
+# Pricing guidelines:
+# Simple utility server: $9-19
+# Professional tool server: $29-49
+# Enterprise integration: $79-149
+# Bundle of 5+ servers: $99-199
+
+# Gumroad listing template:
+# Title: "MCP Database Pro: Advanced Database Tools for AI"
+# Description: Full feature list, screenshots, demo video
+# Price: $49 (with "pay what you want" at $49 minimum)
+# Files: ZIP containing server + docs + video
+# License: Commercial use, single user</code></pre>
+
+<h3>Custom Development Pricing</h3>
+
+<p>Companies need MCP servers for their internal tools, APIs, and databases. This is the highest-revenue opportunity in the MCP ecosystem right now because demand far exceeds supply.</p>
+
+<pre><code># Custom MCP Server Pricing Guide
+# ====================================
+
+# Simple Integration (1-3 tools, single API)
+# Time: 2-4 hours
+# Price: $500-1,000
+# Example: MCP server for company's internal CRM API
+
+# Medium Integration (5-10 tools, multiple APIs)
+# Time: 1-2 days
+# Price: $1,500-3,000
+# Example: MCP server for project management + CI/CD pipeline
+
+# Complex Integration (10+ tools, database + APIs + custom logic)
+# Time: 3-5 days
+# Price: $3,000-5,000
+# Example: Full data warehouse MCP server with analytics
+
+# Enterprise Package (custom server + training + support)
+# Time: 1-2 weeks
+# Price: $5,000-15,000
+# Example: Complete MCP infrastructure for a dev team
+
+# How to find clients:
+# 1. Post examples on X/Twitter (#MCP, #AItools)
+# 2. Contribute to popular MCP repositories
+# 3. Write tutorials on your blog
+# 4. Answer questions in MCP Discord/forums
+# 5. Create a "Hire me" page with your MCP portfolio</code></pre>
+
+<h3>Building Recurring Revenue</h3>
+
+<pre><code>// MCP server with cloud backend = recurring revenue
+// The server is free. The API it connects to is paid.
+
+// Example: MCP Analytics Server
+// Free server connects to your analytics API
+// Users pay $9/month for the API access
+
+server.tool(
+  "analyze_traffic",
+  "Analyze website traffic patterns using AI",
+  { url: z.string().url() },
+  async ({ url }) => {
+    // This calls YOUR paid API
+    const response = await fetch("https://api.your-service.com/analyze", {
+      headers: {
+        "Authorization": `Bearer ${process.env.API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({ url })
+    });
+
+    const data = await response.json();
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(data, null, 2)
+      }]
+    };
+  }
+);
+
+// Revenue model:
+// Free tier: 100 API calls/month
+// Pro: $9/month (1,000 calls)
+// Business: $29/month (10,000 calls)
+// Enterprise: $99/month (unlimited)</code></pre>
+
+<div class="warning">
+<strong>The Monetization Timeline:</strong> Month 1-2: Build free servers, establish reputation. Month 3-4: Launch first premium product on Gumroad. Month 5-6: Land first custom development client. Month 7+: Multiple revenue streams active. Do not try to monetize before you have credibility. Free servers are your portfolio. Premium products are your revenue. Custom development is your highest margin.
+</div>
+</section>
+
+<!-- CHAPTER 9 -->
+<section id="ch9">
+<h2><span class="chapter-num">9</span> Real-World MCP Server Examples</h2>
+
+<p>Theory only takes you so far. This chapter presents five complete, real-world MCP server examples that solve genuine problems developers face every day. Each example is production-ready, well-documented, and demonstrates advanced MCP patterns you can adapt for your own servers.</p>
+
+<h3>Example 1: Notion Integration Server</h3>
+
+<p>Connect AI assistants to Notion for reading, creating, and searching pages and databases.</p>
+
+<pre><code>// mcp-notion-server
+const server = new McpServer({
+  name: "notion-integration",
+  version: "1.0.0"
+});
+
+server.tool(
+  "notion_search",
+  "Search Notion pages and databases by keyword",
+  {
+    query: z.string().describe("Search query"),
+    filter: z.enum(["page", "database", "all"]).default("all")
+  },
+  async ({ query, filter }) => {
+    const response = await fetch("https://api.notion.com/v1/search", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.NOTION_TOKEN}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query,
+        filter: filter !== "all" ? { property: "object", value: filter } : undefined
+      })
+    });
+
+    const data = await response.json();
+    const results = data.results.map(item => ({
+      id: item.id,
+      type: item.object,
+      title: extractTitle(item),
+      url: item.url,
+      last_edited: item.last_edited_time
+    }));
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({ total: results.length, results }, null, 2)
+      }]
+    };
+  }
+);
+
+server.tool(
+  "notion_create_page",
+  "Create a new page in Notion with the given title and content",
+  {
+    parent_id: z.string().describe("Parent page or database ID"),
+    title: z.string().describe("Page title"),
+    content: z.string().describe("Page content in markdown")
+  },
+  async ({ parent_id, title, content }) => {
+    const blocks = markdownToNotionBlocks(content);
+
+    const response = await fetch("https://api.notion.com/v1/pages", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${process.env.NOTION_TOKEN}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        parent: { page_id: parent_id },
+        properties: {
+          title: { title: [{ text: { content: title } }] }
+        },
+        children: blocks
+      })
+    });
+
+    const page = await response.json();
+    return {
+      content: [{
+        type: "text",
+        text: `Created page: ${page.url}`
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Example 2: Stripe Payments Server</h3>
+
+<pre><code>// mcp-stripe-server - Read-only Stripe dashboard for AI
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+server.tool(
+  "stripe_revenue_summary",
+  "Get a revenue summary for a given time period. " +
+  "Returns total revenue, number of charges, average order value.",
+  {
+    period: z.enum(["today", "week", "month", "year"])
+      .describe("Time period to summarize")
+  },
+  async ({ period }) => {
+    const now = Math.floor(Date.now() / 1000);
+    const periods = {
+      today: now - 86400,
+      week: now - 604800,
+      month: now - 2592000,
+      year: now - 31536000
+    };
+
+    const charges = await stripe.charges.list({
+      created: { gte: periods[period] },
+      limit: 100
+    });
+
+    const successful = charges.data.filter(c => c.status === "succeeded");
+    const totalRevenue = successful.reduce((sum, c) => sum + c.amount, 0) / 100;
+    const avgOrder = successful.length > 0 ? totalRevenue / successful.length : 0;
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify({
+          period,
+          total_revenue: `$${totalRevenue.toFixed(2)}`,
+          total_charges: successful.length,
+          average_order: `$${avgOrder.toFixed(2)}`,
+          currency: "USD"
+        }, null, 2)
+      }]
+    };
+  }
+);
+
+server.tool(
+  "stripe_recent_customers",
+  "List recent customers with their purchase history",
+  {
+    limit: z.number().min(1).max(50).default(10)
+  },
+  async ({ limit }) => {
+    const customers = await stripe.customers.list({ limit });
+    const summary = customers.data.map(c => ({
+      name: c.name || c.email,
+      email: c.email,
+      total_spent: `$${(c.balance * -1 / 100).toFixed(2)}`,
+      created: new Date(c.created * 1000).toISOString()
+    }));
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(summary, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Example 3: SEO Analysis Server</h3>
+
+<pre><code>// mcp-seo-analyzer - Check SEO health of any page
+server.tool(
+  "analyze_seo",
+  "Analyze the SEO health of a web page. Returns title, meta, " +
+  "headings, images, links, and improvement suggestions.",
+  {
+    url: z.string().url().describe("URL to analyze")
+  },
+  async ({ url }) => {
+    const response = await fetch(url);
+    const html = await response.text();
+
+    const analysis = {
+      url,
+      title: extractTitle(html),
+      title_length: extractTitle(html).length,
+      meta_description: extractMeta(html, "description"),
+      meta_description_length: extractMeta(html, "description").length,
+      h1_count: (html.match(/&lt;h1/gi) || []).length,
+      h2_count: (html.match(/&lt;h2/gi) || []).length,
+      image_count: (html.match(/&lt;img/gi) || []).length,
+      images_without_alt: countImagesWithoutAlt(html),
+      internal_links: countInternalLinks(html, url),
+      external_links: countExternalLinks(html, url),
+      has_canonical: html.includes('rel="canonical"'),
+      has_og_tags: html.includes('og:title'),
+      has_twitter_card: html.includes('twitter:card'),
+      has_schema: html.includes('schema.org'),
+      word_count: html.replace(/<[^>]+>/g, ' ').split(/\s+/).length,
+      suggestions: []
+    };
+
+    // Generate improvement suggestions
+    if (analysis.title_length > 60) analysis.suggestions.push("Title too long (>60 chars)");
+    if (analysis.title_length < 30) analysis.suggestions.push("Title too short (<30 chars)");
+    if (analysis.h1_count === 0) analysis.suggestions.push("Missing H1 tag");
+    if (analysis.h1_count > 1) analysis.suggestions.push("Multiple H1 tags (use only one)");
+    if (analysis.images_without_alt > 0) analysis.suggestions.push(`${analysis.images_without_alt} images missing alt text`);
+    if (!analysis.has_canonical) analysis.suggestions.push("Missing canonical URL");
+    if (!analysis.has_og_tags) analysis.suggestions.push("Missing Open Graph tags");
+    if (!analysis.has_schema) analysis.suggestions.push("Missing Schema.org markup");
+
+    return {
+      content: [{
+        type: "text",
+        text: JSON.stringify(analysis, null, 2)
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Example 4: Email Campaign Server</h3>
+
+<pre><code>// mcp-email-campaign - Manage email campaigns via AI
+server.tool(
+  "create_email_draft",
+  "Create an email campaign draft with subject, body, and audience segment",
+  {
+    subject: z.string().describe("Email subject line"),
+    body_html: z.string().describe("Email body in HTML"),
+    segment: z.string().optional()
+      .describe("Audience segment ID to target"),
+    schedule: z.string().optional()
+      .describe("ISO date to schedule send, or omit for draft")
+  },
+  async ({ subject, body_html, segment, schedule }) => {
+    const campaign = await emailService.createCampaign({
+      subject,
+      html: body_html,
+      segment_id: segment || "all",
+      status: schedule ? "scheduled" : "draft",
+      send_at: schedule || null
+    });
+
+    return {
+      content: [{
+        type: "text",
+        text: `Campaign created: ${campaign.id}\n` +
+              `Status: ${campaign.status}\n` +
+              `Audience: ${campaign.recipient_count} subscribers`
+      }]
+    };
+  }
+);</code></pre>
+
+<h3>Example 5: Deployment Pipeline Server</h3>
+
+<pre><code>// mcp-deploy - Safe deployment operations
+server.tool(
+  "deploy_preview",
+  "Create a preview deployment for testing before going to production",
+  {
+    repo: z.string().describe("GitHub repository (owner/repo)"),
+    branch: z.string().default("main").describe("Branch to deploy")
+  },
+  async ({ repo, branch }) => {
+    // Trigger a preview deployment via GitHub API
+    const response = await fetch(
+      `https://api.github.com/repos/${repo}/deployments`,
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+          "Accept": "application/vnd.github+json"
+        },
+        body: JSON.stringify({
+          ref: branch,
+          environment: "preview",
+          auto_merge: false
+        })
+      }
+    );
+
+    const deployment = await response.json();
+    return {
+      content: [{
+        type: "text",
+        text: `Preview deployment created.\n` +
+              `ID: ${deployment.id}\n` +
+              `URL: Will be available in ~60 seconds\n` +
+              `Status: ${deployment.statuses_url}`
+      }]
+    };
+  }
+);</code></pre>
+
+<div class="tip">
+<strong>Pattern Recognition:</strong> Every successful MCP server follows the same pattern: identify something the AI cannot do on its own, build a secure bridge to that capability, document it clearly, and test it thoroughly. The specific domain (payments, SEO, email, deployment) does not matter. The pattern is universal.
+</div>
+</section>
+
+<!-- CHAPTER 10 -->
+<section id="ch10">
+<h2><span class="chapter-num">10</span> The Future of AI Tool Ecosystems</h2>
+
+<p>MCP is the beginning, not the end. The protocol is the foundation for an entirely new ecosystem of AI tool integrations that will reshape how software is built, deployed, and monetized. This chapter maps the trajectory of AI tool ecosystems from where we are today to where we will be in three years, and positions you to profit from every phase of the evolution.</p>
+
+<h3>Phase 1: The Platform Phase (Now - Late 2026)</h3>
+
+<p>We are currently in the platform phase. The major AI companies are building and standardizing the infrastructure. MCP adoption is accelerating. Claude, Cursor, Windsurf, Zed, and dozens of smaller tools support the protocol. The developer community is beginning to build servers, but the supply is still far below demand. This is the highest-opportunity phase for individual developers.</p>
+
+<pre><code># Current State of the MCP Ecosystem (Early 2026)
+# ==================================================
+
+# Platforms supporting MCP:
+# - Claude Desktop (Anthropic)
+# - Claude Code (Anthropic)
+# - Cursor (Anysphere)
+# - Windsurf (Codeium)
+# - Cline (VS Code extension)
+# - Zed (editor)
+# - Continue (VS Code extension)
+# - Sourcegraph Cody
+# - Amazon Q Developer (AWS)
+
+# Community servers on npm: ~2,000
+# Active MCP developers: ~10,000
+# Companies using MCP internally: ~500
+
+# Opportunity: massive demand, limited supply
+# Action: Build and publish servers NOW</code></pre>
+
+<h3>Phase 2: The Marketplace Phase (Late 2026 - 2027)</h3>
+
+<p>Dedicated MCP marketplaces will emerge, similar to browser extension stores or WordPress plugin directories. These marketplaces will feature ratings, reviews, one-click installation, and monetization infrastructure. Server developers will list premium servers and earn revenue through marketplace transactions.</p>
+
+<pre><code># Predicted MCP Marketplace Features (2027)
+# =============================================
+
+# Discovery:
+# - Search by category, rating, popularity
+# - AI-recommended servers based on user workflow
+# - "Install with one click" for any MCP client
+
+# Quality:
+# - Verified publisher badges
+# - Automated security scanning
+# - User reviews and ratings
+# - Usage statistics
+
+# Monetization:
+# - Free, paid, and subscription models
+# - In-server purchases (premium features)
+# - Revenue sharing (70/30 developer/marketplace)
+# - Enterprise licensing
+
+# What this means for you:
+# - Build your reputation NOW (before marketplaces launch)
+# - Be first-to-market in valuable niches
+# - Established servers will rank higher than new entrants
+# - Portfolio size matters: 10+ servers = authority status</code></pre>
+
+<h3>Phase 3: The Composition Phase (2027-2028)</h3>
+
+<p>MCP servers will compose together automatically. Instead of users manually connecting five separate servers, an AI orchestrator will discover, install, and chain servers together to accomplish complex tasks. Ask the AI to "analyze my competitor's pricing strategy," and it will automatically compose a web scraper, data analyzer, and report generator into a single workflow.</p>
+
+<h3>Phase 4: The Agent Phase (2028+)</h3>
+
+<p>AI agents will build, test, publish, and maintain MCP servers autonomously. An agent could identify a gap in the ecosystem, build a server to fill it, test it against quality standards, publish it to a marketplace, and iterate based on user feedback. The role of human developers shifts from building servers to designing ecosystems and setting quality standards.</p>
+
+<pre><code># The Agent-Built MCP Ecosystem (Conceptual, 2028)
+# ====================================================
+
+# Human provides:
+# - "I need an MCP server that connects to Salesforce"
+
+# AI Agent:
+# 1. Researches the Salesforce API
+# 2. Designs tool schemas for common operations
+# 3. Generates server code with full test coverage
+# 4. Tests against a Salesforce sandbox
+# 5. Generates documentation with examples
+# 6. Publishes to npm and MCP marketplaces
+# 7. Monitors user feedback and iterates
+
+# Human role: Review, approve, and strategic direction
+# Agent role: All implementation and maintenance</code></pre>
+
+<h3>Your 12-Month MCP Roadmap</h3>
+
+<ol>
+<li><strong>Month 1-2: Learn and build.</strong> Complete this book. Build 3-5 MCP servers covering different domains. Publish them to npm. Get comfortable with the protocol.</li>
+<li><strong>Month 3-4: Establish presence.</strong> List your servers on all directories. Write blog posts and tutorials. Build a reputation as an MCP developer. Land your first paid customer (Gumroad or custom development).</li>
+<li><strong>Month 5-6: Specialize.</strong> Pick 1-2 niches (e.g., database tools, DevOps integrations) and build the best servers in those categories. Premium features, excellent documentation, responsive support.</li>
+<li><strong>Month 7-9: Scale.</strong> Automate your publishing pipeline. Build template-based server generation. Create a portfolio of 10+ servers. Launch a premium bundle.</li>
+<li><strong>Month 10-12: Monetize aggressively.</strong> Multiple revenue streams: Gumroad products, custom development, consulting, premium subscriptions. Target $2,000-10,000/month from MCP-related income.</li>
+</ol>
+
+<h3>The First-Mover Advantage</h3>
+
+<p>The developers who build MCP servers in 2026 will own the ecosystem in 2028. Here is why:</p>
+
+<ul>
+<li><strong>Brand recognition.</strong> Early servers become the "default" choice in their category. When someone searches for "MCP database server," your server appears first because it has the most downloads, stars, and reviews.</li>
+<li><strong>Compound authority.</strong> Every server you publish strengthens your profile across all marketplaces. Users who trust your database server will try your analytics server.</li>
+<li><strong>Institutional knowledge.</strong> Building MCP servers teaches you patterns that compound. Your tenth server will be dramatically better than your first, and you will build it in a fraction of the time.</li>
+<li><strong>Network effects.</strong> Popular servers attract contributors, bug reports, and feature requests. Your servers improve without your direct involvement.</li>
+</ul>
+
+<div class="tip">
+<strong>The Bottom Line:</strong> MCP is the most significant new standard in the AI developer ecosystem since API REST conventions became mainstream. It creates an entirely new category of software products that did not exist two years ago. The window of opportunity is wide open today and will narrow rapidly as adoption accelerates. Build your first MCP server this week. Publish it this month. By this time next year, you will be glad you started early.
+</div>
+
+<blockquote>"The best MCP servers are not the most complex. They are the most useful. A simple server that solves a genuine problem will always outperform a complex server that solves a theoretical one. Build what developers actually need, and they will pay for it."</blockquote>
+</section>
+
+<div class="divider"></div>
+
+<div class="cta-box">
+<h3>Get the Complete SpunkArt Ebook Library</h3>
+<p>All ebooks covering MCP servers, vibe coding, AI agents, automation, passive income, and more. Save 60%+ with the bundle.</p>
+<a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="cta-btn" target="_blank" rel="noopener">Get the Full Ebook Bundle &rarr;</a>
+</div>
+
+<div style="text-align:center;margin:40px 0">
+<h3>Subscribe for Updates</h3>
+<p style="color:var(--dim);margin-bottom:20px">New tools, ebooks, and behind-the-scenes content. No spam.</p>
+<iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;display:block;"></iframe>
+</div>
+
+<footer>
+<p>&copy; 2026 <a href="https://spunkart.com">SpunkArt.com</a>. All rights reserved.</p>
+<p style="margin-top:8px">100+ free tools &rarr; <a href="https://spunkart.com/store">spunkart.com/store</a></p>
+<div style="margin-top:12px;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:0.85em">
+<a href="https://spunkart.com">Home</a>
+<a href="https://spunkart.com/store">Store</a>
+<a href="https://spunkart.com/ebook">Ebook</a>
+<a href="https://spunkart.com/reseller">Reseller</a>
+<a href="https://spunkart.com/blog">Blog</a>
+<a href="https://spunk.bet" target="_blank" rel="noopener">Spunk.Bet</a>
+<a href="https://stimulant.wiki" target="_blank" rel="noopener">Stimulant Wiki</a>
+<a href="https://predict.pics" target="_blank" rel="noopener">Predict Network</a>
+<a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a>
+</div>
+<div style="margin-top:12px;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:0.8em">
+<a href="https://coinbase.com/join/YAGES3X?src=referral-link" target="_blank" rel="noopener sponsored" style="color:#0052ff;font-weight:600">Buy Crypto</a>
+<a href="https://shop.ledger.com/?r=0553c9ea1441" target="_blank" rel="noopener sponsored" style="color:#ff5500;font-weight:600">Secure Your Crypto</a>
+<a href="https://kalshi.com/sign-up/?referral=6b723b42-d0c9-4421-9b4e-5af4b4c6c42c" target="_blank" rel="noopener sponsored" style="color:#00d084;font-weight:600">Trade on Kalshi</a>
+<a href="https://winna.com/?r=Spunkeroo" target="_blank" rel="noopener sponsored" style="color:#ff5f1f;font-weight:600">Winna.com</a>
+</div>
+</footer>
+
+</div><!-- end .container -->
+
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+// Code protection
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+document.addEventListener('keydown',function(e){
+if(e.key==='F12'){e.preventDefault();return false}
+if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='I'||e.key==='i')){e.preventDefault();return false}
+if((e.ctrlKey||e.metaKey)&&(e.key==='U'||e.key==='u')){e.preventDefault();return false}
+if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='J'||e.key==='j')){e.preventDefault();return false}
+if((e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='C'||e.key==='c')){e.preventDefault();return false}
+});
+
+// Progress bar
+function updateProgress(){
+var h=document.documentElement;
+var st=window.pageYOffset||h.scrollTop;
+var sh=h.scrollHeight-h.clientHeight;
+var p=(st/sh)*100;
+document.getElementById('progressBar').style.width=p+'%';
+}
+window.addEventListener('scroll',updateProgress);
+window.addEventListener('resize',updateProgress);
+
+// Smooth scroll for TOC links
+document.querySelectorAll('.toc a').forEach(function(link){
+link.addEventListener('click',function(e){
+e.preventDefault();
+var target=document.querySelector(this.getAttribute('href'));
+if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}
+});
+});
+</script>
+</body>
+</html>
