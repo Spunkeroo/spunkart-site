@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A/B Test Calculator — Statistical Significance for Conversion Rate Experiments</title>
+<meta name="description" content="Free A/B test significance calculator. Compare conversion rates, get p-values, confidence levels, and sample size estimates. Two-proportion z-test with live results. No signup required.">
+<meta property="og:title" content="A/B Test Calculator — Statistical Significance Calculator">
+<meta property="og:description" content="Free A/B test significance calculator. Compare conversion rates, get p-values, and sample size estimates instantly.">
+<meta property="og:url" content="https://spunkart.com/ab-test-calculator">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A/B Test Calculator — Statistical Significance">
+<meta name="twitter:description" content="Free A/B test calculator with p-values, confidence levels, and sample size estimation. By SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/ab-test-calculator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"A/B Test Calculator","description":"Statistical significance calculator for A/B test conversion rate experiments. Two-proportion z-test with p-values, confidence levels, and sample size estimation.","url":"https://spunkart.com/ab-test-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem 1rem}
+.container{max-width:800px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.use-badge{text-align:center;margin-bottom:1.5rem;font-size:0.75rem;color:#555}
+.use-badge span{color:#ff5f1f;font-weight:700}
+h2{font-size:1.3rem;margin-bottom:1rem;color:#ff5f1f}
+h3{font-size:1.1rem;margin-bottom:0.8rem;color:#e8e8e8}
+.card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.variants{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.variant-box{background:#141414;border:1px solid #222;border-radius:12px;padding:1.5rem}
+.variant-box h3{margin-bottom:1rem;font-size:1rem}
+.variant-box h3 .tag{font-size:0.7rem;color:#888;font-weight:400;margin-left:6px}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:0.8rem;color:#888;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
+.field input{width:100%;background:#1a1a1a;border:1px solid #333;color:#e8e8e8;padding:12px 14px;border-radius:8px;font-size:1rem;font-family:inherit}
+.field input:focus{outline:none;border-color:#ff5f1f}
+.confidence-row{margin-top:1.5rem}
+.confidence-row label{display:block;font-size:0.8rem;color:#888;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.radio-group{display:flex;gap:8px}
+.radio-group label{display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 16px;background:#1a1a1a;border:2px solid #333;border-radius:8px;font-size:0.9rem;color:#ccc;transition:all 0.2s;text-transform:none;letter-spacing:0;margin-bottom:0}
+.radio-group label:hover{border-color:#ff5f1f}
+.radio-group input[type="radio"]{display:none}
+.radio-group input[type="radio"]:checked+label,.radio-group label:has(input:checked){background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700}
+.radio-group label.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700}
+/* Results */
+.results-card{background:#141414;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem;display:none}
+.results-card.visible{display:block}
+.results-card.winner-b{border-color:#10b981;box-shadow:0 0 30px rgba(16,185,129,0.1)}
+.rates-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem}
+.rate-block{text-align:center}
+.rate-block .rate-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.rate-block .rate-value{font-size:2.5rem;font-weight:800;font-family:'Courier New',monospace}
+.rate-a .rate-value{color:#666}
+.rate-b .rate-value{color:#ff5f1f}
+.rate-b.winner .rate-value{color:#10b981}
+.vs-divider{color:#333;font-size:1.5rem;font-weight:700}
+.improvement{text-align:center;margin-bottom:1.5rem;padding:12px;border-radius:10px;background:#1a1a1a}
+.improvement .imp-label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:1px}
+.improvement .imp-value{font-size:1.5rem;font-weight:800;font-family:'Courier New',monospace}
+.improvement .imp-value.positive{color:#10b981}
+.improvement .imp-value.negative{color:#ef4444}
+.improvement .imp-value.neutral{color:#888}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem}
+.stat-item{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:14px;text-align:center}
+.stat-item .stat-label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.stat-item .stat-value{font-size:1.1rem;font-weight:700;font-family:'Courier New',monospace}
+.stat-item .stat-value.sig-yes{color:#10b981}
+.stat-item .stat-value.sig-no{color:#ef4444}
+.winner-banner{text-align:center;padding:16px;border-radius:12px;font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+.winner-banner.has-winner{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981}
+.winner-banner.no-winner{background:rgba(136,136,136,0.1);border:1px solid #333;color:#888}
+/* Bar chart */
+.chart-section{margin-bottom:1rem}
+.chart-section h4{font-size:0.8rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.bar-label{width:80px;font-size:0.85rem;color:#ccc;font-weight:600;flex-shrink:0}
+.bar-track{flex:1;height:36px;background:#1a1a1a;border-radius:8px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:8px;transition:width 0.5s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;min-width:40px}
+.bar-fill span{font-size:0.8rem;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+.bar-a .bar-fill{background:#666}
+.bar-b .bar-fill{background:#ff5f1f}
+.bar-b.winner .bar-fill{background:#10b981}
+/* Sample size section */
+.sample-card{background:#111;border:1px solid #222;border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.sample-inputs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.sample-result{background:#141414;border:1px solid #222;border-radius:12px;padding:1.5rem;text-align:center;display:none}
+.sample-result.visible{display:block}
+.sample-result .big-number{font-size:2rem;font-weight:800;color:#ff5f1f;font-family:'Courier New',monospace}
+.sample-result .big-label{font-size:0.8rem;color:#888;margin-top:4px}
+.sample-days{margin-top:1rem;padding-top:1rem;border-top:1px solid #222}
+.sample-days .days-value{font-size:1.3rem;font-weight:700;color:#10b981;font-family:'Courier New',monospace}
+/* Recommendations */
+.recs{background:#141414;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-top:1rem;display:none}
+.recs.visible{display:block}
+.recs .rec-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:0.9rem;color:#ccc}
+.recs .rec-item:last-child{margin-bottom:0}
+.recs .rec-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;margin-top:2px}
+.recs .rec-icon.green{background:rgba(16,185,129,0.2);color:#10b981}
+.recs .rec-icon.orange{background:rgba(255,95,31,0.2);color:#ff5f1f}
+.recs .rec-icon.blue{background:rgba(59,130,246,0.2);color:#3b82f6}
+.tips{margin-top:1.5rem}
+.tips h4{font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.tips ul{list-style:none;padding:0}
+.tips ul li{padding:6px 0;font-size:0.85rem;color:#999;border-bottom:1px solid #1a1a1a}
+.tips ul li:last-child{border-bottom:none}
+.tips ul li::before{content:"\2192 ";color:#ff5f1f;font-weight:700}
+/* Cross-sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 14px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.8rem;color:#ccc}.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:12px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:4px}.newsletter p{color:#999;margin-bottom:12px;font-size:0.9rem}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  .variants{grid-template-columns:1fr}
+  .rates-row{grid-template-columns:1fr;gap:0.5rem}
+  .vs-divider{display:none}
+  .rate-block .rate-value{font-size:2rem}
+  .stats-grid{grid-template-columns:1fr}
+  .sample-inputs{grid-template-columns:1fr}
+  .radio-group{flex-wrap:wrap}
+  .card{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store#free-tools">&larr; All Tools</a>
+    <a href="/store">Store</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>A/B Test Calculator</h1>
+  <div class="sub">Statistical significance calculator for conversion rate experiments</div>
+  <div class="use-badge">Uses: <span id="use-count">0</span></div>
+
+  <!-- Input Section -->
+  <div class="card">
+    <div class="variants">
+      <div class="variant-box">
+        <h3>Variant A <span class="tag">(Control)</span></h3>
+        <div class="field">
+          <label>Visitors</label>
+          <input type="number" id="visitorsA" placeholder="e.g. 5000" min="0" oninput="calculate()">
+        </div>
+        <div class="field">
+          <label>Conversions</label>
+          <input type="number" id="conversionsA" placeholder="e.g. 125" min="0" oninput="calculate()">
+        </div>
+      </div>
+      <div class="variant-box">
+        <h3>Variant B <span class="tag">(Test)</span></h3>
+        <div class="field">
+          <label>Visitors</label>
+          <input type="number" id="visitorsB" placeholder="e.g. 5000" min="0" oninput="calculate()">
+        </div>
+        <div class="field">
+          <label>Conversions</label>
+          <input type="number" id="conversionsB" placeholder="e.g. 156" min="0" oninput="calculate()">
+        </div>
+      </div>
+    </div>
+    <div class="confidence-row">
+      <label>Confidence Level</label>
+      <div class="radio-group" id="confidenceGroup">
+        <label data-val="0.90" onclick="setConfidence(this,0.90)">90%</label>
+        <label data-val="0.95" class="active" onclick="setConfidence(this,0.95)">95%</label>
+        <label data-val="0.99" onclick="setConfidence(this,0.99)">99%</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results Card -->
+  <div class="results-card" id="resultsCard">
+    <h2>Results</h2>
+    <div class="rates-row">
+      <div class="rate-block rate-a">
+        <div class="rate-label">Variant A</div>
+        <div class="rate-value" id="rateA">0%</div>
+      </div>
+      <div class="vs-divider">vs</div>
+      <div class="rate-block rate-b" id="rateBBlock">
+        <div class="rate-label">Variant B</div>
+        <div class="rate-value" id="rateB">0%</div>
+      </div>
+    </div>
+
+    <div class="improvement">
+      <div class="imp-label">Relative Improvement</div>
+      <div class="imp-value neutral" id="improvement">0%</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-label">Statistically Significant?</div>
+        <div class="stat-value" id="sigResult">--</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">P-Value</div>
+        <div class="stat-value" id="pValue">--</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Confidence</div>
+        <div class="stat-value" id="confidenceResult">--</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Z-Score</div>
+        <div class="stat-value" id="zScore">--</div>
+      </div>
+    </div>
+
+    <div class="winner-banner no-winner" id="winnerBanner">Enter your data above</div>
+
+    <div class="chart-section">
+      <h4>Conversion Rate Comparison</h4>
+      <div class="bar-row bar-a">
+        <div class="bar-label">Variant A</div>
+        <div class="bar-track"><div class="bar-fill" id="barA" style="width:0"><span id="barALabel">0%</span></div></div>
+      </div>
+      <div class="bar-row bar-b" id="barBRow">
+        <div class="bar-label">Variant B</div>
+        <div class="bar-track"><div class="bar-fill" id="barB" style="width:0"><span id="barBLabel">0%</span></div></div>
+      </div>
+    </div>
+
+    <div class="recs" id="recs"></div>
+  </div>
+
+  <!-- Sample Size Calculator -->
+  <div class="sample-card">
+    <h2>Sample Size Calculator</h2>
+    <p style="color:#888;font-size:0.85rem;margin-bottom:1.5rem">Estimate how many visitors you need before running your test.</p>
+    <div class="sample-inputs">
+      <div class="field">
+        <label>Baseline Conversion Rate (%)</label>
+        <input type="number" id="baselineRate" placeholder="e.g. 3.5" min="0" max="100" step="0.1" oninput="calcSampleSize()">
+      </div>
+      <div class="field">
+        <label>Minimum Detectable Effect (%)</label>
+        <input type="number" id="mde" placeholder="e.g. 10" min="0" step="0.1" oninput="calcSampleSize()">
+      </div>
+      <div class="field">
+        <label>Confidence Level (%)</label>
+        <input type="number" id="sampleConfidence" placeholder="95" value="95" min="50" max="99.9" step="0.1" oninput="calcSampleSize()">
+      </div>
+      <div class="field">
+        <label>Daily Visitors (per variant)</label>
+        <input type="number" id="dailyVisitors" placeholder="e.g. 500" min="1" oninput="calcSampleSize()">
+      </div>
+    </div>
+    <div class="sample-result" id="sampleResult">
+      <div class="big-number" id="sampleSizeValue">--</div>
+      <div class="big-label">visitors per variant required</div>
+      <div class="sample-days" id="sampleDays" style="display:none">
+        <div class="big-label">Estimated duration</div>
+        <div class="days-value" id="daysValue">--</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips -->
+  <div class="card">
+    <div class="tips">
+      <h4>Tips for Better A/B Tests</h4>
+      <ul>
+        <li>Run tests for at least 1-2 full business cycles (typically 2-4 weeks) to account for day-of-week variation</li>
+        <li>Use a 95% confidence level as the industry standard; 99% for high-stakes changes</li>
+        <li>Decide your sample size before starting the test, not after peeking at results</li>
+        <li>Test one variable at a time for clear attribution of what caused the difference</li>
+        <li>Avoid stopping tests early when results look promising (peeking problem)</li>
+        <li>Ensure random, even traffic splitting between variants</li>
+        <li>Document your hypothesis before running the test</li>
+        <li>Account for novelty effects by running tests long enough for user behavior to normalize</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/speed-test.html">Speed Test</a>
+      <a href="/headers-checker.html">Headers Checker</a>
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/password-generator.html">Password Generator</a>
+      <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/qr-generator.html">QR Generator</a>
+    </div>
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>New tools, updates, and resources. No spam.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:400px;height:375px;margin:0 auto;border-radius:12px;background:transparent;box-shadow:none;display:block;"></iframe>
+  </div>
+</div>
+</main>
+<footer>&copy; 2025 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+/* ===== Usage counter ===== */
+(function(){
+  var k='spunkart_ab_test_uses',c=parseInt(localStorage.getItem(k)||'0');
+  document.getElementById('use-count').textContent=c;
+  window._spunkCountUse=function(){
+    c++;localStorage.setItem(k,String(c));
+    document.getElementById('use-count').textContent=c;
+  };
+})();
+
+/* ===== Email collection after 2nd use ===== */
+(function(){
+  var ek='spunkart_email_collected',uk='spunkart_ab_test_uses';
+  if(localStorage.getItem(ek))return;
+  var check=setInterval(function(){
+    if(parseInt(localStorage.getItem(uk)||'0')>=2){
+      clearInterval(check);
+      var bar=document.createElement('div');
+      bar.innerHTML='<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools &amp; updates — </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
+      document.body.appendChild(bar);
+    }
+  },1000);
+})();
+
+/* ===== State ===== */
+var confidenceLevel = 0.95;
+var hasCalculated = false;
+
+function setConfidence(el, val) {
+  confidenceLevel = val;
+  document.querySelectorAll('#confidenceGroup label').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+  calculate();
+}
+
+/* ===== Standard Normal CDF (Abramowitz & Stegun approximation) ===== */
+function normalCDF(x) {
+  if (x < -8) return 0;
+  if (x > 8) return 1;
+  var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -1.453152027, a5 = 1.061405429;
+  var p = 0.3275911;
+  var sign = 1;
+  if (x < 0) { sign = -1; x = -x; }
+  var t = 1.0 / (1.0 + p * x);
+  var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x / 2);
+  return 0.5 * (1.0 + sign * y);
+}
+
+/* ===== Inverse Normal CDF (rational approximation) ===== */
+function normalInvCDF(p) {
+  if (p <= 0) return -Infinity;
+  if (p >= 1) return Infinity;
+  if (p < 0.5) return -normalInvCDF(1 - p);
+  var t = Math.sqrt(-2 * Math.log(1 - p));
+  var c0 = 2.515517, c1 = 0.802853, c2 = 0.010328;
+  var d1 = 1.432788, d2 = 0.189269, d3 = 0.001308;
+  return t - (c0 + c1 * t + c2 * t * t) / (1 + d1 * t + d2 * t * t + d3 * t * t * t);
+}
+
+/* ===== Z critical values ===== */
+function getZCritical(confidence) {
+  return normalInvCDF(1 - (1 - confidence) / 2);
+}
+
+/* ===== Main A/B calculation ===== */
+function calculate() {
+  var nA = parseInt(document.getElementById('visitorsA').value) || 0;
+  var cA = parseInt(document.getElementById('conversionsA').value) || 0;
+  var nB = parseInt(document.getElementById('visitorsB').value) || 0;
+  var cB = parseInt(document.getElementById('conversionsB').value) || 0;
+
+  var resultsCard = document.getElementById('resultsCard');
+  var recs = document.getElementById('recs');
+
+  if (nA <= 0 || nB <= 0) {
+    resultsCard.classList.remove('visible');
+    return;
+  }
+
+  // Clamp conversions
+  if (cA > nA) cA = nA;
+  if (cB > nB) cB = nB;
+
+  resultsCard.classList.add('visible');
+
+  var pA = cA / nA;
+  var pB = cB / nB;
+
+  // Display rates
+  document.getElementById('rateA').textContent = (pA * 100).toFixed(2) + '%';
+  document.getElementById('rateB').textContent = (pB * 100).toFixed(2) + '%';
+
+  // Relative improvement
+  var relImprovement = pA > 0 ? ((pB - pA) / pA) * 100 : (pB > 0 ? 100 : 0);
+  var impEl = document.getElementById('improvement');
+  var impSign = relImprovement > 0 ? '+' : '';
+  impEl.textContent = impSign + relImprovement.toFixed(2) + '%';
+  impEl.className = 'imp-value ' + (relImprovement > 0 ? 'positive' : (relImprovement < 0 ? 'negative' : 'neutral'));
+
+  // Two-proportion z-test
+  var pooledP = (cA + cB) / (nA + nB);
+  var se = Math.sqrt(pooledP * (1 - pooledP) * (1/nA + 1/nB));
+  var z = se > 0 ? (pB - pA) / se : 0;
+  var pValue = se > 0 ? 2 * (1 - normalCDF(Math.abs(z))) : 1;
+
+  var zCritical = getZCritical(confidenceLevel);
+  var isSignificant = Math.abs(z) > zCritical;
+  var bWins = isSignificant && pB > pA;
+
+  // Display stats
+  var sigEl = document.getElementById('sigResult');
+  sigEl.textContent = isSignificant ? 'YES' : 'NO';
+  sigEl.className = 'stat-value ' + (isSignificant ? 'sig-yes' : 'sig-no');
+
+  document.getElementById('pValue').textContent = pValue < 0.0001 ? '< 0.0001' : pValue.toFixed(4);
+  document.getElementById('confidenceResult').textContent = ((1 - pValue) * 100).toFixed(2) + '%';
+  document.getElementById('zScore').textContent = z.toFixed(4);
+
+  // Winner banner
+  var banner = document.getElementById('winnerBanner');
+  if (isSignificant && pB > pA) {
+    banner.textContent = 'Variant B wins!';
+    banner.className = 'winner-banner has-winner';
+  } else if (isSignificant && pA > pB) {
+    banner.textContent = 'Variant A wins!';
+    banner.className = 'winner-banner has-winner';
+  } else {
+    banner.textContent = 'No clear winner yet';
+    banner.className = 'winner-banner no-winner';
+  }
+
+  // Card border glow for winner
+  resultsCard.classList.toggle('winner-b', bWins);
+
+  // Rate B block color
+  var rateBBlock = document.getElementById('rateBBlock');
+  rateBBlock.classList.toggle('winner', bWins);
+
+  // Bar chart
+  var maxRate = Math.max(pA, pB, 0.001);
+  var barScale = 100 / maxRate;
+  var barAWidth = Math.max(pA * barScale, 2);
+  var barBWidth = Math.max(pB * barScale, 2);
+  document.getElementById('barA').style.width = barAWidth + '%';
+  document.getElementById('barB').style.width = barBWidth + '%';
+  document.getElementById('barALabel').textContent = (pA * 100).toFixed(2) + '%';
+  document.getElementById('barBLabel').textContent = (pB * 100).toFixed(2) + '%';
+
+  var barBRow = document.getElementById('barBRow');
+  barBRow.classList.toggle('winner', bWins);
+
+  // Recommendations
+  recs.classList.add('visible');
+  var recsHTML = '';
+  if (isSignificant) {
+    if (pB > pA) {
+      recsHTML += '<div class="rec-item"><div class="rec-icon green">&#10003;</div><div>Variant B outperforms A with statistical significance. You can confidently implement Variant B.</div></div>';
+    } else {
+      recsHTML += '<div class="rec-item"><div class="rec-icon green">&#10003;</div><div>Variant A outperforms B with statistical significance. Keep Variant A (your control).</div></div>';
+    }
+    recsHTML += '<div class="rec-item"><div class="rec-icon blue">i</div><div>Consider running a follow-up test to validate these results and measure long-term impact.</div></div>';
+  } else {
+    // Estimate additional visitors needed
+    var additionalNeeded = estimateAdditionalVisitors(pA, pB, nA, nB, confidenceLevel);
+    if (additionalNeeded > 0 && additionalNeeded < 10000000) {
+      recsHTML += '<div class="rec-item"><div class="rec-icon orange">!</div><div>Not yet significant. You need approximately <strong>' + additionalNeeded.toLocaleString() + '</strong> more visitors per variant to reach significance at ' + (confidenceLevel * 100) + '% confidence.</div></div>';
+    } else {
+      recsHTML += '<div class="rec-item"><div class="rec-icon orange">!</div><div>Not yet significant. Continue running the test to collect more data.</div></div>';
+    }
+    recsHTML += '<div class="rec-item"><div class="rec-icon blue">i</div><div>Avoid stopping early. Let the test run until you reach your pre-determined sample size.</div></div>';
+  }
+  recs.innerHTML = recsHTML;
+
+  // Count usage
+  if (!hasCalculated) {
+    hasCalculated = true;
+    if (window._spunkCountUse) window._spunkCountUse();
+  }
+}
+
+/* Estimate additional visitors needed for significance */
+function estimateAdditionalVisitors(pA, pB, nA, nB, confidence) {
+  if (Math.abs(pB - pA) < 0.0001) return -1;
+  var zCrit = getZCritical(confidence);
+  var zPower = 0.8416; // 80% power
+  var diff = Math.abs(pB - pA);
+  var avgP = (pA + pB) / 2;
+  var requiredPerVariant = Math.ceil(2 * avgP * (1 - avgP) * Math.pow(zCrit + zPower, 2) / (diff * diff));
+  var currentAvg = Math.floor((nA + nB) / 2);
+  var additional = requiredPerVariant - currentAvg;
+  return additional > 0 ? additional : 0;
+}
+
+/* ===== Sample Size Calculator ===== */
+function calcSampleSize() {
+  var baseline = parseFloat(document.getElementById('baselineRate').value);
+  var mde = parseFloat(document.getElementById('mde').value);
+  var conf = parseFloat(document.getElementById('sampleConfidence').value);
+  var daily = parseInt(document.getElementById('dailyVisitors').value);
+
+  var resultEl = document.getElementById('sampleResult');
+  var daysEl = document.getElementById('sampleDays');
+
+  if (isNaN(baseline) || isNaN(mde) || isNaN(conf) || baseline <= 0 || mde <= 0 || conf <= 50 || conf >= 100) {
+    resultEl.classList.remove('visible');
+    return;
+  }
+
+  var p1 = baseline / 100;
+  var p2 = p1 * (1 + mde / 100);
+  if (p2 > 1) p2 = 0.99;
+  var diff = Math.abs(p2 - p1);
+  if (diff < 0.00001) {
+    resultEl.classList.remove('visible');
+    return;
+  }
+
+  var zAlpha = getZCritical(conf / 100);
+  var zBeta = 0.8416; // 80% power
+
+  // Sample size formula: n = (Z_a * sqrt(2*p_avg*(1-p_avg)) + Z_b * sqrt(p1*(1-p1) + p2*(1-p2)))^2 / (p2-p1)^2
+  var pAvg = (p1 + p2) / 2;
+  var numerator = Math.pow(zAlpha * Math.sqrt(2 * pAvg * (1 - pAvg)) + zBeta * Math.sqrt(p1 * (1 - p1) + p2 * (1 - p2)), 2);
+  var n = Math.ceil(numerator / (diff * diff));
+
+  document.getElementById('sampleSizeValue').textContent = n.toLocaleString();
+  resultEl.classList.add('visible');
+
+  if (!isNaN(daily) && daily > 0) {
+    var days = Math.ceil(n / daily);
+    document.getElementById('daysValue').textContent = days.toLocaleString() + ' day' + (days !== 1 ? 's' : '') + ' (~' + Math.ceil(days / 7) + ' week' + (Math.ceil(days / 7) !== 1 ? 's' : '') + ')';
+    daysEl.style.display = 'block';
+  } else {
+    daysEl.style.display = 'none';
+  }
+}
+</script>
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26A0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.className='watermark';
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

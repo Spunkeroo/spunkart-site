@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competitor Analysis Framework — Free Strategic Analysis Tool</title>
+<meta name="description" content="Free competitor analysis framework. Compare features, pricing, SWOT analysis, gap analysis, and positioning map. No signup required.">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<link rel="canonical" href="https://spunkart.com/competitor-analysis">
+<meta property="og:title" content="Competitor Analysis Framework — Free Strategic Analysis Tool">
+<meta property="og:description" content="Free competitor analysis framework. Compare features, pricing, SWOT analysis, gap analysis, and positioning map. No signup required.">
+<meta property="og:url" content="https://spunkart.com/competitor-analysis">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SpunkArt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Competitor Analysis Framework — Free Strategic Analysis Tool">
+<meta name="twitter:description" content="Free competitor analysis framework. Compare features, pricing, SWOT, gap analysis, and positioning map.">
+<meta name="twitter:site" content="@SpunkArt13">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;margin-top:auto}
+footer a{color:#ff5f1f}
+.app{max-width:1000px;margin:0 auto;padding:1.5rem;width:100%}
+h1{font-size:1.8rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.85rem}
+.usage-badge-wrap{text-align:center}
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.section h2{font-size:1.15rem;color:#ff5f1f;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.section h2 .count{background:#ff5f1f;color:#fff;font-size:0.7rem;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+label{display:block;font-size:0.8rem;color:#888;margin-bottom:4px;font-weight:600}
+input[type="text"],input[type="url"],input[type="number"],textarea,select{width:100%;padding:10px 12px;background:#0a0a0a;border:1px solid #333;border-radius:8px;color:#e8e8e8;font-size:0.85rem;font-family:inherit;outline:none;transition:border-color 0.2s}
+input:focus,textarea:focus,select:focus{border-color:#ff5f1f}
+textarea{resize:vertical;min-height:80px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-full{grid-column:1/-1}
+.form-group{margin-bottom:12px}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5520f}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333}.btn-secondary:hover{background:#333;color:#fff}
+.btn-danger{background:#331111;color:#ef4444;border:1px solid #441111}.btn-danger:hover{background:#441111}
+.btn-sm{padding:6px 14px;font-size:0.75rem}
+.competitor-card{background:#141414;border:1px solid #333;border-radius:12px;padding:1.2rem;margin-bottom:1rem;border-left:4px solid #ff5f1f;position:relative}
+.competitor-card:nth-child(2){border-left-color:#3b82f6}
+.competitor-card:nth-child(3){border-left-color:#10b981}
+.competitor-card:nth-child(4){border-left-color:#a855f7}
+.competitor-card:nth-child(5){border-left-color:#f59e0b}
+.comp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.comp-num{font-size:0.75rem;font-weight:700;color:#888}
+.comp-remove{background:none;border:none;color:#666;cursor:pointer;font-size:1rem;padding:4px 8px;border-radius:4px}
+.comp-remove:hover{color:#ef4444;background:#1a1a1a}
+.add-comp-btn{width:100%;padding:14px;background:#1a1a1a;border:2px dashed #333;border-radius:12px;color:#888;font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:inherit;font-weight:600}
+.add-comp-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.add-comp-btn:disabled{opacity:0.4;cursor:not-allowed}
+/* Analysis */
+.analysis-section{display:none}
+.analysis-section.visible{display:block}
+.analysis-notice{text-align:center;color:#666;padding:2rem;font-size:0.9rem}
+/* Comparison Table */
+.table-wrap{overflow-x:auto;margin-bottom:1.5rem;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:0.8rem}
+th{background:#1a1a1a;color:#ff5f1f;text-align:left;padding:10px 12px;font-weight:700;white-space:nowrap;border-bottom:2px solid #333}
+td{padding:10px 12px;border-bottom:1px solid #1a1a1a;vertical-align:top}
+tr:nth-child(even) td{background:#0d0d0d}
+tr:hover td{background:#141414}
+td.feat-yes{color:#10b981}
+td.feat-no{color:#ef4444}
+td.feat-unique{color:#ff5f1f;font-weight:700}
+.price-rank{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:700}
+.price-cheapest{background:#10b98122;color:#10b981}
+.price-mid{background:#f59e0b22;color:#f59e0b}
+.price-expensive{background:#ef444422;color:#ef4444}
+/* SWOT */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#333;border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.swot-quad{padding:1.2rem;min-height:150px}
+.swot-quad h3{font-size:0.85rem;margin-bottom:0.8rem;display:flex;align-items:center;gap:6px}
+.swot-quad ul{list-style:none;padding:0}
+.swot-quad li{font-size:0.8rem;padding:4px 0;padding-left:16px;position:relative;color:#ccc}
+.swot-quad li::before{content:"";position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%}
+.swot-s{background:#0a1a0f}.swot-s h3{color:#10b981}.swot-s li::before{background:#10b981}
+.swot-w{background:#1a0f0f}.swot-w h3{color:#ef4444}.swot-w li::before{background:#ef4444}
+.swot-o{background:#0f1a1a}.swot-o h3{color:#3b82f6}.swot-o li::before{background:#3b82f6}
+.swot-t{background:#1a1a0f}.swot-t h3{color:#f59e0b}.swot-t li::before{background:#f59e0b}
+/* Gap Analysis */
+.gap-section{margin-bottom:1.5rem}
+.gap-cat{margin-bottom:1rem}
+.gap-cat h3{font-size:0.9rem;margin-bottom:0.5rem;color:#ccc}
+.gap-tag{display:inline-block;padding:4px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;margin:2px 4px 2px 0;color:#ccc}
+.gap-tag.yours{border-color:#10b981;color:#10b981;background:#10b98111}
+.gap-tag.missing{border-color:#ef4444;color:#ef4444;background:#ef444411}
+.gap-tag.shared{border-color:#3b82f6;color:#3b82f6;background:#3b82f611}
+/* Position Map */
+.pos-map-container{position:relative;width:100%;max-width:500px;margin:0 auto 1.5rem}
+.pos-map{position:relative;width:100%;padding-bottom:100%;background:#1a1a1a;border:1px solid #333;border-radius:12px;overflow:hidden}
+.pos-map .axis-x,.pos-map .axis-y{position:absolute;background:#333}
+.pos-map .axis-x{left:10%;right:0;top:50%;height:1px}
+.pos-map .axis-y{top:0;bottom:10%;left:10%;width:1px}
+.pos-map .label{position:absolute;font-size:0.65rem;color:#666}
+.pos-map .label-x-low{bottom:3%;left:12%}
+.pos-map .label-x-high{bottom:3%;right:2%}
+.pos-map .label-y-low{left:1%;bottom:12%;writing-mode:vertical-rl;transform:rotate(180deg)}
+.pos-map .label-y-high{left:1%;top:2%;writing-mode:vertical-rl;transform:rotate(180deg)}
+.pos-map .label-x-title{bottom:3%;left:50%;transform:translateX(-50%);font-weight:700;color:#888}
+.pos-map .label-y-title{left:1%;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-weight:700;color:#888}
+.pos-dot{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff;transform:translate(-50%,-50%);border:2px solid rgba(255,255,255,0.2);z-index:2;cursor:default;transition:all 0.5s ease}
+.pos-dot .dot-label{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:0.6rem;color:#ccc;font-weight:600;text-shadow:0 1px 4px #000}
+.pos-dot-you{background:#ff5f1f;z-index:3}
+.pos-dot-1{background:#3b82f6}
+.pos-dot-2{background:#10b981}
+.pos-dot-3{background:#a855f7}
+.pos-dot-4{background:#f59e0b}
+.pos-dot-5{background:#ec4899}
+/* Grid lines */
+.pos-map .grid-line{position:absolute;background:#222}
+.pos-map .grid-h{left:10%;right:0;height:1px}
+.pos-map .grid-v{top:0;bottom:10%;width:1px}
+/* Actions */
+.action-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem}
+/* Cross sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+/* Email bar */
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap}
+.sa-email-bar.show{transform:translateY(0)}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1}
+.sa-email-bar button.sa-dismiss:hover{color:#fff}
+.empty-state{text-align:center;padding:2rem;color:#555;font-size:0.85rem}
+@media(max-width:600px){
+.form-grid{grid-template-columns:1fr}
+.swot-grid{grid-template-columns:1fr}
+h1{font-size:1.4rem}
+.app{padding:1rem}
+.action-bar{flex-direction:column}
+.action-bar .btn{width:100%}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Competitor Analysis Framework","description":"Free competitor analysis framework. Compare features, pricing, SWOT analysis, gap analysis, and positioning map. No signup required.","url":"https://spunkart.com/competitor-analysis","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">SPUNKART.COM</a>
+<div class="links">
+<a href="/store#free-tools">All Tools</a>
+<a href="/store">Store</a>
+<a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+<a href="/blog">Blog</a>
+</div>
+</nav>
+
+<div class="app">
+<h1>Competitor Analysis Framework</h1>
+<div class="sub">Structured template for analyzing competitors and finding your edge. Data saved locally.</div>
+<div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+<!-- Section 1: Your Product -->
+<div class="section" id="yourProductSection">
+<h2><span class="count">1</span> Your Product</h2>
+<div class="form-grid">
+<div class="form-group">
+<label>Product Name</label>
+<input type="text" id="yourName" placeholder="e.g. My SaaS Product" oninput="autoSave()">
+</div>
+<div class="form-group">
+<label>Category</label>
+<input type="text" id="yourCategory" placeholder="e.g. Project Management" oninput="autoSave()">
+</div>
+<div class="form-group">
+<label>Price ($/mo or one-time)</label>
+<input type="number" id="yourPrice" placeholder="29" step="0.01" min="0" oninput="autoSave()">
+</div>
+<div class="form-group">
+<label>Target Audience</label>
+<input type="text" id="yourAudience" placeholder="e.g. Small business owners" oninput="autoSave()">
+</div>
+<div class="form-group form-full">
+<label>Key Features (one per line)</label>
+<textarea id="yourFeatures" placeholder="Feature 1&#10;Feature 2&#10;Feature 3" oninput="autoSave()"></textarea>
+</div>
+<div class="form-group form-full">
+<label>Unique Value Proposition</label>
+<textarea id="yourUVP" placeholder="What makes your product different and better?" rows="3" oninput="autoSave()"></textarea>
+</div>
+</div>
+</div>
+
+<!-- Section 2: Competitors -->
+<div class="section" id="competitorSection">
+<h2><span class="count">2</span> Competitors <span style="font-size:0.75rem;color:#666;font-weight:400;margin-left:auto" id="compCount">(0/5)</span></h2>
+<div id="competitorCards"></div>
+<button class="add-comp-btn" id="addCompBtn" onclick="addCompetitor()">+ Add Competitor</button>
+</div>
+
+<!-- Section 3: Analysis -->
+<div class="section analysis-section" id="analysisSection">
+<h2><span class="count">3</span> Auto-Generated Analysis</h2>
+<div id="analysisNotice" class="analysis-notice">Add at least 2 competitors to generate analysis.</div>
+<div id="analysisContent" style="display:none">
+
+<!-- Comparison Matrix -->
+<h3 style="color:#ff5f1f;margin-bottom:0.8rem;font-size:1rem">Comparison Matrix</h3>
+<div class="table-wrap" id="comparisonTable"></div>
+
+<!-- Feature Overlap -->
+<h3 style="color:#ff5f1f;margin-bottom:0.8rem;font-size:1rem">Feature Overlap</h3>
+<div class="table-wrap" id="featureOverlapTable"></div>
+
+<!-- Price Positioning -->
+<h3 style="color:#ff5f1f;margin-bottom:0.8rem;font-size:1rem">Price Positioning</h3>
+<div class="table-wrap" id="pricePositionTable"></div>
+
+<!-- SWOT -->
+<h3 style="color:#ff5f1f;margin:1.5rem 0 0.8rem;font-size:1rem">SWOT Analysis</h3>
+<div class="swot-grid" id="swotGrid"></div>
+
+<!-- Gap Analysis -->
+<h3 style="color:#ff5f1f;margin-bottom:0.8rem;font-size:1rem">Gap Analysis</h3>
+<div class="gap-section" id="gapAnalysis"></div>
+
+<!-- Positioning Map -->
+<h3 style="color:#ff5f1f;margin:1.5rem 0 0.8rem;font-size:1rem">Positioning Map</h3>
+<div class="pos-map-container">
+<div class="pos-map" id="posMap">
+<div class="grid-line grid-h" style="top:25%"></div>
+<div class="grid-line grid-h" style="top:75%"></div>
+<div class="grid-line grid-v" style="left:36.6%"></div>
+<div class="grid-line grid-v" style="left:63.3%"></div>
+<div class="axis-x"></div>
+<div class="axis-y"></div>
+<span class="label label-x-low">Low</span>
+<span class="label label-x-high">High</span>
+<span class="label label-y-low">Few</span>
+<span class="label label-y-high">Many</span>
+<span class="label label-x-title">Price</span>
+<span class="label label-y-title">Features</span>
+</div>
+</div>
+
+<!-- Actions -->
+<div class="action-bar">
+<button class="btn btn-primary" onclick="copyAnalysis()">Copy Full Analysis</button>
+<button class="btn btn-secondary" onclick="downloadAnalysis()">Download as Text</button>
+<button class="btn btn-secondary" onclick="window.print()">Print View</button>
+</div>
+</div>
+</div>
+
+<div class="cross-sell">
+<h3>Need a Business Plan?</h3>
+<p>Use our free landing page copy generator to craft your pitch.</p>
+<a href="/landing-page-copy" class="cta">Try It Free</a>
+</div>
+</div>
+
+<footer>&copy; 2025 <a href="/">SpunkArt</a> &mdash; Follow <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a></footer>
+
+<!-- Email bar -->
+<div class="sa-email-bar" id="emailBar">
+<p>Get free tools &amp; tips weekly</p>
+<input type="email" id="emailInput" placeholder="you@email.com">
+<button class="sa-sub-btn" onclick="submitEmail()">Subscribe</button>
+<button class="sa-dismiss" onclick="dismissEmail()">&times;</button>
+</div>
+
+<script>
+// State
+const STORAGE_KEY='spunkart_competitor_analysis';
+const USAGE_KEY='spunkart_competitor_analysis_uses';
+const EMAIL_KEY='spunkart_email_collected';
+let state={
+yourProduct:{name:'',category:'',price:'',audience:'',features:'',uvp:''},
+competitors:[]
+};
+const COMP_COLORS=['#3b82f6','#10b981','#a855f7','#f59e0b','#ec4899'];
+
+// Load
+function loadState(){
+try{const s=localStorage.getItem(STORAGE_KEY);if(s){state=JSON.parse(s)}}catch(e){}
+}
+function saveState(){
+try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}
+}
+
+// Usage
+function trackUsage(){
+let c=parseInt(localStorage.getItem(USAGE_KEY)||'0');c++;localStorage.setItem(USAGE_KEY,String(c));
+updateUsageBadge(c);
+if(c>=2&&!localStorage.getItem(EMAIL_KEY)){setTimeout(()=>{document.getElementById('emailBar').classList.add('show')},2000)}
+}
+function updateUsageBadge(c){
+if(!c)c=parseInt(localStorage.getItem(USAGE_KEY)||'0');
+document.getElementById('usageBadge').textContent=c>0?'Uses: '+c:'';
+}
+
+// Email
+function submitEmail(){
+const e=document.getElementById('emailInput').value.trim();
+if(!e||!e.includes('@'))return;
+const f=document.createElement('iframe');f.style.display='none';f.src='https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email='+encodeURIComponent(e);
+document.body.appendChild(f);
+localStorage.setItem(EMAIL_KEY,'1');
+document.getElementById('emailBar').classList.remove('show');
+}
+function dismissEmail(){document.getElementById('emailBar').classList.remove('show')}
+
+// Your product
+function loadYourProduct(){
+const p=state.yourProduct;
+document.getElementById('yourName').value=p.name||'';
+document.getElementById('yourCategory').value=p.category||'';
+document.getElementById('yourPrice').value=p.price||'';
+document.getElementById('yourAudience').value=p.audience||'';
+document.getElementById('yourFeatures').value=p.features||'';
+document.getElementById('yourUVP').value=p.uvp||'';
+}
+function readYourProduct(){
+state.yourProduct={
+name:document.getElementById('yourName').value.trim(),
+category:document.getElementById('yourCategory').value.trim(),
+price:document.getElementById('yourPrice').value,
+audience:document.getElementById('yourAudience').value.trim(),
+features:document.getElementById('yourFeatures').value.trim(),
+uvp:document.getElementById('yourUVP').value.trim()
+};
+}
+
+// Competitors
+function addCompetitor(){
+if(state.competitors.length>=5)return;
+state.competitors.push({name:'',url:'',price:'',features:'',strengths:'',weaknesses:'',audience:''});
+saveState();renderCompetitors();
+}
+function removeCompetitor(i){
+state.competitors.splice(i,1);
+saveState();renderCompetitors();runAnalysis();
+}
+function renderCompetitors(){
+const wrap=document.getElementById('competitorCards');
+wrap.innerHTML='';
+state.competitors.forEach((c,i)=>{
+const card=document.createElement('div');
+card.className='competitor-card';
+card.innerHTML=`
+<div class="comp-header">
+<span class="comp-num">COMPETITOR ${i+1}</span>
+<button class="comp-remove" onclick="removeCompetitor(${i})" title="Remove">&times;</button>
+</div>
+<div class="form-grid">
+<div class="form-group"><label>Name</label><input type="text" value="${esc(c.name)}" onchange="updateComp(${i},'name',this.value)" oninput="autoSave()"></div>
+<div class="form-group"><label>Website URL</label><input type="url" value="${esc(c.url)}" placeholder="https://" onchange="updateComp(${i},'url',this.value)" oninput="autoSave()"></div>
+<div class="form-group"><label>Price ($/mo or one-time)</label><input type="number" value="${esc(c.price)}" step="0.01" min="0" onchange="updateComp(${i},'price',this.value)" oninput="autoSave()"></div>
+<div class="form-group"><label>Target Audience</label><input type="text" value="${esc(c.audience)}" onchange="updateComp(${i},'audience',this.value)" oninput="autoSave()"></div>
+<div class="form-group form-full"><label>Key Features (one per line)</label><textarea onchange="updateComp(${i},'features',this.value)" oninput="autoSave()">${esc(c.features)}</textarea></div>
+<div class="form-group"><label>Strengths</label><textarea rows="3" onchange="updateComp(${i},'strengths',this.value)" oninput="autoSave()">${esc(c.strengths)}</textarea></div>
+<div class="form-group"><label>Weaknesses</label><textarea rows="3" onchange="updateComp(${i},'weaknesses',this.value)" oninput="autoSave()">${esc(c.weaknesses)}</textarea></div>
+</div>`;
+wrap.appendChild(card);
+});
+document.getElementById('compCount').textContent='('+state.competitors.length+'/5)';
+document.getElementById('addCompBtn').disabled=state.competitors.length>=5;
+}
+function updateComp(i,field,val){
+if(state.competitors[i])state.competitors[i][field]=val;
+}
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// Auto-save with debounce
+let saveTimer=null;
+function autoSave(){
+clearTimeout(saveTimer);
+saveTimer=setTimeout(()=>{
+readYourProduct();
+// Read competitor fields from DOM
+document.querySelectorAll('.competitor-card').forEach((card,i)=>{
+if(!state.competitors[i])return;
+const inputs=card.querySelectorAll('input,textarea');
+state.competitors[i].name=inputs[0].value.trim();
+state.competitors[i].url=inputs[1].value.trim();
+state.competitors[i].price=inputs[2].value;
+state.competitors[i].audience=inputs[3].value.trim();
+state.competitors[i].features=inputs[4].value.trim();
+state.competitors[i].strengths=inputs[5].value.trim();
+state.competitors[i].weaknesses=inputs[6].value.trim();
+});
+saveState();runAnalysis();
+},600);
+}
+
+// Parse features to array
+function parseFeatures(text){
+return(text||'').split('\n').map(f=>f.trim()).filter(f=>f.length>0);
+}
+
+// Analysis engine
+function runAnalysis(){
+const section=document.getElementById('analysisSection');
+section.classList.add('visible');
+const filledComps=state.competitors.filter(c=>c.name);
+if(filledComps.length<2){
+document.getElementById('analysisNotice').style.display='block';
+document.getElementById('analysisContent').style.display='none';
+return;
+}
+document.getElementById('analysisNotice').style.display='none';
+document.getElementById('analysisContent').style.display='block';
+
+const you=state.yourProduct;
+const yourFeats=parseFeatures(you.features);
+const compFeats=filledComps.map(c=>parseFeatures(c.features));
+const allFeats=[...new Set([...yourFeats,...compFeats.flat()])];
+
+// Normalize for comparison
+function norm(s){return s.toLowerCase().trim()}
+function hasFeature(feats,f){return feats.some(x=>norm(x)===norm(f))}
+
+// Comparison Matrix
+let thtml='<table><thead><tr><th>Feature</th><th>'+(esc(you.name)||'You')+'</th>';
+filledComps.forEach(c=>{thtml+='<th>'+esc(c.name)+'</th>'});
+thtml+='</tr></thead><tbody>';
+allFeats.forEach(f=>{
+const youHas=hasFeature(yourFeats,f);
+let anyCompHas=false;
+thtml+='<tr><td>'+esc(f)+'</td>';
+thtml+='<td class="'+(youHas?'feat-yes':'feat-no')+'">'+(youHas?'Yes':'No')+'</td>';
+filledComps.forEach((c,ci)=>{
+const has=hasFeature(compFeats[ci],f);
+if(has)anyCompHas=true;
+thtml+='<td class="'+(has?'feat-yes':'feat-no')+'">'+(has?'Yes':'No')+'</td>';
+});
+thtml+='</tr>';
+});
+thtml+='</tbody></table>';
+document.getElementById('comparisonTable').innerHTML=thtml;
+
+// Feature overlap
+const sharedAll=allFeats.filter(f=>{
+if(!hasFeature(yourFeats,f))return false;
+return filledComps.every((c,ci)=>hasFeature(compFeats[ci],f));
+});
+const onlyYou=yourFeats.filter(f=>!filledComps.some((c,ci)=>hasFeature(compFeats[ci],f)));
+const onlyThey=allFeats.filter(f=>!hasFeature(yourFeats,f));
+let ohtml='<table><thead><tr><th>Category</th><th>Features</th></tr></thead><tbody>';
+ohtml+='<tr><td style="color:#3b82f6;font-weight:700">Shared by All</td><td>'+(sharedAll.length?sharedAll.map(f=>esc(f)).join(', '):'<span style="color:#666">None</span>')+'</td></tr>';
+ohtml+='<tr><td style="color:#10b981;font-weight:700">Only You Have</td><td>'+(onlyYou.length?onlyYou.map(f=>esc(f)).join(', '):'<span style="color:#666">None</span>')+'</td></tr>';
+ohtml+='<tr><td style="color:#ef4444;font-weight:700">You\'re Missing</td><td>'+(onlyThey.length?onlyThey.map(f=>esc(f)).join(', '):'<span style="color:#666">None</span>')+'</td></tr>';
+ohtml+='</tbody></table>';
+document.getElementById('featureOverlapTable').innerHTML=ohtml;
+
+// Price positioning
+let prices=[{name:you.name||'You',price:parseFloat(you.price)||0,isYou:true}];
+filledComps.forEach(c=>{prices.push({name:c.name,price:parseFloat(c.price)||0,isYou:false})});
+prices.sort((a,b)=>a.price-b.price);
+let phtml='<table><thead><tr><th>Rank</th><th>Product</th><th>Price</th><th>Position</th></tr></thead><tbody>';
+prices.forEach((p,i)=>{
+const pos=i===0?'cheapest':(i===prices.length-1?'expensive':'mid');
+phtml+='<tr><td>#'+(i+1)+'</td><td style="'+(p.isYou?'color:#ff5f1f;font-weight:700':'')+'">'+ esc(p.name)+'</td><td>$'+p.price.toFixed(2)+'</td><td><span class="price-rank price-'+pos+'">'+(pos==='cheapest'?'Cheapest':(pos==='expensive'?'Most Expensive':'Mid-Range'))+'</span></td></tr>';
+});
+phtml+='</tbody></table>';
+document.getElementById('pricePositionTable').innerHTML=phtml;
+
+// SWOT
+const strengths=[];
+const weaknesses=[];
+const opportunities=[];
+const threats=[];
+
+if(onlyYou.length)strengths.push('Unique features: '+onlyYou.join(', '));
+if(you.uvp)strengths.push('Strong UVP: '+you.uvp);
+const yourPriceVal=parseFloat(you.price)||0;
+const avgCompPrice=filledComps.reduce((s,c)=>s+(parseFloat(c.price)||0),0)/filledComps.length;
+if(yourPriceVal<avgCompPrice&&yourPriceVal>0)strengths.push('Price advantage ($'+yourPriceVal.toFixed(2)+' vs avg $'+avgCompPrice.toFixed(2)+')');
+if(sharedAll.length)strengths.push('Feature parity on '+sharedAll.length+' core features');
+if(!strengths.length)strengths.push('Define your unique features and UVP to identify strengths');
+
+if(onlyThey.length)weaknesses.push('Missing features: '+onlyThey.join(', '));
+if(yourPriceVal>avgCompPrice&&avgCompPrice>0)weaknesses.push('Higher price point ($'+yourPriceVal.toFixed(2)+' vs avg $'+avgCompPrice.toFixed(2)+')');
+filledComps.forEach(c=>{if(c.strengths)threats.push(c.name+': '+c.strengths)});
+if(!weaknesses.length)weaknesses.push('No significant weaknesses identified');
+
+// Opportunities: gaps in competitor weaknesses
+filledComps.forEach(c=>{if(c.weaknesses)opportunities.push('Exploit '+c.name+'\'s weakness: '+c.weaknesses)});
+if(onlyThey.length)opportunities.push('Consider adding: '+onlyThey.slice(0,3).join(', '));
+const underserved=filledComps.filter(c=>c.audience&&c.audience!==you.audience);
+if(underserved.length)opportunities.push('Underserved audiences: '+underserved.map(c=>c.audience).join(', '));
+if(!opportunities.length)opportunities.push('Analyze competitor weaknesses to find opportunities');
+if(!threats.length)threats.push('Monitor competitor developments closely');
+
+let swot='';
+swot+='<div class="swot-quad swot-s"><h3>Strengths</h3><ul>'+strengths.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul></div>';
+swot+='<div class="swot-quad swot-w"><h3>Weaknesses</h3><ul>'+weaknesses.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul></div>';
+swot+='<div class="swot-quad swot-o"><h3>Opportunities</h3><ul>'+opportunities.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul></div>';
+swot+='<div class="swot-quad swot-t"><h3>Threats</h3><ul>'+threats.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul></div>';
+document.getElementById('swotGrid').innerHTML=swot;
+
+// Gap Analysis
+let ghtml='';
+ghtml+='<div class="gap-cat"><h3 style="color:#ef4444">Features Competitors Have That You Don\'t</h3>';
+if(onlyThey.length){ghtml+=onlyThey.map(f=>'<span class="gap-tag missing">'+esc(f)+'</span>').join('')}
+else{ghtml+='<span style="color:#666;font-size:0.8rem">None — you cover all competitor features</span>'}
+ghtml+='</div>';
+ghtml+='<div class="gap-cat"><h3 style="color:#10b981">Features Only You Have</h3>';
+if(onlyYou.length){ghtml+=onlyYou.map(f=>'<span class="gap-tag yours">'+esc(f)+'</span>').join('')}
+else{ghtml+='<span style="color:#666;font-size:0.8rem">None — add unique features to differentiate</span>'}
+ghtml+='</div>';
+ghtml+='<div class="gap-cat"><h3 style="color:#3b82f6">Shared Features (Table Stakes)</h3>';
+if(sharedAll.length){ghtml+=sharedAll.map(f=>'<span class="gap-tag shared">'+esc(f)+'</span>').join('')}
+else{ghtml+='<span style="color:#666;font-size:0.8rem">No features shared by all products</span>'}
+ghtml+='</div>';
+// Pricing gaps
+ghtml+='<div class="gap-cat"><h3 style="color:#f59e0b">Pricing Gaps &amp; Opportunities</h3>';
+const sortedPrices=prices.filter(p=>p.price>0).sort((a,b)=>a.price-b.price);
+if(sortedPrices.length>=2){
+for(let i=1;i<sortedPrices.length;i++){
+const gap=sortedPrices[i].price-sortedPrices[i-1].price;
+if(gap>0){ghtml+='<span class="gap-tag" style="border-color:#f59e0b;color:#f59e0b;background:#f59e0b11">$'+gap.toFixed(2)+' gap between '+esc(sortedPrices[i-1].name)+' and '+esc(sortedPrices[i].name)+'</span>'}
+}
+}else{ghtml+='<span style="color:#666;font-size:0.8rem">Add prices to see pricing gaps</span>'}
+ghtml+='</div>';
+document.getElementById('gapAnalysis').innerHTML=ghtml;
+
+// Positioning Map
+renderPositionMap(filledComps,yourFeats,compFeats);
+
+trackUsage();
+}
+
+function renderPositionMap(comps,yourFeats,compFeats){
+const map=document.getElementById('posMap');
+// Remove old dots
+map.querySelectorAll('.pos-dot').forEach(d=>d.remove());
+const you=state.yourProduct;
+const maxPrice=Math.max(parseFloat(you.price)||1,...comps.map(c=>parseFloat(c.price)||1));
+const maxFeats=Math.max(yourFeats.length||1,...compFeats.map(f=>f.length||1));
+
+function plotDot(name,price,featCount,cls){
+const dot=document.createElement('div');
+dot.className='pos-dot '+cls;
+// Map to 10%-95% range for both axes
+const x=10+((parseFloat(price)||0)/maxPrice)*85;
+const y=90-((featCount/maxFeats)*80);
+dot.style.left=x+'%';
+dot.style.top=y+'%';
+const initial=name?name.charAt(0).toUpperCase():'?';
+dot.innerHTML=initial+'<span class="dot-label">'+esc(name||'You')+'</span>';
+dot.title=esc(name)+' — $'+(parseFloat(price)||0).toFixed(2)+', '+featCount+' features';
+map.appendChild(dot);
+}
+
+plotDot(you.name||'You',you.price,yourFeats.length,'pos-dot-you');
+comps.forEach((c,i)=>{
+plotDot(c.name,c.price,compFeats[i].length,'pos-dot-'+(i+1));
+});
+}
+
+// Export
+function buildAnalysisText(){
+const you=state.yourProduct;
+const comps=state.competitors.filter(c=>c.name);
+const yourFeats=parseFeatures(you.features);
+const compFeats=comps.map(c=>parseFeatures(c.features));
+const allFeats=[...new Set([...yourFeats,...compFeats.flat()])];
+function norm(s){return s.toLowerCase().trim()}
+function hasF(feats,f){return feats.some(x=>norm(x)===norm(f))}
+const sharedAll=allFeats.filter(f=>{if(!hasF(yourFeats,f))return false;return comps.every((c,ci)=>hasF(compFeats[ci],f))});
+const onlyYou=yourFeats.filter(f=>!comps.some((c,ci)=>hasF(compFeats[ci],f)));
+const onlyThey=allFeats.filter(f=>!hasF(yourFeats,f));
+
+let t='COMPETITOR ANALYSIS FRAMEWORK\n';
+t+='Generated: '+new Date().toLocaleDateString()+'\n';
+t+='================================\n\n';
+t+='YOUR PRODUCT\n';
+t+='Name: '+(you.name||'N/A')+'\n';
+t+='Category: '+(you.category||'N/A')+'\n';
+t+='Price: $'+(you.price||'N/A')+'\n';
+t+='Target Audience: '+(you.audience||'N/A')+'\n';
+t+='Features: '+(yourFeats.join(', ')||'N/A')+'\n';
+t+='UVP: '+(you.uvp||'N/A')+'\n\n';
+t+='COMPETITORS\n';
+t+='----------\n';
+comps.forEach((c,i)=>{
+t+='\n'+(i+1)+'. '+c.name+'\n';
+t+='   Website: '+(c.url||'N/A')+'\n';
+t+='   Price: $'+(c.price||'N/A')+'\n';
+t+='   Audience: '+(c.audience||'N/A')+'\n';
+t+='   Features: '+(compFeats[i].join(', ')||'N/A')+'\n';
+t+='   Strengths: '+(c.strengths||'N/A')+'\n';
+t+='   Weaknesses: '+(c.weaknesses||'N/A')+'\n';
+});
+t+='\n\nFEATURE OVERLAP\n';
+t+='Shared by all: '+(sharedAll.join(', ')||'None')+'\n';
+t+='Only you: '+(onlyYou.join(', ')||'None')+'\n';
+t+='You\'re missing: '+(onlyThey.join(', ')||'None')+'\n';
+t+='\nPRICE POSITIONING\n';
+let prices=[{name:you.name||'You',price:parseFloat(you.price)||0}];
+comps.forEach(c=>{prices.push({name:c.name,price:parseFloat(c.price)||0})});
+prices.sort((a,b)=>a.price-b.price);
+prices.forEach((p,i)=>{t+=(i+1)+'. '+p.name+' — $'+p.price.toFixed(2)+'\n'});
+t+='\nCOMPARISON MATRIX\n';
+const header=['Feature',you.name||'You',...comps.map(c=>c.name)];
+t+=header.join(' | ')+'\n';
+t+=header.map(()=>'---').join(' | ')+'\n';
+allFeats.forEach(f=>{
+const row=[f,hasF(yourFeats,f)?'Yes':'No',...comps.map((c,ci)=>hasF(compFeats[ci],f)?'Yes':'No')];
+t+=row.join(' | ')+'\n';
+});
+t+='\nSWOT ANALYSIS\n';
+t+='Strengths:\n';
+if(onlyYou.length)t+='- Unique features: '+onlyYou.join(', ')+'\n';
+if(you.uvp)t+='- Strong UVP: '+you.uvp+'\n';
+const yp=parseFloat(you.price)||0;const avg=comps.reduce((s,c)=>s+(parseFloat(c.price)||0),0)/comps.length;
+if(yp<avg&&yp>0)t+='- Price advantage\n';
+t+='\nWeaknesses:\n';
+if(onlyThey.length)t+='- Missing features: '+onlyThey.join(', ')+'\n';
+if(yp>avg&&avg>0)t+='- Higher price point\n';
+t+='\nOpportunities:\n';
+comps.forEach(c=>{if(c.weaknesses)t+='- Exploit '+c.name+': '+c.weaknesses+'\n'});
+t+='\nThreats:\n';
+comps.forEach(c=>{if(c.strengths)t+='- '+c.name+': '+c.strengths+'\n'});
+t+='\nGAP ANALYSIS\n';
+t+='Features competitors have that you don\'t: '+(onlyThey.join(', ')||'None')+'\n';
+t+='Features only you have: '+(onlyYou.join(', ')||'None')+'\n';
+t+='\n---\nGenerated by SpunkArt.com Competitor Analysis Framework\n';
+return t;
+}
+
+function copyAnalysis(){
+const t=buildAnalysisText();
+navigator.clipboard.writeText(t).then(()=>{
+const btn=event.target;btn.textContent='Copied!';setTimeout(()=>{btn.textContent='Copy Full Analysis'},2000);
+}).catch(()=>{
+const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+});
+}
+function downloadAnalysis(){
+const t=buildAnalysisText();
+const blob=new Blob([t],{type:'text/plain'});
+const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+a.download='competitor-analysis-'+(state.yourProduct.name||'report').replace(/\s+/g,'-').toLowerCase()+'.txt';
+a.click();URL.revokeObjectURL(a.href);
+}
+
+// Init
+loadState();
+loadYourProduct();
+renderCompetitors();
+updateUsageBadge();
+// Check if analysis should be visible
+const filledOnLoad=state.competitors.filter(c=>c.name);
+if(filledOnLoad.length>=2||state.competitors.length>0){
+document.getElementById('analysisSection').classList.add('visible');
+if(filledOnLoad.length>=2)runAnalysis();
+}
+</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<!-- Code protection -->
+<script>
+(function(){const d=function(e){e.preventDefault()};document.addEventListener('contextmenu',d);document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s'))e.preventDefault()});
+try{(function a(){try{(function b(i){if((''+i/i).length!==1||i%20===0){(function(){}).constructor('debugger')()}else{(function(){}).constructor('debugger')()}b(++i)})(0)}catch(e){setTimeout(a,1000)}})()}catch(e){}})();
+</script>
+</body>
+</html>

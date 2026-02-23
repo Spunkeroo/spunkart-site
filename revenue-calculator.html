@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2025 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revenue & Growth Calculator — Free MRR, ARR & Projection Tool</title>
+<meta name="description" content="Free revenue calculator for solo founders. Project MRR, ARR, profit, churn, LTV, and 12-month growth with charts. No signup required.">
+<meta property="og:title" content="Revenue & Growth Calculator — Free MRR, ARR & Projection Tool">
+<meta property="og:description" content="Project MRR, ARR, profit, churn, LTV, and 12-month growth with charts. Free tool for solo founders.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/revenue-calculator">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Revenue & Growth Calculator | SPUNKART.COM">
+<meta name="twitter:description" content="Free MRR, ARR, LTV & 12-month projection calculator for solo founders. No signup.">
+<link rel="canonical" href="https://spunkart.com/revenue-calculator">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2025 SpunkArt.com. All rights reserved.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Revenue & Growth Calculator","description":"Free revenue calculator for solo founders. Project MRR, ARR, profit, churn, LTV, and 12-month growth scenarios with charts.","url":"https://spunkart.com/revenue-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.5}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:1000px;width:100%;margin:0 auto;padding:2rem 1rem}
+h1{font-size:1.9rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{text-align:center;color:#666;margin-bottom:1.5rem;font-size:0.9rem}
+.usage-badge-wrap{text-align:center;margin-bottom:1.2rem}
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600}
+
+/* Inputs */
+.inputs-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.input-group{display:flex;flex-direction:column;gap:4px}
+.input-group label{font-size:0.8rem;color:#888;font-weight:500}
+.input-group input,.input-group select{background:#141414;border:1px solid #333;border-radius:8px;padding:10px 12px;color:#e8e8e8;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.2s}
+.input-group input:focus,.input-group select:focus{border-color:#ff5f1f}
+.input-group select{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.input-group select option{background:#141414;color:#e8e8e8}
+.input-group small{font-size:0.7rem;color:#555}
+
+/* Metric cards */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+.metric-card{background:#141414;border:1px solid #222;border-radius:12px;padding:16px;text-align:center}
+.metric-card .value{font-size:1.5rem;font-weight:800;font-variant-numeric:tabular-nums}
+.metric-card .label{font-size:0.72rem;color:#666;text-transform:uppercase;letter-spacing:0.5px;margin-top:4px}
+.val-green{color:#10b981}
+.val-orange{color:#ff5f1f}
+.val-red{color:#ef4444}
+.val-white{color:#e8e8e8}
+
+/* Section headers */
+.section-title{font-size:1.15rem;font-weight:700;margin:2rem 0 1rem;color:#ccc;border-bottom:1px solid #222;padding-bottom:8px}
+
+/* Table */
+.table-wrap{overflow-x:auto;margin-bottom:2rem;border:1px solid #222;border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:700px}
+thead{background:#141414;position:sticky;top:0;z-index:1}
+th{padding:10px 8px;text-align:right;color:#888;font-weight:600;border-bottom:1px solid #333;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
+th:first-child{text-align:left;padding-left:14px}
+td{padding:8px;text-align:right;font-variant-numeric:tabular-nums;color:#ccc;font-size:0.82rem}
+td:first-child{text-align:left;color:#888;padding-left:14px}
+tr:nth-child(even){background:#141414}
+tr:nth-child(odd){background:#0a0a0a}
+.neg{color:#ef4444}
+
+/* Actions */
+.actions{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap}
+.action-btn{padding:8px 18px;background:#222;border:1px solid #333;border-radius:8px;color:#ccc;font-size:0.82rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.action-btn:hover{border-color:#ff5f1f;color:#ff5f1f}
+.action-btn.copied{border-color:#10b981;color:#10b981}
+
+/* Charts */
+.chart-container{background:#141414;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:2rem}
+.chart-container h3{font-size:0.9rem;color:#888;margin-bottom:16px;font-weight:600}
+.chart-area{position:relative;height:220px;display:flex;align-items:flex-end;gap:2px;padding-bottom:24px}
+.chart-bar-group{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;height:100%}
+.chart-bar{width:100%;border-radius:3px 3px 0 0;transition:height 0.4s ease;position:absolute;bottom:24px;cursor:pointer}
+.chart-bar:hover{opacity:0.85}
+.chart-bar-label{position:absolute;bottom:0;font-size:0.6rem;color:#555;white-space:nowrap;text-align:center;width:100%}
+.chart-tooltip{display:none;position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:#333;padding:3px 8px;border-radius:4px;font-size:0.65rem;white-space:nowrap;color:#e8e8e8;z-index:5;pointer-events:none}
+.chart-bar:hover .chart-tooltip{display:block}
+.chart-y-axis{position:absolute;left:0;top:0;bottom:24px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.chart-y-label{font-size:0.6rem;color:#444;white-space:nowrap}
+.chart-bars-area{display:flex;align-items:flex-end;gap:3px;flex:1;height:100%;padding-bottom:24px;position:relative}
+
+/* Profit line chart */
+.line-chart{position:relative;height:180px;margin-top:12px}
+.line-chart svg{width:100%;height:100%}
+.line-labels{display:flex;justify-content:space-between;margin-top:4px}
+.line-labels span{font-size:0.6rem;color:#555}
+
+/* Scenarios */
+.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+.scenario-card{background:#141414;border:1px solid #222;border-radius:12px;padding:18px;text-align:center}
+.scenario-card h4{font-size:0.85rem;margin-bottom:12px;font-weight:700}
+.scenario-card.conservative h4{color:#888}
+.scenario-card.moderate h4{color:#ff5f1f}
+.scenario-card.aggressive h4{color:#10b981}
+.scenario-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1a1a1a;font-size:0.8rem}
+.scenario-row:last-child{border-bottom:none}
+.scenario-row .s-label{color:#666}
+.scenario-row .s-value{font-weight:700;font-variant-numeric:tabular-nums}
+
+/* Cross-sell */
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;margin-top:auto}
+footer a{color:#ff5f1f}
+
+@media(max-width:700px){
+  .inputs-grid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .scenarios{grid-template-columns:1fr}
+  h1{font-size:1.4rem}
+  .metric-card .value{font-size:1.2rem}
+  table{font-size:0.7rem}
+}
+@media(max-width:480px){
+  .metrics{grid-template-columns:1fr}
+  main{padding:1rem 0.75rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store#free-tools">All Tools</a>
+    <a href="/store">Store</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+  <h1>Revenue & Growth Calculator</h1>
+  <div class="sub">Project MRR, ARR, and 12-month growth for your business</div>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge">Used 0 times</div></div>
+
+  <!-- Inputs -->
+  <div class="inputs-grid">
+    <div class="input-group">
+      <label for="price">Product Price ($)</label>
+      <input type="number" id="price" value="29" min="0" step="0.01" placeholder="29.00">
+    </div>
+    <div class="input-group">
+      <label for="model">Pricing Model</label>
+      <select id="model">
+        <option value="monthly" selected>Monthly Subscription</option>
+        <option value="annual">Annual Subscription</option>
+        <option value="onetime">One-Time Purchase</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="customers">Current Customers</label>
+      <input type="number" id="customers" value="50" min="0" step="1" placeholder="50">
+    </div>
+    <div class="input-group">
+      <label for="newPerMonth">New Customers / Month</label>
+      <input type="number" id="newPerMonth" value="10" min="0" step="1" placeholder="10">
+    </div>
+    <div class="input-group">
+      <label for="churn">Monthly Churn Rate (%)</label>
+      <input type="number" id="churn" value="5" min="0" max="100" step="0.1" placeholder="5">
+      <small>For subscriptions only</small>
+    </div>
+    <div class="input-group">
+      <label for="growth">Monthly Growth Rate (%)</label>
+      <input type="number" id="growth" value="0" min="0" max="1000" step="0.1" placeholder="0">
+      <small>Compounds new customers monthly (optional)</small>
+    </div>
+    <div class="input-group">
+      <label for="costs">Monthly Costs ($)</label>
+      <input type="number" id="costs" value="500" min="0" step="1" placeholder="500">
+    </div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="metrics" id="metricsGrid">
+    <div class="metric-card"><div class="value val-orange" id="mMRR">$0</div><div class="label">Monthly Revenue (MRR)</div></div>
+    <div class="metric-card"><div class="value val-orange" id="mARR">$0</div><div class="label">Annual Revenue (ARR)</div></div>
+    <div class="metric-card"><div class="value val-green" id="mProfit">$0</div><div class="label">Monthly Profit</div></div>
+    <div class="metric-card"><div class="value val-white" id="mMonths10k">--</div><div class="label">Months to $10K MRR</div></div>
+    <div class="metric-card"><div class="value val-white" id="mLTV">$0</div><div class="label">Customer Lifetime Value</div></div>
+    <div class="metric-card"><div class="value val-white" id="mBreakeven">0</div><div class="label">Break-Even Customers</div></div>
+  </div>
+
+  <!-- Projection Table -->
+  <div class="section-title">12-Month Projection</div>
+  <div class="actions">
+    <button class="action-btn" id="btnCopy" onclick="copySummary()">Copy Summary</button>
+    <button class="action-btn" id="btnCSV" onclick="downloadCSV()">Download CSV</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Customers</th>
+          <th>New</th>
+          <th>Churned</th>
+          <th>Revenue</th>
+          <th>Costs</th>
+          <th>Profit</th>
+          <th>Cumulative</th>
+        </tr>
+      </thead>
+      <tbody id="projectionBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Charts -->
+  <div class="section-title">Revenue Chart</div>
+  <div class="chart-container">
+    <h3>Monthly Revenue (12 Months)</h3>
+    <div style="position:relative;height:220px;display:flex;gap:0" id="barChartWrap">
+      <div class="chart-y-axis" id="barYAxis"></div>
+      <div class="chart-bars-area" id="barChart"></div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <h3>Cumulative Profit</h3>
+    <div class="line-chart" id="lineChartWrap">
+      <svg id="lineSvg" viewBox="0 0 960 180" preserveAspectRatio="none"></svg>
+      <div class="line-labels" id="lineLabels"></div>
+    </div>
+  </div>
+
+  <!-- Scenarios -->
+  <div class="section-title">Growth Scenarios</div>
+  <div class="scenarios" id="scenariosGrid">
+    <div class="scenario-card conservative" id="scenConservative">
+      <h4>Conservative</h4>
+    </div>
+    <div class="scenario-card moderate" id="scenModerate">
+      <h4>Moderate (1.5x)</h4>
+    </div>
+    <div class="scenario-card aggressive" id="scenAggressive">
+      <h4>Aggressive (2x)</h4>
+    </div>
+  </div>
+
+  <!-- Cross-sell -->
+  <div class="cross-sell">
+    <h3>Build Your Business Faster</h3>
+    <p>Explore 100+ free tools for founders, creators, and developers.</p>
+    <a href="/store#free-tools" class="cta">Browse Free Tools</a>
+  </div>
+</main>
+
+<footer>&copy; 2025 <a href="/">SpunkArt</a> &middot; <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">@SpunkArt13</a></footer>
+
+<script>
+/* ===== State & Refs ===== */
+var projectionData = [];
+var USAGE_KEY = 'spunkart_revenue_calc_uses';
+var useCount = parseInt(localStorage.getItem(USAGE_KEY)) || 0;
+
+function updateBadge() {
+  document.getElementById('usageBadge').textContent = 'Used ' + useCount + ' time' + (useCount !== 1 ? 's' : '');
+}
+updateBadge();
+
+function incrementUsage() {
+  useCount++;
+  localStorage.setItem(USAGE_KEY, useCount);
+  updateBadge();
+}
+
+/* ===== Formatting ===== */
+function fmt(n) {
+  if (Math.abs(n) >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 10000) return '$' + (n / 1000).toFixed(1) + 'K';
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+function fmtFull(n) {
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmtInt(n) {
+  return n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+/* ===== Core Calculation ===== */
+function getInputs() {
+  return {
+    price: parseFloat(document.getElementById('price').value) || 0,
+    model: document.getElementById('model').value,
+    customers: parseInt(document.getElementById('customers').value) || 0,
+    newPerMonth: parseInt(document.getElementById('newPerMonth').value) || 0,
+    churn: parseFloat(document.getElementById('churn').value) || 0,
+    growth: parseFloat(document.getElementById('growth').value) || 0,
+    costs: parseFloat(document.getElementById('costs').value) || 0
+  };
+}
+
+function calcMonthlyRevPerCustomer(price, model) {
+  if (model === 'monthly') return price;
+  if (model === 'annual') return price / 12;
+  return 0; /* one-time handled separately */
+}
+
+function runProjection(inp, growthMultiplier) {
+  var rows = [];
+  var currentCustomers = inp.customers;
+  var cumProfit = 0;
+  var isRecurring = inp.model !== 'onetime';
+  var monthlyRev = calcMonthlyRevPerCustomer(inp.price, inp.model);
+  var churnRate = isRecurring ? inp.churn / 100 : 0;
+  var baseNew = inp.newPerMonth;
+  var growthRate = (inp.growth * growthMultiplier) / 100;
+
+  for (var m = 1; m <= 12; m++) {
+    var newCust = Math.round(baseNew * Math.pow(1 + growthRate, m - 1));
+    var churned = isRecurring ? Math.round(currentCustomers * churnRate) : 0;
+    currentCustomers = currentCustomers + newCust - churned;
+    if (currentCustomers < 0) currentCustomers = 0;
+
+    var revenue;
+    if (isRecurring) {
+      revenue = currentCustomers * monthlyRev;
+    } else {
+      /* one-time: revenue only from new customers */
+      revenue = newCust * inp.price;
+    }
+
+    var profit = revenue - inp.costs;
+    cumProfit += profit;
+
+    rows.push({
+      month: m,
+      customers: currentCustomers,
+      newCust: newCust,
+      churned: churned,
+      revenue: revenue,
+      costs: inp.costs,
+      profit: profit,
+      cumProfit: cumProfit
+    });
+  }
+  return rows;
+}
+
+/* ===== Update Dashboard ===== */
+function update() {
+  var inp = getInputs();
+  var rows = runProjection(inp, 1);
+  projectionData = rows;
+
+  /* Key metrics (based on month 1) */
+  var isRecurring = inp.model !== 'onetime';
+  var monthlyRev = calcMonthlyRevPerCustomer(inp.price, inp.model);
+  var mrr, arr;
+
+  if (isRecurring) {
+    mrr = inp.customers * monthlyRev;
+  } else {
+    mrr = inp.newPerMonth * inp.price;
+  }
+  arr = mrr * 12;
+  var monthlyProfit = mrr - inp.costs;
+
+  /* Months to 10K MRR */
+  var months10k = '--';
+  if (mrr >= 10000) {
+    months10k = '0';
+  } else if (isRecurring) {
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].revenue >= 10000) { months10k = '' + (i + 1); break; }
+    }
+    if (months10k === '--') {
+      /* Extend beyond 12 months */
+      var extInp = Object.assign({}, inp);
+      var extRows = [];
+      var cc = inp.customers;
+      var gr = inp.growth / 100;
+      var cr = inp.churn / 100;
+      for (var j = 1; j <= 120; j++) {
+        var nc = Math.round(inp.newPerMonth * Math.pow(1 + gr, j - 1));
+        var ch = Math.round(cc * cr);
+        cc = cc + nc - ch;
+        if (cc < 0) cc = 0;
+        var rev = cc * monthlyRev;
+        if (rev >= 10000) { months10k = '' + j; break; }
+      }
+      if (months10k === '--') months10k = '120+';
+    }
+  } else {
+    /* one-time: check if monthly new * price >= 10K */
+    for (var k = 0; k < rows.length; k++) {
+      if (rows[k].revenue >= 10000) { months10k = '' + (k + 1); break; }
+    }
+    if (months10k === '--') months10k = 'N/A';
+  }
+
+  /* LTV */
+  var ltv;
+  if (isRecurring && inp.churn > 0) {
+    ltv = monthlyRev / (inp.churn / 100);
+  } else if (isRecurring) {
+    ltv = monthlyRev * 60; /* assume 5 yr if no churn */
+  } else {
+    ltv = inp.price;
+  }
+
+  /* Break-even customers */
+  var breakeven;
+  if (isRecurring) {
+    breakeven = monthlyRev > 0 ? Math.ceil(inp.costs / monthlyRev) : 0;
+  } else {
+    breakeven = inp.price > 0 ? Math.ceil(inp.costs / inp.price) : 0;
+  }
+
+  /* Update metric cards */
+  document.getElementById('mMRR').textContent = fmt(Math.round(mrr));
+  document.getElementById('mARR').textContent = fmt(Math.round(arr));
+  var profitEl = document.getElementById('mProfit');
+  profitEl.textContent = fmt(Math.round(monthlyProfit));
+  profitEl.className = 'value ' + (monthlyProfit >= 0 ? 'val-green' : 'val-red');
+  document.getElementById('mMonths10k').textContent = months10k;
+  document.getElementById('mLTV').textContent = fmt(Math.round(ltv));
+  document.getElementById('mBreakeven').textContent = fmtInt(breakeven);
+
+  /* Update table */
+  var tbody = document.getElementById('projectionBody');
+  var html = '';
+  for (var r = 0; r < rows.length; r++) {
+    var d = rows[r];
+    html += '<tr>';
+    html += '<td>Month ' + d.month + '</td>';
+    html += '<td>' + fmtInt(d.customers) + '</td>';
+    html += '<td>+' + fmtInt(d.newCust) + '</td>';
+    html += '<td>' + (d.churned > 0 ? '-' + fmtInt(d.churned) : '0') + '</td>';
+    html += '<td>' + fmtFull(d.revenue) + '</td>';
+    html += '<td>' + fmtFull(d.costs) + '</td>';
+    html += '<td class="' + (d.profit < 0 ? 'neg' : '') + '">' + fmtFull(d.profit) + '</td>';
+    html += '<td class="' + (d.cumProfit < 0 ? 'neg' : '') + '">' + fmtFull(d.cumProfit) + '</td>';
+    html += '</tr>';
+  }
+  tbody.innerHTML = html;
+
+  /* Charts */
+  renderBarChart(rows);
+  renderLineChart(rows);
+
+  /* Scenarios */
+  renderScenarios(inp);
+}
+
+/* ===== Bar Chart ===== */
+function renderBarChart(rows) {
+  var maxRev = Math.max.apply(null, rows.map(function(r) { return r.revenue; }));
+  if (maxRev === 0) maxRev = 1;
+  var chartH = 180;
+
+  /* Y-axis */
+  var yAxis = document.getElementById('barYAxis');
+  yAxis.innerHTML = '';
+  for (var y = 4; y >= 0; y--) {
+    var val = (maxRev / 4) * y;
+    var lbl = document.createElement('span');
+    lbl.className = 'chart-y-label';
+    lbl.textContent = fmt(Math.round(val));
+    lbl.style.fontSize = '0.6rem';
+    yAxis.appendChild(lbl);
+  }
+  yAxis.style.width = '50px';
+  yAxis.style.flexShrink = '0';
+
+  /* Bars */
+  var barsArea = document.getElementById('barChart');
+  var barsHtml = '';
+  for (var i = 0; i < rows.length; i++) {
+    var h = (rows[i].revenue / maxRev) * chartH;
+    if (h < 2 && rows[i].revenue > 0) h = 2;
+    barsHtml += '<div class="chart-bar-group">';
+    barsHtml += '<div class="chart-bar" style="height:' + h + 'px;background:#ff5f1f;width:80%;left:10%">';
+    barsHtml += '<div class="chart-tooltip">' + fmtFull(rows[i].revenue) + '</div>';
+    barsHtml += '</div>';
+    barsHtml += '<div class="chart-bar-label">M' + (i + 1) + '</div>';
+    barsHtml += '</div>';
+  }
+  barsArea.innerHTML = barsHtml;
+}
+
+/* ===== Line Chart (Cumulative Profit) ===== */
+function renderLineChart(rows) {
+  var svg = document.getElementById('lineSvg');
+  var labelsEl = document.getElementById('lineLabels');
+  var vals = rows.map(function(r) { return r.cumProfit; });
+  var minVal = Math.min.apply(null, vals);
+  var maxVal = Math.max.apply(null, vals);
+  if (minVal === maxVal) { maxVal = minVal + 1; }
+  var range = maxVal - minVal;
+  var w = 960, h = 170, padX = 10, padY = 10;
+  var usableW = w - padX * 2;
+  var usableH = h - padY * 2;
+
+  /* Build path */
+  var points = [];
+  for (var i = 0; i < vals.length; i++) {
+    var x = padX + (i / (vals.length - 1)) * usableW;
+    var y = padY + usableH - ((vals[i] - minVal) / range) * usableH;
+    points.push(x + ',' + y);
+  }
+
+  /* Zero line */
+  var zeroY = padY + usableH - ((0 - minVal) / range) * usableH;
+  var zeroLine = '';
+  if (minVal < 0 && maxVal > 0) {
+    zeroLine = '<line x1="' + padX + '" y1="' + zeroY + '" x2="' + (w - padX) + '" y2="' + zeroY + '" stroke="#333" stroke-width="1" stroke-dasharray="4,4"/>';
+  }
+
+  /* Gradient fill */
+  var fillPoints = padX + ',' + (padY + usableH) + ' ' + points.join(' ') + ' ' + (w - padX) + ',' + (padY + usableH);
+
+  var svgContent = '<defs>';
+  svgContent += '<linearGradient id="profitGrad" x1="0" y1="0" x2="0" y2="1">';
+  svgContent += '<stop offset="0%" stop-color="#10b981" stop-opacity="0.3"/>';
+  svgContent += '<stop offset="100%" stop-color="#10b981" stop-opacity="0.02"/>';
+  svgContent += '</linearGradient></defs>';
+  svgContent += zeroLine;
+  svgContent += '<polygon points="' + fillPoints + '" fill="url(#profitGrad)"/>';
+  svgContent += '<polyline points="' + points.join(' ') + '" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+
+  /* Dots */
+  for (var j = 0; j < points.length; j++) {
+    var coords = points[j].split(',');
+    svgContent += '<circle cx="' + coords[0] + '" cy="' + coords[1] + '" r="4" fill="#10b981" stroke="#0a0a0a" stroke-width="2"/>';
+  }
+  svg.innerHTML = svgContent;
+
+  /* Labels */
+  var labelsHtml = '';
+  for (var k = 0; k < rows.length; k++) {
+    labelsHtml += '<span>M' + (k + 1) + '</span>';
+  }
+  labelsEl.innerHTML = labelsHtml;
+}
+
+/* ===== Scenarios ===== */
+function renderScenarios(inp) {
+  var multipliers = [1, 1.5, 2];
+  var ids = ['scenConservative', 'scenModerate', 'scenAggressive'];
+  var labels = ['Conservative', 'Moderate (1.5x)', 'Aggressive (2x)'];
+
+  for (var s = 0; s < 3; s++) {
+    var rows = runProjection(inp, multipliers[s]);
+    var last = rows[rows.length - 1];
+    var totalRev = 0, totalProfit = 0;
+    for (var r = 0; r < rows.length; r++) {
+      totalRev += rows[r].revenue;
+      totalProfit += rows[r].profit;
+    }
+
+    var card = document.getElementById(ids[s]);
+    var profitClass = totalProfit >= 0 ? 'val-green' : 'val-red';
+    card.innerHTML = '<h4>' + labels[s] + '</h4>';
+    card.innerHTML += '<div class="scenario-row"><span class="s-label">12-Mo Revenue</span><span class="s-value val-orange">' + fmt(Math.round(totalRev)) + '</span></div>';
+    card.innerHTML += '<div class="scenario-row"><span class="s-label">Total Profit</span><span class="s-value ' + profitClass + '">' + fmt(Math.round(totalProfit)) + '</span></div>';
+    card.innerHTML += '<div class="scenario-row"><span class="s-label">Customers (Mo 12)</span><span class="s-value val-white">' + fmtInt(last.customers) + '</span></div>';
+    card.innerHTML += '<div class="scenario-row"><span class="s-label">MRR (Mo 12)</span><span class="s-value val-orange">' + fmt(Math.round(last.revenue)) + '</span></div>';
+  }
+}
+
+/* ===== Copy Summary ===== */
+function copySummary() {
+  var inp = getInputs();
+  var rows = projectionData;
+  if (!rows.length) return;
+  var last = rows[rows.length - 1];
+  var totalRev = 0, totalProfit = 0;
+  for (var i = 0; i < rows.length; i++) { totalRev += rows[i].revenue; totalProfit += rows[i].profit; }
+
+  var text = 'Revenue Projection Summary\n';
+  text += '==========================\n';
+  text += 'Price: $' + inp.price + ' (' + inp.model + ')\n';
+  text += 'Starting customers: ' + inp.customers + '\n';
+  text += 'New/month: ' + inp.newPerMonth + '\n';
+  if (inp.model !== 'onetime') text += 'Churn: ' + inp.churn + '%\n';
+  if (inp.growth > 0) text += 'Growth rate: ' + inp.growth + '%\n';
+  text += 'Monthly costs: $' + inp.costs + '\n\n';
+  text += 'Month 12 Customers: ' + fmtInt(last.customers) + '\n';
+  text += 'Month 12 MRR: ' + fmtFull(last.revenue) + '\n';
+  text += '12-Month Total Revenue: ' + fmtFull(totalRev) + '\n';
+  text += '12-Month Total Profit: ' + fmtFull(totalProfit) + '\n';
+  text += '\nGenerated at spunkart.com/revenue-calculator';
+
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('btnCopy');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy Summary'; btn.classList.remove('copied'); }, 2000);
+  });
+  incrementUsage();
+}
+
+/* ===== Download CSV ===== */
+function downloadCSV() {
+  if (!projectionData.length) return;
+  var csv = 'Month,Customers,New,Churned,Revenue,Costs,Profit,Cumulative Profit\n';
+  for (var i = 0; i < projectionData.length; i++) {
+    var d = projectionData[i];
+    csv += d.month + ',' + d.customers + ',' + d.newCust + ',' + d.churned + ',';
+    csv += d.revenue.toFixed(2) + ',' + d.costs.toFixed(2) + ',' + d.profit.toFixed(2) + ',' + d.cumProfit.toFixed(2) + '\n';
+  }
+  var blob = new Blob([csv], { type: 'text/csv' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'revenue-projection-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  incrementUsage();
+}
+
+/* ===== Live Updates ===== */
+var inputs = document.querySelectorAll('.inputs-grid input, .inputs-grid select');
+var debounceTimer;
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() {
+      update();
+      incrementUsage();
+    }, 150);
+  });
+  inputs[i].addEventListener('change', function() {
+    update();
+  });
+}
+
+/* ===== Toggle churn visibility ===== */
+function updateChurnVisibility() {
+  var model = document.getElementById('model').value;
+  var churnGroup = document.getElementById('churn').parentElement;
+  churnGroup.style.opacity = model === 'onetime' ? '0.4' : '1';
+  document.getElementById('churn').disabled = model === 'onetime';
+}
+document.getElementById('model').addEventListener('change', updateChurnVisibility);
+updateChurnVisibility();
+
+/* Initial render */
+update();
+</script>
+
+<!-- Email collection -->
+<script>
+(function(){
+  var ek = 'spunkart_email_collected_revcalc', uk = USAGE_KEY;
+  if (localStorage.getItem(ek)) return;
+  var check = setInterval(function(){
+    if (parseInt(localStorage.getItem(uk) || '0') >= 2) {
+      clearInterval(check);
+      var bar = document.createElement('div');
+      bar.innerHTML = '<div style="position:fixed;bottom:0;left:0;right:0;background:#141414;border-top:2px solid #ff5f1f;padding:16px 20px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"><span style="color:#e8e8e8;font-size:.95rem">Get free tools & updates &mdash; </span><iframe src="https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="border-radius:8px;max-width:320px"></iframe><button onclick="this.parentElement.remove();localStorage.setItem(\'spunkart_email_collected_revcalc\',\'1\')" style="background:none;border:none;color:#666;cursor:pointer;font-size:1.2rem">\u2715</button></div>';
+      document.body.appendChild(bar);
+    }
+  }, 1000);
+})();
+</script>
+
+<!-- Code protection -->
+<script>
+document.addEventListener('contextmenu',function(e){e.preventDefault()});
+document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))||(e.ctrlKey&&e.key==='u'))e.preventDefault()});
+console.log('%c\u26A0 SpunkArt Protected','font-size:20px;color:#ff5f1f;font-weight:bold');
+console.log('%cUnauthorized copying or redistribution of this tool is prohibited.','font-size:12px;color:#e8e8e8');
+</script>
+
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</body>
+</html>
