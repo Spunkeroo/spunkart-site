@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JWT Decoder — Decode &amp; Inspect JSON Web Tokens Free</title>
+<meta name="description" content="Free JWT decoder tool. Paste a JSON Web Token to instantly decode the header and payload, view expiration timestamps, validate structure, and copy decoded parts.">
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;display:flex;justify-content:center;padding:2rem}
+.container{max-width:860px;width:100%}
+h1{font-size:2rem;text-align:center;margin-bottom:0.3rem;background:linear-gradient(135deg,#ff5f1f,#ff9f1f);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{text-align:center;color:#666;margin-bottom:2rem;font-size:0.9rem}
+.badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.8rem;color:#10b981;font-weight:700;margin-bottom:1.5rem;text-align:center}
+.badge-wrap{text-align:center}
+
+/* Input */
+.input-section{margin-bottom:1.5rem}
+.input-section label{display:block;font-size:0.85rem;color:#888;margin-bottom:8px;font-weight:600}
+.jwt-input{width:100%;min-height:120px;padding:16px;background:#111;border:1px solid #333;border-radius:10px;color:#e8e8e8;font-family:'Courier New',monospace;font-size:0.85rem;resize:vertical;outline:none;transition:border 0.2s;line-height:1.6;word-break:break-all}
+.jwt-input:focus{border-color:#ff5f1f}
+.jwt-input::placeholder{color:#444}
+.btn-row{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.btn{padding:10px 20px;background:#ff5f1f;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn:hover{background:#e5520f;transform:scale(1.02)}
+.btn-sm{padding:8px 14px;font-size:0.8rem}
+.btn-secondary{background:#222;color:#ccc}.btn-secondary:hover{background:#333;transform:scale(1.02)}
+
+/* Color-coded JWT */
+.jwt-colored{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:1.5rem;font-family:'Courier New',monospace;font-size:0.85rem;word-break:break-all;line-height:1.8;display:none}
+.jwt-colored.show{display:block}
+.jwt-colored .header-part{color:#ef4444;background:rgba(239,68,68,0.1);padding:2px 4px;border-radius:3px}
+.jwt-colored .payload-part{color:#3b82f6;background:rgba(59,130,246,0.1);padding:2px 4px;border-radius:3px}
+.jwt-colored .sig-part{color:#10b981;background:rgba(16,185,129,0.1);padding:2px 4px;border-radius:3px}
+.jwt-colored .dot{color:#555;font-weight:900;font-size:1.1rem}
+.legend{display:flex;gap:16px;margin-top:10px;font-size:0.78rem;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:4px}
+.legend .dot-h{width:10px;height:10px;border-radius:50%;background:#ef4444}
+.legend .dot-p{width:10px;height:10px;border-radius:50%;background:#3b82f6}
+.legend .dot-s{width:10px;height:10px;border-radius:50%;background:#10b981}
+
+/* Validation */
+.validation{background:#111;border:1px solid #222;border-radius:12px;padding:16px 20px;margin-bottom:1.5rem;display:none;font-size:0.88rem}
+.validation.show{display:block}
+.validation.valid{border-color:#10b981}
+.validation.invalid{border-color:#ef4444}
+.val-icon{font-size:1.2rem;margin-right:8px}
+.val-valid{color:#10b981}
+.val-invalid{color:#ef4444}
+.val-details{margin-top:8px;font-size:0.82rem;color:#888;line-height:1.6}
+
+/* Decoded Sections */
+.decoded-section{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:1.5rem;display:none}
+.decoded-section.show{display:block}
+.decoded-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.decoded-title{font-size:1rem;font-weight:700}
+.decoded-title.hdr{color:#ef4444}
+.decoded-title.pld{color:#3b82f6}
+.decoded-title.sig{color:#10b981}
+.json-output{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;line-height:1.7;overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+.json-key{color:#ff5f1f}
+.json-str{color:#10b981}
+.json-num{color:#3b82f6}
+.json-bool{color:#a855f7}
+.json-null{color:#666}
+
+/* Timestamps */
+.timestamps{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:14px;margin-top:12px}
+.timestamps h4{font-size:0.82rem;color:#ff5f1f;margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.ts-row{display:flex;justify-content:space-between;padding:6px 0;font-size:0.82rem;border-bottom:1px solid #111;flex-wrap:wrap;gap:4px}
+.ts-row:last-child{border-bottom:none}
+.ts-label{color:#888;font-weight:600}
+.ts-value{color:#e8e8e8;font-family:'Courier New',monospace}
+.ts-expired{color:#ef4444;font-weight:700}
+.ts-valid{color:#10b981;font-weight:700}
+
+/* Signature */
+.sig-section{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:1.5rem;display:none}
+.sig-section.show{display:block}
+.sig-value{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:14px;font-family:'Courier New',monospace;font-size:0.8rem;color:#10b981;word-break:break-all;line-height:1.6}
+
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.tool-links a{padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:0.75rem;color:#ccc;text-decoration:none}
+.tool-links a:hover{border-color:#ff5f1f;color:#ff5f1f}
+.newsletter{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:14px 24px;display:none;justify-content:center;align-items:center;gap:12px;z-index:100;flex-wrap:wrap;animation:slideUp 0.4s ease}
+.newsletter.show{display:flex}
+.newsletter h3{color:#ff5f1f;font-size:0.9rem;white-space:nowrap}
+.newsletter .close-nl{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:4px 8px}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555}
+footer a{margin:0 6px}
+.copied{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:0.5rem 1.5rem;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:200}
+.copied.show{opacity:1}
+@media(max-width:700px){.container{padding:0 1rem}h1{font-size:1.5rem}.json-output{font-size:0.78rem;padding:12px}.legend{gap:10px;font-size:0.72rem}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder","description":"Free JWT decoder. Paste a JSON Web Token to decode header, payload, view timestamps, validate structure, and copy decoded parts.","url":"https://spunkart.com/jwt-decoder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+<main>
+<div class="container">
+  <h1>JWT Decoder</h1>
+  <div class="sub">Decode &amp; inspect JSON Web Tokens instantly — header, payload, timestamps</div>
+  <div class="badge-wrap"><span class="badge" id="usageBadge">0 tokens decoded</span></div>
+
+  <!-- Input -->
+  <div class="input-section">
+    <label>Paste your JWT below</label>
+    <textarea class="jwt-input" id="jwtInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" spellcheck="false"></textarea>
+    <div class="btn-row">
+      <button class="btn" onclick="decodeJWT()">Decode JWT</button>
+      <button class="btn btn-secondary" onclick="loadSample()">Load Sample</button>
+      <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <!-- Validation -->
+  <div class="validation" id="validation"></div>
+
+  <!-- Color-coded JWT -->
+  <div class="jwt-colored" id="jwtColored"></div>
+
+  <!-- Header -->
+  <div class="decoded-section" id="headerSection">
+    <div class="decoded-header">
+      <span class="decoded-title hdr">Header (JOSE)</span>
+      <button class="btn btn-sm" onclick="copyPart('header')">Copy Header</button>
+    </div>
+    <div class="json-output" id="headerOutput"></div>
+  </div>
+
+  <!-- Payload -->
+  <div class="decoded-section" id="payloadSection">
+    <div class="decoded-header">
+      <span class="decoded-title pld">Payload (Claims)</span>
+      <button class="btn btn-sm" onclick="copyPart('payload')">Copy Payload</button>
+    </div>
+    <div class="json-output" id="payloadOutput"></div>
+    <div class="timestamps" id="timestamps" style="display:none"></div>
+  </div>
+
+  <!-- Signature -->
+  <div class="sig-section" id="sigSection">
+    <div class="decoded-header">
+      <span class="decoded-title sig">Signature</span>
+      <button class="btn btn-sm btn-secondary" onclick="copyPart('signature')">Copy Signature</button>
+    </div>
+    <div class="sig-value" id="sigOutput"></div>
+    <div style="margin-top:10px;font-size:0.8rem;color:#888">Signature verification requires the secret key or public key, which is not available client-side. Structure validation only.</div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Developer Tools</h3>
+    <div class="tool-links">
+      <a href="/json-formatter.html">JSON Formatter</a>
+      <a href="/base64-tool.html">Base64 Tool</a>
+      <a href="/dns-lookup.html">DNS Lookup</a>
+      <a href="/regex-tester.html">Regex Tester</a>
+      <a href="/crontab-generator.html">Cron Generator</a>
+      <a href="/chmod-calculator.html">Chmod Calculator</a>
+      <a href="/password-generator.html">Password Gen</a>
+      <a href="/url-encoder.html">URL Encoder</a>
+    </div>
+    <h3>Get All 40+ Tools — $9.99</h3>
+    <p>Instant access to every premium tool. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand.</p>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" class="cta">Get the Bundle — $9.99</a>
+  </div>
+</div>
+</main>
+
+<div class="newsletter" id="newsletter">
+  <h3>Get New Tools First</h3>
+  <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" style="width:100%;max-width:400px;height:52px;border:none;border-radius:8px;background:transparent"></iframe>
+  <button class="close-nl" onclick="document.getElementById('newsletter').classList.remove('show')">&times;</button>
+</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/" style="color:#ff5f1f">SpunkArt</a> <a href="/store" style="color:#ff5f1f">Store</a> <a href="/blog" style="color:#888">Blog</a> <a href="/store#ebook" style="color:#888">Ebook</a> <a href="https://spunk.bet" style="color:#888">Spunk.Bet</a> <a href="https://predict.codes" style="color:#888">Predict</a></footer>
+
+<div class="copied" id="copied">Copied!</div>
+
+<script>
+/* ===== STATE ===== */
+var usageCount = parseInt(localStorage.getItem('spunkart_jwt_count') || '0');
+var decodedData = { header: null, payload: null, signature: '' };
+updateBadge();
+
+/* Auto-decode on paste */
+document.getElementById('jwtInput').addEventListener('input', function() {
+  var val = this.value.trim();
+  if (val && val.split('.').length === 3 && val.length > 20) {
+    decodeJWT();
+  }
+});
+
+/* ===== DECODE ===== */
+function decodeJWT() {
+  var jwt = document.getElementById('jwtInput').value.trim();
+  if (!jwt) return;
+
+  var parts = jwt.split('.');
+  var valEl = document.getElementById('validation');
+  valEl.classList.add('show');
+
+  /* Validate structure */
+  if (parts.length !== 3) {
+    valEl.className = 'validation show invalid';
+    valEl.innerHTML = '<span class="val-icon val-invalid">&#10007;</span><strong>Invalid JWT Structure</strong>' +
+      '<div class="val-details">A JWT must have exactly 3 parts separated by dots (header.payload.signature). Found ' + parts.length + ' part' + (parts.length !== 1 ? 's' : '') + '.</div>';
+    hideDecoded();
+    return;
+  }
+
+  var header, payload;
+  try {
+    header = JSON.parse(b64Decode(parts[0]));
+  } catch (e) {
+    valEl.className = 'validation show invalid';
+    valEl.innerHTML = '<span class="val-icon val-invalid">&#10007;</span><strong>Invalid Header</strong>' +
+      '<div class="val-details">Could not decode header as valid Base64URL-encoded JSON. ' + escHtml(e.message) + '</div>';
+    hideDecoded();
+    return;
+  }
+
+  try {
+    payload = JSON.parse(b64Decode(parts[1]));
+  } catch (e) {
+    valEl.className = 'validation show invalid';
+    valEl.innerHTML = '<span class="val-icon val-invalid">&#10007;</span><strong>Invalid Payload</strong>' +
+      '<div class="val-details">Could not decode payload as valid Base64URL-encoded JSON. ' + escHtml(e.message) + '</div>';
+    hideDecoded();
+    return;
+  }
+
+  decodedData.header = header;
+  decodedData.payload = payload;
+  decodedData.signature = parts[2];
+
+  /* Validation success */
+  var algInfo = header.alg ? ' Algorithm: <strong style="color:#ff5f1f">' + escHtml(header.alg) + '</strong>' : '';
+  var typInfo = header.typ ? ' Type: <strong style="color:#ff5f1f">' + escHtml(header.typ) + '</strong>' : '';
+  valEl.className = 'validation show valid';
+  valEl.innerHTML = '<span class="val-icon val-valid">&#10003;</span><strong>Valid JWT Structure</strong>' +
+    '<div class="val-details">3 parts detected.' + algInfo + (algInfo && typInfo ? ' |' : '') + typInfo + '</div>';
+
+  /* Color-coded view */
+  var colorEl = document.getElementById('jwtColored');
+  colorEl.classList.add('show');
+  colorEl.innerHTML = '<span class="header-part">' + escHtml(parts[0]) + '</span>' +
+    '<span class="dot">.</span>' +
+    '<span class="payload-part">' + escHtml(parts[1]) + '</span>' +
+    '<span class="dot">.</span>' +
+    '<span class="sig-part">' + escHtml(parts[2]) + '</span>' +
+    '<div class="legend"><span><span class="dot-h"></span> Header</span><span><span class="dot-p"></span> Payload</span><span><span class="dot-s"></span> Signature</span></div>';
+
+  /* Header */
+  document.getElementById('headerSection').classList.add('show');
+  document.getElementById('headerOutput').innerHTML = syntaxHighlight(JSON.stringify(header, null, 2));
+
+  /* Payload */
+  document.getElementById('payloadSection').classList.add('show');
+  document.getElementById('payloadOutput').innerHTML = syntaxHighlight(JSON.stringify(payload, null, 2));
+
+  /* Timestamps */
+  renderTimestamps(payload);
+
+  /* Signature */
+  document.getElementById('sigSection').classList.add('show');
+  document.getElementById('sigOutput').textContent = parts[2];
+
+  /* Track usage */
+  usageCount++;
+  localStorage.setItem('spunkart_jwt_count', usageCount.toString());
+  updateBadge();
+  checkNewsletter();
+}
+
+/* ===== TIMESTAMPS ===== */
+function renderTimestamps(payload) {
+  var tsEl = document.getElementById('timestamps');
+  var fields = [
+    { key: 'iat', label: 'Issued At' },
+    { key: 'exp', label: 'Expires At' },
+    { key: 'nbf', label: 'Not Before' },
+    { key: 'auth_time', label: 'Auth Time' }
+  ];
+
+  var hasAny = false;
+  var html = '<h4>Timestamps</h4>';
+  var now = Math.floor(Date.now() / 1000);
+
+  fields.forEach(function(f) {
+    if (payload[f.key] !== undefined) {
+      hasAny = true;
+      var ts = payload[f.key];
+      var date = new Date(ts * 1000);
+      var human = date.toLocaleString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' });
+      var extra = '';
+      if (f.key === 'exp') {
+        if (ts < now) {
+          var ago = formatDuration(now - ts);
+          extra = ' <span class="ts-expired">EXPIRED ' + ago + ' ago</span>';
+        } else {
+          var until = formatDuration(ts - now);
+          extra = ' <span class="ts-valid">Valid for ' + until + '</span>';
+        }
+      }
+      if (f.key === 'iat') {
+        var ago2 = formatDuration(now - ts);
+        extra = ' <span style="color:#888">(' + ago2 + ' ago)</span>';
+      }
+      html += '<div class="ts-row"><span class="ts-label">' + f.label + ' (' + f.key + ')</span><span class="ts-value">' + human + extra + '</span></div>';
+    }
+  });
+
+  if (hasAny) {
+    tsEl.style.display = '';
+    tsEl.innerHTML = html;
+  } else {
+    tsEl.style.display = 'none';
+  }
+}
+
+function formatDuration(seconds) {
+  if (seconds < 60) return seconds + 's';
+  if (seconds < 3600) return Math.floor(seconds / 60) + 'm ' + (seconds % 60) + 's';
+  if (seconds < 86400) return Math.floor(seconds / 3600) + 'h ' + Math.floor((seconds % 3600) / 60) + 'm';
+  return Math.floor(seconds / 86400) + 'd ' + Math.floor((seconds % 86400) / 3600) + 'h';
+}
+
+/* ===== BASE64URL DECODE ===== */
+function b64Decode(str) {
+  str = str.replace(/-/g, '+').replace(/_/g, '/');
+  while (str.length % 4) str += '=';
+  return decodeURIComponent(atob(str).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
+
+/* ===== SYNTAX HIGHLIGHT ===== */
+function syntaxHighlight(json) {
+  json = escHtml(json);
+  return json.replace(/("(\\u[a-fA-F0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+    var cls = 'json-num';
+    if (/^"/.test(match)) {
+      if (/:$/.test(match)) {
+        cls = 'json-key';
+      } else {
+        cls = 'json-str';
+      }
+    } else if (/true|false/.test(match)) {
+      cls = 'json-bool';
+    } else if (/null/.test(match)) {
+      cls = 'json-null';
+    }
+    return '<span class="' + cls + '">' + match + '</span>';
+  });
+}
+
+/* ===== COPY ===== */
+function copyPart(part) {
+  var text = '';
+  if (part === 'header') text = JSON.stringify(decodedData.header, null, 2);
+  else if (part === 'payload') text = JSON.stringify(decodedData.payload, null, 2);
+  else if (part === 'signature') text = decodedData.signature;
+  navigator.clipboard.writeText(text);
+  showToast(part.charAt(0).toUpperCase() + part.slice(1) + ' copied!');
+}
+
+/* ===== HELPERS ===== */
+function hideDecoded() {
+  document.getElementById('jwtColored').classList.remove('show');
+  document.getElementById('headerSection').classList.remove('show');
+  document.getElementById('payloadSection').classList.remove('show');
+  document.getElementById('sigSection').classList.remove('show');
+}
+
+function loadSample() {
+  document.getElementById('jwtInput').value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxOTE2MjM5MDIyfQ.lBTHxoe1FW9wjSMmNAkYWHGPLkOi0YOo_xnCkKQx4Pw';
+  decodeJWT();
+}
+
+function clearAll() {
+  document.getElementById('jwtInput').value = '';
+  document.getElementById('validation').classList.remove('show');
+  hideDecoded();
+}
+
+function escHtml(str) {
+  var d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+
+/* ===== BADGE ===== */
+function updateBadge() {
+  document.getElementById('usageBadge').textContent = usageCount + ' token' + (usageCount !== 1 ? 's' : '') + ' decoded';
+}
+
+/* ===== NEWSLETTER ===== */
+function checkNewsletter() {
+  if (usageCount >= 3 && !localStorage.getItem('spunkart_nl_jwt_dismissed')) {
+    document.getElementById('newsletter').classList.add('show');
+  }
+}
+document.querySelector('.close-nl').addEventListener('click', function() {
+  localStorage.setItem('spunkart_nl_jwt_dismissed', '1');
+});
+
+/* ===== TOAST ===== */
+function showToast(msg) {
+  var el = document.getElementById('copied');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(function() { el.classList.remove('show'); }, 1800);
+}
+</script>
+<script>
+/* SpunkArt Protection */
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.className='watermark';
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
