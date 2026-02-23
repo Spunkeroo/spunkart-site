@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Package.json Builder - Visual NPM Config Generator | SPUNKART.COM</title>
+<meta name="description" content="Visual package.json builder. Set name, version, scripts, dependencies, devDependencies, engines. Add packages from a searchable list. Export valid JSON.">
+<meta name="keywords" content="package.json builder, npm config generator, package json generator, npm init, node project setup, dependency manager">
+<meta property="og:title" content="Package.json Builder — NPM Config Generator | SPUNKART.COM">
+<meta property="og:description" content="Build package.json visually. Add scripts, deps, and config. Export valid JSON. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/package-json-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Package.json Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Visual package.json builder with dependency search. Free tool.">
+<link rel="canonical" href="https://spunkart.com/package-json-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.field-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.field-row label{font-size:0.85rem;color:#888;min-width:100px}
+.field-input{flex:1;min-width:200px;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none}
+.field-input:focus{border-color:#ff5f1f}
+.field-input::placeholder{color:#444}
+.scripts-list,.deps-list{margin-top:8px}
+.script-row,.dep-row{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;align-items:center}
+.script-row input,.dep-row input{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;font-family:'Courier New',monospace}
+.script-row input:focus,.dep-row input:focus{border-color:#ff5f1f}
+.quick-deps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.quick-dep{padding:4px 10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-size:0.78rem;cursor:pointer;transition:all .2s}
+.quick-dep:hover{border-color:#ff5f1f;color:#ff5f1f}
+.quick-dep.added{border-color:#10b981;color:#10b981;background:#10b98112}
+.output-area{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.85rem;font-family:'Courier New',monospace;white-space:pre-wrap;overflow-x:auto;line-height:1.5}
+.dep-search{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;outline:none;margin-bottom:10px}
+.dep-search:focus{border-color:#ff5f1f}
+.search-results{max-height:150px;overflow-y:auto;margin-bottom:12px}
+.search-result{padding:6px 12px;cursor:pointer;font-size:0.85rem;border-radius:4px;display:flex;justify-content:space-between}
+.search-result:hover{background:#1a1a1a;color:#ff5f1f}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .field-row label{min-width:80px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Package.json Builder","description":"Visual package.json builder. Configure name, version, scripts, dependencies, devDependencies, engines. Export valid JSON.","url":"https://spunkart.com/package-json-builder.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Package.json <span>Builder</span></h1>
+  <p class="subtitle">Build your package.json visually. Add scripts, dependencies, and config options. Export valid JSON.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Basic Info</h3>
+    <div class="field-row"><label>Name</label><input class="field-input" id="pkgName" placeholder="my-package" value="my-app"></div>
+    <div class="field-row"><label>Version</label><input class="field-input" id="pkgVersion" placeholder="1.0.0" value="1.0.0"></div>
+    <div class="field-row"><label>Description</label><input class="field-input" id="pkgDesc" placeholder="A brief description"></div>
+    <div class="field-row"><label>Author</label><input class="field-input" id="pkgAuthor" placeholder="Your Name <email@example.com>"></div>
+    <div class="field-row"><label>License</label>
+      <select class="field-input" id="pkgLicense" style="max-width:200px">
+        <option>MIT</option><option>ISC</option><option>Apache-2.0</option><option>GPL-3.0</option><option>BSD-2-Clause</option><option>BSD-3-Clause</option><option>UNLICENSED</option>
+      </select>
+    </div>
+    <div class="field-row"><label>Main</label><input class="field-input" id="pkgMain" placeholder="index.js" value="index.js"></div>
+    <div class="field-row"><label>Type</label>
+      <select class="field-input" id="pkgType" style="max-width:200px">
+        <option value="">commonjs (default)</option><option value="module">module (ESM)</option>
+      </select>
+    </div>
+    <div class="field-row"><label>Repository</label><input class="field-input" id="pkgRepo" placeholder="https://github.com/user/repo"></div>
+    <div class="field-row"><label>Keywords</label><input class="field-input" id="pkgKeywords" placeholder="keyword1, keyword2, keyword3"></div>
+    <div class="field-row"><label>Node Engine</label><input class="field-input" id="pkgEngine" placeholder=">=18.0.0" style="max-width:200px"></div>
+    <div class="field-row">
+      <label>Private</label>
+      <label style="display:flex;gap:6px;align-items:center;cursor:pointer;min-width:auto"><input type="checkbox" id="pkgPrivate"> Yes</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Scripts</h3>
+    <div class="scripts-list" id="scriptsList"></div>
+    <button class="btn btn-secondary btn-sm" onclick="addScript()">+ Add Script</button>
+  </div>
+
+  <div class="section">
+    <h3>Dependencies</h3>
+    <input type="text" class="dep-search" id="depSearch" placeholder="Search packages (e.g. express, react, lodash)..." oninput="searchDeps(this.value)">
+    <div class="search-results" id="searchResults"></div>
+    <p style="font-size:0.8rem;color:#555;margin-bottom:8px">Quick add popular packages:</p>
+    <div class="quick-deps" id="quickDeps"></div>
+    <div class="deps-list" id="depsList"></div>
+    <button class="btn btn-secondary btn-sm" onclick="addDep('dep')">+ Add Dependency</button>
+  </div>
+
+  <div class="section">
+    <h3>Dev Dependencies</h3>
+    <div class="deps-list" id="devDepsList"></div>
+    <button class="btn btn-secondary btn-sm" onclick="addDep('dev')">+ Add Dev Dependency</button>
+    <p style="font-size:0.8rem;color:#555;margin-top:8px">Quick add:</p>
+    <div class="quick-deps" id="quickDevDeps"></div>
+  </div>
+
+  <div class="section">
+    <h3>Generated package.json</h3>
+    <div class="output-area" id="jsonOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateJSON()">Generate</button>
+      <button class="btn btn-secondary" onclick="copyJSON()">Copy JSON</button>
+      <button class="btn btn-secondary" onclick="downloadJSON()">Download</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/monorepo-generator">Monorepo Generator</a>
+      <a href="/changelog-generator">Changelog Generator</a>
+      <a href="/cli-command-builder">CLI Command Builder</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let scripts = [{name:'dev',cmd:'vite'},{name:'build',cmd:'vite build'},{name:'start',cmd:'node dist/index.js'}];
+let deps = [];
+let devDeps = [];
+let scriptCounter = 3;
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+const popularDeps = [
+  {name:'express',ver:'^4.18.0'},{name:'react',ver:'^18.2.0'},{name:'react-dom',ver:'^18.2.0'},
+  {name:'next',ver:'^14.0.0'},{name:'vue',ver:'^3.4.0'},{name:'axios',ver:'^1.6.0'},
+  {name:'lodash',ver:'^4.17.0'},{name:'dotenv',ver:'^16.3.0'},{name:'cors',ver:'^2.8.0'},
+  {name:'mongoose',ver:'^8.0.0'},{name:'prisma',ver:'^5.7.0'},{name:'zod',ver:'^3.22.0'},
+  {name:'socket.io',ver:'^4.7.0'},{name:'jsonwebtoken',ver:'^9.0.0'},{name:'bcrypt',ver:'^5.1.0'},
+  {name:'uuid',ver:'^9.0.0'},{name:'dayjs',ver:'^1.11.0'},{name:'chalk',ver:'^5.3.0'}
+];
+
+const popularDevDeps = [
+  {name:'typescript',ver:'^5.3.0'},{name:'vite',ver:'^5.0.0'},{name:'vitest',ver:'^1.0.0'},
+  {name:'jest',ver:'^29.7.0'},{name:'eslint',ver:'^8.56.0'},{name:'prettier',ver:'^3.1.0'},
+  {name:'nodemon',ver:'^3.0.0'},{name:'@types/node',ver:'^20.0.0'},{name:'ts-node',ver:'^10.9.0'},
+  {name:'tailwindcss',ver:'^3.4.0'},{name:'postcss',ver:'^8.4.0'},{name:'autoprefixer',ver:'^10.4.0'},
+  {name:'@types/react',ver:'^18.2.0'},{name:'husky',ver:'^8.0.0'},{name:'lint-staged',ver:'^15.2.0'}
+];
+
+function renderScripts() {
+  document.getElementById('scriptsList').innerHTML = scripts.map((s,i) => `
+    <div class="script-row">
+      <input placeholder="script name" value="${s.name}" oninput="scripts[${i}].name=this.value" style="width:120px">
+      <input placeholder="command" value="${s.cmd}" oninput="scripts[${i}].cmd=this.value" style="flex:1;min-width:200px">
+      <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 10px" onclick="scripts.splice(${i},1);renderScripts()">x</button>
+    </div>
+  `).join('');
+}
+
+function addScript() { scripts.push({name:'',cmd:''}); renderScripts(); }
+
+function renderDeps() {
+  document.getElementById('depsList').innerHTML = deps.map((d,i) => `
+    <div class="dep-row">
+      <input placeholder="package name" value="${d.name}" oninput="deps[${i}].name=this.value" style="flex:1;min-width:150px">
+      <input placeholder="^1.0.0" value="${d.ver}" oninput="deps[${i}].ver=this.value" style="width:100px">
+      <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 10px" onclick="deps.splice(${i},1);renderDeps();updateQuickDeps()">x</button>
+    </div>
+  `).join('');
+}
+
+function renderDevDeps() {
+  document.getElementById('devDepsList').innerHTML = devDeps.map((d,i) => `
+    <div class="dep-row">
+      <input placeholder="package name" value="${d.name}" oninput="devDeps[${i}].name=this.value" style="flex:1;min-width:150px">
+      <input placeholder="^1.0.0" value="${d.ver}" oninput="devDeps[${i}].ver=this.value" style="width:100px">
+      <button class="btn btn-secondary btn-sm" style="color:#ef4444;padding:4px 10px" onclick="devDeps.splice(${i},1);renderDevDeps();updateQuickDeps()">x</button>
+    </div>
+  `).join('');
+}
+
+function addDep(type) {
+  if(type==='dep'){deps.push({name:'',ver:'^1.0.0'});renderDeps();}
+  else{devDeps.push({name:'',ver:'^1.0.0'});renderDevDeps();}
+}
+
+function toggleQuickDep(name, ver, type) {
+  const list = type==='dep'?deps:devDeps;
+  const idx = list.findIndex(d=>d.name===name);
+  if(idx>=0) list.splice(idx,1);
+  else list.push({name,ver});
+  type==='dep'?renderDeps():renderDevDeps();
+  updateQuickDeps();
+}
+
+function updateQuickDeps() {
+  document.getElementById('quickDeps').innerHTML = popularDeps.map(p => {
+    const added = deps.some(d=>d.name===p.name);
+    return `<span class="quick-dep${added?' added':''}" onclick="toggleQuickDep('${p.name}','${p.ver}','dep')">${p.name}</span>`;
+  }).join('');
+  document.getElementById('quickDevDeps').innerHTML = popularDevDeps.map(p => {
+    const added = devDeps.some(d=>d.name===p.name);
+    return `<span class="quick-dep${added?' added':''}" onclick="toggleQuickDep('${p.name}','${p.ver}','dev')">${p.name}</span>`;
+  }).join('');
+}
+
+function searchDeps(query) {
+  const results = document.getElementById('searchResults');
+  if(!query.trim()){results.innerHTML='';return;}
+  const q = query.toLowerCase();
+  const all = [...popularDeps,...popularDevDeps];
+  const matches = all.filter(p=>p.name.includes(q));
+  results.innerHTML = matches.slice(0,8).map(p => `
+    <div class="search-result" onclick="deps.push({name:'${p.name}',ver:'${p.ver}'});renderDeps();updateQuickDeps();document.getElementById('depSearch').value='';document.getElementById('searchResults').innerHTML=''">
+      <span>${p.name}</span><span style="color:#555">${p.ver}</span>
+    </div>
+  `).join('');
+}
+
+function generateJSON() {
+  const pkg = {};
+  const name = document.getElementById('pkgName').value.trim();
+  if(name) pkg.name = name;
+  pkg.version = document.getElementById('pkgVersion').value.trim() || '1.0.0';
+  const desc = document.getElementById('pkgDesc').value.trim();
+  if(desc) pkg.description = desc;
+  const main = document.getElementById('pkgMain').value.trim();
+  if(main) pkg.main = main;
+  const type = document.getElementById('pkgType').value;
+  if(type) pkg.type = type;
+  if(document.getElementById('pkgPrivate').checked) pkg.private = true;
+
+  if(scripts.some(s=>s.name&&s.cmd)) {
+    pkg.scripts = {};
+    scripts.filter(s=>s.name&&s.cmd).forEach(s=>pkg.scripts[s.name]=s.cmd);
+  }
+
+  const author = document.getElementById('pkgAuthor').value.trim();
+  if(author) pkg.author = author;
+  pkg.license = document.getElementById('pkgLicense').value;
+
+  const keywords = document.getElementById('pkgKeywords').value.trim();
+  if(keywords) pkg.keywords = keywords.split(',').map(k=>k.trim()).filter(Boolean);
+
+  const repo = document.getElementById('pkgRepo').value.trim();
+  if(repo) pkg.repository = {type:'git',url:repo};
+
+  if(deps.some(d=>d.name)) {
+    pkg.dependencies = {};
+    deps.filter(d=>d.name).forEach(d=>pkg.dependencies[d.name]=d.ver||'*');
+  }
+
+  if(devDeps.some(d=>d.name)) {
+    pkg.devDependencies = {};
+    devDeps.filter(d=>d.name).forEach(d=>pkg.devDependencies[d.name]=d.ver||'*');
+  }
+
+  const engine = document.getElementById('pkgEngine').value.trim();
+  if(engine) pkg.engines = {node:engine};
+
+  const json = JSON.stringify(pkg, null, 2);
+  document.getElementById('jsonOutput').textContent = json;
+  gtag('event','generate_package_json',{event_category:'tool_use'});
+}
+
+function copyJSON() {
+  const text = document.getElementById('jsonOutput').textContent;
+  if(!text){showToast('Generate first');return;}
+  navigator.clipboard.writeText(text);
+  showToast('Copied!');
+}
+
+function downloadJSON() {
+  const text = document.getElementById('jsonOutput').textContent;
+  if(!text){showToast('Generate first');return;}
+  const blob = new Blob([text],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');a.href=url;a.download='package.json';a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded!');
+}
+
+renderScripts();
+renderDeps();
+renderDevDeps();
+updateQuickDeps();
+generateJSON();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
