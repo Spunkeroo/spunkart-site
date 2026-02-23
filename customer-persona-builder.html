@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer Persona Builder - Free Persona Card Generator | SPUNKART.COM</title>
+<meta name="description" content="Create detailed customer personas with demographics, goals, pain points, and behaviors. Generate formatted persona cards. Save multiple personas locally.">
+<meta name="keywords" content="customer persona builder, buyer persona generator, user persona template, marketing persona tool, target audience builder">
+<meta property="og:title" content="Customer Persona Builder | SPUNKART.COM">
+<meta property="og:description" content="Build detailed customer personas with demographics, goals, and pain points. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/customer-persona-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Customer Persona Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Create customer personas instantly. Free tool for founders.">
+<link rel="canonical" href="https://spunkart.com/customer-persona-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input,select,textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:#ff5f1f}
+textarea{min-height:80px;resize:vertical;line-height:1.6}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-danger{background:#dc2626;color:#fff;font-size:0.8rem;padding:6px 14px}.btn-danger:hover{background:#b91c1c}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.persona-card{background:#1a1a1a;border:1px solid #333;border-radius:12px;overflow:hidden;margin-bottom:16px}
+.persona-card .header{background:linear-gradient(135deg,#ff5f1f22,#0a0a0a);padding:20px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid #333}
+.persona-card .avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:#fff;flex-shrink:0}
+.persona-card .info h3{font-size:1.1rem;margin-bottom:2px}
+.persona-card .info p{color:#888;font-size:0.85rem}
+.persona-card .body{padding:20px 24px}
+.persona-card .body .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.persona-card .body .block h4{color:#ff5f1f;font-size:0.85rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.persona-card .body .block ul{list-style:none;padding:0}
+.persona-card .body .block ul li{padding:4px 0;font-size:0.9rem;color:#ccc;display:flex;align-items:center;gap:6px}
+.persona-card .body .block ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:#ff5f1f;flex-shrink:0}
+.persona-card .body .quote{background:#0d0d0d;border-left:3px solid #ff5f1f;padding:12px 16px;border-radius:0 8px 8px 0;font-style:italic;color:#aaa;margin-top:16px}
+.persona-card .actions{padding:12px 24px;background:#111;border-top:1px solid #222;display:flex;gap:8px}
+.saved-list{margin-top:16px}
+.saved-item{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;cursor:pointer;transition:border-color .2s}
+.saved-item:hover{border-color:#ff5f1f}
+.saved-item .name{font-weight:600}
+.saved-item .meta{font-size:0.8rem;color:#666}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.75rem;font-weight:600;margin:2px}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .persona-card .body .row{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Customer Persona Builder","description":"Create detailed customer personas with demographics, goals, pain points, and behaviors. Save multiple personas.","url":"https://spunkart.com/customer-persona-builder.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Customer Persona <span>Builder</span></h1>
+  <p class="subtitle">Create detailed customer personas. Generate formatted persona cards and save them to your browser.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>Demographics</h2>
+    <div class="grid-3">
+      <div><label>Name</label><input type="text" id="pName" value="Sarah Chen" placeholder="Persona name"></div>
+      <div><label>Age</label><input type="number" id="pAge" value="32" min="1" max="120"></div>
+      <div><label>Job Title</label><input type="text" id="pJob" value="Product Manager" placeholder="Role"></div>
+    </div>
+    <div class="grid-3" style="margin-top:4px">
+      <div><label>Location</label><input type="text" id="pLocation" value="San Francisco, CA" placeholder="City, State"></div>
+      <div><label>Income Range</label><input type="text" id="pIncome" value="$120K - $160K" placeholder="e.g. $80K - $120K"></div>
+      <div><label>Education</label><input type="text" id="pEducation" value="MBA, Stanford" placeholder="Degree, School"></div>
+    </div>
+    <div class="grid-2" style="margin-top:4px">
+      <div><label>Company Size</label><select id="pCompanySize"><option>1 (Solo)</option><option>2-10</option><option selected>11-50</option><option>51-200</option><option>201-1000</option><option>1000+</option></select></div>
+      <div><label>Industry</label><input type="text" id="pIndustry" value="SaaS / Technology" placeholder="Industry"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Psychographics</h2>
+    <label>Goals (one per line)</label>
+    <textarea id="pGoals" placeholder="What does this persona want to achieve?">Ship products faster without sacrificing quality
+Reduce team bottlenecks and improve velocity
+Get promoted to Director of Product within 2 years</textarea>
+    <label>Pain Points (one per line)</label>
+    <textarea id="pPains" placeholder="What frustrates this persona?">Too many meetings and not enough deep work time
+Struggling to align engineering and design teams
+Current tools are fragmented and expensive</textarea>
+    <label>Behaviors (one per line)</label>
+    <textarea id="pBehaviors" placeholder="How does this persona act?">Reads Product Hunt and Hacker News daily
+Prefers self-serve products over sales calls
+Evaluates 3-5 tools before committing</textarea>
+  </div>
+
+  <div class="section">
+    <h2>Channels & Preferences</h2>
+    <label>Preferred Channels (one per line)</label>
+    <textarea id="pChannels" placeholder="Where does this persona spend time?">Twitter / X
+LinkedIn
+Slack communities
+Product Hunt
+Industry newsletters</textarea>
+    <label>Quote (something this persona would say)</label>
+    <input type="text" id="pQuote" value="I need tools that just work. I don't have time to configure complex setups." placeholder="A representative quote">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="generatePersona()">Generate Persona Card</button>
+    <button class="btn btn-secondary" onclick="savePersona()">Save to Browser</button>
+    <button class="btn btn-secondary" onclick="clearForm()">Clear Form</button>
+  </div>
+
+  <div class="section" style="margin-top:20px">
+    <h2>Generated Persona</h2>
+    <div id="personaOutput"></div>
+  </div>
+
+  <div class="section">
+    <h2>Saved Personas <span style="font-size:0.8rem;color:#666" id="savedCount">(0)</span></h2>
+    <div id="savedList" class="saved-list"><p style="color:#555;font-size:0.9rem">No saved personas yet. Create one above and click "Save to Browser".</p></div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/lean-canvas-builder">Lean Canvas</a>
+      <a href="/ab-test-significance">A/B Test Calculator</a>
+      <a href="/social-proof-generator">Social Proof</a>
+      <a href="/feature-voting-board">Feature Voting</a>
+      <a href="/landing-page-copy">Landing Page Copy</a>
+      <a href="/competitor-analysis">Competitor Analysis</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function v(id){return document.getElementById(id).value.trim()}
+function lines(id){return v(id).split('\n').map(l=>l.trim()).filter(l=>l)}
+
+const colors=['#6366f1','#ec4899','#f59e0b','#10b981','#3b82f6','#8b5cf6','#ef4444','#14b8a6'];
+function getColor(name){
+  let h=0;for(let i=0;i<name.length;i++)h=name.charCodeAt(i)+((h<<5)-h);
+  return colors[Math.abs(h)%colors.length];
+}
+
+function getPersonaData(){
+  return {
+    name:v('pName'),age:v('pAge'),job:v('pJob'),location:v('pLocation'),
+    income:v('pIncome'),education:v('pEducation'),companySize:document.getElementById('pCompanySize').value,
+    industry:v('pIndustry'),goals:lines('pGoals'),pains:lines('pPains'),
+    behaviors:lines('pBehaviors'),channels:lines('pChannels'),quote:v('pQuote'),
+    created:new Date().toISOString()
+  };
+}
+
+function renderPersonaCard(p,showActions){
+  const color=getColor(p.name);
+  const initials=p.name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+  let html=`<div class="persona-card">
+    <div class="header">
+      <div class="avatar" style="background:${color}">${initials}</div>
+      <div class="info">
+        <h3>${p.name}, ${p.age}</h3>
+        <p>${p.job} | ${p.industry}</p>
+        <p>${p.location} | ${p.income}</p>
+      </div>
+    </div>
+    <div class="body">
+      <div style="margin-bottom:8px"><span class="tag" style="background:#6366f122;color:#6366f1">${p.companySize} employees</span><span class="tag" style="background:#10b98122;color:#10b981">${p.education}</span></div>
+      <div class="row">
+        <div class="block"><h4>Goals</h4><ul>${p.goals.map(g=>`<li>${g}</li>`).join('')}</ul></div>
+        <div class="block"><h4>Pain Points</h4><ul>${p.pains.map(g=>`<li>${g}</li>`).join('')}</ul></div>
+      </div>
+      <div class="row">
+        <div class="block"><h4>Behaviors</h4><ul>${p.behaviors.map(g=>`<li>${g}</li>`).join('')}</ul></div>
+        <div class="block"><h4>Channels</h4><ul>${p.channels.map(g=>`<li>${g}</li>`).join('')}</ul></div>
+      </div>
+      ${p.quote?`<div class="quote">"${p.quote}"</div>`:''}
+    </div>`;
+  if(showActions){
+    html+=`<div class="actions">
+      <button class="btn btn-secondary" style="font-size:0.8rem;padding:6px 14px" onclick="copyPersonaCard()">Copy as HTML</button>
+    </div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function generatePersona(){
+  const p=getPersonaData();
+  if(!p.name){showToast('Enter a name');return}
+  document.getElementById('personaOutput').innerHTML=renderPersonaCard(p,true);
+  gtag('event','generate_persona',{event_category:'tool_use'});
+}
+
+function copyPersonaCard(){
+  const html=document.getElementById('personaOutput').innerHTML;
+  navigator.clipboard.writeText(html);
+  showToast('HTML Copied!');
+}
+
+function savePersona(){
+  const p=getPersonaData();
+  if(!p.name){showToast('Enter a name');return}
+  let saved=JSON.parse(localStorage.getItem('spunkart_personas')||'[]');
+  const existing=saved.findIndex(s=>s.name===p.name);
+  if(existing>=0)saved[existing]=p; else saved.push(p);
+  localStorage.setItem('spunkart_personas',JSON.stringify(saved));
+  renderSaved();
+  showToast('Persona saved!');
+  gtag('event','save_persona',{event_category:'tool_use'});
+}
+
+function loadPersona(i){
+  const saved=JSON.parse(localStorage.getItem('spunkart_personas')||'[]');
+  const p=saved[i];if(!p)return;
+  document.getElementById('pName').value=p.name;
+  document.getElementById('pAge').value=p.age;
+  document.getElementById('pJob').value=p.job;
+  document.getElementById('pLocation').value=p.location;
+  document.getElementById('pIncome').value=p.income;
+  document.getElementById('pEducation').value=p.education;
+  document.getElementById('pCompanySize').value=p.companySize;
+  document.getElementById('pIndustry').value=p.industry;
+  document.getElementById('pGoals').value=p.goals.join('\n');
+  document.getElementById('pPains').value=p.pains.join('\n');
+  document.getElementById('pBehaviors').value=p.behaviors.join('\n');
+  document.getElementById('pChannels').value=p.channels.join('\n');
+  document.getElementById('pQuote').value=p.quote||'';
+  generatePersona();
+  showToast('Loaded: '+p.name);
+}
+
+function deletePersona(i){
+  let saved=JSON.parse(localStorage.getItem('spunkart_personas')||'[]');
+  saved.splice(i,1);
+  localStorage.setItem('spunkart_personas',JSON.stringify(saved));
+  renderSaved();
+  showToast('Deleted');
+}
+
+function renderSaved(){
+  const saved=JSON.parse(localStorage.getItem('spunkart_personas')||'[]');
+  const el=document.getElementById('savedList');
+  document.getElementById('savedCount').textContent='('+saved.length+')';
+  if(!saved.length){el.innerHTML='<p style="color:#555;font-size:0.9rem">No saved personas yet.</p>';return}
+  el.innerHTML=saved.map((p,i)=>`<div class="saved-item">
+    <div onclick="loadPersona(${i})" style="flex:1;cursor:pointer"><span class="name">${p.name}</span> <span class="meta">- ${p.job} | ${p.industry}</span></div>
+    <button class="btn-danger" onclick="deletePersona(${i})">Delete</button>
+  </div>`).join('');
+}
+
+function clearForm(){
+  ['pName','pAge','pJob','pLocation','pIncome','pEducation','pIndustry','pGoals','pPains','pBehaviors','pChannels','pQuote'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('personaOutput').innerHTML='';
+}
+
+renderSaved();
+generatePersona();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
