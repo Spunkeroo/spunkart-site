@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Animation Generator — Visual Keyframe Builder | SPUNKART.COM</title>
+<meta name="description" content="Free CSS animation generator with visual keyframe editor. Build @keyframes animations with live preview, timing functions, and copy-ready CSS output.">
+<meta name="keywords" content="CSS animation generator, keyframe builder, CSS keyframes, animation editor, CSS tool, visual animation builder">
+<link rel="canonical" href="https://spunkart.com/css-animation-generator.html">
+<meta property="og:title" content="CSS Animation Generator — Visual Keyframe Builder">
+<meta property="og:description" content="Free visual CSS animation generator. Build @keyframes animations with live preview and copy-ready output.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/css-animation-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CSS Animation Generator — Visual Keyframe Builder">
+<meta name="twitter:description" content="Free visual CSS animation generator. Build @keyframes with live preview and copy-ready output.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSS Animation Generator",
+  "description": "Free CSS animation generator with visual keyframe editor. Build @keyframes animations with live preview, timing functions, and copy-ready CSS output.",
+  "url": "https://spunkart.com/css-animation-generator.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "SPUNKART.COM",
+    "url": "https://spunkart.com"
+  }
+}
+</script>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-user-select:none;user-select:none;}
+::selection{background:#ff5f1f;color:#fff;}
+a{color:#ff5f1f;text-decoration:none;transition:color .2s;}
+a:hover{color:#ff8c5a;}
+
+/* NAV */
+nav{background:#111;border-bottom:1px solid #222;padding:0 20px;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-brand{font-size:1.25rem;font-weight:800;color:#ff5f1f;letter-spacing:1px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:#e8e8e8;font-size:.9rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.nav-toggle{display:none;background:none;border:none;color:#e8e8e8;font-size:1.5rem;cursor:pointer;}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:#111;flex-direction:column;padding:16px 20px;gap:16px;border-bottom:1px solid #222;}
+  .nav-links.open{display:flex;}
+  .nav-toggle{display:block;}
+}
+
+/* MAIN */
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:40px 20px;}
+h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:32px;font-size:1.05rem;}
+h2{font-size:1.3rem;font-weight:700;margin:32px 0 16px;color:#e8e8e8;}
+
+/* LAYOUT */
+.builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
+@media(max-width:900px){.builder-grid{grid-template-columns:1fr;}}
+
+/* PANELS */
+.panel{background:#111;border:1px solid #222;border-radius:12px;padding:20px;}
+.panel-title{font-size:1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;}
+.panel-title span{color:#ff5f1f;}
+
+/* CONTROLS */
+.control-row{display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;align-items:center;}
+.control-group{flex:1;min-width:120px;}
+.control-group label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:#888;margin-bottom:4px;}
+.control-group input,.control-group select{width:100%;background:#1a1a1a;border:1px solid #333;border-radius:6px;padding:8px 10px;color:#e8e8e8;font-size:.9rem;outline:none;transition:border-color .2s;}
+.control-group input:focus,.control-group select:focus{border-color:#ff5f1f;}
+.control-group select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23888'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;}
+input[type="color"]{padding:2px;height:36px;cursor:pointer;}
+input[type="range"]{-webkit-appearance:none;appearance:none;height:6px;background:#333;border-radius:3px;border:none;outline:none;}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#ff5f1f;cursor:pointer;}
+.range-val{font-size:.85rem;color:#ff5f1f;font-weight:600;min-width:40px;text-align:right;}
+
+/* BUTTONS */
+.btn{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:.9rem;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;white-space:nowrap;}
+.btn:hover{background:#e8520f;}
+.btn:active{transform:scale(.97);}
+.btn-secondary{background:#1a1a1a;border:1px solid #333;color:#e8e8e8;}
+.btn-secondary:hover{background:#252525;border-color:#ff5f1f;}
+.btn-green{background:#10b981;}
+.btn-green:hover{background:#0d9668;}
+.btn-small{padding:7px 14px;font-size:.82rem;}
+.btn-danger{background:#dc2626;}
+.btn-danger:hover{background:#b91c1c;}
+.status-msg{font-size:.85rem;color:#10b981;opacity:0;transition:opacity .3s;margin-left:8px;}
+.status-msg.show{opacity:1;}
+
+/* TIMELINE */
+.timeline-wrap{position:relative;background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:16px 12px;margin-bottom:16px;overflow-x:auto;}
+.timeline-bar{position:relative;height:40px;background:#222;border-radius:4px;margin-bottom:8px;}
+.timeline-marker{position:absolute;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:#ff5f1f;border:2px solid #fff;cursor:pointer;transition:background .2s,box-shadow .2s;z-index:2;}
+.timeline-marker:hover,.timeline-marker.active{background:#fff;box-shadow:0 0 8px #ff5f1f;}
+.timeline-marker .marker-label{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;color:#ff5f1f;white-space:nowrap;}
+.timeline-labels{display:flex;justify-content:space-between;font-size:.7rem;color:#555;}
+
+/* KEYFRAME EDITOR */
+.kf-editor{background:#1a1a1a;border:1px solid #222;border-radius:8px;padding:16px;margin-bottom:12px;}
+.kf-editor-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.kf-editor-header h4{font-size:.9rem;color:#ff5f1f;}
+.kf-props{display:flex;flex-direction:column;gap:10px;}
+.kf-prop-row{display:flex;gap:8px;align-items:center;}
+.kf-prop-row select{width:140px;background:#0d0d0d;border:1px solid #333;border-radius:6px;padding:6px 8px;color:#e8e8e8;font-size:.85rem;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23888'%3E%3Cpath d='M5 7L0 2h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
+.kf-prop-row input{flex:1;background:#0d0d0d;border:1px solid #333;border-radius:6px;padding:6px 8px;color:#e8e8e8;font-size:.85rem;outline:none;}
+.kf-prop-row input:focus{border-color:#ff5f1f;}
+.kf-prop-row .remove-prop{background:none;border:none;color:#dc2626;font-size:1.1rem;cursor:pointer;padding:4px 8px;border-radius:4px;transition:background .2s;}
+.kf-prop-row .remove-prop:hover{background:#2a1010;}
+
+/* PREVIEW */
+.preview-stage{background:#0d0d0d;border:1px solid #222;border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;margin-bottom:16px;}
+.preview-box{width:60px;height:60px;background:#ff5f1f;border-radius:8px;}
+
+/* CODE OUTPUT */
+.code-output{background:#0d0d0d;border:1px solid #222;border-radius:8px;padding:16px;font-family:'SF Mono',Monaco,'Cascadia Code','Fira Code',monospace;font-size:.85rem;color:#10b981;white-space:pre-wrap;word-break:break-all;max-height:300px;overflow-y:auto;-webkit-user-select:text;user-select:text;}
+
+/* PRESETS */
+.presets-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.preset-chip{background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:6px 14px;font-size:.8rem;color:#e8e8e8;cursor:pointer;transition:all .2s;}
+.preset-chip:hover{border-color:#ff5f1f;color:#ff5f1f;}
+
+/* EMAIL BAR */
+.email-bar{display:none;background:linear-gradient(135deg,#1a0a00,#111);border:1px solid #ff5f1f;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.email-bar.show{display:block;animation:slideDown .4s ease;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.email-bar h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.email-bar p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.email-bar form{display:flex;gap:8px;max-width:450px;margin:0 auto;}
+.email-bar form input{flex:1;background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#e8e8e8;font-size:.95rem;}
+.email-bar form button{background:#ff5f1f;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-weight:600;cursor:pointer;}
+
+/* CROSS-SELL */
+.cross-sell{background:#111;border:1px solid #222;border-radius:12px;padding:24px;margin:32px 0;text-align:center;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}
+.cross-sell p{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.cross-sell .price{font-size:1.5rem;font-weight:800;color:#10b981;margin-bottom:16px;}
+
+/* SEO */
+.seo-content{margin-top:48px;}
+.seo-content h2{font-size:1.2rem;color:#ff5f1f;}
+.seo-content p,.seo-content ul{color:#aaa;font-size:.9rem;margin-bottom:16px;}
+.seo-content ul{padding-left:20px;}
+.seo-content li{margin-bottom:6px;}
+
+/* FOOTER */
+footer{background:#111;border-top:1px solid #222;padding:32px 20px;margin-top:auto;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-inner p{color:#555;font-size:.85rem;}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{color:#888;font-size:.85rem;}
+
+/* WATERMARK */
+.watermark{position:fixed;bottom:12px;right:16px;font-size:.7rem;color:rgba(255,95,31,.25);font-weight:800;letter-spacing:1px;pointer-events:none;z-index:9999;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:#111;}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:#555;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://spunkart.com" class="nav-brand">SPUNKART.COM</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="https://spunkart.com/#store">Store</a></li>
+      <li><a href="https://spunkart.com/#tools">Free Tools</a></li>
+      <li><a href="https://spunkart.com/#resell">Resell</a></li>
+      <li><a href="https://spunkart.com/#blog">Blog</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <h1>CSS Animation <span>Generator</span></h1>
+  <p class="subtitle">Visual keyframe builder with live preview. Create, customize, and copy CSS animations instantly.</p>
+
+  <!-- PRESETS -->
+  <div style="margin-bottom:8px;font-size:.85rem;color:#888;">Quick Presets:</div>
+  <div class="presets-row" id="presetsRow"></div>
+
+  <div class="builder-grid">
+    <!-- LEFT: Controls -->
+    <div>
+      <!-- ANIMATION SETTINGS -->
+      <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-title">Animation Settings</div>
+        <div class="control-row">
+          <div class="control-group">
+            <label>Animation Name</label>
+            <input type="text" id="animName" value="myAnimation" oninput="updateOutput()">
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <label>Duration (s)</label>
+            <input type="number" id="animDuration" value="1" min="0.1" max="20" step="0.1" oninput="updateOutput()">
+          </div>
+          <div class="control-group">
+            <label>Delay (s)</label>
+            <input type="number" id="animDelay" value="0" min="0" max="10" step="0.1" oninput="updateOutput()">
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <label>Timing Function</label>
+            <select id="animTiming" onchange="toggleCubicBezier();updateOutput();">
+              <option value="ease">ease</option>
+              <option value="linear">linear</option>
+              <option value="ease-in">ease-in</option>
+              <option value="ease-out">ease-out</option>
+              <option value="ease-in-out">ease-in-out</option>
+              <option value="cubic-bezier">cubic-bezier (custom)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label>Iteration</label>
+            <select id="animIteration" onchange="updateOutput()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="infinite" selected>infinite</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-row" id="cubicRow" style="display:none;">
+          <div class="control-group">
+            <label>cubic-bezier(x1, y1, x2, y2)</label>
+            <div style="display:flex;gap:6px;">
+              <input type="number" id="cbx1" value="0.25" step="0.05" min="0" max="1" style="width:25%;" oninput="updateOutput()">
+              <input type="number" id="cby1" value="0.1" step="0.05" min="-2" max="2" style="width:25%;" oninput="updateOutput()">
+              <input type="number" id="cbx2" value="0.25" step="0.05" min="0" max="1" style="width:25%;" oninput="updateOutput()">
+              <input type="number" id="cby2" value="1" step="0.05" min="-2" max="2" style="width:25%;" oninput="updateOutput()">
+            </div>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <label>Direction</label>
+            <select id="animDirection" onchange="updateOutput()">
+              <option value="normal">normal</option>
+              <option value="reverse">reverse</option>
+              <option value="alternate" selected>alternate</option>
+              <option value="alternate-reverse">alternate-reverse</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label>Fill Mode</label>
+            <select id="animFill" onchange="updateOutput()">
+              <option value="none">none</option>
+              <option value="forwards">forwards</option>
+              <option value="backwards">backwards</option>
+              <option value="both" selected>both</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMELINE -->
+      <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-title">Keyframe Timeline <button class="btn btn-small" onclick="addKeyframe()">+ Add Keyframe</button></div>
+        <div class="timeline-wrap">
+          <div class="timeline-bar" id="timelineBar"></div>
+          <div class="timeline-labels"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+        </div>
+        <div id="keyframeEditors"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Preview & Output -->
+    <div>
+      <!-- PREVIEW -->
+      <div class="panel" style="margin-bottom:20px;">
+        <div class="panel-title">Live Preview <button class="btn btn-small btn-secondary" onclick="restartPreview()">Restart</button></div>
+        <div class="preview-stage" id="previewStage">
+          <div class="preview-box" id="previewBox"></div>
+        </div>
+        <div class="control-row" style="margin-bottom:0;">
+          <div class="control-group" style="max-width:200px;">
+            <label>Preview Shape</label>
+            <select id="previewShape" onchange="updatePreviewShape()">
+              <option value="box">Box</option>
+              <option value="circle">Circle</option>
+              <option value="text">Text</option>
+            </select>
+          </div>
+          <div class="control-group" style="max-width:120px;">
+            <label>Preview Color</label>
+            <input type="color" id="previewColor" value="#ff5f1f" onchange="updatePreviewShape()">
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE OUTPUT -->
+      <div class="panel">
+        <div class="panel-title">CSS Output
+          <div>
+            <button class="btn btn-green btn-small" onclick="copyCSS()">Copy CSS</button>
+            <span class="status-msg" id="copyStatus"></span>
+          </div>
+        </div>
+        <div class="code-output" id="codeOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMAIL BAR -->
+  <div class="email-bar" id="emailBar">
+    <h3>Like This Tool?</h3>
+    <p>Get free tools, templates, and digital product drops delivered to your inbox.</p>
+    <form onsubmit="return submitEmail(event)">
+      <input type="email" placeholder="you@email.com" required id="emailInput">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- CROSS-SELL -->
+  <div class="cross-sell">
+    <h3>Want All 50+ Tools Offline?</h3>
+    <p>Get the full SPUNKART digital tools bundle. Use them offline, forever. No limits.</p>
+    <div class="price">$9.99</div>
+    <a href="https://monkeyshine40.gumroad.com/l/mhmzrz" target="_blank" rel="noopener" class="btn">Get the Bundle</a>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-content">
+    <h2>How to Use the CSS Animation Generator</h2>
+    <p>Use the animation settings panel to configure duration, timing function, delay, iteration count, direction, and fill mode. Add keyframes on the visual timeline, then assign CSS properties (transform, opacity, color, background, etc.) to each keyframe. Watch your animation come to life in the live preview, then copy the generated CSS code.</p>
+
+    <h2>Features</h2>
+    <ul>
+      <li><strong>Visual timeline editor</strong> — click to add keyframes at any percentage</li>
+      <li><strong>Property builder</strong> — add transform, opacity, color, background-color, box-shadow, border-radius, and more</li>
+      <li><strong>Timing function selector</strong> — choose from ease, linear, ease-in, ease-out, ease-in-out, or custom cubic-bezier</li>
+      <li><strong>Live preview</strong> — instantly see your animation on a customizable preview element</li>
+      <li><strong>Copy-ready CSS</strong> — generated @keyframes and animation shorthand, ready for production</li>
+      <li><strong>Presets</strong> — start from common animations like fade in, bounce, slide, spin, and pulse</li>
+    </ul>
+
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>Is this tool free?</strong> Yes. The CSS Animation Generator is completely free with no signup required.</p>
+    <p><strong>Can I use the generated CSS in production?</strong> Absolutely. The output is clean, standard CSS that works in all modern browsers.</p>
+    <p><strong>Does this support vendor prefixes?</strong> Modern browsers no longer require -webkit- prefixes for animations and keyframes, so the tool outputs standard CSS.</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p>&copy; 2026 SPUNKART.COM — All rights reserved.</p>
+    <div class="footer-links">
+      <a href="https://spunkart.com">Home</a>
+      <a href="https://spunkart.com/#tools">Tools</a>
+      <a href="https://spunkart.com/#store">Store</a>
+    </div>
+  </div>
+</footer>
+
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  var _0x=['contextmenu','keydown'];
+  _0x.forEach(function(e){document.addEventListener(e,function(ev){
+    if(e==='contextmenu')ev.preventDefault();
+    if(e==='keydown'&&(ev.key==='F12'||(ev.ctrlKey&&ev.shiftKey&&['I','J','C'].includes(ev.key))||(ev.ctrlKey&&ev.key==='u')))ev.preventDefault();
+  });});
+})();
+
+var USAGE_KEY = 'spunkart_css_anim_uses';
+function getUses(){ return parseInt(localStorage.getItem(USAGE_KEY)||'0',10); }
+function addUse(){
+  var n = getUses()+1;
+  localStorage.setItem(USAGE_KEY, n.toString());
+  if(n >= 3) showEmailBar();
+}
+function showEmailBar(){
+  var bar = document.getElementById('emailBar');
+  if(bar && !localStorage.getItem('spunkart_email_subscribed')) bar.classList.add('show');
+}
+function submitEmail(e){
+  e.preventDefault();
+  var email = document.getElementById('emailInput').value;
+  if(!email) return false;
+  var iframe = document.createElement('iframe');
+  iframe.style.display='none';
+  iframe.src='https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email='+encodeURIComponent(email);
+  document.body.appendChild(iframe);
+  localStorage.setItem('spunkart_email_subscribed','1');
+  document.getElementById('emailBar').innerHTML='<h3 style="color:#10b981;">You\'re in! Check your inbox.</h3>';
+  return false;
+}
+
+// Available properties
+var cssProperties = [
+  {value:'transform', label:'transform', placeholder:'translateX(100px) rotate(45deg)'},
+  {value:'opacity', label:'opacity', placeholder:'0 to 1'},
+  {value:'background-color', label:'background-color', placeholder:'#ff5f1f'},
+  {value:'color', label:'color', placeholder:'#e8e8e8'},
+  {value:'box-shadow', label:'box-shadow', placeholder:'0 0 20px rgba(255,95,31,0.5)'},
+  {value:'border-radius', label:'border-radius', placeholder:'50%'},
+  {value:'width', label:'width', placeholder:'100px'},
+  {value:'height', label:'height', placeholder:'100px'},
+  {value:'scale', label:'scale', placeholder:'1.5'},
+  {value:'filter', label:'filter', placeholder:'blur(4px) brightness(1.5)'},
+  {value:'clip-path', label:'clip-path', placeholder:'circle(50%)'},
+  {value:'letter-spacing', label:'letter-spacing', placeholder:'4px'},
+  {value:'margin-left', label:'margin-left', placeholder:'50px'},
+  {value:'padding', label:'padding', placeholder:'20px'}
+];
+
+// Keyframes data: [{percent: 0, props: [{property:'transform', value:'translateX(0)'}]}]
+var keyframes = [
+  {percent: 0, props: [{property:'transform', value:'translateX(0)'}, {property:'opacity', value:'1'}]},
+  {percent: 100, props: [{property:'transform', value:'translateX(100px)'}, {property:'opacity', value:'0.5'}]}
+];
+var activeKF = 0;
+
+// Presets
+var presets = [
+  {name:'Fade In', kf:[{percent:0,props:[{property:'opacity',value:'0'}]},{percent:100,props:[{property:'opacity',value:'1'}]}], timing:'ease', dur:1, dir:'normal', iter:'1', fill:'both'},
+  {name:'Fade Out', kf:[{percent:0,props:[{property:'opacity',value:'1'}]},{percent:100,props:[{property:'opacity',value:'0'}]}], timing:'ease', dur:1, dir:'normal', iter:'1', fill:'both'},
+  {name:'Slide Right', kf:[{percent:0,props:[{property:'transform',value:'translateX(-80px)'},{property:'opacity',value:'0'}]},{percent:100,props:[{property:'transform',value:'translateX(0)'},{property:'opacity',value:'1'}]}], timing:'ease-out', dur:0.6, dir:'normal', iter:'1', fill:'both'},
+  {name:'Bounce', kf:[{percent:0,props:[{property:'transform',value:'translateY(0)'}]},{percent:25,props:[{property:'transform',value:'translateY(-30px)'}]},{percent:50,props:[{property:'transform',value:'translateY(0)'}]},{percent:75,props:[{property:'transform',value:'translateY(-15px)'}]},{percent:100,props:[{property:'transform',value:'translateY(0)'}]}], timing:'ease', dur:1, dir:'normal', iter:'infinite', fill:'both'},
+  {name:'Spin', kf:[{percent:0,props:[{property:'transform',value:'rotate(0deg)'}]},{percent:100,props:[{property:'transform',value:'rotate(360deg)'}]}], timing:'linear', dur:1, dir:'normal', iter:'infinite', fill:'none'},
+  {name:'Pulse', kf:[{percent:0,props:[{property:'transform',value:'scale(1)'}]},{percent:50,props:[{property:'transform',value:'scale(1.15)'}]},{percent:100,props:[{property:'transform',value:'scale(1)'}]}], timing:'ease-in-out', dur:1, dir:'normal', iter:'infinite', fill:'both'},
+  {name:'Shake', kf:[{percent:0,props:[{property:'transform',value:'translateX(0)'}]},{percent:20,props:[{property:'transform',value:'translateX(-10px)'}]},{percent:40,props:[{property:'transform',value:'translateX(10px)'}]},{percent:60,props:[{property:'transform',value:'translateX(-10px)'}]},{percent:80,props:[{property:'transform',value:'translateX(10px)'}]},{percent:100,props:[{property:'transform',value:'translateX(0)'}]}], timing:'ease', dur:0.5, dir:'normal', iter:'infinite', fill:'both'},
+  {name:'Glow', kf:[{percent:0,props:[{property:'box-shadow',value:'0 0 5px rgba(255,95,31,0.3)'}]},{percent:50,props:[{property:'box-shadow',value:'0 0 30px rgba(255,95,31,0.8)'}]},{percent:100,props:[{property:'box-shadow',value:'0 0 5px rgba(255,95,31,0.3)'}]}], timing:'ease-in-out', dur:2, dir:'normal', iter:'infinite', fill:'both'}
+];
+
+// Build preset chips
+var presetsRow = document.getElementById('presetsRow');
+presets.forEach(function(p, i){
+  var chip = document.createElement('div');
+  chip.className = 'preset-chip';
+  chip.textContent = p.name;
+  chip.onclick = function(){ loadPreset(i); };
+  presetsRow.appendChild(chip);
+});
+
+function loadPreset(idx){
+  var p = presets[idx];
+  keyframes = JSON.parse(JSON.stringify(p.kf));
+  document.getElementById('animDuration').value = p.dur;
+  document.getElementById('animTiming').value = p.timing;
+  document.getElementById('animIteration').value = p.iter;
+  document.getElementById('animDirection').value = p.dir;
+  document.getElementById('animFill').value = p.fill || 'both';
+  document.getElementById('animDelay').value = 0;
+  toggleCubicBezier();
+  activeKF = 0;
+  renderAll();
+  addUse();
+  if(typeof gtag==='function') gtag('event','css_anim_preset',{preset: p.name});
+}
+
+function toggleCubicBezier(){
+  var sel = document.getElementById('animTiming').value;
+  document.getElementById('cubicRow').style.display = sel === 'cubic-bezier' ? 'flex' : 'none';
+}
+
+function addKeyframe(){
+  // Find a gap to place the new keyframe
+  var existingPcts = keyframes.map(function(k){return k.percent;}).sort(function(a,b){return a-b;});
+  var newPct = 50;
+  // Try to find middle of largest gap
+  var maxGap = 0, gapStart = 0;
+  for(var i=0;i<existingPcts.length-1;i++){
+    var gap = existingPcts[i+1]-existingPcts[i];
+    if(gap > maxGap){ maxGap = gap; gapStart = existingPcts[i]; }
+  }
+  if(maxGap > 0) newPct = Math.round(gapStart + maxGap/2);
+  // Make sure it doesn't already exist
+  while(existingPcts.indexOf(newPct) !== -1) newPct = (newPct + 5) % 101;
+  keyframes.push({percent: newPct, props:[{property:'opacity', value:'1'}]});
+  keyframes.sort(function(a,b){return a.percent-b.percent;});
+  activeKF = keyframes.findIndex(function(k){return k.percent===newPct;});
+  renderAll();
+}
+
+function removeKeyframe(idx){
+  if(keyframes.length <= 2){ return; }
+  keyframes.splice(idx,1);
+  if(activeKF >= keyframes.length) activeKF = keyframes.length-1;
+  renderAll();
+}
+
+function addProperty(kfIdx){
+  keyframes[kfIdx].props.push({property:'opacity', value:'1'});
+  renderAll();
+}
+
+function removeProperty(kfIdx, propIdx){
+  if(keyframes[kfIdx].props.length <= 1) return;
+  keyframes[kfIdx].props.splice(propIdx,1);
+  renderAll();
+}
+
+function renderAll(){
+  renderTimeline();
+  renderEditors();
+  updateOutput();
+}
+
+function renderTimeline(){
+  var bar = document.getElementById('timelineBar');
+  bar.innerHTML = '';
+  keyframes.forEach(function(kf, i){
+    var marker = document.createElement('div');
+    marker.className = 'timeline-marker'+(i===activeKF?' active':'');
+    marker.style.left = kf.percent+'%';
+    marker.innerHTML = '<div class="marker-label">'+kf.percent+'%</div>';
+    marker.onclick = function(){ activeKF=i; renderAll(); };
+    bar.appendChild(marker);
+  });
+}
+
+function renderEditors(){
+  var container = document.getElementById('keyframeEditors');
+  container.innerHTML = '';
+  keyframes.forEach(function(kf, i){
+    if(i !== activeKF) return;
+    var editor = document.createElement('div');
+    editor.className = 'kf-editor';
+
+    var header = document.createElement('div');
+    header.className = 'kf-editor-header';
+    var pctInput = '<input type="number" min="0" max="100" value="'+kf.percent+'" style="width:60px;background:#0d0d0d;border:1px solid #333;border-radius:4px;padding:4px 6px;color:#ff5f1f;font-weight:700;font-size:.9rem;text-align:center;" onchange="changePercent('+i+',this.value)">';
+    header.innerHTML = '<h4>Keyframe at '+pctInput+'%</h4><div>'+(keyframes.length>2?'<button class="btn btn-danger btn-small" onclick="removeKeyframe('+i+')">Remove</button>':'')+'</div>';
+    editor.appendChild(header);
+
+    var propsDiv = document.createElement('div');
+    propsDiv.className = 'kf-props';
+
+    kf.props.forEach(function(prop, j){
+      var row = document.createElement('div');
+      row.className = 'kf-prop-row';
+      var sel = '<select onchange="changePropName('+i+','+j+',this.value)">';
+      cssProperties.forEach(function(cp){
+        sel += '<option value="'+cp.value+'"'+(cp.value===prop.property?' selected':'')+'>'+cp.label+'</option>';
+      });
+      sel += '</select>';
+      var ph = '';
+      cssProperties.forEach(function(cp){ if(cp.value===prop.property) ph=cp.placeholder; });
+      row.innerHTML = sel+'<input type="text" value="'+escapeAttr(prop.value)+'" placeholder="'+ph+'" oninput="changePropValue('+i+','+j+',this.value)"><button class="remove-prop" onclick="removeProperty('+i+','+j+')" title="Remove">&times;</button>';
+      propsDiv.appendChild(row);
+    });
+
+    editor.appendChild(propsDiv);
+    var addBtn = document.createElement('button');
+    addBtn.className = 'btn btn-small btn-secondary';
+    addBtn.style.marginTop = '10px';
+    addBtn.textContent = '+ Add Property';
+    addBtn.onclick = function(){ addProperty(i); };
+    editor.appendChild(addBtn);
+    container.appendChild(editor);
+  });
+}
+
+function changePercent(idx, val){
+  var v = Math.max(0, Math.min(100, parseInt(val)||0));
+  keyframes[idx].percent = v;
+  keyframes.sort(function(a,b){return a.percent-b.percent;});
+  activeKF = keyframes.findIndex(function(k){return k.percent===v;});
+  renderAll();
+}
+
+function changePropName(kfIdx, propIdx, val){
+  keyframes[kfIdx].props[propIdx].property = val;
+  renderEditors();
+  updateOutput();
+}
+
+function changePropValue(kfIdx, propIdx, val){
+  keyframes[kfIdx].props[propIdx].value = val;
+  updateOutput();
+}
+
+function getTimingValue(){
+  var t = document.getElementById('animTiming').value;
+  if(t === 'cubic-bezier'){
+    return 'cubic-bezier('+document.getElementById('cbx1').value+','+document.getElementById('cby1').value+','+document.getElementById('cbx2').value+','+document.getElementById('cby2').value+')';
+  }
+  return t;
+}
+
+function generateCSS(){
+  var name = document.getElementById('animName').value.replace(/[^a-zA-Z0-9_-]/g,'') || 'myAnimation';
+  var dur = document.getElementById('animDuration').value || '1';
+  var delay = document.getElementById('animDelay').value || '0';
+  var timing = getTimingValue();
+  var iter = document.getElementById('animIteration').value;
+  var dir = document.getElementById('animDirection').value;
+  var fill = document.getElementById('animFill').value;
+
+  var css = '@keyframes '+name+' {\n';
+  keyframes.forEach(function(kf){
+    css += '  '+kf.percent+'% {\n';
+    kf.props.forEach(function(p){
+      if(p.value.trim()) css += '    '+p.property+': '+p.value+';\n';
+    });
+    css += '  }\n';
+  });
+  css += '}\n\n';
+  css += '.animated-element {\n';
+  css += '  animation: '+name+' '+dur+'s '+timing+' '+delay+'s '+iter+' '+dir+' '+fill+';\n';
+  css += '}';
+  return css;
+}
+
+var styleEl = null;
+function updateOutput(){
+  var css = generateCSS();
+  document.getElementById('codeOutput').textContent = css;
+  applyPreview(css);
+}
+
+function applyPreview(css){
+  if(styleEl) styleEl.remove();
+  styleEl = document.createElement('style');
+  // Replace .animated-element with #previewBox
+  var name = document.getElementById('animName').value.replace(/[^a-zA-Z0-9_-]/g,'') || 'myAnimation';
+  var dur = document.getElementById('animDuration').value || '1';
+  var delay = document.getElementById('animDelay').value || '0';
+  var timing = getTimingValue();
+  var iter = document.getElementById('animIteration').value;
+  var dir = document.getElementById('animDirection').value;
+  var fill = document.getElementById('animFill').value;
+
+  var kfCSS = '@keyframes '+name+' {\n';
+  keyframes.forEach(function(kf){
+    kfCSS += kf.percent+'% {\n';
+    kf.props.forEach(function(p){
+      if(p.value.trim()) kfCSS += p.property+': '+p.value+';\n';
+    });
+    kfCSS += '}\n';
+  });
+  kfCSS += '}\n';
+  kfCSS += '#previewBox { animation: '+name+' '+dur+'s '+timing+' '+delay+'s '+iter+' '+dir+' '+fill+'; }';
+
+  styleEl.textContent = kfCSS;
+  document.head.appendChild(styleEl);
+}
+
+function restartPreview(){
+  var box = document.getElementById('previewBox');
+  box.style.animation = 'none';
+  box.offsetHeight; // force reflow
+  box.style.animation = '';
+  if(styleEl) styleEl.remove();
+  updateOutput();
+  addUse();
+}
+
+function updatePreviewShape(){
+  var shape = document.getElementById('previewShape').value;
+  var color = document.getElementById('previewColor').value;
+  var box = document.getElementById('previewBox');
+  box.style.background = color;
+  box.style.borderRadius = shape === 'circle' ? '50%' : '8px';
+  box.textContent = shape === 'text' ? 'Aa' : '';
+  box.style.display = 'flex';
+  box.style.alignItems = 'center';
+  box.style.justifyContent = 'center';
+  box.style.fontSize = shape === 'text' ? '1.5rem' : '';
+  box.style.fontWeight = shape === 'text' ? '800' : '';
+  box.style.color = shape === 'text' ? '#fff' : '';
+}
+
+function copyCSS(){
+  var css = generateCSS();
+  navigator.clipboard.writeText(css).then(function(){
+    var st = document.getElementById('copyStatus');
+    st.textContent = 'Copied!';
+    st.classList.add('show');
+    setTimeout(function(){ st.classList.remove('show'); }, 2000);
+  });
+  addUse();
+  if(typeof gtag==='function') gtag('event','css_anim_copy');
+}
+
+function escapeAttr(s){
+  return s.replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+if(getUses() >= 3) showEmailBar();
+
+// Initial render
+renderAll();
+</script>
+</body>
+</html>
