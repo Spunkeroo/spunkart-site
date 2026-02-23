@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pitch Deck Builder - Free Startup Pitch Deck Generator | SPUNKART.COM</title>
+<meta name="description" content="Build a professional startup pitch deck with keyboard-navigable HTML slides. Cover Problem, Solution, Market, Business Model, Traction, Team, and Ask.">
+<meta name="keywords" content="pitch deck builder, startup pitch deck, investor pitch generator, pitch deck slides, fundraising deck tool">
+<meta property="og:title" content="Pitch Deck Builder | SPUNKART.COM">
+<meta property="og:description" content="Generate professional pitch deck slides as HTML. Free tool for founders raising funds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/pitch-deck-builder">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pitch Deck Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Build investor pitch decks as HTML slides. Free tool.">
+<link rel="canonical" href="https://spunkart.com/pitch-deck-builder">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px;margin-top:12px}
+input,select,textarea{width:100%;padding:10px 14px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:#ff5f1f}
+textarea{min-height:100px;resize:vertical;line-height:1.6}
+.btn-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.slide-section{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:20px;margin-bottom:16px}
+.slide-section h3{font-size:0.95rem;color:#ff5f1f;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slide-section h3 .num{background:#ff5f1f;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700}
+.output-box{width:100%;min-height:300px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#e8e8e8;font-size:0.8rem;font-family:'Courier New',monospace;line-height:1.5;resize:vertical;white-space:pre;overflow-x:auto}
+.preview-container{border-radius:10px;overflow:hidden;margin-top:16px;border:1px solid #333}
+.preview-container iframe{width:100%;height:500px;border:none}
+input[type="color"]{height:40px;padding:4px;cursor:pointer}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pitch Deck Builder","description":"Build a professional startup pitch deck with keyboard-navigable HTML slides.","url":"https://spunkart.com/pitch-deck-builder.html","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Pitch Deck <span>Builder</span></h1>
+  <p class="subtitle">Fill in each section and generate a professional pitch deck as keyboard-navigable HTML slides. Export or present directly.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>Company Info</h2>
+    <div class="grid-2">
+      <div><label>Company Name</label><input type="text" id="companyName" value="Acme Inc" placeholder="Your company"></div>
+      <div><label>One-Liner</label><input type="text" id="oneLiner" value="We help teams ship 10x faster" placeholder="What you do in one sentence"></div>
+    </div>
+    <div class="grid-3" style="margin-top:8px">
+      <div><label>Accent Color</label><input type="color" id="deckColor" value="#6366f1"></div>
+      <div><label>Background</label><select id="deckBg"><option value="dark">Dark</option><option value="light">Light</option></select></div>
+      <div><label>Your Name / Role</label><input type="text" id="founderName" value="Jane Doe, CEO" placeholder="Name, Title"></div>
+    </div>
+  </div>
+
+  <div class="slide-section"><h3><span class="num">1</span> Problem</h3>
+    <textarea id="slideProblem" placeholder="What problem are you solving? Who has it? Why is it painful?">Teams waste 40% of their time on repetitive deployment tasks. Manual processes lead to bugs, delays, and burnout. Current tools are bloated, expensive, and require dedicated DevOps.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">2</span> Solution</h3>
+    <textarea id="slideSolution" placeholder="How does your product solve this problem?">One-click deployment platform that automates CI/CD, monitoring, and rollbacks. No DevOps experience needed. Set up in 5 minutes, not 5 days.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">3</span> Market Size</h3>
+    <div class="grid-3">
+      <div><label>TAM</label><input type="text" id="tam" value="$50B" placeholder="Total Addressable Market"></div>
+      <div><label>SAM</label><input type="text" id="sam" value="$8B" placeholder="Serviceable Addressable Market"></div>
+      <div><label>SOM</label><input type="text" id="som" value="$500M" placeholder="Serviceable Obtainable Market"></div>
+    </div>
+    <textarea id="slideMarket" style="margin-top:12px" placeholder="Market context, trends, growth drivers">The DevOps tools market is growing at 22% CAGR. Remote work has accelerated cloud adoption. SMBs are the fastest-growing segment.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">4</span> Business Model</h3>
+    <textarea id="slideModel" placeholder="How do you make money? Pricing model?">Freemium SaaS model. Free tier (3 projects), Pro at $29/mo, Enterprise at $199/mo. Average contract value: $2,400/yr. Net revenue retention: 130%.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">5</span> Traction</h3>
+    <textarea id="slideTraction" placeholder="Revenue, users, growth rate, key milestones">2,400 active users. $18K MRR growing 25% MoM. 150+ paying customers. NPS score: 72. Featured in TechCrunch and Product Hunt #1.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">6</span> Team</h3>
+    <textarea id="slideTeam" placeholder="Who is on your team? Key backgrounds.">Jane Doe (CEO) - Ex-AWS, 10 years in DevOps. John Smith (CTO) - Ex-Google, built infrastructure at scale. 8 person team across engineering, product, and growth.</textarea>
+  </div>
+  <div class="slide-section"><h3><span class="num">7</span> The Ask</h3>
+    <textarea id="slideAsk" placeholder="How much are you raising? What will you use it for?">Raising $2M seed round. Use of funds: 60% engineering (AI-powered automation), 25% go-to-market, 15% operations. 18-month runway to Series A metrics.</textarea>
+  </div>
+
+  <div class="section">
+    <h2>Preview</h2>
+    <p style="font-size:0.8rem;color:#666;margin-bottom:8px">Use arrow keys or click arrows to navigate slides</p>
+    <div class="preview-container">
+      <iframe id="previewFrame" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+  </div>
+
+  <div class="section">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h2 style="margin-bottom:0">Generated HTML</h2>
+      <span style="font-size:0.8rem;color:#555" id="charCount">0 chars</span>
+    </div>
+    <textarea class="output-box" id="outputCode" readonly></textarea>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generate()">Generate Deck</button>
+      <button class="btn btn-secondary" onclick="copyCode()">Copy HTML</button>
+      <button class="btn btn-secondary" onclick="downloadCode()">Download HTML</button>
+    </div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/saas-pricing-generator">SaaS Pricing</a>
+      <a href="/lean-canvas-builder">Lean Canvas</a>
+      <a href="/mrr-calculator">MRR Calculator</a>
+      <a href="/customer-persona-builder">Persona Builder</a>
+      <a href="/business-plan">Business Plan</a>
+      <a href="/startup-costs">Startup Costs</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function v(id){return document.getElementById(id).value.trim()}
+function lines(text){return text.split('\n').map(l=>l.trim()).filter(l=>l)}
+
+function buildDeck(){
+  const co=v('companyName'),ol=v('oneLiner'),ac=v('deckColor'),fn=v('founderName');
+  const isDark=document.getElementById('deckBg').value==='dark';
+  const bg=isDark?'#0f0f0f':'#ffffff';
+  const fg=isDark?'#ffffff':'#1a1a1a';
+  const muted=isDark?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.5)';
+  const cardBg=isDark?'#1a1a1a':'#f8f8f8';
+
+  const slides=[];
+  // Title
+  slides.push(`<div class="slide"><h1 style="font-size:3.5rem;margin-bottom:16px">${co}</h1><p style="font-size:1.5rem;color:${ac};font-weight:600">${ol}</p><p style="color:${muted};margin-top:40px;font-size:1rem">${fn}</p></div>`);
+  // Problem
+  const prob=lines(v('slideProblem'));
+  slides.push(`<div class="slide"><h2>The Problem</h2><div class="bullets">${prob.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Solution
+  const sol=lines(v('slideSolution'));
+  slides.push(`<div class="slide"><h2>Our Solution</h2><div class="bullets">${sol.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Market
+  const tam=v('tam'),sam=v('sam'),som=v('som');
+  const mkt=v('slideMarket');
+  slides.push(`<div class="slide"><h2>Market Size</h2><div style="display:flex;gap:40px;justify-content:center;margin:30px 0"><div style="text-align:center"><div style="font-size:2.5rem;font-weight:800;color:${ac}">${tam}</div><div style="color:${muted}">TAM</div></div><div style="text-align:center"><div style="font-size:2.5rem;font-weight:800;color:${ac}">${sam}</div><div style="color:${muted}">SAM</div></div><div style="text-align:center"><div style="font-size:2.5rem;font-weight:800;color:${ac}">${som}</div><div style="color:${muted}">SOM</div></div></div>${mkt?`<p style="color:${muted};max-width:600px;margin:0 auto;font-size:1.1rem">${mkt}</p>`:''}</div>`);
+  // Business Model
+  const bm=lines(v('slideModel'));
+  slides.push(`<div class="slide"><h2>Business Model</h2><div class="bullets">${bm.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Traction
+  const tr=lines(v('slideTraction'));
+  slides.push(`<div class="slide"><h2>Traction</h2><div class="bullets">${tr.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Team
+  const tm=lines(v('slideTeam'));
+  slides.push(`<div class="slide"><h2>The Team</h2><div class="bullets">${tm.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Ask
+  const ak=lines(v('slideAsk'));
+  slides.push(`<div class="slide"><h2>The Ask</h2><div class="bullets">${ak.map(p=>`<div class="bullet">${p}</div>`).join('')}</div></div>`);
+  // Thank you
+  slides.push(`<div class="slide"><h1 style="font-size:3rem;margin-bottom:16px">Thank You</h1><p style="font-size:1.3rem;color:${ac}">${co}</p><p style="color:${muted};margin-top:20px">${fn}</p></div>`);
+
+  return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${co} - Pitch Deck</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:${bg};color:${fg};overflow:hidden;height:100vh}
+.slide{display:none;height:100vh;padding:60px;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:fadeIn .4s}
+.slide.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+h1{font-size:3rem;font-weight:800;letter-spacing:-1px}
+h2{font-size:2.2rem;font-weight:700;margin-bottom:30px;color:${ac}}
+.bullets{max-width:700px;text-align:left}
+.bullet{padding:14px 20px;margin-bottom:10px;background:${cardBg};border-radius:10px;font-size:1.1rem;line-height:1.6;border-left:4px solid ${ac}}
+.nav-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;background:${cardBg};padding:8px 20px;border-radius:30px}
+.nav-bar button{background:none;border:none;color:${fg};font-size:1.4rem;cursor:pointer;padding:4px 12px;border-radius:6px;transition:background .2s}
+.nav-bar button:hover{background:${ac};color:#fff}
+.nav-bar .counter{font-size:0.85rem;color:${muted};min-width:60px;text-align:center}
+</style></head><body>
+${slides.join('\n')}
+<div class="nav-bar">
+  <button onclick="go(-1)">&#8592;</button>
+  <span class="counter" id="counter">1 / ${slides.length}</span>
+  <button onclick="go(1)">&#8594;</button>
+</div>
+<script>
+let cur=0;const slides=document.querySelectorAll('.slide');
+function show(){slides.forEach((s,i)=>s.classList.toggle('active',i===cur));document.getElementById('counter').textContent=(cur+1)+' / '+slides.length}
+function go(d){cur=Math.max(0,Math.min(slides.length-1,cur+d));show()}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1)});
+show();
+<\/script></body></html>`;
+}
+
+function generate(){
+  const html=buildDeck();
+  document.getElementById('outputCode').value=html;
+  document.getElementById('charCount').textContent=html.length+' chars';
+  document.getElementById('previewFrame').srcdoc=html;
+  gtag('event','generate_deck',{event_category:'tool_use'});
+}
+
+function copyCode(){
+  const code=document.getElementById('outputCode').value;
+  if(!code){showToast('Generate first');return}
+  navigator.clipboard.writeText(code);
+  showToast('HTML Copied!');
+  gtag('event','copy_deck',{event_category:'tool_use'});
+}
+
+function downloadCode(){
+  const code=document.getElementById('outputCode').value;
+  if(!code){showToast('Generate first');return}
+  const blob=new Blob([code],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=(v('companyName')||'pitch-deck').toLowerCase().replace(/\s+/g,'-')+'-pitch-deck.html';
+  a.click();
+  gtag('event','download_deck',{event_category:'tool_use'});
+}
+
+generate();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

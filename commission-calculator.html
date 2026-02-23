@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Commission Calculator - Freelance Artist Pricing Tool | SPUNKART.COM</title>
+<meta name="description" content="Calculate freelance art commission prices. Set hourly rates, complexity levels, rush fees, revision policies, and commercial use fees. Export your price sheet.">
+<meta name="keywords" content="commission calculator, freelance pricing, artist commission sheet, art pricing tool, freelance rate calculator">
+<meta property="og:title" content="Commission Calculator — Freelance Artist Pricing | SPUNKART.COM">
+<meta property="og:description" content="Calculate and export freelance art commission prices. Hourly rates, complexity, rush fees, and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/commission-calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Commission Calculator | SPUNKART.COM">
+<meta name="twitter:description" content="Free freelance art commission pricing calculator and price sheet generator.">
+<link rel="canonical" href="https://spunkart.com/commission-calculator">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:900px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ff5f1f}
+input[type="text"],input[type="number"],textarea,select{width:100%;padding:12px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;margin-bottom:12px}
+input:focus,textarea:focus,select:focus{border-color:#ff5f1f}
+input::placeholder,textarea::placeholder{color:#444}
+textarea{min-height:60px;resize:vertical;line-height:1.6}
+label{font-size:0.85rem;color:#888;display:block;margin-bottom:6px}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}
+.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}
+.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}
+.btn-green:hover{background:#0d9668}
+.inline-row{display:flex;gap:12px}
+.inline-row>*{flex:1}
+.complexity-item{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:16px;margin-bottom:12px;position:relative}
+.complexity-item .remove-btn{position:absolute;top:8px;right:8px;background:#ff5f1f33;border:none;color:#ff5f1f;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.complexity-item .remove-btn:hover{background:#ff5f1f;color:#fff}
+.result-table{width:100%;border-collapse:collapse;margin-top:12px}
+.result-table th,.result-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #222;font-size:0.9rem}
+.result-table th{color:#ff5f1f;font-weight:600;background:#0d0d0d}
+.result-table td{color:#ccc}
+.result-table tr:hover td{background:#1a1a1a}
+.price-highlight{color:#10b981;font-weight:700;font-size:1.05rem}
+.output-box{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;max-height:400px;overflow-y:auto;color:#ccc;margin-top:12px}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+.newsletter{background:#111;border:1px solid #222;border-radius:10px;padding:24px;text-align:center;margin-top:24px}
+.newsletter h3{color:#ff5f1f;margin-bottom:8px}
+.newsletter p{color:#888;font-size:0.9rem;margin-bottom:16px}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+  .inline-row{flex-direction:column;gap:0}
+  .result-table th,.result-table td{padding:8px;font-size:0.8rem}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Commission Calculator","description":"Calculate freelance art commission prices with hourly rates, complexity levels, rush fees, and revision policies.","url":"https://spunkart.com/commission-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Commission <span>Calculator</span></h1>
+  <p class="subtitle">Calculate your freelance commission prices and generate a professional price sheet.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h2>1. Your Info</h2>
+    <label>Artist / Studio Name</label>
+    <input type="text" id="artistName" placeholder="e.g. Jane Doe Art">
+    <label>Currency Symbol</label>
+    <input type="text" id="currency" value="$" style="max-width:80px">
+  </div>
+
+  <div class="section">
+    <h2>2. Base Rate</h2>
+    <div class="inline-row">
+      <div><label>Hourly Rate</label><input type="number" id="hourlyRate" value="50" min="1"></div>
+      <div><label>Minimum Project Fee</label><input type="number" id="minFee" value="100" min="0"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Complexity Levels</h2>
+    <p style="color:#555;font-size:0.8rem;margin-bottom:12px">Define tiers. Each level multiplies the hourly rate by estimated hours.</p>
+    <div id="complexityList"></div>
+    <button class="btn btn-secondary" onclick="addComplexity()" style="margin-top:8px">+ Add Level</button>
+  </div>
+
+  <div class="section">
+    <h2>4. Add-ons &amp; Fees</h2>
+    <div class="inline-row">
+      <div><label>Rush Fee (% surcharge)</label><input type="number" id="rushFee" value="50" min="0" max="200"></div>
+      <div><label>Commercial Use Fee (%)</label><input type="number" id="commercialFee" value="100" min="0" max="500"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Included Revisions</label><input type="number" id="freeRevisions" value="2" min="0"></div>
+      <div><label>Extra Revision Fee (per revision)</label><input type="number" id="revisionFee" value="25" min="0"></div>
+    </div>
+    <div class="inline-row">
+      <div><label>Background Add-on</label><input type="number" id="bgFee" value="30" min="0"></div>
+      <div><label>Extra Character/Subject</label><input type="number" id="extraSubjectFee" value="40" min="0"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>5. Terms (optional)</h2>
+    <textarea id="terms" placeholder="e.g. 50% upfront, 50% on delivery. Turnaround: 1-2 weeks. No NFT usage without commercial license."></textarea>
+  </div>
+
+  <div class="btn-row" style="margin-bottom:20px">
+    <button class="btn btn-primary" onclick="calculate()">Generate Price Sheet</button>
+    <button class="btn btn-secondary" onclick="copyText()">Copy as Text</button>
+    <button class="btn btn-green" onclick="downloadHTML()">Download HTML</button>
+  </div>
+
+  <div class="section" id="resultSection" style="display:none">
+    <h2>Commission Price Sheet</h2>
+    <div id="resultTable"></div>
+    <div id="addonsResult"></div>
+    <div id="termsResult"></div>
+  </div>
+
+  <div class="section" id="textSection" style="display:none">
+    <h2>Plain Text Version</h2>
+    <div class="output-box" id="textOutput"></div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay Updated</h3>
+    <p>Get free tools, templates, and tips delivered to your inbox.</p>
+    <iframe src="https://subscribe-forms.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:8px;width:100%;max-width:400px;"></iframe>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Creator Tools</h3>
+    <div class="tool-links">
+      <a href="/portfolio-builder">Portfolio Builder</a>
+      <a href="/store-generator">Store Generator</a>
+      <a href="/invoice-generator">Invoice Generator</a>
+      <a href="/contract-generator">Contract Generator</a>
+      <a href="/link-in-bio">Link in Bio</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);}
+
+const defaultLevels=[
+  {name:'Sketch / Line Art',hours:2,desc:'Clean pencil/ink sketch, no color'},
+  {name:'Flat Color',hours:4,desc:'Clean lines with flat color fills'},
+  {name:'Full Render',hours:8,desc:'Fully shaded and rendered artwork'},
+  {name:'Complex / Detailed',hours:16,desc:'Highly detailed with background and effects'}
+];
+
+function addComplexity(n,h,d){
+  const id='cx_'+Date.now()+'_'+Math.random().toString(36).substr(2,5);
+  const div=document.createElement('div');
+  div.className='complexity-item';
+  div.id=id;
+  div.innerHTML=`
+    <button class="remove-btn" onclick="document.getElementById('${id}').remove()">&times;</button>
+    <div class="inline-row">
+      <div><label>Level Name</label><input type="text" class="cxName" value="${n||''}"></div>
+      <div><label>Est. Hours</label><input type="number" class="cxHours" value="${h||4}" min="0.5" step="0.5"></div>
+    </div>
+    <label>Description</label>
+    <input type="text" class="cxDesc" value="${d||''}">`;
+  document.getElementById('complexityList').appendChild(div);
+}
+
+defaultLevels.forEach(l=>addComplexity(l.name,l.hours,l.desc));
+
+let plainText='';
+let sheetHTML='';
+
+function calculate(){
+  const name=document.getElementById('artistName').value.trim()||'Commission Prices';
+  const cur=document.getElementById('currency').value.trim()||'$';
+  const rate=parseFloat(document.getElementById('hourlyRate').value)||50;
+  const minFee=parseFloat(document.getElementById('minFee').value)||0;
+  const rush=parseFloat(document.getElementById('rushFee').value)||0;
+  const commercial=parseFloat(document.getElementById('commercialFee').value)||0;
+  const freeRevs=parseInt(document.getElementById('freeRevisions').value)||0;
+  const revFee=parseFloat(document.getElementById('revisionFee').value)||0;
+  const bgFee=parseFloat(document.getElementById('bgFee').value)||0;
+  const extraFee=parseFloat(document.getElementById('extraSubjectFee').value)||0;
+  const terms=document.getElementById('terms').value.trim();
+
+  const levels=[];
+  document.querySelectorAll('.complexity-item').forEach(el=>{
+    const n=el.querySelector('.cxName').value.trim();
+    const h=parseFloat(el.querySelector('.cxHours').value)||0;
+    const d=el.querySelector('.cxDesc').value.trim();
+    if(n) levels.push({name:n,hours:h,desc:d,price:Math.max(h*rate,minFee)});
+  });
+
+  let tableHTML=`<table class="result-table"><thead><tr><th>Type</th><th>Description</th><th>Est. Hours</th><th>Price</th></tr></thead><tbody>`;
+  levels.forEach(l=>{
+    tableHTML+=`<tr><td style="font-weight:600">${l.name}</td><td>${l.desc}</td><td>${l.hours}h</td><td class="price-highlight">${cur}${l.price.toFixed(2)}</td></tr>`;
+  });
+  tableHTML+=`</tbody></table>`;
+
+  let addonsHTML=`<h3 style="color:#ff5f1f;margin-top:20px;font-size:1rem">Add-ons &amp; Fees</h3>
+  <table class="result-table"><tbody>
+  <tr><td>Rush Order</td><td>+${rush}% surcharge</td></tr>
+  <tr><td>Commercial Use License</td><td>+${commercial}% of base price</td></tr>
+  <tr><td>Revisions</td><td>${freeRevs} included, then ${cur}${revFee.toFixed(2)} each</td></tr>
+  <tr><td>Background Add-on</td><td>+${cur}${bgFee.toFixed(2)}</td></tr>
+  <tr><td>Extra Character/Subject</td><td>+${cur}${extraFee.toFixed(2)} each</td></tr>
+  </tbody></table>`;
+
+  let termsHTML='';
+  if(terms) termsHTML=`<h3 style="color:#ff5f1f;margin-top:20px;font-size:1rem">Terms</h3><p style="color:#888;font-size:0.9rem;white-space:pre-wrap;margin-top:8px">${terms.replace(/</g,'&lt;')}</p>`;
+
+  document.getElementById('resultTable').innerHTML=tableHTML;
+  document.getElementById('addonsResult').innerHTML=addonsHTML;
+  document.getElementById('termsResult').innerHTML=termsHTML;
+  document.getElementById('resultSection').style.display='block';
+
+  // Plain text
+  let txt=`${name}\n${'='.repeat(name.length)}\n\nBase Rate: ${cur}${rate.toFixed(2)}/hr | Minimum: ${cur}${minFee.toFixed(2)}\n\nCOMMISSION TYPES\n${'─'.repeat(40)}\n`;
+  levels.forEach(l=>{txt+=`${l.name.padEnd(25)} ${(l.hours+'h').padEnd(6)} ${cur}${l.price.toFixed(2)}\n  ${l.desc}\n\n`;});
+  txt+=`ADD-ONS & FEES\n${'─'.repeat(40)}\nRush Order:              +${rush}%\nCommercial Use:          +${commercial}% of base\nRevisions:               ${freeRevs} free, then ${cur}${revFee.toFixed(2)} each\nBackground:              +${cur}${bgFee.toFixed(2)}\nExtra Subject:           +${cur}${extraFee.toFixed(2)} each\n`;
+  if(terms) txt+=`\nTERMS\n${'─'.repeat(40)}\n${terms}\n`;
+  plainText=txt;
+  document.getElementById('textOutput').textContent=txt;
+  document.getElementById('textSection').style.display='block';
+
+  // HTML version
+  sheetHTML=`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${name} - Commission Sheet</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#e8e8e8;padding:40px 20px;max-width:800px;margin:0 auto}h1{font-size:2rem;margin-bottom:4px}h2{color:#ff5f1f;margin:30px 0 12px;font-size:1.1rem}.sub{color:#888;margin-bottom:24px}table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:left;border-bottom:1px solid #222}th{color:#ff5f1f;background:#111}.price{color:#10b981;font-weight:700}p.terms{color:#888;white-space:pre-wrap;line-height:1.7}footer{margin-top:40px;color:#444;font-size:0.8rem;text-align:center;border-top:1px solid #1a1a1a;padding-top:20px}</style></head><body><h1>${name}</h1><p class="sub">Base Rate: ${cur}${rate.toFixed(2)}/hr | Minimum: ${cur}${minFee.toFixed(2)}</p><h2>Commission Types</h2><table><tr><th>Type</th><th>Description</th><th>Hours</th><th>Price</th></tr>${levels.map(l=>`<tr><td><b>${l.name}</b></td><td>${l.desc}</td><td>${l.hours}h</td><td class="price">${cur}${l.price.toFixed(2)}</td></tr>`).join('')}</table><h2>Add-ons &amp; Fees</h2><table><tr><td>Rush Order</td><td>+${rush}%</td></tr><tr><td>Commercial Use</td><td>+${commercial}%</td></tr><tr><td>Revisions</td><td>${freeRevs} free, then ${cur}${revFee.toFixed(2)} each</td></tr><tr><td>Background</td><td>+${cur}${bgFee.toFixed(2)}</td></tr><tr><td>Extra Subject</td><td>+${cur}${extraFee.toFixed(2)} each</td></tr></table>${terms?`<h2>Terms</h2><p class="terms">${terms.replace(/</g,'&lt;')}</p>`:''}  <footer>&copy; ${new Date().getFullYear()} ${name}</footer></body></html>`;
+
+  showToast('Price sheet generated!');
+  gtag('event','generate_commissions',{event_category:'tool_use'});
+}
+
+function copyText(){
+  if(!plainText){showToast('Generate first');return;}
+  navigator.clipboard.writeText(plainText);
+  showToast('Copied!');
+  gtag('event','copy_commissions',{event_category:'tool_use'});
+}
+
+function downloadHTML(){
+  if(!sheetHTML){showToast('Generate first');return;}
+  const blob=new Blob([sheetHTML],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='commission-sheet.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  gtag('event','download_commissions',{event_category:'tool_use'});
+}
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>

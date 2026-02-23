@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API Mock Server - REST Endpoint Builder | SPUNKART.COM</title>
+<meta name="description" content="Define REST endpoints with methods, response bodies, status codes, headers, and delays. Generate mock API configuration JSON. Free API mock tool.">
+<meta name="keywords" content="api mock server, rest endpoint builder, mock api, api simulator, api testing tool, mock responses">
+<meta property="og:title" content="API Mock Server — REST Endpoint Builder | SPUNKART.COM">
+<meta property="og:description" content="Define REST endpoints, set responses, and generate mock API config. Free tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/api-mock-server">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API Mock Server | SPUNKART.COM">
+<meta name="twitter:description" content="Build mock REST APIs with custom endpoints, responses, and delays.">
+<link rel="canonical" href="https://spunkart.com/api-mock-server">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0a;color:#e8e8e8;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+a{color:#ff5f1f;text-decoration:none}a:hover{text-decoration:underline}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px}
+nav .links{display:flex;gap:20px;font-size:0.9rem}
+nav .links a{color:#ccc}nav .links a:hover{color:#ff5f1f}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:30px 20px}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px}
+h1 span{color:#ff5f1f}
+.subtitle{color:#888;margin-bottom:10px;font-size:1rem}
+.pricing-badge{display:inline-block;background:#10b98122;border:1px solid #10b98144;color:#10b981;padding:6px 16px;border-radius:20px;font-size:0.85rem;font-weight:600;margin-bottom:24px}
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px}
+.section h3{font-size:0.95rem;color:#ccc;margin-bottom:12px}
+.btn{padding:10px 24px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary{background:#ff5f1f;color:#fff}.btn-primary:hover{background:#e5500a}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333}.btn-secondary:hover{background:#333}
+.btn-green{background:#10b981;color:#fff}.btn-green:hover{background:#0ea572}
+.btn-danger{background:#ef4444;color:#fff}.btn-danger:hover{background:#dc2626}
+.btn-sm{padding:6px 14px;font-size:0.8rem}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.copied-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:100}
+.copied-toast.show{opacity:1}
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem}
+.cross-sell a.cta{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;text-decoration:none}
+.cross-sell a.cta:hover{background:#e5500a;text-decoration:none}
+.tool-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:16px}
+.tool-links a{font-size:0.8rem;color:#888;padding:4px 12px;border:1px solid #333;border-radius:6px;transition:all .2s}
+.tool-links a:hover{color:#ff5f1f;border-color:#ff5f1f;text-decoration:none}
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a}
+
+.endpoint{background:#0d0d0d;border:1px solid #222;border-radius:10px;padding:16px;margin-bottom:12px}
+.endpoint-header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.method-select{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-weight:700;font-size:0.85rem;outline:none}
+.method-select option{background:#1a1a1a}
+.ep-input{flex:1;min-width:200px;padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;font-family:'Courier New',monospace}
+.ep-input:focus,.method-select:focus{border-color:#ff5f1f}
+.ep-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;align-items:center}
+.ep-row label{font-size:0.8rem;color:#888;min-width:80px}
+.ep-textarea{width:100%;min-height:80px;padding:10px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.82rem;font-family:'Courier New',monospace;outline:none;resize:vertical}
+.ep-textarea:focus{border-color:#ff5f1f}
+.status-badge{padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:700}
+.status-2xx{background:#10b98122;color:#10b981}
+.status-4xx{background:#f59e0b22;color:#f59e0b}
+.status-5xx{background:#ef444422;color:#ef4444}
+.method-badge{font-weight:700;font-size:0.78rem;padding:2px 8px;border-radius:4px}
+.method-GET{color:#10b981;background:#10b98122}
+.method-POST{color:#3b82f6;background:#3b82f622}
+.method-PUT{color:#f59e0b;background:#f59e0b22}
+.method-DELETE{color:#ef4444;background:#ef444422}
+.output-area{width:100%;min-height:200px;padding:16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:10px;color:#10b981;font-size:0.82rem;font-family:'Courier New',monospace;white-space:pre-wrap;overflow-x:auto}
+.header-pair{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.header-pair input{flex:1;min-width:100px}
+@media(max-width:600px){
+  h1{font-size:1.5rem}
+  main{padding:20px 16px 60px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"API Mock Server","description":"Define REST endpoints with custom responses, status codes, headers, and delays. Generate mock API configuration.","url":"https://spunkart.com/api-mock-server.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">SPUNKART.COM</a>
+  <div class="links">
+    <a href="/store">Store</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>API Mock <span>Server</span></h1>
+  <p class="subtitle">Define REST endpoints, set responses and status codes, export mock API config as JSON.</p>
+  <div class="pricing-badge">100% Free Tool</div>
+
+  <div class="section">
+    <h3>Endpoints</h3>
+    <div id="endpoints"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addEndpoint()">+ Add Endpoint</button>
+      <button class="btn btn-green" onclick="generateConfig()">Generate Config</button>
+    </div>
+  </div>
+
+  <div class="section" id="outputSection" style="display:none">
+    <h3>Mock Server Configuration</h3>
+    <div class="output-area" id="configOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyConfig()">Copy JSON</button>
+      <button class="btn btn-secondary" onclick="downloadConfig()">Download JSON</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>More Free Tools</h3>
+    <div class="tool-links">
+      <a href="/codebase-scaffolder">Codebase Scaffolder</a>
+      <a href="/cli-command-builder">CLI Command Builder</a>
+      <a href="/github-actions-builder">GitHub Actions Builder</a>
+      <a href="/database-schema-designer">DB Schema Designer</a>
+      <a href="/package-json-builder">Package.json Builder</a>
+    </div>
+    <h3 style="margin-top:16px">Get All Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<div class="copied-toast" id="toast">Copied!</div>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+
+<script>
+let endpoints = [];
+let epCounter = 0;
+
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'Copied!';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+function addEndpoint() {
+  const id = ++epCounter;
+  endpoints.push({id});
+  renderEndpoints();
+  gtag('event','add_endpoint',{event_category:'tool_use'});
+}
+
+function removeEndpoint(id) {
+  endpoints = endpoints.filter(e => e.id !== id);
+  renderEndpoints();
+}
+
+function addHeader(id) {
+  const container = document.getElementById('headers-'+id);
+  const div = document.createElement('div');
+  div.className = 'header-pair';
+  div.innerHTML = `<input class="ep-input" placeholder="Header name" style="flex:1"><input class="ep-input" placeholder="Header value" style="flex:1"><button class="btn btn-danger btn-sm" onclick="this.parentElement.remove()">x</button>`;
+  container.appendChild(div);
+}
+
+function renderEndpoints() {
+  const container = document.getElementById('endpoints');
+  if(!endpoints.length) {
+    container.innerHTML = '<p style="color:#555;font-size:0.85rem">No endpoints yet. Click "+ Add Endpoint" to start.</p>';
+    return;
+  }
+  container.innerHTML = endpoints.map(ep => `
+    <div class="endpoint" id="ep-${ep.id}">
+      <div class="endpoint-header">
+        <select class="method-select" id="method-${ep.id}">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+          <option value="PATCH">PATCH</option>
+        </select>
+        <input class="ep-input" id="path-${ep.id}" placeholder="/api/users/:id" value="/api/resource">
+        <select class="method-select" id="status-${ep.id}" style="width:80px">
+          <option value="200">200</option>
+          <option value="201">201</option>
+          <option value="204">204</option>
+          <option value="400">400</option>
+          <option value="401">401</option>
+          <option value="403">403</option>
+          <option value="404">404</option>
+          <option value="500">500</option>
+        </select>
+        <input class="ep-input" id="delay-${ep.id}" placeholder="Delay (ms)" value="0" style="width:100px">
+        <button class="btn btn-danger btn-sm" onclick="removeEndpoint(${ep.id})">Remove</button>
+      </div>
+      <div class="ep-row">
+        <label>Response Body:</label>
+      </div>
+      <textarea class="ep-textarea" id="body-${ep.id}" placeholder='{"id": 1, "name": "Example"}'>{
+  "id": 1,
+  "name": "Example",
+  "status": "active"
+}</textarea>
+      <div style="margin-top:8px">
+        <label style="font-size:0.8rem;color:#888">Custom Headers:</label>
+        <div id="headers-${ep.id}">
+          <div class="header-pair">
+            <input class="ep-input" placeholder="Header name" value="Content-Type" style="flex:1">
+            <input class="ep-input" placeholder="Header value" value="application/json" style="flex:1">
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="addHeader(${ep.id})" style="margin-top:6px">+ Header</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function generateConfig() {
+  if(!endpoints.length){showToast('Add endpoints first');return;}
+  const config = {
+    name: "Mock API Server",
+    version: "1.0",
+    baseUrl: "http://localhost:3000",
+    endpoints: endpoints.map(ep => {
+      const method = document.getElementById('method-'+ep.id).value;
+      const path = document.getElementById('path-'+ep.id).value;
+      const status = parseInt(document.getElementById('status-'+ep.id).value);
+      const delay = parseInt(document.getElementById('delay-'+ep.id).value) || 0;
+      let body;
+      try { body = JSON.parse(document.getElementById('body-'+ep.id).value); } catch(e) { body = document.getElementById('body-'+ep.id).value; }
+      const headerPairs = document.querySelectorAll('#headers-'+ep.id+' .header-pair');
+      const headers = {};
+      headerPairs.forEach(pair => {
+        const inputs = pair.querySelectorAll('input');
+        if(inputs[0].value && inputs[1].value) headers[inputs[0].value] = inputs[1].value;
+      });
+      return {method, path, status, delay, headers, body};
+    })
+  };
+  const json = JSON.stringify(config, null, 2);
+  document.getElementById('configOutput').textContent = json;
+  document.getElementById('outputSection').style.display = 'block';
+  gtag('event','generate_config',{event_category:'tool_use'});
+}
+
+function copyConfig() {
+  navigator.clipboard.writeText(document.getElementById('configOutput').textContent);
+  showToast('Config copied!');
+}
+
+function downloadConfig() {
+  const blob = new Blob([document.getElementById('configOutput').textContent], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'mock-api-config.json'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('Downloaded!');
+}
+
+// Start with one endpoint
+addEndpoint();
+</script>
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c⚠ SPUNKART.COM — All rights reserved.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  if(!document.querySelector('.watermark')){var w=document.createElement('div');w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';w.textContent='SPUNKART.COM';document.body.appendChild(w);}
+})();
+</script>
+</body>
+</html>
