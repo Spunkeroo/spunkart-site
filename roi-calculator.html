@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing ROI Calculator - ROAS, CPA, LTV | SPUNKART.COM</title>
+<meta name="description" content="Calculate marketing ROI, ROAS, CPA, and LTV projections instantly. Input ad spend, revenue, conversion rates. Visual charts and exportable reports. Free tool for marketers.">
+<meta property="og:title" content="Marketing ROI Calculator - ROAS, CPA, LTV Projections">
+<meta property="og:description" content="Calculate marketing ROI, ROAS, CPA, and customer lifetime value projections. Free visual calculator by SPUNKART.COM">
+<meta property="og:image" content="https://spunkart.com/assets/og-roi-calculator.png">
+<meta property="og:url" content="https://spunkart.com/roi-calculator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Marketing ROI Calculator - Free Tool">
+<meta name="twitter:description" content="Calculate ROI, ROAS, CPA, and LTV projections. Free marketing calculator by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/roi-calculator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Marketing ROI Calculator",
+  "description": "Calculate marketing ROI, ROAS, CPA, and LTV projections with visual charts.",
+  "url": "https://spunkart.com/roi-calculator.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h1 span{color:#ff5f1f;}
+h2{font-size:1.2rem;color:#fff;margin-bottom:16px;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:24px;}
+.usage-badge strong{color:#ff5f1f;}
+.scenarios{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.scenario-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 18px;color:#e8e8e8;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all .2s;}
+.scenario-btn:hover,.scenario-btn.active{border-color:#ff5f1f;background:#1f1008;color:#ff5f1f;}
+.input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px;}
+.input-group{display:flex;flex-direction:column;gap:6px;}
+.input-group label{font-size:0.8rem;color:#aaa;font-weight:600;text-transform:uppercase;letter-spacing:0.3px;}
+.input-group input{background:#111;border:1px solid #333;border-radius:8px;padding:12px 14px;color:#e8e8e8;font-size:1rem;transition:border-color .2s;outline:none;}
+.input-group input:focus{border-color:#ff5f1f;}
+.input-group .hint{font-size:0.7rem;color:#555;}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:14px 32px;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s;display:block;width:100%;max-width:300px;margin:0 auto 32px;text-align:center;}
+.btn:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333;}
+.btn-secondary:hover{background:#333;color:#fff;}
+.results{display:none;}
+.metric-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px;}
+.metric-card{background:#111;border:1px solid #222;border-radius:12px;padding:20px;text-align:center;position:relative;}
+.metric-card .label{font-size:0.7rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+.metric-card .value{font-size:1.8rem;font-weight:800;}
+.metric-card .value.green{color:#10b981;}
+.metric-card .value.orange{color:#ff5f1f;}
+.metric-card .value.red{color:#ef4444;}
+.metric-card .sub{font-size:0.75rem;color:#666;margin-top:4px;}
+.metric-card .indicator{position:absolute;top:12px;right:12px;font-size:0.75rem;padding:2px 8px;border-radius:10px;font-weight:700;}
+.metric-card .indicator.good{background:rgba(16,185,129,0.15);color:#10b981;}
+.metric-card .indicator.warn{background:rgba(245,158,11,0.15);color:#f59e0b;}
+.metric-card .indicator.bad{background:rgba(239,68,68,0.15);color:#ef4444;}
+.chart-section{margin-bottom:32px;}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:240px;padding:20px 0;border-bottom:1px solid #333;}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;justify-content:flex-end;}
+.bar{width:100%;max-width:60px;border-radius:6px 6px 0 0;transition:height .6s ease;min-height:4px;position:relative;}
+.bar.green{background:linear-gradient(180deg,#10b981,#059669);}
+.bar.orange{background:linear-gradient(180deg,#ff5f1f,#e04500);}
+.bar.red{background:linear-gradient(180deg,#ef4444,#dc2626);}
+.bar-label{font-size:0.7rem;color:#888;margin-top:6px;text-align:center;}
+.bar-value{font-size:0.75rem;font-weight:700;color:#e8e8e8;margin-bottom:4px;text-align:center;}
+.breakdown{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:24px;}
+.breakdown h3{color:#ff5f1f;font-size:0.9rem;margin-bottom:12px;}
+.breakdown-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.9rem;}
+.breakdown-row:last-child{border-bottom:none;font-weight:700;color:#10b981;padding-top:12px;}
+.breakdown-row .label{color:#999;}.breakdown-row .val{color:#e8e8e8;}
+.gauge-container{display:flex;justify-content:center;margin-bottom:32px;}
+.gauge{position:relative;width:200px;height:120px;}
+.gauge canvas{width:200px;height:120px;}
+.gauge-value{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:1.6rem;font-weight:800;text-align:center;}
+.gauge-label{text-align:center;font-size:0.8rem;color:#888;margin-top:4px;}
+.ltv-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:32px;}
+.ltv-card{background:#111;border:1px solid #222;border-radius:12px;padding:18px;text-align:center;}
+.ltv-card .period{font-size:0.8rem;color:#888;margin-bottom:4px;}
+.ltv-card .ltv-val{font-size:1.5rem;font-weight:800;color:#10b981;}
+.ltv-card .ltv-sub{font-size:0.75rem;color:#666;margin-top:4px;}
+.export-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.btn-export{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 20px;color:#e8e8e8;font-size:0.85rem;cursor:pointer;transition:all .2s;}
+.btn-export:hover{border-color:#ff5f1f;color:#ff5f1f;}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+@media(max-width:600px){h1{font-size:1.5rem;}.input-grid{grid-template-columns:1fr;}.metric-cards{grid-template-columns:repeat(2,1fr);}.bar-chart{gap:4px;height:180px;}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">SPUNKART</a>
+<div class="links">
+<a href="/store.html">Store</a>
+<a href="/blog.html">Blog</a>
+<a href="/index.html#tools">Free Tools</a>
+</div>
+</nav>
+
+<main>
+<h1>Marketing <span>ROI</span> Calculator</h1>
+<p class="subtitle">Input ad spend, revenue, and conversion rates. Get ROI%, ROAS, CPA, and LTV projections with visual charts.</p>
+<div class="usage-badge">Calculated <strong id="usageCount">0</strong> times</div>
+
+<div class="scenarios">
+<button class="scenario-btn" onclick="loadScenario('starter')">Starter Campaign</button>
+<button class="scenario-btn" onclick="loadScenario('growth')">Growth Scale</button>
+<button class="scenario-btn" onclick="loadScenario('enterprise')">Enterprise</button>
+<button class="scenario-btn" onclick="loadScenario('ecommerce')">E-commerce</button>
+<button class="scenario-btn" onclick="loadScenario('saas')">SaaS</button>
+</div>
+
+<div class="input-grid">
+<div class="input-group">
+<label>Monthly Ad Spend ($)</label>
+<input type="number" id="adSpend" value="2000" min="0" step="100">
+<span class="hint">Total paid advertising budget</span>
+</div>
+<div class="input-group">
+<label>Monthly Revenue ($)</label>
+<input type="number" id="revenue" value="8000" min="0" step="100">
+<span class="hint">Revenue attributed to marketing</span>
+</div>
+<div class="input-group">
+<label>Total Clicks / Visitors</label>
+<input type="number" id="clicks" value="5000" min="0">
+<span class="hint">From paid campaigns</span>
+</div>
+<div class="input-group">
+<label>Conversions</label>
+<input type="number" id="conversions" value="120" min="0">
+<span class="hint">Sales, signups, or leads</span>
+</div>
+<div class="input-group">
+<label>Avg Order Value ($)</label>
+<input type="number" id="aov" value="67" min="0" step="1">
+<span class="hint">Average transaction amount</span>
+</div>
+<div class="input-group">
+<label>Cost of Goods Sold ($)</label>
+<input type="number" id="cogs" value="2400" min="0" step="100">
+<span class="hint">Product/fulfillment costs</span>
+</div>
+<div class="input-group">
+<label>Avg Customer Lifespan (months)</label>
+<input type="number" id="lifespan" value="12" min="1" max="120">
+<span class="hint">How long customers stay active</span>
+</div>
+<div class="input-group">
+<label>Repeat Purchase Rate (%)</label>
+<input type="number" id="repeatRate" value="30" min="0" max="100" step="1">
+<span class="hint">% of customers who buy again</span>
+</div>
+</div>
+
+<button class="btn" onclick="calculate()">Calculate ROI</button>
+
+<div class="results" id="results">
+<div class="metric-cards" id="metricCards"></div>
+
+<div class="gauge-container">
+<div>
+<div class="gauge">
+<canvas id="gaugeCanvas" width="200" height="120"></canvas>
+<div class="gauge-value" id="gaugeValue">0%</div>
+</div>
+<div class="gauge-label">Return on Investment</div>
+</div>
+</div>
+
+<div class="chart-section">
+<h2>Monthly Projection (12 Months)</h2>
+<div class="bar-chart" id="barChart"></div>
+</div>
+
+<div class="breakdown" id="breakdown"></div>
+
+<h2>Customer Lifetime Value Projections</h2>
+<div class="ltv-section" id="ltvSection"></div>
+
+<div class="export-row">
+<button class="btn-export" onclick="exportText()">Copy as Text</button>
+<button class="btn-export" onclick="exportCSV()">Export CSV</button>
+</div>
+</div>
+
+<div class="cross-sell">
+<h3>Scale Your Business</h3>
+<p>Learn how to build profitable sites with zero ad spend using the Free Tools Money ebook.</p>
+<a href="/ebook-free-tools-money.html" class="cta">Get the Ebook</a>
+<br><br>
+<a href="/store.html" style="color:#999;font-size:0.85rem;">Browse 80+ Free Tools &rarr;</a>
+</div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Copied!</div>
+
+<div class="email-overlay" id="emailOverlay">
+<div class="email-popup">
+<button class="close-popup" onclick="closePopup()">&times;</button>
+<h2>Marketing Tips Weekly</h2>
+<p>Join 2,000+ founders getting growth strategies, free tools, and marketing shortcuts.</p>
+<iframe src="https://embeds.beehiiv.com/a23fb2e5-bb3b-4ed4-884e-0ace68a5a55b?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin-bottom:12px;"></iframe>
+<button class="btn btn-secondary" onclick="closePopup()" style="padding:8px 16px;font-size:0.85rem;margin-top:8px;">Maybe later</button>
+</div>
+</div>
+
+<footer>&copy; 2026 SpunkArt.com. All rights reserved.</footer>
+
+<script>
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))){e.preventDefault();}});})();
+
+let usage = parseInt(localStorage.getItem('roicalc_usage') || '0');
+document.getElementById('usageCount').textContent = usage;
+let lastCalc = {};
+
+function incrementUsage() {
+  usage++;
+  localStorage.setItem('roicalc_usage', usage);
+  document.getElementById('usageCount').textContent = usage;
+  if (usage === 3) showPopup();
+}
+
+const scenarios = {
+  starter: { adSpend: 500, revenue: 1800, clicks: 2000, conversions: 40, aov: 45, cogs: 540, lifespan: 6, repeatRate: 15 },
+  growth: { adSpend: 5000, revenue: 22000, clicks: 15000, conversions: 350, aov: 63, cogs: 6600, lifespan: 14, repeatRate: 35 },
+  enterprise: { adSpend: 50000, revenue: 250000, clicks: 100000, conversions: 2500, aov: 100, cogs: 75000, lifespan: 24, repeatRate: 50 },
+  ecommerce: { adSpend: 3000, revenue: 15000, clicks: 10000, conversions: 200, aov: 75, cogs: 6000, lifespan: 10, repeatRate: 40 },
+  saas: { adSpend: 8000, revenue: 35000, clicks: 20000, conversions: 150, aov: 233, cogs: 3500, lifespan: 18, repeatRate: 85 }
+};
+
+function loadScenario(name) {
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const s = scenarios[name];
+  document.getElementById('adSpend').value = s.adSpend;
+  document.getElementById('revenue').value = s.revenue;
+  document.getElementById('clicks').value = s.clicks;
+  document.getElementById('conversions').value = s.conversions;
+  document.getElementById('aov').value = s.aov;
+  document.getElementById('cogs').value = s.cogs;
+  document.getElementById('lifespan').value = s.lifespan;
+  document.getElementById('repeatRate').value = s.repeatRate;
+}
+
+function fmt(n) { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function fmtShort(n) {
+  if (Math.abs(n) >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return '$' + (n / 1000).toFixed(1) + 'K';
+  return '$' + n.toFixed(2);
+}
+
+function calculate() {
+  incrementUsage();
+  const adSpend = parseFloat(document.getElementById('adSpend').value) || 0;
+  const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+  const clicks = parseInt(document.getElementById('clicks').value) || 0;
+  const conversions = parseInt(document.getElementById('conversions').value) || 0;
+  const aov = parseFloat(document.getElementById('aov').value) || 0;
+  const cogs = parseFloat(document.getElementById('cogs').value) || 0;
+  const lifespan = parseInt(document.getElementById('lifespan').value) || 1;
+  const repeatRate = parseFloat(document.getElementById('repeatRate').value) || 0;
+
+  const grossProfit = revenue - cogs;
+  const netProfit = grossProfit - adSpend;
+  const roi = adSpend > 0 ? ((netProfit / adSpend) * 100) : 0;
+  const roas = adSpend > 0 ? (revenue / adSpend) : 0;
+  const cpa = conversions > 0 ? (adSpend / conversions) : 0;
+  const cpc = clicks > 0 ? (adSpend / clicks) : 0;
+  const convRate = clicks > 0 ? ((conversions / clicks) * 100) : 0;
+  const grossMargin = revenue > 0 ? ((grossProfit / revenue) * 100) : 0;
+
+  const avgPurchases = 1 + (repeatRate / 100) * (lifespan / 3);
+  const ltv = aov * avgPurchases;
+  const ltvCpaRatio = cpa > 0 ? (ltv / cpa) : 0;
+
+  lastCalc = { adSpend, revenue, clicks, conversions, aov, cogs, lifespan, repeatRate, grossProfit, netProfit, roi, roas, cpa, cpc, convRate, grossMargin, ltv, ltvCpaRatio };
+
+  const metrics = [
+    { label: 'ROI', value: roi.toFixed(1) + '%', cls: roi >= 100 ? 'green' : roi >= 0 ? 'orange' : 'red', ind: roi >= 100 ? 'good' : roi >= 0 ? 'warn' : 'bad', indText: roi >= 100 ? 'Excellent' : roi >= 0 ? 'OK' : 'Loss', sub: 'Return on investment' },
+    { label: 'ROAS', value: roas.toFixed(2) + 'x', cls: roas >= 4 ? 'green' : roas >= 2 ? 'orange' : 'red', ind: roas >= 4 ? 'good' : roas >= 2 ? 'warn' : 'bad', indText: roas >= 4 ? 'Strong' : roas >= 2 ? 'Average' : 'Low', sub: 'Return on ad spend' },
+    { label: 'CPA', value: fmt(cpa), cls: 'orange', ind: cpa < aov * 0.3 ? 'good' : cpa < aov * 0.6 ? 'warn' : 'bad', indText: cpa < aov * 0.3 ? 'Low' : cpa < aov * 0.6 ? 'Medium' : 'High', sub: 'Cost per acquisition' },
+    { label: 'Net Profit', value: fmtShort(netProfit), cls: netProfit >= 0 ? 'green' : 'red', ind: netProfit >= 0 ? 'good' : 'bad', indText: netProfit >= 0 ? 'Profitable' : 'Loss', sub: 'After COGS + ad spend' },
+    { label: 'Conv. Rate', value: convRate.toFixed(2) + '%', cls: convRate >= 3 ? 'green' : convRate >= 1 ? 'orange' : 'red', ind: convRate >= 3 ? 'good' : convRate >= 1 ? 'warn' : 'bad', indText: convRate >= 3 ? 'Great' : convRate >= 1 ? 'OK' : 'Low', sub: 'Clicks to conversions' },
+    { label: 'Cost Per Click', value: fmt(cpc), cls: 'orange', sub: 'Average CPC' },
+    { label: 'Customer LTV', value: fmt(ltv), cls: 'green', ind: ltvCpaRatio >= 3 ? 'good' : ltvCpaRatio >= 1 ? 'warn' : 'bad', indText: 'LTV:CPA ' + ltvCpaRatio.toFixed(1) + 'x', sub: lifespan + ' month projection' },
+    { label: 'Gross Margin', value: grossMargin.toFixed(1) + '%', cls: grossMargin >= 60 ? 'green' : grossMargin >= 30 ? 'orange' : 'red', ind: grossMargin >= 60 ? 'good' : grossMargin >= 30 ? 'warn' : 'bad', indText: grossMargin >= 60 ? 'Healthy' : grossMargin >= 30 ? 'OK' : 'Thin', sub: 'Revenue minus COGS' }
+  ];
+
+  let cardsHTML = '';
+  metrics.forEach(m => {
+    cardsHTML += `<div class="metric-card"><div class="label">${m.label}</div><div class="value ${m.cls}">${m.value}</div><div class="sub">${m.sub}</div>${m.ind ? `<span class="indicator ${m.ind}">${m.indText}</span>` : ''}</div>`;
+  });
+  document.getElementById('metricCards').innerHTML = cardsHTML;
+
+  drawGauge(roi);
+
+  const chart = document.getElementById('barChart');
+  chart.innerHTML = '';
+  let maxRev = 0;
+  const monthlyData = [];
+  for (let m = 1; m <= 12; m++) {
+    const factor = 1 + (m - 1) * 0.05;
+    const mRev = revenue * factor;
+    const mProfit = (mRev - cogs * factor) - adSpend;
+    monthlyData.push({ month: m, rev: mRev, profit: mProfit });
+    if (mRev > maxRev) maxRev = mRev;
+  }
+  monthlyData.forEach(d => {
+    const pct = maxRev > 0 ? (d.rev / maxRev) * 100 : 0;
+    const cls = d.profit >= 0 ? 'green' : 'red';
+    chart.innerHTML += `<div class="bar-wrap"><div class="bar-value">${fmtShort(d.rev)}</div><div class="bar ${cls}" style="height:${Math.max(pct, 3)}%"></div><div class="bar-label">M${d.month}</div></div>`;
+  });
+
+  let breakdownHTML = '<h3>Profit & Loss Breakdown</h3>';
+  const rows = [
+    ['Revenue', fmt(revenue)],
+    ['Cost of Goods Sold', '-' + fmt(cogs)],
+    ['Gross Profit', fmt(grossProfit)],
+    ['Ad Spend', '-' + fmt(adSpend)],
+    ['Net Profit', fmt(netProfit)]
+  ];
+  rows.forEach(r => {
+    breakdownHTML += `<div class="breakdown-row"><span class="label">${r[0]}</span><span class="val">${r[1]}</span></div>`;
+  });
+  document.getElementById('breakdown').innerHTML = breakdownHTML;
+
+  const ltvPeriods = [3, 6, 12, 24];
+  let ltvHTML = '';
+  ltvPeriods.forEach(p => {
+    const purch = 1 + (repeatRate / 100) * (p / 3);
+    const ltvP = aov * purch;
+    const ratio = cpa > 0 ? (ltvP / cpa) : 0;
+    ltvHTML += `<div class="ltv-card"><div class="period">${p} Months</div><div class="ltv-val">${fmt(ltvP)}</div><div class="ltv-sub">LTV:CPA ${ratio.toFixed(1)}x</div></div>`;
+  });
+  document.getElementById('ltvSection').innerHTML = ltvHTML;
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+}
+
+function drawGauge(roi) {
+  const canvas = document.getElementById('gaugeCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 200, 120);
+
+  const cx = 100, cy = 105, r = 80;
+  ctx.lineWidth = 14;
+  ctx.lineCap = 'round';
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, Math.PI, 2 * Math.PI);
+  ctx.strokeStyle = '#222';
+  ctx.stroke();
+
+  const clampedROI = Math.max(-100, Math.min(500, roi));
+  const pct = (clampedROI + 100) / 600;
+  const angle = Math.PI + pct * Math.PI;
+
+  const gradient = ctx.createLinearGradient(20, 0, 180, 0);
+  gradient.addColorStop(0, '#ef4444');
+  gradient.addColorStop(0.3, '#f59e0b');
+  gradient.addColorStop(0.5, '#ff5f1f');
+  gradient.addColorStop(0.8, '#10b981');
+  gradient.addColorStop(1, '#10b981');
+
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, Math.PI, angle);
+  ctx.strokeStyle = gradient;
+  ctx.stroke();
+
+  const valEl = document.getElementById('gaugeValue');
+  valEl.textContent = roi.toFixed(1) + '%';
+  valEl.style.color = roi >= 100 ? '#10b981' : roi >= 0 ? '#ff5f1f' : '#ef4444';
+}
+
+function exportText() {
+  const c = lastCalc;
+  let txt = `MARKETING ROI REPORT\nGenerated: ${new Date().toLocaleDateString()}\n${'='.repeat(40)}\n\nINPUTS\nAd Spend: ${fmt(c.adSpend)} | Revenue: ${fmt(c.revenue)}\nClicks: ${c.clicks.toLocaleString()} | Conversions: ${c.conversions.toLocaleString()}\nAOV: ${fmt(c.aov)} | COGS: ${fmt(c.cogs)}\n\nRESULTS\nROI: ${c.roi.toFixed(1)}%\nROAS: ${c.roas.toFixed(2)}x\nCPA: ${fmt(c.cpa)}\nNet Profit: ${fmt(c.netProfit)}\nConversion Rate: ${c.convRate.toFixed(2)}%\nCustomer LTV: ${fmt(c.ltv)}\nLTV:CPA Ratio: ${c.ltvCpaRatio.toFixed(1)}x\nGross Margin: ${c.grossMargin.toFixed(1)}%\n\nGenerated at SpunkArt.com/roi-calculator.html`;
+  navigator.clipboard.writeText(txt);
+  showToast('Copied to clipboard!');
+}
+
+function exportCSV() {
+  const c = lastCalc;
+  let csv = 'Metric,Value\n';
+  csv += `ROI,${c.roi.toFixed(1)}%\nROAS,${c.roas.toFixed(2)}x\nCPA,${c.cpa.toFixed(2)}\nNet Profit,${c.netProfit.toFixed(2)}\nConversion Rate,${c.convRate.toFixed(2)}%\nCost Per Click,${c.cpc.toFixed(2)}\nCustomer LTV,${c.ltv.toFixed(2)}\nLTV CPA Ratio,${c.ltvCpaRatio.toFixed(1)}x\nGross Margin,${c.grossMargin.toFixed(1)}%\n`;
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'marketing-roi-report.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('CSV downloaded!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2000);
+}
+
+function showPopup() {
+  if (localStorage.getItem('roicalc_subscribed')) return;
+  document.getElementById('emailOverlay').classList.add('show');
+}
+function closePopup() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('roicalc_subscribed', '1');
+}
+</script>
+</body>
+</html>

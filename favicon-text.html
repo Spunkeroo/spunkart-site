@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text to Favicon Generator - Create Favicon from Text | SPUNKART.COM</title>
+<meta name="description" content="Generate favicons from text characters instantly. Type 1-2 characters, pick colors, preview live, and download as .ico or .png. Free favicon tool for developers.">
+<meta property="og:title" content="Text to Favicon Generator - Create Favicons from Characters">
+<meta property="og:description" content="Type 1-2 characters, pick colors, generate and download .ico/.png favicons instantly. Free tool by SPUNKART.COM">
+<meta property="og:image" content="https://spunkart.com/assets/og-favicon-text.png">
+<meta property="og:url" content="https://spunkart.com/favicon-text.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Text to Favicon Generator - Free Tool">
+<meta name="twitter:description" content="Generate favicons from text characters. Pick colors, download .ico/.png. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/favicon-text.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text to Favicon Generator",
+  "description": "Generate favicons from text characters. Type 1-2 characters, pick background color, and download as .ico or .png.",
+  "url": "https://spunkart.com/favicon-text.html",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:24px;}
+.usage-badge strong{color:#ff5f1f;}
+.generator{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px;}
+.controls{display:flex;flex-direction:column;gap:16px;}
+.control-group{display:flex;flex-direction:column;gap:6px;}
+.control-group label{font-size:0.85rem;color:#aaa;font-weight:600;}
+.control-group input[type="text"]{background:#111;border:1px solid #333;border-radius:8px;padding:14px;color:#e8e8e8;font-size:2rem;font-weight:800;text-align:center;letter-spacing:4px;outline:none;max-width:200px;}
+.control-group input[type="text"]:focus{border-color:#ff5f1f;}
+.color-row{display:flex;gap:12px;align-items:center;}
+.color-row input[type="color"]{width:48px;height:48px;border:2px solid #333;border-radius:8px;cursor:pointer;background:none;padding:2px;}
+.color-row input[type="color"]::-webkit-color-swatch-wrapper{padding:2px;}
+.color-row input[type="color"]::-webkit-color-swatch{border-radius:4px;border:none;}
+.color-row .hex-label{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;color:#888;}
+.presets{display:flex;gap:8px;flex-wrap:wrap;}
+.preset{width:32px;height:32px;border-radius:6px;border:2px solid transparent;cursor:pointer;transition:all .2s;}
+.preset:hover,.preset.active{border-color:#fff;transform:scale(1.15);}
+select{background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#e8e8e8;font-size:0.9rem;outline:none;cursor:pointer;}
+select:focus{border-color:#ff5f1f;}
+.range-row{display:flex;align-items:center;gap:12px;}
+.range-row input[type="range"]{flex:1;accent-color:#ff5f1f;}
+.range-row .range-val{font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;color:#ff5f1f;min-width:40px;text-align:right;}
+.shape-btns{display:flex;gap:8px;}
+.shape-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:8px 16px;color:#ccc;cursor:pointer;font-size:0.85rem;transition:all .2s;}
+.shape-btn:hover,.shape-btn.active{border-color:#ff5f1f;color:#ff5f1f;background:#1f1008;}
+.preview-area{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.live-preview{display:flex;align-items:center;justify-content:center;width:256px;height:256px;border-radius:16px;border:2px solid #222;background:#111;overflow:hidden;}
+.live-preview canvas{image-rendering:pixelated;}
+.size-previews{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.size-preview{text-align:center;}
+.size-preview canvas{border:1px solid #333;border-radius:4px;image-rendering:pixelated;background:#fff;}
+.size-preview .size-label{font-size:0.7rem;color:#666;margin-top:4px;}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333;}
+.btn-secondary:hover{background:#333;color:#fff;}
+.btn-success{background:#10b981;}.btn-success:hover{background:#059669;}
+.download-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%;}
+.emoji-picker{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.emoji-btn{background:#1a1a1a;border:1px solid #333;border-radius:6px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all .2s;}
+.emoji-btn:hover{border-color:#ff5f1f;transform:scale(1.1);}
+.tab-preview{display:flex;align-items:center;gap:8px;background:#222;border-radius:8px 8px 0 0;padding:8px 14px;margin-top:12px;width:fit-content;}
+.tab-preview canvas{border-radius:2px;}
+.tab-preview span{font-size:0.8rem;color:#999;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.code-block{background:#111;border:1px solid #222;border-radius:10px;padding:16px;position:relative;margin-top:24px;}
+.code-block pre{color:#ccc;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.82rem;white-space:pre-wrap;line-height:1.7;}
+.code-block .copy-btn{position:absolute;top:10px;right:10px;background:#222;color:#ccc;border:1px solid #333;padding:5px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;}
+.code-block .copy-btn:hover{background:#333;color:#fff;}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+@media(max-width:700px){.generator{grid-template-columns:1fr;}.live-preview{width:200px;height:200px;}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">SPUNKART</a>
+<div class="links">
+<a href="/store.html">Store</a>
+<a href="/blog.html">Blog</a>
+<a href="/index.html#tools">Free Tools</a>
+</div>
+</nav>
+
+<main>
+<h1>Text to <span>Favicon</span> Generator</h1>
+<p class="subtitle">Type 1-2 characters, pick colors, download as .ico or .png. Instant preview, zero dependencies.</p>
+<div class="usage-badge">Generated <strong id="usageCount">0</strong> favicons</div>
+
+<div class="generator">
+<div class="controls">
+<div class="control-group">
+<label>Text (1-2 characters)</label>
+<input type="text" id="faviconText" value="SA" maxlength="2" oninput="render()">
+</div>
+<div class="control-group">
+<label>Quick Emojis</label>
+<div class="emoji-picker">
+<button class="emoji-btn" onclick="setText(this.textContent)">&#127968;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#128640;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#9889;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#128142;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#127775;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#128293;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#128171;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#9996;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#127881;</button>
+<button class="emoji-btn" onclick="setText(this.textContent)">&#128161;</button>
+</div>
+</div>
+<div class="control-group">
+<label>Background Color</label>
+<div class="color-row">
+<input type="color" id="bgColor" value="#ff5f1f" onchange="render()">
+<span class="hex-label" id="bgHex">#ff5f1f</span>
+</div>
+<div class="presets" id="bgPresets"></div>
+</div>
+<div class="control-group">
+<label>Text Color</label>
+<div class="color-row">
+<input type="color" id="textColor" value="#ffffff" onchange="render()">
+<span class="hex-label" id="textHex">#ffffff</span>
+</div>
+<div class="presets" id="textPresets"></div>
+</div>
+<div class="control-group">
+<label>Font</label>
+<select id="fontFamily" onchange="render()">
+<option value="Arial, sans-serif">Arial (Sans-serif)</option>
+<option value="'Segoe UI', sans-serif">Segoe UI</option>
+<option value="Georgia, serif">Georgia (Serif)</option>
+<option value="'Courier New', monospace">Courier (Mono)</option>
+<option value="Impact, sans-serif">Impact</option>
+<option value="'Comic Sans MS', cursive">Comic Sans</option>
+<option value="Verdana, sans-serif">Verdana</option>
+</select>
+</div>
+<div class="control-group">
+<label>Font Size</label>
+<div class="range-row">
+<input type="range" id="fontSize" min="40" max="100" value="70" oninput="render()">
+<span class="range-val" id="fontSizeVal">70%</span>
+</div>
+</div>
+<div class="control-group">
+<label>Border Radius</label>
+<div class="range-row">
+<input type="range" id="borderRadius" min="0" max="50" value="15" oninput="render()">
+<span class="range-val" id="borderRadiusVal">15%</span>
+</div>
+</div>
+<div class="control-group">
+<label>Shape</label>
+<div class="shape-btns">
+<button class="shape-btn active" onclick="setShape('square',this)">Square</button>
+<button class="shape-btn" onclick="setShape('circle',this)">Circle</button>
+<button class="shape-btn" onclick="setShape('rounded',this)">Rounded</button>
+</div>
+</div>
+</div>
+
+<div class="preview-area">
+<div class="live-preview">
+<canvas id="mainCanvas" width="256" height="256"></canvas>
+</div>
+<div class="tab-preview">
+<canvas id="tabCanvas" width="16" height="16"></canvas>
+<span>My Website Title</span>
+</div>
+<div class="size-previews">
+<div class="size-preview"><canvas id="prev16" width="16" height="16"></canvas><div class="size-label">16x16</div></div>
+<div class="size-preview"><canvas id="prev32" width="32" height="32"></canvas><div class="size-label">32x32</div></div>
+<div class="size-preview"><canvas id="prev48" width="48" height="48"></canvas><div class="size-label">48x48</div></div>
+<div class="size-preview"><canvas id="prev64" width="64" height="64"></canvas><div class="size-label">64x64</div></div>
+<div class="size-preview"><canvas id="prev180" width="180" height="180" style="width:64px;height:64px;"></canvas><div class="size-label">180 (Apple)</div></div>
+<div class="size-preview"><canvas id="prev192" width="192" height="192" style="width:64px;height:64px;"></canvas><div class="size-label">192 (Android)</div></div>
+</div>
+<div class="download-btns">
+<button class="btn" onclick="downloadPNG(32)">Download 32x32</button>
+<button class="btn btn-success" onclick="downloadPNG(64)">Download 64x64</button>
+<button class="btn btn-secondary" onclick="downloadPNG(180)">Apple Touch 180</button>
+<button class="btn btn-secondary" onclick="downloadPNG(192)">Android 192</button>
+<button class="btn btn-secondary" onclick="downloadPNG(512)">PWA 512</button>
+<button class="btn btn-secondary" onclick="downloadICO()">Download .ico</button>
+</div>
+</div>
+</div>
+
+<div class="code-block">
+<button class="copy-btn" onclick="copyHTML()">Copy</button>
+<pre id="htmlSnippet">&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;</pre>
+</div>
+
+<div class="cross-sell">
+<h3>Need More Design Tools?</h3>
+<p>Check out our Color Palette Generator, OG Image Maker, and 80+ other free tools.</p>
+<a href="/store.html" class="cta">Browse All Tools</a>
+<br><br>
+<a href="/ebook-vibe-coding.html" style="color:#999;font-size:0.85rem;">Get the Vibe Coding Ebook &rarr;</a>
+</div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Downloaded!</div>
+
+<div class="email-overlay" id="emailOverlay">
+<div class="email-popup">
+<button class="close-popup" onclick="closePopup()">&times;</button>
+<h2>Free Design Tips Weekly</h2>
+<p>Join 2,000+ solo founders getting free tools, templates, and shortcuts.</p>
+<iframe src="https://embeds.beehiiv.com/a23fb2e5-bb3b-4ed4-884e-0ace68a5a55b?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin-bottom:12px;"></iframe>
+<button class="btn btn-secondary" onclick="closePopup()" style="padding:8px 16px;font-size:0.85rem;margin-top:8px;">Maybe later</button>
+</div>
+</div>
+
+<footer>&copy; 2026 SpunkArt.com. All rights reserved.</footer>
+
+<script>
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))){e.preventDefault();}});})();
+
+let usage = parseInt(localStorage.getItem('favtext_usage') || '0');
+document.getElementById('usageCount').textContent = usage;
+let currentShape = 'square';
+
+const bgPresetColors = ['#ff5f1f','#e74c3c','#3498db','#2ecc71','#9b59b6','#f39c12','#1abc9c','#e91e63','#111111','#ffffff'];
+const textPresetColors = ['#ffffff','#000000','#f1c40f','#e8e8e8','#ff5f1f','#2ecc71','#3498db'];
+
+function buildPresets(containerId, inputId, hexLabelId, colors) {
+  const container = document.getElementById(containerId);
+  colors.forEach(c => {
+    const d = document.createElement('div');
+    d.className = 'preset';
+    d.style.background = c;
+    d.onclick = () => {
+      document.getElementById(inputId).value = c;
+      document.getElementById(hexLabelId).textContent = c;
+      render();
+    };
+    container.appendChild(d);
+  });
+}
+buildPresets('bgPresets', 'bgColor', 'bgHex', bgPresetColors);
+buildPresets('textPresets', 'textColor', 'textHex', textPresetColors);
+
+function setText(t) {
+  document.getElementById('faviconText').value = t;
+  render();
+}
+
+function setShape(shape, btn) {
+  currentShape = shape;
+  document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (shape === 'circle') document.getElementById('borderRadius').value = 50;
+  else if (shape === 'rounded') document.getElementById('borderRadius').value = 20;
+  else document.getElementById('borderRadius').value = 0;
+  render();
+}
+
+function incrementUsage() {
+  usage++;
+  localStorage.setItem('favtext_usage', usage);
+  document.getElementById('usageCount').textContent = usage;
+  if (usage === 3) showPopup();
+}
+
+function renderToCanvas(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const text = document.getElementById('faviconText').value || 'A';
+  const bg = document.getElementById('bgColor').value;
+  const fg = document.getElementById('textColor').value;
+  const font = document.getElementById('fontFamily').value;
+  const fontSizePct = parseInt(document.getElementById('fontSize').value);
+  const radiusPct = parseInt(document.getElementById('borderRadius').value);
+
+  document.getElementById('bgHex').textContent = bg;
+  document.getElementById('textHex').textContent = fg;
+  document.getElementById('fontSizeVal').textContent = fontSizePct + '%';
+  document.getElementById('borderRadiusVal').textContent = radiusPct + '%';
+
+  canvas.width = size;
+  canvas.height = size;
+  ctx.clearRect(0, 0, size, size);
+
+  const radius = (radiusPct / 100) * (size / 2);
+  ctx.beginPath();
+  if (radiusPct >= 50) {
+    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+  } else {
+    ctx.moveTo(radius, 0);
+    ctx.lineTo(size - radius, 0);
+    ctx.quadraticCurveTo(size, 0, size, radius);
+    ctx.lineTo(size, size - radius);
+    ctx.quadraticCurveTo(size, size, size - radius, size);
+    ctx.lineTo(radius, size);
+    ctx.quadraticCurveTo(0, size, 0, size - radius);
+    ctx.lineTo(0, radius);
+    ctx.quadraticCurveTo(0, 0, radius, 0);
+  }
+  ctx.closePath();
+  ctx.fillStyle = bg;
+  ctx.fill();
+
+  const fSize = Math.round(size * (fontSizePct / 100));
+  ctx.font = `bold ${fSize}px ${font}`;
+  ctx.fillStyle = fg;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, size / 2, size / 2 + (size * 0.03));
+}
+
+function render() {
+  renderToCanvas(document.getElementById('mainCanvas'), 256);
+  renderToCanvas(document.getElementById('tabCanvas'), 16);
+  [16, 32, 48, 64, 180, 192].forEach(s => {
+    const c = document.getElementById('prev' + s);
+    if (c) renderToCanvas(c, s);
+  });
+}
+
+function downloadPNG(size) {
+  const c = document.createElement('canvas');
+  renderToCanvas(c, size);
+  const a = document.createElement('a');
+  a.href = c.toDataURL('image/png');
+  a.download = `favicon-${size}x${size}.png`;
+  a.click();
+  incrementUsage();
+  showToast(`Downloaded ${size}x${size} PNG!`);
+}
+
+function downloadICO() {
+  const c16 = document.createElement('canvas'); renderToCanvas(c16, 16);
+  const c32 = document.createElement('canvas'); renderToCanvas(c32, 32);
+  const c48 = document.createElement('canvas'); renderToCanvas(c48, 48);
+
+  const images = [c16, c32, c48];
+  const totalSize = 6 + (images.length * 16) + images.reduce((sum, cv) => {
+    return sum + (cv.width * cv.height * 4) + 40;
+  }, 0);
+
+  const buffer = new ArrayBuffer(totalSize);
+  const view = new DataView(buffer);
+  view.setUint16(0, 0, true);
+  view.setUint16(2, 1, true);
+  view.setUint16(4, images.length, true);
+
+  let offset = 6 + images.length * 16;
+  images.forEach((canvas, i) => {
+    const w = canvas.width;
+    const h = canvas.height;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const bmpSize = w * h * 4 + 40;
+    const dirOffset = 6 + i * 16;
+
+    view.setUint8(dirOffset, w >= 256 ? 0 : w);
+    view.setUint8(dirOffset + 1, h >= 256 ? 0 : h);
+    view.setUint8(dirOffset + 2, 0);
+    view.setUint8(dirOffset + 3, 0);
+    view.setUint16(dirOffset + 4, 1, true);
+    view.setUint16(dirOffset + 6, 32, true);
+    view.setUint32(dirOffset + 8, bmpSize, true);
+    view.setUint32(dirOffset + 12, offset, true);
+
+    view.setUint32(offset, 40, true);
+    view.setInt32(offset + 4, w, true);
+    view.setInt32(offset + 8, h * 2, true);
+    view.setUint16(offset + 12, 1, true);
+    view.setUint16(offset + 14, 32, true);
+    view.setUint32(offset + 20, w * h * 4, true);
+
+    let pixelOffset = offset + 40;
+    for (let y = h - 1; y >= 0; y--) {
+      for (let x = 0; x < w; x++) {
+        const idx = (y * w + x) * 4;
+        view.setUint8(pixelOffset++, imgData.data[idx + 2]);
+        view.setUint8(pixelOffset++, imgData.data[idx + 1]);
+        view.setUint8(pixelOffset++, imgData.data[idx]);
+        view.setUint8(pixelOffset++, imgData.data[idx + 3]);
+      }
+    }
+    offset += bmpSize;
+  });
+
+  const blob = new Blob([buffer], { type: 'image/x-icon' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'favicon.ico';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  incrementUsage();
+  showToast('Downloaded favicon.ico!');
+}
+
+function copyHTML() {
+  const code = document.getElementById('htmlSnippet').textContent;
+  navigator.clipboard.writeText(code);
+  showToast('HTML copied!');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2000);
+}
+
+function showPopup() {
+  if (localStorage.getItem('favtext_subscribed')) return;
+  document.getElementById('emailOverlay').classList.add('show');
+}
+function closePopup() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('favtext_subscribed', '1');
+}
+
+render();
+</script>
+</body>
+</html>

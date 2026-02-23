@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>.env File Generator - Environment Variable Templates | SPUNKART.COM</title>
+<meta name="description" content="Generate .env files instantly with pre-filled templates for Next.js, Node.js, Python, Docker, and more. Add custom variables, export as .env file. Free tool for developers.">
+<meta property="og:title" content=".env File Generator - Environment Variable Templates">
+<meta property="og:description" content="Generate .env files with pre-filled templates for Next.js, Node, Python, Docker. Free developer tool by SPUNKART.COM">
+<meta property="og:image" content="https://spunkart.com/assets/og-env-generator.png">
+<meta property="og:url" content="https://spunkart.com/env-generator.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content=".env File Generator - Free Developer Tool">
+<meta name="twitter:description" content="Generate .env files with pre-filled templates for Next.js, Node, Python, Docker. Free tool by SPUNKART.COM">
+<link rel="canonical" href="https://spunkart.com/env-generator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": ".env File Generator",
+  "description": "Generate .env files instantly with pre-filled templates for Next.js, Node.js, Python, Docker, and more.",
+  "url": "https://spunkart.com/env-generator.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "SpunkArt.com", "url": "https://spunkart.com" }
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}a:hover{text-decoration:underline;}
+nav{background:#111;border-bottom:1px solid #222;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100;}
+nav .logo{font-weight:800;font-size:1.1rem;color:#ff5f1f;letter-spacing:1px;}
+nav .links{display:flex;gap:20px;font-size:0.9rem;}
+nav .links a{color:#ccc;}nav .links a:hover{color:#ff5f1f;}
+main{flex:1;max-width:960px;width:100%;margin:0 auto;padding:32px 20px 80px;}
+h1{font-size:2rem;margin-bottom:8px;color:#fff;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#999;margin-bottom:24px;font-size:1rem;}
+.usage-badge{display:inline-block;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:12px;color:#888;margin-bottom:24px;}
+.usage-badge strong{color:#ff5f1f;}
+.templates{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.tmpl-btn{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:10px 18px;color:#e8e8e8;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.tmpl-btn:hover,.tmpl-btn.active{border-color:#ff5f1f;background:#1f1008;color:#ff5f1f;}
+.tmpl-btn .icon{font-size:1rem;}
+.editor-container{background:#111;border:1px solid #222;border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.editor-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#151515;border-bottom:1px solid #222;}
+.editor-header .filename{color:#10b981;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.9rem;font-weight:600;}
+.editor-header .actions{display:flex;gap:8px;}
+.btn{background:#ff5f1f;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;}
+.btn:hover{background:#e5520f;}
+.btn-secondary{background:#222;color:#ccc;border:1px solid #333;}
+.btn-secondary:hover{background:#333;color:#fff;}
+.btn-sm{padding:6px 14px;font-size:0.8rem;}
+.btn-success{background:#10b981;}.btn-success:hover{background:#059669;}
+textarea{width:100%;background:#0d0d0d;color:#e8e8e8;border:none;padding:16px;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;line-height:1.8;resize:vertical;min-height:300px;outline:none;}
+textarea::placeholder{color:#444;}
+.var-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;margin-bottom:10px;}
+.var-row input{background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;color:#e8e8e8;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:0.85rem;outline:none;}
+.var-row input:focus{border-color:#ff5f1f;}
+.var-row input::placeholder{color:#555;}
+.btn-remove{background:#333;color:#ff4444;border:none;width:36px;height:36px;border-radius:8px;font-size:1.1rem;cursor:pointer;transition:background 0.2s;}
+.btn-remove:hover{background:#ff4444;color:#fff;}
+.add-section{margin-bottom:24px;}
+.add-section h3{color:#fff;font-size:1rem;margin-bottom:12px;}
+.var-list{margin-bottom:12px;}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{background:#111;border:1px solid #222;border-radius:10px;padding:14px;text-align:center;}
+.stat-card .label{font-size:0.75rem;color:#888;text-transform:uppercase;letter-spacing:0.5px;}
+.stat-card .value{font-size:1.4rem;font-weight:800;color:#10b981;}
+.info-section{background:#111;border:1px solid #222;border-radius:12px;padding:20px;margin-bottom:24px;}
+.info-section h3{color:#ff5f1f;font-size:0.95rem;margin-bottom:8px;}
+.info-section p{color:#888;font-size:0.85rem;line-height:1.6;}
+.info-section ul{color:#888;font-size:0.85rem;margin-left:18px;margin-top:6px;}
+.info-section li{margin-bottom:4px;}
+.cross-sell{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #333;border-radius:12px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;}.cross-sell p{color:#999;margin-bottom:16px;font-size:0.95rem;}
+.cross-sell a.cta{display:inline-block;background:#ff5f1f;color:#fff;padding:12px 32px;border-radius:8px;font-weight:700;text-decoration:none;}.cross-sell a.cta:hover{background:#e5520f;text-decoration:none;}
+.watermark{position:fixed;bottom:12px;right:16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.1);pointer-events:none;z-index:50;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10b981;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:200;display:none;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(10px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+.email-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+.email-overlay.show{display:flex;}
+.email-popup{background:#151515;border:1px solid #333;border-radius:16px;padding:40px 32px;max-width:440px;width:90%;text-align:center;position:relative;}
+.email-popup h2{color:#ff5f1f;margin-bottom:8px;font-size:1.4rem;}
+.email-popup p{color:#999;margin-bottom:20px;font-size:0.95rem;}
+.email-popup .close-popup{position:absolute;top:12px;right:16px;background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;}
+footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:center;font-size:0.8rem;color:#555;}
+@media(max-width:600px){h1{font-size:1.5rem;}.var-row{grid-template-columns:1fr;}.templates{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/" class="logo">SPUNKART</a>
+<div class="links">
+<a href="/store.html">Store</a>
+<a href="/blog.html">Blog</a>
+<a href="/index.html#tools">Free Tools</a>
+</div>
+</nav>
+
+<main>
+<h1><span>.env</span> File Generator</h1>
+<p class="subtitle">Pre-filled environment variable templates for Next.js, Node.js, Python, Docker, and more. Add custom vars, export as .env file.</p>
+<div class="usage-badge">Used <strong id="usageCount">0</strong> times</div>
+
+<div class="templates">
+<button class="tmpl-btn active" onclick="loadTemplate('nextjs',this)"><span class="icon">&#9650;</span> Next.js</button>
+<button class="tmpl-btn" onclick="loadTemplate('node',this)"><span class="icon">&#9641;</span> Node.js / Express</button>
+<button class="tmpl-btn" onclick="loadTemplate('python',this)"><span class="icon">&#128013;</span> Python / Django</button>
+<button class="tmpl-btn" onclick="loadTemplate('docker',this)"><span class="icon">&#128051;</span> Docker</button>
+<button class="tmpl-btn" onclick="loadTemplate('react',this)"><span class="icon">&#9883;</span> React (CRA/Vite)</button>
+<button class="tmpl-btn" onclick="loadTemplate('supabase',this)"><span class="icon">&#9889;</span> Supabase</button>
+<button class="tmpl-btn" onclick="loadTemplate('stripe',this)"><span class="icon">&#128179;</span> Stripe</button>
+<button class="tmpl-btn" onclick="loadTemplate('firebase',this)"><span class="icon">&#128293;</span> Firebase</button>
+<button class="tmpl-btn" onclick="loadTemplate('aws',this)"><span class="icon">&#9729;</span> AWS</button>
+<button class="tmpl-btn" onclick="loadTemplate('blank',this)"><span class="icon">&#10133;</span> Blank</button>
+</div>
+
+<div class="stats">
+<div class="stat-card"><div class="label">Variables</div><div class="value" id="varCount">0</div></div>
+<div class="stat-card"><div class="label">Lines</div><div class="value" id="lineCount">0</div></div>
+<div class="stat-card"><div class="label">File Size</div><div class="value" id="fileSize">0 B</div></div>
+</div>
+
+<div class="editor-container">
+<div class="editor-header">
+<span class="filename">.env</span>
+<div class="actions">
+<button class="btn btn-sm btn-secondary" onclick="copyToClipboard()">Copy</button>
+<button class="btn btn-sm btn-success" onclick="downloadEnv()">Download .env</button>
+</div>
+</div>
+<textarea id="envEditor" placeholder="# Your environment variables will appear here&#10;# Select a template above or add custom variables below" spellcheck="false" oninput="updateStats()"></textarea>
+</div>
+
+<div class="add-section">
+<h3>Add Custom Variables</h3>
+<div class="var-list" id="varList">
+<div class="var-row">
+<input type="text" placeholder="VARIABLE_NAME" class="var-key" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9_]/g,'')">
+<input type="text" placeholder="value" class="var-val">
+<button class="btn-remove" onclick="this.parentElement.remove()">&times;</button>
+</div>
+</div>
+<div class="btn-row">
+<button class="btn btn-secondary" onclick="addVarRow()">+ Add Variable</button>
+<button class="btn" onclick="appendCustomVars()">Add to .env</button>
+</div>
+</div>
+
+<div class="btn-row">
+<button class="btn" onclick="downloadEnv()">Download .env File</button>
+<button class="btn btn-secondary" onclick="downloadEnvExample()">Download .env.example</button>
+<button class="btn btn-secondary" onclick="copyToClipboard()">Copy to Clipboard</button>
+<button class="btn btn-secondary" onclick="clearEditor()">Clear All</button>
+</div>
+
+<div class="info-section">
+<h3>Why Use .env Files?</h3>
+<p>Environment variables keep your API keys, database credentials, and configuration separate from your code. Never commit .env files to git.</p>
+<ul>
+<li>Add <code>.env</code> to your <code>.gitignore</code> immediately</li>
+<li>Use <code>.env.example</code> with placeholder values for your team</li>
+<li>Different .env files for dev, staging, and production</li>
+<li>Access via <code>process.env.VAR_NAME</code> (Node) or <code>os.environ['VAR_NAME']</code> (Python)</li>
+</ul>
+</div>
+
+<div class="cross-sell">
+<h3>Build Faster with AI</h3>
+<p>Get the Vibe Coding ebook -- build and ship full apps with AI agents in hours, not weeks.</p>
+<a href="/ebook-vibe-coding.html" class="cta">Get the Ebook</a>
+<br><br>
+<a href="/store.html" style="color:#999;font-size:0.85rem;">Browse 80+ Free Tools &rarr;</a>
+</div>
+</main>
+
+<div class="watermark">SPUNKART.COM</div>
+<div class="toast" id="toast">Copied!</div>
+
+<div class="email-overlay" id="emailOverlay">
+<div class="email-popup">
+<button class="close-popup" onclick="closePopup()">&times;</button>
+<h2>Get Developer Tips</h2>
+<p>Join 2,000+ solo founders getting weekly tools, templates, and shortcuts.</p>
+<iframe src="https://embeds.beehiiv.com/a23fb2e5-bb3b-4ed4-884e-0ace68a5a55b?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="width:100%;border-radius:8px;margin-bottom:12px;"></iframe>
+<button class="btn btn-secondary btn-sm" onclick="closePopup()" style="margin-top:8px;">Maybe later</button>
+</div>
+</div>
+
+<footer>&copy; 2026 SpunkArt.com. All rights reserved.</footer>
+
+<script>
+(function(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C'))){e.preventDefault();}});})();
+
+const templates = {
+  nextjs: `# ==============================================
+# Next.js Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# App
+NEXT_PUBLIC_APP_NAME=my-app
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NODE_ENV=development
+
+# Database (Prisma / PostgreSQL)
+DATABASE_URL=postgresql://user:password@localhost:5432/mydb
+
+# Authentication (NextAuth.js)
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key-here
+
+# API Keys
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
+# Email (Resend / SendGrid)
+EMAIL_FROM=noreply@example.com
+RESEND_API_KEY=re_xxxxxxxxxxxx
+
+# Storage (S3 / Cloudflare R2)
+S3_BUCKET_NAME=my-bucket
+S3_ACCESS_KEY_ID=your-access-key
+S3_SECRET_ACCESS_KEY=your-secret-key
+S3_REGION=us-east-1
+
+# Analytics
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_POSTHOG_KEY=phc_xxxxxxxxxxxx`,
+
+  node: `# ==============================================
+# Node.js / Express Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# App
+PORT=3000
+NODE_ENV=development
+APP_SECRET=your-app-secret-here
+
+# Database
+DATABASE_URL=mongodb://localhost:27017/mydb
+# DATABASE_URL=postgresql://user:password@localhost:5432/mydb
+REDIS_URL=redis://localhost:6379
+
+# JWT Authentication
+JWT_SECRET=your-jwt-secret-key
+JWT_EXPIRES_IN=7d
+JWT_REFRESH_EXPIRES_IN=30d
+
+# CORS
+CORS_ORIGIN=http://localhost:3000
+
+# Email (Nodemailer)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+
+# File Upload
+UPLOAD_MAX_SIZE=10485760
+UPLOAD_DIR=./uploads
+
+# Logging
+LOG_LEVEL=debug
+LOG_FILE=./logs/app.log
+
+# Rate Limiting
+RATE_LIMIT_WINDOW=900000
+RATE_LIMIT_MAX=100`,
+
+  python: `# ==============================================
+# Python / Django Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# App
+DEBUG=True
+SECRET_KEY=django-insecure-change-this-in-production
+ALLOWED_HOSTS=localhost,127.0.0.1
+DJANGO_SETTINGS_MODULE=config.settings
+
+# Database
+DATABASE_URL=postgres://user:password@localhost:5432/mydb
+# DATABASE_URL=sqlite:///db.sqlite3
+
+# Redis / Celery
+REDIS_URL=redis://localhost:6379/0
+CELERY_BROKER_URL=redis://localhost:6379/1
+CELERY_RESULT_BACKEND=redis://localhost:6379/2
+
+# Email
+EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+EMAIL_USE_TLS=True
+
+# AWS S3
+AWS_ACCESS_KEY_ID=your-access-key
+AWS_SECRET_ACCESS_KEY=your-secret-key
+AWS_STORAGE_BUCKET_NAME=my-bucket
+AWS_S3_REGION_NAME=us-east-1
+
+# Sentry
+SENTRY_DSN=https://xxxx@sentry.io/xxxxx
+
+# API Keys
+OPENAI_API_KEY=sk-xxxxxxxxxxxx
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxx`,
+
+  docker: `# ==============================================
+# Docker / Docker Compose Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# App
+APP_NAME=my-app
+APP_PORT=3000
+APP_ENV=development
+
+# PostgreSQL
+POSTGRES_DB=mydb
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your-secure-password
+POSTGRES_PORT=5432
+POSTGRES_HOST=db
+
+# Redis
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_PASSWORD=
+
+# Nginx
+NGINX_PORT=80
+NGINX_SSL_PORT=443
+
+# Volumes
+DATA_PATH=./data
+LOGS_PATH=./logs
+
+# Build
+DOCKER_BUILDKIT=1
+COMPOSE_PROJECT_NAME=my-app
+
+# Network
+NETWORK_NAME=app-network
+
+# MySQL (alternative)
+# MYSQL_ROOT_PASSWORD=root-password
+# MYSQL_DATABASE=mydb
+# MYSQL_USER=user
+# MYSQL_PASSWORD=password
+# MYSQL_PORT=3306`,
+
+  react: `# ==============================================
+# React (CRA / Vite) Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# CRA uses REACT_APP_ prefix
+# Vite uses VITE_ prefix
+
+# App
+REACT_APP_NAME=My React App
+REACT_APP_API_URL=http://localhost:3001/api
+REACT_APP_VERSION=1.0.0
+
+# Vite equivalents
+# VITE_APP_NAME=My Vite App
+# VITE_API_URL=http://localhost:3001/api
+
+# Firebase
+REACT_APP_FIREBASE_API_KEY=your-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-app.firebaseapp.com
+REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-app.appspot.com
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=123456789
+REACT_APP_FIREBASE_APP_ID=1:123456789:web:abc123
+
+# Analytics
+REACT_APP_GA_ID=G-XXXXXXXXXX
+
+# Feature Flags
+REACT_APP_ENABLE_DARK_MODE=true
+REACT_APP_ENABLE_ANALYTICS=true
+
+# Sentry
+REACT_APP_SENTRY_DSN=https://xxxx@sentry.io/xxxxx`,
+
+  supabase: `# ==============================================
+# Supabase Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# Supabase Project
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxxxx
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xxxxx
+
+# Database (Direct connection)
+DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.xxxxxxxxxxxx.supabase.co:5432/postgres
+
+# Auth
+SUPABASE_JWT_SECRET=your-jwt-secret
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+# Storage
+SUPABASE_STORAGE_BUCKET=public-assets
+
+# Edge Functions
+SUPABASE_FUNCTIONS_URL=https://xxxxxxxxxxxx.supabase.co/functions/v1
+
+# Email (for auth emails)
+SUPABASE_SMTP_HOST=smtp.sendgrid.net
+SUPABASE_SMTP_PORT=587
+SUPABASE_SMTP_USER=apikey
+SUPABASE_SMTP_PASS=your-sendgrid-key`,
+
+  stripe: `# ==============================================
+# Stripe Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# Stripe Keys
+STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxx
+STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxx
+
+# Webhooks
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxx
+STRIPE_WEBHOOK_URL=https://yourdomain.com/api/webhooks/stripe
+
+# Products & Prices (replace with your IDs)
+STRIPE_PRICE_MONTHLY=price_xxxxxxxxxxxx
+STRIPE_PRICE_YEARLY=price_xxxxxxxxxxxx
+STRIPE_PRODUCT_ID=prod_xxxxxxxxxxxx
+
+# Customer Portal
+STRIPE_PORTAL_CONFIG_ID=bpc_xxxxxxxxxxxx
+
+# Connect (for marketplaces)
+# STRIPE_CONNECT_CLIENT_ID=ca_xxxxxxxxxxxx
+
+# Billing
+STRIPE_CURRENCY=usd
+STRIPE_TRIAL_DAYS=14`,
+
+  firebase: `# ==============================================
+# Firebase Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# Firebase Web Config
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-app.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-app.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=123456789012
+NEXT_PUBLIC_FIREBASE_APP_ID=1:123456789012:web:abc123def456
+
+# Firebase Admin SDK (server-side)
+FIREBASE_ADMIN_PROJECT_ID=your-project-id
+FIREBASE_ADMIN_CLIENT_EMAIL=firebase-adminsdk@your-project.iam.gserviceaccount.com
+FIREBASE_ADMIN_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\\nYOUR_KEY_HERE\\n-----END PRIVATE KEY-----\\n"
+
+# Realtime Database
+FIREBASE_DATABASE_URL=https://your-project-default-rtdb.firebaseio.com
+
+# Cloud Functions
+FIREBASE_FUNCTIONS_REGION=us-central1
+
+# FCM (Push Notifications)
+FIREBASE_VAPID_KEY=your-vapid-key`,
+
+  aws: `# ==============================================
+# AWS Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# AWS Credentials
+AWS_ACCESS_KEY_ID=AKIAXXXXXXXXXXXXXXXX
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+AWS_DEFAULT_REGION=us-east-1
+AWS_ACCOUNT_ID=123456789012
+
+# S3
+AWS_S3_BUCKET=my-bucket-name
+AWS_S3_REGION=us-east-1
+
+# DynamoDB
+AWS_DYNAMODB_TABLE=my-table
+AWS_DYNAMODB_REGION=us-east-1
+
+# SES (Email)
+AWS_SES_REGION=us-east-1
+AWS_SES_FROM_EMAIL=noreply@yourdomain.com
+
+# SQS
+AWS_SQS_QUEUE_URL=https://sqs.us-east-1.amazonaws.com/123456789012/my-queue
+
+# Lambda
+AWS_LAMBDA_FUNCTION_NAME=my-function
+
+# CloudFront
+AWS_CLOUDFRONT_DISTRIBUTION_ID=EXXXXXXXXXX
+AWS_CLOUDFRONT_DOMAIN=dxxxxxxxxxx.cloudfront.net
+
+# RDS
+DATABASE_URL=postgresql://user:password@mydb.xxxxxxxxxxxx.us-east-1.rds.amazonaws.com:5432/mydb`,
+
+  blank: `# ==============================================
+# Custom Environment Variables
+# Generated by SpunkArt.com/env-generator
+# ==============================================
+
+# App
+APP_NAME=
+APP_ENV=development
+APP_PORT=3000
+
+# Database
+DATABASE_URL=
+
+# API Keys
+`
+};
+
+let usage = parseInt(localStorage.getItem('envgen_usage') || '0');
+document.getElementById('usageCount').textContent = usage;
+
+function incrementUsage() {
+  usage++;
+  localStorage.setItem('envgen_usage', usage);
+  document.getElementById('usageCount').textContent = usage;
+  if (usage === 3) { showPopup(); }
+}
+
+function loadTemplate(name, btn) {
+  document.querySelectorAll('.tmpl-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.getElementById('envEditor').value = templates[name] || '';
+  updateStats();
+  incrementUsage();
+}
+
+function updateStats() {
+  const text = document.getElementById('envEditor').value;
+  const lines = text.split('\n');
+  const vars = lines.filter(l => l.trim() && !l.trim().startsWith('#') && l.includes('=')).length;
+  const bytes = new Blob([text]).size;
+  document.getElementById('varCount').textContent = vars;
+  document.getElementById('lineCount').textContent = lines.length;
+  document.getElementById('fileSize').textContent = bytes < 1024 ? bytes + ' B' : (bytes / 1024).toFixed(1) + ' KB';
+}
+
+function addVarRow() {
+  const list = document.getElementById('varList');
+  const row = document.createElement('div');
+  row.className = 'var-row';
+  row.innerHTML = '<input type="text" placeholder="VARIABLE_NAME" class="var-key" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9_]/g,\'\')"><input type="text" placeholder="value" class="var-val"><button class="btn-remove" onclick="this.parentElement.remove()">&times;</button>';
+  list.appendChild(row);
+}
+
+function appendCustomVars() {
+  const rows = document.querySelectorAll('.var-row');
+  let newVars = '';
+  rows.forEach(row => {
+    const key = row.querySelector('.var-key').value.trim();
+    const val = row.querySelector('.var-val').value.trim();
+    if (key) {
+      newVars += '\n' + key + '=' + val;
+    }
+  });
+  if (newVars) {
+    const editor = document.getElementById('envEditor');
+    editor.value = editor.value.trimEnd() + '\n\n# Custom Variables' + newVars;
+    updateStats();
+    showToast('Variables added!');
+    incrementUsage();
+  }
+}
+
+function copyToClipboard() {
+  navigator.clipboard.writeText(document.getElementById('envEditor').value);
+  showToast('Copied to clipboard!');
+  incrementUsage();
+}
+
+function downloadEnv() {
+  const text = document.getElementById('envEditor').value;
+  const blob = new Blob([text], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '.env';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('Downloaded .env file!');
+  incrementUsage();
+}
+
+function downloadEnvExample() {
+  const text = document.getElementById('envEditor').value;
+  const example = text.split('\n').map(line => {
+    if (!line.trim() || line.trim().startsWith('#')) return line;
+    const eqIdx = line.indexOf('=');
+    if (eqIdx === -1) return line;
+    return line.substring(0, eqIdx + 1) + 'your-value-here';
+  }).join('\n');
+  const blob = new Blob([example], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '.env.example';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('Downloaded .env.example!');
+  incrementUsage();
+}
+
+function clearEditor() {
+  document.getElementById('envEditor').value = '';
+  updateStats();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2000);
+}
+
+function showPopup() {
+  if (localStorage.getItem('envgen_subscribed')) return;
+  document.getElementById('emailOverlay').classList.add('show');
+}
+function closePopup() {
+  document.getElementById('emailOverlay').classList.remove('show');
+  localStorage.setItem('envgen_subscribed', '1');
+}
+
+loadTemplate('nextjs', document.querySelector('.tmpl-btn'));
+</script>
+</body>
+</html>

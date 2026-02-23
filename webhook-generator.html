@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webhook Generator &amp; Tester — Mock Endpoint Builder | SPUNKART.COM</title>
+<meta name="description" content="Free webhook URL generator and tester. Generate unique mock endpoints, send test requests, inspect headers and body in real-time. No signup required.">
+<meta property="og:title" content="Webhook Generator & Tester — Mock Endpoint Builder | SPUNKART.COM">
+<meta property="og:description" content="Generate webhook URLs, send test requests, inspect headers and body in real-time. Free online tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/webhook-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-webhook-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Webhook Generator & Tester | SPUNKART.COM">
+<meta name="twitter:description" content="Generate webhook endpoints, test requests, inspect headers/body. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/webhook-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.endpoint-box{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+.endpoint-url{flex:1;min-width:0;padding:14px 16px;background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;font-family:'Courier New',monospace;font-size:0.9rem;color:#10b981;word-break:break-all;cursor:pointer;transition:border-color .2s;}
+.endpoint-url:hover{border-color:#10b981;}
+
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+.btn-danger{background:#2a1515;color:#ff4444;border:1px solid #4a2020;}
+.btn-danger:hover{background:#3a1515;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+
+.input-group{margin-bottom:16px;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group select,.input-group input,.input-group textarea{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;font-family:inherit;}
+.input-group textarea{font-family:'Courier New',monospace;resize:vertical;min-height:120px;}
+.input-group select:focus,.input-group input:focus,.input-group textarea:focus{border-color:#ff5f1f;}
+
+.controls-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.header-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.header-row input{flex:1;padding:8px 12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;}
+.header-row input:focus{border-color:#ff5f1f;}
+.header-row button{padding:8px 12px;background:#2a1515;border:1px solid #4a2020;border-radius:6px;color:#ff4444;cursor:pointer;font-size:0.85rem;}
+
+.request-log{max-height:500px;overflow-y:auto;}
+.request-entry{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px;padding:16px;margin-bottom:12px;cursor:pointer;transition:border-color .2s;}
+.request-entry:hover{border-color:#333;}
+.request-entry.expanded{border-color:#ff5f1f44;}
+.request-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.method-badge{padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;text-transform:uppercase;}
+.method-get{background:#1a3a1a;color:#10b981;}
+.method-post{background:#1a2a3a;color:#3b82f6;}
+.method-put{background:#3a2a1a;color:#f59e0b;}
+.method-patch{background:#2a1a3a;color:#a855f7;}
+.method-delete{background:#3a1a1a;color:#ef4444;}
+.request-time{color:#555;font-size:0.8rem;font-family:monospace;}
+.request-path{color:#888;font-size:0.85rem;font-family:monospace;}
+.request-details{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #1a1a1a;}
+.request-entry.expanded .request-details{display:block;}
+.detail-section{margin-bottom:12px;}
+.detail-section h4{font-size:0.8rem;color:#ff5f1f;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.detail-section pre{background:#0a0a0a;border:1px solid #1a1a1a;border-radius:6px;padding:12px;font-family:'Courier New',monospace;font-size:0.8rem;color:#8f8;overflow-x:auto;white-space:pre-wrap;word-break:break-all;}
+
+.status-indicator{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.status-dot{width:10px;height:10px;border-radius:50%;background:#10b981;animation:pulse 2s infinite;}
+.status-text{font-size:0.85rem;color:#10b981;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+
+.empty-state{text-align:center;padding:40px 20px;color:#444;}
+.empty-state p{font-size:0.95rem;margin-bottom:8px;}
+
+.stats-row{display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap;}
+.stat-item{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:12px 16px;text-align:center;flex:1;min-width:100px;}
+.stat-item .num{font-size:1.5rem;font-weight:700;color:#ff5f1f;}
+.stat-item .lbl{font-size:0.75rem;color:#888;margin-top:2px;}
+
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+@media(max-width:768px){
+  h1{font-size:1.5rem;}
+  .controls-row{grid-template-columns:1fr;}
+  .stats-row{gap:10px;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Webhook Generator & Tester","description":"Free webhook URL generator and tester. Generate unique mock endpoints, send test requests, inspect headers and body in real-time.","url":"https://spunkart.com/webhook-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Webhook <span>Generator</span> &amp; Tester</h1>
+  <p class="subtitle">Generate unique mock webhook endpoints. Send test requests and inspect headers, body, and metadata in real-time.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-item"><div class="num" id="endpointCount">0</div><div class="lbl">Endpoints</div></div>
+    <div class="stat-item"><div class="num" id="requestCount">0</div><div class="lbl">Requests Sent</div></div>
+    <div class="stat-item"><div class="num" id="totalSize">0</div><div class="lbl">Bytes Sent</div></div>
+  </div>
+
+  <!-- Endpoint Generator -->
+  <div class="section">
+    <h2>Your Webhook Endpoint</h2>
+    <div class="status-indicator">
+      <div class="status-dot"></div>
+      <span class="status-text">Listening for requests (mock mode)</span>
+    </div>
+    <div class="endpoint-box">
+      <div class="endpoint-url" id="endpointUrl" onclick="copyEndpoint()">Click "Generate" to create an endpoint</div>
+      <button class="btn btn-green" onclick="generateEndpoint()">Generate</button>
+      <button class="btn btn-secondary" onclick="copyEndpoint()">Copy URL</button>
+    </div>
+    <p style="font-size:0.8rem;color:#555;">This is a client-side mock. Use it to prototype and visualize webhook payloads before connecting to a live service.</p>
+  </div>
+
+  <!-- Send Test Request -->
+  <div class="section">
+    <h2>Send Test Request</h2>
+    <div class="controls-row">
+      <div class="input-group">
+        <label>HTTP Method</label>
+        <select id="methodSelect">
+          <option value="GET">GET</option>
+          <option value="POST" selected>POST</option>
+          <option value="PUT">PUT</option>
+          <option value="PATCH">PATCH</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Content-Type</label>
+        <select id="contentType">
+          <option value="application/json">application/json</option>
+          <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+          <option value="text/plain">text/plain</option>
+          <option value="application/xml">application/xml</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Custom Headers</label>
+      <div id="headersContainer">
+        <div class="header-row">
+          <input type="text" placeholder="Header name" value="X-Custom-Header">
+          <input type="text" placeholder="Header value" value="test-value-123">
+          <button onclick="this.parentElement.remove()">X</button>
+        </div>
+      </div>
+      <button class="btn btn-secondary" style="margin-top:8px;padding:6px 14px;font-size:0.8rem;" onclick="addHeaderRow()">+ Add Header</button>
+    </div>
+
+    <div class="input-group">
+      <label>Request Body</label>
+      <textarea id="requestBody">{
+  "event": "order.completed",
+  "data": {
+    "id": "ord_123456",
+    "amount": 99.99,
+    "currency": "USD",
+    "customer": {
+      "email": "user@example.com",
+      "name": "Jane Smith"
+    },
+    "items": [
+      { "name": "Pro Plan", "qty": 1, "price": 99.99 }
+    ],
+    "timestamp": "2026-02-23T12:00:00Z"
+  }
+}</textarea>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="sendTestRequest()">Send Request</button>
+      <button class="btn btn-secondary" onclick="loadSamplePayload()">Load Sample</button>
+    </div>
+  </div>
+
+  <!-- Request Log -->
+  <div class="section">
+    <h2>Request Log</h2>
+    <div class="request-log" id="requestLog">
+      <div class="empty-state" id="emptyState">
+        <p>No requests yet</p>
+        <p style="font-size:0.8rem;">Generate an endpoint and send a test request to see it appear here.</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-danger" onclick="clearLog()">Clear Log</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var currentEndpoint = '';
+  var requests = [];
+  var endpointNum = parseInt(localStorage.getItem('spunkart_webhook_endpoints')) || 0;
+  var requestNum = parseInt(localStorage.getItem('spunkart_webhook_requests')) || 0;
+  var totalBytes = parseInt(localStorage.getItem('spunkart_webhook_bytes')) || 0;
+
+  var samplePayloads = [
+    { name:'Stripe Payment', body:'{\n  "id": "evt_1234567890",\n  "type": "payment_intent.succeeded",\n  "data": {\n    "object": {\n      "id": "pi_abc123",\n      "amount": 2999,\n      "currency": "usd",\n      "status": "succeeded",\n      "receipt_email": "customer@example.com"\n    }\n  },\n  "created": 1708700000,\n  "livemode": false\n}' },
+    { name:'GitHub Push', body:'{\n  "ref": "refs/heads/main",\n  "repository": {\n    "full_name": "user/repo",\n    "html_url": "https://github.com/user/repo"\n  },\n  "pusher": {\n    "name": "developer",\n    "email": "dev@example.com"\n  },\n  "commits": [\n    {\n      "id": "abc123def456",\n      "message": "Fix critical bug in auth",\n      "timestamp": "2026-02-23T12:00:00Z",\n      "author": { "name": "Developer", "email": "dev@example.com" }\n    }\n  ]\n}' },
+    { name:'Slack Message', body:'{\n  "token": "xxxxxxxxxxxxx",\n  "team_id": "T12345",\n  "event": {\n    "type": "message",\n    "channel": "C12345",\n    "user": "U12345",\n    "text": "Hello from webhook test!",\n    "ts": "1708700000.000000"\n  },\n  "type": "event_callback"\n}' },
+    { name:'Discord Notification', body:'{\n  "content": "New deployment complete!",\n  "embeds": [{\n    "title": "Deployment v2.1.0",\n    "description": "Successfully deployed to production",\n    "color": 65280,\n    "fields": [\n      { "name": "Environment", "value": "Production", "inline": true },\n      { "name": "Duration", "value": "45s", "inline": true }\n    ],\n    "timestamp": "2026-02-23T12:00:00Z"\n  }]\n}' }
+  ];
+  var sampleIndex = 0;
+
+  function generateUUID(){
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+      var r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+  }
+
+  /* ─── Generate Endpoint ─── */
+  window.generateEndpoint = function(){
+    var id = generateUUID();
+    currentEndpoint = 'https://hooks.spunkart.com/webhook/' + id;
+    document.getElementById('endpointUrl').textContent = currentEndpoint;
+    endpointNum++;
+    localStorage.setItem('spunkart_webhook_endpoints', endpointNum);
+    updateStats();
+    bumpUsage();
+    gtag('event', 'generate_webhook', { event_category: 'tool_use' });
+  };
+
+  /* ─── Copy Endpoint ─── */
+  window.copyEndpoint = function(){
+    if(!currentEndpoint) return;
+    navigator.clipboard.writeText(currentEndpoint).then(function(){
+      var el = document.getElementById('endpointUrl');
+      var orig = el.textContent;
+      el.textContent = 'Copied!';
+      el.style.color = '#10b981';
+      setTimeout(function(){ el.textContent = orig; el.style.color = '#10b981'; }, 1500);
+    });
+  };
+
+  /* ─── Add Header Row ─── */
+  window.addHeaderRow = function(){
+    var container = document.getElementById('headersContainer');
+    var row = document.createElement('div');
+    row.className = 'header-row';
+    row.innerHTML = '<input type="text" placeholder="Header name"><input type="text" placeholder="Header value"><button onclick="this.parentElement.remove()">X</button>';
+    container.appendChild(row);
+  };
+
+  /* ─── Send Test Request ─── */
+  window.sendTestRequest = function(){
+    if(!currentEndpoint){
+      alert('Generate an endpoint first!');
+      return;
+    }
+
+    var method = document.getElementById('methodSelect').value;
+    var contentType = document.getElementById('contentType').value;
+    var body = document.getElementById('requestBody').value;
+
+    // Collect headers
+    var headers = { 'Content-Type': contentType, 'User-Agent': 'SPUNKART-Webhook-Tester/1.0' };
+    var rows = document.querySelectorAll('.header-row');
+    rows.forEach(function(row){
+      var inputs = row.querySelectorAll('input');
+      if(inputs[0].value && inputs[1].value){
+        headers[inputs[0].value] = inputs[1].value;
+      }
+    });
+
+    // Simulate the request (mock mode - client-side only)
+    var now = new Date();
+    var req = {
+      id: generateUUID().substring(0,8),
+      method: method,
+      path: currentEndpoint.replace('https://hooks.spunkart.com',''),
+      timestamp: now.toISOString(),
+      timeStr: now.toLocaleTimeString(),
+      headers: headers,
+      body: body,
+      bodySize: new Blob([body]).size,
+      status: 200,
+      responseTime: Math.floor(Math.random() * 50) + 5
+    };
+
+    requests.unshift(req);
+    requestNum++;
+    totalBytes += req.bodySize;
+    localStorage.setItem('spunkart_webhook_requests', requestNum);
+    localStorage.setItem('spunkart_webhook_bytes', totalBytes);
+    updateStats();
+    renderLog();
+    bumpUsage();
+    gtag('event', 'send_webhook_test', { event_category: 'tool_use', method: method });
+  };
+
+  /* ─── Load Sample ─── */
+  window.loadSamplePayload = function(){
+    var sample = samplePayloads[sampleIndex % samplePayloads.length];
+    document.getElementById('requestBody').value = sample.body;
+    sampleIndex++;
+  };
+
+  /* ─── Render Log ─── */
+  function renderLog(){
+    var log = document.getElementById('requestLog');
+    if(requests.length === 0){
+      log.innerHTML = '<div class="empty-state" id="emptyState"><p>No requests yet</p><p style="font-size:0.8rem;">Generate an endpoint and send a test request to see it appear here.</p></div>';
+      return;
+    }
+
+    log.innerHTML = '';
+    requests.forEach(function(req, i){
+      var entry = document.createElement('div');
+      entry.className = 'request-entry';
+      entry.innerHTML =
+        '<div class="request-meta">' +
+          '<span class="method-badge method-' + req.method.toLowerCase() + '">' + req.method + '</span>' +
+          '<span class="request-path">' + req.path + '</span>' +
+          '<span class="request-time">' + req.timeStr + '</span>' +
+          '<span style="color:#10b981;font-size:0.8rem;">' + req.status + ' OK</span>' +
+          '<span style="color:#555;font-size:0.75rem;">' + req.responseTime + 'ms</span>' +
+          '<span style="color:#555;font-size:0.75rem;">' + formatBytes(req.bodySize) + '</span>' +
+        '</div>' +
+        '<div class="request-details">' +
+          '<div class="detail-section"><h4>Request Headers</h4><pre>' + escapeHtml(JSON.stringify(req.headers, null, 2)) + '</pre></div>' +
+          '<div class="detail-section"><h4>Request Body</h4><pre>' + escapeHtml(formatBody(req.body)) + '</pre></div>' +
+          '<div class="detail-section"><h4>Response</h4><pre>HTTP/1.1 200 OK\nContent-Type: application/json\nX-Request-Id: ' + req.id + '\n\n{"status":"ok","received":true,"id":"' + req.id + '"}</pre></div>' +
+        '</div>';
+      entry.addEventListener('click', function(){
+        entry.classList.toggle('expanded');
+      });
+      log.appendChild(entry);
+    });
+  }
+
+  function formatBody(body){
+    try { return JSON.stringify(JSON.parse(body), null, 2); } catch(e){ return body; }
+  }
+
+  function formatBytes(bytes){
+    if(bytes < 1024) return bytes + ' B';
+    return (bytes / 1024).toFixed(1) + ' KB';
+  }
+
+  function escapeHtml(str){
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ─── Clear Log ─── */
+  window.clearLog = function(){
+    requests = [];
+    renderLog();
+  };
+
+  /* ─── Stats ─── */
+  function updateStats(){
+    document.getElementById('endpointCount').textContent = endpointNum;
+    document.getElementById('requestCount').textContent = requestNum;
+    document.getElementById('totalSize').textContent = formatBytes(totalBytes);
+  }
+  updateStats();
+
+  /* ─── Usage Counter ─── */
+  var TOOL_KEY = 'spunkart_webhookgen_uses';
+  var BAR_KEY = 'sa_bar_dismissed_webhookgen';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+
+  function updateBadge(){
+    badge.textContent = usageCount + ' test' + (usageCount !== 1 ? 's' : '') + ' run';
+  }
+  updateBadge();
+
+  function bumpUsage(){
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    if(usageCount >= 3 && !localStorage.getItem(BAR_KEY)){
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  /* ─── Email Bar ─── */
+  window.saDismissBar = function(){
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+  window.saSubmitEmail = function(){
+    var email = document.getElementById('saBarEmail').value;
+    if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+})();
+</script>
+
+<!-- Email collection bar -->
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<!-- Code Protection -->
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>

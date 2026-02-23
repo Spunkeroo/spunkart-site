@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Copyright 2026 SpunkArt.com. All rights reserved. Unauthorized reproduction prohibited. hello@spunkart.com -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tailwind CSS Generator — Visual UI Builder | SPUNKART.COM</title>
+<meta name="description" content="Free Tailwind CSS class generator. Build buttons, cards, navbars, and forms visually. Live preview, copy classes instantly. No signup required.">
+<meta property="og:title" content="Tailwind CSS Generator — Visual UI Builder | SPUNKART.COM">
+<meta property="og:description" content="Build Tailwind CSS components visually. Buttons, cards, navbars, forms — live preview and one-click copy. Free online tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spunkart.com/tailwind-generator.html">
+<meta property="og:image" content="https://spunkart.com/og-tailwind-generator.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@SpunkArt13">
+<meta name="twitter:title" content="Tailwind CSS Generator — Visual UI Builder | SPUNKART.COM">
+<meta name="twitter:description" content="Build Tailwind CSS components visually. Live preview, copy classes. Free online tool.">
+<link rel="canonical" href="https://spunkart.com/tailwind-generator.html">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<!-- Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","pn0x1z2y3w");</script>
+<meta name="author" content="SpunkArt.com">
+<meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0a;color:#e8e8e8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;}
+a{color:#ff5f1f;text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+nav{background:#111;border-bottom:1px solid #222;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:100;}
+.nav-brand{font-weight:700;font-size:1.1rem;color:#ff5f1f;}
+.nav-links{display:flex;gap:20px;font-size:0.9rem;}
+.nav-links a{color:#aaa;transition:color .2s;}
+.nav-links a:hover{color:#ff5f1f;}
+.watermark{position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:10;}
+
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:30px 20px;}
+h1{font-size:2rem;font-weight:700;margin-bottom:8px;}
+h1 span{color:#ff5f1f;}
+.subtitle{color:#888;margin-bottom:30px;font-size:1rem;}
+
+.section{background:#111;border:1px solid #222;border-radius:10px;padding:24px;margin-bottom:20px;}
+.section h2{font-size:1.1rem;margin-bottom:16px;color:#ccc;}
+
+.tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.tab{padding:10px 20px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#888;font-size:0.9rem;cursor:pointer;transition:all .2s;font-weight:600;}
+.tab:hover{border-color:#555;color:#ccc;}
+.tab.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;}
+
+.controls-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.input-group{margin-bottom:0;}
+.input-group label{display:block;font-size:0.85rem;color:#888;margin-bottom:6px;}
+.input-group select,.input-group input[type="text"],.input-group input[type="number"]{width:100%;padding:10px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;color:#e8e8e8;font-size:0.95rem;outline:none;transition:border-color .2s;}
+.input-group select:focus,.input-group input:focus{border-color:#ff5f1f;}
+
+.color-row{display:flex;gap:8px;flex-wrap:wrap;}
+.color-chip{width:32px;height:32px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all .2s;}
+.color-chip:hover{transform:scale(1.15);}
+.color-chip.active{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.3);}
+
+.preview-box{width:100%;min-height:200px;border-radius:14px;border:1px solid #222;padding:40px;display:flex;align-items:center;justify-content:center;background:#151515;position:relative;margin-bottom:20px;}
+.preview-box .preview-label{position:absolute;bottom:12px;right:16px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-weight:600;letter-spacing:1px;pointer-events:none;}
+
+.class-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;color:#8f8;word-break:break-all;line-height:1.7;position:relative;}
+.html-output{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:0.85rem;color:#88ccff;word-break:break-all;line-height:1.7;position:relative;margin-top:12px;white-space:pre-wrap;}
+
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-primary{background:#ff5f1f;color:#fff;}
+.btn-primary:hover{background:#e5500a;}
+.btn-secondary{background:#222;color:#e8e8e8;border:1px solid #333;}
+.btn-secondary:hover{background:#333;}
+.btn-green{background:#10b981;color:#fff;}
+.btn-green:hover{background:#0d9668;}
+.btn.copied{background:#22aa44 !important;color:#fff !important;}
+
+.prop-toggle-group{display:flex;flex-wrap:wrap;gap:6px;}
+.prop-btn{padding:7px 14px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#888;font-size:0.82rem;cursor:pointer;transition:all .2s;font-family:monospace;white-space:nowrap;}
+.prop-btn:hover{border-color:#555;color:#ccc;}
+.prop-btn.active{background:#ff5f1f;border-color:#ff5f1f;color:#fff;font-weight:700;}
+
+.cross-sell{background:linear-gradient(135deg,#1a0800,#0a0a0a);border:1px solid #ff5f1f33;border-radius:10px;padding:24px;text-align:center;margin-top:40px;}
+.cross-sell h3{color:#ff5f1f;margin-bottom:8px;font-size:1.1rem;}
+.cross-sell p{color:#888;margin-bottom:16px;font-size:0.9rem;}
+.cross-sell a{display:inline-block;padding:10px 28px;background:#ff5f1f;color:#fff;border-radius:8px;font-weight:600;transition:background .2s;}
+.cross-sell a:hover{background:#e5500a;text-decoration:none;}
+
+footer{text-align:center;padding:20px;color:#444;font-size:0.8rem;border-top:1px solid #1a1a1a;}
+
+.usage-badge{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:20px;padding:4px 12px;font-size:0.75rem;color:#ff5f1f;font-weight:600;margin-bottom:1rem;}
+.usage-badge-wrap{text-align:center;}
+
+.sa-email-bar{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #333;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:12px;z-index:9999;transform:translateY(100%);transition:transform 0.4s ease;flex-wrap:wrap;}
+.sa-email-bar.show{transform:translateY(0);}
+.sa-email-bar p{color:#ccc;font-size:0.85rem;margin:0;}
+.sa-email-bar input[type="email"]{padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#e8e8e8;font-size:0.85rem;outline:none;min-width:200px;}
+.sa-email-bar input[type="email"]:focus{border-color:#ff5f1f;}
+.sa-email-bar button.sa-sub-btn{padding:8px 18px;background:#ff5f1f;color:#fff;border:none;border-radius:6px;font-weight:700;font-size:0.85rem;cursor:pointer;white-space:nowrap;}
+.sa-email-bar button.sa-sub-btn:hover{background:#e5520f;}
+.sa-email-bar button.sa-dismiss{background:none;border:none;color:#666;font-size:1.2rem;cursor:pointer;padding:0 4px;line-height:1;}
+.sa-email-bar button.sa-dismiss:hover{color:#fff;}
+
+@media(max-width:768px){
+  h1{font-size:1.5rem;}
+  .controls-grid{grid-template-columns:1fr 1fr;}
+  .preview-box{padding:20px;min-height:150px;}
+}
+@media(max-width:500px){
+  .controls-grid{grid-template-columns:1fr;}
+  .tabs{gap:4px;}
+  .tab{padding:8px 14px;font-size:0.8rem;}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tailwind CSS Generator","description":"Free Tailwind CSS class generator. Build buttons, cards, navbars, and forms visually. Live preview and one-click copy.","url":"https://spunkart.com/tailwind-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">SPUNKART.COM</a>
+  <div class="nav-links">
+    <a href="/store">All Tools</a>
+    <a href="/store#free-tools">Free Tools</a>
+    <a href="/reseller" style="color:#10b981;font-weight:700">Resell $$</a>
+    <a href="/blog">Blog</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Tailwind CSS <span>Generator</span></h1>
+  <p class="subtitle">Build buttons, cards, navbars, and forms visually. Preview + copy Tailwind classes instantly.</p>
+  <div class="usage-badge-wrap"><div class="usage-badge" id="usageBadge"></div></div>
+
+  <!-- Component Tabs -->
+  <div class="tabs" id="componentTabs">
+    <div class="tab active" data-component="button">Button</div>
+    <div class="tab" data-component="card">Card</div>
+    <div class="tab" data-component="navbar">Navbar</div>
+    <div class="tab" data-component="form">Form Input</div>
+    <div class="tab" data-component="badge">Badge</div>
+    <div class="tab" data-component="alert">Alert</div>
+  </div>
+
+  <!-- Preview -->
+  <div class="preview-box" id="previewBox">
+    <div id="previewContent"></div>
+    <span class="preview-label">LIVE PREVIEW</span>
+  </div>
+
+  <!-- Controls -->
+  <div class="section" id="controlsSection">
+    <h2>Customize</h2>
+    <div class="controls-grid" id="controlsGrid"></div>
+  </div>
+
+  <!-- Output -->
+  <div class="section">
+    <h2>Generated Tailwind Classes</h2>
+    <div class="class-output" id="classOutput"></div>
+    <div class="html-output" id="htmlOutput"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="copyClassBtn" onclick="copyClasses()">Copy Classes</button>
+      <button class="btn btn-green" id="copyHtmlBtn" onclick="copyHtml()">Copy HTML</button>
+      <button class="btn btn-secondary" onclick="resetAll()">Reset</button>
+    </div>
+  </div>
+
+  <div class="cross-sell">
+    <h3>Get All 40+ Tools</h3>
+    <p>Lifetime Pass ($99.99) gets every tool we build. Or <a href="/reseller" style="color:#10b981;font-weight:700">resell them all</a> under your brand from $99.</p>
+    <a href="https://spunkart.com/store" class="cta">Visit the Store</a>
+  </div>
+</main>
+
+<footer>&copy; 2026 SPUNKART.COM &mdash; <a href="/store" style="color:#ff5f1f">Store</a> &middot; <a href="/reseller" style="color:#10b981">Reseller</a> &middot; <a href="/blog" style="color:#888">Blog</a> &middot; <a href="https://twitter.com/SpunkArt13" style="color:#888">@SpunkArt13</a></footer>
+<div class="watermark">SPUNKART.COM</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var currentComponent = 'button';
+
+  /* ─── Component Configs ─── */
+  var configs = {
+    button: {
+      defaults: { text:'Click Me', bgColor:'blue', textColor:'white', size:'md', rounded:'lg', weight:'semibold', shadow:'md', hover:'true', fullWidth:'false' },
+      controls: [
+        { id:'text', label:'Button Text', type:'text' },
+        { id:'bgColor', label:'Background', type:'select', options:['blue','red','green','yellow','purple','pink','indigo','gray','orange','teal','cyan','emerald','rose','sky','slate'] },
+        { id:'textColor', label:'Text Color', type:'select', options:['white','black','gray-100','gray-800','blue-100'] },
+        { id:'size', label:'Size', type:'select', options:['xs','sm','md','lg','xl'] },
+        { id:'rounded', label:'Rounded', type:'select', options:['none','sm','md','lg','xl','2xl','full'] },
+        { id:'weight', label:'Font Weight', type:'select', options:['normal','medium','semibold','bold','extrabold'] },
+        { id:'shadow', label:'Shadow', type:'select', options:['none','sm','md','lg','xl','2xl'] },
+        { id:'hover', label:'Hover Effect', type:'select', options:['true','false'] },
+        { id:'fullWidth', label:'Full Width', type:'select', options:['false','true'] }
+      ],
+      generate: function(s){
+        var sizeMap = {xs:'px-2 py-1 text-xs',sm:'px-3 py-1.5 text-sm',md:'px-4 py-2 text-base',lg:'px-6 py-3 text-lg',xl:'px-8 py-4 text-xl'};
+        var cls = ['bg-'+s.bgColor+'-600','text-'+s.textColor, sizeMap[s.size]||sizeMap.md, 'rounded-'+s.rounded, 'font-'+s.weight];
+        if(s.shadow!=='none') cls.push('shadow-'+s.shadow);
+        if(s.hover==='true') cls.push('hover:bg-'+s.bgColor+'-700 transition-colors duration-200');
+        if(s.fullWidth==='true') cls.push('w-full');
+        return { classes:cls.join(' '), html:'<button class="'+cls.join(' ')+'">'+s.text+'</button>' };
+      }
+    },
+    card: {
+      defaults: { title:'Card Title', desc:'A brief description of the card content goes here.', bgColor:'gray', rounded:'xl', shadow:'lg', padding:'md', border:'true', image:'true' },
+      controls: [
+        { id:'title', label:'Title', type:'text' },
+        { id:'desc', label:'Description', type:'text' },
+        { id:'bgColor', label:'Background', type:'select', options:['gray','slate','zinc','neutral','stone','white'] },
+        { id:'rounded', label:'Rounded', type:'select', options:['none','md','lg','xl','2xl','3xl'] },
+        { id:'shadow', label:'Shadow', type:'select', options:['none','sm','md','lg','xl','2xl'] },
+        { id:'padding', label:'Padding', type:'select', options:['sm','md','lg','xl'] },
+        { id:'border', label:'Border', type:'select', options:['true','false'] },
+        { id:'image', label:'Image Placeholder', type:'select', options:['true','false'] }
+      ],
+      generate: function(s){
+        var padMap = {sm:'p-3',md:'p-5',lg:'p-6',xl:'p-8'};
+        var cls = ['bg-'+s.bgColor+'-900','rounded-'+s.rounded,'shadow-'+s.shadow,padMap[s.padding]||padMap.md,'overflow-hidden'];
+        if(s.border==='true') cls.push('border border-'+s.bgColor+'-700');
+        var inner = '';
+        if(s.image==='true') inner += '<div class="bg-'+s.bgColor+'-800 h-40 -mx-5 -mt-5 mb-4 flex items-center justify-center text-'+s.bgColor+'-500">Image</div>';
+        inner += '<h3 class="text-lg font-bold text-white mb-2">'+s.title+'</h3>';
+        inner += '<p class="text-'+s.bgColor+'-400 text-sm">'+s.desc+'</p>';
+        var html = '<div class="'+cls.join(' ')+' max-w-sm">'+inner+'</div>';
+        return { classes:cls.join(' '), html:html };
+      }
+    },
+    navbar: {
+      defaults: { brand:'MyBrand', bgColor:'gray', sticky:'true', links:'3', shadow:'md' },
+      controls: [
+        { id:'brand', label:'Brand Name', type:'text' },
+        { id:'bgColor', label:'Background', type:'select', options:['gray','slate','zinc','neutral','black','indigo','blue'] },
+        { id:'sticky', label:'Sticky', type:'select', options:['true','false'] },
+        { id:'links', label:'Nav Links', type:'select', options:['2','3','4','5'] },
+        { id:'shadow', label:'Shadow', type:'select', options:['none','sm','md','lg'] }
+      ],
+      generate: function(s){
+        var cls = ['bg-'+s.bgColor+'-900','px-6','py-3','flex','items-center','justify-between'];
+        if(s.sticky==='true') cls.push('sticky top-0 z-50');
+        if(s.shadow!=='none') cls.push('shadow-'+s.shadow);
+        var linkNames = ['Home','About','Services','Blog','Contact'];
+        var links = '';
+        for(var i=0;i<parseInt(s.links);i++) links += '<a href="#" class="text-'+s.bgColor+'-300 hover:text-white transition-colors text-sm">'+linkNames[i]+'</a>';
+        var html = '<nav class="'+cls.join(' ')+'"><span class="text-white font-bold text-lg">'+s.brand+'</span><div class="flex gap-6">'+links+'</div></nav>';
+        return { classes:cls.join(' '), html:html };
+      }
+    },
+    form: {
+      defaults: { placeholder:'Enter your email', label:'Email Address', type:'email', rounded:'lg', size:'md', borderColor:'gray', focusColor:'blue' },
+      controls: [
+        { id:'label', label:'Label Text', type:'text' },
+        { id:'placeholder', label:'Placeholder', type:'text' },
+        { id:'type', label:'Input Type', type:'select', options:['text','email','password','number','url','search','tel'] },
+        { id:'rounded', label:'Rounded', type:'select', options:['none','sm','md','lg','xl','full'] },
+        { id:'size', label:'Size', type:'select', options:['sm','md','lg'] },
+        { id:'borderColor', label:'Border Color', type:'select', options:['gray','slate','zinc','blue','indigo'] },
+        { id:'focusColor', label:'Focus Color', type:'select', options:['blue','indigo','purple','green','orange','red'] }
+      ],
+      generate: function(s){
+        var sizeMap = {sm:'px-3 py-1.5 text-sm',md:'px-4 py-2.5 text-base',lg:'px-5 py-3 text-lg'};
+        var inputCls = ['w-full','bg-'+s.borderColor+'-900','border','border-'+s.borderColor+'-700','rounded-'+s.rounded,sizeMap[s.size]||sizeMap.md,'text-white','placeholder-'+s.borderColor+'-500','focus:outline-none','focus:ring-2','focus:ring-'+s.focusColor+'-500','focus:border-transparent','transition-all'];
+        var html = '<div class="max-w-md"><label class="block text-sm font-medium text-'+s.borderColor+'-300 mb-2">'+s.label+'</label><input type="'+s.type+'" placeholder="'+s.placeholder+'" class="'+inputCls.join(' ')+'"></div>';
+        return { classes:inputCls.join(' '), html:html };
+      }
+    },
+    badge: {
+      defaults: { text:'New', bgColor:'green', size:'sm', rounded:'full', variant:'solid' },
+      controls: [
+        { id:'text', label:'Badge Text', type:'text' },
+        { id:'bgColor', label:'Color', type:'select', options:['green','blue','red','yellow','purple','pink','indigo','gray','orange','teal','cyan'] },
+        { id:'size', label:'Size', type:'select', options:['xs','sm','md'] },
+        { id:'rounded', label:'Rounded', type:'select', options:['sm','md','lg','full'] },
+        { id:'variant', label:'Variant', type:'select', options:['solid','outline','soft'] }
+      ],
+      generate: function(s){
+        var sizeMap = {xs:'px-1.5 py-0.5 text-xs',sm:'px-2.5 py-1 text-xs',md:'px-3 py-1 text-sm'};
+        var cls = [sizeMap[s.size]||sizeMap.sm, 'rounded-'+s.rounded, 'font-medium','inline-flex','items-center'];
+        if(s.variant==='solid') cls.push('bg-'+s.bgColor+'-600 text-white');
+        else if(s.variant==='outline') cls.push('border border-'+s.bgColor+'-500 text-'+s.bgColor+'-400');
+        else cls.push('bg-'+s.bgColor+'-900 text-'+s.bgColor+'-300');
+        return { classes:cls.join(' '), html:'<span class="'+cls.join(' ')+'">'+s.text+'</span>' };
+      }
+    },
+    alert: {
+      defaults: { text:'This is an important alert message.', type:'info', rounded:'lg', dismissible:'true', icon:'true' },
+      controls: [
+        { id:'text', label:'Alert Text', type:'text' },
+        { id:'type', label:'Type', type:'select', options:['info','success','warning','error'] },
+        { id:'rounded', label:'Rounded', type:'select', options:['none','sm','md','lg','xl'] },
+        { id:'dismissible', label:'Dismissible', type:'select', options:['true','false'] },
+        { id:'icon', label:'Show Icon', type:'select', options:['true','false'] }
+      ],
+      generate: function(s){
+        var typeMap = {info:{bg:'blue',icon:'&#9432;'},success:{bg:'green',icon:'&#10003;'},warning:{bg:'yellow',icon:'&#9888;'},error:{bg:'red',icon:'&#10007;'}};
+        var t = typeMap[s.type]||typeMap.info;
+        var cls = ['flex','items-start','gap-3','p-4','rounded-'+s.rounded,'bg-'+t.bg+'-900/50','border','border-'+t.bg+'-700','text-'+t.bg+'-300'];
+        var inner = '';
+        if(s.icon==='true') inner += '<span class="text-'+t.bg+'-400 text-lg flex-shrink-0 mt-0.5">'+t.icon+'</span>';
+        inner += '<span class="flex-1 text-sm">'+s.text+'</span>';
+        if(s.dismissible==='true') inner += '<button class="text-'+t.bg+'-400 hover:text-white text-lg leading-none">&times;</button>';
+        return { classes:cls.join(' '), html:'<div class="'+cls.join(' ')+'">'+inner+'</div>' };
+      }
+    }
+  };
+
+  var state = {};
+
+  /* ─── Tabs ─── */
+  document.getElementById('componentTabs').addEventListener('click', function(e){
+    if(!e.target.classList.contains('tab')) return;
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    e.target.classList.add('active');
+    currentComponent = e.target.dataset.component;
+    state = Object.assign({}, configs[currentComponent].defaults);
+    renderControls();
+    render();
+    bumpUsage();
+  });
+
+  /* ─── Render Controls ─── */
+  function renderControls(){
+    var grid = document.getElementById('controlsGrid');
+    grid.innerHTML = '';
+    var cfg = configs[currentComponent];
+    cfg.controls.forEach(function(ctrl){
+      var div = document.createElement('div');
+      div.className = 'input-group';
+      var html = '<label>'+ctrl.label+'</label>';
+      if(ctrl.type === 'text'){
+        html += '<input type="text" id="ctrl_'+ctrl.id+'" value="'+state[ctrl.id]+'">';
+      } else if(ctrl.type === 'select'){
+        html += '<select id="ctrl_'+ctrl.id+'">';
+        ctrl.options.forEach(function(opt){
+          html += '<option value="'+opt+'"'+(state[ctrl.id]===opt?' selected':'')+'>'+opt+'</option>';
+        });
+        html += '</select>';
+      }
+      div.innerHTML = html;
+      grid.appendChild(div);
+      var input = div.querySelector('input, select');
+      input.addEventListener('input', function(){
+        state[ctrl.id] = input.value;
+        render();
+        bumpUsage();
+      });
+      input.addEventListener('change', function(){
+        state[ctrl.id] = input.value;
+        render();
+        bumpUsage();
+      });
+    });
+  }
+
+  /* ─── Render Preview + Output ─── */
+  function render(){
+    var cfg = configs[currentComponent];
+    var result = cfg.generate(state);
+    // Preview with Tailwind CDN rendering
+    document.getElementById('previewContent').innerHTML = result.html;
+    document.getElementById('classOutput').textContent = result.classes;
+    document.getElementById('htmlOutput').textContent = result.html;
+  }
+
+  /* ─── Copy ─── */
+  window.copyClasses = function(){
+    var text = document.getElementById('classOutput').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.getElementById('copyClassBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'Copy Classes'; btn.classList.remove('copied'); }, 2000);
+      gtag('event', 'copy_tailwind_classes', { event_category: 'tool_use' });
+    });
+  };
+
+  window.copyHtml = function(){
+    var text = document.getElementById('htmlOutput').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var btn = document.getElementById('copyHtmlBtn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = 'Copy HTML'; btn.classList.remove('copied'); }, 2000);
+      gtag('event', 'copy_tailwind_html', { event_category: 'tool_use' });
+    });
+  };
+
+  /* ─── Reset ─── */
+  window.resetAll = function(){
+    state = Object.assign({}, configs[currentComponent].defaults);
+    renderControls();
+    render();
+  };
+
+  /* ─── Usage Counter ─── */
+  var TOOL_KEY = 'spunkart_tailwind_uses';
+  var BAR_KEY = 'sa_bar_dismissed_tailwind';
+  var usageCount = parseInt(localStorage.getItem(TOOL_KEY)) || 0;
+  var badge = document.getElementById('usageBadge');
+
+  function updateBadge(){
+    badge.textContent = usageCount + ' component' + (usageCount !== 1 ? 's' : '') + ' generated';
+  }
+  updateBadge();
+
+  function bumpUsage(){
+    usageCount++;
+    localStorage.setItem(TOOL_KEY, usageCount);
+    updateBadge();
+    if(usageCount >= 3 && !localStorage.getItem(BAR_KEY)){
+      document.getElementById('saEmailBar').classList.add('show');
+    }
+  }
+
+  /* ─── Email Bar ─── */
+  window.saDismissBar = function(){
+    document.getElementById('saEmailBar').classList.remove('show');
+    localStorage.setItem(BAR_KEY, '1');
+  };
+  window.saSubmitEmail = function(){
+    var email = document.getElementById('saBarEmail').value;
+    if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+    localStorage.setItem('sa_subscriber_email', email);
+    localStorage.setItem(BAR_KEY, '1');
+    window.open('https://embeds.beehiiv.com/6831d05b-f121-4e0d-951b-16f88ddd9ec3?email=' + encodeURIComponent(email), '_blank');
+    document.getElementById('saEmailBar').classList.remove('show');
+    var btn = document.querySelector('.sa-sub-btn');
+    btn.textContent = 'Subscribed!';
+    btn.style.background = '#10b981';
+  };
+
+  /* ─── Init ─── */
+  state = Object.assign({}, configs[currentComponent].defaults);
+  renderControls();
+  render();
+
+})();
+</script>
+
+<!-- Email collection bar -->
+<div class="sa-email-bar" id="saEmailBar">
+  <p>Like this? Get 30 more free tools in your inbox.</p>
+  <input type="email" id="saBarEmail" placeholder="you@email.com">
+  <button class="sa-sub-btn" onclick="saSubmitEmail()">Get Early Access</button>
+  <button class="sa-dismiss" onclick="saDismissBar()">&times;</button>
+</div>
+
+<!-- Code Protection -->
+<script>
+(function(){
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F12')e.preventDefault();
+    if(e.ctrlKey&&e.key==='u')e.preventDefault();
+    if(e.ctrlKey&&e.key==='s')e.preventDefault();
+    if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'||e.key==='J'||e.key==='j'||e.key==='C'||e.key==='c'))e.preventDefault();
+  });
+  console.log('%c\u26a0 SPUNKART.COM \u2014 All rights reserved. Unauthorized copying or redistribution of this code is prohibited.','color:#ff5f1f;font-size:16px;font-weight:bold;');
+  console.log('%cThis tool is the property of SpunkArt. Report theft: hello@spunkart.com','color:#888;font-size:12px;');
+  if(!document.querySelector('.watermark')){
+    var w=document.createElement('div');
+    w.style.cssText='position:fixed;bottom:10px;right:15px;font-size:0.7rem;color:rgba(255,95,31,0.15);font-weight:700;letter-spacing:2px;pointer-events:none;z-index:9999;';
+    w.textContent='SPUNKART.COM';
+    document.body.appendChild(w);
+  }
+})();
+</script>
+</body>
+</html>
