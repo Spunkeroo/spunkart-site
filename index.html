@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpunkArt - Original Abstract Paintings | Bold Colors, Raw Expression</title>
-  <meta name="description" content="SpunkArt creates original abstract paintings in acrylic, mixed media, and spray paint. Bold colors, raw expression, one-of-a-kind originals. Commissions available.">
+  <meta name="description" content="SpunkArt creates 1-of-1 original abstract acrylic paintings on canvas. Bold colors, raw expression, every piece unique. Commissions available.">
   <meta property="og:title" content="SpunkArt - Original Abstract Paintings">
-  <meta property="og:description" content="Bold colors. Raw expression. Mixed media. Original abstract paintings by SpunkArt. Commissions and prints available.">
+  <meta property="og:description" content="Bold colors. Raw expression. 1-of-1 original abstract acrylic paintings on canvas by SpunkArt. Commissions available.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://spunkart.com">
   <meta property="og:site_name" content="SpunkArt">
@@ -15,9 +15,9 @@
   <meta name="twitter:site" content="@SpunkArt13">
   <meta name="twitter:creator" content="@SpunkArt13">
   <meta name="twitter:title" content="SpunkArt - Original Abstract Paintings">
-  <meta name="twitter:description" content="Bold colors. Raw expression. Mixed media. Original abstract paintings and prints.">
+  <meta name="twitter:description" content="Bold colors. Raw expression. 1-of-1 original abstract acrylic paintings on canvas.">
   <meta name="twitter:image" content="https://spunkart.com/og-image.png">
-  <meta name="keywords" content="SpunkArt, abstract paintings, original art, acrylic painting, mixed media art, spray paint art, abstract expressionism, modern art, contemporary art, art commissions, art prints">
+  <meta name="keywords" content="SpunkArt, abstract paintings, original art, acrylic painting, acrylic on canvas, abstract expressionism, modern art, contemporary art, art commissions, one of a kind art, 1 of 1 paintings">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="SpunkArt">
   <link rel="canonical" href="https://spunkart.com">
@@ -28,10 +28,10 @@
     "@type": "Person",
     "name": "SpunkArt",
     "url": "https://spunkart.com",
-    "description": "Artist creating original abstract paintings in acrylic, mixed media, and spray paint. Bold colors, raw expression, one-of-a-kind originals.",
+    "description": "Artist creating 1-of-1 original abstract acrylic paintings on canvas. Bold colors, raw expression, every piece unique.",
     "sameAs": ["https://x.com/SpunkArt13"],
     "jobTitle": "Abstract Artist",
-    "knowsAbout": ["Abstract Painting", "Mixed Media Art", "Acrylic Painting", "Spray Paint Art", "Contemporary Art"]
+    "knowsAbout": ["Abstract Painting", "Acrylic Painting", "Acrylic on Canvas", "Contemporary Art", "Original Art"]
   }
   </script>
   <script type="application/ld+json">
@@ -867,113 +867,8 @@
       max-width: 280px;
     }
 
-    /* ======== PRINTS ======== */
-    .prints-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
+    /* ======== (prints section removed) ======== */
 
-    .print-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 3rem 2rem;
-      text-align: center;
-      backdrop-filter: blur(16px);
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .print-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-
-    .print-card.featured {
-      border-color: rgba(212, 104, 58, 0.2);
-    }
-
-    .print-card.featured::before {
-      content: 'Popular';
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(212, 104, 58, 0.08);
-      padding: 0.25rem 0.6rem;
-      border-radius: 2px;
-    }
-
-    .print-tier {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .print-amount {
-      font-family: var(--serif);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .print-amount sup {
-      font-size: 1.2rem;
-      vertical-align: super;
-      margin-right: 2px;
-    }
-
-    .print-tagline {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .print-details {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 2rem;
-    }
-
-    .print-details li {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .print-details li::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .prints-footnote {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
 
     /* ======== COMMISSION ======== */
     .commission-wrapper {
@@ -1241,11 +1136,6 @@
         gap: 1rem;
       }
 
-      .prints-grid {
-        grid-template-columns: 1fr;
-        max-width: 360px;
-      }
-
       .commission-box {
         padding: 2.5rem 1.75rem;
       }
@@ -1303,8 +1193,8 @@
       <li><a href="#about">About</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#process">Process</a></li>
-      <li><a href="#prints">Prints</a></li>
       <li><a href="#commission">Commission</a></li>
+      <li><a href="/blog/">Blog</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </nav>
@@ -1319,8 +1209,8 @@
     <div class="hero-content">
       <div class="hero-overline">Original Abstract Paintings</div>
       <h1 class="hero-title">SpunkArt</h1>
-      <p class="hero-subtitle">Bold colors. Raw expression. Mixed media.</p>
-      <p class="hero-desc">One-of-a-kind originals in acrylic, spray paint, and mixed media</p>
+      <p class="hero-subtitle">Bold colors. Raw expression. Every piece 1 of 1.</p>
+      <p class="hero-desc">Original abstract acrylic paintings on canvas</p>
       <div class="hero-actions">
         <a href="#gallery" class="btn btn-filled">View Gallery</a>
         <a href="#commission" class="btn">Commission a Piece</a>
@@ -1347,17 +1237,17 @@
       </div>
       <div class="about-text">
         <h3>Raw Emotion on Canvas</h3>
-        <p>SpunkArt creates <strong>bold, expressive abstract paintings</strong> driven by raw emotion and intuitive creation. No planning, no sketching, no rules. Just paint, surface, and instinct.</p>
-        <p>Working in <strong>acrylic, mixed media, spray paint, and ink</strong>, every piece is a one-of-a-kind original. Layers of color collide, drip, and explode across canvas, wood, and everything in between.</p>
+        <p>SpunkArt creates <strong>bold, expressive abstract acrylic paintings on canvas</strong> driven by raw emotion and intuitive creation. No planning, no sketching, no rules. Just paint, canvas, and instinct.</p>
+        <p>Every piece is a <strong>1-of-1 original</strong>. No prints. No reproductions. Layers of color collide, drip, and explode across canvas. Over 300 paintings started or completed, 70+ sold or given to friends and family.</p>
         <p>Each painting captures a moment of pure creative energy. The chaos is intentional. The imperfections are the point.</p>
         <div class="about-stats">
           <div>
-            <div class="stat-number">50+</div>
-            <div class="stat-label">Original Works</div>
+            <div class="stat-number">300+</div>
+            <div class="stat-label">Paintings Created</div>
           </div>
           <div>
-            <div class="stat-number">4</div>
-            <div class="stat-label">Mediums</div>
+            <div class="stat-number">70+</div>
+            <div class="stat-label">Sold &amp; Gifted</div>
           </div>
           <div>
             <div class="stat-number">1/1</div>
@@ -1398,7 +1288,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Electric Dreams</div>
-          <div class="item-medium">Mixed Media</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">24 x 36 in.</div>
           <div class="item-price">$800</div>
         </div>
@@ -1411,7 +1301,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Midnight Fire</div>
-          <div class="item-medium">Acrylic &amp; Spray Paint</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">48 x 48 in.</div>
           <div class="item-price">$1,500</div>
         </div>
@@ -1424,7 +1314,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Soul Fragment</div>
-          <div class="item-medium">Mixed Media on Wood</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">30 x 40 in.</div>
           <div class="item-price">$950</div>
         </div>
@@ -1450,7 +1340,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Urban Decay</div>
-          <div class="item-medium">Spray Paint &amp; Acrylic</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">48 x 60 in.</div>
           <div class="item-price">$1,800</div>
         </div>
@@ -1463,7 +1353,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Quantum Leap</div>
-          <div class="item-medium">Mixed Media</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">24 x 24 in.</div>
           <div class="item-price">$600</div>
         </div>
@@ -1489,7 +1379,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Binary Sunset</div>
-          <div class="item-medium">Mixed Media</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">30 x 30 in.</div>
           <div class="item-price">$750</div>
         </div>
@@ -1502,7 +1392,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Psychedelic Rain</div>
-          <div class="item-medium">Acrylic &amp; Ink</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">36 x 48 in.</div>
           <div class="item-price">$1,100</div>
         </div>
@@ -1515,7 +1405,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Emotional Wreckage</div>
-          <div class="item-medium">Mixed Media on Canvas</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">48 x 36 in.</div>
           <div class="item-price">$1,400</div>
         </div>
@@ -1528,7 +1418,7 @@
         </div>
         <div class="item-info">
           <div class="item-title">Color Bomb</div>
-          <div class="item-medium">Spray Paint on Canvas</div>
+          <div class="item-medium">Acrylic on Canvas</div>
           <div class="item-size">60 x 48 in.</div>
           <div class="item-price">$2,000</div>
         </div>
@@ -1548,16 +1438,14 @@
     <div class="process-layout">
       <div class="process-text">
         <h3>From the Studio</h3>
-        <p>The process is physical. Paint gets thrown, dripped, layered, scraped, and rebuilt. There are no sketches, no digital mockups. Every piece starts as a blank surface and evolves through <strong>layers of controlled chaos</strong>.</p>
-        <p>Working with <strong>heavy-body acrylics, spray paint, ink, and found materials</strong>, each painting develops its own personality. Colors are chosen intuitively. Compositions emerge naturally. Mistakes become the best parts.</p>
+        <p>The process is physical. Paint gets thrown, dripped, layered, scraped, and rebuilt. There are no sketches, no digital mockups. Every piece starts as a blank canvas and evolves through <strong>layers of controlled chaos</strong>.</p>
+        <p>Using only <strong>top-grade premium artist paints, professional mediums, and quality stretched canvases</strong>, every painting is built to last. Colors are chosen intuitively. Compositions emerge naturally. Mistakes become the best parts.</p>
         <p>The goal is always the same: create something that makes you <strong>feel something</strong> before you can explain it.</p>
         <div class="mediums-list">
-          <span class="medium-pill">Acrylic</span>
-          <span class="medium-pill">Spray Paint</span>
-          <span class="medium-pill">Mixed Media</span>
-          <span class="medium-pill">Ink</span>
-          <span class="medium-pill">Canvas</span>
-          <span class="medium-pill">Wood Panel</span>
+          <span class="medium-pill">Premium Acrylics</span>
+          <span class="medium-pill">Artist-Grade Mediums</span>
+          <span class="medium-pill">Stretched Canvas</span>
+          <span class="medium-pill">1 of 1 Originals</span>
         </div>
       </div>
       <div class="process-visual">
@@ -1584,54 +1472,6 @@
     </div>
   </section>
 
-  <!-- ======== PRINTS ======== -->
-  <section class="section reveal" id="prints">
-    <div class="section-header">
-      <div class="divider"></div>
-      <span class="section-label">Reproductions</span>
-      <h2 class="section-title">Prints</h2>
-      <p class="section-desc">Museum-quality gicl&eacute;e prints on archival paper. Limited editions of 25.</p>
-    </div>
-    <div class="prints-grid">
-      <div class="print-card">
-        <div class="print-tier">Small</div>
-        <div class="print-amount"><sup>$</sup>29</div>
-        <div class="print-tagline">Perfect for desks and shelves</div>
-        <ul class="print-details">
-          <li>8 x 10" or 8 x 8"</li>
-          <li>Gicl&eacute;e print</li>
-          <li>Archival matte paper</li>
-          <li>Signed by artist</li>
-        </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Small" class="btn" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
-      </div>
-      <div class="print-card featured">
-        <div class="print-tier">Medium</div>
-        <div class="print-amount"><sup>$</sup>79</div>
-        <div class="print-tagline">The gallery standard</div>
-        <ul class="print-details">
-          <li>18 x 24" or 18 x 18"</li>
-          <li>Gicl&eacute;e print</li>
-          <li>Premium cotton rag</li>
-          <li>Signed &amp; numbered</li>
-        </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Medium" class="btn btn-filled" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
-      </div>
-      <div class="print-card">
-        <div class="print-tier">Large</div>
-        <div class="print-amount"><sup>$</sup>149</div>
-        <div class="print-tagline">Statement piece for any room</div>
-        <ul class="print-details">
-          <li>24 x 36" or 30 x 30"</li>
-          <li>Gicl&eacute;e print</li>
-          <li>Premium cotton rag</li>
-          <li>Signed, numbered, COA</li>
-        </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Large" class="btn" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
-      </div>
-    </div>
-    <p class="prints-footnote">All prints ship flat within 5-7 business days. Limited editions of 25 per design.</p>
-  </section>
 
   <!-- ======== COMMISSION ======== -->
   <section class="section reveal" id="commission">
@@ -1644,12 +1484,12 @@
     <div class="commission-wrapper">
       <div class="commission-box">
         <h3>Custom Original Artwork</h3>
-        <p>Tell me your vision and I will create a one-of-a-kind original painting. Choose your size, color palette, and style. Every commission is hand-painted and completely unique.</p>
+        <p>Tell me your vision and I will create a one-of-a-kind original acrylic painting on canvas. Choose your size, color palette, and style. Every commission is hand-painted with premium artist-grade materials and completely unique.</p>
         <div class="commission-perks">
           <div class="perk">Custom sizes available</div>
           <div class="perk">Choose your color palette</div>
-          <div class="perk">Any medium or mixed</div>
-          <div class="perk">Canvas, wood, or paper</div>
+          <div class="perk">Premium artist-grade acrylics</div>
+          <div class="perk">Quality stretched canvas</div>
           <div class="perk">Progress photos included</div>
           <div class="perk">Ships worldwide</div>
         </div>
@@ -1686,8 +1526,15 @@
         <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
         </div>
-        <div class="connect-type">Tools</div>
+        <div class="connect-type">Free Tools</div>
         <div class="connect-name">spunk.codes</div>
+      </a>
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" class="connect-item">
+        <div class="connect-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <div class="connect-type">Free Casino</div>
+        <div class="connect-name">spunk.bet</div>
       </a>
       <a href="mailto:hello@spunkart.com" class="connect-item">
         <div class="connect-icon-wrap">
@@ -1704,12 +1551,13 @@
     <div class="footer-brand">SpunkArt</div>
     <div class="footer-nav">
       <a href="#gallery">Gallery</a>
-      <a href="#prints">Prints</a>
       <a href="#commission">Commission</a>
+      <a href="/blog/">Blog</a>
       <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
       <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer">spunk.codes</a>
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">spunk.bet</a>
     </div>
-    <div class="footer-copy">&copy; 2026 SpunkArt. All rights reserved. All paintings are original works.</div>
+    <div class="footer-copy">&copy; 2026 SpunkArt. All rights reserved. Every painting is a 1-of-1 original.</div>
   </footer>
 
   <!-- ======== SCRIPTS ======== -->
@@ -1723,7 +1571,7 @@
             entry.target.classList.add('visible');
 
             // Stagger gallery items
-            var items = entry.target.querySelectorAll('.gallery-item, .print-card, .connect-item');
+            var items = entry.target.querySelectorAll('.gallery-item, .connect-item');
             items.forEach(function(item, i) {
               item.style.opacity = '0';
               item.style.transform = 'translateY(30px)';
