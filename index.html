@@ -6,15 +6,17 @@
   <title>SpunkArt - Original Abstract Paintings | Bold Colors, Raw Expression</title>
   <meta name="description" content="SpunkArt creates original abstract paintings in acrylic, mixed media, and spray paint. Bold colors, raw expression, one-of-a-kind originals. Commissions available.">
   <meta property="og:title" content="SpunkArt - Original Abstract Paintings">
-  <meta property="og:description" content="Bold colors. Raw expression. Mixed media art. Original abstract paintings by SpunkArt. Commissions and prints available.">
+  <meta property="og:description" content="Bold colors. Raw expression. Mixed media. Original abstract paintings by SpunkArt. Commissions and prints available.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://spunkart.com">
   <meta property="og:site_name" content="SpunkArt">
+  <meta property="og:image" content="https://spunkart.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@SpunkArt13">
   <meta name="twitter:creator" content="@SpunkArt13">
   <meta name="twitter:title" content="SpunkArt - Original Abstract Paintings">
-  <meta name="twitter:description" content="Bold colors. Raw expression. Mixed media art. Original abstract paintings and prints.">
+  <meta name="twitter:description" content="Bold colors. Raw expression. Mixed media. Original abstract paintings and prints.">
+  <meta name="twitter:image" content="https://spunkart.com/og-image.png">
   <meta name="keywords" content="SpunkArt, abstract paintings, original art, acrylic painting, mixed media art, spray paint art, abstract expressionism, modern art, contemporary art, art commissions, art prints">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="SpunkArt">
@@ -42,73 +44,112 @@
   }
   </script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: rgba(18, 18, 18, 0.7);
+      --text: #f5f0eb;
+      --text-dim: #a09890;
+      --text-muted: #5a534d;
+      --accent: #d4683a;
+      --accent-warm: #e8956a;
+      --accent-gold: #c9a96e;
+      --accent-rose: #b85c5c;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(212, 104, 58, 0.3);
+      --glass: rgba(255, 255, 255, 0.03);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      background: #0a0a0a;
-      color: #e8e8e8;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    /* ======== NAV ======== */
+    ::selection {
+      background: rgba(212, 104, 58, 0.3);
+      color: #fff;
+    }
+
+    /* ======== NAVIGATION ======== */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 2.5rem;
-      background: rgba(10, 10, 10, 0.88);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      transition: transform 0.3s ease;
+      padding: 1.5rem 3rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(30px) saturate(1.2);
+      -webkit-backdrop-filter: blur(30px) saturate(1.2);
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .logo a {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, #ff6b35, #f7c948);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-brand a {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text);
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
       align-items: center;
     }
 
     .nav-links a {
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #777;
-      transition: color 0.3s;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+      position: relative;
     }
 
-    .nav-links a:hover { color: #fff; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
 
-    .mobile-menu-btn {
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .mobile-toggle {
       display: none;
       background: none;
       border: none;
-      color: #e8e8e8;
-      font-size: 1.5rem;
+      color: var(--text);
+      font-size: 1.4rem;
       cursor: pointer;
+      padding: 0.25rem;
     }
 
     /* ======== HERO ======== */
@@ -124,90 +165,112 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
+    .hero-canvas {
       position: absolute;
-      top: -20%; left: -10%;
-      width: 50%;
-      height: 70%;
-      background: radial-gradient(ellipse, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+      inset: 0;
       pointer-events: none;
-      animation: heroGlow1 8s ease-in-out infinite alternate;
+      z-index: 0;
     }
 
-    .hero::after {
-      content: "";
+    .hero-canvas .blob {
       position: absolute;
-      bottom: -10%; right: -10%;
-      width: 45%;
-      height: 60%;
-      background: radial-gradient(ellipse, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-      animation: heroGlow2 10s ease-in-out infinite alternate;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
     }
 
-    @keyframes heroGlow1 {
+    .hero-canvas .blob-1 {
+      width: 600px; height: 600px;
+      background: var(--accent);
+      top: -15%; left: -10%;
+      animation: blobFloat1 14s ease-in-out infinite alternate;
+    }
+
+    .hero-canvas .blob-2 {
+      width: 500px; height: 500px;
+      background: #4a6fa5;
+      bottom: -20%; right: -10%;
+      animation: blobFloat2 18s ease-in-out infinite alternate;
+    }
+
+    .hero-canvas .blob-3 {
+      width: 350px; height: 350px;
+      background: var(--accent-rose);
+      top: 40%; left: 50%;
+      transform: translateX(-50%);
+      animation: blobFloat3 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes blobFloat1 {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, 20px) scale(1.1); }
+      100% { transform: translate(60px, 40px) scale(1.15); }
     }
 
-    @keyframes heroGlow2 {
+    @keyframes blobFloat2 {
       0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-20px, -15px) scale(1.15); }
+      100% { transform: translate(-50px, -30px) scale(1.2); }
     }
 
-    .hero-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #ff6b35;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 1s ease both;
+    @keyframes blobFloat3 {
+      0% { transform: translateX(-50%) translate(0, 0) scale(1); }
+      100% { transform: translateX(-50%) translate(20px, -40px) scale(0.85); }
     }
 
-    .hero-name {
-      font-size: clamp(3.5rem, 11vw, 9rem);
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      line-height: 0.92;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-content {
       position: relative;
-      animation: fadeUp 1s ease 0.1s both;
+      z-index: 1;
     }
 
-    .hero-tagline {
-      font-size: clamp(1rem, 2.2vw, 1.3rem);
-      font-weight: 300;
-      color: #888;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.75rem;
-      animation: fadeUp 1s ease 0.2s both;
+    .hero-overline {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 0.9;
+      margin-bottom: 1.75rem;
+      color: var(--text);
+      animation: fadeUp 0.8s ease 0.1s both;
     }
 
     .hero-subtitle {
-      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2.5vw, 1.5rem);
       font-weight: 400;
-      color: #555;
-      letter-spacing: 0.03em;
-      margin-bottom: 3rem;
-      animation: fadeUp 1s ease 0.3s both;
+      font-style: italic;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.8s ease 0.2s both;
     }
 
-    .hero-ctas {
+    .hero-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    .hero-actions {
       display: flex;
-      gap: 1rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
       justify-content: center;
-      animation: fadeUp 1s ease 0.4s both;
+      animation: fadeUp 0.8s ease 0.4s both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(35px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -215,101 +278,138 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.85rem 2rem;
-      font-size: 0.82rem;
+      padding: 0.9rem 2.2rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      border-radius: 100px;
-      border: 1px solid #333;
-      color: #ccc;
-      transition: all 0.3s ease;
-      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-dim);
       background: transparent;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: -1;
     }
 
     .btn:hover {
-      border-color: #ff6b35;
-      color: #ff6b35;
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #ff6b35, #e85d2a);
-      border-color: transparent;
+      border-color: var(--accent);
       color: #fff;
     }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #e85d2a, #d4511f);
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+    .btn:hover::before {
+      transform: scaleX(1);
     }
 
-    .scroll-hint {
+    .btn-filled {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-filled::before {
+      background: #fff;
+    }
+
+    .btn-filled:hover {
+      color: var(--accent);
+      border-color: #fff;
+    }
+
+    .scroll-indicator {
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 3rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      color: #444;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      gap: 0.75rem;
+      animation: fadeUp 0.8s ease 1s both;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      animation: fadeUp 1s ease 0.8s both;
+      color: var(--text-muted);
     }
 
     .scroll-line {
       width: 1px;
-      height: 36px;
-      background: linear-gradient(to bottom, #444, transparent);
-      animation: scrollPulse 2s ease infinite;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+      animation: scrollPulse 2.5s ease-in-out infinite;
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
+      0%, 100% { opacity: 0.2; transform: scaleY(0.6); }
+      50% { opacity: 1; transform: scaleY(1); }
     }
 
-    /* ======== SECTIONS ======== */
+    /* ======== SECTION BASE ======== */
     .section {
-      padding: 7rem 2rem;
-      max-width: 1200px;
+      padding: 8rem 2rem;
+      max-width: 1280px;
       margin: 0 auto;
     }
 
-    .section-divider {
-      width: 50px;
-      height: 2px;
-      background: linear-gradient(90deg, #ff6b35, #f7c948);
-      margin: 0 auto 2rem;
-      border-radius: 2px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: block;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
       margin-bottom: 1rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: #666;
+    .section-desc {
       font-size: 0.95rem;
-      max-width: 560px;
-      margin: 0 auto 4rem;
-      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 1.5rem;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: translateY(50px);
+      transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .reveal.visible {
@@ -318,617 +418,763 @@
     }
 
     /* ======== ABOUT ======== */
-    .about-content {
+    .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
       align-items: center;
     }
 
     .about-visual {
       position: relative;
-      aspect-ratio: 1;
-      border-radius: 20px;
+      aspect-ratio: 4/5;
+      border-radius: 4px;
       overflow: hidden;
-      background: linear-gradient(135deg, #1a1a1a, #111);
-      border: 1px solid rgba(255, 107, 53, 0.1);
     }
 
-    .about-visual-inner {
-      width: 100%;
-      height: 100%;
+    .about-visual-bg {
+      width: 100%; height: 100%;
       background:
-        radial-gradient(ellipse at 20% 30%, rgba(255, 107, 53, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 60%),
-        linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      animation: aboutShift 12s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 25% 35%, rgba(212, 104, 58, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 65%, rgba(74, 111, 165, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(184, 92, 92, 0.3) 0%, transparent 55%),
+        radial-gradient(circle at 30% 80%, rgba(201, 169, 110, 0.2) 0%, transparent 40%),
+        linear-gradient(135deg, #121210, #0f0f12);
+      animation: aboutShift 16s ease-in-out infinite alternate;
+    }
+
+    .about-visual-frame {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      pointer-events: none;
     }
 
     @keyframes aboutShift {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(20deg); }
+      0% { filter: hue-rotate(0deg) brightness(1); }
+      50% { filter: hue-rotate(10deg) brightness(1.05); }
+      100% { filter: hue-rotate(-5deg) brightness(0.95); }
     }
 
     .about-text h3 {
-      font-size: 1.6rem;
+      font-family: var(--serif);
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
-      color: #f0f0f0;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
     }
 
     .about-text p {
-      color: #999;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      margin-bottom: 1rem;
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
     }
 
-    .about-text p strong { color: #ccc; }
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
     .about-stats {
       display: flex;
-      gap: 2.5rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid #1a1a1a;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
     }
 
-    .about-stat-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ff6b35;
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
       line-height: 1;
     }
 
-    .about-stat-label {
-      font-size: 0.7rem;
-      color: #666;
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 0.3rem;
+      letter-spacing: 0.12em;
+      margin-top: 0.4rem;
     }
 
     /* ======== GALLERY ======== */
+    .gallery-section {
+      padding: 8rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
-    .gallery-card {
+    .gallery-item {
       position: relative;
-      background: rgba(17, 17, 17, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
       overflow: hidden;
-      backdrop-filter: blur(12px);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(16px);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
     }
 
-    .gallery-card:hover {
-      border-color: rgba(255, 107, 53, 0.25);
-      transform: translateY(-8px);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 107, 53, 0.06);
+    .gallery-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-10px);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(212, 104, 58, 0.1);
     }
 
-    .painting-art {
+    .artwork {
       aspect-ratio: 1;
       position: relative;
       overflow: hidden;
     }
 
-    .painting-art-inner {
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s ease, filter 0.6s ease;
+    .artwork-inner {
+      width: 100%; height: 100%;
+      transition: transform 0.7s ease, filter 0.7s ease;
     }
 
-    .gallery-card:hover .painting-art-inner {
-      transform: scale(1.05);
-      filter: brightness(1.1) saturate(1.2);
+    .gallery-item:hover .artwork-inner {
+      transform: scale(1.06);
+      filter: brightness(1.08) saturate(1.15);
     }
 
-    /* CSS abstract art for each painting */
-    .art-1 .painting-art-inner {
+    .artwork-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 40%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+
+    .gallery-item:hover .artwork-overlay {
+      opacity: 1;
+    }
+
+    .artwork-overlay span {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* -- 12 unique CSS abstract art paintings -- */
+
+    /* 1. Chaos Theory - explosive red/orange vortex */
+    .art-1 .artwork-inner {
       background:
-        radial-gradient(circle at 30% 40%, #ff4444 0%, transparent 40%),
-        radial-gradient(circle at 70% 60%, #ff8800 0%, transparent 35%),
-        radial-gradient(circle at 50% 20%, #cc00ff 0%, transparent 30%),
-        conic-gradient(from 45deg at 60% 50%, #ff2200, #ff8800, #ffcc00, #ff4400, #ff2200),
-        linear-gradient(135deg, #1a0a0a, #0a0a1a);
-      background-blend-mode: screen, overlay, color-dodge, normal, normal;
+        conic-gradient(from 45deg at 55% 45%, #ff2200 0%, #ff6600 15%, #ffcc00 25%, transparent 35%),
+        conic-gradient(from 200deg at 40% 60%, #cc0033 0%, #ff4400 20%, transparent 30%),
+        radial-gradient(circle at 30% 35%, rgba(255, 60, 0, 0.9) 0%, transparent 40%),
+        radial-gradient(circle at 70% 65%, rgba(255, 140, 0, 0.7) 0%, transparent 35%),
+        radial-gradient(ellipse at 50% 50%, rgba(180, 0, 60, 0.4) 0%, transparent 50%),
+        linear-gradient(135deg, #1a0800, #0a0205);
+      background-blend-mode: screen, screen, overlay, color-dodge, multiply, normal;
     }
 
-    .art-2 .painting-art-inner {
+    /* 2. Electric Dreams - neon cyan/magenta mixed media */
+    .art-2 .artwork-inner {
       background:
-        radial-gradient(ellipse at 20% 80%, rgba(0, 200, 255, 0.8) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(255, 100, 0, 0.7) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(255, 0, 100, 0.4) 0%, transparent 40%),
-        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px),
-        linear-gradient(180deg, #0a0a1a, #1a0a0a);
-      background-blend-mode: screen, multiply, overlay, normal, normal;
+        radial-gradient(ellipse at 15% 80%, rgba(0, 220, 255, 0.85) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, rgba(255, 0, 150, 0.7) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(120, 0, 255, 0.3) 0%, transparent 50%),
+        repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 32px),
+        repeating-linear-gradient(-30deg, transparent, transparent 25px, rgba(0,200,255,0.02) 25px, rgba(0,200,255,0.02) 27px),
+        linear-gradient(200deg, #05051a, #0a0215, #150508);
+      background-blend-mode: screen, screen, overlay, normal, normal, normal;
     }
 
-    .art-3 .painting-art-inner {
+    /* 3. Midnight Fire - deep dark flames, spray texture */
+    .art-3 .artwork-inner {
       background:
-        radial-gradient(circle at 25% 25%, #ff0044 0%, transparent 35%),
-        radial-gradient(circle at 75% 75%, #ff8800 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, #4400ff 0%, transparent 50%),
-        conic-gradient(from 180deg at 40% 60%, #000, #ff4400, #000, #ff8800, #000),
-        linear-gradient(135deg, #0a0a0a, #111);
+        radial-gradient(circle at 50% 85%, rgba(255, 50, 0, 0.9) 0%, transparent 35%),
+        radial-gradient(circle at 45% 60%, rgba(255, 120, 0, 0.6) 0%, transparent 30%),
+        radial-gradient(circle at 55% 40%, rgba(255, 200, 50, 0.3) 0%, transparent 25%),
+        conic-gradient(from 180deg at 50% 70%, #000 0%, #330500 20%, #661000 35%, #330500 50%, #000 65%),
+        radial-gradient(ellipse at 50% 30%, rgba(30, 0, 80, 0.5) 0%, transparent 60%),
+        linear-gradient(0deg, #1a0500, #050008);
+      background-blend-mode: screen, screen, color-dodge, overlay, soft-light, normal;
+    }
+
+    /* 4. Soul Fragment - organic purples/pinks on wood texture */
+    .art-4 .artwork-inner {
+      background:
+        radial-gradient(ellipse at 35% 65%, rgba(139, 60, 220, 0.85) 0%, transparent 40%),
+        radial-gradient(ellipse at 65% 35%, rgba(220, 80, 160, 0.65) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(200, 160, 80, 0.25) 0%, transparent 30%),
+        repeating-linear-gradient(2deg, rgba(120, 80, 40, 0.04) 0px, transparent 1px, transparent 6px),
+        repeating-linear-gradient(178deg, rgba(100, 60, 30, 0.03) 0px, transparent 1px, transparent 8px),
+        conic-gradient(from 120deg at 30% 70%, rgba(80, 0, 120, 0.3), transparent 25%),
+        linear-gradient(135deg, #0a0508, #0f0a08, #0a060f);
+      background-blend-mode: screen, screen, overlay, normal, normal, color-dodge, normal;
+    }
+
+    /* 5. Neon Genesis - vivid color wheel explosion */
+    .art-5 .artwork-inner {
+      background:
+        conic-gradient(from 0deg at 50% 50%, #ff0055, #ff8800, #ffee00, #00ff66, #0088ff, #8800ff, #ff0055),
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.7) 15%, transparent 55%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12) 0%, transparent 25%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08) 0%, transparent 20%);
+      background-blend-mode: normal, overlay, soft-light, soft-light;
+      filter: contrast(1.25) saturate(1.35);
+    }
+
+    /* 6. Urban Decay - gritty grays/rust industrial */
+    .art-6 .artwork-inner {
+      background:
+        radial-gradient(circle at 25% 40%, rgba(200, 100, 30, 0.65) 0%, transparent 35%),
+        radial-gradient(circle at 75% 55%, rgba(120, 120, 110, 0.7) 0%, transparent 40%),
+        radial-gradient(circle at 55% 80%, rgba(180, 140, 60, 0.3) 0%, transparent 30%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 2px, transparent 2px, transparent 10px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0px, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 12px),
+        conic-gradient(from 270deg at 60% 35%, rgba(160, 80, 20, 0.2), transparent 20%),
+        linear-gradient(170deg, #14120e, #0d0c0a, #100e0a);
+      background-blend-mode: screen, multiply, overlay, normal, normal, color-dodge, normal;
+    }
+
+    /* 7. Quantum Leap - clean teal/purple geometric energy */
+    .art-7 .artwork-inner {
+      background:
+        radial-gradient(circle at 60% 40%, rgba(34, 211, 238, 0.7) 0%, transparent 28%),
+        radial-gradient(circle at 38% 62%, rgba(168, 85, 247, 0.7) 0%, transparent 28%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 15%),
+        conic-gradient(from 90deg at 50% 50%, rgba(34,211,238,0.15), rgba(168,85,247,0.15), rgba(34,211,238,0.15)),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 70%),
+        linear-gradient(135deg, #050a14, #0a0514, #050a14);
+      background-blend-mode: screen, screen, overlay, soft-light, multiply, normal;
+    }
+
+    /* 8. Velvet Thunder - deep plum/crimson luxurious */
+    .art-8 .artwork-inner {
+      background:
+        radial-gradient(ellipse at 40% 35%, rgba(120, 0, 180, 0.7) 0%, transparent 40%),
+        radial-gradient(ellipse at 65% 65%, rgba(180, 20, 60, 0.65) 0%, transparent 38%),
+        radial-gradient(circle at 50% 50%, rgba(255, 180, 0, 0.2) 0%, transparent 25%),
+        radial-gradient(circle at 25% 75%, rgba(80, 0, 200, 0.3) 0%, transparent 30%),
+        conic-gradient(from 210deg at 55% 45%, rgba(150, 0, 80, 0.15), transparent 30%),
+        linear-gradient(150deg, #0a0510, #100510, #0a0308);
+      background-blend-mode: screen, screen, color-dodge, overlay, soft-light, normal;
+      filter: saturate(1.2);
+    }
+
+    /* 9. Binary Sunset - warm amber/magenta gradient */
+    .art-9 .artwork-inner {
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255, 180, 0, 0.9) 0%, transparent 30%),
+        radial-gradient(circle at 65% 35%, rgba(255, 100, 50, 0.7) 0%, transparent 28%),
+        radial-gradient(circle at 50% 70%, rgba(180, 0, 120, 0.5) 0%, transparent 40%),
+        linear-gradient(180deg, rgba(255, 200, 50, 0.08) 0%, rgba(120, 0, 80, 0.15) 50%, rgba(10, 0, 30, 0.5) 100%),
+        conic-gradient(from 270deg at 50% 50%, #0a0008, #1a0500, #0a0015, #0a0008);
       background-blend-mode: screen, screen, overlay, soft-light, normal;
     }
 
-    .art-4 .painting-art-inner {
+    /* 10. Psychedelic Rain - vertical drip streaks */
+    .art-10 .artwork-inner {
       background:
-        radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.9) 0%, transparent 45%),
-        radial-gradient(ellipse at 70% 30%, rgba(236, 72, 153, 0.7) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.4) 0%, transparent 35%),
-        linear-gradient(45deg, #0a0510, #100a05, #050a10),
-        repeating-conic-gradient(from 0deg, transparent 0deg 10deg, rgba(255,255,255,0.01) 10deg 20deg);
-      background-blend-mode: screen, overlay, color-dodge, normal, normal;
-    }
-
-    .art-5 .painting-art-inner {
-      background:
-        conic-gradient(from 0deg at 50% 50%, #ff0055, #00ff88, #0055ff, #ffaa00, #ff0055),
-        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.6) 20%, transparent 60%),
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 30%);
-      background-blend-mode: normal, overlay, soft-light;
-      filter: contrast(1.3) saturate(1.4);
-    }
-
-    .art-6 .painting-art-inner {
-      background:
-        radial-gradient(circle at 20% 50%, rgba(255, 90, 0, 0.7) 0%, transparent 40%),
-        radial-gradient(circle at 80% 50%, rgba(100, 100, 100, 0.8) 0%, transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(200, 150, 50, 0.4) 0%, transparent 35%),
-        repeating-linear-gradient(90deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 2px, transparent 2px, transparent 8px),
-        linear-gradient(180deg, #1a1510, #0a0a08);
-      background-blend-mode: screen, multiply, overlay, normal, normal;
-    }
-
-    .art-7 .painting-art-inner {
-      background:
-        radial-gradient(circle at 60% 40%, rgba(34, 211, 238, 0.6) 0%, transparent 30%),
-        radial-gradient(circle at 40% 60%, rgba(168, 85, 247, 0.6) 0%, transparent 30%),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-        conic-gradient(from 90deg at 50% 50%, #0a0a2a, #1a0a2a, #0a1a2a, #0a0a2a);
+        repeating-linear-gradient(178deg,
+          rgba(255,0,100,0.5) 0%, transparent 5%,
+          rgba(0,180,255,0.4) 8%, transparent 14%,
+          rgba(255,220,0,0.35) 17%, transparent 22%,
+          rgba(0,255,120,0.3) 25%, transparent 30%),
+        repeating-linear-gradient(182deg,
+          rgba(200,0,255,0.3) 0%, transparent 6%,
+          rgba(255,100,0,0.25) 10%, transparent 16%),
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0a15, #0f0a0a, #0a0f0a);
       background-blend-mode: screen, screen, overlay, normal;
+      filter: saturate(1.4) contrast(1.1);
     }
 
-    .art-8 .painting-art-inner {
+    /* 11. Emotional Wreckage - colliding color masses */
+    .art-11 .artwork-inner {
       background:
-        radial-gradient(ellipse at 40% 40%, rgba(139, 0, 255, 0.6) 0%, transparent 40%),
-        radial-gradient(ellipse at 60% 60%, rgba(255, 0, 80, 0.5) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(255, 200, 0, 0.3) 0%, transparent 25%),
-        linear-gradient(135deg, #0a0510, #100508);
-      background-blend-mode: screen, overlay, color-dodge, normal;
-      filter: saturate(1.3);
+        radial-gradient(circle at 20% 35%, rgba(230, 40, 40, 0.85) 0%, transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(30, 60, 220, 0.75) 0%, transparent 28%),
+        radial-gradient(circle at 50% 75%, rgba(255, 200, 0, 0.65) 0%, transparent 30%),
+        radial-gradient(circle at 35% 60%, rgba(0, 180, 80, 0.35) 0%, transparent 22%),
+        radial-gradient(circle at 65% 55%, rgba(200, 0, 200, 0.3) 0%, transparent 25%),
+        conic-gradient(from 60deg at 50% 50%, rgba(0,0,0,0.2), transparent 15%, rgba(0,0,0,0.1), transparent 30%),
+        linear-gradient(135deg, #0a0606, #060a06, #06060a);
+      background-blend-mode: screen, screen, screen, overlay, color-dodge, multiply, normal;
+      filter: contrast(1.15);
     }
 
-    .art-9 .painting-art-inner {
+    /* 12. Color Bomb - maximum saturation explosion */
+    .art-12 .artwork-inner {
       background:
-        radial-gradient(circle at 50% 30%, rgba(255, 160, 0, 0.9) 0%, transparent 35%),
-        radial-gradient(circle at 50% 70%, rgba(255, 50, 50, 0.7) 0%, transparent 35%),
-        linear-gradient(180deg, rgba(100,0,200,0.3) 0%, transparent 40%),
-        conic-gradient(from 270deg at 50% 50%, #1a0500, #0a0010, #001a0a, #1a0500);
-      background-blend-mode: screen, overlay, soft-light, normal;
+        conic-gradient(from 120deg at 30% 40%, #ff0044, #ff8800, transparent 35%),
+        conic-gradient(from 300deg at 70% 60%, #00ccff, #00ff88, transparent 35%),
+        conic-gradient(from 60deg at 50% 20%, #ffee00, #ff00cc, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(255, 100, 0, 0.3) 0%, transparent 60%),
+        linear-gradient(135deg, #0a0a0a, #0f0808, #08080f);
+      background-blend-mode: screen, screen, screen, overlay, soft-light, normal;
+      filter: saturate(1.7) contrast(1.2);
     }
 
-    .art-10 .painting-art-inner {
-      background:
-        repeating-linear-gradient(180deg,
-          rgba(255,0,100,0.4) 0%, transparent 8%,
-          rgba(0,150,255,0.3) 12%, transparent 20%,
-          rgba(255,200,0,0.3) 24%, transparent 32%),
-        radial-gradient(ellipse at 50% 50%, rgba(200,50,255,0.3) 0%, transparent 60%),
-        linear-gradient(135deg, #0a0a15, #150a0a);
-      background-blend-mode: screen, overlay, normal;
-      filter: saturate(1.5) contrast(1.1);
+    .item-info {
+      padding: 1.5rem 1.75rem 1.75rem;
     }
 
-    .art-11 .painting-art-inner {
-      background:
-        radial-gradient(circle at 25% 40%, rgba(255, 50, 50, 0.8) 0%, transparent 30%),
-        radial-gradient(circle at 75% 35%, rgba(50, 50, 255, 0.7) 0%, transparent 30%),
-        radial-gradient(circle at 50% 75%, rgba(255, 200, 0, 0.6) 0%, transparent 35%),
-        radial-gradient(circle at 40% 55%, rgba(0, 200, 100, 0.4) 0%, transparent 25%),
-        linear-gradient(135deg, #0a0808, #080a0a);
-      background-blend-mode: screen, screen, overlay, color-dodge, normal;
-      filter: contrast(1.2);
-    }
-
-    .art-12 .painting-art-inner {
-      background:
-        conic-gradient(from 120deg at 30% 40%, #ff0044, transparent 60%),
-        conic-gradient(from 300deg at 70% 60%, #00ccff, transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(255, 200, 0, 0.6) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 100, 0.2) 0%, transparent 60%),
-        linear-gradient(135deg, #0a0a0a, #111);
-      background-blend-mode: screen, screen, overlay, soft-light, normal;
-      filter: saturate(1.6) contrast(1.15);
-    }
-
-    .gallery-info {
-      padding: 1.25rem 1.5rem;
-    }
-
-    .gallery-name {
-      font-size: 1.05rem;
+    .item-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
       font-weight: 700;
+      color: var(--text);
       margin-bottom: 0.4rem;
-      color: #f0f0f0;
     }
 
-    .gallery-meta {
+    .item-medium {
       font-size: 0.75rem;
-      color: #666;
+      color: var(--text-muted);
       letter-spacing: 0.03em;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
     }
 
-    .gallery-price {
-      font-size: 0.88rem;
+    .item-size {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .item-price {
+      font-family: var(--serif);
+      font-size: 1rem;
       font-weight: 700;
-      color: #ff6b35;
-      margin-top: 0.5rem;
+      color: var(--accent);
     }
 
-    /* ======== PROCESS / STUDIO ======== */
-    .process-content {
+    /* ======== PROCESS ======== */
+    .process-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
       align-items: center;
     }
 
     .process-text h3 {
-      font-size: 1.6rem;
+      font-family: var(--serif);
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
-      color: #f0f0f0;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
     }
 
     .process-text p {
-      color: #999;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      margin-bottom: 1rem;
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
     }
 
-    .process-text p strong { color: #ccc; }
+    .process-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
-    .medium-tags {
+    .mediums-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.5rem;
+      gap: 0.5rem;
+      margin-top: 2rem;
     }
 
-    .medium-tag {
-      padding: 0.4rem 1rem;
-      background: rgba(255, 107, 53, 0.06);
-      border: 1px solid rgba(255, 107, 53, 0.15);
-      border-radius: 100px;
-      font-size: 0.72rem;
+    .medium-pill {
+      padding: 0.45rem 1.1rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.7rem;
       font-weight: 500;
-      color: #bbb;
-      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
     }
 
-    .medium-tag:hover {
-      background: rgba(255, 107, 53, 0.12);
-      border-color: rgba(255, 107, 53, 0.3);
-      color: #ff6b35;
+    .medium-pill:hover {
+      border-color: var(--border-hover);
+      color: var(--accent);
+      background: rgba(212, 104, 58, 0.05);
     }
 
     .process-visual {
       position: relative;
       aspect-ratio: 1;
-      border-radius: 20px;
+      border-radius: 4px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
     }
 
-    .process-visual-inner {
-      width: 100%;
-      height: 100%;
+    .process-visual-content {
+      width: 100%; height: 100%;
       background:
-        radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.3) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 40%),
-        radial-gradient(circle at 60% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 30%),
-        radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 35%),
-        linear-gradient(135deg, #111, #0f0f0f);
+        radial-gradient(circle at 25% 25%, rgba(212, 104, 58, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 75% 75%, rgba(74, 111, 165, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 60% 25%, rgba(184, 92, 92, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 35% 75%, rgba(201, 169, 110, 0.15) 0%, transparent 35%),
+        linear-gradient(135deg, #111, #0e0e0e);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
+      gap: 2rem;
+      padding: 2.5rem;
     }
 
-    .color-swatches {
+    .palette-row {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
-    .swatch {
-      width: 36px;
-      height: 36px;
+    .color-dot {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      transition: transform 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      cursor: pointer;
     }
 
-    .swatch:hover { transform: scale(1.25); }
+    .color-dot:hover {
+      transform: scale(1.3) translateY(-3px);
+    }
 
-    .process-quote {
+    .studio-quote {
+      font-family: var(--serif);
       font-size: 0.95rem;
       font-style: italic;
-      color: #555;
+      color: var(--text-muted);
       text-align: center;
-      line-height: 1.6;
-      max-width: 260px;
+      line-height: 1.7;
+      max-width: 280px;
     }
 
     /* ======== PRINTS ======== */
     .prints-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      max-width: 900px;
+      gap: 2rem;
+      max-width: 960px;
       margin: 0 auto;
     }
 
     .print-card {
-      background: rgba(17, 17, 17, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 3rem 2rem;
       text-align: center;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(16px);
+      transition: all 0.4s ease;
+      position: relative;
     }
 
     .print-card:hover {
-      border-color: rgba(255, 107, 53, 0.2);
-      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
 
-    .print-size {
-      font-size: 0.7rem;
+    .print-card.featured {
+      border-color: rgba(212, 104, 58, 0.2);
+    }
+
+    .print-card.featured::before {
+      content: 'Popular';
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.6rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #ff6b35;
-      margin-bottom: 0.75rem;
+      color: var(--accent);
+      background: rgba(212, 104, 58, 0.08);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
     }
 
-    .print-price {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #f0f0f0;
+    .print-tier {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .print-amount {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text);
       line-height: 1;
       margin-bottom: 0.5rem;
     }
 
-    .print-desc {
-      font-size: 0.85rem;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    .print-amount sup {
+      font-size: 1.2rem;
+      vertical-align: super;
+      margin-right: 2px;
     }
 
-    .print-features {
+    .print-tagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .print-details {
       list-style: none;
       text-align: left;
-      margin-bottom: 1.5rem;
-    }
-
-    .print-features li {
-      font-size: 0.82rem;
-      color: #888;
-      padding: 0.35rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .print-features li::before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      background: #ff6b35;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .prints-note {
-      text-align: center;
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    /* ======== COMMISSION ======== */
-    .commission-content {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .commission-card {
-      background: rgba(17, 17, 17, 0.6);
-      border: 1px solid rgba(255, 107, 53, 0.12);
-      border-radius: 20px;
-      padding: 3.5rem 3rem;
-      backdrop-filter: blur(12px);
-    }
-
-    .commission-card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: #f0f0f0;
-    }
-
-    .commission-card p {
-      color: #888;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-    }
-
-    .commission-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
       margin-bottom: 2rem;
-      text-align: left;
     }
 
-    .commission-feature {
+    .print-details li {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 0.85rem;
-      color: #999;
     }
 
-    .commission-feature::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: linear-gradient(135deg, #ff6b35, #f7c948);
+    .print-details li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
       border-radius: 50%;
       flex-shrink: 0;
     }
 
-    .commission-price {
+    .prints-footnote {
+      text-align: center;
+      margin-top: 3rem;
       font-size: 0.82rem;
-      color: #666;
-      margin-bottom: 2rem;
-      letter-spacing: 0.03em;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
-    .commission-price span {
-      color: #ff6b35;
+    /* ======== COMMISSION ======== */
+    .commission-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .commission-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(212, 104, 58, 0.12);
+      border-radius: 4px;
+      padding: 4rem 3.5rem;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .commission-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-gold), transparent);
+    }
+
+    .commission-box h3 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
       font-weight: 700;
-      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .commission-box > p {
+      color: var(--text-dim);
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .commission-perks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1.5rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .perk::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-gold));
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .commission-starting {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .commission-starting span {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
     }
 
     /* ======== CONNECT ======== */
-    .connect-grid {
+    .connect-cards {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
 
-    .connect-card {
+    .connect-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.75rem;
-      padding: 2rem 3rem;
-      background: rgba(17, 17, 17, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
-      min-width: 180px;
+      gap: 0.85rem;
+      padding: 2.25rem 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s ease;
+      min-width: 190px;
     }
 
-    .connect-card:hover {
-      border-color: rgba(255, 107, 53, 0.25);
-      transform: translateY(-4px);
+    .connect-item:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
     }
 
-    .connect-icon {
+    .connect-icon-wrap {
       width: 48px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      background: rgba(255, 107, 53, 0.08);
-      transition: background 0.3s;
+      border-radius: 50%;
+      background: rgba(212, 104, 58, 0.06);
+      border: 1px solid rgba(212, 104, 58, 0.1);
+      transition: all 0.3s ease;
     }
 
-    .connect-card:hover .connect-icon {
-      background: rgba(255, 107, 53, 0.15);
+    .connect-item:hover .connect-icon-wrap {
+      background: rgba(212, 104, 58, 0.12);
+      border-color: rgba(212, 104, 58, 0.2);
     }
 
-    .connect-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: #ff6b35;
+    .connect-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--accent);
     }
 
-    .connect-label {
-      font-size: 0.72rem;
-      color: #666;
+    .connect-type {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      color: var(--text-muted);
     }
 
-    .connect-handle {
+    .connect-name {
       font-size: 0.95rem;
       font-weight: 600;
-      color: #ccc;
+      color: var(--text);
     }
 
     /* ======== FOOTER ======== */
     footer {
       text-align: center;
-      padding: 4rem 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 5rem 2rem 4rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
     }
 
-    .footer-logo {
-      font-size: 1.1rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      background: linear-gradient(135deg, #ff6b35, #f7c948);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text);
       margin-bottom: 2rem;
     }
 
-    .footer-links a {
-      font-size: 0.78rem;
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-nav a {
+      font-size: 0.72rem;
       font-weight: 500;
-      color: #666;
-      letter-spacing: 0.05em;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover { color: #ff6b35; }
-
-    .footer-copyright {
-      font-size: 0.68rem;
-      color: #333;
+      color: var(--text-muted);
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
     }
 
-    /* ======== MOBILE ======== */
+    .footer-nav a:hover { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.06em;
+    }
+
+    /* ======== RESPONSIVE ======== */
+    @media (max-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
+      nav {
+        padding: 1.1rem 1.5rem;
+      }
 
       .nav-links {
         display: none;
@@ -937,9 +1183,11 @@
         left: 0; right: 0;
         flex-direction: column;
         background: rgba(10, 10, 10, 0.97);
-        padding: 1rem 1.25rem;
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        padding: 0.5rem 1.5rem 1rem;
         gap: 0;
-        border-bottom: 1px solid #1a1a1a;
+        border-bottom: 1px solid var(--border);
       }
 
       .nav-links.open { display: flex; }
@@ -948,20 +1196,22 @@
 
       .nav-links a {
         display: block;
-        padding: 0.75rem 0;
-        font-size: 0.85rem;
+        padding: 0.85rem 0;
+        font-size: 0.82rem;
       }
 
-      .mobile-menu-btn { display: block; }
+      .nav-links a::after { display: none; }
+
+      .mobile-toggle { display: block; }
 
       .hero {
         min-height: 100svh;
-        padding: 7rem 1.5rem 4rem;
+        padding: 7rem 1.5rem 5rem;
       }
 
-      .hero-name { font-size: clamp(2.8rem, 14vw, 5rem); }
+      .hero-title { font-size: clamp(3rem, 15vw, 5.5rem); }
 
-      .hero-ctas {
+      .hero-actions {
         flex-direction: column;
         align-items: center;
       }
@@ -972,15 +1222,15 @@
         justify-content: center;
       }
 
-      .about-content,
-      .process-content {
+      .about-layout,
+      .process-layout {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
       }
 
       .about-visual,
       .process-visual {
-        max-width: 300px;
+        max-width: 360px;
         margin: 0 auto;
       }
 
@@ -993,25 +1243,26 @@
 
       .prints-grid {
         grid-template-columns: 1fr;
-        max-width: 350px;
+        max-width: 360px;
       }
 
-      .commission-features {
+      .commission-box {
+        padding: 2.5rem 1.75rem;
+      }
+
+      .commission-perks {
         grid-template-columns: 1fr;
       }
 
-      .commission-card {
-        padding: 2.5rem 1.5rem;
-      }
-
-      .connect-grid { gap: 1rem; }
-      .connect-card { padding: 1.5rem 2rem; min-width: 140px; }
+      .connect-cards { gap: 1rem; }
+      .connect-item { padding: 1.75rem 2.25rem; min-width: 150px; }
 
       .section { padding: 5rem 1.5rem; }
+      .gallery-section { padding: 5rem 1.5rem; }
     }
 
     @media (max-width: 480px) {
-      .hero-name { font-size: clamp(2.2rem, 16vw, 3.5rem); }
+      .hero-title { font-size: clamp(2.5rem, 18vw, 4rem); }
 
       .about-stats {
         flex-direction: column;
@@ -1020,12 +1271,19 @@
         text-align: center;
       }
 
-      .gallery-grid { grid-template-columns: 1fr; max-width: 350px; margin-left: auto; margin-right: auto; }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-      .connect-grid { flex-direction: column; align-items: center; }
-      .connect-card { width: 100%; max-width: 280px; }
+      .connect-cards { flex-direction: column; align-items: center; }
+      .connect-item { width: 100%; max-width: 280px; }
 
-      .scroll-hint { display: none; }
+      .scroll-indicator { display: none; }
+
+      .item-info { padding: 1.25rem 1.5rem 1.5rem; }
     }
   </style>
 
@@ -1039,8 +1297,8 @@
 
   <!-- ======== NAV ======== -->
   <nav>
-    <div class="logo"><a href="/">SPUNKART</a></div>
-    <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <div class="nav-brand"><a href="/">SpunkArt</a></div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -1053,15 +1311,22 @@
 
   <!-- ======== HERO ======== -->
   <section class="hero">
-    <div class="hero-label">Original Abstract Paintings</div>
-    <h1 class="hero-name">SPUNKART</h1>
-    <p class="hero-tagline">Bold colors. Raw expression. Mixed media art.</p>
-    <p class="hero-subtitle">One-of-a-kind originals in acrylic, spray paint, and mixed media</p>
-    <div class="hero-ctas">
-      <a href="#gallery" class="btn btn-primary">View Gallery</a>
-      <a href="#commission" class="btn">Commission a Piece</a>
+    <div class="hero-canvas">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
-    <div class="scroll-hint">
+    <div class="hero-content">
+      <div class="hero-overline">Original Abstract Paintings</div>
+      <h1 class="hero-title">SpunkArt</h1>
+      <p class="hero-subtitle">Bold colors. Raw expression. Mixed media.</p>
+      <p class="hero-desc">One-of-a-kind originals in acrylic, spray paint, and mixed media</p>
+      <div class="hero-actions">
+        <a href="#gallery" class="btn btn-filled">View Gallery</a>
+        <a href="#commission" class="btn">Commission a Piece</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
@@ -1069,12 +1334,16 @@
 
   <!-- ======== ABOUT ======== -->
   <section class="section reveal" id="about">
-    <div class="section-divider"></div>
-    <h2 class="section-title">About the Artist</h2>
-    <p class="section-subtitle">Creating art that hits you before you can think about it.</p>
-    <div class="about-content">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">The Artist</span>
+      <h2 class="section-title">About SpunkArt</h2>
+      <p class="section-desc">Creating art that hits you before you can think about it.</p>
+    </div>
+    <div class="about-layout">
       <div class="about-visual">
-        <div class="about-visual-inner"></div>
+        <div class="about-visual-bg"></div>
+        <div class="about-visual-frame"></div>
       </div>
       <div class="about-text">
         <h3>Raw Emotion on Canvas</h3>
@@ -1083,16 +1352,16 @@
         <p>Each painting captures a moment of pure creative energy. The chaos is intentional. The imperfections are the point.</p>
         <div class="about-stats">
           <div>
-            <div class="about-stat-num">50+</div>
-            <div class="about-stat-label">Original Works</div>
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Original Works</div>
           </div>
           <div>
-            <div class="about-stat-num">4</div>
-            <div class="about-stat-label">Mediums</div>
+            <div class="stat-number">4</div>
+            <div class="stat-label">Mediums</div>
           </div>
           <div>
-            <div class="about-stat-num">1/1</div>
-            <div class="about-stat-label">Every Piece</div>
+            <div class="stat-number">1/1</div>
+            <div class="stat-label">Every Piece</div>
           </div>
         </div>
       </div>
@@ -1100,161 +1369,215 @@
   </section>
 
   <!-- ======== GALLERY ======== -->
-  <section class="section reveal" id="gallery">
-    <div class="section-divider"></div>
-    <h2 class="section-title">Gallery</h2>
-    <p class="section-subtitle">Original paintings. Each one unique. No two alike.</p>
+  <section class="gallery-section reveal" id="gallery">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Selected Works</span>
+      <h2 class="section-title">Gallery</h2>
+      <p class="section-desc">Original paintings. Each one unique. No two alike.</p>
+    </div>
     <div class="gallery-grid">
 
-      <div class="gallery-card art-1">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Chaos Theory</div>
-          <div class="gallery-meta">Acrylic on Canvas, 36x48"</div>
-          <div class="gallery-price">$1,200</div>
+      <div class="gallery-item art-1">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Chaos Theory</div>
+          <div class="item-medium">Acrylic on Canvas</div>
+          <div class="item-size">36 x 48 in.</div>
+          <div class="item-price">$1,200</div>
         </div>
       </div>
 
-      <div class="gallery-card art-2">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Electric Dreams</div>
-          <div class="gallery-meta">Mixed Media, 24x36"</div>
-          <div class="gallery-price">$800</div>
+      <div class="gallery-item art-2">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Electric Dreams</div>
+          <div class="item-medium">Mixed Media</div>
+          <div class="item-size">24 x 36 in.</div>
+          <div class="item-price">$800</div>
         </div>
       </div>
 
-      <div class="gallery-card art-3">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Midnight Fire</div>
-          <div class="gallery-meta">Acrylic &amp; Spray Paint, 48x48"</div>
-          <div class="gallery-price">$1,800</div>
+      <div class="gallery-item art-3">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Midnight Fire</div>
+          <div class="item-medium">Acrylic &amp; Spray Paint</div>
+          <div class="item-size">48 x 48 in.</div>
+          <div class="item-price">$1,500</div>
         </div>
       </div>
 
-      <div class="gallery-card art-4">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Soul Fragment</div>
-          <div class="gallery-meta">Mixed Media on Wood, 30x40"</div>
-          <div class="gallery-price">$950</div>
+      <div class="gallery-item art-4">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Soul Fragment</div>
+          <div class="item-medium">Mixed Media on Wood</div>
+          <div class="item-size">30 x 40 in.</div>
+          <div class="item-price">$950</div>
         </div>
       </div>
 
-      <div class="gallery-card art-5">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Neon Genesis</div>
-          <div class="gallery-meta">Acrylic on Canvas, 36x36"</div>
-          <div class="gallery-price">$1,100</div>
+      <div class="gallery-item art-5">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Neon Genesis</div>
+          <div class="item-medium">Acrylic on Canvas</div>
+          <div class="item-size">36 x 36 in.</div>
+          <div class="item-price">$1,100</div>
         </div>
       </div>
 
-      <div class="gallery-card art-6">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Urban Decay</div>
-          <div class="gallery-meta">Spray Paint &amp; Acrylic, 48x60"</div>
-          <div class="gallery-price">$2,000</div>
+      <div class="gallery-item art-6">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Urban Decay</div>
+          <div class="item-medium">Spray Paint &amp; Acrylic</div>
+          <div class="item-size">48 x 60 in.</div>
+          <div class="item-price">$1,800</div>
         </div>
       </div>
 
-      <div class="gallery-card art-7">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Quantum Leap</div>
-          <div class="gallery-meta">Mixed Media, 24x24"</div>
-          <div class="gallery-price">$500</div>
+      <div class="gallery-item art-7">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Quantum Leap</div>
+          <div class="item-medium">Mixed Media</div>
+          <div class="item-size">24 x 24 in.</div>
+          <div class="item-price">$600</div>
         </div>
       </div>
 
-      <div class="gallery-card art-8">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Velvet Thunder</div>
-          <div class="gallery-meta">Acrylic on Canvas, 40x40"</div>
-          <div class="gallery-price">$1,400</div>
+      <div class="gallery-item art-8">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Velvet Thunder</div>
+          <div class="item-medium">Acrylic on Canvas</div>
+          <div class="item-size">40 x 40 in.</div>
+          <div class="item-price">$1,300</div>
         </div>
       </div>
 
-      <div class="gallery-card art-9">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Binary Sunset</div>
-          <div class="gallery-meta">Mixed Media, 30x30"</div>
-          <div class="gallery-price">$750</div>
+      <div class="gallery-item art-9">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Binary Sunset</div>
+          <div class="item-medium">Mixed Media</div>
+          <div class="item-size">30 x 30 in.</div>
+          <div class="item-price">$750</div>
         </div>
       </div>
 
-      <div class="gallery-card art-10">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Psychedelic Rain</div>
-          <div class="gallery-meta">Acrylic &amp; Ink, 36x48"</div>
-          <div class="gallery-price">$1,300</div>
+      <div class="gallery-item art-10">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Psychedelic Rain</div>
+          <div class="item-medium">Acrylic &amp; Ink</div>
+          <div class="item-size">36 x 48 in.</div>
+          <div class="item-price">$1,100</div>
         </div>
       </div>
 
-      <div class="gallery-card art-11">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Emotional Wreckage</div>
-          <div class="gallery-meta">Mixed Media on Canvas, 48x36"</div>
-          <div class="gallery-price">$1,600</div>
+      <div class="gallery-item art-11">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Emotional Wreckage</div>
+          <div class="item-medium">Mixed Media on Canvas</div>
+          <div class="item-size">48 x 36 in.</div>
+          <div class="item-price">$1,400</div>
         </div>
       </div>
 
-      <div class="gallery-card art-12">
-        <div class="painting-art"><div class="painting-art-inner"></div></div>
-        <div class="gallery-info">
-          <div class="gallery-name">Color Bomb</div>
-          <div class="gallery-meta">Spray Paint on Canvas, 60x48"</div>
-          <div class="gallery-price">$1,900</div>
+      <div class="gallery-item art-12">
+        <div class="artwork">
+          <div class="artwork-inner"></div>
+          <div class="artwork-overlay"><span>View Details</span></div>
+        </div>
+        <div class="item-info">
+          <div class="item-title">Color Bomb</div>
+          <div class="item-medium">Spray Paint on Canvas</div>
+          <div class="item-size">60 x 48 in.</div>
+          <div class="item-price">$2,000</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ======== PROCESS / STUDIO ======== -->
+  <!-- ======== PROCESS ======== -->
   <section class="section reveal" id="process">
-    <div class="section-divider"></div>
-    <h2 class="section-title">The Process</h2>
-    <p class="section-subtitle">Every painting starts with instinct and ends with intention.</p>
-    <div class="process-content">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Studio</span>
+      <h2 class="section-title">The Process</h2>
+      <p class="section-desc">Every painting starts with instinct and ends with intention.</p>
+    </div>
+    <div class="process-layout">
       <div class="process-text">
         <h3>From the Studio</h3>
         <p>The process is physical. Paint gets thrown, dripped, layered, scraped, and rebuilt. There are no sketches, no digital mockups. Every piece starts as a blank surface and evolves through <strong>layers of controlled chaos</strong>.</p>
         <p>Working with <strong>heavy-body acrylics, spray paint, ink, and found materials</strong>, each painting develops its own personality. Colors are chosen intuitively. Compositions emerge naturally. Mistakes become the best parts.</p>
         <p>The goal is always the same: create something that makes you <strong>feel something</strong> before you can explain it.</p>
-        <div class="medium-tags">
-          <span class="medium-tag">Acrylic</span>
-          <span class="medium-tag">Spray Paint</span>
-          <span class="medium-tag">Mixed Media</span>
-          <span class="medium-tag">Ink</span>
-          <span class="medium-tag">Canvas</span>
-          <span class="medium-tag">Wood Panel</span>
+        <div class="mediums-list">
+          <span class="medium-pill">Acrylic</span>
+          <span class="medium-pill">Spray Paint</span>
+          <span class="medium-pill">Mixed Media</span>
+          <span class="medium-pill">Ink</span>
+          <span class="medium-pill">Canvas</span>
+          <span class="medium-pill">Wood Panel</span>
         </div>
       </div>
       <div class="process-visual">
-        <div class="process-visual-inner">
-          <div class="color-swatches">
-            <div class="swatch" style="background: #ff4444;"></div>
-            <div class="swatch" style="background: #ff8800;"></div>
-            <div class="swatch" style="background: #f7c948;"></div>
-            <div class="swatch" style="background: #3b82f6;"></div>
-            <div class="swatch" style="background: #8b5cf6;"></div>
-            <div class="swatch" style="background: #ec4899;"></div>
+        <div class="process-visual-content">
+          <div class="palette-row">
+            <div class="color-dot" style="background: #d4683a;"></div>
+            <div class="color-dot" style="background: #e8956a;"></div>
+            <div class="color-dot" style="background: #c9a96e;"></div>
+            <div class="color-dot" style="background: #4a6fa5;"></div>
+            <div class="color-dot" style="background: #8b5cf6;"></div>
+            <div class="color-dot" style="background: #b85c5c;"></div>
           </div>
-          <div class="process-quote">"Every painting is a conversation between control and chaos."</div>
-          <div class="color-swatches">
-            <div class="swatch" style="background: #10b981;"></div>
-            <div class="swatch" style="background: #06b6d4;"></div>
-            <div class="swatch" style="background: #f59e0b;"></div>
-            <div class="swatch" style="background: #ef4444;"></div>
-            <div class="swatch" style="background: #6366f1;"></div>
-            <div class="swatch" style="background: #f97316;"></div>
+          <div class="studio-quote">"Every painting is a conversation between control and chaos."</div>
+          <div class="palette-row">
+            <div class="color-dot" style="background: #10b981;"></div>
+            <div class="color-dot" style="background: #06b6d4;"></div>
+            <div class="color-dot" style="background: #f59e0b;"></div>
+            <div class="color-dot" style="background: #ef4444;"></div>
+            <div class="color-dot" style="background: #6366f1;"></div>
+            <div class="color-dot" style="background: #f97316;"></div>
           </div>
         </div>
       </div>
@@ -1263,136 +1586,158 @@
 
   <!-- ======== PRINTS ======== -->
   <section class="section reveal" id="prints">
-    <div class="section-divider"></div>
-    <h2 class="section-title">Prints &amp; Reproductions</h2>
-    <p class="section-subtitle">Museum-quality giclée prints of original paintings. Archival inks on premium paper.</p>
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Reproductions</span>
+      <h2 class="section-title">Prints</h2>
+      <p class="section-desc">Museum-quality gicl&eacute;e prints on archival paper. Limited editions of 25.</p>
+    </div>
     <div class="prints-grid">
       <div class="print-card">
-        <div class="print-size">Small</div>
-        <div class="print-price">$29</div>
-        <div class="print-desc">Perfect for desks and shelves</div>
-        <ul class="print-features">
-          <li>8x10" or 8x8"</li>
-          <li>Giclée print</li>
+        <div class="print-tier">Small</div>
+        <div class="print-amount"><sup>$</sup>29</div>
+        <div class="print-tagline">Perfect for desks and shelves</div>
+        <ul class="print-details">
+          <li>8 x 10" or 8 x 8"</li>
+          <li>Gicl&eacute;e print</li>
           <li>Archival matte paper</li>
           <li>Signed by artist</li>
         </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Small" class="btn" style="width:100%;justify-content:center;padding:0.65rem 1rem;font-size:0.78rem;">Order Print</a>
+        <a href="mailto:hello@spunkart.com?subject=Print Order - Small" class="btn" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
       </div>
-      <div class="print-card" style="border-color: rgba(255, 107, 53, 0.2);">
-        <div class="print-size">Medium</div>
-        <div class="print-price">$79</div>
-        <div class="print-desc">The gallery standard</div>
-        <ul class="print-features">
-          <li>18x24" or 18x18"</li>
-          <li>Giclée print</li>
+      <div class="print-card featured">
+        <div class="print-tier">Medium</div>
+        <div class="print-amount"><sup>$</sup>79</div>
+        <div class="print-tagline">The gallery standard</div>
+        <ul class="print-details">
+          <li>18 x 24" or 18 x 18"</li>
+          <li>Gicl&eacute;e print</li>
           <li>Premium cotton rag</li>
           <li>Signed &amp; numbered</li>
         </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Medium" class="btn btn-primary" style="width:100%;justify-content:center;padding:0.65rem 1rem;font-size:0.78rem;">Order Print</a>
+        <a href="mailto:hello@spunkart.com?subject=Print Order - Medium" class="btn btn-filled" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
       </div>
       <div class="print-card">
-        <div class="print-size">Large</div>
-        <div class="print-price">$149</div>
-        <div class="print-desc">Statement piece for any room</div>
-        <ul class="print-features">
-          <li>24x36" or 30x30"</li>
-          <li>Giclée print</li>
+        <div class="print-tier">Large</div>
+        <div class="print-amount"><sup>$</sup>149</div>
+        <div class="print-tagline">Statement piece for any room</div>
+        <ul class="print-details">
+          <li>24 x 36" or 30 x 30"</li>
+          <li>Gicl&eacute;e print</li>
           <li>Premium cotton rag</li>
           <li>Signed, numbered, COA</li>
         </ul>
-        <a href="mailto:hello@spunkart.com?subject=Print Order - Large" class="btn" style="width:100%;justify-content:center;padding:0.65rem 1rem;font-size:0.78rem;">Order Print</a>
+        <a href="mailto:hello@spunkart.com?subject=Print Order - Large" class="btn" style="width:100%;justify-content:center;padding:0.7rem 1rem;font-size:0.72rem;">Order Print</a>
       </div>
     </div>
-    <p class="prints-note">All prints ship flat within 5-7 business days. Limited editions of 25 per design.</p>
+    <p class="prints-footnote">All prints ship flat within 5-7 business days. Limited editions of 25 per design.</p>
   </section>
 
   <!-- ======== COMMISSION ======== -->
   <section class="section reveal" id="commission">
-    <div class="section-divider"></div>
-    <h2 class="section-title">Commission a Piece</h2>
-    <p class="section-subtitle">Get a custom original painting made just for you.</p>
-    <div class="commission-content">
-      <div class="commission-card">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Custom Work</span>
+      <h2 class="section-title">Commission a Piece</h2>
+      <p class="section-desc">Get a custom original painting made just for you.</p>
+    </div>
+    <div class="commission-wrapper">
+      <div class="commission-box">
         <h3>Custom Original Artwork</h3>
         <p>Tell me your vision and I will create a one-of-a-kind original painting. Choose your size, color palette, and style. Every commission is hand-painted and completely unique.</p>
-        <div class="commission-features">
-          <div class="commission-feature">Custom sizes available</div>
-          <div class="commission-feature">Choose your color palette</div>
-          <div class="commission-feature">Any medium or mixed</div>
-          <div class="commission-feature">Canvas, wood, or paper</div>
-          <div class="commission-feature">Progress photos included</div>
-          <div class="commission-feature">Ships worldwide</div>
+        <div class="commission-perks">
+          <div class="perk">Custom sizes available</div>
+          <div class="perk">Choose your color palette</div>
+          <div class="perk">Any medium or mixed</div>
+          <div class="perk">Canvas, wood, or paper</div>
+          <div class="perk">Progress photos included</div>
+          <div class="perk">Ships worldwide</div>
         </div>
-        <div class="commission-price">Commissions starting at <span>$500</span></div>
-        <a href="mailto:hello@spunkart.com?subject=Commission Inquiry" class="btn btn-primary">Start a Commission</a>
+        <div class="commission-starting">Commissions starting at <span>$500</span></div>
+        <a href="mailto:hello@spunkart.com?subject=Commission Inquiry" class="btn btn-filled">Start a Commission</a>
       </div>
     </div>
   </section>
 
   <!-- ======== CONNECT ======== -->
   <section class="section reveal" id="connect">
-    <div class="section-divider"></div>
-    <h2 class="section-title">Connect</h2>
-    <p class="section-subtitle">Follow the journey. New paintings, studio updates, and works in progress.</p>
-    <div class="connect-grid">
-      <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer" class="connect-card">
-        <div class="connect-icon">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Follow</span>
+      <h2 class="section-title">Connect</h2>
+      <p class="section-desc">Follow the journey. New paintings, studio updates, and works in progress.</p>
+    </div>
+    <div class="connect-cards">
+      <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer" class="connect-item">
+        <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </div>
-        <div class="connect-label">Follow on X</div>
-        <div class="connect-handle">@SpunkArt13</div>
+        <div class="connect-type">Follow on X</div>
+        <div class="connect-name">@SpunkArt13</div>
       </a>
-      <a href="https://spunkart.com" class="connect-card">
-        <div class="connect-icon">
+      <a href="https://spunkart.com" class="connect-item">
+        <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
         </div>
-        <div class="connect-label">Website</div>
-        <div class="connect-handle">spunkart.com</div>
+        <div class="connect-type">Portfolio</div>
+        <div class="connect-name">spunkart.com</div>
       </a>
-      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer" class="connect-card">
-        <div class="connect-icon">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="none" stroke="#ff6b35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer" class="connect-item">
+        <div class="connect-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
         </div>
-        <div class="connect-label">Tools</div>
-        <div class="connect-handle">spunk.codes</div>
+        <div class="connect-type">Tools</div>
+        <div class="connect-name">spunk.codes</div>
       </a>
-      <a href="mailto:hello@spunkart.com" class="connect-card">
-        <div class="connect-icon">
+      <a href="mailto:hello@spunkart.com" class="connect-item">
+        <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </div>
-        <div class="connect-label">Email</div>
-        <div class="connect-handle">hello@spunkart.com</div>
+        <div class="connect-type">Email</div>
+        <div class="connect-name">hello@spunkart.com</div>
       </a>
     </div>
   </section>
 
   <!-- ======== FOOTER ======== -->
   <footer>
-    <div class="footer-logo">SPUNKART</div>
-    <div class="footer-links">
+    <div class="footer-brand">SpunkArt</div>
+    <div class="footer-nav">
       <a href="#gallery">Gallery</a>
       <a href="#prints">Prints</a>
       <a href="#commission">Commission</a>
       <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
       <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer">spunk.codes</a>
     </div>
-    <div class="footer-copyright">&copy; 2026 SpunkArt. All rights reserved. All paintings are original works.</div>
+    <div class="footer-copy">&copy; 2026 SpunkArt. All rights reserved. All paintings are original works.</div>
   </footer>
 
   <!-- ======== SCRIPTS ======== -->
   <script>
-    // Scroll reveal
+    // Scroll reveal with staggered gallery items
     (function() {
       var reveals = document.querySelectorAll('.reveal');
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+
+            // Stagger gallery items
+            var items = entry.target.querySelectorAll('.gallery-item, .print-card, .connect-item');
+            items.forEach(function(item, i) {
+              item.style.opacity = '0';
+              item.style.transform = 'translateY(30px)';
+              item.style.transition = 'opacity 0.6s ease ' + (i * 0.08) + 's, transform 0.6s ease ' + (i * 0.08) + 's';
+              setTimeout(function() {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+              }, 50);
+            });
+
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+      }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
       reveals.forEach(function(el) { observer.observe(el); });
     })();
 
@@ -1407,15 +1752,29 @@
     (function() {
       var lastScroll = 0;
       var nav = document.querySelector('nav');
-      nav.style.transition = 'transform 0.3s ease';
       window.addEventListener('scroll', function() {
         var current = window.pageYOffset;
-        if (current > lastScroll && current > 100) {
+        if (current > lastScroll && current > 120) {
           nav.style.transform = 'translateY(-100%)';
         } else {
           nav.style.transform = 'translateY(0)';
         }
         lastScroll = current;
+      }, { passive: true });
+    })();
+
+    // Smooth parallax on hero blobs
+    (function() {
+      var blobs = document.querySelectorAll('.hero-canvas .blob');
+      window.addEventListener('scroll', function() {
+        var y = window.pageYOffset;
+        if (y < window.innerHeight) {
+          blobs.forEach(function(blob, i) {
+            var speed = 0.15 + (i * 0.08);
+            blob.style.transform += '';
+            blob.style.marginTop = (y * speed) + 'px';
+          });
+        }
       }, { passive: true });
     })();
 

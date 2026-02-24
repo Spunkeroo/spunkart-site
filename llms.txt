@@ -1,50 +1,48 @@
-# SpunkArt — Digital Art, Tools & Products
+# SpunkArt -- Original Abstract Paintings
 
-> SpunkArt builds affordable edge computing tools, free utilities, and digital products. Also a digital art studio creating Bitcoin ordinal inscriptions. Built 120+ websites in under 7 days using AI. Follow @SpunkArt13.
+> SpunkArt is an abstract art studio creating original paintings in acrylic, mixed media, and spray paint. Bold colors, raw expression, one-of-a-kind originals. Commissions and prints available. Follow @SpunkArt13.
 
-## Products & Tools
+## About
 
-### Cloudflare Workers Toolkit ($4.99 each, $19.99 all 18)
-18 ready-to-deploy tools: OpenClaw Game, Auto-SSL Monitor, Spotify Widget, Link Shortener, Uptime Monitor, Bot Blocker, Redirect Manager, Image Optimizer, Email Forwarder, A/B Testing, Privacy Analytics, Cache Purger, Discord Bot, API Monitor, Log Analyzer, Edge Checkout, Form Handler, Rate Limiter.
+SpunkArt creates original abstract paintings characterized by bold color, raw expression, and layered mixed media techniques. Every piece is a one-of-a-kind original -- no prints-only work, no reproductions passed off as originals. The studio works primarily in acrylics, spray paint, ink, and textured mixed media on canvas.
 
-### Free Tools (no signup required)
-- [Password Generator](https://spunkart.com/password-generator)
-- [PDF Tools — Merge, Split, Compress](https://spunkart.com/pdf-tools)
-- [Budget Tracker](https://spunkart.com/budget-tracker)
-- [Scam Checker](https://scam.ink/scam-checker)
+## What We Offer
 
-### Ebook: "Zero to 120+ Websites in 7 Days" ($14.99)
-How one solo founder built 120+ live websites in a week with AI. Includes source code, 50 AI prompts, action plan.
+### Original Paintings
+One-of-a-kind abstract paintings on canvas. Each piece is signed, photographed, and ships ready to hang. Styles range from explosive color fields to textured minimalism.
+
+### Art Prints
+High-quality giclée prints of select original works. Archival inks on premium paper. Available in multiple sizes.
+
+### Custom Commissions
+Commission a custom abstract painting tailored to your space, color palette, and vision. Commissions start at $500. The process includes a consultation, concept sketches, progress updates, and a finished original shipped to your door.
+
+## Collections
+- The Damned
+- Crazy Aliens
+- Dreamers
+- The Freak Show
+- Faces
 
 ## Pages
-- [Store — All Products](https://spunkart.com/store)
-- [Ebook Landing Page](https://spunkart.com/ebook)
-- [Homepage — Digital Art Gallery](https://spunkart.com)
+- [Homepage & Gallery](https://spunkart.com) -- Full portfolio of original abstract paintings
+- [Prints](https://spunkart.com/#prints) -- Purchase high-quality prints
+- [Commission a Piece](https://spunkart.com/#commission) -- Start a custom painting commission
 
 ## Blog
-- [Blog Home](https://spunkart.com/blog) — Tutorials, guides, and behind-the-scenes posts
-- [How to Build 120+ Websites in 7 Days](https://spunkart.com/blog/how-to-build-120-websites-in-7-days) — Step-by-step guide to rapid AI-powered website building
-- [Best Free Online Tools 2026](https://spunkart.com/blog/best-free-online-tools-2026) — Curated list of the best free tools available online
-- [Cloudflare Workers Tutorial for Beginners](https://spunkart.com/blog/cloudflare-workers-tutorial-beginners) — Learn to deploy serverless apps on Cloudflare Workers
-- [How to Make Money Selling Digital Products](https://spunkart.com/blog/how-to-make-money-selling-digital-products) — Guide to building and selling digital products online
+- [Blog Home](https://spunkart.com/blog) -- Art insights, painting techniques, and collecting guides
+- [What Is Abstract Art? A Beginner's Guide](https://spunkart.com/blog/what-is-abstract-art-beginners-guide)
+- [How to Start Collecting Abstract Art](https://spunkart.com/blog/how-to-start-collecting-abstract-art)
+- [Mixed Media Art Techniques for 2026](https://spunkart.com/blog/mixed-media-art-techniques-2026)
+- [How to Commission a Custom Abstract Painting](https://spunkart.com/blog/commission-custom-abstract-painting)
+- [Abstract Art for Home Decor in 2026](https://spunkart.com/blog/abstract-art-for-home-decor-2026)
 
-## Art Collections
-- The Damned, Crazy Aliens, Dreamers, The Freak Show, Bitcoin Faces — all inscribed as Bitcoin ordinals.
-
-## Network (120+ live sites)
-- [Predict Network](https://predict.autos) — 18 prediction market sites
-- [Stimulant Network](https://stimulant.work) — 14 wellness/productivity sites
-- [Alien Network](https://aliens.coupons) — 22 alien-themed sites
-- [AiBot Network](https://aibot.beer) — 12 AI tool sites
-- [Monkey Network](https://monkey.coupons) — 11 community sites
-- [Scam Network](https://scam.ink) — 7 scam awareness sites
-- [Claw/Plush Network](https://claw.pizza) — 17 game sites
-- [Spunk.Bet — Free Crypto Casino](https://spunk.bet)
+## Related
+- [spunk.codes](https://spunk.codes) -- Developer tools and utilities by SpunkArt
 
 ## Contact
 - Twitter/X: [@SpunkArt13](https://x.com/SpunkArt13)
 - Email: hello@spunkart.com
-- [SpunkArt on Magic Eden](https://magiceden.us/ordinals/marketplace/spunkart)
 
 ## Keywords
-Bitcoin ordinals, digital art, Cloudflare Workers, edge tools, developer tools, digital products, AI website builder, passive income
+abstract art, original paintings, acrylic painting, mixed media art, spray paint art, abstract expressionism, contemporary art, art commissions, art prints, bold color art, textured paintings, canvas art
