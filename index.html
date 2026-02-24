@@ -33,7 +33,22 @@
     "description": "Artist creating 1-of-1 original abstract acrylic paintings on canvas. Bold colors, raw expression, every piece unique.",
     "sameAs": ["https://x.com/SpunkArt13"],
     "jobTitle": "Abstract Artist",
-    "knowsAbout": ["Abstract Painting", "Acrylic Painting", "Acrylic on Canvas", "Contemporary Art", "Original Art"]
+    "knowsAbout": ["Abstract Painting", "Acrylic Painting", "Acrylic on Canvas", "Contemporary Art", "Original Art"],
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Custom Abstract Painting Commission",
+        "description": "Custom 1-of-1 original abstract acrylic painting on canvas, hand-painted with premium artist-grade materials.",
+        "provider": {"@type": "Person", "name": "SpunkArt"}
+      },
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "500",
+        "priceCurrency": "USD",
+        "description": "Starting price for commissions"
+      }
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -42,7 +57,30 @@
     "@type": "WebSite",
     "name": "SpunkArt",
     "url": "https://spunkart.com",
-    "description": "Portfolio of SpunkArt - Original abstract paintings. Bold colors, raw expression, mixed media art."
+    "description": "Portfolio of SpunkArt - Original abstract paintings. Bold colors, raw expression, every piece unique."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "SpunkArt Gallery - Original Abstract Paintings",
+    "description": "Selected works from SpunkArt. Each painting is a 1-of-1 original acrylic on canvas.",
+    "numberOfItems": 12,
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Chaos Theory", "description": "Acrylic on Canvas, 36 x 48 in."},
+      {"@type": "ListItem", "position": 2, "name": "Electric Dreams", "description": "Acrylic on Canvas, 24 x 36 in."},
+      {"@type": "ListItem", "position": 3, "name": "Midnight Fire", "description": "Acrylic on Canvas, 48 x 48 in."},
+      {"@type": "ListItem", "position": 4, "name": "Soul Fragment", "description": "Acrylic on Canvas, 30 x 40 in."},
+      {"@type": "ListItem", "position": 5, "name": "Neon Genesis", "description": "Acrylic on Canvas, 36 x 36 in."},
+      {"@type": "ListItem", "position": 6, "name": "Urban Decay", "description": "Acrylic on Canvas, 48 x 60 in."},
+      {"@type": "ListItem", "position": 7, "name": "Quantum Leap", "description": "Acrylic on Canvas, 24 x 24 in."},
+      {"@type": "ListItem", "position": 8, "name": "Velvet Thunder", "description": "Acrylic on Canvas, 40 x 40 in."},
+      {"@type": "ListItem", "position": 9, "name": "Binary Sunset", "description": "Acrylic on Canvas, 30 x 30 in."},
+      {"@type": "ListItem", "position": 10, "name": "Psychedelic Rain", "description": "Acrylic on Canvas, 36 x 48 in."},
+      {"@type": "ListItem", "position": 11, "name": "Emotional Wreckage", "description": "Acrylic on Canvas, 48 x 36 in."},
+      {"@type": "ListItem", "position": 12, "name": "Color Bomb", "description": "Acrylic on Canvas, 60 x 48 in."}
+    ]
   }
   </script>
 
@@ -1018,6 +1056,22 @@
       color: var(--text);
     }
 
+    /* Heartbeat pulse on connect icons every 10s */
+    @keyframes heartbeatPulse {
+      0%, 90%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 104, 58, 0); }
+      93% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(212, 104, 58, 0.15); }
+      96% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 104, 58, 0); }
+    }
+
+    .connect-icon-wrap {
+      animation: heartbeatPulse 10s ease-in-out infinite;
+    }
+
+    .connect-item:nth-child(2) .connect-icon-wrap { animation-delay: 0.4s; }
+    .connect-item:nth-child(3) .connect-icon-wrap { animation-delay: 0.8s; }
+    .connect-item:nth-child(4) .connect-icon-wrap { animation-delay: 1.2s; }
+    .connect-item:nth-child(5) .connect-icon-wrap { animation-delay: 1.6s; }
+
     /* ======== FROM THE NETWORK ======== */
     .network-section {
       padding: 5rem 2rem;
@@ -1292,7 +1346,7 @@
       <p class="hero-desc">Original abstract acrylic paintings on canvas</p>
       <div class="hero-actions">
         <a href="#gallery" class="btn btn-filled">View Gallery</a>
-        <a href="#commission" class="btn">Commission a Piece</a>
+        <a href="#commission" class="btn">Commission a Painting</a>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -1594,21 +1648,21 @@
         <div class="connect-type">Follow on X</div>
         <div class="connect-name">@SpunkArt13</div>
       </a>
-      <a href="https://spunkart.com" class="connect-item">
+      <a href="/blog/" class="connect-item">
         <div class="connect-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         </div>
-        <div class="connect-type">Portfolio</div>
-        <div class="connect-name">spunkart.com</div>
+        <div class="connect-type">Read the Blog</div>
+        <div class="connect-name">Art & Insights</div>
       </a>
-      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer" class="connect-item">
+      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer" class="connect-item" title="Visit SPUNK.CODES - 300+ Free Developer Tools">
         <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
         </div>
         <div class="connect-type">300+ Free Developer Tools</div>
         <div class="connect-name">spunk.codes</div>
       </a>
-      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" class="connect-item">
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" class="connect-item" title="Visit SPUNK.BET - Free Bitcoin Casino">
         <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
@@ -1741,13 +1795,6 @@
       }, { passive: true });
     })();
 
-    // Code protection
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'F12') { e.preventDefault(); }
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); }
-      if ((e.ctrlKey || e.metaKey) && e.key === 'u') { e.preventDefault(); }
-    });
   </script>
   <script src="https://spunk.codes/cross-promo.js"></script>
 </body>
