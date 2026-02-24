@@ -1018,6 +1018,83 @@
       color: var(--text);
     }
 
+    /* ======== FROM THE NETWORK ======== */
+    .network-section {
+      padding: 5rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .network-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      backdrop-filter: blur(16px);
+      transition: all 0.35s ease;
+      text-decoration: none;
+    }
+
+    .network-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+
+    .network-card-source {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .network-card-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .network-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .network-card-cta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-warm);
+      letter-spacing: 0.05em;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      .network-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .network-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+    }
+
     /* ======== FOOTER ======== */
     footer {
       text-align: center;
@@ -1528,14 +1605,14 @@
         <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
         </div>
-        <div class="connect-type">Free Tools</div>
+        <div class="connect-type">300+ Free Developer Tools</div>
         <div class="connect-name">spunk.codes</div>
       </a>
       <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" class="connect-item">
         <div class="connect-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
-        <div class="connect-type">Free Casino</div>
+        <div class="connect-type">Free Bitcoin Casino</div>
         <div class="connect-name">spunk.bet</div>
       </a>
       <a href="mailto:hello@spunkart.com" class="connect-item">
@@ -1548,6 +1625,42 @@
     </div>
   </section>
 
+  <!-- ======== FROM THE NETWORK ======== -->
+  <section class="network-section reveal" id="network">
+    <div class="section-header">
+      <div class="divider"></div>
+      <span class="section-label">Explore</span>
+      <h2 class="section-title">From the Network</h2>
+      <p class="section-desc">Free tools, free games, and more from the Spunk Network.</p>
+    </div>
+    <div class="network-grid">
+      <a href="https://spunk.codes/json-formatter.html" target="_blank" rel="noopener noreferrer" class="network-card">
+        <div class="network-card-source">spunk.codes</div>
+        <div class="network-card-title">JSON Formatter & Validator</div>
+        <div class="network-card-desc">Format, validate, and beautify JSON instantly. One of 300+ free developer tools with no signup required.</div>
+        <div class="network-card-cta">Try Free Tool &rarr;</div>
+      </a>
+      <a href="https://spunk.codes/color-palette-generator.html" target="_blank" rel="noopener noreferrer" class="network-card">
+        <div class="network-card-source">spunk.codes</div>
+        <div class="network-card-title">Color Palette Generator</div>
+        <div class="network-card-desc">Generate beautiful color palettes for your projects. Perfect for designers, artists, and developers.</div>
+        <div class="network-card-cta">Try Free Tool &rarr;</div>
+      </a>
+      <a href="https://spunk.codes/image-compressor.html" target="_blank" rel="noopener noreferrer" class="network-card">
+        <div class="network-card-source">spunk.codes</div>
+        <div class="network-card-title">Image Compressor</div>
+        <div class="network-card-desc">Compress images without losing quality. Runs in your browser, no uploads needed. 100% private.</div>
+        <div class="network-card-cta">Try Free Tool &rarr;</div>
+      </a>
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer" class="network-card">
+        <div class="network-card-source">spunk.bet</div>
+        <div class="network-card-title">Free Bitcoin Casino</div>
+        <div class="network-card-desc">10 provably fair games, 10,000 free SPUNK runes daily, real Bitcoin ordinal prizes. No deposit needed.</div>
+        <div class="network-card-cta">Play Free &rarr;</div>
+      </a>
+    </div>
+  </section>
+
   <!-- ======== FOOTER ======== -->
   <footer>
     <div class="footer-brand">SpunkArt</div>
@@ -1556,8 +1669,8 @@
       <a href="#commission">Commission</a>
       <a href="/blog/">Blog</a>
       <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener noreferrer">@SpunkArt13</a>
-      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer">spunk.codes</a>
-      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">spunk.bet</a>
+      <a href="https://spunk.codes" target="_blank" rel="noopener noreferrer">300+ Free Developer Tools</a>
+      <a href="https://spunk.bet" target="_blank" rel="noopener noreferrer">Free Bitcoin Casino</a>
     </div>
     <div class="footer-copy">&copy; 2026 SpunkArt. All rights reserved. Every painting is a 1-of-1 original.</div>
   </footer>
