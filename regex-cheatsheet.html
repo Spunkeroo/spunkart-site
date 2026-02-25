@@ -9,17 +9,17 @@
 <meta name="keywords" content="regex cheat sheet, regular expression reference, regex tester, regex patterns, regex guide, regex syntax, regex examples">
 <meta name="author" content="SpunkArt.com">
 <meta name="copyright" content="Copyright 2026 SpunkArt.com. All rights reserved.">
-<link rel="canonical" href="https://spunkart.com/regex-cheatsheet.html">
+<link rel="canonical" href="https://spunk.codes/regex-cheatsheet.html">
 <meta property="og:title" content="Regex Cheat Sheet & Live Tester — Complete Regular Expression Reference">
 <meta property="og:description" content="Comprehensive regex cheat sheet with a live tester. Test patterns in real-time with match highlighting. Full reference for anchors, quantifiers, groups, lookaheads, character classes, and 20+ common patterns.">
-<meta property="og:url" content="https://spunkart.com/regex-cheatsheet.html">
+<meta property="og:url" content="https://spunk.codes/regex-cheatsheet.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SpunkArt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@SpunkArt13">
 <meta name="twitter:title" content="Regex Cheat Sheet & Live Tester">
 <meta name="twitter:description" content="Comprehensive regex cheat sheet with live tester. Test patterns in real-time with match highlighting. Full syntax reference included.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Cheat Sheet & Live Tester","description":"Comprehensive regex cheat sheet with a live tester. Test regular expression patterns in real-time with match highlighting. Includes full reference for anchors, quantifiers, groups, lookaheads, character classes, and common patterns.","url":"https://spunkart.com/regex-cheatsheet.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Regex Cheat Sheet & Live Tester","description":"Comprehensive regex cheat sheet with a live tester. Test regular expression patterns in real-time with match highlighting. Includes full reference for anchors, quantifiers, groups, lookaheads, character classes, and common patterns.","url":"https://spunk.codes/regex-cheatsheet.html","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"SpunkArt","url":"https://spunk.codes"}}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","pn0x1z2y3w");</script>
@@ -169,7 +169,7 @@ footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:ce
       <label class="label">Quick Presets</label>
       <div class="preset-row">
         <div class="preset" onclick="setPreset('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}','g','user@example.com and admin@test.org')">Email</div>
-        <div class="preset" onclick="setPreset('https?://[^\\s]+','g','Visit https://spunkart.com or http://example.com today')">URL</div>
+        <div class="preset" onclick="setPreset('https?://[^\\s]+','g','Visit https://spunk.codes or http://example.com today')">URL</div>
         <div class="preset" onclick="setPreset('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b','g','Server 192.168.1.1 and 10.0.0.255 are active')">IP Address</div>
         <div class="preset" onclick="setPreset('\\(?(\\d{3})\\)?[-.\\s]?(\\d{3})[-.\\s]?(\\d{4})','g','Call (555) 123-4567 or 800-555-0199')">Phone</div>
         <div class="preset" onclick="setPreset('#([0-9a-fA-F]{3}){1,2}\\b','g','Colors: #ff5f1f #10b981 #fff #0a0a0a')">Hex Color</div>
@@ -325,7 +325,7 @@ footer{background:#111;border-top:1px solid #222;padding:16px 24px;text-align:ce
         <h2>Common Patterns</h2>
         <div class="cheat-grid">
           <div class="cheat-item"><span class="cheat-pattern">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</span><span class="cheat-desc">Email address</span><button class="cheat-copy" onclick="copyPattern(this,'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}')">Copy</button><button class="cheat-try" onclick="tryPattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}','g','user@example.com and bad@ and test@site.org')">Try</button></div>
-          <div class="cheat-item"><span class="cheat-pattern">https?://[^\s]+</span><span class="cheat-desc">URL (http or https)</span><button class="cheat-copy" onclick="copyPattern(this,'https?://[^\\s]+')">Copy</button><button class="cheat-try" onclick="tryPattern('https?://[^\\s]+','g','Visit https://spunkart.com and http://example.com')">Try</button></div>
+          <div class="cheat-item"><span class="cheat-pattern">https?://[^\s]+</span><span class="cheat-desc">URL (http or https)</span><button class="cheat-copy" onclick="copyPattern(this,'https?://[^\\s]+')">Copy</button><button class="cheat-try" onclick="tryPattern('https?://[^\\s]+','g','Visit https://spunk.codes and http://example.com')">Try</button></div>
           <div class="cheat-item"><span class="cheat-pattern">\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}</span><span class="cheat-desc">US phone number</span><button class="cheat-copy" onclick="copyPattern(this,'\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}')">Copy</button><button class="cheat-try" onclick="tryPattern('\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}','g','Call (555) 123-4567 or 800.555.0199')">Try</button></div>
           <div class="cheat-item"><span class="cheat-pattern">\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b</span><span class="cheat-desc">IPv4 address</span><button class="cheat-copy" onclick="copyPattern(this,'\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b','g','Servers: 192.168.1.1, 10.0.0.1, 255.255.255.0')">Try</button></div>
           <div class="cheat-item"><span class="cheat-pattern">#([0-9a-fA-F]{3}){1,2}\b</span><span class="cheat-desc">Hex color code</span><button class="cheat-copy" onclick="copyPattern(this,'#([0-9a-fA-F]{3}){1,2}\\b')">Copy</button><button class="cheat-try" onclick="tryPattern('#([0-9a-fA-F]{3}){1,2}\\b','g','Colors: #ff5f1f #10b981 #fff #0a0')">Try</button></div>

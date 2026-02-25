@@ -6,11 +6,11 @@
 <title>Website Speed Test — SpunkArt</title>
 <meta name="description" content="Free website speed test with Core Web Vitals, performance scores, and improvement suggestions. Test mobile and desktop speed instantly.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://spunkart.com/speed-test">
+<link rel="canonical" href="https://spunk.codes/speed-test">
 <meta property="og:title" content="Website Speed Test — SpunkArt">
 <meta property="og:description" content="Free website speed test with Core Web Vitals, performance scores, and improvement suggestions.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://spunkart.com/speed-test">
+<meta property="og:url" content="https://spunk.codes/speed-test">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Website Speed Test — SpunkArt">
 <meta name="twitter:description" content="Free website speed test with Core Web Vitals and improvement suggestions.">
@@ -21,12 +21,12 @@
   "@context":"https://schema.org",
   "@type":"WebApplication",
   "name":"Website Speed Test",
-  "url":"https://spunkart.com/speed-test",
+  "url":"https://spunk.codes/speed-test",
   "description":"Free website speed test with Core Web Vitals, performance scores, and improvement suggestions.",
   "applicationCategory":"UtilityApplication",
   "operatingSystem":"All",
   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-  "author":{"@type":"Organization","name":"SpunkArt","url":"https://spunkart.com"}
+  "author":{"@type":"Organization","name":"SpunkArt","url":"https://spunk.codes"}
 }
 </script>
 <style>
@@ -222,7 +222,7 @@ h1 span{color:#ff5f1f}
 </div>
 
 <footer style="text-align:center;padding:30px 20px;color:#555;font-size:.8rem;border-top:1px solid #1a1a1a;margin-top:40px">
-  <p>&copy; 2025 <a href="https://spunkart.com" style="color:#ff5f1f;text-decoration:none">SpunkArt</a>. All rights reserved.</p>
+  <p>&copy; 2025 <a href="https://spunk.codes" style="color:#ff5f1f;text-decoration:none">SpunkArt</a>. All rights reserved.</p>
   <p style="margin-top:8px"><a href="https://x.com/SpunkArt13" target="_blank" style="color:#888;text-decoration:none">Follow @SpunkArt13</a></p>
 </footer>
 
@@ -787,7 +787,7 @@ function copyResults() {
     if (audit) lines.push(m.name + ': ' + (audit.displayValue || 'N/A'));
   });
   lines.push('');
-  lines.push('Tested with SpunkArt Speed Test - https://spunkart.com/speed-test');
+  lines.push('Tested with SpunkArt Speed Test - https://spunk.codes/speed-test');
 
   navigator.clipboard.writeText(lines.join('\n')).then(function() {
     showCopiedFeedback();
@@ -826,7 +826,7 @@ function shareToX() {
   var score = lr.categories && lr.categories.performance ? Math.round(lr.categories.performance.score * 100) : '??';
   var url = document.getElementById('url-input').value;
   var emoji = score >= 90 ? '🟢' : (score >= 50 ? '🟠' : '🔴');
-  var text = emoji + ' ' + url + ' scored ' + score + '/100 on ' + currentStrategy + ' speed test!\n\nFree tool: https://spunkart.com/speed-test\n\n@SpunkArt13';
+  var text = emoji + ' ' + url + ' scored ' + score + '/100 on ' + currentStrategy + ' speed test!\n\nFree tool: https://spunk.codes/speed-test\n\n@SpunkArt13';
   window.open('https://x.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
 }
 
