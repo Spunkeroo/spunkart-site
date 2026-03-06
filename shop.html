@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpunkArt Merch Shop — Upload Art, Sell Everything, Ships Automatically</title>
+<meta name="description" content="Upload your art and sell it on t-shirts, hoodies, mugs, phone cases, and more. Fully automated print-on-demand dropshipping. No inventory needed.">
+<meta property="og:title" content="SpunkArt Merch Shop — Your Art on Everything">
+<meta property="og:description" content="Upload art. Pick products. We print & ship automatically worldwide.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://spunkart.com/shop.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVNL11PEGP"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GVNL11PEGP');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--border:#222;--text:#e8e8e8;--muted:#888;--accent:#ff5f1f;--accent2:#f59e0b;--green:#22c55e;--blue:#3b82f6}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(10,10,10,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.8rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.nav-brand{font-weight:800;font-size:1.2rem;background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem;font-size:.85rem}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.cart-btn{background:var(--accent);color:#fff;border:none;padding:.5rem 1rem;border-radius:8px;font-weight:700;font-size:.85rem;display:flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.cart-btn:hover{opacity:.85}
+.cart-count{background:#fff;color:var(--accent);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800}
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:5rem 2rem 3rem;text-align:center}
+.hero-badge{display:inline-block;background:rgba(255,95,31,.15);color:var(--accent);border:1px solid rgba(255,95,31,.3);border-radius:20px;padding:.3rem .9rem;font-size:.8rem;font-weight:700;margin-bottom:1.5rem;letter-spacing:.05em}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;line-height:1.05;margin-bottom:1rem}
+.hero h1 span{background:linear-gradient(135deg,#ff5f1f,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:560px;margin:0 auto 2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:.8rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;transition:transform .15s,opacity .2s}
+.btn-primary:hover{transform:translateY(-1px);opacity:.9}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:.8rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;transition:border-color .2s}
+.btn-secondary:hover{border-color:var(--accent)}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.hero-stats div{text-align:center}
+.hero-stats strong{display:block;font-size:1.5rem;font-weight:800;color:var(--accent)}
+.hero-stats span{font-size:.8rem;color:var(--muted)}
+
+/* HOW IT WORKS */
+.section{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.section-title{font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-size:.95rem;margin-bottom:2.5rem}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.75rem;text-align:center;position:relative}
+.step-num{background:linear-gradient(135deg,#ff5f1f,#f59e0b);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 1rem;font-size:1rem}
+.step h3{font-size:1rem;margin-bottom:.5rem}
+.step p{color:var(--muted);font-size:.85rem;line-height:1.5}
+.step-arrow{position:absolute;right:-1rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.2rem;z-index:1}
+
+/* UPLOAD ZONE */
+.upload-section{max-width:1100px;margin:0 auto;padding:0 2rem 3rem}
+.upload-card{background:var(--bg2);border:2px dashed var(--border);border-radius:16px;padding:3rem;text-align:center;transition:border-color .2s,background .2s;cursor:pointer}
+.upload-card:hover,.upload-card.dragover{border-color:var(--accent);background:rgba(255,95,31,.04)}
+.upload-icon{font-size:3rem;margin-bottom:1rem}
+.upload-card h3{font-size:1.2rem;margin-bottom:.5rem}
+.upload-card p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.upload-card input[type=file]{display:none}
+.btn-upload{background:var(--accent);color:#fff;border:none;padding:.7rem 1.75rem;border-radius:8px;font-weight:700;font-size:.95rem}
+
+/* MOCKUP PREVIEW */
+.mockup-studio{display:none;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:1.5rem}
+.mockup-studio.active{display:block}
+.mockup-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.mockup-tabs{display:flex;gap:.5rem;flex-wrap:wrap}
+.mockup-tab{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.4rem .9rem;font-size:.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s}
+.mockup-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.mockup-area{display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.canvas-wrap{flex:1;min-width:280px;text-align:center}
+.canvas-wrap canvas{max-width:100%;border-radius:12px;background:var(--bg3)}
+.mockup-controls{flex:1;min-width:240px}
+.mockup-controls h4{font-size:.95rem;margin-bottom:1rem;color:var(--muted)}
+.control-row{margin-bottom:1rem}
+.control-row label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.4rem}
+.control-row input[type=range]{width:100%;accent-color:var(--accent)}
+.color-swatches{display:flex;gap:.5rem;flex-wrap:wrap}
+.color-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+.color-swatch.active{border-color:var(--accent)}
+.add-product-btn{background:var(--green);color:#fff;border:none;padding:.75rem 1.5rem;border-radius:10px;font-weight:700;width:100%;margin-top:1rem;font-size:.95rem;transition:opacity .2s}
+.add-product-btn:hover{opacity:.85}
+
+/* PRODUCTS GRID */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.product-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .2s,border-color .2s;cursor:pointer}
+.product-card:hover{transform:translateY(-3px);border-color:rgba(255,95,31,.4)}
+.product-img{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-canvas{width:100%;height:100%;display:block}
+.product-info{padding:1.25rem}
+.product-name{font-weight:700;margin-bottom:.25rem}
+.product-desc{color:var(--muted);font-size:.82rem;margin-bottom:.75rem}
+.product-footer{display:flex;justify-content:space-between;align-items:center}
+.product-price{font-size:1.1rem;font-weight:800;color:var(--accent)}
+.product-buy{background:var(--accent);color:#fff;border:none;padding:.45rem 1rem;border-radius:8px;font-weight:700;font-size:.82rem;transition:opacity .2s}
+.product-buy:hover{opacity:.85}
+.product-tag{font-size:.7rem;background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3);border-radius:4px;padding:.15rem .5rem;margin-bottom:.5rem;display:inline-block}
+
+/* PRODUCT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
+.modal-header{padding:1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-body{display:flex;gap:2rem;padding:1.5rem;flex-wrap:wrap}
+.modal-img{flex:1;min-width:240px;background:var(--bg3);border-radius:12px;height:300px;display:flex;align-items:center;justify-content:center}
+.modal-img canvas{max-width:100%;max-height:100%;border-radius:8px}
+.modal-details{flex:1;min-width:220px}
+.modal-title{font-size:1.3rem;font-weight:700;margin-bottom:.5rem}
+.modal-price{font-size:1.8rem;font-weight:800;color:var(--accent);margin-bottom:1rem}
+.modal-section{margin-bottom:1rem}
+.modal-section label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.size-btns{display:flex;gap:.5rem;flex-wrap:wrap}
+.size-btn{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.4rem .8rem;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
+.size-btn.active,.size-btn:hover{border-color:var(--accent);color:var(--accent)}
+.qty-row{display:flex;align-items:center;gap:.75rem}
+.qty-btn{background:var(--bg3);border:1px solid var(--border);border-radius:6px;width:32px;height:32px;font-size:1.1rem;font-weight:700;cursor:pointer}
+.qty-val{font-weight:700;min-width:24px;text-align:center}
+.modal-actions{display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap}
+.btn-cart{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.8rem;font-weight:700;color:var(--text);font-size:.95rem;transition:border-color .2s}
+.btn-cart:hover{border-color:var(--accent)}
+.btn-buy{flex:2;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:.8rem;font-weight:700;font-size:.95rem;transition:opacity .2s}
+.btn-buy:hover{opacity:.85}
+.modal-features{margin-top:1rem;font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:.35rem}
+.modal-features span::before{content:"✓ ";color:var(--green)}
+.close-btn{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.4rem .8rem;color:var(--muted);font-size:1.1rem}
+
+/* CART SIDEBAR */
+.cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400}
+.cart-overlay.active{display:block}
+.cart-sidebar{position:fixed;top:0;right:-420px;height:100vh;width:400px;max-width:95vw;background:var(--bg2);border-left:1px solid var(--border);z-index:500;padding:1.5rem;overflow-y:auto;transition:right .3s ease;display:flex;flex-direction:column;gap:1rem}
+.cart-sidebar.active{right:0}
+.cart-sidebar-header{display:flex;justify-content:space-between;align-items:center}
+.cart-sidebar-header h3{font-size:1.1rem;font-weight:700}
+.cart-items{flex:1;display:flex;flex-direction:column;gap:.75rem}
+.cart-item{background:var(--bg3);border-radius:10px;padding:1rem;display:flex;gap:1rem;align-items:center}
+.cart-item-info{flex:1}
+.cart-item-name{font-weight:600;font-size:.9rem}
+.cart-item-meta{color:var(--muted);font-size:.78rem}
+.cart-item-price{font-weight:700;color:var(--accent)}
+.cart-remove{background:none;border:none;color:var(--muted);font-size:1rem;padding:.25rem;cursor:pointer}
+.cart-total{background:var(--bg3);border-radius:10px;padding:1rem}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:.5rem;font-size:.9rem}
+.cart-total-row.final{font-weight:700;font-size:1.05rem;border-top:1px solid var(--border);padding-top:.5rem;margin-top:.5rem}
+.checkout-btn{background:var(--accent);color:#fff;border:none;width:100%;padding:1rem;border-radius:10px;font-weight:700;font-size:1rem;margin-top:.5rem}
+.cart-empty{text-align:center;padding:2rem;color:var(--muted)}
+
+/* PRINTIFY SETUP */
+.setup-section{background:linear-gradient(135deg,rgba(255,95,31,.08),rgba(245,158,11,.05));border:1px solid rgba(255,95,31,.2);border-radius:16px;padding:2.5rem;margin:0 2rem 3rem;max-width:1060px;margin-left:auto;margin-right:auto}
+.setup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1.5rem}
+.setup-step{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.setup-step-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;margin-bottom:.75rem}
+.setup-step h4{font-size:.95rem;margin-bottom:.5rem}
+.setup-step p{color:var(--muted);font-size:.82rem;line-height:1.5}
+.setup-step a{color:var(--accent)}
+.setup-cta{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.btn-setup{background:var(--accent);color:#fff;border:none;padding:.75rem 1.5rem;border-radius:10px;font-weight:700;font-size:.9rem;transition:opacity .2s}
+.btn-setup:hover{opacity:.85}
+.btn-setup-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:.75rem 1.5rem;border-radius:10px;font-weight:600;font-size:.9rem}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--muted)}
+footer a:hover{color:#fff}
+
+/* NOTIFICATIONS */
+.toast{position:fixed;bottom:2rem;right:2rem;background:#222;border:1px solid var(--green);border-radius:10px;padding:.9rem 1.25rem;color:#fff;font-weight:600;font-size:.9rem;z-index:600;transform:translateY(100px);opacity:0;transition:all .3s;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hero{padding:3rem 1.5rem 2rem}
+  .steps{grid-template-columns:1fr}
+  .step-arrow{display:none}
+  .modal-body{flex-direction:column}
+  .section{padding:2rem 1.25rem}
+  .upload-section{padding:0 1.25rem 2rem}
+  .setup-section{margin:0 1.25rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-brand">SpunkArt</a>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#upload">Upload Art</a>
+    <a href="#setup">How It Works</a>
+    <a href="/">Tools</a>
+  </div>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()">
+      <span>Cart</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Print-on-Demand Dropshipping</div>
+  <h1>Your Art.<br><span>On Everything.</span></h1>
+  <p>Upload your design once. Sell t-shirts, hoodies, mugs, and more worldwide. Printed and shipped automatically — zero inventory needed.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('upload').scrollIntoView({behavior:'smooth'})">Upload Your Art</button>
+    <button class="btn-secondary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse Products</button>
+  </div>
+  <div class="hero-stats">
+    <div><strong>$0</strong><span>Upfront cost</span></div>
+    <div><strong>8+</strong><span>Product types</span></div>
+    <div><strong>150+</strong><span>Countries shipped</span></div>
+    <div><strong>Auto</strong><span>Fulfillment</span></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <div class="section-title">How It Works</div>
+  <div class="section-sub">Three steps from art to sale. Fully automated after setup.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Upload Your Art</h3>
+      <p>Upload any image — digital art, illustrations, photos, logos. Preview it on every product type instantly.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Connect Printify</h3>
+      <p>Free Printify account handles printing, quality control, packaging, and worldwide shipping automatically.</p>
+      <div class="step-arrow">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Customers Buy, Profit Ships</h3>
+      <p>Orders go directly to Printify. They print and ship. You keep the profit margin. Nothing to manage.</p>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD & MOCKUP -->
+<div class="upload-section" id="upload">
+  <div class="section-title">Art Upload Studio</div>
+  <div class="section-sub" style="margin-bottom:1.5rem">Drop your artwork below and instantly preview it on any product</div>
+
+  <div class="upload-card" id="uploadZone" onclick="document.getElementById('artFile').click()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+    <input type="file" id="artFile" accept="image/*" onchange="handleFileSelect(event)">
+    <div class="upload-icon">+</div>
+    <h3>Drop your art here</h3>
+    <p>PNG, JPG, SVG, WEBP — any format works. High resolution recommended (300 DPI+)</p>
+    <button class="btn-upload" onclick="event.stopPropagation();document.getElementById('artFile').click()">Choose File</button>
+  </div>
+
+  <div class="mockup-studio" id="mockupStudio">
+    <div class="mockup-header">
+      <div>
+        <div style="font-weight:700;margin-bottom:.25rem">Preview Your Art</div>
+        <div style="color:var(--muted);font-size:.85rem">Click a product to see how it looks</div>
+      </div>
+      <div class="mockup-tabs" id="mockupTabs">
+        <button class="mockup-tab active" onclick="switchProduct('tshirt',this)">T-Shirt</button>
+        <button class="mockup-tab" onclick="switchProduct('hoodie',this)">Hoodie</button>
+        <button class="mockup-tab" onclick="switchProduct('mug',this)">Mug</button>
+        <button class="mockup-tab" onclick="switchProduct('poster',this)">Poster</button>
+        <button class="mockup-tab" onclick="switchProduct('tote',this)">Tote Bag</button>
+        <button class="mockup-tab" onclick="switchProduct('phonecase',this)">Phone Case</button>
+      </div>
+    </div>
+    <div class="mockup-area">
+      <div class="canvas-wrap">
+        <canvas id="mockupCanvas" width="400" height="400"></canvas>
+      </div>
+      <div class="mockup-controls">
+        <h4>Adjust Design</h4>
+        <div class="control-row">
+          <label>Product Color</label>
+          <div class="color-swatches" id="colorSwatches">
+            <div class="color-swatch active" style="background:#fff" data-color="#ffffff" onclick="setProductColor('#ffffff',this)"></div>
+            <div class="color-swatch" style="background:#111;border:1px solid #333" data-color="#111111" onclick="setProductColor('#111111',this)"></div>
+            <div class="color-swatch" style="background:#1e3a5f" data-color="#1e3a5f" onclick="setProductColor('#1e3a5f',this)"></div>
+            <div class="color-swatch" style="background:#7f1d1d" data-color="#7f1d1d" onclick="setProductColor('#7f1d1d',this)"></div>
+            <div class="color-swatch" style="background:#14532d" data-color="#14532d" onclick="setProductColor('#14532d',this)"></div>
+            <div class="color-swatch" style="background:#ff5f1f" data-color="#ff5f1f" onclick="setProductColor('#ff5f1f',this)"></div>
+          </div>
+        </div>
+        <div class="control-row">
+          <label>Design Size: <span id="sizeVal">65</span>%</label>
+          <input type="range" min="20" max="90" value="65" id="sizeSlider" oninput="document.getElementById('sizeVal').textContent=this.value;renderMockup()">
+        </div>
+        <div class="control-row">
+          <label>Vertical Position: <span id="posVal">40</span>%</label>
+          <input type="range" min="10" max="80" value="40" id="posSlider" oninput="document.getElementById('posVal').textContent=this.value;renderMockup()">
+        </div>
+        <button class="add-product-btn" onclick="addToShopFromMockup()">+ Add to My Shop</button>
+        <div style="margin-top:.75rem;font-size:.78rem;color:var(--muted)">Connects to your Printify account for fulfillment</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" id="products">
+  <div class="section-title">Products</div>
+  <div class="section-sub">Click any product to customize, pick a size, and buy</div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- PRINTIFY SETUP GUIDE -->
+<div class="setup-section" id="setup">
+  <div class="section-title" style="margin-bottom:.25rem">Automate Everything with Printify</div>
+  <div style="color:var(--muted);font-size:.9rem">Free to start. No inventory. Worldwide fulfillment. Here's the exact setup.</div>
+  <div class="setup-grid">
+    <div class="setup-step">
+      <div class="setup-step-num">1</div>
+      <h4>Create Free Printify Account</h4>
+      <p>Go to <a href="https://printify.com" target="_blank" rel="noopener">printify.com</a> — the free plan lets you create unlimited products and only charges when an order is placed.</p>
+    </div>
+    <div class="setup-step">
+      <div class="setup-step-num">2</div>
+      <h4>Upload Art & Create Products</h4>
+      <p>Use Printify's mockup generator (higher quality than any tool) to place your art on 900+ products. Set your retail price — you keep the difference.</p>
+    </div>
+    <div class="setup-step">
+      <div class="setup-step-num">3</div>
+      <h4>Connect Your Store</h4>
+      <p>Link to Etsy, Shopify, WooCommerce, or use a Printify Pop-Up Store (free storefront, no code needed). Orders auto-route to printing.</p>
+    </div>
+    <div class="setup-step">
+      <div class="setup-step-num">4</div>
+      <h4>Automate with Stripe + Zapier</h4>
+      <p>For a custom site: Stripe Payment Links for checkout → Zapier webhook → Printify order created automatically. Zero manual work.</p>
+    </div>
+  </div>
+  <div class="setup-cta">
+    <a href="https://printify.com" target="_blank" rel="noopener"><button class="btn-setup">Start Free on Printify</button></a>
+    <a href="https://zapier.com/apps/printify/integrations/stripe" target="_blank" rel="noopener"><button class="btn-setup-secondary">Stripe + Printify via Zapier</button></a>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-sidebar-header">
+    <h3>Your Cart</h3>
+    <button class="close-btn" onclick="closeCart()">x</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">Your cart is empty</div>
+  </div>
+  <div class="cart-total" id="cartTotal" style="display:none">
+    <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-total-row"><span>Shipping</span><span style="color:var(--green)">Calculated at checkout</span></div>
+    <div class="cart-total-row final"><span>Total</span><span id="cartTotalAmt">$0.00</span></div>
+    <button class="checkout-btn" onclick="checkout()">Checkout via Stripe</button>
+    <div style="margin-top:.75rem;text-align:center;font-size:.75rem;color:var(--muted)">Secure checkout · Printify fulfills automatically</div>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Product</h3>
+      <button class="close-btn" onclick="closeModal()">x</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-img">
+        <canvas id="modalCanvas" width="300" height="300"></canvas>
+      </div>
+      <div class="modal-details">
+        <div class="product-tag" id="modalTag">Auto-fulfilled</div>
+        <div class="modal-title" id="modalName"></div>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="modal-section" id="sizesSection">
+          <label>Size</label>
+          <div class="size-btns" id="sizeBtns"></div>
+        </div>
+        <div class="modal-section" id="colorsSection">
+          <label>Color</label>
+          <div class="color-swatches" id="modalColors"></div>
+        </div>
+        <div class="modal-section">
+          <label>Quantity</label>
+          <div class="qty-row">
+            <button class="qty-btn" onclick="changeQty(-1)">-</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cart" onclick="addToCartFromModal()">Add to Cart</button>
+          <button class="btn-buy" onclick="buyNow()">Buy Now</button>
+        </div>
+        <div class="modal-features">
+          <span>Printed on demand — no inventory</span>
+          <span>Ships in 3-5 business days</span>
+          <span>Worldwide delivery available</span>
+          <span>Quality guarantee included</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div style="margin-bottom:.5rem">SpunkArt Merch Shop · Powered by Printify · <a href="https://x.com/SpunkArt13" target="_blank">@SpunkArt13</a></div>
+  <div>© 2026 SPUNK LLC · <a href="/">spunkart.com</a> · <a href="/privacy.html">Privacy</a></div>
+</footer>
+
+<script>
+// ===== PRODUCTS DATA =====
+const PRODUCTS = [
+  { id:'tshirt', name:'Classic T-Shirt', desc:'100% cotton, unisex fit', price:28, stripeLink:'#', sizes:['XS','S','M','L','XL','2XL','3XL'], colors:['#fff','#111','#1e3a5f','#7f1d1d','#14532d','#ff5f1f'], type:'tshirt', tag:'Best Seller' },
+  { id:'hoodie', name:'Premium Hoodie', desc:'Soft fleece, kangaroo pocket', price:55, stripeLink:'#', sizes:['S','M','L','XL','2XL'], colors:['#fff','#111','#1e3a5f','#14532d'], type:'hoodie', tag:'Fan Favorite' },
+  { id:'mug', name:'Ceramic Mug 11oz', desc:'Dishwasher safe, full wrap print', price:18, stripeLink:'#', sizes:['11oz','15oz'], colors:['#fff'], type:'mug', tag:'Great Gift' },
+  { id:'poster', name:'Art Print', desc:'Museum quality 200gsm paper', price:30, stripeLink:'#', sizes:['12x16"','18x24"','24x36"'], colors:['#fff'], type:'poster', tag:'High Quality' },
+  { id:'tote', name:'Canvas Tote Bag', desc:'Natural cotton, 10L capacity', price:22, stripeLink:'#', sizes:['One Size'], colors:['#f5f0e8','#111'], type:'tote', tag:'Eco Friendly' },
+  { id:'phonecase', name:'Phone Case', desc:'Tough dual-layer protection', price:22, stripeLink:'#', sizes:['iPhone 15','iPhone 15 Pro','iPhone 14','iPhone 13','Samsung S24','Pixel 9'], colors:['#fff','#111'], type:'phonecase', tag:'Ships Fast' },
+  { id:'sticker', name:'Sticker Pack', desc:'Waterproof vinyl, 5 stickers', price:12, stripeLink:'#', sizes:['One Size'], colors:[], type:'sticker', tag:'Popular' },
+  { id:'hat', name:'Snapback Hat', desc:'Structured fit, embroidered', price:35, stripeLink:'#', sizes:['One Size'], colors:['#111','#fff','#1e3a5f','#7f1d1d'], type:'hat', tag:'Limited' },
+];
+
+let uploadedArt = null;
+let currentProduct = null;
+let productColor = '#ffffff';
+let cart = JSON.parse(localStorage.getItem('spunkart_cart') || '[]');
+let modalQty = 1;
+let selectedSize = '';
+let selectedColor = '#ffffff';
+let currentModalProduct = null;
+
+// ===== CANVAS DRAWING =====
+function drawProductMockup(canvas, type, color, art, sizePercent, posPercent) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  // Background
+  ctx.fillStyle = '#1a1a1a';
+  ctx.fillRect(0,0,W,H);
+
+  // Draw product shape
+  ctx.fillStyle = color;
+  ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+  ctx.lineWidth = 1;
+
+  if(type === 'tshirt') {
+    drawTshirt(ctx, W, H, color);
+  } else if(type === 'hoodie') {
+    drawHoodie(ctx, W, H, color);
+  } else if(type === 'mug') {
+    drawMug(ctx, W, H, color);
+  } else if(type === 'poster') {
+    drawPoster(ctx, W, H, color);
+  } else if(type === 'tote') {
+    drawTote(ctx, W, H, color);
+  } else if(type === 'phonecase') {
+    drawPhonecase(ctx, W, H, color);
+  } else if(type === 'sticker') {
+    drawSticker(ctx, W, H);
+  } else if(type === 'hat') {
+    drawHat(ctx, W, H, color);
+  }
+
+  // Overlay art
+  if(art) {
+    const artW = W * (sizePercent / 100);
+    const artH = artW * (art.height / art.width);
+    const artX = (W - artW) / 2;
+    const artY = H * (posPercent / 100) - artH / 2;
+    ctx.save();
+    ctx.globalAlpha = 0.92;
+    ctx.drawImage(art, artX, artY, artW, artH);
+    ctx.restore();
+  } else {
+    // SpunkArt placeholder
+    ctx.save();
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = '#ff5f1f';
+    ctx.font = `bold ${W*0.06}px -apple-system,sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('SpunkArt', W/2, H/2);
+    ctx.font = `${W*0.035}px -apple-system,sans-serif`;
+    ctx.fillText('Upload your art', W/2, H/2 + W*0.07);
+    ctx.restore();
+  }
+}
+
+function drawTshirt(ctx, W, H) {
+  ctx.beginPath();
+  ctx.moveTo(W*.15, H*.15);
+  ctx.lineTo(W*.05, H*.35);
+  ctx.lineTo(W*.22, H*.38);
+  ctx.lineTo(W*.22, H*.85);
+  ctx.lineTo(W*.78, H*.85);
+  ctx.lineTo(W*.78, H*.38);
+  ctx.lineTo(W*.95, H*.35);
+  ctx.lineTo(W*.85, H*.15);
+  ctx.quadraticCurveTo(W*.65, H*.22, W*.5, H*.22);
+  ctx.quadraticCurveTo(W*.35, H*.22, W*.15, H*.15);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+}
+
+function drawHoodie(ctx, W, H) {
+  ctx.beginPath();
+  ctx.moveTo(W*.17, H*.17);
+  ctx.lineTo(W*.05, H*.38);
+  ctx.lineTo(W*.22, H*.41);
+  ctx.lineTo(W*.22, H*.87);
+  ctx.lineTo(W*.78, H*.87);
+  ctx.lineTo(W*.78, H*.41);
+  ctx.lineTo(W*.95, H*.38);
+  ctx.lineTo(W*.83, H*.17);
+  ctx.quadraticCurveTo(W*.65, H*.1, W*.5, H*.15);
+  ctx.quadraticCurveTo(W*.35, H*.1, W*.17, H*.17);
+  ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  // Pocket
+  ctx.fillStyle = 'rgba(0,0,0,0.12)';
+  ctx.beginPath();
+  ctx.roundRect(W*.3, H*.6, W*.4, H*.2, 6);
+  ctx.fill();
+}
+
+function drawMug(ctx, W, H) {
+  ctx.beginPath();
+  ctx.roundRect(W*.2, H*.2, W*.5, H*.6, 4);
+  ctx.fill(); ctx.stroke();
+  // Handle
+  ctx.beginPath();
+  ctx.arc(W*.72, H*.5, W*.12, -Math.PI*.5, Math.PI*.5);
+  ctx.strokeStyle = ctx.fillStyle || '#fff';
+  ctx.lineWidth = W*.04;
+  ctx.stroke();
+  ctx.lineWidth = 1;
+}
+
+function drawPoster(ctx, W, H) {
+  ctx.shadowColor = 'rgba(0,0,0,0.4)';
+  ctx.shadowBlur = 15;
+  ctx.shadowOffsetX = 4;
+  ctx.shadowOffsetY = 4;
+  ctx.beginPath();
+  ctx.rect(W*.12, H*.08, W*.76, H*.84);
+  ctx.fill(); ctx.stroke();
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
+}
+
+function drawTote(ctx, W, H) {
+  ctx.beginPath();
+  ctx.moveTo(W*.25, H*.3);
+  ctx.lineTo(W*.15, H*.85);
+  ctx.lineTo(W*.85, H*.85);
+  ctx.lineTo(W*.75, H*.3);
+  ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  // Handles
+  ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+  ctx.lineWidth = W*.025;
+  ctx.beginPath();
+  ctx.moveTo(W*.35, H*.3);
+  ctx.quadraticCurveTo(W*.38, H*.1, W*.5, H*.08);
+  ctx.quadraticCurveTo(W*.62, H*.1, W*.65, H*.3);
+  ctx.stroke();
+  ctx.lineWidth = 1;
+}
+
+function drawPhonecase(ctx, W, H) {
+  ctx.beginPath();
+  ctx.roundRect(W*.25, H*.08, W*.5, H*.84, W*.06);
+  ctx.fill(); ctx.stroke();
+  // Screen area
+  ctx.fillStyle = '#1a1a1a';
+  ctx.beginPath();
+  ctx.roundRect(W*.3, H*.13, W*.4, H*.72, W*.04);
+  ctx.fill();
+}
+
+function drawSticker(ctx, W, H) {
+  const colors = ['#ff5f1f','#f59e0b','#22c55e','#3b82f6','#a855f7'];
+  const positions = [[.3,.3,.15],[.7,.25,.13],[.5,.6,.18],[.2,.65,.12],[.72,.65,.14]];
+  positions.forEach(([x,y,r],i) => {
+    ctx.fillStyle = colors[i];
+    ctx.beginPath();
+    ctx.arc(W*x, H*y, W*r, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.font = `bold ${W*0.04}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('ART', W*x, H*y);
+  });
+}
+
+function drawHat(ctx, W, H) {
+  // Brim
+  ctx.beginPath();
+  ctx.ellipse(W*.5, H*.68, W*.44, H*.09, 0, 0, Math.PI*2);
+  ctx.fill(); ctx.stroke();
+  // Crown
+  ctx.beginPath();
+  ctx.moveTo(W*.12, H*.68);
+  ctx.quadraticCurveTo(W*.12, H*.2, W*.5, H*.15);
+  ctx.quadraticCurveTo(W*.88, H*.2, W*.88, H*.68);
+  ctx.closePath();
+  ctx.fill(); ctx.stroke();
+}
+
+// ===== UPLOAD HANDLING =====
+function handleDragOver(e) { e.preventDefault(); document.getElementById('uploadZone').classList.add('dragover'); }
+function handleDragLeave(e) { document.getElementById('uploadZone').classList.remove('dragover'); }
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if(file && file.type.startsWith('image/')) loadArt(file);
+}
+function handleFileSelect(e) { if(e.target.files[0]) loadArt(e.target.files[0]); }
+
+function loadArt(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      uploadedArt = img;
+      document.getElementById('mockupStudio').classList.add('active');
+      renderMockup();
+      renderProducts();
+      showToast('Art uploaded! Preview it on any product below.');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+let currentMockupType = 'tshirt';
+function switchProduct(type, btn) {
+  currentMockupType = type;
+  document.querySelectorAll('.mockup-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderMockup();
+}
+
+function setProductColor(color, el) {
+  productColor = color;
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  renderMockup();
+}
+
+function renderMockup() {
+  const canvas = document.getElementById('mockupCanvas');
+  const size = parseInt(document.getElementById('sizeSlider').value);
+  const pos = parseInt(document.getElementById('posSlider').value);
+  drawProductMockup(canvas, currentMockupType, productColor, uploadedArt, size, pos);
+}
+
+function addToShopFromMockup() {
+  showToast('To add to your live shop: upload this art to Printify, create the product, and link the Stripe Payment Link here.');
+}
+
+// ===== PRODUCTS GRID =====
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = PRODUCTS.map(p => `
+    <div class="product-card" onclick="openModal('${p.id}')">
+      <div class="product-img">
+        <canvas class="product-canvas" id="pc_${p.id}" width="260" height="220"></canvas>
+      </div>
+      <div class="product-info">
+        ${p.tag ? `<div class="product-tag">${p.tag}</div>` : ''}
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">$${p.price}</div>
+          <button class="product-buy" onclick="event.stopPropagation();addToCartDirect('${p.id}')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Render canvases after DOM is ready
+  setTimeout(() => {
+    PRODUCTS.forEach(p => {
+      const canvas = document.getElementById('pc_' + p.id);
+      if(canvas) {
+        const defColor = p.colors[0] || '#ffffff';
+        drawProductMockup(canvas, p.type, defColor, uploadedArt, 55, 40);
+      }
+    });
+  }, 50);
+}
+
+// ===== MODAL =====
+function openModal(productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if(!p) return;
+  currentModalProduct = p;
+  modalQty = 1;
+  selectedSize = p.sizes[0] || '';
+  selectedColor = p.colors[0] || '#ffffff';
+
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalPrice').textContent = '$' + p.price;
+  document.getElementById('qtyVal').textContent = 1;
+
+  // Sizes
+  const sizeSec = document.getElementById('sizesSection');
+  if(p.sizes.length) {
+    sizeSec.style.display = 'block';
+    document.getElementById('sizeBtns').innerHTML = p.sizes.map((s,i) =>
+      `<button class="size-btn ${i===0?'active':''}" onclick="selectSize('${s}',this)">${s}</button>`
+    ).join('');
+  } else {
+    sizeSec.style.display = 'none';
+  }
+
+  // Colors
+  const colorSec = document.getElementById('colorsSection');
+  if(p.colors.length) {
+    colorSec.style.display = 'block';
+    document.getElementById('modalColors').innerHTML = p.colors.map((c,i) =>
+      `<div class="color-swatch ${i===0?'active':''}" style="background:${c};${c==='#fff'||c==='#ffffff'||c==='#f5f0e8'?'border:1px solid #333':''}" onclick="selectModalColor('${c}',this)"></div>`
+    ).join('');
+  } else {
+    colorSec.style.display = 'none';
+  }
+
+  // Render modal canvas
+  const mc = document.getElementById('modalCanvas');
+  drawProductMockup(mc, p.type, selectedColor, uploadedArt, 60, 40);
+
+  document.getElementById('productModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function selectSize(size, btn) {
+  selectedSize = size;
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function selectModalColor(color, el) {
+  selectedColor = color;
+  document.querySelectorAll('#modalColors .color-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  const mc = document.getElementById('modalCanvas');
+  drawProductMockup(mc, currentModalProduct.type, color, uploadedArt, 60, 40);
+}
+
+function changeQty(delta) {
+  modalQty = Math.max(1, Math.min(10, modalQty + delta));
+  document.getElementById('qtyVal').textContent = modalQty;
+}
+
+function addToCartFromModal() {
+  if(!currentModalProduct) return;
+  addToCart({
+    id: currentModalProduct.id + '_' + Date.now(),
+    productId: currentModalProduct.id,
+    name: currentModalProduct.name,
+    price: currentModalProduct.price,
+    size: selectedSize,
+    color: selectedColor,
+    qty: modalQty
+  });
+  closeModal();
+}
+
+function addToCartDirect(productId) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if(!p) return;
+  addToCart({ id: p.id+'_'+Date.now(), productId:p.id, name:p.name, price:p.price, size:p.sizes[0]||'', color:p.colors[0]||'', qty:1 });
+}
+
+function buyNow() {
+  if(!currentModalProduct) return;
+  // In production: redirect to Stripe Payment Link
+  showToast('Set up your Stripe Payment Link in the Printify dashboard, then update the buy button URL.');
+  closeModal();
+}
+
+// ===== CART =====
+function addToCart(item) {
+  cart.push(item);
+  saveCart();
+  updateCartUI();
+  showToast(`${item.name} added to cart!`);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+  updateCartUI();
+}
+
+function saveCart() { localStorage.setItem('spunkart_cart', JSON.stringify(cart)); }
+
+function updateCartUI() {
+  const count = cart.reduce((s,i) => s + i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+
+  const itemsEl = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+
+  if(cart.length === 0) {
+    itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+    totalEl.style.display = 'none';
+    return;
+  }
+
+  const subtotal = cart.reduce((s,i) => s + i.price * i.qty, 0);
+
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">${[item.size,item.color?'Color:'+item.color:''].filter(Boolean).join(' · ')} · Qty: ${item.qty}</div>
+        <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+      </div>
+      <button class="cart-remove" onclick="removeFromCart('${item.id}')">x</button>
+    </div>
+  `).join('');
+
+  document.getElementById('cartSubtotal').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('cartTotalAmt').textContent = '$' + subtotal.toFixed(2);
+  totalEl.style.display = 'block';
+}
+
+function openCart() {
+  document.getElementById('cartSidebar').classList.add('active');
+  document.getElementById('cartOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('active');
+  document.getElementById('cartOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function checkout() {
+  if(cart.length === 0) return;
+  showToast('Redirect to Stripe: add your Payment Link URL in the checkout() function. Printify auto-fulfills on payment.');
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ===== INIT =====
+document.getElementById('productModal').addEventListener('click', function(e) {
+  if(e.target === this) closeModal();
+});
+
+renderProducts();
+updateCartUI();
+</script>
+</body>
+</html>
