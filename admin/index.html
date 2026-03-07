@@ -46,8 +46,9 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .last-refresh{color:var(--muted);font-size:0.75rem}
 
 /* Stats */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all .2s}
+.stat-card:hover{border-color:var(--purple);transform:translateY(-2px)}
 .stat-val{font-size:1.8rem;font-weight:900;color:var(--cyan)}
 .stat-label{font-size:0.78rem;color:var(--muted);margin-top:4px}
 
@@ -70,8 +71,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .site-meta{color:var(--muted);font-size:0.75rem;margin-bottom:8px}
 .site-visitors{font-size:0.85rem;color:var(--amber);margin-bottom:8px}
 .site-links{display:flex;gap:6px;flex-wrap:wrap}
-.site-links a{font-size:0.72rem;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--cyan);text-decoration:none;transition:all 0.2s}
-.site-links a:hover{border-color:var(--cyan);color:#fff}
+.site-links a,.site-links button{font-size:0.72rem;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--cyan);text-decoration:none;transition:all 0.2s;cursor:pointer;font-family:inherit}
+.site-links a:hover,.site-links button:hover{border-color:var(--cyan);color:#fff}
 
 /* Quick links */
 .quick-links{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
@@ -86,38 +87,94 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .panel h3 span{color:var(--purple)}
 .form-group{margin-bottom:16px}
 .form-label{display:block;font-size:0.85rem;color:var(--muted);margin-bottom:6px;font-weight:600}
+.form-hint{font-size:0.72rem;color:var(--muted);margin-top:4px;font-style:italic}
 .form-input{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit}
 .form-input:focus{outline:none;border-color:var(--purple)}
+.form-input.error{border-color:var(--red)}
 .form-textarea{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem;font-family:monospace;min-height:80px;resize:vertical}
 .form-textarea:focus{outline:none;border-color:var(--purple)}
 .form-select{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit}
 .form-row{display:flex;gap:12px;flex-wrap:wrap}
-.form-row .form-group{flex:1;min-width:200px}
+.form-row .form-group{flex:1;min-width:180px}
+
+/* Color picker row */
+.color-row{display:flex;align-items:center;gap:8px}
+.color-row input[type=color]{width:40px;height:36px;border:1px solid var(--border);border-radius:6px;background:var(--bg);cursor:pointer;padding:2px}
+.color-row input[type=text]{flex:1}
+
+/* Network checkboxes */
+.net-checks{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.net-check{display:flex;align-items:center;gap:4px;padding:4px 10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:0.78rem;cursor:pointer;transition:all .2s;user-select:none}
+.net-check:hover{border-color:var(--purple)}
+.net-check.active{background:rgba(168,85,247,.15);border-color:var(--purple);color:var(--purple)}
+.net-check input{display:none}
+
+/* Toggle switch */
+.toggle{position:relative;display:inline-block;width:42px;height:22px;cursor:pointer}
+.toggle input{display:none}
+.toggle-slider{position:absolute;inset:0;background:var(--bg3);border:1px solid var(--border);border-radius:22px;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:2px;bottom:2px;background:var(--muted);border-radius:50%;transition:.2s}
+.toggle input:checked+.toggle-slider{background:rgba(34,197,94,.2);border-color:var(--green)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(20px);background:var(--green)}
+
+/* Buttons */
 .btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s}
 .btn-purple{background:var(--purple);color:#fff}
 .btn-green{background:var(--green);color:#000}
 .btn-red{background:var(--red);color:#fff}
+.btn-amber{background:var(--amber);color:#000}
 .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.btn:hover{opacity:0.85}
+.btn:hover{opacity:0.85;transform:translateY(-1px)}
 .btn+.btn{margin-left:8px}
+.btn-sm{padding:5px 12px;font-size:0.78rem;border-radius:6px}
 .msg{padding:10px 14px;border-radius:8px;font-size:0.85rem;margin-top:12px;display:none}
 .msg-ok{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3)}
 .msg-err{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3)}
 
-/* Ad slots table */
+/* Edit indicator */
+.edit-indicator{background:rgba(168,85,247,.15);border:1px solid var(--purple);border-radius:8px;padding:8px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;color:var(--purple)}
+.edit-indicator button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.9rem;padding:2px 6px}
+
+/* Ad cards (replacing table) */
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;margin-top:12px}
+.ad-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;transition:all .2s}
+.ad-card:hover{border-color:var(--purple)}
+.ad-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.ad-card-name{font-weight:700;font-size:0.95rem}
+.ad-card-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.ad-card-tag{font-size:0.7rem;padding:2px 8px;border-radius:999px;background:var(--bg3);border:1px solid var(--border);color:var(--muted)}
+.ad-card-stats{display:flex;gap:16px;margin-bottom:12px;font-size:0.82rem}
+.ad-card-stat{color:var(--muted)}
+.ad-card-stat strong{color:var(--text);margin-right:2px}
+.ad-card-actions{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Toast */
+.toast{position:fixed;top:20px;right:20px;z-index:10000;background:var(--bg2);border:1px solid var(--green);color:var(--green);padding:12px 20px;border-radius:10px;font-size:0.88rem;font-weight:600;opacity:0;transform:translateY(-20px);transition:all .3s;pointer-events:none;max-width:400px}
+.toast.error{border-color:var(--red);color:var(--red)}
+.toast.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
+/* Ad table (fallback for small lists) */
 .ad-table{width:100%;border-collapse:collapse;margin-top:12px}
 .ad-table th,.ad-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:0.85rem}
 .ad-table th{color:var(--muted);font-weight:600;font-size:0.78rem;text-transform:uppercase}
-.ad-table td{color:var(--text)}
 .ad-active{color:var(--green)}
 .ad-inactive{color:var(--muted)}
 .ad-preview{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:12px}
 
+/* Keyboard shortcut hints */
+.kbd{display:inline-block;padding:2px 6px;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-family:monospace;margin-left:6px}
+
 .session-info{text-align:center;padding:20px;color:var(--muted);font-size:0.75rem}
+
+/* Visitor Management */
+.visitor-edit{display:inline-flex;align-items:center;gap:4px}
+.visitor-edit input{width:60px;padding:3px 6px;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--amber);font-size:0.82rem;font-family:inherit;text-align:center}
+.visitor-edit button{padding:2px 6px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--cyan);cursor:pointer;font-size:0.72rem;font-family:inherit}
 
 @media(max-width:600px){
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .sites-grid{grid-template-columns:1fr}
+  .ads-grid{grid-template-columns:1fr}
   .dash-header{flex-direction:column;text-align:center}
   .form-row{flex-direction:column}
   .tab{padding:8px 12px;font-size:0.8rem}
@@ -125,6 +182,9 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 </style>
 </head>
 <body>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <!-- Login -->
 <div class="login-overlay" id="loginOverlay">
@@ -152,18 +212,19 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <div class="tab-bar">
     <button class="tab active" onclick="switchTab('sites',this)">Sites</button>
     <button class="tab" onclick="switchTab('ads',this)">Ad Manager</button>
+    <button class="tab" onclick="switchTab('visitors',this)">Visitors</button>
     <button class="tab" onclick="switchTab('settings',this)">Settings</button>
   </div>
 
   <!-- ==================== SITES TAB ==================== -->
   <div class="tab-panel active" id="panel-sites">
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-val" id="totalSites">--</div><div class="stat-label">Total Sites</div></div>
-      <div class="stat-card"><div class="stat-val" id="sitesUp" style="color:var(--green)">--</div><div class="stat-label">Up</div></div>
-      <div class="stat-card"><div class="stat-val" id="sitesDown" style="color:var(--red)">--</div><div class="stat-label">Down</div></div>
-      <div class="stat-card"><div class="stat-val" id="totalVisitors" style="color:var(--amber)">--</div><div class="stat-label">Visitors</div></div>
+      <div class="stat-card" onclick="document.getElementById('statusFilter').value='';filterSites()"><div class="stat-val" id="totalSites">--</div><div class="stat-label">Total Sites</div></div>
+      <div class="stat-card" onclick="document.getElementById('statusFilter').value='up';filterSites()"><div class="stat-val" id="sitesUp" style="color:var(--green)">--</div><div class="stat-label">Up (click to filter)</div></div>
+      <div class="stat-card" onclick="document.getElementById('statusFilter').value='down';filterSites()"><div class="stat-val" id="sitesDown" style="color:var(--red)">--</div><div class="stat-label">Down (click to filter)</div></div>
+      <div class="stat-card"><div class="stat-val" id="totalVisitors" style="color:var(--amber)">--</div><div class="stat-label">Total Visitors</div></div>
       <div class="stat-card"><div class="stat-val" id="networkCount" style="color:var(--purple)">--</div><div class="stat-label">Networks</div></div>
-      <div class="stat-card"><div class="stat-val" id="activeAds" style="color:var(--cyan)">--</div><div class="stat-label">Active Ads</div></div>
+      <div class="stat-card" onclick="switchTab('ads',document.querySelectorAll('.tab')[1])"><div class="stat-val" id="activeAds" style="color:var(--cyan)">--</div><div class="stat-label">Active Ads (click)</div></div>
     </div>
 
     <div class="quick-links">
@@ -175,11 +236,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
         <a href="https://github.com/Spunkeroo" target="_blank" rel="noopener">GitHub</a>
         <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console</a>
         <a href="https://www.gumroad.com/dashboard" target="_blank" rel="noopener">Gumroad</a>
+        <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a>
+        <a href="https://x.com/SpunkArt13" target="_blank" rel="noopener">X / Twitter</a>
       </div>
     </div>
 
     <div class="controls">
-      <input type="text" class="ctrl-input" id="searchInput" placeholder="Search sites..." oninput="filterSites()">
+      <input type="text" class="ctrl-input" id="searchInput" placeholder="Search sites... (type to filter instantly)" oninput="filterSites()">
       <select class="ctrl-select" id="networkFilter" onchange="filterSites()"><option value="">All Networks</option></select>
       <select class="ctrl-select" id="statusFilter" onchange="filterSites()">
         <option value="">All Status</option>
@@ -196,16 +259,22 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <div class="panel">
       <h3>Ad <span>Manager</span></h3>
       <p style="color:var(--muted);margin-bottom:16px;font-size:0.9rem">
-        Create and manage ad banners across all your sites. Ads are stored in Firebase and auto-loaded by every site every 10 seconds. No code changes needed — just create, activate, and earn.
+        Create and manage ads across all sites. Changes go live within 10 seconds. No code needed.
       </p>
+
+      <!-- Edit indicator -->
+      <div class="edit-indicator" id="editIndicator" style="display:none">
+        <span>Editing: <strong id="editingName">--</strong></span>
+        <button onclick="clearAdForm()" title="Cancel editing">&times; Cancel</button>
+      </div>
 
       <!-- Create/Edit Ad -->
       <div style="border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;background:var(--bg)">
-        <h4 style="margin-bottom:16px;font-size:0.95rem">Create / Edit Ad Slot</h4>
+        <h4 style="margin-bottom:16px;font-size:0.95rem" id="adFormTitle">Create New Ad</h4>
         <input type="hidden" id="adEditId" value="">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Ad Name</label>
+            <label class="form-label">Ad Name *</label>
             <input class="form-input" id="adName" placeholder="e.g. NordVPN Banner">
           </div>
           <div class="form-group">
@@ -216,12 +285,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
               <option value="sidebar">Sidebar / In-Content</option>
               <option value="sticky">Sticky Bottom Bar</option>
             </select>
+            <div class="form-hint">Where the ad appears on each site</div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Format / Size</label>
-            <select class="form-select" id="adFormat">
+            <select class="form-select" id="adFormat" onchange="updateFormatPreview()">
               <option value="banner">Full-Width Banner</option>
               <option value="leaderboard">Leaderboard (728x90)</option>
               <option value="rect">Rectangle (300x250)</option>
@@ -229,14 +299,16 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
               <option value="square-md">Square Medium (250x250)</option>
               <option value="square-lg">Square Large (300x300)</option>
             </select>
+            <div class="form-hint" id="formatHint">Full width responsive banner</div>
           </div>
           <div class="form-group">
-            <label class="form-label">Image URL (optional — fills the block)</label>
+            <label class="form-label">Image URL (optional)</label>
             <input class="form-input" id="adImage" placeholder="https://example.com/ad-image.png">
+            <div class="form-hint">Fills the entire ad block. Leave empty for text ad.</div>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label">Destination URL (where the ad links to)</label>
+          <label class="form-label">Destination URL * (where clicks go)</label>
           <input class="form-input" id="adUrl" placeholder="https://nordvpn.com/?ref=spunkart">
         </div>
         <div class="form-row">
@@ -256,32 +328,46 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
           </div>
           <div class="form-group">
             <label class="form-label">Background Color</label>
-            <input class="form-input" id="adBg" placeholder="#1a1a2e" value="#1a1a2e">
+            <div class="color-row">
+              <input type="color" id="adBgPicker" value="#1a1a2e" oninput="document.getElementById('adBg').value=this.value">
+              <input type="text" class="form-input" id="adBg" value="#1a1a2e" oninput="try{document.getElementById('adBgPicker').value=this.value}catch(e){}">
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Accent Color</label>
-            <input class="form-input" id="adAccent" placeholder="#a855f7" value="#a855f7">
+            <label class="form-label">Accent / Button Color</label>
+            <div class="color-row">
+              <input type="color" id="adAccentPicker" value="#a855f7" oninput="document.getElementById('adAccent').value=this.value">
+              <input type="text" class="form-input" id="adAccent" value="#a855f7" oninput="try{document.getElementById('adAccentPicker').value=this.value}catch(e){}">
+            </div>
           </div>
         </div>
+
+        <div class="form-group">
+          <label class="form-label">Show on Networks</label>
+          <div class="net-checks" id="netChecks"></div>
+          <input type="hidden" id="adNetworks" value="all">
+          <div class="form-hint">Click networks to select. None selected = shows on ALL sites.</div>
+        </div>
+
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Show on Networks (comma-separated, or "all")</label>
-            <input class="form-input" id="adNetworks" placeholder="all" value="all">
-          </div>
-          <div class="form-group">
             <label class="form-label">Status</label>
-            <select class="form-select" id="adActive">
-              <option value="true">Active</option>
-              <option value="false">Inactive</option>
-            </select>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:6px">
+              <label class="toggle">
+                <input type="checkbox" id="adActiveToggle" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              <span id="adActiveLabel" style="font-size:0.88rem;font-weight:600;color:var(--green)">Active</span>
+            </div>
           </div>
         </div>
+
         <div class="form-group">
-          <label class="form-label">Custom HTML (optional — overrides headline/body/cta)</label>
+          <label class="form-label">Custom HTML (advanced — overrides headline/body/cta)</label>
           <textarea class="form-textarea" id="adHtml" placeholder="<div>Your custom ad HTML here...</div>"></textarea>
         </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <button class="btn btn-purple" onclick="saveAd()">Save Ad</button>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-purple" onclick="saveAd()" id="saveAdBtn">Save Ad <span class="kbd">Ctrl+S</span></button>
           <button class="btn btn-outline" onclick="clearAdForm()">Clear Form</button>
           <button class="btn btn-outline" onclick="previewAd()">Preview</button>
         </div>
@@ -289,9 +375,16 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
         <div class="ad-preview" id="adPreview" style="display:none;margin-top:16px"></div>
       </div>
 
-      <!-- Active Ads -->
-      <h4 style="margin-bottom:12px;font-size:0.95rem">All Ad Slots</h4>
-      <div id="adsList">
+      <!-- Ad List -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h4 style="font-size:0.95rem">All Ad Slots</h4>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-outline btn-sm" onclick="exportAds()">Export JSON</button>
+          <button class="btn btn-outline btn-sm" onclick="document.getElementById('importFile').click()">Import JSON</button>
+          <input type="file" id="importFile" accept=".json" style="display:none" onchange="importAds(event)">
+        </div>
+      </div>
+      <div class="ads-grid" id="adsGrid">
         <p style="color:var(--muted);font-size:0.85rem">Loading ads from Firebase...</p>
       </div>
     </div>
@@ -299,7 +392,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <!-- Revenue Tracker -->
     <div class="panel">
       <h3>Revenue <span>Tracker</span></h3>
-      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Track clicks and impressions for each ad. Data updates every 10 seconds.</p>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Clicks, impressions, and CTR for each ad. Auto-refreshes every 10s.</p>
       <div id="revenueStats">
         <p style="color:var(--muted);font-size:0.85rem">Loading stats...</p>
       </div>
@@ -308,7 +401,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     <!-- Pricing Guide -->
     <div class="panel">
       <h3>Ad Space <span>Pricing Guide</span></h3>
-      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Suggested rates for selling ad space across your network:</p>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Suggested rates for selling ad space:</p>
       <table class="ad-table">
         <tr><th>Position</th><th>Reach</th><th>Suggested Rate</th></tr>
         <tr><td>Top Banner (all sites)</td><td>150+ sites</td><td>$200-500/month</td></tr>
@@ -320,12 +413,36 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     </div>
   </div>
 
+  <!-- ==================== VISITORS TAB ==================== -->
+  <div class="tab-panel" id="panel-visitors">
+    <div class="panel">
+      <h3>Visitor <span>Tracker</span></h3>
+      <p style="color:var(--muted);margin-bottom:16px;font-size:0.85rem">
+        View and edit visitor counts across all sites. Click any count to edit it. Data stored in Firebase.
+      </p>
+      <div class="controls" style="margin-bottom:16px">
+        <input type="text" class="ctrl-input" id="visitorSearch" placeholder="Search sites..." oninput="renderVisitors()">
+        <select class="ctrl-select" id="visitorSort" onchange="renderVisitors()">
+          <option value="count-desc">Most Visitors</option>
+          <option value="count-asc">Least Visitors</option>
+          <option value="alpha">Alphabetical</option>
+        </select>
+      </div>
+      <div class="stats-row" style="margin-bottom:16px">
+        <div class="stat-card"><div class="stat-val" id="vTotalCount" style="color:var(--amber)">--</div><div class="stat-label">Total Visitors</div></div>
+        <div class="stat-card"><div class="stat-val" id="vTrackedSites" style="color:var(--cyan)">--</div><div class="stat-label">Sites Tracked</div></div>
+        <div class="stat-card"><div class="stat-val" id="vAvgVisitors" style="color:var(--purple)">--</div><div class="stat-label">Avg / Site</div></div>
+      </div>
+      <div id="visitorsList"></div>
+    </div>
+  </div>
+
   <!-- ==================== SETTINGS TAB ==================== -->
   <div class="tab-panel" id="panel-settings">
     <div class="panel">
       <h3>Change <span>Password</span></h3>
       <p style="color:var(--muted);margin-bottom:16px;font-size:0.85rem">
-        Your password is hashed with SHA-256 and stored in Firebase. Never stored in plaintext.
+        SHA-256 hashed, stored in Firebase. Never stored in plaintext.
       </p>
       <div class="form-group">
         <label class="form-label">Current Password</label>
@@ -345,7 +462,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 
     <div class="panel">
       <h3>Global <span>Announcement</span></h3>
-      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Set a message that appears on every site (e.g. maintenance notice, new feature announcement).</p>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Banner that appears on ALL sites. Great for maintenance notices or new features.</p>
       <div class="form-group">
         <label class="form-label">Announcement Text</label>
         <input class="form-input" id="announcementText" placeholder="e.g. We're launching something big! Stay tuned...">
@@ -353,18 +470,33 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Background Color</label>
-          <input class="form-input" id="announceBg" value="#7c3aed" placeholder="#7c3aed">
+          <div class="color-row">
+            <input type="color" id="announceBgPicker" value="#7c3aed" oninput="document.getElementById('announceBg').value=this.value">
+            <input type="text" class="form-input" id="announceBg" value="#7c3aed" oninput="try{document.getElementById('announceBgPicker').value=this.value}catch(e){}">
+          </div>
         </div>
         <div class="form-group">
           <label class="form-label">Status</label>
-          <select class="form-select" id="announceActive">
-            <option value="false">Inactive</option>
-            <option value="true">Active</option>
-          </select>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:6px">
+            <label class="toggle">
+              <input type="checkbox" id="announceActiveToggle">
+              <span class="toggle-slider"></span>
+            </label>
+            <span id="announceActiveLabel" style="font-size:0.88rem;font-weight:600;color:var(--muted)">Inactive</span>
+          </div>
         </div>
       </div>
       <button class="btn btn-purple" onclick="saveAnnouncement()">Save Announcement</button>
       <div class="msg" id="announceMsg"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Danger <span>Zone</span></h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-outline" onclick="resetAllImpressions()" style="color:var(--amber)">Reset All Ad Impressions</button>
+        <button class="btn btn-outline" onclick="resetAllClicks()" style="color:var(--amber)">Reset All Ad Clicks</button>
+        <button class="btn btn-outline" onclick="deactivateAllAds()" style="color:var(--red)">Deactivate All Ads</button>
+      </div>
     </div>
 
     <div class="panel">
@@ -374,7 +506,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
         Login lockout: 5 failed attempts = 60s cooldown<br>
         Auto-refresh: every 10 seconds<br>
         Data storage: Firebase Realtime Database<br>
-        Password: SHA-256 hashed, stored in Firebase
+        Keyboard: <span class="kbd">Ctrl+S</span> Save Ad &nbsp; <span class="kbd">Esc</span> Clear Form
       </p>
     </div>
   </div>
@@ -391,7 +523,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   var SESSION_TIMEOUT = 30 * 60 * 1000;
   var REFRESH_MS = 10000;
 
-  // Default hash = "password" — will be overwritten by Firebase value on first load
   var PASS_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
 
   var loginAttempts = 0;
@@ -400,6 +531,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   var sessionTimer = null;
   var siteStatus = {};
   var visitorData = {};
+  var rawVisitorData = {};
   var adsData = {};
 
   // ============================================================
@@ -423,6 +555,12 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     {d:'13.dance',n:'Other',r:'13-dance'},{d:'13.energy',n:'Other',r:'13-energy'},{d:'13.golf',n:'Other',r:'13-golf'},{d:'13.markets',n:'Other',r:'13-markets'},{d:'13.money',n:'Other',r:'13-money'},{d:'betai.buzz',n:'Other',r:'betai-buzz'},{d:'chicago.coach',n:'Other',r:'chicago-coach'},{d:'clip.christmas',n:'Other',r:'clip-christmas'},{d:'fix.mom',n:'Other',r:'fix-mom'},{d:'flip.courses',n:'Other',r:'flip-courses'},{d:'flip.garden',n:'Other',r:'flip-garden'},{d:'flip.gay',n:'Other',r:'flip-gay'},{d:'flip.ink',n:'Other',r:'flip-ink'},{d:'free.gripe',n:'Other',r:'free-gripe'},{d:'free.institute',n:'Other',r:'free-institute'},{d:'pizza.christmas',n:'Other',r:'pizza-christmas'},{d:'pizza.singles',n:'Other',r:'pizza-singles'},{d:'sell.singles',n:'Other',r:'sell-singles'},{d:'spunk.casino',n:'Other',r:'spunk-casino'}
   ];
 
+  var NETWORKS = [];
+  (function(){
+    var s={};SITES.forEach(function(x){s[x.n]=true});
+    NETWORKS=Object.keys(s).sort();
+  })();
+
   // ============================================================
   // SHA-256
   // ============================================================
@@ -439,6 +577,17 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   function fbDel(path){return fetch(DB+'/'+path+'.json',{method:'DELETE'})}
 
   // ============================================================
+  // Toast notifications
+  // ============================================================
+  function toast(msg,isError){
+    var el=document.getElementById('toast');
+    el.textContent=msg;
+    el.className='toast'+(isError?' error':'')+' show';
+    clearTimeout(el._t);
+    el._t=setTimeout(function(){el.classList.remove('show')},4000);
+  }
+
+  // ============================================================
   // Login
   // ============================================================
   window.attemptLogin=async function(){
@@ -451,11 +600,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     if(!pass)return;
     var hash=await sha256(pass);
 
-    // Check Firebase for stored hash first
-    try{
-      var stored=await fbGet('admin/passHash');
-      if(stored)PASS_HASH=stored;
-    }catch(e){}
+    try{var stored=await fbGet('admin/passHash');if(stored)PASS_HASH=stored}catch(e){}
 
     if(hash===PASS_HASH){
       loginAttempts=0;
@@ -491,6 +636,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     document.getElementById('loginOverlay').classList.add('hidden');
     document.getElementById('dashboard').classList.add('active');
     populateNetworkFilter();
+    buildNetworkCheckboxes();
     renderSites();
     refreshAll();
     loadAds();
@@ -507,6 +653,13 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   document.addEventListener('keydown',function(e){
     if(e.key==='Enter'&&!document.getElementById('loginOverlay').classList.contains('hidden'))attemptLogin();
     if(checkSession())resetSessionTimeout();
+    // Ctrl+S = save ad
+    if((e.ctrlKey||e.metaKey)&&e.key==='s'){
+      e.preventDefault();
+      if(document.getElementById('panel-ads').classList.contains('active'))saveAd();
+    }
+    // Escape = clear form
+    if(e.key==='Escape')clearAdForm();
   });
 
   // ============================================================
@@ -515,23 +668,88 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   window.switchTab=function(id,btn){
     document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
     document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
-    btn.classList.add('active');
+    if(!btn){
+      var tabs=document.querySelectorAll('.tab');
+      var names=['sites','ads','visitors','settings'];
+      var idx=names.indexOf(id);
+      if(idx>=0)btn=tabs[idx];
+    }
+    if(btn)btn.classList.add('active');
     document.getElementById('panel-'+id).classList.add('active');
+    if(id==='visitors')renderVisitors();
   };
 
   // ============================================================
-  // Network filter
+  // Network filter + checkboxes
   // ============================================================
   function populateNetworkFilter(){
-    var nets={};SITES.forEach(function(s){nets[s.n]=true});
     var sel=document.getElementById('networkFilter');
-    sel.innerHTML='<option value="">All Networks</option>';
-    Object.keys(nets).sort().forEach(function(n){
+    sel.innerHTML='<option value="">All Networks ('+SITES.length+')</option>';
+    NETWORKS.forEach(function(n){
+      var cnt=SITES.filter(function(s){return s.n===n}).length;
       var opt=document.createElement('option');opt.value=n;
-      opt.textContent=n+' ('+SITES.filter(function(s){return s.n===n}).length+')';
+      opt.textContent=n+' ('+cnt+')';
       sel.appendChild(opt);
     });
   }
+
+  function buildNetworkCheckboxes(){
+    var el=document.getElementById('netChecks');
+    var html='<div class="net-check active" onclick="toggleNet(this,\'all\')">All Sites</div>';
+    NETWORKS.forEach(function(n){
+      var cnt=SITES.filter(function(s){return s.n===n}).length;
+      html+='<div class="net-check" onclick="toggleNet(this,\''+n+'\')">'+n+' ('+cnt+')</div>';
+    });
+    el.innerHTML=html;
+  }
+
+  window.toggleNet=function(el,name){
+    if(name==='all'){
+      // Click "All" = deselect everything else
+      document.querySelectorAll('#netChecks .net-check').forEach(function(c){c.classList.remove('active')});
+      el.classList.add('active');
+      document.getElementById('adNetworks').value='all';
+      return;
+    }
+    // Deselect "All" when picking specific networks
+    var allBtn=document.querySelector('#netChecks .net-check');
+    allBtn.classList.remove('active');
+    el.classList.toggle('active');
+    // Build value
+    var selected=[];
+    document.querySelectorAll('#netChecks .net-check.active').forEach(function(c){
+      var t=c.textContent.split(' (')[0].trim();
+      if(t!=='All Sites')selected.push(t);
+    });
+    if(!selected.length){
+      allBtn.classList.add('active');
+      document.getElementById('adNetworks').value='all';
+    }else{
+      document.getElementById('adNetworks').value=selected.join(',');
+    }
+  };
+
+  // ============================================================
+  // Active toggle label sync
+  // ============================================================
+  document.getElementById('adActiveToggle').addEventListener('change',function(){
+    var label=document.getElementById('adActiveLabel');
+    label.textContent=this.checked?'Active':'Inactive';
+    label.style.color=this.checked?'var(--green)':'var(--muted)';
+  });
+  document.getElementById('announceActiveToggle').addEventListener('change',function(){
+    var label=document.getElementById('announceActiveLabel');
+    label.textContent=this.checked?'Active':'Inactive';
+    label.style.color=this.checked?'var(--green)':'var(--muted)';
+  });
+
+  // ============================================================
+  // Format hint
+  // ============================================================
+  window.updateFormatPreview=function(){
+    var hints={'banner':'Full width responsive banner','leaderboard':'728x90 — classic ad banner','rect':'300x250 — medium rectangle','square-sm':'200x200 — small square','square-md':'250x250 — medium square','square-lg':'300x300 — large square'};
+    document.getElementById('formatHint').textContent=hints[document.getElementById('adFormat').value]||'';
+  };
 
   // ============================================================
   // Render sites
@@ -551,17 +769,30 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       var st=siteStatus[s.d]||'checking';
       var cls=st==='up'?'badge-up':st==='down'?'badge-down':'badge-check';
       var txt=st==='up'?'UP':st==='down'?'DOWN':'...';
-      var v=visitorData[s.d]||'--';
+      var v=visitorData[s.d];
+      var vStr=typeof v==='number'?v.toLocaleString():'--';
       var c=document.createElement('div');c.className='site-card';
-      c.innerHTML='<div class="site-header"><span class="site-name">'+s.d+'</span><span class="site-badge '+cls+'">'+txt+'</span></div>'+
-        '<div class="site-meta">'+s.n+' Network</div>'+
-        '<div class="site-visitors">Visitors: '+v+'</div>'+
-        '<div class="site-links"><a href="https://'+s.d+'/" target="_blank" rel="noopener">Visit</a><a href="https://github.com/Spunkeroo/'+s.r+'" target="_blank" rel="noopener">GitHub</a></div>';
+      c.innerHTML='<div class="site-header"><span class="site-name">'+esc(s.d)+'</span><span class="site-badge '+cls+'">'+txt+'</span></div>'+
+        '<div class="site-meta">'+esc(s.n)+' Network</div>'+
+        '<div class="site-visitors">Visitors: '+vStr+'</div>'+
+        '<div class="site-links">'+
+          '<a href="https://'+s.d+'/" target="_blank" rel="noopener">Visit</a>'+
+          '<a href="https://github.com/Spunkeroo/'+s.r+'" target="_blank" rel="noopener">GitHub</a>'+
+          '<button onclick="checkSingleSite(\''+s.d+'\')">Ping</button>'+
+        '</div>';
       grid.appendChild(c);
     });
     updateStats();
   }
   window.filterSites=renderSites;
+
+  window.checkSingleSite=function(domain){
+    siteStatus[domain]='checking';
+    renderSites();
+    fetch('https://'+domain+'/',{method:'HEAD',mode:'no-cors',cache:'no-store'})
+      .then(function(){siteStatus[domain]='up';renderSites();toast(domain+' is UP')})
+      .catch(function(){siteStatus[domain]='down';renderSites();toast(domain+' is DOWN',true)});
+  };
 
   function updateStats(){
     document.getElementById('totalSites').textContent=SITES.length;
@@ -570,9 +801,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     document.getElementById('sitesUp').textContent=up;
     document.getElementById('sitesDown').textContent=down;
     var tv=0;Object.values(visitorData).forEach(function(v){if(typeof v==='number')tv+=v});
-    document.getElementById('totalVisitors').textContent=tv||'--';
-    var nets={};SITES.forEach(function(s){nets[s.n]=true});
-    document.getElementById('networkCount').textContent=Object.keys(nets).length;
+    document.getElementById('totalVisitors').textContent=tv?tv.toLocaleString():'--';
+    document.getElementById('networkCount').textContent=NETWORKS.length;
     var ac=0;Object.values(adsData).forEach(function(a){if(a&&a.active)ac++});
     document.getElementById('activeAds').textContent=ac;
   }
@@ -585,13 +815,23 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     document.getElementById('lastRefresh').textContent='Refreshing...';
     try{
       var resp=await fetch(DB+'/visitors.json');
-      if(resp.ok){var data=await resp.json();if(data)Object.keys(data).forEach(function(k){var dom=k.replace(/_/g,'.');if(data[k]&&data[k].count!==undefined)visitorData[dom]=data[k].count;else if(typeof data[k]==='number')visitorData[dom]=data[k]})}
+      if(resp.ok){
+        var data=await resp.json();
+        rawVisitorData=data||{};
+        if(data){
+          Object.keys(data).forEach(function(k){
+            var dom=k.replace(/_/g,'.');
+            if(data[k]&&data[k].count!==undefined)visitorData[dom]=data[k].count;
+            else if(typeof data[k]==='number')visitorData[dom]=data[k];
+          });
+        }
+      }
     }catch(e){}
-    // Status checks (batched, no-cors)
+    // Status checks
     var batch=[];
     for(var i=0;i<SITES.length;i++){
       batch.push(SITES[i]);
-      if(batch.length===15||i===SITES.length-1){
+      if(batch.length===20||i===SITES.length-1){
         await Promise.allSettled(batch.map(function(s){
           return fetch('https://'+s.d+'/',{method:'HEAD',mode:'no-cors',cache:'no-store'}).then(function(){siteStatus[s.d]='up'}).catch(function(){siteStatus[s.d]='down'});
         }));
@@ -603,7 +843,61 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   };
 
   // ============================================================
-  // Ad Management (Firebase-backed)
+  // Visitors tab
+  // ============================================================
+  window.renderVisitors=function(){
+    var el=document.getElementById('visitorsList');
+    var q=(document.getElementById('visitorSearch').value||'').toLowerCase();
+    var sort=document.getElementById('visitorSort').value;
+
+    var items=SITES.map(function(s){
+      return {domain:s.d,network:s.n,count:typeof visitorData[s.d]==='number'?visitorData[s.d]:0,fbKey:s.d.replace(/\./g,'_')};
+    }).filter(function(x){
+      if(q&&x.domain.indexOf(q)===-1&&x.network.toLowerCase().indexOf(q)===-1)return false;
+      return true;
+    });
+
+    if(sort==='count-desc')items.sort(function(a,b){return b.count-a.count});
+    else if(sort==='count-asc')items.sort(function(a,b){return a.count-b.count});
+    else items.sort(function(a,b){return a.domain.localeCompare(b.domain)});
+
+    var total=0,tracked=0;
+    items.forEach(function(x){total+=x.count;if(x.count>0)tracked++});
+    document.getElementById('vTotalCount').textContent=total.toLocaleString();
+    document.getElementById('vTrackedSites').textContent=tracked;
+    document.getElementById('vAvgVisitors').textContent=items.length?(total/items.length).toFixed(0):'--';
+
+    var html='<table class="ad-table"><tr><th>Site</th><th>Network</th><th>Visitors</th><th>Actions</th></tr>';
+    items.forEach(function(x){
+      html+='<tr><td><a href="https://'+esc(x.domain)+'/" target="_blank" style="color:var(--cyan);text-decoration:none">'+esc(x.domain)+'</a></td>';
+      html+='<td style="color:var(--muted)">'+esc(x.network)+'</td>';
+      html+='<td><div class="visitor-edit"><input type="number" id="vc_'+x.fbKey+'" value="'+x.count+'" min="0"><button onclick="updateVisitorCount(\''+x.fbKey+'\',document.getElementById(\'vc_'+x.fbKey+'\').value)">Set</button></div></td>';
+      html+='<td><button class="btn btn-outline btn-sm" onclick="updateVisitorCount(\''+x.fbKey+'\',0)">Reset</button></td></tr>';
+    });
+    html+='</table>';
+    el.innerHTML=html;
+  };
+
+  window.updateVisitorCount=async function(fbKey,val){
+    val=parseInt(val)||0;
+    var dom=fbKey.replace(/_/g,'.');
+    try{
+      // Check structure
+      var existing=rawVisitorData[fbKey];
+      if(existing&&typeof existing==='object'){
+        await fbSet('visitors/'+fbKey+'/count',val);
+      }else{
+        await fbSet('visitors/'+fbKey,val);
+      }
+      visitorData[dom]=val;
+      toast('Updated '+dom+' to '+val+' visitors');
+      renderVisitors();
+      renderSites();
+    }catch(e){toast('Failed: '+e.message,true)}
+  };
+
+  // ============================================================
+  // Ad Management
   // ============================================================
   async function loadAds(){
     try{
@@ -611,21 +905,43 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       adsData=data||{};
       renderAdsList();
       renderRevenueStats();
+      updateStats();
     }catch(e){}
   }
 
   function renderAdsList(){
-    var el=document.getElementById('adsList');
+    var el=document.getElementById('adsGrid');
     var keys=Object.keys(adsData);
-    if(!keys.length){el.innerHTML='<p style="color:var(--muted);font-size:0.85rem">No ads yet. Create one above.</p>';return}
-    var html='<table class="ad-table"><tr><th>Name</th><th>Format</th><th>Position</th><th>Status</th><th>Networks</th><th>Clicks</th><th>Actions</th></tr>';
+    if(!keys.length){el.innerHTML='<p style="color:var(--muted);font-size:0.85rem;grid-column:1/-1">No ads yet. Create one above.</p>';return}
+    var html='';
     keys.forEach(function(id){
       var a=adsData[id];if(!a)return;
-      var stCls=a.active?'ad-active':'ad-inactive';
-      var stTxt=a.active?'Active':'Inactive';
-      html+='<tr><td>'+esc(a.name||'Untitled')+'</td><td>'+esc(a.format||'banner')+'</td><td>'+esc(a.position||'top')+'</td><td class="'+stCls+'">'+stTxt+'</td><td>'+esc(a.networks||'all')+'</td><td>'+(a.clicks||0)+'</td><td><button class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem" onclick="editAd(\''+id+'\')">Edit</button> <button class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem;color:var(--red)" onclick="deleteAd(\''+id+'\')">Del</button></td></tr>';
+      var stColor=a.active?'var(--green)':'var(--muted)';
+      var stText=a.active?'Active':'Inactive';
+      html+='<div class="ad-card">';
+      html+='<div class="ad-card-header"><span class="ad-card-name">'+esc(a.name||'Untitled')+'</span>';
+      html+='<label class="toggle" title="Toggle active/inactive"><input type="checkbox" '+(a.active?'checked':'')+' onchange="toggleAdActive(\''+id+'\',this.checked)"><span class="toggle-slider"></span></label>';
+      html+='</div>';
+      html+='<div class="ad-card-meta">';
+      html+='<span class="ad-card-tag">'+esc(a.format||'banner')+'</span>';
+      html+='<span class="ad-card-tag">'+esc(a.position||'top')+'</span>';
+      html+='<span class="ad-card-tag" style="color:'+stColor+'">'+stText+'</span>';
+      html+='<span class="ad-card-tag">'+esc(a.networks||'all')+'</span>';
+      html+='</div>';
+      html+='<div class="ad-card-stats">';
+      html+='<span class="ad-card-stat"><strong>'+(a.impressions||0).toLocaleString()+'</strong> views</span>';
+      html+='<span class="ad-card-stat"><strong>'+(a.clicks||0).toLocaleString()+'</strong> clicks</span>';
+      var ctr=(a.impressions>0)?((a.clicks||0)/a.impressions*100).toFixed(1):'0.0';
+      html+='<span class="ad-card-stat"><strong>'+ctr+'%</strong> CTR</span>';
+      html+='</div>';
+      html+='<div class="ad-card-actions">';
+      html+='<button class="btn btn-outline btn-sm" onclick="editAd(\''+id+'\')">Edit</button>';
+      html+='<button class="btn btn-outline btn-sm" onclick="duplicateAd(\''+id+'\')">Duplicate</button>';
+      html+='<button class="btn btn-outline btn-sm" onclick="resetAdStats(\''+id+'\')">Reset Stats</button>';
+      html+='<button class="btn btn-outline btn-sm" style="color:var(--red)" onclick="deleteAd(\''+id+'\')">Delete</button>';
+      html+='</div>';
+      html+='</div>';
     });
-    html+='</table>';
     el.innerHTML=html;
   }
 
@@ -635,17 +951,124 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     if(!keys.length){el.innerHTML='<p style="color:var(--muted);font-size:0.85rem">No ad data yet.</p>';return}
     var totalClicks=0,totalImpressions=0;
     keys.forEach(function(id){var a=adsData[id];if(a){totalClicks+=(a.clicks||0);totalImpressions+=(a.impressions||0)}});
-    var ctr=totalImpressions>0?((totalClicks/totalImpressions)*100).toFixed(2):'--';
-    el.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap"><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--cyan)">'+totalImpressions+'</div><div class="stat-label">Impressions</div></div><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--green)">'+totalClicks+'</div><div class="stat-label">Clicks</div></div><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--amber)">'+ctr+'%</div><div class="stat-label">CTR</div></div></div>';
+    var ctr=totalImpressions>0?((totalClicks/totalImpressions)*100).toFixed(2):'0.00';
+    el.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap">'+
+      '<div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--cyan)">'+totalImpressions.toLocaleString()+'</div><div class="stat-label">Impressions</div></div>'+
+      '<div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--green)">'+totalClicks.toLocaleString()+'</div><div class="stat-label">Clicks</div></div>'+
+      '<div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--amber)">'+ctr+'%</div><div class="stat-label">CTR</div></div>'+
+    '</div>';
   }
+
+  // Toggle ad active/inactive with one click
+  window.toggleAdActive=async function(id,active){
+    try{
+      await fbSet('admin/ads/'+id+'/active',active);
+      adsData[id].active=active;
+      renderAdsList();
+      updateStats();
+      toast((adsData[id].name||'Ad')+' is now '+(active?'ACTIVE':'inactive'));
+    }catch(e){toast('Failed: '+e.message,true)}
+  };
+
+  // Duplicate an ad
+  window.duplicateAd=async function(id){
+    var a=adsData[id];if(!a)return;
+    var newId='ad_'+Date.now();
+    var copy=JSON.parse(JSON.stringify(a));
+    copy.name=(a.name||'Ad')+' (copy)';
+    copy.clicks=0;
+    copy.impressions=0;
+    copy.active=false;
+    try{
+      await fbSet('admin/ads/'+newId,copy);
+      adsData[newId]=copy;
+      renderAdsList();
+      toast('Duplicated: '+copy.name);
+    }catch(e){toast('Failed: '+e.message,true)}
+  };
+
+  // Reset stats for one ad
+  window.resetAdStats=async function(id){
+    if(!confirm('Reset clicks and impressions for this ad?'))return;
+    try{
+      await fbSet('admin/ads/'+id+'/clicks',0);
+      await fbSet('admin/ads/'+id+'/impressions',0);
+      adsData[id].clicks=0;
+      adsData[id].impressions=0;
+      renderAdsList();
+      renderRevenueStats();
+      toast('Stats reset for '+(adsData[id].name||'ad'));
+    }catch(e){toast('Failed: '+e.message,true)}
+  };
+
+  // Export/Import ads
+  window.exportAds=function(){
+    var blob=new Blob([JSON.stringify(adsData,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='spunk-ads-export-'+new Date().toISOString().slice(0,10)+'.json';
+    a.click();
+    toast('Ads exported');
+  };
+
+  window.importAds=async function(e){
+    var file=e.target.files[0];if(!file)return;
+    try{
+      var text=await file.text();
+      var data=JSON.parse(text);
+      if(!confirm('Import '+Object.keys(data).length+' ads? This will MERGE with existing ads.'))return;
+      for(var id in data){
+        await fbSet('admin/ads/'+id,data[id]);
+        adsData[id]=data[id];
+      }
+      renderAdsList();
+      renderRevenueStats();
+      toast('Imported '+Object.keys(data).length+' ads');
+    }catch(err){toast('Invalid JSON file',true)}
+    e.target.value='';
+  };
+
+  // Danger zone
+  window.resetAllImpressions=async function(){
+    if(!confirm('Reset ALL ad impressions to 0?'))return;
+    var keys=Object.keys(adsData);
+    for(var i=0;i<keys.length;i++){
+      await fbSet('admin/ads/'+keys[i]+'/impressions',0);
+      adsData[keys[i]].impressions=0;
+    }
+    renderAdsList();renderRevenueStats();
+    toast('All impressions reset');
+  };
+  window.resetAllClicks=async function(){
+    if(!confirm('Reset ALL ad clicks to 0?'))return;
+    var keys=Object.keys(adsData);
+    for(var i=0;i<keys.length;i++){
+      await fbSet('admin/ads/'+keys[i]+'/clicks',0);
+      adsData[keys[i]].clicks=0;
+    }
+    renderAdsList();renderRevenueStats();
+    toast('All clicks reset');
+  };
+  window.deactivateAllAds=async function(){
+    if(!confirm('Deactivate ALL ads across all sites?'))return;
+    var keys=Object.keys(adsData);
+    for(var i=0;i<keys.length;i++){
+      await fbSet('admin/ads/'+keys[i]+'/active',false);
+      adsData[keys[i]].active=false;
+    }
+    renderAdsList();updateStats();
+    toast('All ads deactivated');
+  };
 
   window.saveAd=async function(){
     var name=document.getElementById('adName').value.trim();
-    if(!name){showMsg('adMsg','err','Ad name is required');return}
+    if(!name){toast('Ad name is required',true);document.getElementById('adName').classList.add('error');return}
+    document.getElementById('adName').classList.remove('error');
     var url=document.getElementById('adUrl').value.trim();
-    if(!url){showMsg('adMsg','err','Destination URL is required');return}
-    // Basic URL validation
-    if(!/^https?:\/\/.+/.test(url)){showMsg('adMsg','err','URL must start with http:// or https://');return}
+    var customHtml=document.getElementById('adHtml').value.trim();
+    if(!url&&!customHtml){toast('Destination URL is required',true);document.getElementById('adUrl').classList.add('error');return}
+    document.getElementById('adUrl').classList.remove('error');
+    if(url&&!/^https?:\/\/.+/.test(url)){toast('URL must start with http:// or https://',true);return}
 
     var id=document.getElementById('adEditId').value||('ad_'+Date.now());
     var ad={
@@ -660,8 +1083,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       accent:document.getElementById('adAccent').value.trim()||'#a855f7',
       image:document.getElementById('adImage').value.trim(),
       networks:document.getElementById('adNetworks').value.trim()||'all',
-      active:document.getElementById('adActive').value==='true',
-      html:document.getElementById('adHtml').value.trim(),
+      active:document.getElementById('adActiveToggle').checked,
+      html:customHtml,
       clicks:adsData[id]?adsData[id].clicks||0:0,
       impressions:adsData[id]?adsData[id].impressions||0:0,
       updated:Date.now()
@@ -673,8 +1096,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       renderRevenueStats();
       updateStats();
       clearAdForm();
-      showMsg('adMsg','ok','Ad saved and live across all sites!');
-    }catch(e){showMsg('adMsg','err','Failed to save: '+e.message)}
+      toast('Ad saved! Live across all sites in ~10 seconds.');
+    }catch(e){toast('Failed to save: '+e.message,true)}
   };
 
   window.editAd=function(id){
@@ -690,28 +1113,63 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     document.getElementById('adCta').value=a.cta||'Learn More';
     document.getElementById('adBg').value=a.bg||'#1a1a2e';
     document.getElementById('adAccent').value=a.accent||'#a855f7';
-    document.getElementById('adNetworks').value=a.networks||'all';
-    document.getElementById('adActive').value=a.active?'true':'false';
+    try{document.getElementById('adBgPicker').value=a.bg||'#1a1a2e'}catch(e){}
+    try{document.getElementById('adAccentPicker').value=a.accent||'#a855f7'}catch(e){}
+    document.getElementById('adActiveToggle').checked=!!a.active;
+    document.getElementById('adActiveToggle').dispatchEvent(new Event('change'));
     document.getElementById('adHtml').value=a.html||'';
+
+    // Set network checkboxes
+    var nets=(a.networks||'all').toLowerCase();
+    document.querySelectorAll('#netChecks .net-check').forEach(function(c){c.classList.remove('active')});
+    if(nets==='all'){
+      document.querySelector('#netChecks .net-check').classList.add('active');
+    }else{
+      var selected=nets.split(',').map(function(s){return s.trim().toLowerCase()});
+      document.querySelectorAll('#netChecks .net-check').forEach(function(c){
+        var t=c.textContent.split(' (')[0].trim().toLowerCase();
+        if(t!=='all sites'&&selected.indexOf(t)!==-1)c.classList.add('active');
+      });
+    }
+    document.getElementById('adNetworks').value=a.networks||'all';
+
+    // Show edit indicator
+    document.getElementById('editIndicator').style.display='flex';
+    document.getElementById('editingName').textContent=a.name||'Untitled';
+    document.getElementById('adFormTitle').textContent='Edit Ad';
+    document.getElementById('saveAdBtn').innerHTML='Update Ad <span class="kbd">Ctrl+S</span>';
+
     switchTab('ads',document.querySelectorAll('.tab')[1]);
-    window.scrollTo(0,0);
+    window.scrollTo({top:0,behavior:'smooth'});
+    updateFormatPreview();
   };
 
   window.deleteAd=async function(id){
-    if(!confirm('Delete this ad? This cannot be undone.'))return;
-    try{await fbDel('admin/ads/'+id);delete adsData[id];renderAdsList();renderRevenueStats();updateStats()}catch(e){alert('Failed: '+e.message)}
+    if(!confirm('Delete "'+esc(adsData[id]&&adsData[id].name||'this ad')+'"? This cannot be undone.'))return;
+    try{await fbDel('admin/ads/'+id);delete adsData[id];renderAdsList();renderRevenueStats();updateStats();toast('Ad deleted')}catch(e){toast('Failed: '+e.message,true)}
   };
 
   window.clearAdForm=function(){
     document.getElementById('adEditId').value='';
-    ['adName','adUrl','adHeadline','adBody','adHtml','adImage'].forEach(function(id){document.getElementById(id).value=''});
+    ['adName','adUrl','adHeadline','adBody','adHtml','adImage'].forEach(function(id){document.getElementById(id).value='';document.getElementById(id).classList.remove('error')});
     document.getElementById('adFormat').value='banner';
     document.getElementById('adCta').value='Learn More';
     document.getElementById('adBg').value='#1a1a2e';
     document.getElementById('adAccent').value='#a855f7';
+    try{document.getElementById('adBgPicker').value='#1a1a2e'}catch(e){}
+    try{document.getElementById('adAccentPicker').value='#a855f7'}catch(e){}
+    document.getElementById('adActiveToggle').checked=true;
+    document.getElementById('adActiveToggle').dispatchEvent(new Event('change'));
     document.getElementById('adNetworks').value='all';
-    document.getElementById('adActive').value='true';
     document.getElementById('adPreview').style.display='none';
+    document.getElementById('editIndicator').style.display='none';
+    document.getElementById('adFormTitle').textContent='Create New Ad';
+    document.getElementById('saveAdBtn').innerHTML='Save Ad <span class="kbd">Ctrl+S</span>';
+    // Reset network checkboxes
+    document.querySelectorAll('#netChecks .net-check').forEach(function(c){c.classList.remove('active')});
+    var allBtn=document.querySelector('#netChecks .net-check');
+    if(allBtn)allBtn.classList.add('active');
+    updateFormatPreview();
   };
 
   window.previewAd=function(){
@@ -763,7 +1221,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     if(nw!==cf){showMsg('passMsg','err','Passwords do not match');return}
 
     var curHash=await sha256(cur);
-    // Fetch current hash from Firebase
     try{var stored=await fbGet('admin/passHash');if(stored)PASS_HASH=stored}catch(e){}
 
     if(curHash!==PASS_HASH){showMsg('passMsg','err','Current password is incorrect');return}
@@ -776,6 +1233,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       document.getElementById('newPass').value='';
       document.getElementById('confirmPass').value='';
       showMsg('passMsg','ok','Password updated successfully!');
+      toast('Password updated');
     }catch(e){showMsg('passMsg','err','Failed to save: '+e.message)}
   };
 
@@ -788,7 +1246,9 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       if(data){
         document.getElementById('announcementText').value=data.text||'';
         document.getElementById('announceBg').value=data.bg||'#7c3aed';
-        document.getElementById('announceActive').value=data.active?'true':'false';
+        try{document.getElementById('announceBgPicker').value=data.bg||'#7c3aed'}catch(e){}
+        document.getElementById('announceActiveToggle').checked=!!data.active;
+        document.getElementById('announceActiveToggle').dispatchEvent(new Event('change'));
       }
     }catch(e){}
   }
@@ -796,11 +1256,11 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   window.saveAnnouncement=async function(){
     var text=document.getElementById('announcementText').value.trim();
     var bg=document.getElementById('announceBg').value.trim()||'#7c3aed';
-    var active=document.getElementById('announceActive').value==='true';
+    var active=document.getElementById('announceActiveToggle').checked;
     try{
       await fbSet('admin/announcement',{text:text,bg:bg,active:active,updated:Date.now()});
-      showMsg('announceMsg','ok','Announcement saved! It will appear on all sites within 10 seconds.');
-    }catch(e){showMsg('announceMsg','err','Failed: '+e.message)}
+      toast('Announcement saved! Appears on all sites within 10 seconds.');
+    }catch(e){toast('Failed: '+e.message,true)}
   };
 
   // ============================================================
@@ -819,7 +1279,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   // Init
   // ============================================================
   (async function(){
-    // Load password hash from Firebase on page load
     try{var h=await fbGet('admin/passHash');if(h)PASS_HASH=h}catch(e){}
     if(checkSession())showDashboard();
   })();
