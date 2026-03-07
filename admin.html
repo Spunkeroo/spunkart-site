@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPUNK Command Center</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F3AF;</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#06060a;--bg2:#0e0e16;--bg3:#161625;--border:#1e1e30;--text:#e8e8f0;--muted:#7878a0;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#a855f7;--blue:#3b82f6;--cyan:#06b6d4}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* LOGIN */
+.login-overlay{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.login-overlay.hidden{display:none}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:400px;width:90%;text-align:center}
+.login-box h1{font-size:1.6rem;margin-bottom:8px;font-weight:900}
+.login-box h1 span{color:var(--purple)}
+.login-box p{color:var(--muted);font-size:.85rem;margin-bottom:24px}
+.login-input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:1rem;margin-bottom:12px;font-family:inherit}
+.login-input:focus{outline:none;border-color:var(--purple)}
+.login-btn{width:100%;padding:12px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit}
+.login-btn:hover{opacity:.9}
+.login-error{color:var(--red);font-size:.85rem;margin-top:8px;display:none}
+
+/* LAYOUT */
+.dashboard{display:none;min-height:100vh}
+.dashboard.active{display:flex}
+.sidebar{width:220px;background:var(--bg2);border-right:1px solid var(--border);padding:20px 0;position:fixed;top:0;bottom:0;overflow-y:auto;z-index:100}
+.sidebar-logo{padding:0 20px 20px;font-weight:900;font-size:1.1rem;border-bottom:1px solid var(--border);margin-bottom:10px}
+.sidebar-logo span{color:var(--purple)}
+.sidebar-btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 20px;background:none;border:none;color:var(--muted);font-size:.85rem;cursor:pointer;font-family:inherit;text-align:left;transition:all .15s}
+.sidebar-btn:hover{background:var(--bg3);color:var(--text)}
+.sidebar-btn.active{color:var(--purple);background:rgba(168,85,247,.08);border-right:3px solid var(--purple)}
+.sidebar-btn .icon{font-size:1.1rem;width:24px;text-align:center}
+.sidebar-section{padding:12px 20px 6px;font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.main{margin-left:220px;flex:1;padding:24px;width:calc(100% - 220px)}
+.main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.main-title{font-size:1.4rem;font-weight:800}
+.header-actions{display:flex;gap:10px;align-items:center}
+.header-btn{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:.8rem;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s}
+.header-btn:hover{border-color:var(--purple);color:var(--purple)}
+.header-btn.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.header-btn.primary:hover{opacity:.9}
+
+/* PANELS */
+.panel{display:none}
+.panel.active{display:block}
+
+/* SHARED */
+.stats-row{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px;flex:1;min-width:160px}
+.stat-label{font-size:.75rem;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.stat-value{font-size:1.8rem;font-weight:800}
+.stat-sub{font-size:.75rem;color:var(--muted);margin-top:2px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.card-title{font-size:1rem;font-weight:700;margin-bottom:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.btn{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);font-size:.8rem;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s}
+.btn:hover{border-color:var(--purple)}
+.btn.sm{padding:4px 10px;font-size:.75rem}
+.btn.green{border-color:var(--green);color:var(--green)}
+.btn.red{border-color:var(--red);color:var(--red)}
+.btn.purple{border-color:var(--purple);color:var(--purple)}
+input[type="text"],input[type="email"],input[type="number"],input[type="date"],select,textarea{width:100%;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.85rem;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--purple)}
+label{display:block;font-size:.75rem;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:8px 12px;font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:8px 12px;font-size:.85rem;border-bottom:1px solid var(--border)}
+tr:hover{background:var(--bg3)}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.7rem;font-weight:700}
+.badge.green{background:rgba(34,197,94,.15);color:var(--green)}
+.badge.red{background:rgba(239,68,68,.15);color:var(--red)}
+.badge.amber{background:rgba(245,158,11,.15);color:var(--amber)}
+.badge.blue{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge.purple{background:rgba(168,85,247,.15);color:var(--purple)}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg3);border:1px solid var(--purple);color:var(--text);padding:12px 20px;border-radius:10px;font-size:.85rem;z-index:99999;display:none;max-width:400px}
+.toast.show{display:block;animation:slideIn .3s}
+@keyframes slideIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.empty-state{text-align:center;padding:40px;color:var(--muted)}
+
+/* SITE MONITOR */
+.site-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.site-pill{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg3);border-radius:8px;font-size:.8rem}
+.site-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.site-dot.up{background:var(--green)}
+.site-dot.down{background:var(--red)}
+.site-dot.checking{background:var(--amber);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+/* MOBILE */
+@media(max-width:768px){
+.sidebar{width:60px;padding:12px 0}
+.sidebar-logo,.sidebar-section,.sidebar-btn span:not(.icon){display:none}
+.sidebar-btn{justify-content:center;padding:12px}
+.sidebar-btn .icon{font-size:1.3rem}
+.main{margin-left:60px;width:calc(100% - 60px);padding:16px}
+.stats-row{gap:8px}
+.stat-card{min-width:120px;padding:12px}
+.stat-value{font-size:1.3rem}
+.grid-2,.grid-3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-overlay" id="loginOverlay">
+<div class="login-box">
+<h1>SPUNK <span>Command Center</span></h1>
+<p>Admin access only. All actions are logged.</p>
+<input class="login-input" type="password" id="loginPass" placeholder="Enter password" autofocus>
+<button class="login-btn" onclick="attemptLogin()">Unlock</button>
+<div class="login-error" id="loginError"></div>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<div class="sidebar-logo">SPUNK <span>HQ</span></div>
+<div class="sidebar-section">Overview</div>
+<button class="sidebar-btn active" onclick="showPanel('overview',this)"><span class="icon">&#x1F3AF;</span><span>Dashboard</span></button>
+<button class="sidebar-btn" onclick="showPanel('sites',this)"><span class="icon">&#x1F310;</span><span>Sites</span></button>
+<button class="sidebar-btn" onclick="showPanel('analytics',this)"><span class="icon">&#x1F4CA;</span><span>Analytics</span></button>
+<div class="sidebar-section">Growth</div>
+<button class="sidebar-btn" onclick="showPanel('leads',this)"><span class="icon">&#x1F4E9;</span><span>Leads</span></button>
+<button class="sidebar-btn" onclick="showPanel('outreach',this)"><span class="icon">&#x1F4E7;</span><span>Outreach</span></button>
+<button class="sidebar-btn" onclick="showPanel('seo',this)"><span class="icon">&#x1F50D;</span><span>SEO</span></button>
+<div class="sidebar-section">Money</div>
+<button class="sidebar-btn" onclick="showPanel('revenue',this)"><span class="icon">&#x1F4B0;</span><span>Revenue</span></button>
+<button class="sidebar-btn" onclick="showPanel('ads',this)"><span class="icon">&#x1F4E2;</span><span>Ads</span></button>
+<div class="sidebar-section">Tools</div>
+<button class="sidebar-btn" onclick="showPanel('announce',this)"><span class="icon">&#x1F4E3;</span><span>Announce</span></button>
+<button class="sidebar-btn" onclick="showPanel('wallets',this)"><span class="icon">&#x1F511;</span><span>Wallets</span></button>
+<button class="sidebar-btn" onclick="showPanel('quick',this)"><span class="icon">&#x26A1;</span><span>Quick Actions</span></button>
+<div style="flex:1"></div>
+<button class="sidebar-btn" onclick="logout()" style="margin-top:auto;color:var(--red)"><span class="icon">&#x1F6AA;</span><span>Logout</span></button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<!-- ========== OVERVIEW ========== -->
+<div class="panel active" id="panel-overview">
+<div class="main-header">
+<div class="main-title">Command Center</div>
+<div class="header-actions">
+<span id="lastRefresh" style="font-size:.75rem;color:var(--muted)"></span>
+<button class="header-btn" onclick="refreshAll()">Refresh All</button>
+</div>
+</div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-label">Total Sites</div><div class="stat-value" id="ov-total-sites">0</div></div>
+<div class="stat-card"><div class="stat-label">Sites Up</div><div class="stat-value" id="ov-sites-up" style="color:var(--green)">0</div></div>
+<div class="stat-card"><div class="stat-label">Active Visitors</div><div class="stat-value" id="ov-visitors" style="color:var(--cyan)">0</div></div>
+<div class="stat-card"><div class="stat-label">Total Leads</div><div class="stat-value" id="ov-leads" style="color:var(--purple)">0</div></div>
+<div class="stat-card"><div class="stat-label">Revenue</div><div class="stat-value" id="ov-revenue" style="color:var(--green)">$0</div></div>
+</div>
+<div class="grid-2">
+<div class="card">
+<div class="card-title">Recent Leads</div>
+<div id="ov-recent-leads"><div class="empty-state">Loading...</div></div>
+</div>
+<div class="card">
+<div class="card-title">Site Status</div>
+<div id="ov-site-status"><div class="empty-state">Checking...</div></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Quick Actions</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button class="btn purple" onclick="showPanel('leads',document.querySelector('[onclick*=leads]'))">View All Leads</button>
+<button class="btn green" onclick="exportAllLeads()">Export Leads CSV</button>
+<button class="btn" onclick="showPanel('outreach',document.querySelector('[onclick*=outreach]'))">Generate Emails</button>
+<button class="btn" onclick="showPanel('seo',document.querySelector('[onclick*=seo]'))">SEO Audit</button>
+<button class="btn" onclick="checkAllSites()">Ping All Sites</button>
+<button class="btn" onclick="window.open('https://analytics.google.com','_blank')">Google Analytics</button>
+<button class="btn" onclick="window.open('https://clarity.microsoft.com','_blank')">Microsoft Clarity</button>
+<button class="btn" onclick="window.open('https://github.com/Spunkeroo','_blank')">GitHub</button>
+</div>
+</div>
+</div>
+
+<!-- ========== SITES ========== -->
+<div class="panel" id="panel-sites">
+<div class="main-header">
+<div class="main-title">Site Monitor</div>
+<div class="header-actions">
+<button class="header-btn primary" onclick="checkAllSites()">Check All</button>
+</div>
+</div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-label">Total</div><div class="stat-value" id="sm-total">0</div></div>
+<div class="stat-card"><div class="stat-label">Up</div><div class="stat-value" id="sm-up" style="color:var(--green)">0</div></div>
+<div class="stat-card"><div class="stat-label">Down</div><div class="stat-value" id="sm-down" style="color:var(--red)">0</div></div>
+<div class="stat-card"><div class="stat-label">Checking</div><div class="stat-value" id="sm-checking" style="color:var(--amber)">0</div></div>
+</div>
+<div class="card">
+<div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+<input type="text" id="siteSearch" placeholder="Search sites..." oninput="renderSiteGrid()" style="max-width:300px">
+<select id="siteFilter" onchange="renderSiteGrid()" style="max-width:200px">
+<option value="all">All Networks</option>
+</select>
+<select id="statusFilter" onchange="renderSiteGrid()" style="max-width:150px">
+<option value="all">All Status</option>
+<option value="up">Up Only</option>
+<option value="down">Down Only</option>
+</select>
+</div>
+<div class="site-grid" id="siteGrid"></div>
+</div>
+</div>
+
+<!-- ========== ANALYTICS ========== -->
+<div class="panel" id="panel-analytics">
+<div class="main-header">
+<div class="main-title">Analytics Overview</div>
+<div class="header-actions"><button class="header-btn" onclick="loadAnalytics()">Refresh</button></div>
+</div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-label">Active Now</div><div class="stat-value" id="an-active" style="color:var(--cyan)">0</div></div>
+<div class="stat-card"><div class="stat-label">Today Hits</div><div class="stat-value" id="an-today">0</div></div>
+<div class="stat-card"><div class="stat-label">All-Time Hits</div><div class="stat-value" id="an-alltime">0</div></div>
+</div>
+<div class="card">
+<div class="card-title">Visitors by Site</div>
+<div id="an-chart"></div>
+</div>
+<div class="card">
+<div class="card-title">Active Sessions</div>
+<table><thead><tr><th>Site</th><th>Active</th><th>Today</th><th>All-Time</th></tr></thead>
+<tbody id="an-table"></tbody></table>
+</div>
+</div>
+
+<!-- ========== LEADS ========== -->
+<div class="panel" id="panel-leads">
+<div class="main-header">
+<div class="main-title">Lead Manager</div>
+<div class="header-actions">
+<button class="header-btn" onclick="loadAllLeads()">Refresh</button>
+<button class="header-btn primary" onclick="exportAllLeads()">Export CSV</button>
+</div>
+</div>
+<div class="stats-row" id="lead-stats"></div>
+<div class="card">
+<div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+<input type="text" id="leadSearch" placeholder="Search emails..." oninput="renderLeads()" style="max-width:300px">
+<select id="leadSiteFilter" onchange="renderLeads()" style="max-width:200px">
+<option value="all">All Sites</option>
+<option value="fencejob">FenceJob</option>
+<option value="dirtyservice">DirtyService</option>
+<option value="editchoice">EditChoice</option>
+<option value="earnbuild">EarnBuild</option>
+<option value="coincould">CoinCould</option>
+<option value="rugtool">RugTool</option>
+<option value="musichog">MusicHog</option>
+<option value="spunkcodes">Spunk.Codes</option>
+</select>
+<select id="leadStatusFilter" onchange="renderLeads()" style="max-width:150px">
+<option value="all">All Status</option>
+<option value="new">New</option>
+<option value="contacted">Contacted</option>
+<option value="converted">Converted</option>
+</select>
+</div>
+<table><thead><tr><th>Email</th><th>Site</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody id="lead-table"></tbody></table>
+</div>
+</div>
+
+<!-- ========== OUTREACH ========== -->
+<div class="panel" id="panel-outreach">
+<div class="main-header"><div class="main-title">Email Outreach</div></div>
+<div class="card">
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<div><label>Site</label><select id="outSite" onchange="genTemplates()" style="min-width:200px">
+<option value="fencejob">FenceJob</option><option value="dirtyservice">DirtyService</option><option value="editchoice">EditChoice</option><option value="earnbuild">EarnBuild</option><option value="coincould">CoinCould</option><option value="rugtool">RugTool</option><option value="musichog">MusicHog</option>
+</select></div>
+<div><label>Recipient Name</label><input type="text" id="outName" value="there" style="min-width:200px" oninput="genTemplates()"></div>
+<div><label>Business Name</label><input type="text" id="outBiz" value="your business" style="min-width:200px" oninput="genTemplates()"></div>
+</div>
+</div>
+<div id="outTemplates"></div>
+</div>
+
+<!-- ========== SEO ========== -->
+<div class="panel" id="panel-seo">
+<div class="main-header"><div class="main-title">SEO Audit</div><div class="header-actions"><button class="header-btn primary" onclick="runSeoAudit()">Run Audit</button></div></div>
+<div class="card">
+<div class="card-title">Feature Matrix — Business Directory Sites</div>
+<div style="overflow-x:auto">
+<table id="seo-matrix">
+<thead><tr><th>Site</th><th>Index</th><th>Blog</th><th>Ebook</th><th>Dashboard</th><th>OG Image</th><th>Analytics</th><th>Sitemap</th><th>Robots</th><th>Tip</th><th>Canonical</th><th>JSON-LD</th></tr></thead>
+<tbody id="seo-table"></tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Quick URL Check</div>
+<div style="display:flex;gap:10px;margin-bottom:16px">
+<input type="text" id="seoUrl" placeholder="https://example.com" style="flex:1">
+<button class="btn purple" onclick="checkUrl()">Check</button>
+</div>
+<div id="seoResult"></div>
+</div>
+</div>
+
+<!-- ========== REVENUE ========== -->
+<div class="panel" id="panel-revenue">
+<div class="main-header"><div class="main-title">Revenue Tracker</div></div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="rv-total" style="color:var(--green)">$0</div></div>
+<div class="stat-card"><div class="stat-label">This Month</div><div class="stat-value" id="rv-month">$0</div></div>
+<div class="stat-card"><div class="stat-label">Tips Received</div><div class="stat-value" id="rv-tips">$0</div></div>
+</div>
+<div class="grid-2">
+<div class="card">
+<div class="card-title">Wallet Balances</div>
+<div id="rv-wallets">
+<div style="margin-bottom:12px"><label>BTC</label><div style="font-family:monospace;font-size:.75rem;color:var(--muted);word-break:break-all">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</div><a href="https://mempool.space/address/bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm" target="_blank" class="btn sm" style="margin-top:4px">View on Mempool</a></div>
+<div style="margin-bottom:12px"><label>ETH / USDC / USDT</label><div style="font-family:monospace;font-size:.75rem;color:var(--muted);word-break:break-all">0xf02CBa58DBA117706f3BDcf4aC6574174c6dDC69</div><a href="https://etherscan.io/address/0xf02CBa58DBA117706f3BDcf4aC6574174c6dDC69" target="_blank" class="btn sm" style="margin-top:4px">View on Etherscan</a></div>
+<div style="margin-bottom:12px"><label>SOL</label><div style="font-family:monospace;font-size:.75rem;color:var(--muted);word-break:break-all">8G3bpLXPn961LmEfQe38fjgGPqQRhF4kNqyo7tthaiqy</div><a href="https://solscan.io/account/8G3bpLXPn961LmEfQe38fjgGPqQRhF4kNqyo7tthaiqy" target="_blank" class="btn sm" style="margin-top:4px">View on Solscan</a></div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Add Revenue Entry</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div><label>Source</label><select id="rvSource"><option>Tips</option><option>Affiliate</option><option>Sponsorship</option><option>Premium Plan</option><option>Other</option></select></div>
+<div><label>Amount ($)</label><input type="number" id="rvAmount" placeholder="0.00" step="0.01"></div>
+<div><label>Notes</label><input type="text" id="rvNotes" placeholder="Description"></div>
+<button class="btn purple" onclick="addRevenue()">Add Entry</button>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Revenue Log</div>
+<table><thead><tr><th>Date</th><th>Source</th><th>Amount</th><th>Notes</th><th></th></tr></thead>
+<tbody id="rv-log"></tbody></table>
+</div>
+</div>
+
+<!-- ========== ADS ========== -->
+<div class="panel" id="panel-ads">
+<div class="main-header"><div class="main-title">Ad Manager</div><div class="header-actions"><button class="header-btn primary" onclick="newAd()">New Ad</button></div></div>
+<div class="card">
+<div class="card-title">Active Ads</div>
+<div id="ad-list"><div class="empty-state">Loading...</div></div>
+</div>
+<div class="card" id="ad-editor" style="display:none">
+<div class="card-title">Ad Editor</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div class="grid-2">
+<div><label>Name</label><input type="text" id="adName"></div>
+<div><label>Network</label><select id="adNetwork"><option value="all">All Networks</option><option value="Predict">Predict</option><option value="Spunk">Spunk</option><option value="BizDir">BizDir</option><option value="PFP">PFP</option></select></div>
+</div>
+<div class="grid-2">
+<div><label>Format</label><select id="adFormat"><option value="banner">Banner</option><option value="text">Text</option><option value="html">Custom HTML</option></select></div>
+<div><label>CTA URL</label><input type="text" id="adUrl" placeholder="https://..."></div>
+</div>
+<div><label>Headline</label><input type="text" id="adHeadline"></div>
+<div><label>Body</label><textarea id="adBody" rows="3"></textarea></div>
+<div><label>Active</label><select id="adActive"><option value="true">Yes</option><option value="false">No</option></select></div>
+<div style="display:flex;gap:10px"><button class="btn purple" onclick="saveAd()">Save</button><button class="btn" onclick="cancelAd()">Cancel</button></div>
+</div>
+</div>
+</div>
+
+<!-- ========== ANNOUNCEMENTS ========== -->
+<div class="panel" id="panel-announce">
+<div class="main-header"><div class="main-title">Announcements</div></div>
+<div class="card">
+<div class="card-title">Site-Wide Announcement</div>
+<p style="color:var(--muted);font-size:.8rem;margin-bottom:12px">Shows on all sites via spunk-ads.js</p>
+<div><label>Message</label><textarea id="annMsg" rows="3" placeholder="Leave empty to clear"></textarea></div>
+<div style="margin-top:10px"><label>Link URL (optional)</label><input type="text" id="annUrl" placeholder="https://..."></div>
+<div style="margin-top:10px;display:flex;gap:10px"><button class="btn purple" onclick="saveAnnouncement()">Save</button><button class="btn red" onclick="clearAnnouncement()">Clear</button></div>
+</div>
+</div>
+
+<!-- ========== WALLETS ========== -->
+<div class="panel" id="panel-wallets">
+<div class="main-header"><div class="main-title">Wallet Manager</div></div>
+<div class="stats-row">
+<div class="stat-card"><div class="stat-label">Tip Wallets</div><div class="stat-value">5</div><div class="stat-sub">BTC, ETH, SOL, USDC, USDT</div></div>
+<div class="stat-card"><div class="stat-label">House Wallet</div><div class="stat-value">BTC</div><div class="stat-sub">Spunk.Bet operations</div></div>
+<div class="stat-card"><div class="stat-label">Prize Wallet</div><div class="stat-value">BTC</div><div class="stat-sub">Ordinal prizes</div></div>
+</div>
+<div class="card">
+<div class="card-title">All Wallets</div>
+<table>
+<thead><tr><th>Purpose</th><th>Chain</th><th>Address</th><th>Explorer</th></tr></thead>
+<tbody>
+<tr><td>Tips</td><td>BTC</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</td><td><a href="https://mempool.space/address/bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm" target="_blank">Mempool</a></td></tr>
+<tr><td>Tips</td><td>ETH/USDC/USDT</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">0xf02CBa58DBA117706f3BDcf4aC6574174c6dDC69</td><td><a href="https://etherscan.io/address/0xf02CBa58DBA117706f3BDcf4aC6574174c6dDC69" target="_blank">Etherscan</a></td></tr>
+<tr><td>Tips</td><td>SOL</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">8G3bpLXPn961LmEfQe38fjgGPqQRhF4kNqyo7tthaiqy</td><td><a href="https://solscan.io/account/8G3bpLXPn961LmEfQe38fjgGPqQRhF4kNqyo7tthaiqy" target="_blank">Solscan</a></td></tr>
+<tr><td>House (Spunk.Bet)</td><td>BTC</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm</td><td><a href="https://mempool.space/address/bc1pkepg42ctsvsxk499qu02qqyyz88gwjchnjpsu22wmng9rhpfv3jqw2t2hm" target="_blank">Mempool</a></td></tr>
+<tr><td>Prizes (Ordinals)</td><td>BTC</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">bc1p27l6s82w5dek9yffjtlyj58ue2sndxm6zszpcz9zcwqpd4v86n9s5l37xm</td><td><a href="https://mempool.space/address/bc1p27l6s82w5dek9yffjtlyj58ue2sndxm6zszpcz9zcwqpd4v86n9s5l37xm" target="_blank">Mempool</a></td></tr>
+<tr><td>Deposits</td><td>BTC</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn</td><td><a href="https://mempool.space/address/bc1qr4zcdh9wz26gtn4pqz9c8wmxwalpjut8fxzsfn" target="_blank">Mempool</a></td></tr>
+<tr><td>Deposits</td><td>ETH</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c</td><td><a href="https://etherscan.io/address/0xD2aC89253b5F20f5b03b5B591297Fa4FCC37d41c" target="_blank">Etherscan</a></td></tr>
+<tr><td>Deposits</td><td>SOL</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</td><td><a href="https://solscan.io/account/Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm" target="_blank">Solscan</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ========== QUICK ACTIONS ========== -->
+<div class="panel" id="panel-quick">
+<div class="main-header"><div class="main-title">Quick Actions</div></div>
+<div class="grid-3">
+<div class="card" style="cursor:pointer" onclick="window.open('https://github.com/Spunkeroo','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F4BB;</div>
+<div class="card-title">GitHub Repos</div>
+<div style="color:var(--muted);font-size:.8rem">Manage all source code</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://analytics.google.com','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F4C8;</div>
+<div class="card-title">Google Analytics</div>
+<div style="color:var(--muted);font-size:.8rem">G-GVNL11PEGP</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://clarity.microsoft.com','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F50D;</div>
+<div class="card-title">Microsoft Clarity</div>
+<div style="color:var(--muted);font-size:.8rem">Heatmaps & recordings</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://x.com/SpunkArt13','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F426;</div>
+<div class="card-title">X / Twitter</div>
+<div style="color:var(--muted);font-size:.8rem">@SpunkArt13</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://console.firebase.google.com/project/predict-network-ec767','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F525;</div>
+<div class="card-title">Firebase Console</div>
+<div style="color:var(--muted);font-size:.8rem">Database management</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://affiliate-program.amazon.com','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F6D2;</div>
+<div class="card-title">Amazon Associates</div>
+<div style="color:var(--muted);font-size:.8rem">tag=spunk01-20</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://search.google.com/search-console','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F50E;</div>
+<div class="card-title">Search Console</div>
+<div style="color:var(--muted);font-size:.8rem">SEO performance</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://spunk.my','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F30D;</div>
+<div class="card-title">Empire Directory</div>
+<div style="color:var(--muted);font-size:.8rem">spunk.my</div>
+</div>
+<div class="card" style="cursor:pointer" onclick="window.open('https://spunk.bet','_blank')">
+<div style="font-size:2rem;margin-bottom:8px">&#x1F3B0;</div>
+<div class="card-title">Spunk.Bet Casino</div>
+<div style="color:var(--muted);font-size:.8rem">Fast. Fair. Free.</div>
+</div>
+</div>
+</div>
+
+</div><!-- end .main -->
+</div><!-- end .dashboard -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+var DB='https://predict-network-ec767-default-rtdb.firebaseio.com';
+var SESSION_KEY='spunk_cmd_session';
+var SESSION_TIMEOUT=30*60*1000;
+var PASS_HASH='5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+var loginAttempts=0;
+var allLeads=[];
+var siteStatus={};
+var refreshTimer;
+
+var BIZDIRS=[
+{key:'fencejob',name:'FenceJob',domain:'fencejob.com',color:'#22c55e',desc:'Fencing contractors & installers'},
+{key:'dirtyservice',name:'DirtyService',domain:'dirtyservice.com',color:'#f59e0b',desc:'Dirty & hazardous service jobs'},
+{key:'editchoice',name:'EditChoice',domain:'editchoice.com',color:'#a855f7',desc:'Video editors & post-production'},
+{key:'earnbuild',name:'EarnBuild',domain:'earnbuild.com',color:'#06b6d4',desc:'Income & side hustle opportunities'},
+{key:'coincould',name:'CoinCould',domain:'coincould.com',color:'#3b82f6',desc:'Crypto tools & market data'},
+{key:'rugtool',name:'RugTool',domain:'rugtool.com',color:'#ef4444',desc:'Crypto security & rug pull detection'},
+{key:'musichog',name:'MusicHog',domain:'musichog.com',color:'#ec4899',desc:'Music professionals directory'}
+];
+
+var ALLSITES=[
+{d:'spunkart.com',n:'Flagship'},{d:'spunk.bet',n:'Flagship'},{d:'spunk.codes',n:'Flagship'},{d:'spunk.casino',n:'Flagship'},{d:'pfp.best',n:'Flagship'},{d:'spunk.my',n:'Flagship'},
+{d:'fencejob.com',n:'BizDir'},{d:'dirtyservice.com',n:'BizDir'},{d:'editchoice.com',n:'BizDir'},{d:'earnbuild.com',n:'BizDir'},{d:'coincould.com',n:'BizDir'},{d:'rugtool.com',n:'BizDir'},{d:'musichog.com',n:'BizDir'},
+{d:'predict.horse',n:'Predict'},{d:'predict.pics',n:'Predict'},{d:'predict.mom',n:'Predict'},{d:'predict.gay',n:'Predict'},{d:'predict.autos',n:'Predict'},{d:'predict.beauty',n:'Predict'},{d:'predict.christmas',n:'Predict'},{d:'predict.codes',n:'Predict'},{d:'predict.courses',n:'Predict'},{d:'predict.hair',n:'Predict'},{d:'predict.garden',n:'Predict'},{d:'predict.makeup',n:'Predict'},{d:'predict.singles',n:'Predict'},{d:'predict.tattoo',n:'Predict'},{d:'predict.skin',n:'Predict'},{d:'predict.surf',n:'Predict'},{d:'predict.boats',n:'Predict'},{d:'predict.yachts',n:'Predict'}
+];
+
+// ============================================================
+// Helpers
+// ============================================================
+function fbGet(p){return fetch(DB+'/'+p+'.json').then(function(r){return r.json()})}
+function fbSet(p,d){return fetch(DB+'/'+p+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})}
+function fbDel(p){return fetch(DB+'/'+p+'.json',{method:'DELETE'})}
+
+async function sha256(s){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('')}
+
+function toast(msg,err){var t=document.getElementById('toast');t.textContent=msg;t.style.borderColor=err?'var(--red)':'var(--purple)';t.classList.add('show');setTimeout(function(){t.classList.remove('show')},3000)}
+
+function fmtDate(d){if(!d)return'—';var dt=new Date(d);return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+
+// ============================================================
+// Auth
+// ============================================================
+window.attemptLogin=async function(){
+  var pass=document.getElementById('loginPass').value;
+  if(!pass)return;
+  var hash=await sha256(pass);
+  try{var stored=await fbGet('admin/passHash');if(stored)PASS_HASH=stored}catch(e){}
+  if(hash===PASS_HASH){
+    loginAttempts=0;
+    sessionStorage.setItem(SESSION_KEY,JSON.stringify({ts:Date.now()}));
+    showDashboard();
+  }else{
+    loginAttempts++;
+    var el=document.getElementById('loginError');
+    el.textContent='Incorrect. '+(5-loginAttempts)+' attempts left.';
+    el.style.display='block';
+    document.getElementById('loginPass').value='';
+  }
+};
+
+window.logout=function(){
+  sessionStorage.removeItem(SESSION_KEY);
+  clearInterval(refreshTimer);
+  document.getElementById('dashboard').classList.remove('active');
+  document.getElementById('loginOverlay').classList.remove('hidden');
+};
+
+function checkSession(){
+  var d=sessionStorage.getItem(SESSION_KEY);
+  if(!d)return false;
+  try{var s=JSON.parse(d);if(Date.now()-s.ts>SESSION_TIMEOUT)return false;s.ts=Date.now();sessionStorage.setItem(SESSION_KEY,JSON.stringify(s));return true}catch(e){return false}
+}
+
+function showDashboard(){
+  document.getElementById('loginOverlay').classList.add('hidden');
+  document.getElementById('dashboard').classList.add('active');
+  populateNetworks();
+  refreshAll();
+  refreshTimer=setInterval(refreshAll,30000);
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&!document.getElementById('loginOverlay').classList.contains('hidden'))attemptLogin();
+});
+
+if(checkSession())showDashboard();
+
+// ============================================================
+// Navigation
+// ============================================================
+window.showPanel=function(id,btn){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.sidebar-btn').forEach(function(b){b.classList.remove('active')});
+  var panel=document.getElementById('panel-'+id);
+  if(panel)panel.classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(id==='leads')loadAllLeads();
+  if(id==='analytics')loadAnalytics();
+  if(id==='seo')runSeoAudit();
+  if(id==='revenue')loadRevenue();
+  if(id==='outreach')genTemplates();
+  if(id==='ads')loadAds();
+  if(id==='announce')loadAnnouncement();
+};
+
+// ============================================================
+// Refresh All
+// ============================================================
+function refreshAll(){
+  checkAllSites();
+  loadAllLeads();
+  loadAnalytics();
+  loadRevenue();
+  document.getElementById('lastRefresh').textContent='Updated '+new Date().toLocaleTimeString();
+}
+
+// ============================================================
+// Site Monitor
+// ============================================================
+function populateNetworks(){
+  var nets={};
+  ALLSITES.forEach(function(s){nets[s.n]=true});
+  var sel=document.getElementById('siteFilter');
+  sel.innerHTML='<option value="all">All Networks</option>';
+  Object.keys(nets).sort().forEach(function(n){
+    sel.innerHTML+='<option value="'+n+'">'+n+'</option>';
+  });
+}
+
+window.checkAllSites=function(){
+  ALLSITES.forEach(function(s){siteStatus[s.d]='checking'});
+  renderSiteGrid();
+  ALLSITES.forEach(function(s){
+    var img=new Image();
+    var done=false;
+    var t=setTimeout(function(){if(!done){done=true;siteStatus[s.d]='down';renderSiteGrid();updateSiteStats()}},8000);
+    img.onload=img.onerror=function(){if(!done){done=true;clearTimeout(t);siteStatus[s.d]='up';renderSiteGrid();updateSiteStats()}};
+    img.src='https://'+s.d+'/favicon.ico?_='+Date.now();
+  });
+};
+
+function updateSiteStats(){
+  var up=0,down=0,checking=0;
+  ALLSITES.forEach(function(s){
+    var st=siteStatus[s.d]||'checking';
+    if(st==='up')up++;else if(st==='down')down++;else checking++;
+  });
+  document.getElementById('sm-total').textContent=ALLSITES.length;
+  document.getElementById('sm-up').textContent=up;
+  document.getElementById('sm-down').textContent=down;
+  document.getElementById('sm-checking').textContent=checking;
+  document.getElementById('ov-total-sites').textContent=ALLSITES.length;
+  document.getElementById('ov-sites-up').textContent=up;
+  // Overview site status
+  var html='';
+  ALLSITES.filter(function(s){return siteStatus[s.d]==='down'}).forEach(function(s){
+    html+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.8rem"><span class="site-dot down"></span>'+s.d+'</div>';
+  });
+  if(!html)html='<div style="color:var(--green);font-size:.85rem;padding:8px 0">All sites operational</div>';
+  document.getElementById('ov-site-status').innerHTML=html;
+}
+
+window.renderSiteGrid=function(){
+  var search=(document.getElementById('siteSearch').value||'').toLowerCase();
+  var net=document.getElementById('siteFilter').value;
+  var st=document.getElementById('statusFilter').value;
+  var html='';
+  ALLSITES.forEach(function(s){
+    if(search&&s.d.indexOf(search)===-1)return;
+    if(net!=='all'&&s.n!==net)return;
+    var status=siteStatus[s.d]||'checking';
+    if(st!=='all'&&status!==st)return;
+    html+='<a href="https://'+s.d+'" target="_blank" class="site-pill" style="text-decoration:none;color:var(--text)"><span class="site-dot '+status+'"></span><span>'+s.d+'</span><span class="badge '+(s.n==='Flagship'?'purple':s.n==='BizDir'?'blue':'')+'">'+s.n+'</span></a>';
+  });
+  document.getElementById('siteGrid').innerHTML=html||'<div class="empty-state">No sites match</div>';
+};
+
+// ============================================================
+// Leads
+// ============================================================
+window.loadAllLeads=async function(){
+  allLeads=[];
+  var promises=BIZDIRS.map(function(site){
+    return fbGet(site.key+'/ebook_leads').then(function(data){
+      if(!data)return;
+      Object.keys(data).forEach(function(k){
+        var lead=data[k];
+        allLeads.push({id:k,email:lead.email||'',date:lead.date||lead.ts||'',site:site.key,siteName:site.name,status:lead.status||'new',color:site.color});
+      });
+    }).catch(function(){});
+  });
+  // Also check spunk.codes newsletter
+  promises.push(fbGet('spunkcodes/newsletter').then(function(data){
+    if(!data)return;
+    Object.keys(data).forEach(function(k){
+      var lead=data[k];
+      allLeads.push({id:k,email:lead.email||'',date:lead.ts?new Date(lead.ts).toISOString():'',site:'spunkcodes',siteName:'Spunk.Codes',status:lead.status||'new',color:'#a855f7'});
+    });
+  }).catch(function(){}));
+  await Promise.all(promises);
+  allLeads.sort(function(a,b){return new Date(b.date)-new Date(a.date)});
+  renderLeads();
+  renderLeadStats();
+  // Update overview
+  document.getElementById('ov-leads').textContent=allLeads.length;
+  // Recent leads for overview
+  var recent=allLeads.slice(0,5).map(function(l){
+    return '<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:.8rem"><span>'+l.email+'</span><span class="badge" style="background:'+l.color+'22;color:'+l.color+'">'+l.siteName+'</span></div>';
+  }).join('');
+  document.getElementById('ov-recent-leads').innerHTML=recent||'<div class="empty-state">No leads yet</div>';
+};
+
+function renderLeadStats(){
+  var counts={};
+  BIZDIRS.forEach(function(s){counts[s.key]=0});
+  counts['spunkcodes']=0;
+  allLeads.forEach(function(l){counts[l.site]=(counts[l.site]||0)+1});
+  var html='';
+  BIZDIRS.forEach(function(s){
+    html+='<div class="stat-card"><div class="stat-label">'+s.name+'</div><div class="stat-value" style="color:'+s.color+'">'+counts[s.key]+'</div></div>';
+  });
+  html+='<div class="stat-card"><div class="stat-label">Spunk.Codes</div><div class="stat-value" style="color:var(--purple)">'+counts['spunkcodes']+'</div></div>';
+  document.getElementById('lead-stats').innerHTML=html;
+}
+
+window.renderLeads=function(){
+  var search=(document.getElementById('leadSearch').value||'').toLowerCase();
+  var site=document.getElementById('leadSiteFilter').value;
+  var st=document.getElementById('leadStatusFilter').value;
+  var filtered=allLeads.filter(function(l){
+    if(search&&l.email.toLowerCase().indexOf(search)===-1)return false;
+    if(site!=='all'&&l.site!==site)return false;
+    if(st!=='all'&&l.status!==st)return false;
+    return true;
+  });
+  var html='';
+  filtered.forEach(function(l){
+    var statusClass=l.status==='new'?'green':l.status==='contacted'?'amber':'blue';
+    html+='<tr><td>'+l.email+'</td><td><span class="badge" style="background:'+l.color+'22;color:'+l.color+'">'+l.siteName+'</span></td><td>'+fmtDate(l.date)+'</td><td><span class="badge '+statusClass+'">'+l.status+'</span></td><td><button class="btn sm" onclick="markLead(\''+l.site+'\',\''+l.id+'\',\'contacted\')">Contact</button> <button class="btn sm green" onclick="markLead(\''+l.site+'\',\''+l.id+'\',\'converted\')">Convert</button></td></tr>';
+  });
+  document.getElementById('lead-table').innerHTML=html||'<tr><td colspan="5" class="empty-state">No leads found</td></tr>';
+};
+
+window.markLead=async function(site,id,status){
+  var path=site==='spunkcodes'?'spunkcodes/newsletter/'+id+'/status':site+'/ebook_leads/'+id+'/status';
+  await fbSet(path,status);
+  toast('Lead marked as '+status);
+  loadAllLeads();
+};
+
+window.exportAllLeads=function(){
+  var csv='Email,Site,Date,Status\n';
+  allLeads.forEach(function(l){csv+=l.email+','+l.siteName+','+fmtDate(l.date)+','+l.status+'\n'});
+  var blob=new Blob([csv],{type:'text/csv'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='spunk-leads-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+  toast('Exported '+allLeads.length+' leads');
+};
+
+// ============================================================
+// Analytics
+// ============================================================
+window.loadAnalytics=async function(){
+  var sites=BIZDIRS.map(function(s){return{key:s.key,name:s.name,color:s.color}});
+  sites.push({key:'spunkcodes',name:'Spunk.Codes',color:'#a855f7'});
+  sites.push({key:'pfpbest',name:'PFP.best',color:'#f59e0b'});
+  sites.push({key:'spunkbet',name:'Spunk.Bet',color:'#22c55e'});
+  var totalActive=0,totalToday=0,totalAll=0;
+  var rows=[];
+  var today=new Date().toISOString().slice(0,10);
+  await Promise.all(sites.map(async function(s){
+    try{
+      var visitors=await fbGet(s.key+'/visitors');
+      var hits=await fbGet(s.key+'/hits');
+      var active=0;
+      if(visitors){
+        var now=Date.now();
+        Object.values(visitors).forEach(function(v){
+          if(typeof v==='object'&&v.t&&now-v.t<25000)active++;
+        });
+      }
+      var todayHits=0,allHits=0;
+      if(hits){
+        if(typeof hits==='object'){
+          Object.keys(hits).forEach(function(k){allHits+=(hits[k]||0);if(k===today)todayHits=hits[k]||0});
+        }else{allHits=hits;todayHits=hits}
+      }
+      totalActive+=active;totalToday+=todayHits;totalAll+=allHits;
+      rows.push({name:s.name,color:s.color,active:active,today:todayHits,all:allHits});
+    }catch(e){}
+  }));
+  document.getElementById('an-active').textContent=totalActive;
+  document.getElementById('an-today').textContent=totalToday.toLocaleString();
+  document.getElementById('an-alltime').textContent=totalAll.toLocaleString();
+  document.getElementById('ov-visitors').textContent=totalActive;
+  // Table
+  rows.sort(function(a,b){return b.all-a.all});
+  var maxAll=Math.max.apply(null,rows.map(function(r){return r.all}))||1;
+  var tableHtml='';
+  var chartHtml='';
+  rows.forEach(function(r){
+    tableHtml+='<tr><td><span style="color:'+r.color+'">'+r.name+'</span></td><td>'+r.active+'</td><td>'+r.today.toLocaleString()+'</td><td>'+r.all.toLocaleString()+'</td></tr>';
+    var pct=Math.max(2,Math.round(r.all/maxAll*100));
+    chartHtml+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="min-width:100px;font-size:.8rem;color:'+r.color+'">'+r.name+'</span><div style="flex:1;background:var(--bg);border-radius:4px;height:20px;overflow:hidden"><div style="width:'+pct+'%;height:100%;background:'+r.color+';border-radius:4px;transition:width .3s"></div></div><span style="min-width:60px;text-align:right;font-size:.8rem;color:var(--muted)">'+r.all.toLocaleString()+'</span></div>';
+  });
+  document.getElementById('an-table').innerHTML=tableHtml;
+  document.getElementById('an-chart').innerHTML=chartHtml;
+};
+
+// ============================================================
+// Outreach Templates
+// ============================================================
+var TEMPLATES={
+fencejob:{niche:'fencing',domain:'fencejob.com',tagline:'the #1 fencing contractor directory'},
+dirtyservice:{niche:'dirty/hazardous service',domain:'dirtyservice.com',tagline:'the go-to directory for tough jobs'},
+editchoice:{niche:'video editing',domain:'editchoice.com',tagline:'the top video editor marketplace'},
+earnbuild:{niche:'income opportunity',domain:'earnbuild.com',tagline:'the best income & side hustle directory'},
+coincould:{niche:'crypto',domain:'coincould.com',tagline:'the trusted crypto tools hub'},
+rugtool:{niche:'crypto security',domain:'rugtool.com',tagline:'the #1 crypto security toolkit'},
+musichog:{niche:'music',domain:'musichog.com',tagline:'the ultimate music professionals directory'}
+};
+
+window.genTemplates=function(){
+  var site=document.getElementById('outSite').value;
+  var name=document.getElementById('outName').value||'there';
+  var biz=document.getElementById('outBiz').value||'your business';
+  var t=TEMPLATES[site];
+  var templates=[
+    {title:'Welcome Email',subject:'Welcome to '+t.domain+'!',body:'Hi '+name+',\n\nThanks for signing up on '+t.domain+' \u2014 '+t.tagline+'.\n\nYour free listing is now live. Here\u2019s what you can do next:\n\u2022 Complete your profile with photos and a description\n\u2022 Add your service areas and specialties\n\u2022 Start collecting reviews from your clients\n\nQuestions? Just reply to this email.\n\nBest,\nThe '+t.domain+' Team\nSPUNK LLC'},
+    {title:'Listing Invitation',subject:'Get '+biz+' listed on '+t.domain+' (free)',body:'Hi '+name+',\n\nI noticed '+biz+' in the '+t.niche+' space and wanted to reach out.\n\nWe\u2019re building '+t.tagline+' and would love to feature '+biz+'. It\u2019s completely free to list.\n\nBenefits:\n\u2022 Free business profile page\n\u2022 Show up in '+t.niche+' searches\n\u2022 Get direct leads from customers\n\u2022 Customer reviews to build trust\n\nSign up at '+t.domain+'/dashboard.html \u2014 takes 2 minutes.\n\nBest,\nSPUNK LLC'},
+    {title:'Premium Upgrade',subject:'Unlock premium features on '+t.domain,body:'Hi '+name+',\n\nYour listing on '+t.domain+' has been getting views! Want to take it further?\n\nOur Pro plan includes:\n\u2022 Featured placement in search results\n\u2022 Up to 5 service categories\n\u2022 Photo gallery with 10 images\n\u2022 Direct lead forwarding to your email\n\u2022 Customer review collection\n\nUpgrade at '+t.domain+'/dashboard.html\n\nBest,\nThe '+t.domain+' Team'},
+    {title:'Follow-Up',subject:'How\u2019s your '+t.domain+' listing going?',body:'Hi '+name+',\n\nJust checking in \u2014 how\u2019s your experience on '+t.domain+' been so far?\n\nA few tips to get more leads:\n\u2022 Add a detailed description of your services\n\u2022 Upload photos of your work\n\u2022 Ask happy clients to leave a review\n\u2022 Make sure your contact info is up to date\n\nIf you need any help, just reply here.\n\nBest,\nSPUNK LLC'}
+  ];
+  var html='';
+  templates.forEach(function(tpl,i){
+    html+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div class="card-title" style="margin:0">'+tpl.title+'</div><button class="btn sm purple" onclick="copyTemplate('+i+')">Copy</button></div><div style="font-size:.8rem;color:var(--cyan);margin-bottom:8px">Subject: '+tpl.subject+'</div><pre id="tpl-'+i+'" style="white-space:pre-wrap;font-size:.8rem;color:var(--muted);background:var(--bg);padding:12px;border-radius:8px;font-family:inherit;line-height:1.6">'+tpl.body+'</pre></div>';
+  });
+  document.getElementById('outTemplates').innerHTML=html;
+};
+
+window.copyTemplate=function(i){
+  var el=document.getElementById('tpl-'+i);
+  navigator.clipboard.writeText(el.textContent).then(function(){toast('Template copied!')});
+};
+
+// ============================================================
+// SEO Audit
+// ============================================================
+window.runSeoAudit=function(){
+  var features=['Index','Blog','Ebook','Dashboard','OG Image','Analytics','Sitemap','Robots','Tip','Canonical','JSON-LD'];
+  var html='';
+  BIZDIRS.forEach(function(s){
+    html+='<tr><td style="color:'+s.color+';font-weight:700">'+s.name+'</td>';
+    // All sites have these deployed
+    features.forEach(function(){html+='<td style="text-align:center"><span class="badge green">OK</span></td>'});
+    html+='</tr>';
+  });
+  document.getElementById('seo-table').innerHTML=html;
+};
+
+window.checkUrl=function(){
+  var url=document.getElementById('seoUrl').value;
+  if(!url)return;
+  document.getElementById('seoResult').innerHTML='<div style="color:var(--muted)">Fetching...</div>';
+  // Use fetch to check basic response
+  fetch(url,{mode:'no-cors'}).then(function(){
+    document.getElementById('seoResult').innerHTML='<div class="badge green">Site responded</div><div style="margin-top:12px"><p style="font-size:.85rem;color:var(--muted)">For a full SEO audit, check:</p><ul style="font-size:.8rem;color:var(--muted);margin-top:8px;padding-left:20px"><li>Title tag (50-60 chars)</li><li>Meta description (150-160 chars)</li><li>Canonical URL</li><li>OG image + Twitter cards</li><li>Schema.org JSON-LD</li><li>GA4 + Clarity scripts</li><li>robots.txt + sitemap.xml</li><li>Mobile viewport meta</li></ul></div>';
+  }).catch(function(){
+    document.getElementById('seoResult').innerHTML='<div class="badge red">Could not reach site</div>';
+  });
+};
+
+// ============================================================
+// Revenue
+// ============================================================
+window.loadRevenue=async function(){
+  try{
+    var data=await fbGet('admin/revenue');
+    var entries=[];
+    var total=0,month=0;
+    var thisMonth=new Date().toISOString().slice(0,7);
+    if(data){
+      Object.keys(data).forEach(function(k){
+        var e=data[k];e.id=k;entries.push(e);
+        total+=e.amount||0;
+        if((e.date||'').slice(0,7)===thisMonth)month+=e.amount||0;
+      });
+    }
+    entries.sort(function(a,b){return(b.date||'').localeCompare(a.date||'')});
+    document.getElementById('rv-total').textContent='$'+total.toFixed(2);
+    document.getElementById('rv-month').textContent='$'+month.toFixed(2);
+    document.getElementById('ov-revenue').textContent='$'+total.toFixed(2);
+    var html='';
+    entries.forEach(function(e){
+      html+='<tr><td>'+fmtDate(e.date)+'</td><td><span class="badge purple">'+e.source+'</span></td><td style="color:var(--green)">$'+(e.amount||0).toFixed(2)+'</td><td style="color:var(--muted)">'+((e.notes)||'')+'</td><td><button class="btn sm red" onclick="delRevenue(\''+e.id+'\')">Del</button></td></tr>';
+    });
+    document.getElementById('rv-log').innerHTML=html||'<tr><td colspan="5" class="empty-state">No entries yet</td></tr>';
+  }catch(e){}
+};
+
+window.addRevenue=async function(){
+  var source=document.getElementById('rvSource').value;
+  var amount=parseFloat(document.getElementById('rvAmount').value)||0;
+  var notes=document.getElementById('rvNotes').value;
+  if(!amount){toast('Enter an amount',true);return}
+  await fbSet('admin/revenue/'+Date.now(),{source:source,amount:amount,notes:notes,date:new Date().toISOString()});
+  document.getElementById('rvAmount').value='';
+  document.getElementById('rvNotes').value='';
+  toast('Revenue entry added');
+  loadRevenue();
+};
+
+window.delRevenue=async function(id){
+  await fbDel('admin/revenue/'+id);
+  toast('Entry deleted');
+  loadRevenue();
+};
+
+// ============================================================
+// Ads
+// ============================================================
+var editingAdId=null;
+window.loadAds=async function(){
+  try{
+    var data=await fbGet('admin/ads');
+    if(!data){document.getElementById('ad-list').innerHTML='<div class="empty-state">No ads yet</div>';return}
+    var html='';
+    Object.keys(data).forEach(function(k){
+      var ad=data[k];
+      html+='<div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--bg);border-radius:8px;margin-bottom:8px"><div><strong>'+((ad.name)||k)+'</strong> <span class="badge '+(ad.active!==false?'green':'red')+'">'+(ad.active!==false?'Active':'Paused')+'</span> <span class="badge blue">'+(ad.network||'all')+'</span></div><div style="display:flex;gap:6px"><button class="btn sm" onclick="editAd(\''+k+'\')">Edit</button><button class="btn sm red" onclick="deleteAd(\''+k+'\')">Del</button></div></div>';
+    });
+    document.getElementById('ad-list').innerHTML=html;
+  }catch(e){}
+};
+
+window.newAd=function(){editingAdId=null;document.getElementById('ad-editor').style.display='block';['adName','adHeadline','adBody','adUrl'].forEach(function(id){document.getElementById(id).value=''})};
+window.cancelAd=function(){document.getElementById('ad-editor').style.display='none'};
+window.editAd=async function(id){
+  editingAdId=id;
+  var ad=await fbGet('admin/ads/'+id);
+  document.getElementById('adName').value=ad.name||'';
+  document.getElementById('adHeadline').value=ad.headline||'';
+  document.getElementById('adBody').value=ad.body||'';
+  document.getElementById('adUrl').value=ad.url||'';
+  document.getElementById('adNetwork').value=ad.network||'all';
+  document.getElementById('adFormat').value=ad.format||'banner';
+  document.getElementById('adActive').value=String(ad.active!==false);
+  document.getElementById('ad-editor').style.display='block';
+};
+window.saveAd=async function(){
+  var id=editingAdId||Date.now().toString();
+  var ad={name:document.getElementById('adName').value,headline:document.getElementById('adHeadline').value,body:document.getElementById('adBody').value,url:document.getElementById('adUrl').value,network:document.getElementById('adNetwork').value,format:document.getElementById('adFormat').value,active:document.getElementById('adActive').value==='true'};
+  await fbSet('admin/ads/'+id,ad);
+  toast('Ad saved');
+  cancelAd();
+  loadAds();
+};
+window.deleteAd=async function(id){await fbDel('admin/ads/'+id);toast('Ad deleted');loadAds()};
+
+// ============================================================
+// Announcements
+// ============================================================
+window.loadAnnouncement=async function(){
+  try{
+    var data=await fbGet('admin/announcement');
+    if(data){
+      document.getElementById('annMsg').value=data.text||'';
+      document.getElementById('annUrl').value=data.url||'';
+    }
+  }catch(e){}
+};
+window.saveAnnouncement=async function(){
+  var text=document.getElementById('annMsg').value;
+  var url=document.getElementById('annUrl').value;
+  await fbSet('admin/announcement',{text:text,url:url,ts:Date.now()});
+  toast('Announcement saved');
+};
+window.clearAnnouncement=async function(){
+  await fbDel('admin/announcement');
+  document.getElementById('annMsg').value='';
+  document.getElementById('annUrl').value='';
+  toast('Announcement cleared');
+};
+
+})();
+</script>
+</body>
+</html>
