@@ -366,7 +366,7 @@ const TECH_DB={
     {name:'Service Worker',color:'#ff8c00',test:h=>/serviceWorker\.register|navigator\.serviceWorker/i.test(h)},
     {name:'Viewport Meta',color:'#888',test:h=>/name="viewport"|name='viewport'/i.test(h)},
     {name:'Charset UTF-8',color:'#888',test:h=>/charset="?utf-8"?|charset='utf-8'/i.test(h)},
-    {name:'Favicon',color:'#888',test:h=>/rel="icon"|rel="shortcut icon"|rel='icon'|favicon/i.test(h)},
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟣</text></svg>">
     {name:'Apple Touch Icon',color:'#888',test:h=>/apple-touch-icon/i.test(h)},
   ],
 
