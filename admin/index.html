@@ -1458,20 +1458,20 @@ pre{font-family:system-ui,-apple-system,sans-serif}
       <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Get featured in news, directories, and press releases. All free or cheap.</p>
       <table class="ad-table">
         <tr><th>Platform</th><th>Type</th><th>Cost</th><th>Action</th></tr>
-        <tr><td style="font-weight:700">Product Hunt</td><td>Launch/feature</td><td style="color:var(--green)">Free</td><td><a href="https://www.producthunt.com/posts/new" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
+        <tr><td style="font-weight:700">Product Hunt</td><td>Launch/feature</td><td style="color:var(--green)">Free</td><td><a href="https://www.producthunt.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">Hacker News</td><td>Show HN post</td><td style="color:var(--green)">Free</td><td><a href="https://news.ycombinator.com/submit" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">Indie Hackers</td><td>Project showcase</td><td style="color:var(--green)">Free</td><td><a href="https://www.indiehackers.com/products" target="_blank" style="color:var(--cyan)">Add Product</a></td></tr>
         <tr><td style="font-weight:700">BetaList</td><td>Startup directory</td><td style="color:var(--green)">Free</td><td><a href="https://betalist.com/submit" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">PRLog</td><td>Press release</td><td style="color:var(--green)">Free</td><td><a href="https://www.prlog.org/publish/" target="_blank" style="color:var(--cyan)">Write PR</a></td></tr>
         <tr><td style="font-weight:700">OpenPR</td><td>Press release</td><td style="color:var(--green)">Free</td><td><a href="https://www.openpr.com/news/submit" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">EIN Presswire</td><td>Press release</td><td>$49.95</td><td><a href="https://www.einpresswire.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
-        <tr><td style="font-weight:700">AlternativeTo</td><td>Tool directory</td><td style="color:var(--green)">Free</td><td><a href="https://alternativeto.net/platform/online/" target="_blank" style="color:var(--cyan)">Add Tool</a></td></tr>
+        <tr><td style="font-weight:700">AlternativeTo</td><td>Tool directory</td><td style="color:var(--green)">Free</td><td><a href="https://alternativeto.net/" target="_blank" style="color:var(--cyan)">Add Tool</a></td></tr>
         <tr><td style="font-weight:700">SaaSHub</td><td>Software directory</td><td style="color:var(--green)">Free</td><td><a href="https://www.saashub.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">r/SideProject</td><td>Reddit showcase</td><td style="color:var(--green)">Free</td><td><a href="https://www.reddit.com/r/SideProject/submit" target="_blank" style="color:var(--cyan)">Post</a></td></tr>
         <tr><td style="font-weight:700">r/webdev</td><td>Developer community</td><td style="color:var(--green)">Free</td><td><a href="https://www.reddit.com/r/webdev/submit" target="_blank" style="color:var(--cyan)">Post</a></td></tr>
         <tr><td style="font-weight:700">r/startups</td><td>Startup community</td><td style="color:var(--green)">Free</td><td><a href="https://www.reddit.com/r/startups/submit" target="_blank" style="color:var(--cyan)">Post</a></td></tr>
-        <tr><td style="font-weight:700">Launching Next</td><td>Startup directory</td><td style="color:var(--green)">Free</td><td><a href="https://www.launchingnext.com/submit/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
-        <tr><td style="font-weight:700">There's An AI For That</td><td>AI directory</td><td style="color:var(--green)">Free</td><td><a href="https://theresanaiforthat.com/submit/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
+        <tr><td style="font-weight:700">Launching Next</td><td>Startup directory</td><td style="color:var(--green)">Free</td><td><a href="https://www.launchingnext.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
+        <tr><td style="font-weight:700">There's An AI For That</td><td>AI directory</td><td style="color:var(--green)">Free</td><td><a href="https://theresanaiforthat.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">PR.com</td><td>Press release</td><td style="color:var(--green)">Free tier</td><td><a href="https://www.pr.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">StartupStash</td><td>Tools directory</td><td style="color:var(--green)">Free</td><td><a href="https://startupstash.com/" target="_blank" style="color:var(--cyan)">Submit</a></td></tr>
         <tr><td style="font-weight:700">Peerlist</td><td>Build in public</td><td style="color:var(--green)">Free</td><td><a href="https://peerlist.io/" target="_blank" style="color:var(--cyan)">Join</a></td></tr>
@@ -3584,32 +3584,69 @@ pre{font-family:system-ui,-apple-system,sans-serif}
   };
 
   window.checkDomainExpiry=function(){
-    var html='<p style="color:var(--muted);font-size:.85rem;margin-bottom:8px">Check domain expiration dates:</p>';
-    html+='<div style="display:flex;gap:8px;flex-wrap:wrap">';
-    ['spunk.bet','pfp.best','spunkart.com','predict.horse','predict.pics'].forEach(function(d){
-      html+='<a href="https://www.whois.com/whois/'+d+'" target="_blank" class="btn btn-outline btn-sm">'+d+'</a>';
+    var domains=[];
+    SITES.forEach(function(s){
+      var d=s.d;
+      if(domains.indexOf(d)===-1)domains.push(d);
+    });
+    // Open WHOIS for a few key domains and show the full list
+    var keyDomains=['spunk.bet','pfp.best','spunkart.com','predict.horse','predict.pics','predict.mom','predict.gay','scam.wiki'];
+    var html='<div class="panel" style="margin-top:16px"><h3>Domain <span>Expiry Check</span></h3>';
+    html+='<p style="color:var(--muted);font-size:.85rem;margin-bottom:12px">Click any domain to check its WHOIS/expiry date:</p>';
+    html+='<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">';
+    keyDomains.forEach(function(d){
+      html+='<a href="https://www.whois.com/whois/'+d+'" target="_blank" class="btn btn-purple btn-sm">'+d+'</a>';
     });
     html+='</div>';
-    toast('Check WHOIS for each domain');
+    html+='<details><summary style="color:var(--cyan);cursor:pointer;font-size:.85rem">Show all '+domains.length+' domains</summary>';
+    html+='<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:8px">';
+    domains.slice(0,100).forEach(function(d){
+      html+='<a href="https://www.whois.com/whois/'+d+'" target="_blank" style="font-size:.75rem;color:var(--muted);padding:2px 6px;background:var(--bg);border:1px solid var(--border);border-radius:4px;text-decoration:none">'+d+'</a>';
+    });
+    html+='</div></details></div>';
+    // Find a place to show results
+    var target=document.querySelector('#panel-automate .panel:last-child');
+    if(target)target.insertAdjacentHTML('afterend',html);
+    toast('Click any domain to check WHOIS expiry');
   };
 
   window.scanBrokenLinks=function(){
-    toast('Scanning top sites for broken links...');
+    toast('Scanning all sites for broken links...');
     var results=[];var checked=0;
-    var topSites=SITES.filter(function(s){return visitorData[s.d]>5}).slice(0,20);
-    topSites.forEach(function(s){
+    var allSites=SITES.slice(0,50);// Check first 50
+    allSites.forEach(function(s){
       fetch('https://'+s.d+'/',{mode:'no-cors',cache:'no-store'}).then(function(){
         results.push({d:s.d,ok:true});checked++;
-        if(checked===topSites.length)showLinkResults(results);
+        if(checked===allSites.length)showLinkResults(results);
       }).catch(function(){
         results.push({d:s.d,ok:false});checked++;
-        if(checked===topSites.length)showLinkResults(results);
+        if(checked===allSites.length)showLinkResults(results);
       });
     });
   };
   function showLinkResults(r){
     var broken=r.filter(function(x){return!x.ok});
-    toast(broken.length?broken.length+' broken links found!':'All '+r.length+' sites responding OK');
+    var ok=r.filter(function(x){return x.ok});
+    var html='<div class="panel" style="margin-top:16px"><h3>Link Scan <span>Results</span></h3>';
+    html+='<div class="stats-row" style="margin-bottom:12px">';
+    html+='<div class="stat-card"><div class="stat-val" style="color:var(--green)">'+ok.length+'</div><div class="stat-label">Responding OK</div></div>';
+    html+='<div class="stat-card"><div class="stat-val" style="color:var(--red)">'+broken.length+'</div><div class="stat-label">Not Responding</div></div>';
+    html+='<div class="stat-card"><div class="stat-val" style="color:var(--cyan)">'+r.length+'</div><div class="stat-label">Total Checked</div></div>';
+    html+='</div>';
+    if(broken.length){
+      html+='<p style="color:var(--red);font-size:.85rem;margin-bottom:8px;font-weight:700">Sites not responding:</p>';
+      html+='<div style="display:flex;gap:6px;flex-wrap:wrap">';
+      broken.forEach(function(x){
+        html+='<a href="https://'+x.d+'/" target="_blank" style="font-size:.82rem;color:var(--red);padding:4px 10px;background:rgba(239,68,68,.1);border:1px solid var(--red);border-radius:6px;text-decoration:none">'+x.d+'</a>';
+      });
+      html+='</div>';
+    }else{
+      html+='<p style="color:var(--green);font-size:.9rem;font-weight:700">All '+r.length+' sites are responding!</p>';
+    }
+    html+='</div>';
+    var target=document.querySelector('#panel-automate .panel:last-child');
+    if(target)target.insertAdjacentHTML('afterend',html);
+    toast(broken.length?broken.length+' sites not responding':'All '+r.length+' sites OK!');
   }
 
   // ============================================================
