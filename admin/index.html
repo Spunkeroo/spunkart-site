@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SPUNK Admin Dashboard</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#06060a;--bg2:#0e0e16;--bg3:#161625;--border:#1e1e30;--text:#e8e8f0;--muted:#7878a0;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#a855f7;--blue:#3b82f6;--cyan:#06b6d4}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+
+/* Login */
+.login-overlay{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.login-overlay.hidden{display:none}
+.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:40px;max-width:400px;width:90%;text-align:center}
+.login-box h1{font-size:1.6rem;margin-bottom:8px;font-weight:900}
+.login-box h1 span{color:var(--purple)}
+.login-box p{color:var(--muted);font-size:0.85rem;margin-bottom:24px}
+.login-input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:1rem;margin-bottom:12px;font-family:inherit}
+.login-input:focus{outline:none;border-color:var(--purple)}
+.login-btn{width:100%;padding:12px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit}
+.login-btn:hover{opacity:0.9}
+.login-error{color:var(--red);font-size:0.85rem;margin-top:8px;display:none}
+
+/* Dashboard */
+.dashboard{display:none;padding:20px;max-width:1400px;margin:0 auto}
+.dashboard.active{display:block}
+
+/* Tabs */
+.tab-bar{display:flex;gap:4px;margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:0;overflow-x:auto}
+.tab{padding:10px 20px;background:transparent;border:none;color:var(--muted);font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--purple);border-bottom-color:var(--purple)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* Header */
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.dash-header h1{font-size:1.5rem;font-weight:900}
+.dash-header h1 span{color:var(--purple)}
+.header-actions{display:flex;gap:8px;align-items:center}
+.header-btn{padding:8px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.header-btn:hover{border-color:var(--purple)}
+.last-refresh{color:var(--muted);font-size:0.75rem}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stat-val{font-size:1.8rem;font-weight:900;color:var(--cyan)}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:4px}
+
+/* Controls */
+.controls{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.ctrl-input{flex:1;min-width:200px;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit}
+.ctrl-input:focus{outline:none;border-color:var(--purple)}
+.ctrl-select{padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit;cursor:pointer}
+
+/* Sites grid */
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px}
+.site-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;transition:all 0.2s}
+.site-card:hover{border-color:var(--purple);transform:translateY(-1px)}
+.site-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.site-name{font-weight:700;font-size:0.95rem}
+.site-badge{font-size:0.7rem;padding:3px 8px;border-radius:999px;font-weight:700}
+.badge-up{background:rgba(34,197,94,0.15);color:var(--green)}
+.badge-down{background:rgba(239,68,68,0.15);color:var(--red)}
+.badge-check{background:rgba(120,120,160,0.15);color:var(--muted)}
+.site-meta{color:var(--muted);font-size:0.75rem;margin-bottom:8px}
+.site-visitors{font-size:0.85rem;color:var(--amber);margin-bottom:8px}
+.site-links{display:flex;gap:6px;flex-wrap:wrap}
+.site-links a{font-size:0.72rem;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--cyan);text-decoration:none;transition:all 0.2s}
+.site-links a:hover{border-color:var(--cyan);color:#fff}
+
+/* Quick links */
+.quick-links{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
+.quick-links h3{margin-bottom:12px;font-size:1rem}
+.ql-grid{display:flex;flex-wrap:wrap;gap:8px}
+.ql-grid a{padding:8px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:600;transition:all 0.2s}
+.ql-grid a:hover{border-color:var(--purple);color:var(--purple)}
+
+/* Forms / Panels */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+.panel h3{margin-bottom:16px;font-size:1.1rem}
+.panel h3 span{color:var(--purple)}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:0.85rem;color:var(--muted);margin-bottom:6px;font-weight:600}
+.form-input{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit}
+.form-input:focus{outline:none;border-color:var(--purple)}
+.form-textarea{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.85rem;font-family:monospace;min-height:80px;resize:vertical}
+.form-textarea:focus{outline:none;border-color:var(--purple)}
+.form-select{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem;font-family:inherit}
+.form-row{display:flex;gap:12px;flex-wrap:wrap}
+.form-row .form-group{flex:1;min-width:200px}
+.btn{padding:10px 20px;border:none;border-radius:8px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-purple{background:var(--purple);color:#fff}
+.btn-green{background:var(--green);color:#000}
+.btn-red{background:var(--red);color:#fff}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn:hover{opacity:0.85}
+.btn+.btn{margin-left:8px}
+.msg{padding:10px 14px;border-radius:8px;font-size:0.85rem;margin-top:12px;display:none}
+.msg-ok{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3)}
+.msg-err{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3)}
+
+/* Ad slots table */
+.ad-table{width:100%;border-collapse:collapse;margin-top:12px}
+.ad-table th,.ad-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:0.85rem}
+.ad-table th{color:var(--muted);font-weight:600;font-size:0.78rem;text-transform:uppercase}
+.ad-table td{color:var(--text)}
+.ad-active{color:var(--green)}
+.ad-inactive{color:var(--muted)}
+.ad-preview{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:12px}
+
+.session-info{text-align:center;padding:20px;color:var(--muted);font-size:0.75rem}
+
+@media(max-width:600px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .sites-grid{grid-template-columns:1fr}
+  .dash-header{flex-direction:column;text-align:center}
+  .form-row{flex-direction:column}
+  .tab{padding:8px 12px;font-size:0.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <h1>SPUNK <span>Admin</span></h1>
+    <p>Secure dashboard for managing all SPUNK LLC sites</p>
+    <input type="password" class="login-input" id="loginPass" placeholder="Enter admin password" autocomplete="current-password" autofocus>
+    <button class="login-btn" onclick="attemptLogin()">Sign In</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <h1>SPUNK <span>Admin</span></h1>
+    <div class="header-actions">
+      <span class="last-refresh" id="lastRefresh">--</span>
+      <button class="header-btn" onclick="refreshAll()">Refresh</button>
+      <button class="header-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('sites',this)">Sites</button>
+    <button class="tab" onclick="switchTab('ads',this)">Ad Manager</button>
+    <button class="tab" onclick="switchTab('settings',this)">Settings</button>
+  </div>
+
+  <!-- ==================== SITES TAB ==================== -->
+  <div class="tab-panel active" id="panel-sites">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val" id="totalSites">--</div><div class="stat-label">Total Sites</div></div>
+      <div class="stat-card"><div class="stat-val" id="sitesUp" style="color:var(--green)">--</div><div class="stat-label">Up</div></div>
+      <div class="stat-card"><div class="stat-val" id="sitesDown" style="color:var(--red)">--</div><div class="stat-label">Down</div></div>
+      <div class="stat-card"><div class="stat-val" id="totalVisitors" style="color:var(--amber)">--</div><div class="stat-label">Visitors</div></div>
+      <div class="stat-card"><div class="stat-val" id="networkCount" style="color:var(--purple)">--</div><div class="stat-label">Networks</div></div>
+      <div class="stat-card"><div class="stat-val" id="activeAds" style="color:var(--cyan)">--</div><div class="stat-label">Active Ads</div></div>
+    </div>
+
+    <div class="quick-links">
+      <h3>Quick Links</h3>
+      <div class="ql-grid">
+        <a href="https://analytics.google.com/" target="_blank" rel="noopener">Google Analytics</a>
+        <a href="https://clarity.microsoft.com/" target="_blank" rel="noopener">MS Clarity</a>
+        <a href="https://console.firebase.google.com/project/predict-network-ec767" target="_blank" rel="noopener">Firebase</a>
+        <a href="https://github.com/Spunkeroo" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://search.google.com/search-console" target="_blank" rel="noopener">Search Console</a>
+        <a href="https://www.gumroad.com/dashboard" target="_blank" rel="noopener">Gumroad</a>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input type="text" class="ctrl-input" id="searchInput" placeholder="Search sites..." oninput="filterSites()">
+      <select class="ctrl-select" id="networkFilter" onchange="filterSites()"><option value="">All Networks</option></select>
+      <select class="ctrl-select" id="statusFilter" onchange="filterSites()">
+        <option value="">All Status</option>
+        <option value="up">Up</option>
+        <option value="down">Down</option>
+      </select>
+    </div>
+
+    <div class="sites-grid" id="sitesGrid"></div>
+  </div>
+
+  <!-- ==================== ADS TAB ==================== -->
+  <div class="tab-panel" id="panel-ads">
+    <div class="panel">
+      <h3>Ad <span>Manager</span></h3>
+      <p style="color:var(--muted);margin-bottom:16px;font-size:0.9rem">
+        Create and manage ad banners across all your sites. Ads are stored in Firebase and auto-loaded by every site every 10 seconds. No code changes needed — just create, activate, and earn.
+      </p>
+
+      <!-- Create/Edit Ad -->
+      <div style="border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px;background:var(--bg)">
+        <h4 style="margin-bottom:16px;font-size:0.95rem">Create / Edit Ad Slot</h4>
+        <input type="hidden" id="adEditId" value="">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Ad Name</label>
+            <input class="form-input" id="adName" placeholder="e.g. NordVPN Banner">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Position</label>
+            <select class="form-select" id="adPosition">
+              <option value="top">Top (above content)</option>
+              <option value="bottom">Bottom (above footer)</option>
+              <option value="sidebar">Sidebar / In-Content</option>
+              <option value="sticky">Sticky Bottom Bar</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Format / Size</label>
+            <select class="form-select" id="adFormat">
+              <option value="banner">Full-Width Banner</option>
+              <option value="leaderboard">Leaderboard (728x90)</option>
+              <option value="rect">Rectangle (300x250)</option>
+              <option value="square-sm">Square Small (200x200)</option>
+              <option value="square-md">Square Medium (250x250)</option>
+              <option value="square-lg">Square Large (300x300)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Image URL (optional — fills the block)</label>
+            <input class="form-input" id="adImage" placeholder="https://example.com/ad-image.png">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Destination URL (where the ad links to)</label>
+          <input class="form-input" id="adUrl" placeholder="https://nordvpn.com/?ref=spunkart">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Headline</label>
+            <input class="form-input" id="adHeadline" placeholder="Get 70% Off NordVPN">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Body Text</label>
+            <input class="form-input" id="adBody" placeholder="Protect your privacy with the #1 VPN">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">CTA Button Text</label>
+            <input class="form-input" id="adCta" placeholder="Get Deal" value="Learn More">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Background Color</label>
+            <input class="form-input" id="adBg" placeholder="#1a1a2e" value="#1a1a2e">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Accent Color</label>
+            <input class="form-input" id="adAccent" placeholder="#a855f7" value="#a855f7">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Show on Networks (comma-separated, or "all")</label>
+            <input class="form-input" id="adNetworks" placeholder="all" value="all">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select class="form-select" id="adActive">
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Custom HTML (optional — overrides headline/body/cta)</label>
+          <textarea class="form-textarea" id="adHtml" placeholder="<div>Your custom ad HTML here...</div>"></textarea>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn btn-purple" onclick="saveAd()">Save Ad</button>
+          <button class="btn btn-outline" onclick="clearAdForm()">Clear Form</button>
+          <button class="btn btn-outline" onclick="previewAd()">Preview</button>
+        </div>
+        <div class="msg" id="adMsg"></div>
+        <div class="ad-preview" id="adPreview" style="display:none;margin-top:16px"></div>
+      </div>
+
+      <!-- Active Ads -->
+      <h4 style="margin-bottom:12px;font-size:0.95rem">All Ad Slots</h4>
+      <div id="adsList">
+        <p style="color:var(--muted);font-size:0.85rem">Loading ads from Firebase...</p>
+      </div>
+    </div>
+
+    <!-- Revenue Tracker -->
+    <div class="panel">
+      <h3>Revenue <span>Tracker</span></h3>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Track clicks and impressions for each ad. Data updates every 10 seconds.</p>
+      <div id="revenueStats">
+        <p style="color:var(--muted);font-size:0.85rem">Loading stats...</p>
+      </div>
+    </div>
+
+    <!-- Pricing Guide -->
+    <div class="panel">
+      <h3>Ad Space <span>Pricing Guide</span></h3>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Suggested rates for selling ad space across your network:</p>
+      <table class="ad-table">
+        <tr><th>Position</th><th>Reach</th><th>Suggested Rate</th></tr>
+        <tr><td>Top Banner (all sites)</td><td>150+ sites</td><td>$200-500/month</td></tr>
+        <tr><td>Bottom Banner (all sites)</td><td>150+ sites</td><td>$100-300/month</td></tr>
+        <tr><td>Sticky Bottom Bar</td><td>150+ sites</td><td>$300-700/month</td></tr>
+        <tr><td>Single Network (e.g. Predict)</td><td>18 sites</td><td>$50-150/month</td></tr>
+        <tr><td>Single Site Sponsorship</td><td>1 site</td><td>$25-75/month</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ==================== SETTINGS TAB ==================== -->
+  <div class="tab-panel" id="panel-settings">
+    <div class="panel">
+      <h3>Change <span>Password</span></h3>
+      <p style="color:var(--muted);margin-bottom:16px;font-size:0.85rem">
+        Your password is hashed with SHA-256 and stored in Firebase. Never stored in plaintext.
+      </p>
+      <div class="form-group">
+        <label class="form-label">Current Password</label>
+        <input type="password" class="form-input" id="currentPass" placeholder="Enter current password">
+      </div>
+      <div class="form-group">
+        <label class="form-label">New Password (min 8 characters)</label>
+        <input type="password" class="form-input" id="newPass" placeholder="Enter new password">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Confirm New Password</label>
+        <input type="password" class="form-input" id="confirmPass" placeholder="Confirm new password">
+      </div>
+      <button class="btn btn-purple" onclick="changePassword()">Update Password</button>
+      <div class="msg" id="passMsg"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Global <span>Announcement</span></h3>
+      <p style="color:var(--muted);margin-bottom:12px;font-size:0.85rem">Set a message that appears on every site (e.g. maintenance notice, new feature announcement).</p>
+      <div class="form-group">
+        <label class="form-label">Announcement Text</label>
+        <input class="form-input" id="announcementText" placeholder="e.g. We're launching something big! Stay tuned...">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Background Color</label>
+          <input class="form-input" id="announceBg" value="#7c3aed" placeholder="#7c3aed">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select class="form-select" id="announceActive">
+            <option value="false">Inactive</option>
+            <option value="true">Active</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-purple" onclick="saveAnnouncement()">Save Announcement</button>
+      <div class="msg" id="announceMsg"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Session <span>Info</span></h3>
+      <p style="color:var(--muted);font-size:0.85rem">
+        Session timeout: 30 minutes of inactivity<br>
+        Login lockout: 5 failed attempts = 60s cooldown<br>
+        Auto-refresh: every 10 seconds<br>
+        Data storage: Firebase Realtime Database<br>
+        Password: SHA-256 hashed, stored in Firebase
+      </p>
+    </div>
+  </div>
+
+  <div class="session-info">SPUNK LLC Admin Dashboard &bull; Auto-refresh: 10s &bull; Session: 30 min timeout</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var DB = 'https://predict-network-ec767-default-rtdb.firebaseio.com';
+  var SESSION_KEY = 'spunk_admin_session';
+  var SESSION_TIMEOUT = 30 * 60 * 1000;
+  var REFRESH_MS = 10000;
+
+  // Default hash = "password" — will be overwritten by Firebase value on first load
+  var PASS_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+
+  var loginAttempts = 0;
+  var lockoutUntil = 0;
+  var refreshTimer = null;
+  var sessionTimer = null;
+  var siteStatus = {};
+  var visitorData = {};
+  var adsData = {};
+
+  // ============================================================
+  // Sites registry
+  // ============================================================
+  var SITES = [
+    {d:'predict.horse',n:'Predict',r:'predict-horse'},{d:'predict.pics',n:'Predict',r:'predict-pics'},{d:'predict.mom',n:'Predict',r:'predict-mom'},{d:'predict.gay',n:'Predict',r:'predict-gay'},{d:'predict.autos',n:'Predict',r:'predict-autos'},{d:'predict.beauty',n:'Predict',r:'predict-beauty'},{d:'predict.christmas',n:'Predict',r:'predict-christmas'},{d:'predict.codes',n:'Predict',r:'predict-codes'},{d:'predict.courses',n:'Predict',r:'predict-courses'},{d:'predict.hair',n:'Predict',r:'predict-hair'},{d:'predict.garden',n:'Predict',r:'predict-garden'},{d:'predict.makeup',n:'Predict',r:'predict-makeup'},{d:'predict.singles',n:'Predict',r:'predict-singles'},{d:'predict.tattoo',n:'Predict',r:'predict-tattoo'},{d:'predict.skin',n:'Predict',r:'predict-skin'},{d:'predict.surf',n:'Predict',r:'predict-surf'},{d:'predict.boats',n:'Predict',r:'predict-boats'},{d:'predict.yachts',n:'Predict',r:'predict-yachts'},
+    {d:'spunk.codes',n:'Spunk',r:'spunk-codes'},{d:'spunk.bet',n:'Spunk',r:'spunk-bet'},{d:'spunk.my',n:'Spunk',r:'spunk-my'},{d:'spunk.baby',n:'Spunk',r:'spunk-baby'},{d:'spunk.casa',n:'Spunk',r:'spunk-casa'},{d:'spunk.mom',n:'Spunk',r:'spunk-mom'},{d:'spunk.surf',n:'Spunk',r:'spunk-surf'},{d:'spunk.wiki',n:'Spunk',r:'spunk-wiki'},{d:'spunk.pics',n:'Spunk',r:'spunk-pics'},{d:'spunk.sale',n:'Spunk',r:'spunk-sale'},{d:'spunk.work',n:'Spunk',r:'spunk-work'},{d:'spunk.best',n:'Spunk',r:'spunk-best-site'},{d:'spunk.courses',n:'Spunk',r:'spunk-courses'},{d:'spunkart.com',n:'Spunk',r:'spunkart-site'},
+    {d:'pfp.best',n:'PFP',r:'pfp-best'},
+    {d:'alien.beauty',n:'Alien',r:'alien-beauty'},{d:'alien.best',n:'Alien',r:'alien-best'},{d:'alien.boutique',n:'Alien',r:'alien-boutique'},{d:'alien.cam',n:'Alien',r:'alien-cam'},{d:'alien.casa',n:'Alien',r:'alien-casa'},{d:'alien.christmas',n:'Alien',r:'alien-christmas'},{d:'alien.codes',n:'Alien',r:'alien-codes'},{d:'alien.coupons',n:'Alien',r:'alien-coupons'},{d:'alien.courses',n:'Alien',r:'alien-courses'},{d:'alien.delivery',n:'Alien',r:'alien-delivery'},{d:'alien.guru',n:'Alien',r:'alien-guru'},{d:'alien.horse',n:'Alien',r:'alien-horse'},{d:'alien.makeup',n:'Alien',r:'alien-makeup'},{d:'alien.mom',n:'Alien',r:'alien-mom'},{d:'alien.motorcycles',n:'Alien',r:'alien-motorcycles'},{d:'alien.singles',n:'Alien',r:'alien-singles'},{d:'alien.skin',n:'Alien',r:'alien-skin'},{d:'alien.surf',n:'Alien',r:'alien-surf'},{d:'alien.tattoo',n:'Alien',r:'alien-tattoo'},{d:'alien.today',n:'Alien',r:'alien-today'},{d:'alien.website',n:'Alien',r:'alien-website'},{d:'alien.yachts',n:'Alien',r:'alien-yachts'},
+    {d:'plush.asia',n:'Plush',r:'plush-asia'},{d:'plush.beer',n:'Plush',r:'plush-beer'},{d:'plush.best',n:'Plush',r:'plush-best'},{d:'plush.boats',n:'Plush',r:'plush-boats'},{d:'plush.cam',n:'Plush',r:'plush-cam'},{d:'plush.christmas',n:'Plush',r:'plush-christmas'},{d:'plush.courses',n:'Plush',r:'plush-courses'},{d:'plush.delivery',n:'Plush',r:'plush-delivery'},{d:'plush.garden',n:'Plush',r:'plush-garden'},{d:'plush.makeup',n:'Plush',r:'plush-makeup'},{d:'plush.mom',n:'Plush',r:'plush-mom'},{d:'plush.rest',n:'Plush',r:'plush-rest'},{d:'plush.surf',n:'Plush',r:'plush-surf'},{d:'plush.wiki',n:'Plush',r:'plush-wiki'},
+    {d:'stimulant.beauty',n:'Stimulant',r:'stimulant-beauty'},{d:'stimulant.doctor',n:'Stimulant',r:'stimulant-doctor'},{d:'stimulant.guru',n:'Stimulant',r:'stimulant-guru'},{d:'stimulant.homes',n:'Stimulant',r:'stimulant-homes'},{d:'stimulant.life',n:'Stimulant',r:'stimulant-life'},{d:'stimulant.living',n:'Stimulant',r:'stimulant-living'},{d:'stimulant.makeup',n:'Stimulant',r:'stimulant-makeup'},{d:'stimulant.mom',n:'Stimulant',r:'stimulant-mom'},{d:'stimulant.online',n:'Stimulant',r:'stimulant-online'},{d:'stimulant.rest',n:'Stimulant',r:'stimulant-rest'},{d:'stimulant.shop',n:'Stimulant',r:'stimulant-shop'},{d:'stimulant.site',n:'Stimulant',r:'stimulant-site'},{d:'stimulant.skin',n:'Stimulant',r:'stimulant-skin'},{d:'stimulant.top',n:'Stimulant',r:'stimulant-top'},{d:'stimulant.website',n:'Stimulant',r:'stimulant-website'},{d:'stimulant.wiki',n:'Stimulant',r:'stimulant-wiki'},{d:'stimulant.work',n:'Stimulant',r:'stimulant-work'},
+    {d:'monkey.boutique',n:'Monkey',r:'monkey-boutique'},{d:'monkey.charity',n:'Monkey',r:'monkey-charity'},{d:'monkey.coupons',n:'Monkey',r:'monkey-coupons'},{d:'monkey.courses',n:'Monkey',r:'monkey-courses'},{d:'monkey.directory',n:'Monkey',r:'monkey-directory'},{d:'monkey.gives',n:'Monkey',r:'monkey-gives'},{d:'monkey.investments',n:'Monkey',r:'monkey-investments'},{d:'monkey.lat',n:'Monkey',r:'monkey-lat'},{d:'monkey.poker',n:'Monkey',r:'monkey-poker'},{d:'monkey.rent',n:'Monkey',r:'monkey-rent'},{d:'monkey.repair',n:'Monkey',r:'monkey-repair'},{d:'monkey.report',n:'Monkey',r:'monkey-report'},{d:'monkey.singles',n:'Monkey',r:'monkey-singles'},
+    {d:'scam.beauty',n:'Scam',r:'scam-beauty'},{d:'scam.courses',n:'Scam',r:'scam-courses'},{d:'scam.hair',n:'Scam',r:'scam-hair'},{d:'scam.horse',n:'Scam',r:'scam-horse'},{d:'scam.ink',n:'Scam',r:'scam-ink'},{d:'scam.makeup',n:'Scam',r:'scam-makeup'},{d:'scam.singles',n:'Scam',r:'scam-singles'},{d:'scam.stream',n:'Scam',r:'scam-stream'},{d:'scam.surf',n:'Scam',r:'scam-surf'},{d:'scam.video',n:'Scam',r:'scam-video'},{d:'scam.wiki',n:'Scam',r:'scam-wiki'},
+    {d:'clown.best',n:'Clown',r:'clown-best'},{d:'clown.cam',n:'Clown',r:'clown-cam'},{d:'clown.sbs',n:'Clown',r:'clown-sbs'},{d:'clown.surf',n:'Clown',r:'clown-surf'},
+    {d:'claw.christmas',n:'Claw',r:'claw-christmas'},{d:'claw.green',n:'Claw',r:'claw-green'},{d:'claw.horse',n:'Claw',r:'claw-horse'},{d:'claw.pet',n:'Claw',r:'claw-pet'},{d:'claw.pizza',n:'Claw',r:'claw-pizza'},{d:'claw.rentals',n:'Claw',r:'claw-rentals'},{d:'claw.tattoo',n:'Claw',r:'claw-tattoo'},{d:'claw.toys',n:'Claw',r:'claw-toys'},
+    {d:'i13.autos',n:'i13',r:'i13-autos'},{d:'i13.best',n:'i13',r:'i13-best'},{d:'i13.buzz',n:'i13',r:'i13-buzz'},{d:'i13.fun',n:'i13',r:'i13-fun'},{d:'i13.lat',n:'i13',r:'i13-lat'},{d:'i13.pics',n:'i13',r:'i13-pics'},{d:'i13.space',n:'i13',r:'i13-space'},
+    {d:'ai13.fun',n:'ai13',r:'ai13-fun'},{d:'ai13.store',n:'ai13',r:'ai13-store'},
+    {d:'iai.autos',n:'iai',r:'iai-autos'},{d:'iai.boats',n:'iai',r:'iai-boats'},
+    {d:'aibot.beer',n:'AIBot',r:'aibot-beer'},{d:'aibot.coupons',n:'AIBot',r:'aibot-coupons'},{d:'aibot.courses',n:'AIBot',r:'aibot-courses'},{d:'aibot.delivery',n:'AIBot',r:'aibot-delivery'},{d:'aibot.directory',n:'AIBot',r:'aibot-directory'},{d:'aibot.forum',n:'AIBot',r:'aibot-forum'},{d:'aibot.garden',n:'AIBot',r:'aibot-garden'},{d:'aibot.gay',n:'AIBot',r:'aibot-gay'},{d:'aibot.poker',n:'AIBot',r:'aibot-poker'},{d:'aibot.rest',n:'AIBot',r:'aibot-rest'},{d:'aibot.study',n:'AIBot',r:'aibot-study'},{d:'aibot.tattoo',n:'AIBot',r:'aibot-tattoo'},
+    {d:'13.dance',n:'Other',r:'13-dance'},{d:'13.energy',n:'Other',r:'13-energy'},{d:'13.golf',n:'Other',r:'13-golf'},{d:'13.markets',n:'Other',r:'13-markets'},{d:'13.money',n:'Other',r:'13-money'},{d:'betai.buzz',n:'Other',r:'betai-buzz'},{d:'chicago.coach',n:'Other',r:'chicago-coach'},{d:'clip.christmas',n:'Other',r:'clip-christmas'},{d:'fix.mom',n:'Other',r:'fix-mom'},{d:'flip.courses',n:'Other',r:'flip-courses'},{d:'flip.garden',n:'Other',r:'flip-garden'},{d:'flip.gay',n:'Other',r:'flip-gay'},{d:'flip.ink',n:'Other',r:'flip-ink'},{d:'free.gripe',n:'Other',r:'free-gripe'},{d:'free.institute',n:'Other',r:'free-institute'},{d:'pizza.christmas',n:'Other',r:'pizza-christmas'},{d:'pizza.singles',n:'Other',r:'pizza-singles'},{d:'sell.singles',n:'Other',r:'sell-singles'},{d:'spunk.casino',n:'Other',r:'spunk-casino'}
+  ];
+
+  // ============================================================
+  // SHA-256
+  // ============================================================
+  async function sha256(str){
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+  }
+
+  // ============================================================
+  // Firebase helpers
+  // ============================================================
+  function fbGet(path){return fetch(DB+'/'+path+'.json').then(function(r){return r.json()})}
+  function fbSet(path,data){return fetch(DB+'/'+path+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})}
+  function fbDel(path){return fetch(DB+'/'+path+'.json',{method:'DELETE'})}
+
+  // ============================================================
+  // Login
+  // ============================================================
+  window.attemptLogin=async function(){
+    var now=Date.now();
+    if(now<lockoutUntil){
+      showLoginErr('Locked out. Wait '+ Math.ceil((lockoutUntil-now)/1000)+'s');
+      return;
+    }
+    var pass=document.getElementById('loginPass').value;
+    if(!pass)return;
+    var hash=await sha256(pass);
+
+    // Check Firebase for stored hash first
+    try{
+      var stored=await fbGet('admin/passHash');
+      if(stored)PASS_HASH=stored;
+    }catch(e){}
+
+    if(hash===PASS_HASH){
+      loginAttempts=0;
+      sessionStorage.setItem(SESSION_KEY,JSON.stringify({ts:Date.now()}));
+      showDashboard();
+    }else{
+      loginAttempts++;
+      if(loginAttempts>=5){lockoutUntil=Date.now()+60000;showLoginErr('Locked out for 60 seconds.')}
+      else showLoginErr('Incorrect. '+(5-loginAttempts)+' attempts left.');
+      document.getElementById('loginPass').value='';
+    }
+  };
+
+  function showLoginErr(msg){var e=document.getElementById('loginError');e.textContent=msg;e.style.display='block'}
+
+  window.logout=function(){
+    sessionStorage.removeItem(SESSION_KEY);
+    clearInterval(refreshTimer);
+    clearTimeout(sessionTimer);
+    document.getElementById('dashboard').classList.remove('active');
+    document.getElementById('loginOverlay').classList.remove('hidden');
+    document.getElementById('loginPass').value='';
+    document.getElementById('loginError').style.display='none';
+  };
+
+  function checkSession(){
+    var d=sessionStorage.getItem(SESSION_KEY);
+    if(!d)return false;
+    try{var s=JSON.parse(d);if(Date.now()-s.ts>SESSION_TIMEOUT){sessionStorage.removeItem(SESSION_KEY);return false}s.ts=Date.now();sessionStorage.setItem(SESSION_KEY,JSON.stringify(s));return true}catch(e){return false}
+  }
+
+  function showDashboard(){
+    document.getElementById('loginOverlay').classList.add('hidden');
+    document.getElementById('dashboard').classList.add('active');
+    populateNetworkFilter();
+    renderSites();
+    refreshAll();
+    loadAds();
+    loadAnnouncement();
+    refreshTimer=setInterval(function(){refreshAll();loadAds()},REFRESH_MS);
+    resetSessionTimeout();
+  }
+
+  function resetSessionTimeout(){
+    clearTimeout(sessionTimer);
+    sessionTimer=setTimeout(function(){alert('Session expired.');logout()},SESSION_TIMEOUT);
+  }
+  document.addEventListener('click',function(){if(checkSession())resetSessionTimeout()});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&!document.getElementById('loginOverlay').classList.contains('hidden'))attemptLogin();
+    if(checkSession())resetSessionTimeout();
+  });
+
+  // ============================================================
+  // Tabs
+  // ============================================================
+  window.switchTab=function(id,btn){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+    document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+    btn.classList.add('active');
+    document.getElementById('panel-'+id).classList.add('active');
+  };
+
+  // ============================================================
+  // Network filter
+  // ============================================================
+  function populateNetworkFilter(){
+    var nets={};SITES.forEach(function(s){nets[s.n]=true});
+    var sel=document.getElementById('networkFilter');
+    sel.innerHTML='<option value="">All Networks</option>';
+    Object.keys(nets).sort().forEach(function(n){
+      var opt=document.createElement('option');opt.value=n;
+      opt.textContent=n+' ('+SITES.filter(function(s){return s.n===n}).length+')';
+      sel.appendChild(opt);
+    });
+  }
+
+  // ============================================================
+  // Render sites
+  // ============================================================
+  function renderSites(){
+    var grid=document.getElementById('sitesGrid');grid.innerHTML='';
+    var q=(document.getElementById('searchInput').value||'').toLowerCase();
+    var nf=document.getElementById('networkFilter').value;
+    var sf=document.getElementById('statusFilter').value;
+    var filtered=SITES.filter(function(s){
+      if(q&&s.d.indexOf(q)===-1&&s.n.toLowerCase().indexOf(q)===-1)return false;
+      if(nf&&s.n!==nf)return false;
+      if(sf){var st=siteStatus[s.d]||'checking';if(st!==sf)return false}
+      return true;
+    });
+    filtered.forEach(function(s){
+      var st=siteStatus[s.d]||'checking';
+      var cls=st==='up'?'badge-up':st==='down'?'badge-down':'badge-check';
+      var txt=st==='up'?'UP':st==='down'?'DOWN':'...';
+      var v=visitorData[s.d]||'--';
+      var c=document.createElement('div');c.className='site-card';
+      c.innerHTML='<div class="site-header"><span class="site-name">'+s.d+'</span><span class="site-badge '+cls+'">'+txt+'</span></div>'+
+        '<div class="site-meta">'+s.n+' Network</div>'+
+        '<div class="site-visitors">Visitors: '+v+'</div>'+
+        '<div class="site-links"><a href="https://'+s.d+'/" target="_blank" rel="noopener">Visit</a><a href="https://github.com/Spunkeroo/'+s.r+'" target="_blank" rel="noopener">GitHub</a></div>';
+      grid.appendChild(c);
+    });
+    updateStats();
+  }
+  window.filterSites=renderSites;
+
+  function updateStats(){
+    document.getElementById('totalSites').textContent=SITES.length;
+    var up=0,down=0;
+    SITES.forEach(function(s){if(siteStatus[s.d]==='up')up++;else if(siteStatus[s.d]==='down')down++});
+    document.getElementById('sitesUp').textContent=up;
+    document.getElementById('sitesDown').textContent=down;
+    var tv=0;Object.values(visitorData).forEach(function(v){if(typeof v==='number')tv+=v});
+    document.getElementById('totalVisitors').textContent=tv||'--';
+    var nets={};SITES.forEach(function(s){nets[s.n]=true});
+    document.getElementById('networkCount').textContent=Object.keys(nets).length;
+    var ac=0;Object.values(adsData).forEach(function(a){if(a&&a.active)ac++});
+    document.getElementById('activeAds').textContent=ac;
+  }
+
+  // ============================================================
+  // Refresh data
+  // ============================================================
+  window.refreshAll=async function(){
+    if(!checkSession()){logout();return}
+    document.getElementById('lastRefresh').textContent='Refreshing...';
+    try{
+      var resp=await fetch(DB+'/visitors.json');
+      if(resp.ok){var data=await resp.json();if(data)Object.keys(data).forEach(function(k){var dom=k.replace(/_/g,'.');if(data[k]&&data[k].count!==undefined)visitorData[dom]=data[k].count;else if(typeof data[k]==='number')visitorData[dom]=data[k]})}
+    }catch(e){}
+    // Status checks (batched, no-cors)
+    var batch=[];
+    for(var i=0;i<SITES.length;i++){
+      batch.push(SITES[i]);
+      if(batch.length===15||i===SITES.length-1){
+        await Promise.allSettled(batch.map(function(s){
+          return fetch('https://'+s.d+'/',{method:'HEAD',mode:'no-cors',cache:'no-store'}).then(function(){siteStatus[s.d]='up'}).catch(function(){siteStatus[s.d]='down'});
+        }));
+        batch=[];
+      }
+    }
+    renderSites();
+    document.getElementById('lastRefresh').textContent='Updated: '+new Date().toLocaleTimeString();
+  };
+
+  // ============================================================
+  // Ad Management (Firebase-backed)
+  // ============================================================
+  async function loadAds(){
+    try{
+      var data=await fbGet('admin/ads');
+      adsData=data||{};
+      renderAdsList();
+      renderRevenueStats();
+    }catch(e){}
+  }
+
+  function renderAdsList(){
+    var el=document.getElementById('adsList');
+    var keys=Object.keys(adsData);
+    if(!keys.length){el.innerHTML='<p style="color:var(--muted);font-size:0.85rem">No ads yet. Create one above.</p>';return}
+    var html='<table class="ad-table"><tr><th>Name</th><th>Format</th><th>Position</th><th>Status</th><th>Networks</th><th>Clicks</th><th>Actions</th></tr>';
+    keys.forEach(function(id){
+      var a=adsData[id];if(!a)return;
+      var stCls=a.active?'ad-active':'ad-inactive';
+      var stTxt=a.active?'Active':'Inactive';
+      html+='<tr><td>'+esc(a.name||'Untitled')+'</td><td>'+esc(a.format||'banner')+'</td><td>'+esc(a.position||'top')+'</td><td class="'+stCls+'">'+stTxt+'</td><td>'+esc(a.networks||'all')+'</td><td>'+(a.clicks||0)+'</td><td><button class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem" onclick="editAd(\''+id+'\')">Edit</button> <button class="btn btn-outline" style="padding:4px 10px;font-size:0.75rem;color:var(--red)" onclick="deleteAd(\''+id+'\')">Del</button></td></tr>';
+    });
+    html+='</table>';
+    el.innerHTML=html;
+  }
+
+  function renderRevenueStats(){
+    var el=document.getElementById('revenueStats');
+    var keys=Object.keys(adsData);
+    if(!keys.length){el.innerHTML='<p style="color:var(--muted);font-size:0.85rem">No ad data yet.</p>';return}
+    var totalClicks=0,totalImpressions=0;
+    keys.forEach(function(id){var a=adsData[id];if(a){totalClicks+=(a.clicks||0);totalImpressions+=(a.impressions||0)}});
+    var ctr=totalImpressions>0?((totalClicks/totalImpressions)*100).toFixed(2):'--';
+    el.innerHTML='<div style="display:flex;gap:16px;flex-wrap:wrap"><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--cyan)">'+totalImpressions+'</div><div class="stat-label">Impressions</div></div><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--green)">'+totalClicks+'</div><div class="stat-label">Clicks</div></div><div class="stat-card" style="flex:1;min-width:120px"><div class="stat-val" style="font-size:1.4rem;color:var(--amber)">'+ctr+'%</div><div class="stat-label">CTR</div></div></div>';
+  }
+
+  window.saveAd=async function(){
+    var name=document.getElementById('adName').value.trim();
+    if(!name){showMsg('adMsg','err','Ad name is required');return}
+    var url=document.getElementById('adUrl').value.trim();
+    if(!url){showMsg('adMsg','err','Destination URL is required');return}
+    // Basic URL validation
+    if(!/^https?:\/\/.+/.test(url)){showMsg('adMsg','err','URL must start with http:// or https://');return}
+
+    var id=document.getElementById('adEditId').value||('ad_'+Date.now());
+    var ad={
+      name:name,
+      position:document.getElementById('adPosition').value,
+      format:document.getElementById('adFormat').value,
+      url:url,
+      headline:document.getElementById('adHeadline').value.trim(),
+      body:document.getElementById('adBody').value.trim(),
+      cta:document.getElementById('adCta').value.trim()||'Learn More',
+      bg:document.getElementById('adBg').value.trim()||'#1a1a2e',
+      accent:document.getElementById('adAccent').value.trim()||'#a855f7',
+      image:document.getElementById('adImage').value.trim(),
+      networks:document.getElementById('adNetworks').value.trim()||'all',
+      active:document.getElementById('adActive').value==='true',
+      html:document.getElementById('adHtml').value.trim(),
+      clicks:adsData[id]?adsData[id].clicks||0:0,
+      impressions:adsData[id]?adsData[id].impressions||0:0,
+      updated:Date.now()
+    };
+    try{
+      await fbSet('admin/ads/'+id,ad);
+      adsData[id]=ad;
+      renderAdsList();
+      renderRevenueStats();
+      updateStats();
+      clearAdForm();
+      showMsg('adMsg','ok','Ad saved and live across all sites!');
+    }catch(e){showMsg('adMsg','err','Failed to save: '+e.message)}
+  };
+
+  window.editAd=function(id){
+    var a=adsData[id];if(!a)return;
+    document.getElementById('adEditId').value=id;
+    document.getElementById('adName').value=a.name||'';
+    document.getElementById('adPosition').value=a.position||'top';
+    document.getElementById('adFormat').value=a.format||'banner';
+    document.getElementById('adImage').value=a.image||'';
+    document.getElementById('adUrl').value=a.url||'';
+    document.getElementById('adHeadline').value=a.headline||'';
+    document.getElementById('adBody').value=a.body||'';
+    document.getElementById('adCta').value=a.cta||'Learn More';
+    document.getElementById('adBg').value=a.bg||'#1a1a2e';
+    document.getElementById('adAccent').value=a.accent||'#a855f7';
+    document.getElementById('adNetworks').value=a.networks||'all';
+    document.getElementById('adActive').value=a.active?'true':'false';
+    document.getElementById('adHtml').value=a.html||'';
+    switchTab('ads',document.querySelectorAll('.tab')[1]);
+    window.scrollTo(0,0);
+  };
+
+  window.deleteAd=async function(id){
+    if(!confirm('Delete this ad? This cannot be undone.'))return;
+    try{await fbDel('admin/ads/'+id);delete adsData[id];renderAdsList();renderRevenueStats();updateStats()}catch(e){alert('Failed: '+e.message)}
+  };
+
+  window.clearAdForm=function(){
+    document.getElementById('adEditId').value='';
+    ['adName','adUrl','adHeadline','adBody','adHtml','adImage'].forEach(function(id){document.getElementById(id).value=''});
+    document.getElementById('adFormat').value='banner';
+    document.getElementById('adCta').value='Learn More';
+    document.getElementById('adBg').value='#1a1a2e';
+    document.getElementById('adAccent').value='#a855f7';
+    document.getElementById('adNetworks').value='all';
+    document.getElementById('adActive').value='true';
+    document.getElementById('adPreview').style.display='none';
+  };
+
+  window.previewAd=function(){
+    var el=document.getElementById('adPreview');
+    var customHtml=document.getElementById('adHtml').value.trim();
+    var bg=document.getElementById('adBg').value||'#1a1a2e';
+    var accent=document.getElementById('adAccent').value||'#a855f7';
+    var fmt=document.getElementById('adFormat').value||'banner';
+    var img=document.getElementById('adImage').value.trim();
+    var SIZES={'banner':{w:'100%',h:'auto'},'leaderboard':{w:'728px',h:'90px'},'square-sm':{w:'200px',h:'200px'},'square-md':{w:'250px',h:'250px'},'square-lg':{w:'300px',h:'300px'},'rect':{w:'300px',h:'250px'}};
+    var sz=SIZES[fmt]||SIZES['banner'];
+    if(customHtml){
+      el.innerHTML='<strong style="font-size:0.8rem;color:var(--muted)">Custom HTML Preview:</strong><div style="margin-top:8px;background:'+esc(bg)+';border-radius:8px;padding:12px">'+customHtml+'</div>';
+    }else if(fmt!=='banner'){
+      var h=document.getElementById('adHeadline').value||'Ad Headline';
+      var b=document.getElementById('adBody').value||'';
+      var c=document.getElementById('adCta').value||'Learn More';
+      var blockHtml='<strong style="font-size:0.8rem;color:var(--muted)">Preview ('+fmt+'):</strong><div style="margin-top:8px;display:flex;justify-content:center">';
+      blockHtml+='<div style="width:'+sz.w+';height:'+sz.h+';max-width:100%;background:'+esc(bg)+';border:1px solid '+esc(accent)+';border-radius:10px;overflow:hidden;position:relative">';
+      if(img){
+        blockHtml+='<img src="'+esc(img)+'" style="width:100%;height:100%;object-fit:cover">';
+      }else{
+        blockHtml+='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:12px;text-align:center">';
+        blockHtml+='<strong style="color:#fff;font-size:0.9rem;margin-bottom:6px">'+esc(h)+'</strong>';
+        if(b)blockHtml+='<span style="color:#aaa;font-size:0.75rem;margin-bottom:8px">'+esc(b)+'</span>';
+        blockHtml+='<span style="background:'+esc(accent)+';color:#fff;padding:6px 14px;border-radius:6px;font-weight:700;font-size:0.75rem">'+esc(c)+'</span>';
+        blockHtml+='</div>';
+      }
+      blockHtml+='</div></div>';
+      el.innerHTML=blockHtml;
+    }else{
+      var h=document.getElementById('adHeadline').value||'Ad Headline';
+      var b=document.getElementById('adBody').value||'Ad body text goes here';
+      var c=document.getElementById('adCta').value||'Learn More';
+      el.innerHTML='<strong style="font-size:0.8rem;color:var(--muted)">Preview:</strong><div style="margin-top:8px;background:'+esc(bg)+';border:1px solid '+esc(accent)+';border-radius:10px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div><strong style="color:#fff;font-size:0.95rem">'+esc(h)+'</strong><p style="color:#aaa;font-size:0.82rem;margin:4px 0 0">'+esc(b)+'</p></div><span style="background:'+esc(accent)+';color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;font-size:0.85rem">'+esc(c)+'</span></div>';
+    }
+    el.style.display='block';
+  };
+
+  // ============================================================
+  // Password Change
+  // ============================================================
+  window.changePassword=async function(){
+    var cur=document.getElementById('currentPass').value;
+    var nw=document.getElementById('newPass').value;
+    var cf=document.getElementById('confirmPass').value;
+    if(!cur||!nw||!cf){showMsg('passMsg','err','All fields required');return}
+    if(nw.length<8){showMsg('passMsg','err','New password must be at least 8 characters');return}
+    if(nw!==cf){showMsg('passMsg','err','Passwords do not match');return}
+
+    var curHash=await sha256(cur);
+    // Fetch current hash from Firebase
+    try{var stored=await fbGet('admin/passHash');if(stored)PASS_HASH=stored}catch(e){}
+
+    if(curHash!==PASS_HASH){showMsg('passMsg','err','Current password is incorrect');return}
+
+    var newHash=await sha256(nw);
+    try{
+      await fbSet('admin/passHash',newHash);
+      PASS_HASH=newHash;
+      document.getElementById('currentPass').value='';
+      document.getElementById('newPass').value='';
+      document.getElementById('confirmPass').value='';
+      showMsg('passMsg','ok','Password updated successfully!');
+    }catch(e){showMsg('passMsg','err','Failed to save: '+e.message)}
+  };
+
+  // ============================================================
+  // Announcement
+  // ============================================================
+  async function loadAnnouncement(){
+    try{
+      var data=await fbGet('admin/announcement');
+      if(data){
+        document.getElementById('announcementText').value=data.text||'';
+        document.getElementById('announceBg').value=data.bg||'#7c3aed';
+        document.getElementById('announceActive').value=data.active?'true':'false';
+      }
+    }catch(e){}
+  }
+
+  window.saveAnnouncement=async function(){
+    var text=document.getElementById('announcementText').value.trim();
+    var bg=document.getElementById('announceBg').value.trim()||'#7c3aed';
+    var active=document.getElementById('announceActive').value==='true';
+    try{
+      await fbSet('admin/announcement',{text:text,bg:bg,active:active,updated:Date.now()});
+      showMsg('announceMsg','ok','Announcement saved! It will appear on all sites within 10 seconds.');
+    }catch(e){showMsg('announceMsg','err','Failed: '+e.message)}
+  };
+
+  // ============================================================
+  // Helpers
+  // ============================================================
+  function showMsg(id,type,msg){
+    var el=document.getElementById(id);
+    el.className='msg '+(type==='ok'?'msg-ok':'msg-err');
+    el.textContent=msg;el.style.display='block';
+    setTimeout(function(){el.style.display='none'},5000);
+  }
+
+  function esc(s){if(!s)return '';var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+  // ============================================================
+  // Init
+  // ============================================================
+  (async function(){
+    // Load password hash from Firebase on page load
+    try{var h=await fbGet('admin/passHash');if(h)PASS_HASH=h}catch(e){}
+    if(checkSession())showDashboard();
+  })();
+})();
+</script>
+</body>
+</html>
