@@ -140,6 +140,8 @@ tr:hover{background:var(--bg3)}
 <div class="sidebar-section">Tools</div>
 <button class="sidebar-btn" onclick="showPanel('announce',this)"><span class="icon">&#x1F4E3;</span><span>Announce</span></button>
 <button class="sidebar-btn" onclick="showPanel('wallets',this)"><span class="icon">&#x1F511;</span><span>Wallets</span></button>
+<button class="sidebar-btn" onclick="showPanel('affiliates',this)"><span class="icon">&#x1F517;</span><span>Affiliates</span></button>
+<button class="sidebar-btn" onclick="showPanel('speed',this)"><span class="icon">&#x1F680;</span><span>Speed/CDN</span></button>
 <button class="sidebar-btn" onclick="showPanel('quick',this)"><span class="icon">&#x26A1;</span><span>Quick Actions</span></button>
 <div style="flex:1"></div>
 <button class="sidebar-btn" onclick="logout()" style="margin-top:auto;color:var(--red)"><span class="icon">&#x1F6AA;</span><span>Logout</span></button>
@@ -409,6 +411,121 @@ tr:hover{background:var(--bg3)}
 <tr><td>Deposits</td><td>SOL</td><td style="font-family:monospace;font-size:.7rem;word-break:break-all">Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm</td><td><a href="https://solscan.io/account/Cds2aUuhyJa4NaZo7JER7LakW4VmmfnqVixHusrKKZsm" target="_blank">Solscan</a></td></tr>
 </tbody>
 </table>
+</div>
+</div>
+
+<!-- ========== AFFILIATES ========== -->
+<div class="panel" id="panel-affiliates">
+<div class="main-header"><div class="main-title">Affiliate Links</div><div class="header-actions"><button class="header-btn primary" onclick="saveAffiliates()">Save Changes</button></div></div>
+<div class="card">
+<div class="card-title">Active Affiliate Programs</div>
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:16px">Edit links here. Changes save to Firebase and are used across all sites.</p>
+<table>
+<thead><tr><th>Program</th><th>Affiliate URL</th><th>Status</th><th>Used On</th></tr></thead>
+<tbody id="aff-table">
+<tr><td>Amazon Associates</td><td><input type="text" id="aff-amazon" value="https://www.amazon.com/?tag=spunk01-20" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>All sites</td></tr>
+<tr><td>Fiverr</td><td><input type="text" id="aff-fiverr" value="https://go.fiverr.com/visit/?bta=1010025&brand=fiverrcpa" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>pfp.best, editchoice</td></tr>
+<tr><td>Midjourney</td><td><input type="text" id="aff-midjourney" value="https://www.midjourney.com" style="font-size:.75rem"></td><td><span class="badge amber">No Program</span></td><td>pfp.best</td></tr>
+<tr><td>Canva Pro</td><td><input type="text" id="aff-canva" value="https://partner.canva.com/c/spunk" style="font-size:.75rem"></td><td><span class="badge amber">Pending</span></td><td>pfp.best, editchoice</td></tr>
+<tr><td>Leonardo AI</td><td><input type="text" id="aff-leonardo" value="https://leonardo.ai/?ref=spunk" style="font-size:.75rem"></td><td><span class="badge amber">Apply</span></td><td>pfp.best</td></tr>
+<tr><td>Binance</td><td><input type="text" id="aff-binance" value="https://accounts.binance.com/register?ref=SPUNK" style="font-size:.75rem"></td><td><span class="badge amber">Need 5K followers</span></td><td>coincould, spunk.bet</td></tr>
+<tr><td>Coinbase</td><td><input type="text" id="aff-coinbase" value="https://coinbase.com/join/spunk" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>coincould</td></tr>
+<tr><td>Ledger</td><td><input type="text" id="aff-ledger" value="https://shop.ledger.com/?r=spunk" style="font-size:.75rem"></td><td><span class="badge amber">Apply</span></td><td>coincould, rugtool</td></tr>
+<tr><td>NordVPN</td><td><input type="text" id="aff-nordvpn" value="https://nordvpn.com/spunk" style="font-size:.75rem"></td><td><span class="badge amber">Apply</span></td><td>rugtool</td></tr>
+<tr><td>Stake</td><td><input type="text" id="aff-stake" value="https://stake.com/?c=spunk" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>spunk.bet</td></tr>
+<tr><td>Winna</td><td><input type="text" id="aff-winna" value="https://winna.com/?ref=spunk" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>spunk.bet</td></tr>
+<tr><td>Kalshi</td><td><input type="text" id="aff-kalshi" value="https://kalshi.com/sign-up/?referral=spunk" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>predict sites</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card">
+<div class="card-title">Add New Affiliate</div>
+<div class="grid-3" style="margin-bottom:12px">
+<div><label>Program Name</label><input type="text" id="aff-new-name"></div>
+<div><label>Affiliate URL</label><input type="text" id="aff-new-url"></div>
+<div><label>Used On</label><input type="text" id="aff-new-sites" placeholder="site1, site2"></div>
+</div>
+<button class="btn purple" onclick="addAffiliate()">Add Program</button>
+</div>
+<div class="card">
+<div class="card-title">Affiliate Checklist</div>
+<div style="font-size:.85rem;line-height:2">
+<div><span class="badge green">Done</span> Amazon Associates (tag=spunk01-20)</div>
+<div><span class="badge amber">To Do</span> <a href="https://affiliate.ledger.com" target="_blank">Ledger Affiliate</a> - Apply at affiliate.ledger.com</div>
+<div><span class="badge amber">To Do</span> <a href="https://nordvpn.com/affiliate" target="_blank">NordVPN Affiliate</a> - Apply at nordvpn.com/affiliate</div>
+<div><span class="badge amber">To Do</span> <a href="https://leonardo.ai/ai-affiliate-program" target="_blank">Leonardo AI</a> - Apply at leonardo.ai/ai-affiliate-program</div>
+<div><span class="badge amber">To Do</span> <a href="https://www.binance.com/en/activity/affiliate" target="_blank">Binance</a> - Needs 5K followers</div>
+<div><span class="badge amber">To Do</span> <a href="https://partner.canva.com" target="_blank">Canva Partner</a> - Apply at partner.canva.com</div>
+</div>
+</div>
+</div>
+
+<!-- ========== SPEED / CDN ========== -->
+<div class="panel" id="panel-speed">
+<div class="main-header"><div class="main-title">Speed &amp; CDN Optimization</div></div>
+<div class="card">
+<div class="card-title">Cloudflare Setup Guide</div>
+<p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">Add Cloudflare to all your domains for free CDN, DDoS protection, and speed boost.</p>
+<div style="font-size:.85rem;line-height:2.2">
+<div><strong>Step 1:</strong> Sign up at <a href="https://dash.cloudflare.com/sign-up" target="_blank">cloudflare.com</a> (free plan)</div>
+<div><strong>Step 2:</strong> Add each domain and change nameservers at your registrar</div>
+<div><strong>Step 3:</strong> Enable these settings on each domain:</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<div class="card-title">Speed Settings (Free Plan)</div>
+<div style="font-size:.8rem;line-height:2.2">
+<div><span class="badge green">Enable</span> Auto Minify (HTML, CSS, JS)</div>
+<div><span class="badge green">Enable</span> Brotli Compression</div>
+<div><span class="badge green">Enable</span> Early Hints (103)</div>
+<div><span class="badge green">Enable</span> HTTP/2 &amp; HTTP/3 (QUIC)</div>
+<div><span class="badge green">Enable</span> Always Use HTTPS</div>
+<div><span class="badge green">Enable</span> Automatic HTTPS Rewrites</div>
+<div><span class="badge green">Enable</span> Browser Cache TTL: 1 month</div>
+<div><span class="badge purple">Enable</span> Rocket Loader (test first)</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Security Settings</div>
+<div style="font-size:.8rem;line-height:2.2">
+<div><span class="badge green">Enable</span> Bot Fight Mode</div>
+<div><span class="badge green">Enable</span> Browser Integrity Check</div>
+<div><span class="badge green">Set</span> Security Level: Medium</div>
+<div><span class="badge green">Set</span> SSL/TLS: Full (Strict)</div>
+<div><span class="badge green">Enable</span> HSTS (max-age 6 months)</div>
+<div><span class="badge green">Set</span> Min TLS Version: 1.2</div>
+<div><span class="badge green">Enable</span> Opportunistic Encryption</div>
+</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<div class="card-title">SEO Boost Settings</div>
+<div style="font-size:.8rem;line-height:2.2">
+<div><span class="badge cyan">Page Rule</span> *domain.com/* &rarr; Cache Level: Cache Everything</div>
+<div><span class="badge cyan">Page Rule</span> *domain.com/*.html &rarr; Edge Cache TTL: 2 hours</div>
+<div><span class="badge cyan">Page Rule</span> *domain.com/dashboard* &rarr; Cache Level: Bypass</div>
+<div><span class="badge purple">DNS</span> Add CNAME: www &rarr; Spunkeroo.github.io (proxied)</div>
+<div><span class="badge purple">DNS</span> 4x A records &rarr; 185.199.108-111.153 (proxied)</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Speed Test Links</div>
+<div style="font-size:.85rem;line-height:2.2">
+<div><a href="https://pagespeed.web.dev/" target="_blank">Google PageSpeed Insights</a></div>
+<div><a href="https://gtmetrix.com/" target="_blank">GTmetrix</a></div>
+<div><a href="https://tools.pingdom.com/" target="_blank">Pingdom Website Speed Test</a></div>
+<div><a href="https://www.webpagetest.org/" target="_blank">WebPageTest</a></div>
+<div><a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">Core Web Vitals Check</a></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-title">Domain Status</div>
+<p style="font-size:.8rem;color:var(--muted);margin-bottom:12px">Check which domains are on Cloudflare</p>
+<button class="btn purple" onclick="checkCfDomains()">Check All Domains</button>
+<div id="cf-results" style="margin-top:12px"></div>
 </div>
 </div>
 
@@ -954,6 +1071,75 @@ window.clearAnnouncement=async function(){
   document.getElementById('annMsg').value='';
   document.getElementById('annUrl').value='';
   toast('Announcement cleared');
+};
+
+// ============================================================
+// Affiliates
+// ============================================================
+window.saveAffiliates=async function(){
+  var links={};
+  document.querySelectorAll('[id^="aff-"]:not([id^="aff-new"])').forEach(function(el){
+    if(el.tagName==='INPUT')links[el.id.replace('aff-','')]=el.value;
+  });
+  await fbSet('admin/affiliates',links);
+  toast('Affiliate links saved');
+};
+
+window.loadAffiliates=async function(){
+  try{
+    var data=await fbGet('admin/affiliates');
+    if(data){
+      Object.keys(data).forEach(function(k){
+        var el=document.getElementById('aff-'+k);
+        if(el)el.value=data[k];
+      });
+    }
+  }catch(e){}
+};
+
+window.addAffiliate=function(){
+  var name=document.getElementById('aff-new-name').value;
+  var url=document.getElementById('aff-new-url').value;
+  var sites=document.getElementById('aff-new-sites').value;
+  if(!name||!url){toast('Fill in name and URL',true);return}
+  var tbody=document.getElementById('aff-table');
+  var id='aff-'+name.toLowerCase().replace(/[^a-z0-9]/g,'');
+  var tr=document.createElement('tr');
+  tr.innerHTML='<td>'+name+'</td><td><input type="text" id="'+id+'" value="'+url+'" style="font-size:.75rem"></td><td><span class="badge green">Active</span></td><td>'+sites+'</td>';
+  tbody.appendChild(tr);
+  document.getElementById('aff-new-name').value='';
+  document.getElementById('aff-new-url').value='';
+  document.getElementById('aff-new-sites').value='';
+  toast('Affiliate added - click Save Changes to persist');
+};
+
+// ============================================================
+// Cloudflare Check
+// ============================================================
+window.checkCfDomains=function(){
+  var domains=ALLSITES.slice(0,20).map(function(s){return s.d});
+  var html='<div style="font-size:.8rem">';
+  domains.forEach(function(d){
+    html+='<div style="display:flex;align-items:center;gap:8px;padding:4px 0" id="cf-'+d.replace(/\./g,'-')+'"><span class="badge amber">Checking</span> '+d+'</div>';
+  });
+  html+='</div>';
+  document.getElementById('cf-results').innerHTML=html;
+  domains.forEach(function(d){
+    var img=new Image();
+    var done=false;
+    var el=document.getElementById('cf-'+d.replace(/\./g,'-'));
+    var t=setTimeout(function(){if(!done){done=true;if(el)el.querySelector('.badge').outerHTML='<span class=\"badge red\">Unreachable</span>'}},8000);
+    img.onload=img.onerror=function(){
+      if(!done){done=true;clearTimeout(t);
+      // Check if CF headers exist via fetch
+      fetch('https://'+d+'/',{mode:'no-cors'}).then(function(){
+        if(el)el.querySelector('.badge').outerHTML='<span class=\"badge green\">Reachable</span>';
+      }).catch(function(){
+        if(el)el.querySelector('.badge').outerHTML='<span class=\"badge amber\">Partial</span>';
+      });
+    }};
+    img.src='https://'+d+'/favicon.ico?_='+Date.now();
+  });
 };
 
 })();
