@@ -1520,7 +1520,7 @@ document.<span class="func">getElementById</span>(<span class="string">'share-bt
 
     <span class="comment"># Make the change across all HTML files</span>
     <span class="func">find</span> . -name <span class="string">"*.html"</span> -exec <span class="func">sed</span> -i '' \
-      <span class="string">'s/© 2025/© 2026/g'</span> {} +
+      <span class="string">'s/© 2026/© 2026/g'</span> {} +
 
     <span class="comment"># Only commit if there are changes</span>
     <span class="keyword">if</span> ! <span class="func">git</span> diff --quiet; <span class="keyword">then</span>
